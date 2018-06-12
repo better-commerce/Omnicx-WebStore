@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:gvxCommon="https://gapi.givex.com/1.0/types_common" xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="https://gapi.givex.com/1.0/types_common" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="Identification">
+    <xsd:annotation>
+      <xsd:documentation>
+These values are used to establish system access priveleges.
+The token may be used to specify a version number.
+Oper will default to operator zero.
+Language will default to english if not specified.
+          </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="token" type="xsd:string" />
+      <xsd:element name="user" type="xsd:string" />
+      <xsd:element name="userPasswd" type="xsd:string" />
+      <xsd:element minOccurs="0" name="oper" type="xsd:string" />
+      <xsd:element minOccurs="0" name="operPasswd" type="xsd:string" />
+      <xsd:element minOccurs="0" name="language" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FilterElement">
+    <xsd:annotation>
+      <xsd:documentation>
+The filter values restrict the records that are returned.
+
+The parameter should be one of the following:
+'dateStart', 'dateEnd', 'transType', 'offset', 'maxItems',
+'enteredBy'
+
+Dates should follow the yyyy-mm-dd format.
+If transType is specified, it should be repeated for all
+transaction types that need to be included in the output.
+Offset and maxItems are integers.
+          </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="parameter" type="xsd:string" />
+      <xsd:element minOccurs="0" name="optr" type="xsd:string" />
+      <xsd:element name="value" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AttributeElement">
+    <xsd:sequence>
+      <xsd:element name="name" type="xsd:string" />
+      <xsd:element name="value" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SKUElement">
+    <xsd:sequence>
+      <xsd:element name="skuID" type="xsd:string" />
+      <xsd:element name="skuPrice" type="xsd:decimal" />
+      <xsd:element name="skuQuantity" type="xsd:long" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="EventElement">
+    <xsd:sequence>
+      <xsd:element name="eventId" type="xsd:long" />
+      <xsd:element name="date" type="xsd:date" />
+      <xsd:element name="enteredBy" type="xsd:string" />
+      <xsd:element name="description" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="EntryGreetingMessage">
+    <xsd:sequence>
+      <xsd:element name="entryGreetingTo" type="xsd:string" />
+      <xsd:element name="entryGreetingFrom" type="xsd:string" />
+      <xsd:element name="entryGreetingBody" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OrderDetailInfoElement">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="entryOrderRef" type="xsd:string" />
+      <xsd:element name="itemRef" type="xsd:string" />
+      <xsd:element name="itemQuantity" type="xsd:int" />
+      <xsd:element name="itemDenom" type="xsd:decimal" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="entryGreetingMessage" type="gvxCommon:EntryGreetingMessage" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ShippingOrderInfoElement">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="shippingOrderRef" type="xsd:string" />
+      <xsd:element minOccurs="0" name="receivingName" type="xsd:string" />
+      <xsd:element name="orderAddress" type="xsd:string" />
+      <xsd:element name="orderCity" type="xsd:string" />
+      <xsd:element minOccurs="0" name="orderProvince" type="xsd:string" />
+      <xsd:element name="orderPostal" type="xsd:string" />
+      <xsd:element name="orderCountry" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="orderDetailInfo" type="gvxCommon:OrderDetailInfoElement" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="EcertOrderInfoElement">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="shippingOrderRef" type="xsd:string" />
+      <xsd:element minOccurs="0" name="receivingName" type="xsd:string" />
+      <xsd:element name="receivingEmail" type="xsd:string" />
+      <xsd:element minOccurs="0" name="expiryDate" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="orderDetailInfo" type="gvxCommon:OrderDetailInfoElement" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

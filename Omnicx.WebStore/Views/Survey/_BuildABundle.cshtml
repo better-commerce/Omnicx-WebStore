@@ -1,0 +1,21 @@
+﻿@{
+/*
+    Name: Survey Bundle View
+    Purpose: Show Survey Questions in bundle
+    Structure: /Views/Survey/_BuildABundle.cshtml
+    Contains (Partial Views Used):
+    Contained In (Where we Use this View):
+        a-/Views/Survey/Layout1/Capture.cshtml
+    */
+}
+<div class="container" ng-cloak>
+    <div class="row margin-bottom-lg" ng-repeat="ques in pm.model.questions">
+        <div class="col-sm-6 col-sm-offset-3 survey-question-panel"><strong>Q. <span ng-bind="ques.question"></span></strong></div>
+        <div class="col-sm-12 col-xs-12">
+            <survey-input-field question="{{ques}}"></survey-input-field>
+        </div>
+    </div>
+    <button type="button" class="animate btn-primary pull-right" ng-click="pm.submitSurvey()">
+        Submit <span class="fa fa-check-square" aria-hidden="true"></span>
+    </button>
+</div>

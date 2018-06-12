@@ -1,0 +1,157 @@
+﻿@using Omnicx.API.SDK.Entities
+@using Omnicx.API.SDK.Helpers
+@using Omnicx.API.SDK.Models.Helpers
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Catalog.DynamicListModel>
+@{
+    ViewBag.Title = Model != null ? Model.Name : "";
+    Layout = "~/Views/Shared/Layout1/_Layout.cshtml";
+
+    Html.AddTitleParts(Model.Name);
+    Html.AddMetaTitle(Model.MetaTitle);
+    Html.AddMetaDescriptionParts(Model.MetaDescription);
+    Html.AddMetaKeywordsParts(Model.MetaKeywords);
+    Html.AddCanonicalUrl(Model.CanonicalTags);
+    Html.AddDataLayer(DataLayerObjectType.CollectionDetail, Model);
+}
+<div class="row">
+    <div class="col-md-12">
+        <ul class="breadcrumb">
+            <li><a href="/">@LT("ProductListing.Breadcrumb.Home", "Home")</a></li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    @if (Model != null)
+    {
+        if ((Model.ListType == ListDatasetSource.Product && Model.Products == null) || (Model.ListType == ListDatasetSource.Category && Model.Categories == null) || (Model.ListType == ListDatasetSource.Image && Model.Images == null) || (Model.ListType == ListDatasetSource.Brand && Model.Brands == null) || (Model.ListType == ListDatasetSource.SubBrand && Model.SubBrands == null) || (Model.ListType == ListDatasetSource.Blog && Model.Blogs == null))
+        {
+            @Html.Partial("~/Views/Search/Layout1/_NoResults.cshtml")
+        }
+
+        if (Model.ListType == ListDatasetSource.Product && Model.Products != null)
+        {
+            foreach (var prod in Model.Products.Results)
+            {
+                <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                    <div class="product-container">
+                        <div class="product-image-384">
+                            <a href="/@prod.Slug"> <img src="@prod.Image" alt="" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'" class="img-responsive img-full"></a>
+                        </div>
+                        <div class="product-detail">
+                            <a href="/@prod.Slug"><h4>@prod.Name</h4></a>
+                            <p>@prod.Description</p>
+                            <h5>@prod.Brand</h5>
+                            <p class="price">
+                                @if (@prod.Price != null)
+                                { @prod.Price.Formatted.WithTax }
+                            </p>
+                        </div>
+                        <div class="product-button">
+                            <button ng-click="gm.addToBasket('@prod.RecordId',1,0)" class="btn btn-success">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+
+
+        if (Model.ListType == ListDatasetSource.Image && Model.Images != null)
+        {
+            foreach (var img in Model.Images)
+            {
+                <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                    <div class="product-container">
+                        <div class="product-image-384">
+                            <a href="@img.Link">
+                                <img ng-src="@img.Url" alt="" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'" class="img-responsive img-full">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+
+        if (Model.ListType == ListDatasetSource.Brand && Model.Brands != null)
+        {
+            foreach (var brand in Model.Brands)
+            {
+                <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                    <div class="product-container">
+                        <div class="product-image-384">
+                            <img src="@brand.LogoImageName" alt="" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'" class="img-responsive img-full">
+                        </div>
+                        <div class="product-detail">
+                            <h4>@brand.ManufacturerName</h4>
+                            <p>@brand.Description</p>
+                        </div>
+                        <div class="product-button">
+                            <a href="/@brand.Link" class="shop-now">View</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        if (Model.ListType == ListDatasetSource.SubBrand && Model.SubBrands != null)
+        {
+            foreach (var brand in Model.SubBrands)
+            {
+                <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                    <div class="product-container">
+                        <div class="product-image-384">
+                            <img src="@brand.LogoImageName" alt="" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'" class="img-responsive img-full">
+                        </div>
+                        <div class="product-detail">
+                            <h4>@brand.ManufacturerName</h4>
+                            <p>@brand.Description</p>
+                        </div>
+                        <div class="product-button">
+                            <a href="/@brand.Link" class="shop-now">View</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        if (Model.ListType == ListDatasetSource.Category && Model.Categories != null)
+        {
+            foreach (var cat in Model.Categories)
+            {
+                <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                    <div class="category-container">
+                        <div class="product-image-384">
+                            <img ng-src="@cat.Image" alt="" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'" class="img-responsive img-full">
+                        </div>
+                        <div class="product-detail">
+                            <h4>@cat.Name</h4>
+                            @*<p>@cat.Description</p>*@
+                        </div>
+                        <div class="product-button">
+                            <a href="/@cat.Link" class="shop-now">View</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+
+        if (Model.ListType == ListDatasetSource.Blog && Model.Blogs != null)
+        {
+            foreach (var blog in Model.Blogs)
+            {
+                <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                    <div class="product-container">
+                        <div class="product-image-384">
+                            <img ng-src="@blog.BlogImage" alt="" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'" class="img-responsive img-full">
+                        </div>
+                        <div class="product-detail">
+                            <h4>@blog.Title</h4>
+                            <p>@blog.Category</p>
+                            <p>@blog.Author</p>
+                        </div>
+                        <div class="product-button">
+                            <a href="/blogs/@blog.URL" class="shop-now">View Blogs</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    }
+</div>

@@ -1,0 +1,207 @@
+﻿@{
+/*
+Name: Blog list
+Purpose: Show all blogs, editors, category and blog listing with brief description
+Structure: /Views/Blog/Layout1/Blog.cshtml
+Contains (Partial Views Used):
+    a-/Views/Shared/Layout1/_LayoutBlog.cshtml
+    b-/Views/Blog/Layout1/_Editors.cshtml
+Contained In (Where we Use this View) :
+    a-/Views/Shared/Layout1/_HeaderLayout.cshtml
+*/
+}
+@using Microsoft.Web.Mvc
+@using Omnicx.WebStore.Core.Controllers
+@using Omnicx.API.SDK.Models
+@using Omnicx.WebStore.Core.Helpers
+@using Omnicx.WebStore.Framework.Helpers
+@using Omnicx.API.SDK.Helpers
+@using Omnicx.API.SDK.Entities
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Site.BlogDetailViewModel>
+@{
+    ViewBag.Title = "Blogs";
+    Layout = "~/Views/Shared/Layout1/_LayoutBlog.cshtml";
+
+
+}
+
+@{ /* Start breadcrumb container */ }
+<div class="col-sm-12 margin-top-md">
+    <ul class="breadcrumb">
+        <li><a href="/">@LT("MyAccount.Links.Home", "Home")</a></li>
+        <li><a href="@Url.Action("Blogs", "Blog")">@LT("Blogs.Links.Blogs", "Blogs")</a></li>
+    </ul>
+</div>
+@{ /* End breadcrumb container */ }
+
+@{ /*Start Feature Blog panel*/ }
+
+@if (Model.BlogList.Results.Count > 0)
+{
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="col-sm-4 col-md-4 pull-left">
+                <div class="blog-details">
+                    <h3 class="blog-h3"><a href="@Url.Action("blogdetail", "blog", new { url = @Model.BlogList.Results[0].URL })">@Model.BlogList.Results[0].Title</a></h3>
+                    <p class="blog-intro">
+                        @Model.BlogList.Results[0].Abstract
+                    </p>
+                    <p class="blog-category">
+                        @Model.BlogList.Results[0].Days days ago. By <a href="/@Model.BlogList.Results[0].EditorSlug">@Model.BlogList.Results[0].Author</a> in <a href="/@Model.BlogList.Results[0].CategorySlug">@Model.BlogList.Results[0].Category</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-8 col-md-8 pull-left">
+                <div class="image">
+                    <a href="@Url.Action("blogdetail", "blog", new { url = @Model.BlogList.Results[0].URL })">
+                        <img ng-src="@Model.BlogList.Results[0].BlogImage" class="img-responsive blog-image-max-lrg" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@{ /*End Feature Blog panel*/ }
+
+@{ /*Start Blog list panel*/ }
+<div class="row margin-top-md">
+    <div class="col-sm-12 border-bottom-blog">
+        <div class="col-sm-6">
+            @if (Model.BlogList.Results.Count > 1)
+            {
+                <div class="row">
+                    <div class="col-sm-12">
+                        <img ng-src="@Model.BlogList.Results[1].BlogImage" class="img-responsive blog-image-max-mid" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'">
+                    </div>
+                    <div class="col-sm-12">
+                        <h6 class="blog-h6">@Model.BlogList.Results[1].Category</h6>
+                        <h4 class="blog-h4">
+                            <a href="@Url.Action("blogdetail", "blog", new { url = @Model.BlogList.Results[1].URL })">@Model.BlogList.Results[1].Title</a>
+                        </h4>
+                        <p class="blog-intro">
+                            @Model.BlogList.Results[1].Abstract
+                        </p>
+                        <p class="blog-category">
+                            @Model.BlogList.Results[1].Days days ago.  By <a href="/@Model.BlogList.Results[1].EditorSlug">@Model.BlogList.Results[1].Author</a> in <a href="/@Model.BlogList.Results[1].CategorySlug">@Model.BlogList.Results[1].Category</a>
+                        </p>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                @for (var i = 2; i < @Model.BlogList.Results.Count && i < 4; i++)
+                {
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <img ng-src="@Model.BlogList.Results[i].BlogImage" class="img-responsive blog-image-max-sml" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'">
+                            </div>
+                            <div class="col-sm-12">
+                                <h6 class="blog-h6">@Model.BlogList.Results[i].Category</h6>
+                                <h4 class="blog-h4">
+                                    <a href="@Url.Action("blogdetail", "blog", new { url = @Model.BlogList.Results[i].URL })">@Model.BlogList.Results[i].Title</a>
+                                </h4>
+                                <p class="blog-intro">
+                                    @Model.BlogList.Results[i].Abstract
+                                </p>
+                                <p class="blog-category">
+                                    @Model.BlogList.Results[i].Days days ago. By <a href="/@Model.BlogList.Results[i].EditorSlug">@Model.BlogList.Results[i].Author</a> in <a href="/@Model.BlogList.Results[i].CategorySlug">@Model.BlogList.Results[i].Category</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@{ /*End Blog list panel*/ }
+
+@{ /*Start Editor panel*/ }
+<div class="row">
+    @{ /*Start editors bar with images and name*/ }
+    @Html.Partial("/Views/Blog/Layout1/_Editors.cshtml", Model.Editors)
+    @{ /*End editors with images and name*/ }
+</div>
+@{ /*End Editor panel*/ }
+
+@if (Model.BlogList.Results.Count > 4)
+{
+    <div class="row margin-top-md">
+        <div class="col-sm-8 col-md-8 col-md-offset-2 col-sm-offset-2">
+            <div class="row border-bottom-blog">
+                <div class="col-sm-12">
+                    <img ng-src="@Model.BlogList.Results[4].BlogImage" class="img-responsive" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'">
+                </div>
+                <div class="col-sm-12">
+                    <h6 class="blog-h6">@Model.BlogList.Results[4].Category</h6>
+                    <h4 class="blog-h4">
+                        <a href="@Url.Action("blogdetail", "blog", new { url = @Model.BlogList.Results[4].URL })">@Model.BlogList.Results[4].Title</a>
+                    </h4>
+                    <p class="blog-intro">
+                        @Model.BlogList.Results[4].Abstract
+                    </p>
+                    <p class="blog-category">
+                        @Model.BlogList.Results[4].Days days ago. By <a href="/@Model.BlogList.Results[4].EditorSlug">@Model.BlogList.Results[4].Author</a> in <a href="/@Model.BlogList.Results[4].CategorySlug">@Model.BlogList.Results[4].Category</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@for (var i = 5; i < @Model.BlogList.Results.Count && i < 12; i++)
+{
+    <div class="row margin-top-md">
+        <div class="col-sm-8 col-md-8 col-md-offset-2 col-sm-offset-2">
+            <div class="row border-bottom-blog">
+                <div class="col-sm-4">
+                    <img ng-src="@Model.BlogList.Results[i].BlogImage" class="img-responsive blog-image-max-sml" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'">
+                </div>
+                <div class="col-sm-8">
+                    <h6 class="blog-h6">@Model.BlogList.Results[i].Category</h6>
+                    <h4 class="blog-h4">
+                        <a href="@Url.Action("blogdetail", "blog", new { url = @Model.BlogList.Results[i].URL })">@Model.BlogList.Results[i].Title</a>
+                    </h4>
+                    <p class="blog-intro">
+                        @Model.BlogList.Results[i].Abstract
+                    </p>
+                    <p class="blog-category">
+                        @Model.BlogList.Results[i].Days days ago. By <a href="/@Model.BlogList.Results[i].EditorSlug">@Model.BlogList.Results[i].Author</a> in <a href="/@Model.BlogList.Results[i].CategorySlug">@Model.BlogList.Results[i].Category</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="row margin-top-md" ng-controller="blogCtrl as bm">
+    <div class="row margin-top-md">
+        <div class="row border-bottom-blog" ng-repeat="item in bm.results">
+            <div class="col-sm-4">
+                <img ng-src={{item.blogImage}} class="img-responsive blog-image-max-sml" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'">
+            </div>
+            <div class="col-sm-8">
+                <h6 class="blog-h6" ng-bind="item.category"></h6>
+                <h4 class="blog-h4">
+                    <a href="@Url.Action("blogdetail", "blog")/{{item.url}}" ng-bind="item.title"></a>
+                </h4>
+                <p class="blog-intro" ng-bind="item.abstract">
+                </p>
+                <p class="blog-category">
+                    {{item.days}} days ago. By <a href="/@Model.BlogList.Results[0].EditorSlug" ng-bind="item.author"></a> in <a href="/@Model.BlogList.Results[0].CategorySlug" ng-bind="item.category"></a>
+                </p>
+            </div>
+        </div>
+        <a class="btn btn-show-more" ng-click="bm.showMore()">@LT("Blogs.Button.ShowMore", "Show more")</a>
+    </div>
+</div>
+@{ /*End Blog listing panel*/ }
+@section scripts{
+    <script>
+        var showMoreUrl = '@(Html.BuildUrlFromExpression<BlogController>(c => c.ShowMoreBlogs("")))';
+        window.app.constant('blogConfig', {
+            showMoreUrl: showMoreUrl
+        });
+    </script>
+}

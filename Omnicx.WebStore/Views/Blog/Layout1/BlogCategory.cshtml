@@ -1,0 +1,142 @@
+﻿@{
+/*
+Name: Blog list of selected category
+Purpose: All blogs of selected category
+Structure: /Views/Blog/Layout1/BlogCategory.cshtml
+Contains (Partial Views Used):
+    a-/Views/Shared/Layout1/_LayoutBlog.cshtml
+Contained In (Where we Use this View) :
+    a-/Views/Shared/Layout1/Blog.cshtml
+*/
+}
+@using Microsoft.Web.Mvc
+@using Omnicx.WebStore.Core.Controllers
+@using Omnicx.API.SDK.Models
+@using Omnicx.WebStore.Core.Helpers
+@using Omnicx.WebStore.Framework.Helpers
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Site.BlogDetailViewModel>
+@{
+    ViewBag.Title = @ViewBag.selectedGroup;
+    Layout = "~/Views/Shared/Layout1/_LayoutBlog.cshtml";
+}
+
+@{/*New Design*/}
+
+@{/*Start Category Name*/}
+<style>
+    #landing-banner {
+        display: none !important;
+    }
+</style>
+<div class="col-sm-12 margin-top-md">
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="@Url.Action("Blogs", "Blog")">@LT("Blogs.Links.Blogs", "Blogs")</a></li>
+        <li>@ViewBag.selectedGroup</li>
+    </ul>
+</div>
+@if (@Model.BlogList.Results != null && @Model.BlogList.Results.Count > 0)
+{
+<div class="row margin-top-md">
+    <div class="col-sm-8 col-md-8 col-md-offset-2 col-sm-offset-2">
+        <div class="row border-bottom-blog">
+            <h1 class="blog-category-landing-h1">@Model.BlogList.Results[0].Category</h1>
+        </div>
+    </div>
+</div>
+}
+else
+{ 
+<div class="row margin-top-md">
+    <div class="col-sm-8 col-md-8 col-md-offset-2 col-sm-offset-2">
+        <div class="row border-bottom-blog">
+            <h3>No blogs exists for this category.</h3>
+        </div>
+    </div>
+</div>
+
+}
+@{/*Start Category Name*/}
+
+@{/*Start Category Blog listing*/}
+<div class="row margin-top-md">
+    @if(@Model.BlogList.Results != null && @Model.BlogList.Results.Count > 0)
+    {
+    foreach (var item in @Model.BlogList.Results)
+    {
+        <div class="col-sm-8 col-md-8 col-md-offset-2 col-sm-offset-2">
+            <div class="row border-bottom-blog">
+                <div class="col-sm-4">
+                    @if (item.BlogImage == null)
+                    {
+                         <a href="@Url.Action("blogdetail", "blog", new { url = @item.URL})"><img ng-src="~/assets/theme/ocx/images/noimagefound.jpg" class="img-responsive"></a>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("blogdetail", "blog", new { url = @item.URL})"><img ng-src="@item.BlogImage" class="img-responsive" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'"></a>
+                    }
+                </div>
+                <div class="col-sm-8">
+                    <h6 class="blog-h6">@Model.BlogList.Results[0].Category</h6>
+                    <h4 class="blog-h4">
+                        <a href="@Url.Action("blogdetail", "blog", new { url = @item.URL})">@item.Title</a>
+                    </h4>
+                    <p class="blog-intro">
+                        @item.Abstract
+                    </p>
+                    <p class="blog-category">
+                        @item.Days days ago. By <a href="/@item.EditorSlug">@item.Author</a>
+                    </p>
+                </div>
+            </div>
+
+
+        </div>
+    }
+    }
+    <div class="row">
+        <div class="col-sm-6 no-padding" ng-controller="blogCtrl as bm">
+            <ul class="pull-right pagination">
+                @if (@Model.BlogList.Results.Count > 0)
+                {
+                    if (@Model.BlogList.Total > @Model.PageSize)
+                    {
+                        for (var i = 1; i <= Convert.ToDecimal(@Model.BlogList.Total / @Model.PageSize)+1; i++)
+                        {
+                            <li class="ng-scope">
+                                <a href="/@Model.BlogList.Results[0].CategorySlug/@i">@i</a>
+                            </li>
+                        }
+                    }
+                    if (@Model.BlogList.Total == @Model.PageSize)
+                    {
+                        for (var i = 1; i <= Convert.ToDecimal(@Model.BlogList.Total / @Model.PageSize); i++)
+                        {
+                            <li class="ng-scope">
+                                <a href="/@Model.BlogList.Results[0].CategorySlug/@i">@i</a>
+                            </li>
+                        }
+                    }
+                }
+                @*@if (@Model.BlogList.Total < @Model.BlogList.Pages)
+            {
+                <li class="ng-scope active">
+                    <a href="@Url.Action("getblogsbycategory", "blog", new { id = @Model.BlogList.Results[0].CategoryId, @currentpage = 1 })">1</a>
+                </li>
+            }*@
+            </ul>	
+
+        </div>
+    </div>
+
+</div>
+@{/*End Category Blog listing*/}
+
+@{/*OLD CODE*/}
+
+@section scripts{
+    <script>
+        window.app.constant('blogConfig', {
+        });
+    </script>
+}

@@ -328,3 +328,5 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+Omnicx.WebStore.Core/web.Debug.config
+Omnicx.WebStore.Core/web.Release.config

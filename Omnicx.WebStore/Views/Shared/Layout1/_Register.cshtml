@@ -1,0 +1,58 @@
+﻿@{
+/*
+    Name: Registration Modal 
+    Purpose: Show Registration Modal
+    Structure: /Views/Shared/Layout1/_SearchBox.cshtml
+    Contains (Partial Views Used):
+
+    Contained In (Where we Use this View):
+        a-/Views/Shared/Layout1/_LayoutFooter.cshtml        (Link in Footer)
+    */
+}
+@using Omnicx.API.SDK.Models.Commerce
+@using Omnicx.WebStore.Framework.Helpers
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<UserModel>
+@{
+    var userForm = Html.Angular().ModelFor("gm.model");
+}
+
+<div class="modal fade modal-absolute" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="register" aria-hidden="false">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="Login">@LT("Header.Text.UserLogin", "User Registration")</div>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form name="registrationForm" role="form" ng-submit="gm.registration(gm.model.registerViewModel)" method="post">
+                    <div ng-show="gm.errorMessage != null">
+                        <div ng-cloak class="alert alert-danger" ng-show="gm.errorMessage != null">
+                            <div ng-repeat="err in gm.errorMessage track by $index">
+                                <i class="fa fa-circle"></i>&nbsp;<span ng-bind="err"></span>
+                            </div>
+                        </div>
+                    </div>                                        
+                    <p class="login-text">@LT("MyAccount.Text.RegisterBenifits", "")</p>                    
+                    <div class="col-sm-12 col-xs-12 no-padding form-group margin-bottom-sm checkoutForm">
+                        @userForm.FormGroupFor(x => x.RegisterViewModel.Email)
+                    </div>
+                    <div class="col-sm-12 col-xs-12 no-padding form-group margin-bottom-sm checkoutForm">
+                        @userForm.FormGroupFor(x => x.RegisterViewModel.Password)
+                    </div>
+                    <div class="col-sm-12 col-xs-12 no-padding form-group margin-bottom-sm checkoutForm">
+                        @userForm.FormGroupFor(x => x.RegisterViewModel.ConfirmPassword)
+                    </div>
+                    <div class="col-sm-12 col-xs-12 no-padding checkout-button">
+                        <button type="submit" class="btn btn-checkout width-full"><i class="fa fa-user"></i>@LT("Global.Buttons.Register", "Register")</button>
+                    </div>
+                    <div class="col-sm-12 col-xs-12 no-padding checkout-button" ng-if="'@ViewBag.isB2BEnable' == 'True' && '@ViewBag.isRegistrationAllowed' == 'True'">
+                        <button type="button" ng-click="gm.showCompanyForm()" class="btn btn-checkout width-full"><i class="fa fa-user"></i>@LT("Global.Buttons.CompanyAccountRequest", "Request for Company Account")</button>
+                    </div>                   
+                </form>
+                <p class="text-center text-muted">@LT("Footer.Text.NoAccount", "Already Register?")</p>
+                <p class="text-center text-muted"><a href="#" data-toggle="modal" data-target="#login-modal" data-dismiss="modal" aria-hidden="true" ng-click="gm.model={}" class="text-black"><strong>@LT("Footer.Text.RegisterNow", "Login now")</strong></a></p>
+            </div> 
+            <div class="modal-footer"></div>           
+        </div>
+    </div>
+</div>

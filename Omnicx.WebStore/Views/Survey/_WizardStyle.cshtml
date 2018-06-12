@@ -1,0 +1,37 @@
+﻿@{
+/*
+    Name: Survey Qualifying in Wizard UI
+    Purpose: Show Survey Questions
+    Structure: /Views/Survey/_WizardStyle.cshtml
+    Contains (Partial Views Used):
+    Contained In (Where we Use this View):
+        a-/Views/Survey/Layout1/Capture.cshtml
+    */
+}
+<div class="container">
+    <div class="row wizard-container" ng-repeat="ques in pm.model.questions track by $index" ng-show="ques.recordId == pm.currentQuesId">
+        <div class="wizard-heading"><strong>Q. <span ng-bind="ques.question"></span></strong></div>        
+        <p class="text-white" ng-show="isMandatory">This Question is Required.</p>
+        <div class="wizard-content">
+            <survey-input-field question="{{ques}}"></survey-input-field>
+        </div>
+
+        <br />
+        <div class="wizard-footer">
+            <div class="col-md-3">
+                <button type="button" class="animate btn-success pull-left" ng-show="pm.canGoPrev" ng-click="pm.movePrev()">
+                    <span class="fa fa-arrow-left" aria-hidden="true"></span> Previous
+                </button>
+            </div>
+            <div class="col-md-6"></div>
+            <div class="col-md-3">
+                <button type="button" class="animate btn-success pull-right" ng-show="pm.canGoNext" ng-click="pm.moveNext()">
+                    Next <span class="fa fa-arrow-right" aria-hidden="true"></span>
+                </button>
+                <button type="button" class="animate btn-primary pull-right" ng-hide="pm.canGoNext" ng-click="pm.submitSurvey()">
+                    Submit <span class="fa fa-check-square" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

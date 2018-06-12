@@ -1,0 +1,35 @@
+﻿@{
+/*
+    Name: Survey Questions
+    Purpose: Show All the Question related to product in survey
+    Structure: /Views/Product/Layout1/_Questionnaire.cshtml
+    Contains (Partial Views Used):
+
+    Contained In (Where we Use this View):
+        a-/Views/Product/Layout1/ProductDetail.cshtml
+    */
+}
+<div class="">
+    <div class="row">
+        <div class="col-sm-12" ng-repeat="ques in pm.model.survey.result.questions">
+            <div class="">
+                <strong>
+                    Q.
+                    <span ng-bind="ques.question"></span><br />
+                    <span ng-show="ques.showHelpText" class="color-error-validation" ng-bind="ques.helpText"></span>
+                </strong>
+            </div>
+            <div class="">
+                <survey-input-field question="{{ques}}"></survey-input-field>
+            </div>
+            <br />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <button type="button" class="animate btn-primary" ng-click="pm.submitSurvey(pm.productId)">
+                Submit<i class="fa fa-check-square" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+</div>

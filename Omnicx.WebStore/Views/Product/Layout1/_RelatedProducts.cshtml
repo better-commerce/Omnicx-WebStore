@@ -1,0 +1,28 @@
+﻿@{
+/*
+    Name: Related Products
+    Purpose: Show related products of open product in detail page
+    Structure: /Views/Product/Layout1/_RelatedProducts.cshtml
+    Contains (Partial Views Used):
+        a-/Views/Search/Layout1/_ProductWidget.cshtml
+
+    Contained In (Where we Use this View):
+        a-/Views/Product/Layout1/ProductDetail.cshtml
+    */
+}
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
+<div class="col-sm-12 no-padding" ng-init="pm.quickView=true;">
+    <div class="accordion">
+        <dl>
+            <dt>
+                <a href="#relatedProduct" aria-expanded="false" aria-controls="relatedProduct" class="accordion-title accordionTitle js-accordionTrigger">@LT("ProductDetail.label.AlsoLike", "You may also like these products")</a>
+            </dt>
+            <dd class="accordion-content accordionItem-lg is-collapsed no-padding" id="relatedProduct" aria-hidden="true">
+                <div class="col-sm-4 col-xs-6 col-lg-3 resultContainerRelated" ng-repeat="product in pm.model.relatedProductList track by $index">
+                    @Html.Partial("~/Views/Search/Layout1/_ProductWidget.cshtml")
+                </div>
+
+            </dd>
+        </dl>
+    </div>
+</div>

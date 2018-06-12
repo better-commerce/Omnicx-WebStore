@@ -1,0 +1,1496 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="https://gapi.givex.com/1.0/messages_trans" xmlns:gvxTrans="https://gapi.givex.com/1.0/types_trans" xmlns:gvxCommon="https://gapi.givex.com/1.0/types_common" name="gapi" targetNamespace="https://gapi.givex.com/1.0/messages_trans" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="https://gapi.givex.com/1.0/types_trans">
+      <xsd:import schemaLocation="types_common.xsd" namespace="https://gapi.givex.com/1.0/types_common" />
+      <xsd:complexType name="CertTransactionElement">
+        <xsd:sequence>
+          <xsd:element name="transId" type="xsd:long" />
+          <xsd:element name="user" type="xsd:string" />
+          <xsd:element name="oper" type="xsd:string" />
+          <xsd:element name="transType" type="xsd:string" />
+          <xsd:element name="date" type="xsd:date" />
+          <xsd:element name="amount" type="xsd:decimal" />
+          <xsd:element name="authCode" type="xsd:string" />
+          <xsd:element name="activeFlag" type="xsd:boolean" />
+          <xsd:element name="channelId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="storeName" type="xsd:string" />
+          <xsd:element minOccurs="0" name="certificateAmount" type="xsd:decimal" />
+          <xsd:element minOccurs="0" name="storeAmount" type="xsd:string" />
+          <xsd:element minOccurs="0" name="storeCurrency" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PreAuthTransactionElement">
+        <xsd:sequence>
+          <xsd:element name="transId" type="xsd:long" />
+          <xsd:element name="user" type="xsd:string" />
+          <xsd:element name="oper" type="xsd:string" />
+          <xsd:element name="date" type="xsd:date" />
+          <xsd:element name="amount" type="xsd:decimal" />
+          <xsd:element name="authCode" type="xsd:string" />
+          <xsd:element name="activeFlag" type="xsd:boolean" />
+          <xsd:element name="channelId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="storeName" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PointsTransactionElement">
+        <xsd:sequence>
+          <xsd:element name="transId" type="xsd:long" />
+          <xsd:element name="user" type="xsd:string" />
+          <xsd:element name="oper" type="xsd:string" />
+          <xsd:element name="transType" type="xsd:string" />
+          <xsd:element name="date" type="xsd:date" />
+          <xsd:element name="dateVisit" type="xsd:date" />
+          <xsd:element name="amount" type="xsd:decimal" />
+          <xsd:element name="units" type="xsd:long" />
+          <xsd:element name="pointsBase" type="xsd:long" />
+          <xsd:element name="pointsBonus1" type="xsd:long" />
+          <xsd:element name="pointsBonus2" type="xsd:long" />
+          <xsd:element name="promoCode" type="xsd:string" />
+          <xsd:element name="tier" type="xsd:string" />
+          <xsd:element name="authCode" type="xsd:string" />
+          <xsd:element name="activeFlag" type="xsd:boolean" />
+          <xsd:element name="channelId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="storeName" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="VoucherTransactionElement">
+        <xsd:sequence>
+          <xsd:element name="serialNumber" type="xsd:string" />
+          <xsd:element name="issuanceDate" type="xsd:date" />
+          <xsd:element name="amount" type="xsd:decimal" />
+          <xsd:element name="certBalance" type="xsd:decimal" />
+          <xsd:element name="expiryDate" type="xsd:date" />
+          <xsd:element minOccurs="0" name="date" type="xsd:date" />
+          <xsd:element minOccurs="0" name="storeName" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="OrderInfoElement">
+        <xsd:sequence>
+          <xsd:element name="orderAddressID" type="xsd:int" />
+          <xsd:element name="orderAmount" type="xsd:decimal" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="OrderCertInfoElement">
+        <xsd:sequence>
+          <xsd:element name="orderAddressID" type="xsd:int" />
+          <xsd:element name="givexNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" name="securityCode" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="OrderCertCancelInfoElement">
+        <xsd:sequence>
+          <xsd:element name="givexNumber" type="xsd:string" />
+          <xsd:element name="certBalance" type="xsd:decimal" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PackageItemBalanceElement">
+        <xsd:sequence>
+          <xsd:element name="itemCode" type="xsd:string" />
+          <xsd:element name="itemBalance" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PointsRedemptionElement">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="rewardId" type="xsd:int" />
+          <xsd:element minOccurs="0" name="rewardName" type="xsd:string" />
+          <xsd:element minOccurs="0" name="quantity" type="xsd:int" />
+          <xsd:element name="points" type="xsd:int" />
+          <xsd:element name="date" type="xsd:date" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="HistoryType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Certificate" />
+          <xsd:enumeration value="PreAuth" />
+          <xsd:enumeration value="Events" />
+          <xsd:enumeration value="Points" />
+          <xsd:enumeration value="Voucher" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="GetBalance">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="givexNumber" type="xsd:string" />
+            <xsd:element minOccurs="0" name="currency" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="additionalData" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Balance">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="certBalance" type="xsd:decimal" />
+            <xsd:element name="pointsBalance" type="xsd:long" />
+            <xsd:element minOccurs="0" name="loyaltyBalance" type="xsd:decimal" />
+            <xsd:element minOccurs="0" name="expiryDate" type="xsd:string" />
+            <xsd:element minOccurs="0" name="securityCode" type="xsd:string" />
+            <xsd:element minOccurs="0" name="tierName" type="xsd:string" />
+            <xsd:element minOccurs="0" name="activatingCurrency" type="xsd:string" />
+            <xsd:element minOccurs="0" name="serialNumber" type="xsd:string" />
+            <xsd:element minOccurs="0" name="opMessage" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetHistory">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="givexNumber" type="xsd:string" />
+            <xsd:element name="historyType" type="gvxTrans:HistoryType" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="filter" type="gvxCommon:FilterElement" />
+            <xsd:element minOccurs="0" name="cardISO" type="xsd:string" />
+            <xsd:element minOccurs="0" name="serialNumber" type="xsd:long" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="additionalData" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="History">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="certBalance" type="xsd:decimal" />
+            <xsd:element name="currency" type="xsd:string" />
+            <xsd:element name="pointsBalance" type="xsd:long" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="certHist" type="gvxTrans:CertTransactionElement" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="preAuthHist" type="gvxTrans:PreAuthTransactionElement" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="eventHist" type="gvxCommon:EventElement" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="pointsHist" type="gvxTrans:PointsTransactionElement" />
+            <xsd:element name="totalRows" type="xsd:int" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="voucherHist" type="gvxTrans:VoucherTransactionElement" />
+            <xsd:element minOccurs="0" name="opMessage" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Redeem">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="reference" type="xsd:string" />
+            <xsd:element name="givexNumber" type="xsd:string" />
+            <xsd:element name="amount" type="xsd:decimal" />
+            <xsd:element minOccurs="0" name="securityCode" type="xsd:string" />
+            <xsd:element minOccurs="0" name="totalCheckAmount" type="xsd:decimal" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="additionalData" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RedeemResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="authCode" type="xsd:long" />
+            <xsd:element name="certBalance" type="xsd:decimal" />
+            <xsd:element minOccurs="0" name="expiryDate" type="xsd:string" />
+            <xsd:element minOccurs="0" name="securityCode" type="xsd:string" />
+            <xsd:element minOccurs="0" name="customReceiptRedemptionMessage" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RedeemForced">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="reference" type="xsd:string" />
+            <xsd:element name="givexNumber" type="xsd:string" />
+            <xsd:element name="amount" type="xsd:decimal" />
+            <xsd:element minOccurs="0" name="securityCode" type="xsd:string" />
+            <xsd:element minOccurs="0" name="totalCheckAmount" type="xsd:decimal" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="additionalData" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RedeemForcedResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="authCode" type="xsd:long" />
+            <xsd:element name="amount" type="xsd:decimal" />
+            <xsd:element name="certBalance" type="xsd:decimal" />
+            <xsd:element minOccurs="0" name="expiryDate" type="xsd:string" />
+            <xsd:element minOccurs="0" name="securityCode" type="xsd:string" />
+            <xsd:element minOccurs="0" name="customReceiptRedemptionMessage" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CashBack">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="reference" type="xsd:string" />
+            <xsd:element name="givexNumber" type="xsd:string" />
+            <xsd:element name="amount" type="xsd:decimal" />
+            <xsd:element minOccurs="0" name="securityCode" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CashBackResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="authCode" type="xsd:long" />
+            <xsd:element name="certBalance" type="xsd:decimal" />
+            <xsd:element minOccurs="0" name="expiryDate" type="xsd:string" />
+            <xsd:element minOccurs="0" name="securityCode" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CashBackForced">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="reference" type="xsd:string" />
+            <xsd:element name="givexNumber" type="xsd:string" />
+            <xsd:element name="amount" type="xsd:decimal" />
+            <xsd:element minOccurs="0" name="securityCode" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CashBackForcedResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="authCode" type="xsd:long" />
+            <xsd:element name="amount" type="xsd:decimal" />
+            <xsd:element name="certBalance" type="xsd:decimal" />
+            <xsd:element minOccurs="0" name="expiryDate" type="xsd:string" />
+            <xsd:element minOccurs="0" name="securityCode" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="PreAuth">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="reference" type="xsd:string" />
+            <xsd:element name="givexNumber" type="xsd:string" />
+            <xsd:element name="amount" type="xsd:decimal" />
+            <xsd:element minOccurs="0" name="securityCode" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="PreAuthResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="authCode" type="xsd:long" />
+            <xsd:element name="amount" type="xsd:decimal" />
+            <xsd:element name="certBalance" type="xsd:decimal" />
+            <xsd:element minOccurs="0" name="expiryDate" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="PostAuth">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="reference" type="xsd:string" />
+            <xsd:element name="givexNumber" type="xsd:string" />
+            <xsd:element name="amount" type="xsd:decimal" />
+            <xsd:element name="authCode" type="xsd:long" />
+            <xsd:element minOccurs="0" name="securityCode" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="PostAuthResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="authCode" type="xsd:long" />
+            <xsd:element name="amount" type="xsd:decimal" />
+            <xsd:element name="certBalance" type="xsd:decimal" />
+            <xsd:element minOccurs="0" name="expiryDate" type="xsd:string" />
+            <xsd:element minOccurs="0" name="securityCode" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Register">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="reference" type="xsd:string" />
+            <xsd:element name="amount" type="xsd:decimal" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RegisterResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="authCode" type="xsd:long" />
+            <xsd:element name="givexNumber" type="xsd:string" />
+            <xsd:element name="certBalance" type="xsd:decimal" />
+            <xsd:element minOccurs="0" name="expiryDate" type="xsd:string" />
+            <xsd:element minOccurs="0" name="securityCode" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Activate">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="reference" type="xsd:string" />
+            <xsd:element name="givexNumber" type="xsd:string" />
+            <xsd:element name="amount" type="xsd:decimal" />
+            <xsd:element minOccurs="0" name="totalCheckAmount" type="xsd:decimal" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ActivateResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="authCode" type="xsd:long" />
+            <xsd:element name="certBalance" type="xsd:decimal" />
+            <xsd:element minOccurs="0" name="expiryDate" type="xsd:string" />
+            <xsd:element minOccurs="0" name="securityCode" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Increment">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="reference" type="xsd:string" />
+            <xsd:element name="givexNumber" type="xsd:string" />
+            <xsd:element name="amount" type="xsd:decimal" />
+            <xsd:element minOccurs="0" name="securityCode" type="xsd:string" />
+            <xsd:element minOccurs="0" name="totalCheckAmount" type="xsd:decimal" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="IncrementResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="authCode" type="xsd:long" />
+            <xsd:element name="certBalance" type="xsd:decimal" />
+            <xsd:element minOccurs="0" name="expiryDate" type="xsd:string" />
+            <xsd:element minOccurs="0" name="securityCode" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Adjust">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="reference" type="xsd:string" />
+            <xsd:element name="givexNumber" type="xsd:string" />
+            <xsd:element name="amount" type="xsd:decimal" />
+            <xsd:element minOccurs="0" name="securityCode" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AdjustResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="authCode" type="xsd:long" />
+            <xsd:element name="certBalance" type="xsd:decimal" />
+            <xsd:element minOccurs="0" name="expiryDate" type="xsd:string" />
+            <xsd:element minOccurs="0" name="securityCode" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="MerchandiseCredit">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="reference" type="xsd:string" />
+            <xsd:element name="givexNumber" type="xsd:string" />
+            <xsd:element name="amount" type="xsd:decimal" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="MerchandiseCreditResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="authCode" type="xsd:long" />
+            <xsd:element name="certBalance" type="xsd:decimal" />
+            <xsd:element minOccurs="0" name="expiryDate" type="xsd:string" />
+            <xsd:element minOccurs="0" name="securityCode" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Cancel">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="reference" type="xsd:string" />
+            <xsd:element name="givexNumber" type="xsd:string" />
+            <xsd:element name="amount" type="xsd:decimal" />
+            <xsd:element minOccurs="0" name="authCode" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CancelResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="authCode" type="xsd:long" />
+            <xsd:element name="certBalance" type="xsd:decimal" />
+            <xsd:element minOccurs="0" name="expiryDate" type="xsd:string" />
+            <xsd:element minOccurs="0" name="securityCode" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Reversal">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="reference" type="xsd:string" />
+            <xsd:element name="givexNumber" type="xsd:string" />
+            <xsd:element name="amount" type="xsd:decimal" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReversalResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="authCode" type="xsd:long" />
+            <xsd:element name="certBalance" type="xsd:decimal" />
+            <xsd:element minOccurs="0" name="expiryDate" type="xsd:string" />
+            <xsd:element minOccurs="0" name="securityCode" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="PointsIssue">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="reference" type="xsd:string" />
+            <xsd:element name="givexNumber" type="xsd:string" />
+            <xsd:element name="amount" type="xsd:decimal" />
+            <xsd:element name="units" type="xsd:long" />
+            <xsd:element minOccurs="0" name="promoCode" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="skuList" type="gvxCommon:SKUElement" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="additionalData" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="PointsIssueResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="authCode" type="xsd:long" />
+            <xsd:element name="points" type="xsd:long" />
+            <xsd:element name="pointsBalance" type="xsd:long" />
+            <xsd:element name="certBalance" type="xsd:decimal" />
+            <xsd:element minOccurs="0" name="expiryDate" type="xsd:string" />
+            <xsd:element minOccurs="0" name="firstName" type="xsd:string" />
+            <xsd:element minOccurs="0" name="middleName" type="xsd:string" />
+            <xsd:element minOccurs="0" name="lastName" type="xsd:string" />
+            <xsd:element minOccurs="0" name="securityCode" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="skuList" type="gvxCommon:SKUElement" />
+            <xsd:element minOccurs="0" name="pointsBase" type="xsd:long" />
+            <xsd:element minOccurs="0" name="pointsTier" type="xsd:long" />
+            <xsd:element minOccurs="0" name="pointsPromo" type="xsd:long" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="PointsRedeem">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="reference" type="xsd:string" />
+            <xsd:element name="givexNumber" type="xsd:string" />
+            <xsd:element name="points" type="xsd:long" />
+            <xsd:element minOccurs="0" name="securityCode" type="xsd:string" />
+            <xsd:element minOccurs="0" name="rewardId" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="PointsRedeemResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="authCode" type="xsd:long" />
+            <xsd:element name="pointsBalance" type="xsd:long" />
+            <xsd:element name="certBalance" type="xsd:decimal" />
+            <xsd:element minOccurs="0" name="expiryDate" type="xsd:string" />
+            <xsd:element minOccurs="0" name="firstName" type="xsd:string" />
+            <xsd:element minOccurs="0" name="middleName" type="xsd:string" />
+            <xsd:element minOccurs="0" name="lastName" type="xsd:string" />
+            <xsd:element minOccurs="0" name="securityCode" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="PointsCancel">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="reference" type="xsd:string" />
+            <xsd:element name="givexNumber" type="xsd:string" />
+            <xsd:element name="amount" type="xsd:decimal" />
+            <xsd:element name="units" type="xsd:long" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="additionalData" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="PointsCancelResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="authCode" type="xsd:long" />
+            <xsd:element name="points" type="xsd:long" />
+            <xsd:element name="pointsBalance" type="xsd:long" />
+            <xsd:element name="certBalance" type="xsd:decimal" />
+            <xsd:element minOccurs="0" name="expiryDate" type="xsd:string" />
+            <xsd:element minOccurs="0" name="firstName" type="xsd:string" />
+            <xsd:element minOccurs="0" name="middleName" type="xsd:string" />
+            <xsd:element minOccurs="0" name="lastName" type="xsd:string" />
+            <xsd:element minOccurs="0" name="securityCode" type="xsd:string" />
+            <xsd:element minOccurs="0" name="pointsBase" type="xsd:long" />
+            <xsd:element minOccurs="0" name="pointsTier" type="xsd:long" />
+            <xsd:element minOccurs="0" name="pointsPromo" type="xsd:long" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="BalanceTransfer">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="reference" type="xsd:string" />
+            <xsd:element name="givexNumberFrom" type="xsd:string" />
+            <xsd:element name="givexNumberTo" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="BalanceTransferResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="pointsAuthCodeFrom" type="xsd:long" />
+            <xsd:element name="pointsAuthCodeTo" type="xsd:long" />
+            <xsd:element name="certAuthCodeFrom" type="xsd:long" />
+            <xsd:element name="certAuthCodeTo" type="xsd:long" />
+            <xsd:element name="pointsBalance" type="xsd:long" />
+            <xsd:element name="certBalance" type="xsd:decimal" />
+            <xsd:element minOccurs="0" name="expiryDate" type="xsd:string" />
+            <xsd:element minOccurs="0" name="securityCode" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="TerminalRegister">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="serialNumber" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="TerminalRegisterResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="attributes" type="gvxCommon:AttributeElement" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CashOut">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CashOutResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="cashOutId" type="xsd:long" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="VerifyCustomer">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="givexNumber" type="xsd:string" />
+            <xsd:element minOccurs="0" name="emailAddress" type="xsd:string" />
+            <xsd:element minOccurs="0" name="firstName" type="xsd:string" />
+            <xsd:element minOccurs="0" name="lastName" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Customer">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="verifyResponse" type="xsd:long" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CWSNewAccount">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element minOccurs="0" name="givexNumber" type="xsd:string" />
+            <xsd:element name="customerType" type="xsd:string" />
+            <xsd:element name="customerLogin" type="xsd:string" />
+            <xsd:element name="customerTitle" type="xsd:string" />
+            <xsd:element name="customerFirstName" type="xsd:string" />
+            <xsd:element name="customerMiddleName" type="xsd:string" />
+            <xsd:element name="customerLastName" type="xsd:string" />
+            <xsd:element name="customerGender" type="xsd:string" />
+            <xsd:element name="customerBirthdate" type="xsd:date" />
+            <xsd:element name="customerAddress" type="xsd:string" />
+            <xsd:element name="customerCity" type="xsd:string" />
+            <xsd:element minOccurs="0" name="customerProvince" type="xsd:string" />
+            <xsd:element name="customerCounty" type="xsd:string" />
+            <xsd:element name="customerCountry" type="xsd:string" />
+            <xsd:element name="customerPostalCode" type="xsd:string" />
+            <xsd:element name="customerPhone" type="xsd:string" />
+            <xsd:element name="customerDiscount" type="xsd:decimal" />
+            <xsd:element name="promotionOptIn" type="xsd:boolean" />
+            <xsd:element minOccurs="0" name="customerEmail" type="xsd:string" />
+            <xsd:element minOccurs="0" name="customerPassword" type="xsd:string" />
+            <xsd:element minOccurs="0" name="customerMobile" type="xsd:string" />
+            <xsd:element minOccurs="0" name="customerCompany" type="xsd:string" />
+            <xsd:element minOccurs="0" name="securityCode" type="xsd:string" />
+            <xsd:element minOccurs="0" name="promotionOptInMail" type="xsd:boolean" />
+            <xsd:element minOccurs="0" name="memberType" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CWSNewAccountResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="customerId" type="xsd:int" />
+            <xsd:element name="customerFirstName" type="xsd:string" />
+            <xsd:element name="customerLastName" type="xsd:string" />
+            <xsd:element name="customerRegDate" type="xsd:date" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CWSVerifyLogin">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="customerLogin" type="xsd:string" />
+            <xsd:element name="customerPassword" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="additionalData" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CWSVerifyLoginResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="verifyLoginResponse" type="xsd:int" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="forcePasswordChange" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CWSUpdateAccount">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="customerLogin" type="xsd:string" />
+            <xsd:element minOccurs="0" name="customerNewLogin" type="xsd:string" />
+            <xsd:element name="customerPassword" type="xsd:string" />
+            <xsd:element name="customerTitle" type="xsd:string" />
+            <xsd:element name="customerFirstName" type="xsd:string" />
+            <xsd:element name="customerMiddleName" type="xsd:string" />
+            <xsd:element name="customerLastName" type="xsd:string" />
+            <xsd:element name="customerGender" type="xsd:string" />
+            <xsd:element name="customerBirthdate" type="xsd:date" />
+            <xsd:element name="customerAddress" type="xsd:string" />
+            <xsd:element name="customerCity" type="xsd:string" />
+            <xsd:element minOccurs="0" name="customerProvince" type="xsd:string" />
+            <xsd:element name="customerCounty" type="xsd:string" />
+            <xsd:element name="customerCountry" type="xsd:string" />
+            <xsd:element name="customerPostalCode" type="xsd:string" />
+            <xsd:element name="customerEmail" type="xsd:string" />
+            <xsd:element name="customerPhone" type="xsd:string" />
+            <xsd:element name="customerDiscount" type="xsd:decimal" />
+            <xsd:element name="promotionOptIn" type="xsd:boolean" />
+            <xsd:element minOccurs="0" name="customerMobile" type="xsd:string" />
+            <xsd:element minOccurs="0" name="customerCompany" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CWSUpdateAccountResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="customerId" type="xsd:int" />
+            <xsd:element name="customerTitle" type="xsd:string" />
+            <xsd:element name="customerFirstName" type="xsd:string" />
+            <xsd:element name="customerMiddleName" type="xsd:string" />
+            <xsd:element name="customerLastName" type="xsd:string" />
+            <xsd:element name="customerGender" type="xsd:string" />
+            <xsd:element name="customerBirthdate" type="xsd:date" />
+            <xsd:element name="customerAddress" type="xsd:string" />
+            <xsd:element name="customerCity" type="xsd:string" />
+            <xsd:element minOccurs="0" name="customerProvince" type="xsd:string" />
+            <xsd:element name="customerCounty" type="xsd:string" />
+            <xsd:element name="customerCountry" type="xsd:string" />
+            <xsd:element name="customerPostalCode" type="xsd:string" />
+            <xsd:element name="customerEmail" type="xsd:string" />
+            <xsd:element name="customerPhone" type="xsd:string" />
+            <xsd:element name="customerDiscount" type="xsd:decimal" />
+            <xsd:element name="promotionOptIn" type="xsd:boolean" />
+            <xsd:element minOccurs="0" name="customerMobile" type="xsd:string" />
+            <xsd:element minOccurs="0" name="customerCompany" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CWSAccountCardList">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="customerLogin" type="xsd:string" />
+            <xsd:element name="customerPassword" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="CardListElement">
+        <xsd:sequence>
+          <xsd:element name="cardISO" type="xsd:string" />
+          <xsd:element name="serialNumber" type="xsd:int" />
+          <xsd:element name="cardStatus" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="CWSAccountCardListResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="customerId" type="xsd:int" />
+            <xsd:element name="customerFirstName" type="xsd:string" />
+            <xsd:element name="customerLastName" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="cardList" type="gvxTrans:CardListElement" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CWSLostCard">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="customerLogin" type="xsd:string" />
+            <xsd:element name="customerPassword" type="xsd:string" />
+            <xsd:element name="cardISO" type="xsd:string" />
+            <xsd:element name="serialNumber" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CWSLostCardResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="customerId" type="xsd:int" />
+            <xsd:element name="customerFirstName" type="xsd:string" />
+            <xsd:element name="customerLastName" type="xsd:string" />
+            <xsd:element name="cardISO" type="xsd:string" />
+            <xsd:element name="serialNumber" type="xsd:int" />
+            <xsd:element name="lostDate" type="xsd:date" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CWSAccountInfo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="customerLogin" type="xsd:string" />
+            <xsd:element name="customerPassword" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CWSAccountInfoResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="customerId" type="xsd:int" />
+            <xsd:element name="registrationDate" type="xsd:string" />
+            <xsd:element name="customerType" type="xsd:string" />
+            <xsd:element name="customerLogin" type="xsd:string" />
+            <xsd:element name="customerTitle" type="xsd:string" />
+            <xsd:element name="customerFirstName" type="xsd:string" />
+            <xsd:element name="customerMiddleName" type="xsd:string" />
+            <xsd:element name="customerLastName" type="xsd:string" />
+            <xsd:element name="customerGender" type="xsd:string" />
+            <xsd:element name="customerBirthdate" type="xsd:string" />
+            <xsd:element name="customerAddress" type="xsd:string" />
+            <xsd:element name="customerCity" type="xsd:string" />
+            <xsd:element minOccurs="0" name="customerProvince" type="xsd:string" />
+            <xsd:element name="customerCounty" type="xsd:string" />
+            <xsd:element name="customerCountry" type="xsd:string" />
+            <xsd:element name="customerPostalCode" type="xsd:string" />
+            <xsd:element name="customerPhone" type="xsd:string" />
+            <xsd:element name="customerDiscount" type="xsd:decimal" />
+            <xsd:element name="promotionOptIn" type="xsd:boolean" />
+            <xsd:element name="customerEmail" type="xsd:string" />
+            <xsd:element minOccurs="0" name="customerMobile" type="xsd:string" />
+            <xsd:element minOccurs="0" name="customerCompany" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CWSAddCard">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="customerLogin" type="xsd:string" />
+            <xsd:element name="customerPassword" type="xsd:string" />
+            <xsd:element name="givexNumber" type="xsd:string" />
+            <xsd:element minOccurs="0" name="securityCode" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CWSAddCardResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="customerId" type="xsd:int" />
+            <xsd:element name="customerFirstName" type="xsd:string" />
+            <xsd:element name="customerLastName" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="cardList" type="gvxTrans:CardListElement" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CWSRemoveCard">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="customerLogin" type="xsd:string" />
+            <xsd:element name="customerPassword" type="xsd:string" />
+            <xsd:element name="cardISO" type="xsd:string" />
+            <xsd:element name="serialNumber" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CWSRemoveCardResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="customerId" type="xsd:int" />
+            <xsd:element name="customerFirstName" type="xsd:string" />
+            <xsd:element name="customerLastName" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="cardList" type="gvxTrans:CardListElement" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CWSUpdatePassword">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="customerLogin" type="xsd:string" />
+            <xsd:element name="customerPassword" type="xsd:string" />
+            <xsd:element name="newPassword" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CWSUpdatePasswordResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="customerId" type="xsd:int" />
+            <xsd:element name="customerFirstName" type="xsd:string" />
+            <xsd:element name="customerLastName" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CWSResetPassword">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="customerLogin" type="xsd:string" />
+            <xsd:element name="customerEmail" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CWSResetPasswordResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="customerId" type="xsd:int" />
+            <xsd:element name="customerFirstName" type="xsd:string" />
+            <xsd:element name="customerLastName" type="xsd:string" />
+            <xsd:element name="customerEmail" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CWSGiftCardOrder">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element minOccurs="0" name="customerOrderRef" type="xsd:string" />
+            <xsd:element minOccurs="0" name="orderSender" type="xsd:string" />
+            <xsd:element minOccurs="0" name="confirmationEmail" type="xsd:string" />
+            <xsd:element name="orderTotal" type="xsd:decimal" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="shippingOrderInfo" type="gvxCommon:ShippingOrderInfoElement" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CWSGiftCardOrderResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="orderInfo" type="gvxTrans:OrderInfoElement" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CWSEcertOrder">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element minOccurs="0" name="customerOrderRef" type="xsd:string" />
+            <xsd:element minOccurs="0" name="orderSender" type="xsd:string" />
+            <xsd:element minOccurs="0" name="confirmationEmail" type="xsd:string" />
+            <xsd:element name="orderTotal" type="xsd:decimal" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="ecertOrderInfo" type="gvxCommon:EcertOrderInfoElement" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CWSEcertOrderResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="orderCertInfo" type="gvxTrans:OrderCertInfoElement" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CWSCancelOrder">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="orderAddressID" type="xsd:int" />
+            <xsd:element name="cancelReason" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CWSCancelOrderResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="orderAddressID" type="xsd:int" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="orderCertCancelInfo" type="gvxTrans:OrderCertCancelInfoElement" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CWSLogin">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element minOccurs="0" name="customerLogin" type="xsd:string" />
+            <xsd:element minOccurs="0" name="customerRef" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CWSLoginResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="customerId" type="xsd:int" />
+            <xsd:element name="customerRef" type="xsd:string" />
+            <xsd:element name="customerFirstName" type="xsd:string" />
+            <xsd:element name="customerLastName" type="xsd:string" />
+            <xsd:element name="cwsToken" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CWSLogout">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="cwsToken" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CWSLogoutResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="customerId" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="PackageIssuance">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="reference" type="xsd:string" />
+            <xsd:element name="givexNumber" type="xsd:string" />
+            <xsd:element name="packageCode" type="xsd:string" />
+            <xsd:element name="packageQuantity" type="xsd:int" />
+            <xsd:element minOccurs="0" name="securityCode" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="PackageIssuanceResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="authCode" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="itemBalance" type="gvxTrans:PackageItemBalanceElement" />
+            <xsd:element minOccurs="0" name="packageExpiryDate" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="PackageItemRedemption">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="reference" type="xsd:string" />
+            <xsd:element name="givexNumber" type="xsd:string" />
+            <xsd:element name="itemCode" type="xsd:string" />
+            <xsd:element name="itemQuantity" type="xsd:int" />
+            <xsd:element minOccurs="0" name="securityCode" type="xsd:string" />
+            <xsd:element minOccurs="0" name="itemPrice" type="xsd:decimal" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="PackageItemRedemptionResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="authCode" type="xsd:string" />
+            <xsd:element name="itemCode" type="xsd:string" />
+            <xsd:element name="itemBalance" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="PackageBalance">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="reference" type="xsd:string" />
+            <xsd:element name="givexNumber" type="xsd:string" />
+            <xsd:element minOccurs="0" name="securityCode" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="PackageBalanceResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="itemBalance" type="gvxTrans:PackageItemBalanceElement" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="PackageAdjustment">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="reference" type="xsd:string" />
+            <xsd:element name="givexNumber" type="xsd:string" />
+            <xsd:element name="itemCode" type="xsd:string" />
+            <xsd:element name="itemQuantity" type="xsd:int" />
+            <xsd:element minOccurs="0" name="securityCode" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="PackageAdjustmentResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="authCode" type="xsd:string" />
+            <xsd:element name="itemCode" type="xsd:string" />
+            <xsd:element name="itemBalance" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CertificateGrouping">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="reference" type="xsd:string" />
+            <xsd:element name="givexNumber" type="xsd:string" />
+            <xsd:element minOccurs="0" name="certgroupId" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CertificateGroupingResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="authCode" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="PackageCancel">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="reference" type="xsd:string" />
+            <xsd:element name="givexNumber" type="xsd:string" />
+            <xsd:element name="itemQuantity" type="xsd:int" />
+            <xsd:element minOccurs="0" name="authCode" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="PackageCancelResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="authCode" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="itemBalance" type="gvxTrans:PackageItemBalanceElement" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="PackageReversal">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="reference" type="xsd:string" />
+            <xsd:element name="givexNumber" type="xsd:string" />
+            <xsd:element name="itemQuantity" type="xsd:int" />
+            <xsd:element name="itemCode" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="PackageReversalResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="authCode" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="itemBalance" type="gvxTrans:PackageItemBalanceElement" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ExchangeRate">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="reference" type="xsd:string" />
+            <xsd:element name="sourceCode" type="xsd:string" />
+            <xsd:element name="currencyFrom" type="xsd:string" />
+            <xsd:element name="currencyTo" type="xsd:string" />
+            <xsd:element name="exchRate" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ExchangeRateResponse">
+        <xsd:complexType>
+          <xsd:sequence />
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="PointsRedemptionHistory">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="givexNumber" type="xsd:string" />
+            <xsd:element minOccurs="0" name="securityCode" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="PointsRedemptionHistoryResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="pointsRedemptionHist" type="gvxTrans:PointsRedemptionElement" />
+            <xsd:element name="serialNumber" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AccountLookup">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="givexNumber" type="xsd:string" />
+            <xsd:element minOccurs="0" name="securityCode" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AccountLookupResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="address" type="xsd:string" />
+            <xsd:element name="city" type="xsd:string" />
+            <xsd:element name="county" type="xsd:string" />
+            <xsd:element name="country" type="xsd:string" />
+            <xsd:element name="postalCode" type="xsd:string" />
+            <xsd:element name="mobileNumber" type="xsd:string" />
+            <xsd:element name="emailAddress" type="xsd:string" />
+            <xsd:element minOccurs="0" name="birthdate" type="xsd:date" />
+            <xsd:element name="SMSContactAnswer" type="xsd:boolean" />
+            <xsd:element name="emailContactAnswer" type="xsd:boolean" />
+            <xsd:element name="mailContactAnswer" type="xsd:boolean" />
+            <xsd:element name="phoneNumber" type="xsd:string" />
+            <xsd:element name="referringMemberName" type="xsd:string" />
+            <xsd:element name="title" type="xsd:string" />
+            <xsd:element name="serialNumber" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AccountUpdate">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="reference" type="xsd:string" />
+            <xsd:element name="givexNumber" type="xsd:string" />
+            <xsd:element minOccurs="0" name="memberTitle" type="xsd:string" />
+            <xsd:element minOccurs="0" name="memberFirstName" type="xsd:string" />
+            <xsd:element minOccurs="0" name="memberMiddleName" type="xsd:string" />
+            <xsd:element minOccurs="0" name="memberLastName" type="xsd:string" />
+            <xsd:element minOccurs="0" name="memberAddress" type="xsd:string" />
+            <xsd:element minOccurs="0" name="memberMobile" type="xsd:string" />
+            <xsd:element minOccurs="0" name="memberEmail" type="xsd:string" />
+            <xsd:element minOccurs="0" name="memberBirthdate" type="xsd:date" />
+            <xsd:element minOccurs="0" name="SMSContactAnswer" type="xsd:boolean" />
+            <xsd:element minOccurs="0" name="emailContactAnswer" type="xsd:boolean" />
+            <xsd:element minOccurs="0" name="mailContactAnswer" type="xsd:boolean" />
+            <xsd:element minOccurs="0" name="memberPhone" type="xsd:string" />
+            <xsd:element minOccurs="0" name="referringMemberNumber" type="xsd:string" />
+            <xsd:element minOccurs="0" name="securityCode" type="xsd:string" />
+            <xsd:element minOccurs="0" name="memberType" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AccountUpdateResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="isoSerial" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="getBalanceRequest">
+    <part name="request" element="gvxTrans:GetBalance" />
+  </message>
+  <message name="getBalanceResponse">
+    <part name="response" element="gvxTrans:Balance" />
+  </message>
+  <message name="getHistoryRequest">
+    <part name="request" element="gvxTrans:GetHistory" />
+  </message>
+  <message name="getHistoryResponse">
+    <part name="response" element="gvxTrans:History" />
+  </message>
+  <message name="redeemRequest">
+    <part name="request" element="gvxTrans:Redeem" />
+  </message>
+  <message name="redeemResponse">
+    <part name="response" element="gvxTrans:RedeemResponse" />
+  </message>
+  <message name="redeemForcedRequest">
+    <part name="request" element="gvxTrans:RedeemForced" />
+  </message>
+  <message name="redeemForcedResponse">
+    <part name="response" element="gvxTrans:RedeemForcedResponse" />
+  </message>
+  <message name="cashBackRequest">
+    <part name="request" element="gvxTrans:CashBack" />
+  </message>
+  <message name="cashBackResponse">
+    <part name="response" element="gvxTrans:CashBackResponse" />
+  </message>
+  <message name="cashBackForcedRequest">
+    <part name="request" element="gvxTrans:CashBackForced" />
+  </message>
+  <message name="cashBackForcedResponse">
+    <part name="response" element="gvxTrans:CashBackForcedResponse" />
+  </message>
+  <message name="preAuthRequest">
+    <part name="request" element="gvxTrans:PreAuth" />
+  </message>
+  <message name="preAuthResponse">
+    <part name="response" element="gvxTrans:PreAuthResponse" />
+  </message>
+  <message name="postAuthRequest">
+    <part name="request" element="gvxTrans:PostAuth" />
+  </message>
+  <message name="postAuthResponse">
+    <part name="response" element="gvxTrans:PostAuthResponse" />
+  </message>
+  <message name="registerRequest">
+    <part name="request" element="gvxTrans:Register" />
+  </message>
+  <message name="registerResponse">
+    <part name="response" element="gvxTrans:RegisterResponse" />
+  </message>
+  <message name="activateRequest">
+    <part name="request" element="gvxTrans:Activate" />
+  </message>
+  <message name="activateResponse">
+    <part name="response" element="gvxTrans:ActivateResponse" />
+  </message>
+  <message name="incrementRequest">
+    <part name="request" element="gvxTrans:Increment" />
+  </message>
+  <message name="incrementResponse">
+    <part name="response" element="gvxTrans:IncrementResponse" />
+  </message>
+  <message name="adjustRequest">
+    <part name="request" element="gvxTrans:Adjust" />
+  </message>
+  <message name="adjustResponse">
+    <part name="response" element="gvxTrans:AdjustResponse" />
+  </message>
+  <message name="merchandiseCreditRequest">
+    <part name="request" element="gvxTrans:MerchandiseCredit" />
+  </message>
+  <message name="merchandiseCreditResponse">
+    <part name="response" element="gvxTrans:MerchandiseCreditResponse" />
+  </message>
+  <message name="cancelRequest">
+    <part name="request" element="gvxTrans:Cancel" />
+  </message>
+  <message name="cancelResponse">
+    <part name="response" element="gvxTrans:CancelResponse" />
+  </message>
+  <message name="reversalRequest">
+    <part name="request" element="gvxTrans:Reversal" />
+  </message>
+  <message name="reversalResponse">
+    <part name="response" element="gvxTrans:ReversalResponse" />
+  </message>
+  <message name="pointsIssueRequest">
+    <part name="request" element="gvxTrans:PointsIssue" />
+  </message>
+  <message name="pointsIssueResponse">
+    <part name="response" element="gvxTrans:PointsIssueResponse" />
+  </message>
+  <message name="pointsRedeemRequest">
+    <part name="request" element="gvxTrans:PointsRedeem" />
+  </message>
+  <message name="pointsRedeemResponse">
+    <part name="response" element="gvxTrans:PointsRedeemResponse" />
+  </message>
+  <message name="pointsCancelRequest">
+    <part name="request" element="gvxTrans:PointsCancel" />
+  </message>
+  <message name="pointsCancelResponse">
+    <part name="response" element="gvxTrans:PointsCancelResponse" />
+  </message>
+  <message name="balanceTransferRequest">
+    <part name="request" element="gvxTrans:BalanceTransfer" />
+  </message>
+  <message name="balanceTransferResponse">
+    <part name="response" element="gvxTrans:BalanceTransferResponse" />
+  </message>
+  <message name="terminalRegisterRequest">
+    <part name="request" element="gvxTrans:TerminalRegister" />
+  </message>
+  <message name="terminalRegisterResponse">
+    <part name="response" element="gvxTrans:TerminalRegisterResponse" />
+  </message>
+  <message name="cashOutRequest">
+    <part name="request" element="gvxTrans:CashOut" />
+  </message>
+  <message name="cashOutResponse">
+    <part name="response" element="gvxTrans:CashOutResponse" />
+  </message>
+  <message name="verifyCustomerRequest">
+    <part name="request" element="gvxTrans:VerifyCustomer" />
+  </message>
+  <message name="verifyCustomerResponse">
+    <part name="response" element="gvxTrans:Customer" />
+  </message>
+  <message name="CWSNewAccountRequest">
+    <part name="request" element="gvxTrans:CWSNewAccount" />
+  </message>
+  <message name="CWSNewAccountResponse">
+    <part name="response" element="gvxTrans:CWSNewAccountResponse" />
+  </message>
+  <message name="CWSVerifyLoginRequest">
+    <part name="request" element="gvxTrans:CWSVerifyLogin" />
+  </message>
+  <message name="CWSVerifyLoginResponse">
+    <part name="response" element="gvxTrans:CWSVerifyLoginResponse" />
+  </message>
+  <message name="CWSUpdateAccountRequest">
+    <part name="request" element="gvxTrans:CWSUpdateAccount" />
+  </message>
+  <message name="CWSUpdateAccountResponse">
+    <part name="response" element="gvxTrans:CWSUpdateAccountResponse" />
+  </message>
+  <message name="CWSAccountCardListRequest">
+    <part name="request" element="gvxTrans:CWSAccountCardList" />
+  </message>
+  <message name="CWSAccountCardListResponse">
+    <part name="response" element="gvxTrans:CWSAccountCardListResponse" />
+  </message>
+  <message name="CWSLostCardRequest">
+    <part name="request" element="gvxTrans:CWSLostCard" />
+  </message>
+  <message name="CWSLostCardResponse">
+    <part name="response" element="gvxTrans:CWSLostCardResponse" />
+  </message>
+  <message name="CWSAccountInfoRequest">
+    <part name="request" element="gvxTrans:CWSAccountInfo" />
+  </message>
+  <message name="CWSAccountInfoResponse">
+    <part name="response" element="gvxTrans:CWSAccountInfoResponse" />
+  </message>
+  <message name="CWSAddCardRequest">
+    <part name="request" element="gvxTrans:CWSAddCard" />
+  </message>
+  <message name="CWSAddCardResponse">
+    <part name="response" element="gvxTrans:CWSAddCardResponse" />
+  </message>
+  <message name="CWSRemoveCardRequest">
+    <part name="request" element="gvxTrans:CWSRemoveCard" />
+  </message>
+  <message name="CWSRemoveCardResponse">
+    <part name="response" element="gvxTrans:CWSRemoveCardResponse" />
+  </message>
+  <message name="CWSUpdatePasswordRequest">
+    <part name="request" element="gvxTrans:CWSUpdatePassword" />
+  </message>
+  <message name="CWSUpdatePasswordResponse">
+    <part name="response" element="gvxTrans:CWSUpdatePasswordResponse" />
+  </message>
+  <message name="CWSResetPasswordRequest">
+    <part name="request" element="gvxTrans:CWSResetPassword" />
+  </message>
+  <message name="CWSResetPasswordResponse">
+    <part name="response" element="gvxTrans:CWSResetPasswordResponse" />
+  </message>
+  <message name="CWSGiftCardOrderRequest">
+    <part name="request" element="gvxTrans:CWSGiftCardOrder" />
+  </message>
+  <message name="CWSGiftCardOrderResponse">
+    <part name="response" element="gvxTrans:CWSGiftCardOrderResponse" />
+  </message>
+  <message name="CWSEcertOrderRequest">
+    <part name="request" element="gvxTrans:CWSEcertOrder" />
+  </message>
+  <message name="CWSEcertOrderResponse">
+    <part name="response" element="gvxTrans:CWSEcertOrderResponse" />
+  </message>
+  <message name="CWSCancelOrderRequest">
+    <part name="request" element="gvxTrans:CWSCancelOrder" />
+  </message>
+  <message name="CWSCancelOrderResponse">
+    <part name="response" element="gvxTrans:CWSCancelOrderResponse" />
+  </message>
+  <message name="CWSLoginRequest">
+    <part name="request" element="gvxTrans:CWSLogin" />
+  </message>
+  <message name="CWSLoginResponse">
+    <part name="response" element="gvxTrans:CWSLoginResponse" />
+  </message>
+  <message name="CWSLogoutRequest">
+    <part name="request" element="gvxTrans:CWSLogout" />
+  </message>
+  <message name="CWSLogoutResponse">
+    <part name="response" element="gvxTrans:CWSLogoutResponse" />
+  </message>
+  <message name="PackageIssuanceRequest">
+    <part name="request" element="gvxTrans:PackageIssuance" />
+  </message>
+  <message name="PackageIssuanceResponse">
+    <part name="response" element="gvxTrans:PackageIssuanceResponse" />
+  </message>
+  <message name="PackageItemRedemptionRequest">
+    <part name="request" element="gvxTrans:PackageItemRedemption" />
+  </message>
+  <message name="PackageItemRedemptionResponse">
+    <part name="response" element="gvxTrans:PackageItemRedemptionResponse" />
+  </message>
+  <message name="PackageBalanceRequest">
+    <part name="request" element="gvxTrans:PackageBalance" />
+  </message>
+  <message name="PackageBalanceResponse">
+    <part name="response" element="gvxTrans:PackageBalanceResponse" />
+  </message>
+  <message name="PackageAdjustmentRequest">
+    <part name="request" element="gvxTrans:PackageAdjustment" />
+  </message>
+  <message name="PackageAdjustmentResponse">
+    <part name="response" element="gvxTrans:PackageAdjustmentResponse" />
+  </message>
+  <message name="CertificateGroupingRequest">
+    <part name="request" element="gvxTrans:CertificateGrouping" />
+  </message>
+  <message name="CertificateGroupingResponse">
+    <part name="response" element="gvxTrans:CertificateGroupingResponse" />
+  </message>
+  <message name="PackageCancelRequest">
+    <part name="request" element="gvxTrans:PackageCancel" />
+  </message>
+  <message name="PackageCancelResponse">
+    <part name="response" element="gvxTrans:PackageCancelResponse" />
+  </message>
+  <message name="PackageReversalRequest">
+    <part name="request" element="gvxTrans:PackageReversal" />
+  </message>
+  <message name="PackageReversalResponse">
+    <part name="response" element="gvxTrans:PackageReversalResponse" />
+  </message>
+  <message name="ExchangeRateRequest">
+    <part name="request" element="gvxTrans:ExchangeRate" />
+  </message>
+  <message name="ExchangeRateResponse">
+    <part name="response" element="gvxTrans:ExchangeRateResponse" />
+  </message>
+  <message name="PointsRedemptionHistoryRequest">
+    <part name="request" element="gvxTrans:PointsRedemptionHistory" />
+  </message>
+  <message name="PointsRedemptionHistoryResponse">
+    <part name="response" element="gvxTrans:PointsRedemptionHistoryResponse" />
+  </message>
+  <message name="AccountLookupRequest">
+    <part name="request" element="gvxTrans:AccountLookup" />
+  </message>
+  <message name="AccountLookupResponse">
+    <part name="response" element="gvxTrans:AccountLookupResponse" />
+  </message>
+  <message name="AccountUpdateRequest">
+    <part name="request" element="gvxTrans:AccountUpdate" />
+  </message>
+  <message name="AccountUpdateResponse">
+    <part name="response" element="gvxTrans:AccountUpdateResponse" />
+  </message>
+</definitions>

@@ -1,0 +1,26 @@
+﻿@{
+/*
+    Name: Page Not Found 404
+    Purpose: Show This Error Page when view is not Found
+    Structure: /Views/Common/Layout1/PageNotFound.cshtml
+    Contains (Partial Views Used):
+        a-/Views/Shared/Layout1/_Layout.cshtml    (For base Structure)
+
+    Contained In (Where we Use this View):
+    */
+}
+@{
+    ViewBag.Title = "Page Not Found";
+    Layout = "~/Views/Shared/Layout1/_Layout.cshtml";
+}
+
+<div class="section-block replicable-content ">
+    <div class="row">
+        <div class="error-bg text-center">
+            <img src="~/assets/images/404.png" style="width: 350px;"/>
+            <h3 class="error-h3">Error 404  </h3>
+            <p class="error-desc">Sorry, it appears the page you are looking for is lost. Its possible that this page has moved or may not exist. Return to <a href="/">Home Page</a> to find what you're looking for.</p>
+        </div>
+    </div>
+</div>
+

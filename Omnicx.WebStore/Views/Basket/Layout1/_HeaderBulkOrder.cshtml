@@ -1,0 +1,28 @@
+﻿﻿@{
+/*
+    Name: Quick Order Pad Link UI
+    Purpose: Button UI for Quick Order Pad
+    Structure: /Views/Basket/Layout1/_HeaderBulkOrder.cshtml
+    Contains (Partial Views Used):
+
+    Contained In (Where we Use this View):
+        a-/Views/Shared/Layout1/_HeaderLayout.cshtml    (Link in Top Header)
+    */
+}
+ 
+@using Omnicx.API.SDK.Entities
+<li class="pull-right">
+        <div class="top-login-cart metaLinks">
+            <ul class="list-inline">
+                <li class="shopping-cart cartopen">
+                    <a ng-click="gm.quick=null;gm.excelData=null;gm.format1=true;gm.format2=false;gm.number=5;gm.openQuickBasketModal()" class="metaLinks__basket minicart-custom text-center">
+                        <i class="fa fa-clipboard font-lg" aria-hidden="true"></i>
+                        <span class="quick-view-text">Quick Order</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+     @Html.Partial(CustomViews.QUICK_ORDER_PAD)
+     @Html.Partial(CustomViews.BULK_ORDER_MESSAGE)  
+  </li>
+

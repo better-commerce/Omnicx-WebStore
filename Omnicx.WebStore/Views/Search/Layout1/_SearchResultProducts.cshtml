@@ -1,0 +1,199 @@
+﻿@{
+/*
+    Name: Search Result
+    Purpose: Show Product list after search Result
+    Structure: /Views/Search/Layout1/_SearchResultProducts.cshtml
+    Contains (Partial Views Used):
+        a-/Views/Search/Layout1/_SearchFacetsMobile.cshtml
+        b-/Views/Search/Layout1/_SearchFacets.cshtml
+        c-/Views/Search/Layout1/_SearchTopBar.cshtml
+        d-/Views/Search/Layout1/_NoResults.cshtml
+        e-/Views/Search/Layout1/_ProductWidget.cshtml
+        f-/Views/Search/Layout1/_ProductListWidget.cshtml
+        g-/Views/Search/Layout1/_SearchBottomBar.cshtml
+        h-/Views/Product/Layout1/_QuickViewModal.cshtml
+
+    Contained In (Where we Use this View):
+        a-/Views/Search/Layout1/Search.cshtml
+    */
+}
+@using Microsoft.Web.Mvc
+@using Omnicx.WebStore.Core.Helpers
+@using Omnicx.WebStore.Core.Controllers
+@using Omnicx.WebStore.Framework.Helpers
+@using Omnicx.API.SDK.Models.Catalog
+@using Omnicx.API.SDK.Entities
+
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Helpers.PaginatedResult<Omnicx.API.SDK.Models.Catalog.ProductModel>>
+
+
+<section ng-controller="productCtrl as pm" ng-init='pm.initProducts(@Html.Json(Model));getView=true;pm.getToWishlist(pm.productResponse.results);'>
+    
+    @{ /* Start WishList Validations */ }
+    <div ng-cloak class="alert alert-success wishdiv alert-pos" ng-show="pm.wishlistsaved">
+        <strong>@LT("ProductDetail.Message.AddToWishlist", "Product added to wishlist")</strong>
+    </div>
+    <div ng-cloak class="alert alert-danger wishdiv alert-pos" ng-show="pm.wishlistexistserror">
+        <strong>@LT("ProductDetail.Message.AlreadyAddedToWishlist", "Product already added in wishlist")!</strong>
+    </div>
+    <div ng-cloak class="alert alert-danger wishdiv alert-pos" ng-show="pm.wishlisterror">
+        User <strong>@LT("ProductDetail.Message.LoginRequired", "Login Required")</strong>
+    </div>
+    @{ /*  End WishList Validations */ }
+
+    @{ /* Start products container */ }
+    <div class="row">
+        <div class="col-sm-12 col-xs-12 visible-xs">
+            @Html.Partial("~/Views/Search/Layout1/_SearchFacetsMobile.cshtml")
+        </div>
+        <div class="col-sm-3 hidden-xs">
+            @{
+                /* Start left filter grid */
+                var listClass = "col-sm-12 col-xs-12";
+            }
+            @if (Model.Results != null && Model.Results.Count != 0 && Model.SearchCriteria.AllowFacet)
+            {
+                listClass = "col-sm-9 col-xs-12";
+                <div class="col-sm-12">
+                    @Html.Partial("~/Views/Search/Layout1/_SearchFacets.cshtml")
+                </div>
+            }
+            @{ /* End left filter grid */ }
+        </div>
+        <div class="@listClass">
+            @*<div class="col-sm-12 no-padding" ng-hide="pm.productResponse==null || pm.productResponse.total==0">
+                    <h4 class="text-capitalize">
+                        <strong ng-bind="pm.searchCriteria.freeText"></strong>
+                    </h4>
+                </div>*@
+            @{
+                if (Model.Images != null && Model.Images.Any())
+                {
+                    <div class="col-sm-12 col-xs-12 clearfix margin-bottom-lg no-padding">
+                        <div id="carousel-example-generic" class="carousel slide omnicomponent component-slider" list-id="" list-type="" data-ride="carousel">
+                            <ol class="carousel-indicators">
+
+                                @foreach (var img in Model.Images.Select((index) => new { index }))
+                                {
+                                    <li data-target="#carousel-example-generic" data-slide-to="@img.index" ng-class="{active : @img.index==0}"></li>
+                                }
+                            </ol>
+                            <div class="carousel-inner">
+                                @foreach (var img in Model.Images.Select((obj, index) => new { index, obj }))
+                                {
+                                    <div class="item" ng-class="{active : @img.index==0}">
+                                        @if (img.obj.LinkType == LinkType.Href.GetHashCode().ToString())
+                                        {
+                                            <a href="@img.obj.Link">
+                                                <img ng-src="@img.obj.Url" alt="Slide @img.index of Carousel" class="img-responsive image1" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'">
+                                                <div class="component-static-html img-topData hidden-xs">
+                                                    <h2>@img.obj.Title</h2>
+                                                    <h3>@img.obj.SubTitle</h3>
+                                                    <p>@img.obj.Description</p>
+                                                </div>
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <img ng-src="@img.obj.Url" alt="Slide @img.index of Carousel" class="img-responsive image1" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'">
+                                            <div class="component-static-html img-topData hidden-xs">
+                                                <h2>@img.obj.Title</h2>
+                                                <h3>@img.obj.SubTitle</h3>
+                                                <p>@img.obj.Description</p>
+                                                <p>
+                                                    @if (img.obj.LinkType == LinkType.Button.GetHashCode().ToString())
+                                                    {
+                                                        <a href="@img.obj.Link" class="shop-now"> @img.obj.ButtonText </a>
+                                                    }
+                                                </p>
+                                            </div>
+                                        }
+
+                                    </div>
+                                }
+                            </div><a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                                <span class="fa fa-chevron-left"></span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                                <span class="fa fa-chevron-right"></span>
+                            </a>
+                        </div>
+                    </div>
+                }
+            }
+            @{ /* Start Product sorting and pagination partial view */ }
+            @Html.Partial("~/Views/Search/Layout1/_SearchTopBar.cshtml")
+            @{ /* End Product sorting and pagination partial view */ }
+            <div class="row">
+                <div class="col-sm-12 col-xs-12 text-right">
+                    <a href="javascript:;" class="text-sm" ng-click="getView=true" ng-class="{'text-green':getView==true ?true :false}" title="Grid View"><i class="fa fa-th"></i></a>
+                    <a href="javascript:;" class="text-sm" ng-click="getView=false" ng-class="{'text-green':getView==false ?true :false}" title="List View"><i class="fa fa-list"></i></a>
+                </div>
+            </div>
+
+            @{ /*Start product Grid View*/ }
+            <div class="row products resultRow" ng-show="getView==true">
+                @Html.Partial("~/Views/Search/Layout1/_NoResults.cshtml")
+                <div ng-if="(pm.productResponse.productGroupModel.groups != null || pm.productResponse.productGroupModel.groups>0)">
+                    <div ng-repeat="grp in pm.productResponse.productGroupModel.groups">
+                        <div class="col-sm-12 col-xs-12" ng-show="pm.productResponse.productGroupModel.displayTitle">
+                            <h4 class="heading-h4" ng-bind="grp"></h4>
+                        </div>
+                        @if (Model.ProductGroupModel != null)
+                        {
+                            <div class="col-sm-12 col-xs-12 groupSeparator">@Html.Raw(Model.ProductGroupModel.GroupSeparator)</div>
+                        }
+                        <div class="col-md-4 col-sm-6 col-xs-6 resultContainerRelated" ng-if="product.groupName.includes(grp)" ng-repeat="product in pm.productResponse.results track by $index" ng-cloak>
+                            @Html.Partial("~/Views/Search/Layout1/_ProductWidget.cshtml")
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="(pm.productResponse.productGroupModel.groups == null || pm.productResponse.productGroupModel.groups==0)">
+                    <div class="col-md-4 col-sm-6 col-xs-6 resultContainerRelated" ng-repeat="product in pm.productResponse.results track by $index" ng-cloak>
+                        @Html.Partial("~/Views/Search/Layout1/_ProductWidget.cshtml")
+                    </div>
+                </div>
+            </div>
+
+            @{ /*Start product List View*/ }
+            <div class="row products resultRow" ng-show="getView==false">
+                @Html.Partial("~/Views/Search/Layout1/_NoResults.cshtml")
+                <div ng-if="(pm.productResponse.productGroupModel.groups !=null || pm.productResponse.productGroupModel.groups.length>0)">
+                    <div ng-repeat="grp in pm.productResponse.productGroupModel.groups">
+                        <div class="col-sm-12 col-xs-12" ng-show="pm.productResponse.productGroupModel.displayTitle">
+                            <h4 class="heading-h4" ng-bind="grp"></h4>
+                        </div>
+                        @if (Model.ProductGroupModel != null)
+                        {
+                            <div class="col-sm-12 col-xs-12 groupSeparator" ng-hide="grp==''">@Html.Raw(Model.ProductGroupModel.GroupSeparator)</div>
+                        }
+                        <div class="col-md-12 col-sm-12 col-xs-12" ng-if="product.groupName.includes(grp)" ng-repeat="product in pm.productResponse.results track by $index" ng-cloak>
+                            @Html.Partial("~/Views/Search/Layout1/_ProductListWidget.cshtml")
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="(pm.productResponse.productGroupModel.groups==null || pm.productResponse.productGroupModel.groups.length==0)">
+                    <div class="col-md-12 col-sm-12 col-xs-12" ng-repeat="product in pm.productResponse.results track by $index" ng-cloak>
+                        @Html.Partial("~/Views/Search/Layout1/_ProductListWidget.cshtml")
+                    </div>
+                </div>
+            </div>
+            @{ /*End product listing row*/ }
+
+            @{ /* Start Product sorting and pagination partial view */ }
+            @if (Model.Results != null && Model.Results.Count != 0)
+            {
+                <div class="margin-top-lg" ng-hide="pm.productResponse == null || pm.productResponse.results==null||pm.productResponse.total==0">
+                    @Html.Partial("~/Views/Search/Layout1/_SearchBottomBar.cshtml")
+                </div>
+            }
+            @{ /* End Product sorting and pagination partial view */ }
+        </div>
+
+    </div>
+    @{ /* End products container */ }
+
+    @{ /*Start Product quick view detail popup*/ }
+    @Html.Partial("~/Views/Product/Layout1/_QuickViewModal.cshtml", new ProductDetailModel { })
+    @{ /*End detail popup*/ }
+</section>

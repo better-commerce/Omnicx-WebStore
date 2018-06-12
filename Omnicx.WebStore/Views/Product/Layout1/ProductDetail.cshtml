@@ -1,0 +1,405 @@
+﻿@{
+/*
+    Name: product Detail Page (PDP)
+    Purpose: Show All the detail of selected product
+    Structure: /Views/Product/Layout1/ProductDetail.cshtml
+    Contains (Partial Views Used):
+        a-/Views/Shared/Layout1/_Layout.cshtml                  (For base Structure)
+        b-/Views/Shared/_BreadCrumb.cshtml                      (Dynamic Breadcrumb)
+        c-/Views/Product/Layout1/_ProductBundle.cshtml          (Product Bundle View)
+        d-/Views/Product/Layout1/_ProductReviews.cshtml         (product Reviews)
+        e-/Views/Product/Layout1/_ProductReviewLogin.cshtml     (Loging Popup for Review)
+        f-/Views/Product/Layout1/_RelatedProducts.cshtml        (Releted Products)
+        g-/Views/Product/Layout1/_ProductDetailSlider.cshtml    (Show Large Image in Modal)
+        h-/Views/Product/Layout1/_Questionnaire.cshtml          (Survey Modal)
+
+    Contained In (Where we Use this View):
+    */
+}
+@using Microsoft.Web.Mvc
+@using Omnicx.API.SDK.Entities
+@using Omnicx.API.SDK.Models.Catalog
+@using Omnicx.WebStore.Core.Helpers
+@using Omnicx.WebStore.Core.Controllers
+@using Omnicx.API.SDK.Helpers;
+@using Omnicx.API.SDK.Models
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Catalog.ProductDetailModel>
+@{
+    Layout = "~/Views/Shared/Layout1/_Layout.cshtml";
+    //ViewBag.Title = @Model.Name + "-" + @Model.Brand;
+    Html.AddTitleParts(Model.Name);
+    Html.AddMetaTitle(Model.MetaTitle);
+    Html.AddMetaDescriptionParts(Model.MetaDescription);
+    Html.AddMetaKeywordsParts(Model.MetaKeywords);
+    Html.AddCanonicalUrl(Model.CanonicalTags);
+    Html.AddDataLayer(DataLayerObjectType.ProductDetail, Model);
+}
+
+@{ /* Start breadcrumb container */ }
+<div class="col-md-12 col-xs-12 no-padding">
+    <ul class="breadcrumb">
+        <li><a href="/">@LT("ProductListing.Breadcrumb.Home", "Home")</a></li>
+        <li><a href="@Url.Action("BrandList","Brand")">@LT("Product.Breadcrumb.Brands", "Brands")</a></li>
+        @if (Model.BreadCrumbs != null)
+        {
+            var catBreadCrumb = Model.BreadCrumbs.FirstOrDefault(x => x.SlugType == EntitySlugTypes.Manufacturer.ToString());
+            if (catBreadCrumb != null && catBreadCrumb.Slug != null)
+            {
+                @Html.Partial("~/Views/Shared/_BreadCrumb.cshtml", catBreadCrumb.Slug);
+            }
+        }
+        <li><a href="#"></a>@Model.Name</li>
+    </ul>
+</div>
+@{ /* End breadcrumb container */ }
+
+<div class="col-md-12 margin-top-md" ng-cloak ng-controller="productCtrl as pm">
+    @*<div ng-cloak class="alert alert-danger prodiv alert-pos" ng-show="pm.proUnavailable">
+           <strong>@LT("ProductDetail.Message.ProductUnavailable", "Please make another selection")</strong>
+        </div>*@
+    @{ /* Start product detail Panel */ }
+    <div class="row" id="productMain"  ng-if="pm.model.componentProducts.length == 0 || pm.model.componentProducts.length == null" ng-init="pm.productId='@Model.RecordId';pm.image=pm.model.image">
+        <div class="col-xs-12 col-sm-12 visible-xs" ng-init="pm.checkForWishlist()">
+            <div class="row">
+                <div class="col-sm-12 no-padding">
+                    <h3 class="product-headline"><span ng-bind="pm.model.name"></span></h3>
+                    @*<h5 class="category-headline"><span ng-bind="pm.model.subBrand"></span></h5>*@
+                </div>
+            </div>
+            @{ /* Product Price */ }
+            @if (@Model.ListPrice != null)
+            {
+                <div class="row">
+                    <div class="col-sm-12 no-padding">
+                        <h5 class="price-h5"><span ng-bind="pm.model.price.formatted.withoutTax"></span></h5>
+                        <h5 class="price-h5-save hidden-xs">@LT("ProductDetail.Label.Rrp", "RRP") <span ng-bind="pm.model.listPrice.formatted.withTax"></span></h5>
+                        <h5 class="price-h5-rrp hidden-xs" ng-hide="pm.model.listPrice.raw.withTax == pm.model.price.raw.withTax">SAVE <span ng-bind="pm.model.listPrice.formatted.withTax.charAt(0)"></span><span ng-bind="(pm.model.listPrice.raw.withTax - pm.model.price.raw.withTax).toFixed(2)"></span></h5>
+                        <h5 class="price-h5-rrp-mob visible-xs">@LT("ProductDetail.Label.Rrp", "RRP") <span ng-bind="pm.model.listPrice.formatted.withTax"></span></h5>
+                        <h5 class="price-h5-save-mob visible-xs" ng-hide="pm.model.listPrice.raw.withTax == pm.model.price.raw.withTax">SAVE <span ng-bind="pm.model.listPrice.formatted.withTax.charAt(0)"></span><span ng-bind="(pm.model.listPrice.raw.withTax - pm.model.price.raw.withTax).toFixed(2)"></span></h5>
+
+                    </div>
+                </div>
+            }
+        </div>
+        @{ /*Start product left image and thumbnail panel*/ }
+        <div class="col-sm-5 col-xs-12 no-padding margin-bottom-lg animated zoomIn">
+            <div class="row">
+                @if (@Model.Images != null)
+                {
+                    if (@Model.Images.Count != 0)
+                    {
+                        <div class="col-sm-3 col-xs-3">
+                            <div class="col-sm-12 col-xs-12 no-padding" ng-repeat="img in pm.model.images track by $index">
+                                <a ng-href="img.url" class="thumb image-bordered">
+                                    <img ng-src="{{img.url}}" class="img-responsive" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'" ng-click="pm.image=img.url">
+                                </a>
+                            </div>
+                            <div class="col-sm-12 col-xs-12 no-padding" ng-repeat="giftItem in pm.model.freeProducts track by $index">
+                                <a ng-href="giftItem.image" class="thumb image-bordered">
+                                    <img ng-src="{{giftItem.image}}" class="img-responsive" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'" ng-click="pm.image=giftItem.image">
+                                </a>
+                            </div>
+                        </div>
+                    }
+                }
+                <div class="col-sm-9 col-xs-9 text-center-mob">
+                    <div @*id="mainImage"*@>
+                        <img data-ng-magnify image-src="{{pm.image}}" class="img-responsive" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'" ng-cloak>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xs-12 margin-top-sm hidden-xs">
+                    <a data-toggle="modal" data-target="#productLarge" class="faq-ques"><i class="fa fa-arrows-alt"></i>View Larger Image</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-1 col-xs-12">&nbsp;</div>
+        @{ /*Start product information panel*/ }
+        <div class="col-sm-6 col-xs-12">
+            <div class="row hidden-xs">
+                <div class="col-sm-12 col-xs-12 no-padding">
+                    <h3 class="product-headline"><span ng-bind="pm.model.name"></span></h3>
+                    <h5 class="category-headline">
+                        <span ng-repeat="freeProduct in pm.model.freeProducts" class="text-bold">
+                            <i class="pluse-icon sprite">+</i> @LT("ProductDetail.Label.Free", "Free") <span ng-bind="freeProduct.name"></span>
+                        </span>
+                    </h5>
+                </div>
+            </div>
+            @{ /* Product Price */ }
+            @if (@Model.ListPrice != null)
+            {
+                <div class="row hidden-xs">
+                    <div class="col-sm-12 no-padding">
+                        <h5 class="price-h5"><span ng-bind="pm.model.price.formatted.withoutTax"></span> <span class="price-h5-rrp">RRP <span ng-bind="pm.model.listPrice.formatted.withTax"></span></span></h5>
+                        @*<h5 class="price-h5-save" ng-hide="pm.model.listPrice.raw.withTax == pm.model.price.raw.withTax">SAVE <span ng-bind="pm.model.listPrice.formatted.withTax.charAt(0)"></span><span ng-bind="(pm.model.listPrice.raw.withTax - pm.model.price.raw.withTax).toFixed(2)"></span></h5>*@
+
+                    </div>
+                </div>
+            }
+            @{ /*End Product Price */ }
+
+            @{ /* Product Varient */ }
+
+            <div>
+                @if (Model.VariantProducts != null && Model.VariantProducts.Count > 0)
+                {
+                    if (Model.VariantProductsAttribute != null && Model.VariantProductsAttribute.Count > 0 && Model.VariantProductsAttribute[0].DisplayInProductDetail)
+                    {
+                        <div class="row" ng-init='pm.initProductVariant()'>
+                            <div class="col-sm-12 col-xs-12 no-padding" ng-repeat="attr in pm.model.variantProductsAttribute">
+                                <h3 class="variant-headline" ng-bind="attr.fieldName"></h3>
+                                <span ng-show="attr.selectedValue==''" class="color-error-validation">Please Select {{attr.fieldName}} </span>
+                                <div ng-if="attr.inputType != 'Dropdown'">
+                                    <div ng-repeat="item in attr.fieldValues">
+
+                                        <a ng-if="attr.fieldCode=='global.colour'" id="{{item.fieldValue}}" href="#" ng-click="pm.getAvailableAttributeValues(attr.fieldCode,item.fieldValue,item.selected,attr.independentProductUrl)"
+                                           class="varient-box btn" ng-class="item.available==true?'':' grayOut-Color'" style="background-color: {{item.fieldValue}}">
+                                            <i ng-if="item.selected && item.available" class="fa-1x fa fa-check varient-check"></i>
+                                        </a>
+
+                                        <a ng-if="attr.fieldCode!='global.colour'" id="{{item.fieldValue}}" href="#" ng-click="pm.getAvailableAttributeValues(attr.fieldCode,item.fieldValue,item.selected,attr.independentProductUrl)"
+                                           class="varient-box-large " ng-class="item.available==true?'':' grayOut'">
+                                            {{item.fieldValue}}
+                                            <i ng-if="item.selected && item.available" class="fa-1x fa fa-check varient-check-range"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div ng-if="attr.inputType == 'Dropdown'">
+                                    <select ng-model="attr.selectedValue" ng-change="pm.getAvailableAttributeValues(attr.fieldCode,attr.selectedValue,false)" class="varientDdb">
+                                        <option ng-disabled="!item.available" ng-repeat="item in attr.fieldValues" id="{{item.fieldValue}}" ng-class="item.available==true?'':' grayOut'" value={{item.fieldValue}}>{{item.fieldValue}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+
+
+            @{ /*End Product Varient */ }
+
+            @{ /* Add to bag and wishlist button */ }
+            <div class="row">
+                <div class="col-sm-12 no-padding">
+                    @{if (Model.RequiresQuestionnaire)
+                        {
+                            @*if (Model.CanAddToBag)
+                                {
+                                    <button type="submit" class="btn button-bag" ng-if="pm.model.isDiscontinued==false && pm.model.currentStock>0" ng-disabled="pm.addToBag" ng-click="gm.addToBasket(pm.productId,1,0)"><i class="fa fa-shopping-bag"></i> @LT("Checkout.Button.AddtoBag", "Add to Bag")</button>
+                                }
+                                else
+                                {
+                                    <button type="submit" class="btn button-bag" ng-if="pm.model.isDiscontinued==false && pm.model.currentStock>0"
+                                            ng-click="pm.beginQuestionnaire(pm.productId, pm.model.questionnaireCode)"><i class="fa fa-connectdevelop"></i> @LT("Checkout.Button.BeginQuestionnaire", "Begin Consultation")</button>
+                                }*@
+                            <button type="submit" class="btn button-bag" ng-show="pm.model.canAddToBag==true" ng-if="pm.model.isDiscontinued==false && pm.model.currentStock>0" ng-disabled="pm.addToBag" ng-click="gm.addToBasket(pm.productId,1,0)"><i class="fa fa-shopping-bag"></i> @LT("Checkout.Button.AddtoBag", "Add to Bag")</button>
+                            <button type="submit" class="btn button-bag" ng-hide="pm.model.canAddToBag==true" ng-if="pm.model.isDiscontinued==false && pm.model.currentStock>0"
+                                    ng-click="pm.beginQuestionnaire(pm.productId, pm.model.questionnaireCode)">
+                                <i class="fa fa-connectdevelop"></i> @LT("Checkout.Button.BeginQuestionnaire", "Begin Consultation")
+                            </button>
+                        }
+                        else
+                        {
+                            <button type="submit" class="btn button-bag" ng-if="pm.model.isDiscontinued==false && pm.model.currentStock>0" ng-disabled="pm.addToBag" ng-click="gm.addToBasket(pm.productId,1,0)"><i class="fa fa-shopping-bag"></i> @LT("Checkout.Button.AddtoBag", "Add to Bag")</button>
+                        }
+                    }
+                    @if (SessionContext.CurrentUser != null)
+                    {
+                        <button type="submit" class="btn btn-wishlist" data-toggle="tooltip" data-placement="top" ng-hide="pm.model.inWishList" ng-click="pm.addToWishlist(pm.model.recordId)" title="Add to wishlist">
+                            <i class="fa fa-heart-o"></i>
+                        </button>
+                    }
+                    else
+                    {
+                        <button type="button" class="btn btn-wishlist" data-toggle="modal" data-target="#login-modal" data-placement="top" ng-hide="pm.model.inWishList" ng-click="pm.addToWishlist(pm.model.recordId)" title="Add to wishlist">
+                            <i class="fa fa-heart-o" data-toggle="tooltip" title="Add to wishlist" data-placement="top"></i>
+                        </button>
+                    }
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-4 col-xs-12 no-padding" ng-show="pm.model.flags.isFreeDelivery">
+                    <label ng-show="pm.model.flags.isFreeDelivery" class="free-label" ng-cloak>
+                        <span class="free-icon"><i class="fa fa-truck"></i></span>
+                        <span class="free-text"><strong>@LT("ProductDetail.Label.FreeDelivery", "FREE DELIVERY")</strong><br /> @LT("ProductDetail.Label.onitem", "on this item")</span>
+                    </label>
+                </div>
+                <div class="col-sm-4 col-xs-12 no-padding" ng-if="pm.model.freeProducts.length > 0">
+                    <label ng-if="pm.model.freeProducts.length > 0" class="free-label" ng-cloak>
+                        <span class="free-icon"><i class="fa fa-gift"></i></span>
+                        <span class="free-text"><strong>@LT("ProductDetail.Label.FreeGift", "Free Gift") </strong><br /> @LT("ProductDetail.Label.withitem", "with this item")</span>
+                    </label>
+                </div>
+            </div>
+            @{ /*End Add to bag and wishlist button */ }
+
+            @{ /* Alert information message */ }
+            <div class="row">
+                <div class="col-sm-12 no-padding">
+                    <p class="text-center">
+                        <div ng-cloak class="alert alert-info wishdiv" ng-show="pm.wishlistsaved">
+                            <strong>@LT("ProductDetail.Message.AddToWishlist", "Product added to wishlist")!</strong>
+                        </div>
+                        <div ng-cloak class="alert alert-danger wishdiv" ng-show="pm.wishlistexistserror">
+                            <strong>@LT("ProductDetail.Message.AlreadyAddedToWishlist", "Product already added in wishlist")!</strong>
+                        </div>
+                        @*<div ng-cloak class="alert alert-danger wishdiv" ng-show="pm.wishlisterror">
+                                User <strong>@LT("ProductDetail.Message.LoginRequired", "Login Required")!</strong>
+                            </div>*@
+                    </p>
+                </div>
+            </div>
+            @{ /*End Alert information message */ }
+
+
+            @{ /* product detail accordion */ }
+            <div class="row">
+                <div class="col-sm-12 no-padding">
+                    @Html.Action("GetAllFaqs", "Common", @Model)
+                </div>
+            </div>
+            @{ /*End product detail accordion */ }
+
+            @{ /* product social sharing links */ }
+            <div class="row">
+                <div class="col-sm-12 no-padding quick-view-social text-left" ng-init="pm.getUrl();">
+                    <h4 class="panel-h5">@LT("ProductDetail.Label.ShowFriends", "Show it to your friends or Email")</h4>
+                    <div class="sharethis-inline-share-buttons col-xs-2 col-sm-1 pull-left"></div>
+                    <p class="col-xs-10 cl-sm-10 pull-left no-padding">
+                        <a href="https://www.facebook.com/share.php?u={{pm.url}}/@Model.Link-@Model.StockCode" class="external facebook" data-animate-hover="pulse"><i class="fa fa-facebook"></i></a>
+                        <a href="https://pinterest.com/pin/create/button/?url=@Model.Image&media=&description=@Model.Name" class="external gplus" data-animate-hover="pulse"><i class="fa fa-pinterest"></i></a>
+                        <a href="https://twitter.com/home?status={{pm.url}}/@Model.Link-@Model.StockCode" class="external twitter" data-animate-hover="pulse"><i class="fa fa-twitter"></i></a>
+                    </p>
+
+                </div>
+            </div>
+            @{ /*End product social sharing links */ }
+
+            @{/*Start Store Find Form*/}
+            @*<div class="row">
+                    <div class="col-sm-12 bg-black">
+                        <div class="col-sm-6 col-md-6 no-padding-right">
+                            <h4 class="white newsletter-h3">Stock Store Finder</h4>
+                            <p class="white newsletter-p">Enter your postcode to check stock availability in your local store</p>
+                        </div>
+                        <div class="col-sm-6 col-md-6 no-padding-right">
+                            <form action="" method="post" class="ng-pristine ng-valid">
+                                <div class="form-inline text-right margin-top-2 border-xs">
+                                    <input type="text" name="search" class="form-control bottom-textbox" placeholder="Enter your Post Code">
+                                    <input type="hidden" name="currentPage" value="1">
+                                    <button type="submit" class="fa fa-search blog-search-btn"></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>*@
+            @{/*End Store Find form*/}
+
+        </div>
+        @{ /*End product information panel*/ }
+    </div>
+    @{ /*End product left image and thumbnail panel*/ }
+
+    @*Start Bundle Products*@
+    <div class="row" ng-if="pm.model.componentProducts.length > 0">
+        @Html.Partial("~/Views/Product/Layout1/_ProductBundle.cshtml")
+    </div>
+
+    @{ /* Start product review*/ }
+    <div class="row">
+        <div class="col-sm-12 col-xs-12 no-padding">
+            @Html.Partial("~/Views/Product/Layout1/_ProductReviews.cshtml")
+        </div>
+    </div>
+    @{ /* End product review */ }
+
+    @{ /* Start product login review*/ }
+    <div class="row">
+        <div class="col-sm-12 col-xs-12 no-padding">
+            @Html.Partial("~/Views/Product/Layout1/_ProductReviewLogin.cshtml", new ProductReviewLoginModel { })
+        </div>
+    </div>
+    @{ /* End product login review */ }
+    @{ /* Start product review*/ }
+    <div class="row">
+        <div class="col-sm-12 col-xs-12 no-padding">
+            @Html.Partial("~/Views/Product/Layout1/_RelatedProducts.cshtml")
+        </div>
+    </div>
+    @{ /* End product review */ }
+    @Html.Partial("~/Views/Product/Layout1/_ProductDetailSlider.cshtml")
+    <div id="QualifyingQuestionnaire" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title text-modal" id="myModalLabel">Qualifying Questionnaire</h4>
+                </div>
+                <div class="modal-body">
+                    @Html.Partial("~/Views/Product/Layout1/_Questionnaire.cshtml")
+                </div>
+                <div class="modal-footer"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@{ /* End product detail Panel */ }
+<!-- Modal -->
+<div id="SuccessAlert" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title text-modal" id="myModalLabel">Review Success</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm1-2 col-xs-12">
+                        <h3 class="text-center">@LT("ProductReview.Label.Success", "Thank you for your review.")</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@{ /* Start related product listing*/ }
+@*@Html.Partial("_RelatedProducts")*@
+@{ /* End related product listing */ }
+
+@{ /* Start recentlt view products */ }
+
+@*@Html.Partial("_RecentlyViewProducts")*@
+@{ /* End recentlt view products */ }
+
+@section scripts{
+    @*plugin for ShareThis*@
+    <script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=593f6e515d6c340012d5de72&product=inline-share-buttons' async='async'></script>
+    <script>
+        var addToWishlistUrl = '@(Html.BuildUrlFromExpression<AccountController>(c => c.AddProductToWishlist(null)))';
+        var productUrl = '@(Html.BuildUrlFromExpression<ProductController>(c => c.ProductDetails("")))';
+        var signIn = '@(Html.BuildUrlFromExpression<AccountController>(c => c.SignIn(null)))';
+        var register = '@(Html.BuildUrlFromExpression<AccountController>(c => c.Registration(null)))';
+        var addReview = '@(Html.BuildUrlFromExpression<ProductController>(c => c.AddProductReview("",null)))';
+        var getWishlist = '@(Html.BuildUrlFromExpression<AccountController>(c => c.GetWishlist()))';
+        var questionnaireCode = '@(Html.BuildUrlFromExpression<ProductController>(c => c.QuestionnaireCode(null)))';
+        var reviewConfig = '@(Html.BuildUrlFromExpression<ProductController>(c => c.GetProductReviewConfig()))';
+        window.app.constant('productConfig', {
+            addToWishlistUrl: addToWishlistUrl,
+            productUrl: productUrl,
+            signIn : signIn,
+            register : register,
+            addReview : addReview,
+            getWishlist:getWishlist,
+            questionnaireCode: questionnaireCode,
+            reviewConfig: reviewConfig
+        });
+        window.app.constant('model', @Html.Json(Model));
+    </script>
+}

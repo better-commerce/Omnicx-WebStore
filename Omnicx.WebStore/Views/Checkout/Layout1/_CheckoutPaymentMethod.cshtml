@@ -1,0 +1,176 @@
+﻿@{
+/*
+    Name: Standard Checkout Payment Method
+    Purpose: Show All Payment Methods
+    Structure: /Views/Checkout/Layout1/_CheckoutPaymentMethod.cshtml
+    Contains (Partial Views Used):
+        b-/Views/Checkout/Layout1/_CheckoutBillingAddress.cshtml   (Select Delivery Address)
+
+    Contained In (Where we Use this View):
+        a-/Views/Basket/Layout1/StandardCheckout.cshtml
+    */
+}
+@using Omnicx.API.SDK.Models.Common
+@using Omnicx.API.SDK.Payments.Entities
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<CheckoutViewModel>
+@{
+    var masterCard = Model.Checkout.PaymentOptions.FirstOrDefault(x => x.SystemName == PaymentMethodTypes.MasterCard.ToString());
+    if (masterCard != null)
+    {
+        <script src="https://secure.eu.tnspayments.com/form/version/@masterCard.Version/merchant/@masterCard.AccountCode/session.js?debug=true"></script>
+    }
+}
+
+<div class="row" ng-show="ck.showPaymentOption" ng-init="ck.showPaymentOption=false">
+    <div class="col-sm-12 col-xs-12">
+        <div class="col-sm-12 col-xs-12 no-padding">
+            <h2 class="checkout-h2">Select a payment method</h2>
+        </div>
+        <div class="col-sm-12 col-xs-12 checkoutStepDelivery">
+            <div class="content">
+                <div class="row equal-height-thumbnailAcco">
+                    <div class="col-sm-12" ng-repeat="paymentMethod in ck.model.checkout.paymentOptions">
+                        <div class="col-sm-12 col-xs-12 checkout-method">
+                            <div class="control-group">
+                                <label class="control control--radio">
+                                    <strong ng-bind="paymentMethod.displayName"></strong>
+                                    <span class="label-span-desc" ng-bind="paymentMethod.description"></span>
+                                    <input id="payment" name="payment" type="radio" value="{{paymentMethod.slug}}" class="ng-pristine ng-valid" ng-click="ck.errors=false;ck.payment(paymentMethod);">
+                                    <div class="control__indicator"></div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div ng-cloak class="alert alert-danger" ng-show="ck.errors">
+                            @LT("Checkout.Text.SelectPayment", "Select a Payment Method")
+                        </div>
+                    </div>
+                    @{
+                        foreach (var payment in Model.Checkout.PaymentOptions)
+                        {
+                            <div class="col-sm-8 col-xs-12 img-rounded" ng-show="ck.model.checkout.selectedPayment.systemName=='@payment.SystemName'">
+                                @if (payment.SystemName == PaymentMethodTypes.MasterCard.ToString())
+                                {
+                                    <form name="paymetForm" class="payment-box">
+                                        <div class="col-sm-12 col-xs-12 no-padding">
+                                            <div class="form-group">
+                                                <label class="mastercard-label">Card Number</label>
+                                                <span class="icon-credit-card icon-abso"></span>
+                                                <input type="number" id="card-number" class="form-control mastercard-textbox" onkeyup="removeClass(this)" placeholder="Card Number" value=" " readonly required />
+                                                <span id="card-numberError" style="margin-top:-10px; display:none;" class="help-block for-validated-control has-error margin-bottom-sm">Required</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-xs-6 no-padding-left">
+                                            <div class="form-group">
+                                                <label class="mastercard-label">Expiry Month</label>
+                                                <span class="icon-calendar icon-abso"></span>
+                                                <select class="mastercard-textbox form-control" name="expiry-month" id="expiry-month" onchange="removeClass(this)">
+                                                    <option value="00">MM</option>
+                                                    <option value="01">01</option>
+                                                    <option value="02">02</option>
+                                                    <option value="03">03</option>
+                                                    <option value="04">04</option>
+                                                    <option value="05">05</option>
+                                                    <option value="06">06</option>
+                                                    <option value="07">07</option>
+                                                    <option value="08">08</option>
+                                                    <option value="09">09</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                </select>
+                                                <span id="expiry-monthError" style="margin-top:-5px; display:none;" class="help-block for-validated-control has-error margin-bottom-sm">Required</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-xs-6 no-padding-right">
+                                            <div class="form-group">
+                                                <label class="mastercard-label">Expiry Year</label>
+                                                <span class="icon-calendar icon-abso"></span>
+                                                <select name="expiry-year" id="expiry-year" class="col-xs-12 form-control" onchange="removeClass(this)"></select>
+                                                <span id="expiry-yearError" style="margin-top: -5px; display:none;float: left;width: 100%;;" class="help-block for-validated-control has-error margin-bottom-sm">Required</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-xs-12 no-padding" id="inputCvv">
+                                            <div class="form-group">
+                                                <label class="mastercard-label">CVV Number</label>
+                                                <span class="icon-credit-card icon-abso"></span>
+                                                <input type="text" id="security-code" class="form-control" value="" maxlength="3" max="3" onkeyup="removeClass(this)" placeholder="CVV" readonly required />
+                                                <span style="display:none" class="help-block for-validated-control has-error">Invalid or missing</span>
+                                            </div>
+                                            <span class="cvv-span">Find this on the back of your card on the signature strip.</span>
+                                        </div>
+                                        <div class="col-sm-12 col-xs-12 no-padding" id="inputCvv">
+                                            <div class="form-group">
+                                                <span class="icon-user icon-abso"></span>
+                                                <label class="mastercard-label">Cardholder Name</label>
+                                                <input type="text" id="name-on-card" class="form-control " onkeyup="removeClass(this)" placeholder="Cardholder Name" value="" required />
+                                                <input id="save-token" style="display:none" type="checkbox" checked="checked" />
+                                                <span id="name-on-cardError" style="margin-top:-5px; display:none;" class="help-block for-validated-control has-error">Required</span>
+                                            </div>
+                                        </div>
+                                    </form>
+                                }
+                                @if (payment.SystemName == PaymentMethodTypes.Givex.ToString())
+                                {
+                                    <div class="col-sm-12 col-xs-12 default-border">
+                                        <div class="col-lg-12 no-padding no-margin">
+                                            <div class="col-lg-12 no-padding">
+                                                <h5>Please enter your Gift Card details</h5>
+                                                <hr>
+                                                <div class="col-xs-12 col-lg-6">
+                                                    <form class="form-inline margin-bottom-sm ng-pristine ng-valid" ng-init="givex.amount=basket.remaingAmt">
+                                                        <div class="form-group">
+                                                            <div class="input-group">
+                                                                <div class="input-group-addon border-radius-none">@payment.AccountCode</div>
+                                                                <div class="col-xs-12 no-padding"><input type="text" class="form-control border-radius-none ng-pristine ng-valid" ng-model="ck.givexCardNo" ng-blur="ck.model.checkout.selectedPayment.cardInfo.cardNo='@payment.AccountCode' + ck.givexCardNo" placeholder="CardNo"></div>
+                                                            </div>
+                                                            <div class="input-group margin-top-sm">
+                                                                <div class="col-xs-12 no-padding"><input type="text" class="form-control border-radius-none ng-pristine ng-valid" ng-model="ck.model.checkout.selectedPayment.cardInfo.securityCode" placeholder="Security Code"></div>
+                                                            </div>
+                                                            <div class="input-group margin-top-sm">
+                                                                <div class="col-xs-12 no-padding"><input type="text" class="form-control border-radius-none ng-pristine ng-valid" ng-model="ck.model.checkout.selectedPayment.cardInfo.amount" placeholder="Amount" only-digits=""></div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+
+                                                </div>
+                                                <div class="col-xs-12 col-lg-6">
+                                                    <div><a href="" class="gift-card-back"></a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                }
+                                <div ng-cloak class="alert alert-success successBlock" ng-show="ck.messageSuccess">
+                                    Partial payment of <span ng-bind="ck.model.checkout.balanceAmount.raw.withTax"></span> has been done. You can choose to complete your remaining payment using any other mode.
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+                <!-- /.row -->
+
+
+
+            </div>
+
+            <!-- /.content -->
+            <div ng-show="ck.hideBillingAddress">
+                @Html.Partial("/Views/Checkout/Layout1/_CheckoutBillingAddress.cshtml", @Model.Checkout.BillingAddress)
+            </div>
+            <div class="box-footer">
+                @*<div class="pull-left col-sm-3 col-xs-12 no-padding margin-bottom-sm" ng-show="(ck.userAddresses.length>0) && ck.billingAddress">
+                        <button type="button" class="btn btn-primary width-full" data-toggle="modal" data-target="#userAddress-modal" ng-click="ck.addressText='billing'">CHANGE BILLING ADDRESS</button>
+                    </div>*@
+                <div class="pull-right col-sm-3 col-xs-12 no-padding">
+                    <button type="submit" ng-click="ck.viewOrderDetail(ck.billingAddress)" class="btn btn-checkout width-full">
+                        @LT("Checkout.Label.OrderSummary", "Continue") <i class="fa fa-caret-right"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:gvxGlobal="https://gapi.givex.com/1.0/types_global" xmlns:tns="https://gapi.givex.com/1.0/messages_global" xmlns:gvxCommon="https://gapi.givex.com/1.0/types_common" name="gapi" targetNamespace="https://gapi.givex.com/1.0/messages_global" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="https://gapi.givex.com/1.0/types_global">
+      <xsd:import schemaLocation="types_common.xsd" namespace="https://gapi.givex.com/1.0/types_common" />
+      <xsd:element name="GetVersion">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Version">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="version" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="DescriptionElement">
+        <xsd:sequence>
+          <xsd:element name="name" type="xsd:string" />
+          <xsd:element name="title" type="xsd:string" />
+          <xsd:element minOccurs="0" name="group" type="xsd:string" />
+          <xsd:element minOccurs="0" name="detail" type="xsd:string" />
+          <xsd:element minOccurs="0" name="mandatory" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="inheritable" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="readOnly" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="type" type="xsd:string" />
+          <xsd:element minOccurs="0" name="default" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="GetDescription">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="gvxCommon:Identification" />
+            <xsd:element name="subject" type="xsd:string" />
+            <xsd:element minOccurs="0" name="ancestorType" type="xsd:string" />
+            <xsd:element minOccurs="0" name="ancestorId" type="xsd:long" />
+            <xsd:element minOccurs="0" name="descLanguage" type="xsd:string" />
+            <xsd:element minOccurs="0" name="country" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="attributeNames" type="xsd:string" />
+            <xsd:element minOccurs="0" name="profile" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Description">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="message" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="attributeDesc" type="gvxGlobal:DescriptionElement" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GivexFaultMessage">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="message" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="getVersionRequest">
+    <part name="request" element="gvxGlobal:GetVersion" />
+  </message>
+  <message name="getVersionResponse">
+    <part name="response" element="gvxGlobal:Version" />
+  </message>
+  <message name="getDescriptionRequest">
+    <part name="request" element="gvxGlobal:GetDescription" />
+  </message>
+  <message name="getDescriptionResponse">
+    <part name="response" element="gvxGlobal:Description" />
+  </message>
+  <message name="GivexFaultMessage">
+    <part name="fault" element="gvxGlobal:GivexFaultMessage" />
+  </message>
+</definitions>

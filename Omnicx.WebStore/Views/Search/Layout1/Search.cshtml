@@ -1,0 +1,60 @@
+﻿@{
+/*
+    Name: Search
+    Purpose: Show Product list after search items
+    Structure: /Views/Search/Layout1/Search.cshtml
+    Contains (Partial Views Used):
+        a-/Views/Shared/Layout1/_Layout.cshtml
+        b-/Views/search/Layout1/_SearchResultProducts.cshtml
+
+    Contained In (Where we Use this View):      
+    */
+}
+@using Microsoft.Web.Mvc
+@using Omnicx.WebStore.Core.Helpers
+@using Omnicx.WebStore.Core.Controllers
+@using Omnicx.WebStore.Framework.Helpers
+@using Omnicx.API.SDK.Entities
+@using Omnicx.API.SDK.Helpers
+@using Omnicx.API.SDK.Models.Catalog
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Helpers.PaginatedResult<Omnicx.API.SDK.Models.Catalog.ProductModel>>
+@{
+    ViewBag.Title = @LT("ProductDetail.Label.Search", "Search");
+    Layout = "~/Views/Shared/Layout1/_Layout.cshtml";
+
+    //Html.AddTitleParts(Model.Name);
+    //Html.AddMetaDescriptionParts(Model.MetaDescription);
+    //Html.AddMetaKeywordsParts(Model.MetaKeywords);
+    //Html.AddCanonicalUrl(Model.CanonicalTags);
+    Html.AddDataLayer(DataLayerObjectType.ProductDetail, Model);
+}
+<div class="col-md-12 no-padding">
+    <ul class="breadcrumb">
+        <li><a href="/">@LT("ProductListing.Breadcrumb.Home", "Home")</a></li>
+        @if (!string.IsNullOrEmpty(Model.SearchCriteria.FreeText))
+            {
+            <li>@Model.SearchCriteria.FreeText</li>
+        }
+        @if (!string.IsNullOrEmpty(Model.SearchCriteria.BreadCrumb))
+            {
+            @Html.Raw(Model.SearchCriteria.BreadCrumb)
+        }
+    </ul>
+</div>
+
+@Html.Partial("~/Views/search/Layout1/_SearchResultProducts.cshtml", Model)
+@section scripts{
+    <script>
+        var searchProductUrl = '@(Html.BuildUrlFromExpression<SearchController>(c => c.SearchProducts(null)))';
+        var productUrl = '@(Html.BuildUrlFromExpression<ProductController>(c => c.ProductDetails("")))';
+        var addToWishlistUrl = '@(Html.BuildUrlFromExpression<AccountController>(c => c.AddProductToWishlist(null)))';     
+        var getWishlist = '@(Html.BuildUrlFromExpression<AccountController>(c => c.GetWishlist()))'; 
+        window.app.constant('productConfig',{
+            searchProductUrl:searchProductUrl,
+            productUrl : productUrl,
+            addToWishlistUrl : addToWishlistUrl,
+            getWishlist:getWishlist
+        });
+        window.app.constant('model', @Html.JsonFor(Model));
+    </script>
+}

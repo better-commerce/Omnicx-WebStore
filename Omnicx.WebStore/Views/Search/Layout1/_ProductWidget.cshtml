@@ -1,0 +1,108 @@
+﻿@{
+/*
+    Name: Product Grid View Widget
+    Purpose: Show Product All detail in grid view
+    Structure: /Views/Search/Layout1/_ProductWidget.cshtml
+    Contains (Partial Views Used):
+
+    Contained In (Where we Use this View):
+        a-/Views/Account/Layout1/Wishlist.cshtml
+        b-/Views/Basket/Layout1/Index.cshtml
+        c-/Views/Brand/Layout1/BrandDetail.cshtml
+        d-/Views/Product/Layout1/_RelatedProducts.cshtml
+        e-/Views/Search/Layout1/_SearchResultProducts.cshtml
+    */
+}
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
+<div class="product">
+    <a ng-if="pm.forDelete" href="~/Account/RemoveWishList/{{product.recordId}}" title="Remove" class="remove wishlist-remove"><i class="fa fa-trash-o"></i></a>
+    <div class="image">
+        <span class="free-icon right" ng-show="product.freeProducts.length>0"><i class="fa fa-gift"></i></span>
+        <a ng-href="/{{product.slug}}">
+            <img ng-src="{{product.image==''?'/assets/theme/ocx/images/noimagefound.jpg':product.image}}" alt="" class="image1" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'">
+        </a>
+        @*<div class="quick-view-button">
+                <a ng-click="gm.addToBasket(product.recordId,1,0)" class="btn btn-default btn-sm" ng-if="!pm.isWhislist">@LT("ProductDetail.Links.AddtoBag", "Add to Bag")</a>
+                @if (SessionContext.CurrentUser != null)
+                {
+                    <a ng-click="gm.addToBasket(product.recordId,1,0)" href="~/Account/RemoveWishList/{{product.recordId}}" class="btn btn-default btn-sm" ng-if="pm.isWhislist">@LT("ProductDetail.Links.AddtoBag", "Add to Bag")</a>
+                }
+                <br /><br />
+                <a ng-click="pm.productDetail(product.id)" data-toggle="modal" data-target="#product-quick-view-modal" class="btn btn-default btn-sm" ng-hide="pm.quickView">@LT("Common.Button.QuickView", "Quick View")</a>
+            </div>*@
+    </div>
+
+    <div class="product-name">
+        <h3>
+            <a ng-href="/{{product.slug}}">
+                <span ng-bind="product.name"></span><br />
+            </a>
+        </h3>
+        <!-- ngRepeat: freeProduct in product.freeProducts -->
+        <h3 class="hidden-xs hidden">
+            <span ng-repeat="freeProduct in product.freeProducts" class="text-bold">
+                <i class="pluse-icon sprite">+</i> Free <span ng-bind="freeProduct.name"></span>
+            </span>
+        </h3>
+
+        <!-- end ngRepeat: freeProduct in product.freeProducts -->
+        <div class="col-sm-12 col-xs-12 no-padding visible-xs" style="min-height:30px; margin-bottom:10px;">
+            <div class="priceContainer visible-xs">
+                <p class="product-price" ng-bind="(product.price.formatted.withTax)"></p>
+            </div>
+            <div class="priceContainer visible-xs">
+                <p class="product-price-rrp" ng-hide="product.listPrice.raw.withTax == product.price.raw.withTax">RRP <span ng-bind="(product.listPrice.formatted.withTax)"></span></p>
+            </div>
+            <div class="priceContainer visible-xs">
+                <p class="product-price-save" ng-hide="product.listPrice.raw.withTax == product.price.raw.withTax">Save <span ng-bind="product.listPrice.formatted.withTax.charAt(0)"></span><span ng-bind="(product.listPrice.raw.withTax - product.price.raw.withTax).toFixed(2)"></span></p>
+            </div>
+        </div>
+        <div class="col-sm-12 col-xs-12 text-center no-padding margin-top-xs visible-xs">
+            <a ng-if="product.isDiscontinued==false && pm.model.currentStock>0" ng-click="gm.addToBasket(product.recordId,1,0)" class="btn btn-bag btn-sm"><i class="fa fa-shopping-cart no-margin-left"></i> @LT("ProductDetail.Links.AddtoBag", "Add to Bag")</a>
+        </div>
+        <div class="price-box">
+            <p class="product-price hidden-xs">
+                <span ng-bind="(product.price.formatted.withTax)"></span>
+                <span class="sml">
+                    <strong>@LT("ProductDetail.Label.RRP", "RRP")</strong>
+                    <span ng-bind="(product.listPrice.formatted.withTax)"></span>
+                </span>
+            </p>
+        </div>
+    </div>
+    <div class="row margin-bottom-sm">
+        <div class="col-sm-12 col-xs-12 text-right">
+            <div ng-if="product.isDiscontinued==false && product.currentStock>0" class="add-to-bag text-center">
+                <a ng-click="gm.addToBasket(product.recordId,1,0)" class="animate btn-default" ng-if="!pm.isWhislist"> @LT("ProductDetail.Links.AddtoBag", "Add to Cart")</a>
+                @if (SessionContext.CurrentUser != null)
+                {
+                    <a ng-click="gm.addToBasket(product.recordId,1,0)" class="animate btn-default" ng-if="pm.isWhislist"> @LT("ProductDetail.Links.AddtoBag", "Add to Cart")</a>
+                }
+            </div>
+
+            @*@if (SessionContext.CurrentUser != null)
+                {
+                    <a class="btn btn-default pull-right btn-sm pull-right hidden-xs margin-left-md" data-toggle="tooltip" ng-if="product.inWishList==false"
+                       data-placement="top" ng-click="pm.addToWishlist(product.recordId)" title="@LT("ProductDetail.Links.Addtowishlist", "Add to wishlist")" ng-hide="fromWishList"><i class="fa fa-heart"></i></a>
+
+                    <a class="btn btn-default pull-right btn-sm pull-right hidden-xs margin-left-md text-primary" data-toggle="tooltip" ng-if="product.inWishList==true"
+                       data-placement="top" title="@LT("ProductDetail.Links.Alreadyaddedtowishlist", "Already added to wishlist")"><i class="fa fa-heart"></i></a>
+                }
+                else
+                {
+                    <a class="btn btn-default pull-right btn-sm pull-right hidden-xs margin-left-md" data-toggle="modal" data-target="#login-modal" data-placement="top" ng-click="pm.addToWishlist(product.recordId)" title="@LT("ProductDetail.Links.Addtowishlist", "Add to wishlist")" ng-hide="fromWishList"><i class="fa fa-heart"></i></a>
+                }
+                <a class="btn btn-default pull-right btn-sm margin-left-md hidden-xs" ng-click="pm.productDetail(product.id)" data-toggle="modal" data-target="#product-quick-view-modal" ng-hide="pm.quickView"><i class="fa fa-eye"></i></a>*@
+        </div>
+    </div>
+    @if (SessionContext.CurrentUser != null)
+    {
+        <a class="product-tile_wishlist" ng-if="product.inWishList==false" ng-click="pm.addToWishlist(product.recordId)" ng-hide="fromWishList"></a>
+    }
+    else
+    {
+        <a class="product-tile_wishlist" data-toggle="modal" data-target="#login-modal"></a>
+    }
+    <a class="product-tile_quickview" ng-click="pm.productDetail(product.recordId)" data-toggle="modal" data-target="#product-quick-view-modal" ng-hide="pm.quickView"></a>
+    <div class="col-sm-12 col-xs-12 free-delivery-panel" ng-if="product.flags.isFreeDelivery" ng-cloak>@LT("ProductDetail.Label.FreeDelivery", "Free Delivery")</div>
+</div>

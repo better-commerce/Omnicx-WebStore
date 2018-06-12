@@ -1,0 +1,26 @@
+﻿@{
+/*
+    Name: Page Internal Error 500
+    Purpose: Show This Error Page when found error 500
+    Structure: /Views/Common/Layout1/Error500.cshtml
+    Contains (Partial Views Used):
+        a-/Views/Shared/Layout1/_Layout.cshtml    (For base Structure)
+
+    Contained In (Where we Use this View):
+    */
+}
+@{
+    ViewBag.Title = "Error";
+    Layout = "~/Views/Shared/Layout1/_LayoutError.cshtml";
+}
+<div class="container">
+    <div class="header clearfix">
+        <h3 class="text-muted">Default Store</h3>
+    </div>
+    <div class="jumbotron alert-danger">
+        <h1>Error</h1>
+        <p class="lead">It seems like something went wrong inside the system. We're on it !</p>
+        <p><a class="animate btn-bordered" href="~/" role="button">Go Back to Home Page</a>
+        </p>
+    </div>
+</div>

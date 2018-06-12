@@ -1,0 +1,40 @@
+﻿@using Omnicx.API.SDK.Entities
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
+
+@{
+    var StoreTheme = ConfigKeys.StoreTheme;
+    var logoUrl = SessionContext.CurrentSiteConfig?.DomainSettings?.LogoUrl ?? "";
+}
+@*Desktop LOGO*@
+<a class="navbar-brand no-padding home visible-md visible-lg" href="/">
+    @if (String.IsNullOrEmpty(logoUrl))
+    {
+        <img src="~/assets/theme/@StoreTheme/images/logo.png" alt="@LT("Header.Text.Logo", "Logo")" class="img-responsive logo-width">
+    }
+    else
+    {
+        <img src="@logoUrl" alt="@LT("Header.Text.Logo", "Logo")" class="img-responsive logo-width">
+    }
+</a>
+@*Tablet LOGO*@
+<a class="text-center width-full visible-sm" href="/">
+    @if (String.IsNullOrEmpty(logoUrl))
+    {
+        <img src="~/assets/theme/@StoreTheme/images/logo.png" alt="@LT("Header.Text.Logo", "Logo")" class="img-responsive logo-width">
+    }
+    else
+    {
+        <img src="@logoUrl" alt="@LT("Header.Text.Logo", "Logo")" class="img-responsive logo-width">
+    }
+</a>
+@*Mobile LOGO*@
+<a class="text-center width-full visible-xs" href="/">
+    @if (String.IsNullOrEmpty(logoUrl))
+    {
+        <img src="~/assets/theme/@StoreTheme/images/logo-footer.png" alt="@LT("Header.Text.Logo", "Logo")" class="img-responsive logo-width">
+    }
+    else
+    {
+        <img src="@logoUrl" alt="@LT("Header.Text.Logo", "Logo")" class="img-responsive logo-width">
+    }
+</a>

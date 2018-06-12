@@ -1,0 +1,140 @@
+﻿@{
+/*
+Name: Blog list of selected editor
+Purpose: Blog list of selected editor
+Structure: /Views/Blog/Layout1/BlogsByEditor.cshtml
+Contains (Partial Views Used):
+    a-/Views/Shared/Layout1/_LayoutBlog.cshtml
+Contained In (Where we Use this View) :
+*/
+}
+@using Microsoft.Web.Mvc
+@using Omnicx.WebStore.Core.Controllers
+@using Omnicx.API.SDK.Models
+@using Omnicx.WebStore.Core.Helpers
+@using Omnicx.WebStore.Framework.Helpers
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Site.BlogDetailViewModel>
+
+@{
+    ViewBag.Title = ViewBag.selectedGroup;
+
+    Layout = "~/Views/Shared/Layout1/_LayoutBlog.cshtml";
+}
+<style>
+    #landing-banner {
+        display: none !important;
+    }
+</style>
+<div class="col-sm-12 margin-top-md">
+    <ul class="breadcrumb">
+        <li><a href="/">@LT("MyAccount.Links.Home", "Home")</a></li>
+        <li><a href="@Url.Action("Blogs", "Blog")">@LT("Blogs.Links.Blogs", "Blogs")</a></li>
+        <li> @ViewBag.selectedGroup</li>
+    </ul>
+</div>
+
+    <div class="col-sm-12">
+        @if(@Model.BlogList.Results.Count > 0 && @Model.BlogList != null)
+        { 
+    <div id="blog-homepage" class="col-sm-12 no-padding">
+        <div class="col-sm-12 no-padding">
+            <h1 class="editor-h1">@Model.BlogList.Results[0].Author</h1>
+        </div>
+        <div class="col-sm-12 blog-editor">
+            <img ng-src="@Model.BlogList.Results[0].EditorImage" class="img-circle" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'" />
+        </div>
+        <div class="col-sm-12 no-padding">
+            <p class="editor-intro">@Model.BlogList.Results[0].EditorBio</p>
+        </div>
+
+
+        <div class="col-sm-12 no-padding margin-top-md">
+            @foreach (var item in Model.BlogList.Results)
+            {
+                <div class="col-sm-8 col-md-8 col-md-offset-2 col-sm-offset-2">
+                    <div class="row border-bottom-blog">
+                        <div class="col-sm-4">
+                            @if (item.BlogImage == null)
+                            {
+                                <a href="@Url.Action("blogdetail", "blog", new { url = @item.URL})"><img ng-src="~/assets/theme/ocx/images/noimagefound.jpg" class="img-responsive"></a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("blogdetail", "blog", new { url = @item.URL})"><img ng-src="@item.BlogImage" class="img-responsive" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'"></a>
+                            }
+                        </div>
+                        <div class="col-sm-8">
+                            <h3 class="blog-h3"><a href="@Url.Action("blogdetail", "blog", new { url = @item.URL})">@item.Title</a></h3>
+                            <hr>
+                            <p class="blog-intro">
+                                @item.Abstract
+                            </p>
+                            <p class="blog-category">
+                                @item.Days days ago. By<a href="/@item.EditorSlug"> @item.Author</a>
+                            </p>                          
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+        }
+        else
+        { 
+          <div class="col-sm-12 no-padding">
+            <h3 >No Blog(s) exist.</h3>
+        </div>
+        }
+    @*pagination*@
+    <div class="row">
+        <div class="col-sm-6 no-padding">
+            @if(@Model.BlogList.Results !=  null && @Model.BlogList.Results.Count > 0)
+            { 
+            <ul class="pull-right pagination">
+                @if (@Model.BlogList.Total > @Model.PageSize)
+                {
+                    for (var i = 1; i <= Convert.ToDecimal(@Model.BlogList.Results.Count / @Model.PageSize)+1; i++)
+                    {
+                        <li class="ng-scope">
+                           
+                            <a href="/@Model.BlogList.Results[0].EditorSlug/@i">@i</a>
+                         </li>
+                    }
+                }
+                @if (@Model.BlogList.Total == @Model.PageSize)
+                {
+                    for (var i = 1; i <= Convert.ToDecimal(@Model.BlogList.Results.Count / @Model.PageSize); i++)
+                    {
+                        <li class="ng-scope">
+                            
+                            <a href="/@Model.BlogList.Results[0].EditorSlug/@i">@i</a>
+                        </li>
+                    }
+                }
+                @*@if (@Model.BlogList.Total < @Model.BlogList.Pages)
+                {
+
+                    <li class="ng-scope active">
+                        <a href="@Url.Action("getblogsbyeditor", "blog", new { groupid = @Model.BlogList.Results[0].AuthorId, @currentpage = 1 })">1</a>
+                    </li>
+                }*@
+            </ul>
+            }
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+@section scripts{
+    <script>
+        window.app.constant('blogConfig', {
+        });
+    </script>
+}
+

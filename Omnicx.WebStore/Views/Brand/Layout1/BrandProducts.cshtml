@@ -1,0 +1,57 @@
+﻿@{
+/*
+Name: Barnd product listing
+Purpose: Show All products of selected Brand
+Structure: /Views/Blog/Layout1/BrandProducts.cshtml
+Contains (Partial Views Used):
+    a-/Views/Shared/Layout1/_Layout.cshtml
+    b-/Views/search/Layout1/_SearchResultProducts.cshtml
+Contained In (Where we Use this View) :
+*/
+}
+@using Microsoft.Web.Mvc
+@using Omnicx.WebStore.Core.Helpers
+@using Omnicx.WebStore.Core.Controllers
+@using Omnicx.WebStore.Framework.Helpers
+@using Omnicx.API.SDK.Models.Catalog
+@using Omnicx.API.SDK.Helpers
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Catalog.BrandDetailModel>
+@{
+    ViewBag.Title = @LT("ProductDetail.Label.Search", "Search");
+    Layout = "~/Views/Shared/Layout1/_Layout.cshtml";
+}
+@{
+    Html.AddTitleParts(Model.Name);
+    Html.AddMetaTitle(Model.MetaTitle);
+    Html.AddMetaDescriptionParts(Model.MetaDescription);
+    Html.AddMetaKeywordsParts(Model.MetaKeywords);
+
+}
+<div class="col-md-12 no-padding">
+    <ul class="breadcrumb">
+        <li><a href="/">@LT("ProductListing.Breadcrumb.Home", "Home")</a></li>
+       <li><a href="@Url.Action("BrandList" , "Brand")" class="link2">Brand</a></li>
+       @if (@Model.ProductList.SearchCriteria.BreadCrumb != null)
+       {
+        <li>@Model.ProductList.SearchCriteria.BreadCrumb.ToCamelCase()</li>
+       }
+    </ul>
+</div>
+
+@Html.Partial("~/Views/search/Layout1/_SearchResultProducts.cshtml", Model.ProductList)
+
+@section scripts{
+    <script>
+        var searchProductUrl = '@(Html.BuildUrlFromExpression<SearchController>(c => c.SearchProducts(null)))';
+        var productUrl = '@(Html.BuildUrlFromExpression<ProductController>(c => c.ProductDetails("")))';
+        var addToWishlistUrl = '@(Html.BuildUrlFromExpression<AccountController>(c => c.AddProductToWishlist(null)))';
+        var getWishlist = '@(Html.BuildUrlFromExpression<AccountController>(c => c.GetWishlist()))'; 
+        window.app.constant('productConfig',{
+            searchProductUrl:searchProductUrl,
+            productUrl : productUrl,
+            addToWishlistUrl : addToWishlistUrl,
+            getWishlist:getWishlist
+        });
+        window.app.constant('model', @Html.JsonFor(Model));
+    </script>
+}
