@@ -1,0 +1,315 @@
+﻿@{
+    /*
+    Name: Brand Detail
+    Purpose: Show all the related information of brand
+    Structure: /Views/Brand/Layout1/BrandDetail.cshtml
+    Contains (Partial Views Used):
+        a-/Views/Shared/Layout1/_Layout.cshtml
+        b-/Views/Search/Layout1/_ProductWidget.cshtml
+        c-/Views/Product/Layout1/_QuickViewModal.cshtml
+    Contained In (Where we Use this View) :
+    */
+}
+@using Microsoft.Web.Mvc
+@using Omnicx.API.SDK.Models
+@using Omnicx.WebStore.Core.Helpers
+@using Omnicx.WebStore.Core.Controllers
+@using Omnicx.WebStore.Framework.Helpers
+@using Omnicx.API.SDK.Entities
+@using Omnicx.API.SDK.Helpers
+@using Omnicx.API.SDK.Models.Catalog
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Catalog.BrandDetailModel>
+@{
+    ViewBag.Title = @LT("Brands.Label.Brand", "Brand") + " " + @LT("Brands.Label.Details", "Details");
+    Layout = "~/Views/Shared/Layout1/_Layout.cshtml";
+    Html.AddTitleParts(Model.Name);
+    Html.AddMetaTitle(Model.MetaTitle);
+    Html.AddMetaDescriptionParts(Model.MetaDescription);
+    Html.AddMetaKeywordsParts(Model.MetaKeywords);
+    // Html.AddCanonicalUrl(Model.CanonicalTags);
+    Html.AddDataLayer(DataLayerObjectType.BrandDetail, Model);
+}
+@{
+/*
+Name: Brand detail page
+Purpose: Show all the related information of brand
+Structure: /Views/Catalog/BrandDetail.cshtml
+Contains (Partial Views Used):
+* Catalog/_ProductDetailModal.cshtml
+Contained In (Where we Use this View) :
+*/
+}
+<section ng-controller="productCtrl as pm">
+    @{ /* Start breadcrumb container */ }
+    <div class="col-md-12">
+        <ul class="breadcrumb">
+            <li>
+                <a href="/">@LT("ProductListing.Breadcrumb.Home", "Home")</a>
+            </li>
+            <li> <a href="@Url.Action("BrandList", "Brand")">@LT("Brands.Label.Brand", "Brand")</a></li>
+            <li><a href="javascript:;" ng-click="pm.subBrandProducts=[]">@Model.Name</a></li>
+            <li ng-show="pm.subBrandProducts.length>0"><span ng-bind="pm.subBrandProducts[0].subBrand"></span></li>
+        </ul>
+    </div>
+    @{ /* End breadcrumb container */ }
+
+    <div class="col-sm-12 no-padding">
+        @{ /*Start Sub Brand Filter*/ }
+        <div class="col-sm-3 col-xs-12 margin-top-md hidden-xs">
+            <h3 class="panel-h3">Sub Brands</h3>
+            <div class="col-sm-12 col-xs-12 left-filter-category max-panel">
+                <ul>
+                    @foreach (var subbrands in @Model.SubBrands)
+                    {
+                        <li id="@subbrands.Id"><a href="javascript:;" ng-click="pm.fetchSubBrandProductList(@subbrands.Id,@Model.Id)">@subbrands.Name</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+
+
+        @{ /*End Sub Brand Filter*/ }
+
+        @{ /*Start Brand product grid*/ }
+        <div class="col-sm-9 col-xs-12 no-padding">
+            @{ /*Start Brand Name and description*/ }
+            <div class="col-sm-12 col-xs-12 no-padding brand-container">
+                <h1 ng-if="pm.subBrandProducts.length  == 0" class="brand-h4">@Model.Name</h1>
+                <h1 class="brand-h4" ng-if="pm.subBrandProducts.length > 0" ng-bind="(pm.subBrandProducts[0].brand) +',' + (pm.subBrandProducts[0].subBrand)"></h1>
+                <p class="brand-desc" ng-bind-html="pm.subBrandProducts[0].description"></p>
+            </div>
+            @{ /*End Brand Name and description*/ }
+
+            <div class="col-sm-12 col-xs-12 no-padding" ng-hide="pm.subBrandProducts.length>0">
+
+                @{ /* Start carousel slider */ }
+                <div class="row margin-bottom-lg">
+                    <div id="carousel-example-generic" class="carousel slide omnicomponent component-slider" list-id="" list-type="" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            @if (@Model.CarouselImage1 != null)
+                            {
+                                <div class="item active">
+                                    <a href="@Model..CarouselLink1"><img ng-src="@Model.CarouselImage1" alt="Slide 1 of carousel" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'"></a>
+                                </div>
+                            }
+                            @if (@Model.CarouselImage2 != null)
+                            {
+                                <div class="item">
+                                    <a href="@Model.CarouselLink2"><img ng-src="@Model.CarouselImage2" alt="Slide 1 of carousel" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'"></a>
+                                </div>
+                            }
+                            @if (@Model.CarouselImage3 != null)
+                            {
+                                <div class="item">
+                                    <a href="@Model.CarouselLink3"><img ng-src="@Model.CarouselImage3" alt="Slide 1 of carousel" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'"></a>
+                                </div>
+                            }
+                        </div><a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                            <span class="fa fa-chevron-left"></span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                            <span class="fa fa-chevron-right"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="row hidden-xs">
+                    <div class="delivery-option-bar">
+                        <div class="col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <h5 class="delivery-h5">Free Standard Delivery</h5>
+                                    <h6 class="delivery-h6">On All Orders Over $50</h6>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h5 class="delivery-h5">Next Day Delivery</h5>
+                                    <h6 class="delivery-h6">From only $3.5</h6>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h5 class="delivery-h5">Worldwide Delivery</h5>
+                                    <h6 class="delivery-h6">To Over 200 Countries</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @{ /* End carousel slider */ }
+
+                @{/*Delivery Options*/}
+                <div class="row visible-xs">
+                    <div class="col-sm-12 col-xs-12">
+                        <h3 class="panel-h3">Sub Brands</h3>
+                        <div class="col-sm-12 col-xs-12 left-filter-category max-panel">
+                            <ul>
+                                @foreach (var subbrands in @Model.SubBrands)
+                                {
+                                    <li id="@subbrands.Id"><a href="javascript:;" ng-click="pm.fetchSubBrandProductList(@subbrands.Id,@Model.Id)">@subbrands.Name</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                @{/*Start Brand Category panel*/}
+                <div class="row">
+                    <div class="col-sm-12 col-xs-12 no-padding">
+                        @if (@Model.WidgetImage1 != null)
+                        {
+                            <div class="col-sm-4 col-xs-6">
+                                <a href="@Model.WidgetLink1">  <img ng-src="@Model.WidgetImage1" class="img-responsive " alt="Brand Category" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'" /> </a>
+                            </div>
+                        }
+                        @if (@Model.WidgetImage2 != null)
+                        {
+                            <div class="col-sm-4 col-xs-6">
+                                <a href="@Model.WidgetLink2"> <img ng-src="@Model.WidgetImage2" class="img-responsive " alt="Brand Category" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'" />  </a>
+                            </div>
+                        }
+                        @if (@Model.WidgetImage3 != null)
+                        {
+                            <div class="col-sm-4 col-xs-6">
+                                <a href="@Model.WidgetLink3">  <img ng-src="@Model.WidgetImage3" class="img-responsive " alt="Brand Category" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'" /> </a>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="delivery-option-bar">
+                        <div class="col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1">
+                            <div class="row">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row padding-bottom-lg">
+                    <div class="absolute-pos col-lg-7 manufBox ">
+                        <div>
+                            <h2 class="brand-h2">@Model.Name</h2>
+                            <p class="brand-p">
+                                @Html.Raw(@Model.Description)
+                            </p>
+                        </div>
+                    </div>
+                    <div class='col-xs-12 col-sm-9 col-md-5 col-lg-5 no-padding brandVideo'>
+                        <iframe width='320' height='300' src="https://www.youtube.com/embed/@Model.VideoId" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    @*<div class="col-sm-4 no-padding">
+                            <video width="320" height="240" controls>
+                                <source src="@Model.BrandDetailList.VideoId " type=" video/mp4">
+                            </video>
+                        </div>*@
+                </div>
+                @{/*End Brand Category panel*/}
+            </div>
+
+            @{ /*Start brand product row*/ }
+
+            <div class="col-sm-8 col-xs-12 pull-right no-padding margin-bottom-sm" ng-show="pm.subBrandProducts.total">
+                <div class="col-sm-5 col-xs-12 no-padding text-right margin-top-xs">
+                    <form class="form-inline">
+                        <div class="form-group no-margin-bottom">
+                            <label for="Refine By" class="font-sm">
+                                @LT("ProductListing.Label.Showing", "Showing") <strong ng-bind="((pm.subBrandProducts.currentPage-1) * pm.subBrandProducts.pageSize) +1">
+                                </strong> @LT("ProductListing.Label.To", "To")
+                                <span ng-hide="pm.subBrandProducts.total<(pm.subBrandProducts.currentPage * pm.subBrandProducts.pageSize)">
+                                    <strong ng-bind="pm.subBrandProducts.currentPage * pm.subBrandProducts.pageSize"></strong>
+                                </span>
+                                <span ng-show="pm.subBrandProducts.total<(pm.subBrandProducts.currentPage * pm.subBrandProducts.pageSize)">
+                                    <strong ng-bind="pm.subBrandProducts.total"></strong>
+                                </span>
+                                @LT("ProductListing.Label.Of", "Of") <strong ng-bind="pm.subBrandProducts.total"></strong> @LT("ProductListing.Label.Results", "Results")
+                            </label>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-sm-7 col-xs-12 no-padding text-right" ng-hide="pm.subBrandProducts.total<=12">
+                    <div paging
+                         page="pm.subBrandProducts.currentPage"
+                         page-size="pm.subBrandProducts.pageSize"
+                         total="pm.subBrandProducts.total"
+                         disabled="false"
+                         adjacent="1"
+                         class="small row text-right"
+                         text-next="&gt;"
+                         text-prev="&lt;"
+                         show-prev-next="true"
+                         show-first-last="false"
+                         paging-action="pm.subBrandProducts.currentPage=page;pm.subBrandProducts.pageSize=pm.subBrandProducts.pageSize;pm.subBrandPagination(pm.subBrandProducts);">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-xs-12 no-padding products" ng-show="pm.subBrandProducts.length>0">
+                @{
+/*
+Name : Product Listing grid
+Purpuse : show brands related products
+*/
+                }
+                <div class="col-md-4 col-sm-6 col-xs-6 col-md-4 resultContainer" ng-repeat="product in pm.subBrandPaginated">
+                    @Html.Partial("~/Views/Search/Layout1/_ProductWidget.cshtml")
+                    @{ /*End brand product row*/ }
+
+                    @{ /*Start product quick view modal*/ }
+                    @Html.Partial("~/Views/Product/Layout1/_QuickViewModal.cshtml", new ProductDetailModel { })
+                    @{ /*Start product quick view modal*/ }
+                </div>
+                @{ /*End Brand product grid*/ }
+            </div>
+
+            <div class="col-sm-8 col-xs-12 pull-right no-padding margin-bottom-sm" ng-show="pm.subBrandProducts.total">
+                <div class="col-sm-5 col-xs-12 no-padding text-right margin-top-xs">
+                    <form class="form-inline">
+                        <div class="form-group no-margin-bottom">
+                            <label for="Refine By" class="font-sm">
+                                @LT("ProductListing.Label.Showing", "Showing") <strong ng-bind="((pm.subBrandProducts.currentPage-1) * pm.subBrandProducts.pageSize) +1">
+                                </strong> @LT("ProductListing.Label.To", "To")
+                                <span ng-hide="pm.subBrandProducts.total<(pm.subBrandProducts.currentPage * pm.subBrandProducts.pageSize)">
+                                    <strong ng-bind="pm.subBrandProducts.currentPage * pm.subBrandProducts.pageSize"></strong>
+                                </span>
+                                <span ng-show="pm.subBrandProducts.total<(pm.subBrandProducts.currentPage * pm.subBrandProducts.pageSize)">
+                                    <strong ng-bind="pm.subBrandProducts.total"></strong>
+                                </span>
+                                @LT("ProductListing.Label.Of", "Of") <strong ng-bind="pm.subBrandProducts.total"></strong> @LT("ProductListing.Label.Results", "Results")
+                            </label>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-sm-7 col-xs-12 no-padding text-right" ng-hide="pm.subBrandProducts.total<=12">
+                    <div paging
+                         page="pm.subBrandProducts.currentPage"
+                         page-size="pm.subBrandProducts.pageSize"
+                         total="pm.subBrandProducts.total"
+                         disabled="false"
+                         adjacent="1"
+                         class="small row text-right"
+                         text-next="&gt;"
+                         text-prev="&lt;"
+                         show-prev-next="true"
+                         show-first-last="false"
+                         paging-action="pm.subBrandProducts.currentPage=page;pm.subBrandProducts.pageSize=pm.subBrandProducts.pageSize;pm.subBrandPagination(pm.subBrandProducts);">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts{
+    <script>
+        var searchDetailProductUrl = '@(Html.BuildUrlFromExpression<ProductController>(c => c.ProductDetails("")))';
+        var addToWishlistUrl = '@(Html.BuildUrlFromExpression<AccountController>(c => c.AddProductToWishlist(null)))';
+        var fetchSubBrandProducts  =  '@(Html.BuildUrlFromExpression<BrandController>(c => c.SubBrandProducts(null, null)))';
+        var productUrl = '@(Html.BuildUrlFromExpression<ProductController>(c => c.ProductDetails("")))';
+        window.app.constant('productConfig',{
+            searchDetailProductUrl : searchDetailProductUrl,
+            addToWishlistUrl : addToWishlistUrl,
+            fetchSubBrandProducts : fetchSubBrandProducts,
+            productUrl : productUrl
+        });
+        window.app.constant('model', @Html.JsonFor(Model));
+    </script>
+}

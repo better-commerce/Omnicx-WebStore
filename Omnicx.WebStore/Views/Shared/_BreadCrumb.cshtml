@@ -1,0 +1,11 @@
+﻿@model Omnicx.API.SDK.Models.Catalog.SlugModel
+
+@if (Model != null)
+{   
+    <li><a href="/@Model.Slug">@Model.Title</a></li>
+    if (Model.ChildSlug != null)
+    {
+        @Html.Partial("~/Views/Shared/_BreadCrumb.cshtml", Model.ChildSlug);
+    }
+}
+

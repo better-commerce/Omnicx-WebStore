@@ -1,0 +1,118 @@
+﻿@{
+/*
+    Name: Fluid Layout
+    Purpose: CMS Layout for using Full with for the screen
+    Structure: /Views/Shared/Layout1/_LayoutCMS.cshtml
+    Contains (Partial Views Used):
+        a-/Views/Shared/Layout1/_LayoutHeadTag.cshtml
+        b-/Views/Shared/Layout1/_LayoutHeader.cshtml
+        c-/Views/Shared/Layout1/_SearchBox.cshtml
+        d-/Views/Shared/Layout1/_LayoutFooter.cshtml
+
+    Contained In (Where we Use this View):
+        a-/Views/Page/Layout1/DynamicPage.cshtml
+        b-/Views/Page/Layout1/Index.cshtml
+    */
+}
+<!DOCTYPE html>
+@using Microsoft.Web.Mvc
+@using Omnicx.WebStore.Core.Controllers
+@using Omnicx.API.SDK.Models
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
+
+<html ng-app="btApp" ng-controller="globalCtrl as gm" id="sidebarFix">
+
+@Html.Partial("~/Views/Shared/Layout1/_LayoutHeadTag.cshtml")
+<body>
+    @RenderSection("siteheader", required: false)
+    <header class="siteHeader">
+        @Html.Partial("~/Views/Shared/Layout1/_LayoutHeader.cshtml")
+        <div class="container"></div>
+        <div id="all">
+            <div id="content" class="clearfix">
+                @RenderBody()
+            </div>
+        </div>
+        @{/*Search popup for Mobile View*/}
+        <div class="modal fade in" id="globalSearch" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <a class="text-center" href="/">
+                            <img src="~/assets/theme/ocx/images/logo-small.png" alt="OCX Store logo" style="margin-top: -10px; margin-left: 15px;"><span class="sr-only">@LT("Header.Text.GoHome", "OCX Store - go to homepage")</span>
+                        </a>
+                        <button type="button" class="close search-close-btn" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">@LT("Checkout.Button.Close", "Close")</span></button>
+                    </div>
+                    <div class="modal-body no-padding">
+                        <div class="col-sm-12 col-xs-12">
+                            @Html.Partial("~/Views/Shared/Layout1/_SearchBox.cshtml")
+                        </div>
+                    </div>
+                    <div class="modal-footer"></div>
+                </div>
+            </div>
+        </div>            
+    </header>
+    @*Footer*@
+    <div class="dvloader">
+        <span class="global-loader">
+            <img src="~/assets/theme/ocx/images/loader.svg" />
+        </span>
+    </div>
+    @Html.Partial("~/Views/Shared/Layout1/_LayoutFooter.cshtml")   
+    @section scripts{}
+    @{
+        var pcaAccessCode = "";
+        if (SessionContext.CurrentSiteConfig != null && SessionContext.CurrentSiteConfig.GeoLocators != null)
+        {
+            var pca = SessionContext.CurrentSiteConfig.GeoLocators.FirstOrDefault(x => x.PluginCode == Omnicx.API.SDK.Entities.GeoLocatorPlugin.PCA.ToString());
+            if (pca != null)
+            {
+                pcaAccessCode = pca.AccessKey;
+            }
+        }
+        <script>
+            var pcaAccessCode = "@pcaAccessCode";
+        </script>
+    }
+
+    @RenderSection("scripts", required: false)
+    
+    <script>
+
+        var setContactForm = '@(Html.BuildUrlFromExpression<CommonController>(c => c.ContactForm(null)))';
+        var getBasketUrl = '@(Html.BuildUrlFromExpression<BasketController>(c => c.GetBasketData()))';
+        var addToBasket = '@(Html.BuildUrlFromExpression<BasketController>(c => c.AddtoBasket(null)))';
+        var signIn = '@(Html.BuildUrlFromExpression<AccountController>(c => c.SignIn(null)))';
+        var register = '@(Html.BuildUrlFromExpression<AccountController>(c => c.Registration(null)))';
+        var getShippingMethods = '@(Html.BuildUrlFromExpression<BasketController>(c => c.GetShippingMethods("")))';
+        var updateShipping = '@(Html.BuildUrlFromExpression<BasketController>(c => c.UpdateShipping(null,null,null)))';
+        var applyPromoCode = '@(Html.BuildUrlFromExpression<BasketController>(c => c.ApplyPromoCode(null,null)))';
+        var currencySettingUrl = '@(Html.BuildUrlFromExpression<HomeController>(c => c.UpdateCurrencySetting()))';
+        var paymentMethodsUrl = '@(Html.BuildUrlFromExpression<CheckoutController>(c => c.GetPaymentMethods()))';
+        var newsLetterSubscription = '@(Html.BuildUrlFromExpression<AccountController>(c => c.NewsletterSubscription(null)))';
+        var removePromoCode = '@(Html.BuildUrlFromExpression<BasketController>(c => c.RemovePromoCode("","")))';
+        var forgotPassword = '@(Html.BuildUrlFromExpression<AccountController>(c => c.ForgotPassword(null)))';
+        var bulkAddproduct = '@(Html.BuildUrlFromExpression<BasketController>(c=> c.BulkAddProduct(null)))';
+        var getDefaultCountryUrl = '@(Html.BuildUrlFromExpression<AccountController>(c => c.GetDefaultCountry()))';
+        window.app.constant('globalConfig', {
+            setContactForm: setContactForm,
+            getBasketUrl: getBasketUrl,
+            addToBasket: addToBasket,
+            signIn: signIn,
+            register: register,
+            getShippingMethods: getShippingMethods,
+            updateShipping: updateShipping,
+            applyPromoCode: applyPromoCode,
+            currencySettingUrl: currencySettingUrl,
+            paymentMethodsUrl: paymentMethodsUrl,
+            newsLetterSubscription: newsLetterSubscription,
+            removePromoCode: removePromoCode,
+            forgotPassword: forgotPassword,
+            bulkAddproduct: bulkAddproduct,
+            pcaAccessCode: pcaAccessCode,
+            getDefaultCountryUrl: getDefaultCountryUrl
+        });
+    </script>
+</body>
+</html>

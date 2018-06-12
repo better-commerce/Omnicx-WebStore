@@ -1,0 +1,121 @@
+﻿@{
+/*
+    Name: Wishlist
+    Purpose: Show wishlist Items list of Logged In User 
+    Structure: /Views/Account/Layout1/Wishlist.cshtml
+    Contains (Partial Views Used): 
+        a-/Views/Shared/Layout1/_Layout.cshtml.cshtml   (For base Structure)
+        b-/Views/Account/Layout1/_MobileSideNav.cshtml  (Navigatiopn For Mobile)
+        c-/Views/Account/Layout1/_SideNav.cshtml        (Navigation For Desktop and Big Screen)
+        d-/Views/Search/Layout1/_ProductWidget.cshtml   (Item List Structure Widget)
+        e-/Views/Product/Layout1/_QuickViewModal.cshtml (Product Quick view Modal)
+
+    Contained In (Where we Use this View):
+     a-/Views/Account/Layout1/_MobileSideNav.cshtml  (Navigatiopn Link Mobile)
+     b-/Views/Account/Layout1/_SideNav.cshtml        (Navigation Link Desktop and Big Screen)
+    */
+}
+@using Microsoft.Web.Mvc
+@using Omnicx.API.SDK.Entities
+@using Omnicx.WebStore.Core.Controllers
+@using Omnicx.WebStore.Framework.Helpers
+@using Omnicx.API.SDK.Models.Helpers
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<List<Omnicx.API.SDK.Models.Catalog.ProductModel>>
+
+@{
+    ViewBag.Title = "Wishlist";
+    Layout = "~/Views/Shared/Layout1/_Layout.cshtml";
+    var userRole = SessionContext.CurrentUserRole;
+
+}
+<div class="row">
+    <div class="col-md-12">
+        <ul class="breadcrumb">
+            <li>
+                <a href="/">@LT("MyAccount.Links.Home", "Home")</a>
+            </li>
+            <li>@LT("MyAccount.Title.Wishlist", "My Wishlist")</li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12 col-xs-12">
+        <h3 class="panel-h2 hidden-xs">@LT("MyAccount.Text.Name", "My Wishlist")</h3>
+    </div>
+</div>
+<div class="row" ng-controller="productCtrl as pm" ng-init="fromWishList=true">    
+    <div class="col-xs-12 margin-bottom-lg visible-xs" id="exTab1">
+       
+        @Html.Partial("~/Views/Account/Layout1/_MobileSideNav.cshtml")
+    </div>
+    <div class="col-md-3 col-sm-4 col-xs-12 hidden-xs">
+        @Html.Partial("~/Views/Account/Layout1/_SideNav.cshtml")
+    </div>
+
+    <div class="products col-md-9 col-sm-8 col-xs-12" ng-init="pm.productModel=pm.model;pm.forDelete=true;pm.isWhislist=true;">
+        <div class="col-sm-12 col-xs-12 pull-right no-padding" ng-show="pm.productModel!=null && pm.productModel.length>0" ng-cloak>
+            <div class="form-group">
+                <label class="control control--checkbox ng-binding">
+                    <input type="checkbox" ng-model="isChecked" name="basketToWishList" class="ng-valid ng-dirty ng-valid-parse ng-touched ng-empty" data-toggle="modal" data-target="#myModal">
+                    <label for="basketToWishList">@LT("MyAccount.Label.MoveInBasket", "Move all in Basket")</label>
+                    <div class="control__indicator"></div>
+                </label>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-6 resultContainerRelated" ng-repeat="product in pm.productModel track by $index" ng-cloak>
+            @Html.Partial("~/Views/Search/Layout1/_ProductWidget.cshtml")
+        </div>
+
+        @Html.Partial("~/Views/Product/Layout1/_QuickViewModal.cshtml", new Omnicx.API.SDK.Models.Catalog.ProductDetailModel { })
+
+        @if (Model.Count <= 0)
+        {
+            <div class="text-center">
+                <div class="col-xs-12 nodata-customer">
+                    <i class="fa fa-heart"></i>
+                    <h1>@LT("MyAccount.Basket.NoWishlist", "No Wishlist Available")</h1>
+                </div>
+            </div>
+        }
+
+    </div>
+    
+   @{/*Alert modal for moving product to basket*/}
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" ng-class="isChecked=false;">&times;</button>
+                    <h4 class="modal-title">@LT("MyAccount.Basket.MovingToBasket", "Moving all products in basket")</h4>                    
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-12 col-xs-12">
+                            <p class="text-black">@LT("MyAccount.Basket.ConfirmationMoveToBasket", "Are you sure want to move all the products in Basket?")</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success pull-right" ng-click="pm.addMultipleToBasket(pm.productModel)" data-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @{/*End of moving product modal to basket*/}
+</div>
+<!-- *** RIGHT COLUMN END *** -->
+@section scripts{
+    <script>
+        var searchDetailProductUrl = '@(Html.BuildUrlFromExpression<ProductController>(c => c.ProductDetails("")))';
+        var productUrl = '@(Html.BuildUrlFromExpression<ProductController>(c => c.ProductDetails("")))';
+        var addToWishlistUrl = '@(Html.BuildUrlFromExpression<AccountController>(c => c.AddProductToWishlist(null)))';
+        var wishlistToBasket = '@(Html.BuildUrlFromExpression<BasketController>(c => c.WishlistToBasket(null)))';
+        window.app.constant('productConfig',{
+            searchDetailProductUrl : searchDetailProductUrl,
+            productUrl : productUrl,
+            addToWishlistUrl : addToWishlistUrl,
+            wishlistToBasket : wishlistToBasket
+        });
+        window.app.constant('model', @Html.JsonFor(Model));
+    </script>
+}

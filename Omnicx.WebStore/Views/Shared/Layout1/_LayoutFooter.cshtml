@@ -1,0 +1,35 @@
+﻿@using Omnicx.API.SDK.Entities
+@using Omnicx.API.SDK.Models.Commerce
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
+@{
+    var StoreTheme = ConfigKeys.StoreTheme;
+}
+
+<div class="col-sm-12 col-xs-12 no-padding hidden-xs bg-black padding-top-sm">
+    @Html.Action("GetFooter", "Home")
+</div>
+<div class="col-sm-12 col-xs-12 no-padding visible-xs footerMenu-padding hide-dsk">
+    @Html.Action("GetFooterMobile", "Home")
+</div>
+<div class="col-sm-12 col-xs-12 no-padding bg-black padding-top-sm">
+    <div id="copyright">
+        <div class="container footer-copyright-border">
+            <div class="col-md-12 no-padding">
+                <p class="pull-left">&copy;2017-18. @LT("Footer.Text.Omnicx", "OCX Store Powered by ")<a href="https://www.omnicx.com/" class="external">OmniCX</a></p>
+                <p class="pull-right">
+                    <img src="~/assets/theme/ocx/images/payment.png" alt="payments accepted">
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@Html.Action("CurrencySettings", "Home")
+
+@Html.Partial("~/Views/Shared/Layout1/_Login.cshtml", new LoginViewModel { Username = "", Password = "" })
+@Html.Partial("~/Views/Shared/Layout1/_Register.cshtml", new UserModel { })
+
+@Scripts.Render("~/bundles/jq-ang")
+@Scripts.Render("~/bundles/custom-libs")
+@Scripts.Render("~/bundles/app-js")

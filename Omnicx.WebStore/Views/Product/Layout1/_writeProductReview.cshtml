@@ -1,0 +1,100 @@
+﻿@{
+/*
+    Name: Product Review Form
+    Purpose: Review Form
+    Structure: /Views/Product/Layout1/_WriteProductReview.cshtml
+    Contains (Partial Views Used):
+
+    Contained In (Where we Use this View):
+        a-/Views/Product/Layout1/_ProductReviews.cshtml         (product Reviews)
+    */
+}
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Catalog.ProductReviewAddModel>
+@using Omnicx.WebStore.Framework.Helpers
+@{
+    var addReview = Html.Angular().ModelFor("pm.model.review");
+}
+<div class="col-sm-6" ng-show="pm.writeReview" ng-init="pm.configRating(0);">
+    <form name="reviewForm" ng-submit="pm.model.review.rating=pm.trueRating.length;pm.addReview(pm.productId,pm.model.review)" novalidate>
+        <div class="form-group">
+            <label>@LT("ProductReview.Label.OverallRating" , "Overall rating")</label><br />
+            <i class="fa fa-star fa-2x" ng-repeat="1 in pm.trueRating" ng-click="pm.configRating($index+1)">&nbsp;</i>
+            <i class="fa fa-star-o  fa-2x" ng-repeat="1 in pm.falseRating" ng-click="pm.configRating(pm.trueRating.length+$index+1)">&nbsp;</i>
+        </div>
+        <div class="form-group">
+            @addReview.FormGroupFor(x => x.Title)
+        </div>
+        <div class="form-group">
+            <label>@LT("ProductReview.Label.Comment" , "Comment")</label>
+            <textarea class="form-control ng-pristine ng-valid" cols="20" id="Comment" name="Comment" ng-model="pm.model.review.comment" placeholder="" rows="7"></textarea>
+        </div>
+        <div class="form-group">
+            <label class="control control--checkbox ng-binding">
+                @LT("ProductReview.Label.Recommend" , "Would you recommend this product")
+                <input type="checkbox" ng-model="pm.model.review.isRecommended" class="ng-pristine ng-valid">
+                <div class="control__indicator"></div>
+            </label>
+        </div>
+        <div class="form-group" ng-repeat="section in pm.reviewSections track by $index">
+            <label ng-bind="section.sectionName"></label>
+            <label class="control control--checkbox ng-binding" ng-repeat="option in section.options track by $index">
+                <span ng-bind="option.name"></span>
+                <input type="checkbox" class="ng-pristine ng-valid" ng-model="option.isChecked">
+                <div class="control__indicator"></div>
+            </label>
+        </div> 
+        @*<div class="form-group">
+            <label>Additional Data</label>
+            <label class="control control--radio">
+                <strong>Text1</strong>
+                <input type="radio" class="ng-pristine ng-valid" ng-click="pm.model.review.additionalData='good'">
+                <div class="control__indicator"></div>
+            </label>
+            <label class="control control--radio">
+                <strong>Text1</strong>
+                <input id="additionalData" name="additionalData" type="radio" class="ng-pristine ng-valid" ng-click="pm.model.review.additionalData='good'">
+                <div class="control__indicator"></div>
+            </label>
+            <label class="control control--radio">
+                <strong>Text1</strong>
+                <input id="additionalData" name="additionalData" type="radio" class="ng-pristine ng-valid" ng-click="pm.model.review.additionalData='good'">
+                <div class="control__indicator"></div>
+            </label>
+            <label class="control control--radio">
+                <strong>Text1</strong>
+                <input id="additionalData" name="additionalData" type="radio" class="ng-pristine ng-valid" ng-click="pm.model.review.additionalData='good'">
+                <div class="control__indicator"></div>
+            </label>
+            <label class="control control--radio">
+                <strong>Text1</strong>
+                <input id="additionalData" name="additionalData" type="radio" class="ng-pristine ng-valid" ng-click="pm.model.review.additionalData='good'">
+                <div class="control__indicator"></div>
+            </label>
+        </div>*@
+        <div class="form-group">
+            @addReview.FormGroupFor(x => x.Nickname)
+        </div>
+        <div class="form-group">
+            @addReview.FormGroupFor(x => x.Location)
+        </div>
+        <div class="form-group">
+            <select name="gender" tabindex="1" class="form-control" data-label="Title" ng-model="pm.model.review.gender">
+                <option ng-selected="pm.model.review.gender == null" value="Gender">@LT("Review.Label.Gender" , "Gender")</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <button class="animate btn-primary" type="submit">
+               @LT("ProductReview.Label.Submit" , " Submit your Review")
+            </button>
+            <button class="animate btn-bordered" type="button" ng-click="pm.cancel()">
+                @LT("ProductReview.Label.Cancel" , "Cancel")
+            </button>
+        </div>
+    </form>
+
+</div>
+

@@ -1,0 +1,29 @@
+﻿@using Omnicx.API.SDK.Entities
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
+
+@if (SessionContext.CurrentUser != null)
+{
+    <li>
+
+        @if (SessionContext.CurrentUser.FirstName != null)
+        {
+            <span class="userControls__linkSeperator">Hi! </span>
+                            <a class="userControls__accountLinks" href="@Url.Action("MyAccount", "Account")">@SessionContext.CurrentUser.FirstName @SessionContext.CurrentUser.LastName</a>
+        }
+        else
+        {
+            <a class="userControls__accountLinks" href="@Url.Action("MyAccount", "Account")">@LT("MyAccount.Text.Name", "My Account")</a>
+        }
+        <span class="userControls__linkSeperator">/</span>
+        <a class="userControls__accountLinks" href="@Url.Action("Logout", "Account")">@LT("Global.Buttons.Logout", "Logout")</a>
+    </li>
+}
+else
+{
+    <li>
+        <span class="userControls__linkSeperator">Hi!</span>
+        <a class="userControls__accountLinks" href="@Url.Action("SignIn", "Account")">Sign In</a>
+        <span class="userControls__linkSeperator">or</span>
+        <a class="userControls__accountLinks" href="@Url.Action("SignUp", "Account")">Register</a>
+    </li>
+}

@@ -1,0 +1,20 @@
+﻿@{
+/*
+    Name: Search Box
+    Purpose: Autocomplete Search box 
+    Structure: /Views/Shared/Layout1/_SearchBox.cshtml
+    Contains (Partial Views Used):
+
+    Contained In (Where we Use this View):
+        a-/Views/Shared/Layout1/_HeaderLayout.cshtml        (Link in Top Header Bar)
+        b-/Views/Shared/Layout1/_MobileHeaderLayout.cshtml  (Link in Mobile Header)
+    */
+}
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
+<bt-auto-complete id="ex1" placeholder="@LT("SearchBox.Text.Search", "I'm looking for.. ")" pause="1" selectedobject="autoCompleteSelected"
+                  localdata="" searchfields="" titlefield="name" minlength="2"
+                  descriptionfield="name"
+                  imagefield="url"
+                  inputclass="form-control siteSearch__input" matchclass="autocomplete-highlight"
+                  url="//@Request.ServerVariables["HTTP_HOST"]/search/SearchAutoComplete/?freeText="
+                  returnkeyios="@LT("SearchBox.Text.Search", "Search")" />

@@ -1,0 +1,70 @@
+﻿@{
+/*
+    Name: Body Tags
+    Purpose: Place all the css and head tags
+    Structure: /Views/Shared/Layout1/_LayoutHeadTag.cshtml
+    Contains (Partial Views Used):
+
+    Contained In (Where we Use this View):
+        a-/Views/Shared/Layout1/_Layout.cshtml
+        b-/Views/Shared/Layout1/_LayoutAccount.cshtml
+        c-/Views/Shared/Layout1/_LayoutBlog.cshtml
+        d-/Views/Shared/Layout1/_LayoutCMS.cshtml
+        e-/Views/Shared/Layout1/_OpcLayout.cshtml
+    */
+}
+@using Omnicx.API.SDK.Entities
+@using Omnicx.API.SDK.Helpers
+@{
+    var StoreTheme = ConfigKeys.StoreTheme;
+}
+<head>
+    <title>@Html.Title(false)</title>
+    <meta name="description" content="@(Html.MetaDescription())" />
+    <meta name="title" content="@(Html.MetaTitle())">
+    <meta name="keywords" content="@(Html.MetaKeywords())">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    <link rel="apple-touch-icon" sizes="57x57" href="/assets/theme/@StoreTheme/images/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/assets/theme/@StoreTheme/images/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/theme/@StoreTheme/images/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/theme/@StoreTheme/images/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/assets/theme/@StoreTheme/images/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/assets/theme/@StoreTheme/images/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/theme/@StoreTheme/images/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/theme/@StoreTheme/images/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/theme/@StoreTheme/images/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/theme/@StoreTheme/images/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/theme/@StoreTheme/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/assets/theme/@StoreTheme/images/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/theme/@StoreTheme/images/favicon/favicon-16x16.png">
+
+    <link rel="shortcut icon" href="/assets/theme/@StoreTheme/images/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/assets/theme/@StoreTheme/images/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    @Html.CanonicalUrl()
+
+    <link href='//fonts.googleapis.com/css?family=Montserrat:400,700|Merriweather:400,400italic' rel='stylesheet' type='text/css'>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    @Styles.Render("~/bundles/style-css")
+
+    <!-- Responsivity for older IE -->
+    <!--[if lt IE 9]>
+        <script src="~/assets/js/js-lib/respond.min.js"></script>
+    <![endif]-->
+    @*Data layer always placed above the GTM container snippet because otherwise, the GTM tag may stop firing or data layer variabels are no longer available to the container tag*@
+    <script>
+            dataLayer = @Html.DataLayer();
+    </script>
+
+    @if (@Html.GetOmnilyticId().ToString() != "")
+    {
+        <script src="@Html.GetOmnilyticUrl()"></script>
+        <script type="text/javascript">omnilytics.init('@Html.GetOmnilyticId()', 'dataLayer')</script>
+    }
+</head>

@@ -1,0 +1,861 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:gvxGlobal="https://gapi.givex.com/1.0/messages_global" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="https://gapi.givex.com/1.0/binding_trans" xmlns:gvxTrans="https://gapi.givex.com/1.0/messages_trans" name="gapi" targetNamespace="https://gapi.givex.com/1.0/binding_trans" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <import namespace="https://gapi.givex.com/1.0/messages_trans" location="messages_trans.wsdl" />
+  <import namespace="https://gapi.givex.com/1.0/messages_global" location="messages_global.wsdl" />
+  <types />
+  <portType name="transPortType">
+    <operation name="GetBalance">
+      <input message="gvxTrans:getBalanceRequest" />
+      <output message="gvxTrans:getBalanceResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="GetHistory">
+      <input message="gvxTrans:getHistoryRequest" />
+      <output message="gvxTrans:getHistoryResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="Redeem">
+      <input message="gvxTrans:redeemRequest" />
+      <output message="gvxTrans:redeemResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="RedeemForced">
+      <input message="gvxTrans:redeemForcedRequest" />
+      <output message="gvxTrans:redeemForcedResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="CashBack">
+      <input message="gvxTrans:cashBackRequest" />
+      <output message="gvxTrans:cashBackResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="CashBackForced">
+      <input message="gvxTrans:cashBackForcedRequest" />
+      <output message="gvxTrans:cashBackForcedResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="PreAuth">
+      <input message="gvxTrans:preAuthRequest" />
+      <output message="gvxTrans:preAuthResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="PostAuth">
+      <input message="gvxTrans:postAuthRequest" />
+      <output message="gvxTrans:postAuthResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="Register">
+      <input message="gvxTrans:registerRequest" />
+      <output message="gvxTrans:registerResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="Activate">
+      <input message="gvxTrans:activateRequest" />
+      <output message="gvxTrans:activateResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="Increment">
+      <input message="gvxTrans:incrementRequest" />
+      <output message="gvxTrans:incrementResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="Adjust">
+      <input message="gvxTrans:adjustRequest" />
+      <output message="gvxTrans:adjustResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="MerchandiseCredit">
+      <input message="gvxTrans:merchandiseCreditRequest" />
+      <output message="gvxTrans:merchandiseCreditResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="Cancel">
+      <input message="gvxTrans:cancelRequest" />
+      <output message="gvxTrans:cancelResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="Reversal">
+      <input message="gvxTrans:reversalRequest" />
+      <output message="gvxTrans:reversalResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="PointsIssue">
+      <input message="gvxTrans:pointsIssueRequest" />
+      <output message="gvxTrans:pointsIssueResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="PointsRedeem">
+      <input message="gvxTrans:pointsRedeemRequest" />
+      <output message="gvxTrans:pointsRedeemResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="PointsCancel">
+      <input message="gvxTrans:pointsCancelRequest" />
+      <output message="gvxTrans:pointsCancelResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="BalanceTransfer">
+      <input message="gvxTrans:balanceTransferRequest" />
+      <output message="gvxTrans:balanceTransferResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="TerminalRegister">
+      <input message="gvxTrans:terminalRegisterRequest" />
+      <output message="gvxTrans:terminalRegisterResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="CashOut">
+      <input message="gvxTrans:cashOutRequest" />
+      <output message="gvxTrans:cashOutResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="VerifyCustomer">
+      <input message="gvxTrans:verifyCustomerRequest" />
+      <output message="gvxTrans:verifyCustomerResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="CWSNewAccount">
+      <input message="gvxTrans:CWSNewAccountRequest" />
+      <output message="gvxTrans:CWSNewAccountResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="CWSUpdateAccount">
+      <input message="gvxTrans:CWSUpdateAccountRequest" />
+      <output message="gvxTrans:CWSUpdateAccountResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="CWSVerifyLogin">
+      <input message="gvxTrans:CWSVerifyLoginRequest" />
+      <output message="gvxTrans:CWSVerifyLoginResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="CWSAccountCardList">
+      <input message="gvxTrans:CWSAccountCardListRequest" />
+      <output message="gvxTrans:CWSAccountCardListResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="CWSLostCard">
+      <input message="gvxTrans:CWSLostCardRequest" />
+      <output message="gvxTrans:CWSLostCardResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="CWSAccountInfo">
+      <input message="gvxTrans:CWSAccountInfoRequest" />
+      <output message="gvxTrans:CWSAccountInfoResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="CWSAddCard">
+      <input message="gvxTrans:CWSAddCardRequest" />
+      <output message="gvxTrans:CWSAddCardResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="CWSRemoveCard">
+      <input message="gvxTrans:CWSRemoveCardRequest" />
+      <output message="gvxTrans:CWSRemoveCardResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="CWSUpdatePassword">
+      <input message="gvxTrans:CWSUpdatePasswordRequest" />
+      <output message="gvxTrans:CWSUpdatePasswordResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="CWSResetPassword">
+      <input message="gvxTrans:CWSResetPasswordRequest" />
+      <output message="gvxTrans:CWSResetPasswordResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="CWSGiftCardOrder">
+      <input message="gvxTrans:CWSGiftCardOrderRequest" />
+      <output message="gvxTrans:CWSGiftCardOrderResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="CWSEcertOrder">
+      <input message="gvxTrans:CWSEcertOrderRequest" />
+      <output message="gvxTrans:CWSEcertOrderResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="CWSCancelOrder">
+      <input message="gvxTrans:CWSCancelOrderRequest" />
+      <output message="gvxTrans:CWSCancelOrderResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="CWSLogin">
+      <input message="gvxTrans:CWSLoginRequest" />
+      <output message="gvxTrans:CWSLoginResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="CWSLogout">
+      <input message="gvxTrans:CWSLogoutRequest" />
+      <output message="gvxTrans:CWSLogoutResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="GetVersion">
+      <input message="gvxGlobal:getVersionRequest" />
+      <output message="gvxGlobal:getVersionResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="GetDescription">
+      <input message="gvxGlobal:getDescriptionRequest" />
+      <output message="gvxGlobal:getDescriptionResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="PackageIssuance">
+      <input message="gvxTrans:PackageIssuanceRequest" />
+      <output message="gvxTrans:PackageIssuanceResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="PackageItemRedemption">
+      <input message="gvxTrans:PackageItemRedemptionRequest" />
+      <output message="gvxTrans:PackageItemRedemptionResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="PackageBalance">
+      <input message="gvxTrans:PackageBalanceRequest" />
+      <output message="gvxTrans:PackageBalanceResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="PackageAdjustment">
+      <input message="gvxTrans:PackageAdjustmentRequest" />
+      <output message="gvxTrans:PackageAdjustmentResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="CertificateGrouping">
+      <input message="gvxTrans:CertificateGroupingRequest" />
+      <output message="gvxTrans:CertificateGroupingResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="PackageCancel">
+      <input message="gvxTrans:PackageCancelRequest" />
+      <output message="gvxTrans:PackageCancelResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="PackageReversal">
+      <input message="gvxTrans:PackageReversalRequest" />
+      <output message="gvxTrans:PackageReversalResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="ExchangeRate">
+      <input message="gvxTrans:ExchangeRateRequest" />
+      <output message="gvxTrans:ExchangeRateResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="PointsRedemptionHistory">
+      <input message="gvxTrans:PointsRedemptionHistoryRequest" />
+      <output message="gvxTrans:PointsRedemptionHistoryResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="AccountLookup">
+      <input message="gvxTrans:AccountLookupRequest" />
+      <output message="gvxTrans:AccountLookupResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+    <operation name="AccountUpdate">
+      <input message="gvxTrans:AccountUpdateRequest" />
+      <output message="gvxTrans:AccountUpdateResponse" />
+      <fault name="GivexFaultMessage" message="gvxGlobal:GivexFaultMessage" />
+    </operation>
+  </portType>
+  <binding name="transBinding" type="tns:transPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="GetBalance">
+      <soap:operation soapAction="GetBalance" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="GetHistory">
+      <soap:operation soapAction="GetHistory" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Redeem">
+      <soap:operation soapAction="Redeem" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="RedeemForced">
+      <soap:operation soapAction="RedeemForced" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="CashBack">
+      <soap:operation soapAction="CashBack" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="CashBackForced">
+      <soap:operation soapAction="CashBackForced" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="PreAuth">
+      <soap:operation soapAction="PreAuth" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="PostAuth">
+      <soap:operation soapAction="PostAuth" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Register">
+      <soap:operation soapAction="Register" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Activate">
+      <soap:operation soapAction="Activate" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Increment">
+      <soap:operation soapAction="Increment" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Adjust">
+      <soap:operation soapAction="Adjust" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="MerchandiseCredit">
+      <soap:operation soapAction="MerchandiseCredit" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Cancel">
+      <soap:operation soapAction="Cancel" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Reversal">
+      <soap:operation soapAction="Reversal" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="PointsIssue">
+      <soap:operation soapAction="PointsIssue" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="PointsRedeem">
+      <soap:operation soapAction="PointsRedeem" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="PointsCancel">
+      <soap:operation soapAction="PointsCancel" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="BalanceTransfer">
+      <soap:operation soapAction="BalanceTransfer" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="TerminalRegister">
+      <soap:operation soapAction="TerminalRegister" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="CashOut">
+      <soap:operation soapAction="CashOut" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="VerifyCustomer">
+      <soap:operation soapAction="VerifyCustomer" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="CWSNewAccount">
+      <soap:operation soapAction="CWSNewAccount" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="CWSUpdateAccount">
+      <soap:operation soapAction="CWSUpdateAccount" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="CWSVerifyLogin">
+      <soap:operation soapAction="CWSVerifyLogin" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="CWSAccountCardList">
+      <soap:operation soapAction="CWSAccountCardList" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="CWSLostCard">
+      <soap:operation soapAction="CWSLostCard" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="CWSAccountInfo">
+      <soap:operation soapAction="AccountInfo" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="CWSAddCard">
+      <soap:operation soapAction="AddCard" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="CWSRemoveCard">
+      <soap:operation soapAction="RemoveCard" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="CWSUpdatePassword">
+      <soap:operation soapAction="UpdatePassword" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="CWSResetPassword">
+      <soap:operation soapAction="ResetPassword" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="CWSGiftCardOrder">
+      <soap:operation soapAction="GiftCardOrder" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="CWSEcertOrder">
+      <soap:operation soapAction="EcertOrder" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="CWSCancelOrder">
+      <soap:operation soapAction="CancelOrder" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="CWSLogin">
+      <soap:operation soapAction="Login" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="CWSLogout">
+      <soap:operation soapAction="Logout" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="GetVersion">
+      <soap:operation soapAction="GetVersion" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="GetDescription">
+      <soap:operation soapAction="GetDescription" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="PackageIssuance">
+      <soap:operation soapAction="PackageIssuance" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="PackageItemRedemption">
+      <soap:operation soapAction="PackageItemRedemption" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="PackageBalance">
+      <soap:operation soapAction="PackageBalance" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="PackageAdjustment">
+      <soap:operation soapAction="PackageAdjustment" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="PackageCancel">
+      <soap:operation soapAction="PackageCancel" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="PackageReversal">
+      <soap:operation soapAction="PackageReversal" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="ExchangeRate">
+      <soap:operation soapAction="ExchangeRate" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="PointsRedemptionHistory">
+      <soap:operation soapAction="PointsRedemptionHistory" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="AccountLookup">
+      <soap:operation soapAction="AccountLookup" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="AccountUpdate">
+      <soap:operation soapAction="AccountUpdate" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+    <operation name="CertificateGrouping">
+      <soap:operation soapAction="CertificateGrouping" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GivexFaultMessage">
+        <soap:fault use="literal" name="GivexFaultMessage" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+</definitions>

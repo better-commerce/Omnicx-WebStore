@@ -1,0 +1,96 @@
+﻿@{
+/*
+Name: Blog Navigation
+Purpose: Show all Cat
+Structure: /Views/Blog/Layout1/_BlogNav.cshtml
+Contains (Partial Views Used):
+Contained In (Where we Use this View) :
+    a-/Views/Shared/Layout1/_BlogLayout.cshtml
+*/
+}
+@using Microsoft.Web.Mvc
+@using Omnicx.WebStore.Core.Controllers
+@using Omnicx.API.SDK.Models
+@using Omnicx.WebStore.Core.Helpers
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Site.BlogDetailViewModel>
+
+
+
+<div class="col-sm-12 no-padding bg-gray category-top">
+    <div class="container">
+        <div class="col-sm-12 no-padding bg-data" ng-controller="blogCtrl as bm">
+            <ul class="nav navbar-nav ">
+                @{
+                    for (var i = 0; i < @Model.Categories.Take(5).ToList().Count(); i++)
+                    {
+                        if (@ViewBag.selectedGroup == @Model.Categories[i].GroupName)
+                        {
+                            <li>
+                                <a class="bloglist active-blog-category" href="/@Model.Categories[i].Slug">@Model.Categories[i].GroupName</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a class="bloglist" href="/@Model.Categories[i].Slug">@Model.Categories[i].GroupName</a>
+                            </li>
+                        }
+                    }
+
+
+                    if (Model.Categories.Count > 5)
+                    {
+                        @*<li ng-hide="bm.showMoreClick">
+                            <a href="" class="bloglist" ng-click="bm.showMore()">Show More <i class="fa fa-caret-right"></i></a>
+                        </li>*@
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">More Category<i class="fa fa-caret-down"></i></a>
+                            <ul role="menu" class="dropdown-menu">
+                                @for (var i = 5; i < @Model.Categories.Count(); i++)
+                                {
+
+                                    if (@ViewBag.selectedGroup == @Model.Categories[i].GroupName)
+                                    {
+                                        <li>
+                                            <a class="bloglist active-blog-category" href="/@Model.Categories[i].Slug">@Model.Categories[i].GroupName</a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li>
+                                            <a class="bloglist" href="/@Model.Categories[i].Slug">@Model.Categories[i].GroupName</a>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        </li>
+                    }
+
+                    if (@Model.BlogTypes != null)
+                    {
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Blog Type<i class="fa fa-caret-down"></i></a>
+                            <ul role="menu" class="dropdown-menu">
+                                @foreach (var blog in @Model.BlogTypes)
+                                {
+                                    <li>
+                                        <a class="bloglist active-blog-category" href="/@blog.Slug" >@blog.GroupName</a>
+                                    </li>
+                                }
+                            </ul>
+                        </li>
+                    }
+} 
+                <li class="pull-right">
+                    <form action="/blog/search" method="post">
+                        <div class="form-inline text-right margin-top-2">
+                            <input type="text" name="search" ng-model="searchText" class="form-control width-80" placeholder="Search blog" />
+                            <input type="hidden" name="currentPage" value="1" />
+                            <button type="submit" class="fa fa-search blog-search-btn"></button>
+                        </div>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

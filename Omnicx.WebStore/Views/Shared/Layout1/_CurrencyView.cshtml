@@ -1,0 +1,65 @@
+﻿@{
+/*
+    Name: Currency Selection Modal
+    Purpose: Choose currency and country
+    Structure: /Views/Shared/Layout1/_CurrencyView.cshtml
+    Contains (Partial Views Used):
+
+    Contained In (Where we Use this View):
+        a-/Views/Shared/Layout1/_LayoutHeader.cshtml
+    */
+}
+@using Omnicx.WebStore.Core.Services.Infrastructure
+@using Omnicx.WebStore.Framework.Extensions
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
+    @{ 
+        var country = SessionContext.CurrentSiteConfig.RegionalSettings.DefaultCountry;
+        var lang = SessionContext.CurrentSiteConfig.RegionalSettings.DefaultLanguageCode;
+        var currency = SessionContext.CurrentSiteConfig.RegionalSettings.DefaultCurrencyCode;
+    }
+<section ng-init="country='@country';language='@lang';currency='@currency'">
+    <div class="modal fade" id="currency-modal" tabindex="-1" role="dialog" aria-labelledby="currency" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">                    
+                    <div class="modal-title" id="Login">@LT("Global.Text.CurrencySetting", "Currency Settings")</div>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form ng-submit="gm.currencySettings(currency,language,country,@JsonExtensions.ToJson(Model.currencies))" method="post">
+                        <div class="form-group">
+                            <select ng-model="country" class="form-control">
+                                @foreach (var shipping in @Model.countries)
+                                {
+                                    <option ng-selected="'@shipping.TwoLetterIsoCode'=='@country'" value="@shipping.TwoLetterIsoCode">@shipping.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select ng-model="language" class="form-control">
+                                @foreach (var language in @Model.languages)
+                                {
+                                    <option ng-selected="'@language.LanguageCode'=='@lang'" value="@language.LanguageCode">@language.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select ng-model="currency" class="form-control">
+                                @foreach (var item in @Model.currencies)
+                                {
+                                    <option ng-selected="'@item.CurrencyCode'=='@currency'" value="@item.CurrencyCode">@item.CurrencySymbol @item.CurrencyCode</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12 col-xs-12 text-right">
+                                <button class="animate btn-primary"><i class="fa fa-save"></i>@LT("Global.Buttons.Save", "Save")</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer"></div>
+            </div>
+        </div>
+    </div>
+</section>

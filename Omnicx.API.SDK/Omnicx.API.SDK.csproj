@@ -1,0 +1,1112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{267B329B-0A25-4136-AF47-668C45F0F0CF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Omnicx.API.SDK</RootNamespace>
+    <AssemblyName>Omnicx.API.SDK</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CachingFramework.Redis, Version=7.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CachingFramework.Redis.7.2.0\lib\net45\CachingFramework.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.Core, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.Core.4.3.4.13329\lib\net45-full\DotNetOpenAuth.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.Core.UI, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.Core.UI.4.3.4.13329\lib\net45-full\DotNetOpenAuth.Core.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.InfoCard, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.InfoCard.4.3.4.13329\lib\net45-full\DotNetOpenAuth.InfoCard.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.InfoCard.UI, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.InfoCard.UI.4.3.4.13329\lib\net45-full\DotNetOpenAuth.InfoCard.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Core.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Common.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth.Consumer, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Consumer.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth.ServiceProvider, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.ServiceProvider.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth.ServiceProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth2, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth2.Core.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth2.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth2.AuthorizationServer, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth2.AuthorizationServer.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth2.AuthorizationServer.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth2.Client, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth2.Client.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth2.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth2.Client.UI, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth2.Client.UI.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth2.Client.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth2.ClientAuthorization, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth2.ClientAuthorization.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth2.ClientAuthorization.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth2.ResourceServer, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth2.ResourceServer.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth2.ResourceServer.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OpenId.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.Provider, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Provider.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OpenId.Provider.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.Provider.UI, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Provider.UI.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OpenId.Provider.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty.UI, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.UI.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OpenId.RelyingParty.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.UI, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.UI.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OpenId.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenIdInfoCard.UI, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OpenIdInfoCard.UI.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OpenIdInfoCard.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenIdOAuth, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OpenIdOAuth.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OpenIdOAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlTags, Version=4.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlTags.4.2.0\lib\net45\HtmlTags.dll</HintPath>
+    </Reference>
+    <Reference Include="Humanizer, Version=2.1.0.0, Culture=neutral, PublicKeyToken=979442b78dfc278e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Humanizer.Core.2.1.0\lib\netstandard1.0\Humanizer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Mvc.4.0.1\lib\net45\Microsoft.Practices.Unity.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.Futures.5.0.0\lib\net40\Microsoft.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Omnicx.WebStore.Apps.OAuthHelper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Omnicx.WebStore.Apps.OAuthHelper.1.0.1\lib\net452\Omnicx.WebStore.Apps.OAuthHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="Omnicx.WebStore.Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Omnicx.WebStore.Framework.1.0.1\lib\net452\Omnicx.WebStore.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.2.3\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="StackExchange.Redis, Version=1.2.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StackExchange.Redis.1.2.6\lib\net45\StackExchange.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Api\ApiBase.cs" />
+    <Compile Include="Api\ApiUrls.cs" />
+    <Compile Include="Api\Catalog\BrandApi.cs" />
+    <Compile Include="Api\Catalog\CategoryApi.cs" />
+    <Compile Include="Api\Catalog\CollectionApi.cs" />
+    <Compile Include="Api\Catalog\IBrandApi.cs" />
+    <Compile Include="Api\Catalog\ICategoryApi.cs" />
+    <Compile Include="Api\Catalog\ICollectionApi.cs" />
+    <Compile Include="Api\Catalog\IProductApi.cs" />
+    <Compile Include="Api\Catalog\ProductApi.cs" />
+    <Compile Include="Api\Commerce\B2BApi.cs" />
+    <Compile Include="Api\Commerce\BasketApi.cs" />
+    <Compile Include="Api\Commerce\CheckoutApi.cs" />
+    <Compile Include="Api\Commerce\CustomerApi.cs" />
+    <Compile Include="Api\Commerce\IB2BApi.cs" />
+    <Compile Include="Api\Commerce\IBasketApi.cs" />
+    <Compile Include="Api\Commerce\ICheckoutApi.cs" />
+    <Compile Include="Api\Commerce\ICustomerApi.cs" />
+    <Compile Include="Api\Commerce\IOrderApi.cs" />
+    <Compile Include="Api\Commerce\IPaymentApi.cs" />
+    <Compile Include="Api\Commerce\IShippingApi.cs" />
+    <Compile Include="Api\Commerce\OrderApi.cs" />
+    <Compile Include="Api\Commerce\PaymentApi.cs" />
+    <Compile Include="Api\Commerce\ShippingApi.cs" />
+    <Compile Include="Api\Infra\ConfigApi.cs" />
+    <Compile Include="Api\Infra\IConfigApi.cs" />
+    <Compile Include="Api\Infra\ILogApi.cs" />
+    <Compile Include="Api\Infra\ISessionApi.cs" />
+    <Compile Include="Api\Infra\ISessionContext.cs" />
+    <Compile Include="Api\Infra\LogApi.cs" />
+    <Compile Include="Api\Infra\SessionApi.cs" />
+    <Compile Include="Api\Site\BlogApi.cs" />
+    <Compile Include="Api\Site\ContentApi.cs" />
+    <Compile Include="Api\Site\IBlogApi.cs" />
+    <Compile Include="Api\Site\IContentApi.cs" />
+    <Compile Include="Api\Site\ISiteViewApi.cs" />
+    <Compile Include="Api\Site\ISurveyApi.cs" />
+    <Compile Include="Api\Site\SiteViewApi.cs" />
+    <Compile Include="Api\Site\SurveyApi.cs" />
+    <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="App_Start\UnityMvcActivator.cs" />
+    <Compile Include="Connected Services\GivexService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\PaypalService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CacheKeys.cs" />
+    <Compile Include="Entities\ConfigKeys.cs" />
+    <Compile Include="Entities\CustomExceptions.cs" />
+    <Compile Include="Entities\CustomViews.cs" />
+    <Compile Include="Entities\Enum.cs" />
+    <Compile Include="Entities\PasswordSetting.cs" />
+    <Compile Include="Helpers\CacheManager.cs" />
+    <Compile Include="Helpers\Constants.cs" />
+    <Compile Include="Helpers\DefaultCache.cs" />
+    <Compile Include="Helpers\HeadTagBuilder.cs" />
+    <Compile Include="Helpers\ICacheManager.cs" />
+    <Compile Include="Helpers\IHeadTagBuilder.cs" />
+    <Compile Include="Helpers\JsonExtensions.cs" />
+    <Compile Include="Helpers\LayoutExtensions.cs" />
+    <Compile Include="Helpers\RedisCache.cs" />
+    <Compile Include="Helpers\Utils.cs" />
+    <Compile Include="Models\Account\IdentityModels.cs" />
+    <Compile Include="Models\B2B\CompanyDetailModel.cs" />
+    <Compile Include="Models\B2B\CompanyRegisterModel.cs" />
+    <Compile Include="Models\B2B\CompanyUserModel.cs" />
+    <Compile Include="Models\B2B\QuoteInfoModel.cs" />
+    <Compile Include="Models\Catalog\AllBrandModel.cs" />
+    <Compile Include="Models\Catalog\BrandDetailModel.cs" />
+    <Compile Include="Models\Catalog\BrandModel.cs" />
+    <Compile Include="Models\Catalog\CategoryModel.cs" />
+    <Compile Include="Models\Catalog\CollectionModel.cs" />
+    <Compile Include="Models\Catalog\DynamicListModel.cs" />
+    <Compile Include="Models\Catalog\MicrositeModel.cs" />
+    <Compile Include="Models\Catalog\PhysicalStoreModel.cs" />
+    <Compile Include="Models\Catalog\ProductDetailModel.cs" />
+    <Compile Include="Models\Catalog\ProductDetailModelPartialMedicine.cs" />
+    <Compile Include="Models\Catalog\ProductModel.cs" />
+    <Compile Include="Models\Catalog\ProductViewModel.cs" />
+    <Compile Include="Models\Catalog\SearchCriteriaModel.cs" />
+    <Compile Include="Models\Catalog\SearchFacetModel.cs" />
+    <Compile Include="Models\Catalog\SearchModel.cs" />
+    <Compile Include="Models\Catalog\SearchResultEntry.cs" />
+    <Compile Include="Models\Catalog\TypeAheadSearchModel.cs" />
+    <Compile Include="Models\Catalog\VariantModel.cs" />
+    <Compile Include="Models\Commerce\AccountViewModels.cs" />
+    <Compile Include="Models\Commerce\AddressModel.cs" />
+    <Compile Include="Models\Commerce\AddressReadOnlyModel.cs" />
+    <Compile Include="Models\Commerce\BasketAddModel.cs" />
+    <Compile Include="Models\Commerce\BasketAddressModel.cs" />
+    <Compile Include="Models\Commerce\BasketLineModel.cs" />
+    <Compile Include="Models\Commerce\BasketModel.cs" />
+    <Compile Include="Models\Commerce\CheckoutModel-1.cs" />
+    <Compile Include="Models\Commerce\CheckoutModels.cs" />
+    <Compile Include="Models\Commerce\ContactModel.cs" />
+    <Compile Include="Models\Commerce\CustomerBasicModel.cs" />
+    <Compile Include="Models\Commerce\CustomerModel.cs" />
+    <Compile Include="Models\Commerce\NewsletterModel.cs" />
+    <Compile Include="Models\Commerce\OrderLineModel.cs" />
+    <Compile Include="Models\Commerce\OrderModel.cs" />
+    <Compile Include="Models\Commerce\PaymentBasicModel.cs" />
+    <Compile Include="Models\Commerce\PaymentMethodModel.cs" />
+    <Compile Include="Models\Commerce\PaymentModel.cs" />
+    <Compile Include="Models\Commerce\PromoResponseModel.cs" />
+    <Compile Include="Models\Commerce\PromotionModel.cs" />
+    <Compile Include="Models\Commerce\ReturnLineModel.cs" />
+    <Compile Include="Models\Commerce\ReturnModel.cs" />
+    <Compile Include="Models\Commerce\ShippingModel.cs" />
+    <Compile Include="Models\Commerce\UserActivityListModel.cs" />
+    <Compile Include="Models\Commerce\UserActivityModel.cs" />
+    <Compile Include="Models\Commerce\UserActivitySearchModel.cs" />
+    <Compile Include="Models\Commerce\UserPasswordTokenModel.cs" />
+    <Compile Include="Models\Commerce\UserSubscriptionModel.cs" />
+    <Compile Include="Models\Commerce\WishlistModel.cs" />
+    <Compile Include="Models\Common\Amount.cs" />
+    <Compile Include="Models\Common\AuthTokenModel.cs" />
+    <Compile Include="Models\Common\BaseModel.cs" />
+    <Compile Include="Models\Common\BoolResponse.cs" />
+    <Compile Include="Models\Common\ChangePasswordModel.cs" />
+    <Compile Include="Models\Common\Country.cs" />
+    <Compile Include="Models\Common\CustomInfo.cs" />
+    <Compile Include="Models\Common\DefaultSettingModel.cs" />
+    <Compile Include="Models\Common\Localized.cs" />
+    <Compile Include="Models\Common\LogEntryModel.cs" />
+    <Compile Include="Models\Common\LoginModel.cs" />
+    <Compile Include="Models\Common\PluginSettings.cs" />
+    <Compile Include="Models\Common\SessionInfo.cs" />
+    <Compile Include="Models\Common\TokenRequestModel.cs" />
+    <Compile Include="Models\Common\UtmInfo.cs" />
+    <Compile Include="Models\Helpers\Constant.cs" />
+    <Compile Include="Models\Helpers\Facet.cs" />
+    <Compile Include="Models\Helpers\PaginatedResult.cs" />
+    <Compile Include="Models\Helpers\SearchFilter.cs" />
+    <Compile Include="Models\Infrastructure\ConfigModel.cs" />
+    <Compile Include="Models\Infrastructure\LogENtry.cs" />
+    <Compile Include="Models\Infrastructure\Settings\B2BSettings.cs" />
+    <Compile Include="Models\Infrastructure\Settings\BasketSettings.cs" />
+    <Compile Include="Models\Infrastructure\Settings\CatalogSettings.cs" />
+    <Compile Include="Models\Infrastructure\Settings\CurrencySettingModel.cs" />
+    <Compile Include="Models\Infrastructure\Settings\DomainSettings.cs" />
+    <Compile Include="Models\Infrastructure\Settings\ISettings.cs" />
+    <Compile Include="Models\Infrastructure\Settings\OrderSettings.cs" />
+    <Compile Include="Models\Infrastructure\Settings\ProductReviewSettings.cs" />
+    <Compile Include="Models\Infrastructure\Settings\RegionalSettings.cs" />
+    <Compile Include="Models\Infrastructure\Settings\SearchSettings.cs" />
+    <Compile Include="Models\Infrastructure\Settings\SeoSettings.cs" />
+    <Compile Include="Models\Infrastructure\Settings\ShippingSettings.cs" />
+    <Compile Include="Models\Infrastructure\Settings\SocialSettings.cs" />
+    <Compile Include="Models\ResponseModel.cs" />
+    <Compile Include="Models\Site\BlogModel.cs" />
+    <Compile Include="Models\Site\EmailTemplateModel.cs" />
+    <Compile Include="Models\Site\FaqModel.cs" />
+    <Compile Include="Models\Site\FaqModelTemp.cs" />
+    <Compile Include="Models\Site\FeedModel.cs" />
+    <Compile Include="Models\Site\IHaveSeoInfo.cs" />
+    <Compile Include="Models\Site\LocalizeModel.cs" />
+    <Compile Include="Models\Site\MenuModel.cs" />
+    <Compile Include="Models\Site\NavigationModel.cs" />
+    <Compile Include="Models\Site\PageModel.cs" />
+    <Compile Include="Models\Site\SiteViewModel.cs" />
+    <Compile Include="Models\Site\SnippetModel.cs" />
+    <Compile Include="Models\Site\SurveyModels.cs" />
+    <Compile Include="Models\Site\WidgetModel.cs" />
+    <Compile Include="Models\Site\ZoneModel.cs" />
+    <Compile Include="Payments\AccountCredit\AccountCreditPaymentProcessor.cs" />
+    <Compile Include="Payments\Cheque\ChequePaymentProcessor.cs" />
+    <Compile Include="Payments\Cod\CodPaymentProcessor.cs" />
+    <Compile Include="Payments\Entities\Enum.cs" />
+    <Compile Include="Payments\Entities\PayerInfo.cs" />
+    <Compile Include="Payments\Entities\PostProcessPaymentRequest.cs" />
+    <Compile Include="Payments\Entities\PostProcessPaymentResponse.cs" />
+    <Compile Include="Payments\Entities\ProcessPaymentRequest.cs" />
+    <Compile Include="Payments\Entities\ProcessPaymentResult.cs" />
+    <Compile Include="Payments\Givex\GivexPaymentProcessor.cs" />
+    <Compile Include="Payments\IPaymentMethod.cs" />
+    <Compile Include="Payments\MasterCard\MasterCardApi.cs" />
+    <Compile Include="Payments\MasterCard\MasterCardObjects.cs" />
+    <Compile Include="Payments\MasterCard\MasterCardPaymentProcessor.cs" />
+    <Compile Include="Payments\PaymentProcessor.cs" />
+    <Compile Include="Payments\Paypal\PaypalPaymentProcessor.cs" />
+    <Compile Include="Payments\Realex\RealexPaymentProcessor.cs" />
+    <Compile Include="Payments\Worldpay\WorldpayPaymentProcessor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Connected Services\GivexService\gapi.wsdl" />
+    <None Include="Connected Services\GivexService\gapi1.wsdl" />
+    <None Include="Connected Services\GivexService\gapi2.wsdl" />
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.AccountLookupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.AccountLookupResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.AccountUpdateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.AccountUpdateResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.ActivateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.ActivateResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.AdjustResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.AdjustResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.AttributeElement.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.Balance.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.BalanceTransferResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.BalanceTransferResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CancelResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CancelResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CashBackForcedResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CashBackForcedResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CashBackResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CashBackResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CashOutResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CashOutResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CertificateGroupingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CertificateGroupingResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.Customer.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CWSAccountCardListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CWSAccountCardListResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CWSAccountInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CWSAccountInfoResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CWSAddCardResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CWSAddCardResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CWSCancelOrderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CWSCancelOrderResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CWSEcertOrderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CWSGiftCardOrderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CWSLoginResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CWSLoginResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CWSLogoutResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CWSLogoutResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CWSLostCardResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CWSLostCardResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CWSNewAccountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CWSNewAccountResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CWSRemoveCardResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CWSRemoveCardResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CWSResetPasswordResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CWSResetPasswordResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CWSUpdateAccountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CWSUpdateAccountResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CWSUpdatePasswordResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CWSUpdatePasswordResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CWSVerifyLoginResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.CWSVerifyLoginResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.Description.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.ExchangeRateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.ExchangeRateResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.GetBalanceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.GetDescriptionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.GetHistoryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.GetVersionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.History.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.IncrementResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.IncrementResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.MerchandiseCreditResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.MerchandiseCreditResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.OrderCertInfoElement.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.OrderInfoElement.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.PackageAdjustmentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.PackageAdjustmentResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.PackageBalanceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.PackageCancelResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.PackageCancelResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.PackageIssuanceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.PackageIssuanceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.PackageItemBalanceElement.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.PackageItemRedemptionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.PackageItemRedemptionResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.PackageReversalResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.PackageReversalResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.PointsCancelResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.PointsCancelResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.PointsIssueResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.PointsIssueResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.PointsRedeemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.PointsRedeemResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.PointsRedemptionHistoryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.PointsRedemptionHistoryResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.PostAuthResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.PostAuthResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.PreAuthResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.PreAuthResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.RedeemForcedResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.RedeemForcedResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.RedeemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.RedeemResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.RegisterResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.RegisterResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.ReversalResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.ReversalResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.TerminalRegisterResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.VerifyCustomerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\Omnicx.API.SDK.GivexService.Version.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GivexService\types_common.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\PaypalService\CoreComponentTypes.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\PaypalService\eBLBaseComponents.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\PaypalService\EnhancedDataTypes.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.AddressVerifyResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.AddressVerifyResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.BAUpdateResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.BillAgreementUpdateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.BillOutstandingAmountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.BillOutstandingAmountResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.BillUserResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.BillUserResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.BMButtonSearchResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.BMButtonSearchResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.BMCreateButtonResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.BMCreateButtonResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.BMGetButtonDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.BMGetButtonDetailsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.BMGetInventoryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.BMGetInventoryResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.BMManageButtonStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.BMManageButtonStatusResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.BMSetInventoryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.BMSetInventoryResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.BMUpdateButtonResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.BMUpdateButtonResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.CancelRecoupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.CancelRecoupResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.CompleteRecoupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.CompleteRecoupResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.CreateBillingAgreementResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.CreateBillingAgreementResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.CreateMobilePaymentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.CreateMobilePaymentResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.CreateRecurringPaymentsProfileResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.CreateRecurringPaymentsProfileResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.CustomSecurityHeaderType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.DoAuthorizationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.DoAuthorizationResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.DoCancelResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.DoCancelResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.DoCaptureResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.DoCaptureResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.DoDirectPaymentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.DoDirectPaymentResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.DoExpressCheckoutPaymentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.DoExpressCheckoutPaymentResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.DoMobileCheckoutPaymentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.DoMobileCheckoutPaymentResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.DoNonReferencedCreditResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.DoNonReferencedCreditResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.DoReauthorizationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.DoReauthorizationResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.DoReferenceTransactionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.DoReferenceTransactionResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.DoUATPAuthorizationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.DoUATPAuthorizationResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.DoUATPExpressCheckoutPaymentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.DoUATPExpressCheckoutPaymentResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.DoVoidResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.DoVoidResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.EnterBoardingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.EnterBoardingResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.ExecuteCheckoutOperationsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.ExecuteCheckoutOperationsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.ExternalRememberMeOptOutResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.ExternalRememberMeOptOutResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.GetAccessPermissionDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.GetAccessPermissionDetailsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.GetAuthDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.GetAuthDetailsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.GetBalanceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.GetBalanceResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.GetBillingAgreementCustomerDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.GetBillingAgreementCustomerDetailsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.GetBoardingDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.GetBoardingDetailsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.GetExpressCheckoutDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.GetExpressCheckoutDetailsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.GetIncentiveEvaluationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.GetIncentiveEvaluationResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.GetMobileStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.GetMobileStatusResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.GetPalDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.GetPalDetailsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.GetRecurringPaymentsProfileDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.GetRecurringPaymentsProfileDetailsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.GetTransactionDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.GetTransactionDetailsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.InitiateRecoupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.InitiateRecoupResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.ManagePendingTransactionStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.ManagePendingTransactionStatusResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.ManageRecurringPaymentsProfileStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.ManageRecurringPaymentsProfileStatusResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.MassPayResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.MassPayResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.RefundTransactionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.RefundTransactionResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.ReverseTransactionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.ReverseTransactionResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.SetAccessPermissionsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.SetAccessPermissionsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.SetAuthFlowParamResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.SetAuthFlowParamResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.SetCustomerBillingAgreementResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.SetCustomerBillingAgreementResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.SetExpressCheckoutResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.SetExpressCheckoutResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.SetMobileCheckoutResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.SetMobileCheckoutResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.TransactionSearchResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.TransactionSearchResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.UpdateAccessPermissionsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.UpdateAccessPermissionsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.UpdateAuthorizationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.UpdateAuthorizationResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.UpdateRecurringPaymentsProfileResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\Omnicx.API.SDK.PaypalService.UpdateRecurringPaymentsProfileResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PaypalService\PayPalSvc.wsdl" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\GivexService\" />
+    <WCFMetadataStorage Include="Connected Services\PaypalService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\PaypalService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\PaypalService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\PaypalService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\GivexService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\GivexService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\GivexService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+</Project>

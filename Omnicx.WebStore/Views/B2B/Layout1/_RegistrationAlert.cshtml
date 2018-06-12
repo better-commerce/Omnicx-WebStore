@@ -1,0 +1,23 @@
+﻿@{
+/*
+    Name: Registration Validation Message
+    Purpose: Company registration Form Modal
+    Structure: /Views/B2B/Layout1/_RegistrationAlert.cshtml
+    Contains (Partial Views Used):
+
+    Contained In (Where we Use this View):
+        a-/Views/B2B/Layout1/_Register.cshtml  (Navigation Link Desktop and Big Screen)
+    */
+}
+<div class="alertBlock">
+    <div ng-cloak class="alert alert-danger" ng-show="gm.errorMessage != null">
+        <div ng-repeat="err in gm.errorMessage track by $index">
+            <i class="glyphicon-warning-sign"></i>&nbsp;&nbsp;&nbsp;<span ng-bind="err"></span>
+        </div>
+    </div>
+    <div id="divErrMsg" class="alert alert-danger hide">
+        <div>
+            <i class="fa fa-circle"></i><span></span>
+        </div>
+    </div>
+</div>

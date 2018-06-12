@@ -1,0 +1,91 @@
+﻿@{
+/*
+    Name: product Bundle View
+    Purpose: Show Bundle product
+    Structure: /Views/Product/Layout1/_ProductBundle.cshtml
+    Contains (Partial Views Used):
+
+    Contained In (Where we Use this View):
+     a-/Views/Product/Layout1/ProductDetail.cshtml
+    */
+}
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Catalog.ProductDetailModel>
+
+<div class="container-fluid no-padding bundle">
+    <div class="row">
+        <div class="col-sm-12 col-xs-12">
+            <h3 class="product-headline" ng-bind="pm.model.name"></h3>
+        </div>
+    </div>
+    <div class="row margin-top-sm">
+        <div class="col-sm-4 col-xs-12">
+            <div class="row animated zoomIn">
+                <div class="col-sm-12 col-xs-12 bundle-product-container">
+                    <img data-ng-magnify image-src="{{pm.model.image}}" class="img-responsive" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8 col-xs-12">
+            <div class="row bundle-products">
+                <div class="col-sm-3 col-xs-4" ng-repeat="productBundle in pm.model.componentProducts">
+                    <div class="bundle-image-container">
+                        <a ng-href="/{{productBundle.slug}}">
+                            <img ng-src="{{productBundle.images[0].url}}" class="img-responsive" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'">
+                        </a>
+                    </div>
+                    <div>
+                        <a class="text-black" ng-href="/{{productBundle.slug}}">
+                            <span ng-bind="productBundle.name"></span>
+                        </a>
+                    </div>
+                    <div class="bundle-qty">
+                        <strong>@LT("ProductDetail.Label.Qty", "Qty"): </strong><span ng-bind="productBundle.qty"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row margin-top-lg">
+        <div class="col-sm-4 col-xs-12">
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <span class="prod-list-desc"><strong>@LT("ProductDetail.Label.SKU", "SKU"): </strong><span ng-bind="pm.model.sku"></span></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <span class="prod-list-desc" ng-bind="pm.model.description"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-12 no-padding-right margin-top-md text-left">
+                    <h5 class="price-h5">
+                        <span ng-bind="(pm.model.price.formatted.withoutTax)"></span>
+                    </h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 col-xs-4 margin-top-sm">
+                    <input type="number" id="qtyBox" ng-click="pm.onTextFocus($event)" ng-model="pm.productCount" name="qty" autofocus class="form-control qty-textbox" numbers-Only />
+                </div>
+                <div class="col-sm-9 col-xs-8 text-left no-padding">
+                    <a class="animate btn-default" ng-click="gm.addToBasket(pm.model.recordId,pm.productCount,0)"><span>@LT("Checkout.Button.AddBundle", "Add Bundle")</span></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 col-xs-12 no-padding" ng-show="pm.model.flags.isFreeDelivery">
+                    <label ng-show="pm.model.flags.isFreeDelivery" class="free-label" ng-cloak>
+                        <span class="free-icon"><i class="fa fa-truck"></i></span>
+                        <span class="free-text"><strong>@LT("ProductDetail.Label.FreeDelivery", "Free Delivery")</strong><br /> @LT("ProductDetail.Label.onthisitem", "on this item")</span>
+                    </label>
+                </div>
+                <div class="col-sm-4 col-xs-12 no-padding" ng-if="pm.model.freeProducts.length > 0">
+                    <label ng-if="pm.model.freeProducts.length > 0" class="free-label" ng-cloak>
+                        <span class="free-icon"><i class="fa fa-gift"></i></span>
+                        <span class="free-text"><strong>@LT("ProductDetail.Label.FreeGift", "Free Gift") </strong><br /> @LT("ProductDetail.Label.withthisitem", "with this item")</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,65 @@
+﻿@{
+/*
+    Name: Standard Checkout Delivery Address
+    Purpose: Standard Checkout Delivery Address
+    Structure: /Views/Checkout/Layout1/StandardCheckout.cshtml
+    Contains (Partial Views Used):
+        a-/Views/Checkout/Layout1/_CheckoutDeliveryAddressForm.cshtml   (Select Delivery Address)
+
+    Contained In (Where we Use this View):
+        a-/Views/Basket/Layout1/StandardCheckout.cshtml
+    */
+}
+@using Omnicx.WebStore.Core.Helpers;
+@using Omnicx.WebStore.Framework.Helpers
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Commerce.AddressModel>
+@{
+    var addressForm = Html.Angular().ModelFor("ck.model.checkout.shippingAddress");
+}
+
+<div class="row" ng-show="ck.deliverAddress" ng-init="showDeliveryOption=false;ck.deliverAddress='@SessionContext.CurrentUser'==''?false:true;">
+    <div class="col-sm-12 col-xs-12">
+        <h2 class="checkout-h2" ng-hide="showNewAddressForm==true">Select a delivery address</h2>
+        <p class="checkout-text hidden-xs">Is the address you'd like to use displayed below? If so, click the corresponding "Deliver to this address" button. Or you can enter a new delivery address. </p>
+        <a class="btn btn-back-link" ng-init="showNewAddressForm=false" ng-hide="showNewAddressForm==false" ng-click="showNewAddressForm=false">Back <i class="fa fa-angle-left pull-left"></i></a>
+        <div class="col-sm-12 col-xs-12 no-padding checkoutStepShipping">
+            <div class="checkout-address col-sm-4 col-xs-12 " ng-repeat="add in ck.userAddresses" ng-hide="showNewAddressForm==true" ng-class="ck.address== add ? 'activeAddress' : ''">
+                <div class="col-sm-2 col-xs-2 visible-xs" ng-init='$index == 0 ? ck.address = add : " "'>
+                    <label class="control control--radio margin-bottom-lg" ng-click="ck.address=add">
+                        <input id="address" name="address" type="radio" ng-checked="$index==0 ? true : false" class="">
+                        <div class="control__indicator"></div>
+                    </label>
+                </div>
+                <div class="col-sm-12 col-xs-10">
+                    <h4 class="checkout-address-name"><span ng-bind="add.firstName"></span>&nbsp;<span ng-bind="add.lastName"></span></h4>
+                    <p class="checkout-address-text" ng-bind="add.address1"></p>
+                    <p class="checkout-address-text" ng-bind="add.address2"></p>
+                    <p class="checkout-address-text" ng-bind="add.city"></p>
+                    <p class="checkout-address-text" ng-bind="add.postCode"></p>
+                    <p class="checkout-address-text" ng-bind="add.country"></p>
+                </div>
+                <div class="col-sm-12 col-xs-12 margin-top-sm address-button-hidden">
+                    <a class="btn btn-checkout width-full" ng-click="ck.continueToDelivery(add);ck.ValidateDeliveryMethod();">Deliver to this address <i class="fa fa-caret-right"></i></a>
+                </div>
+                <div class="col-sm-6 col-xs-6 margin-top-md address-button-hidden">
+                    <a class="btn btn-default width-full " ng-click="ck.model.checkout.shippingAddress=add">Edit</a>
+                </div>
+                <div class="col-sm-6 col-xs-6 margin-top-md address-button-hidden">
+                    <a class="btn btn-default width-full" ng-click="ck.deleteAddress(add)">Delete</a>
+                </div>
+            </div>
+            <div class="or-spacer"><div class="mask"></div></div>
+            <div class="col-sm-12 col-xs-12 no-padding visible-xs" ng-hide="showNewAddressForm==true">
+                <a class="btn btn-new-address-link" ng-click="showNewAddressForm=true">Add New Address <i class="fa fa-angle-right pull-right"></i></a>
+            </div>
+            <div class="col-sm-12 col-xs-12 no-padding hidden-xs">
+                @Html.Partial("~/Views/Checkout/Layout1/_CheckoutDeliveryAddressForm.cshtml", @Model)
+            </div>
+            <div class="col-sm-12 col-xs-12 no-padding visible-xs" ng-show="showNewAddressForm==true">
+                <div class="delivery-form">
+                    @Html.Partial("~/Views/Checkout/Layout1/_CheckoutDeliveryAddressForm.cshtml", @Model)
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>

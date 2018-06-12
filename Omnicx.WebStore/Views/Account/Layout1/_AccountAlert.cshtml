@@ -1,0 +1,35 @@
+﻿@{
+/*
+    Name: Validation Messages
+    Purpose: List all the Validation message for account section
+    Structure: /Views/Account/Layout1/_AccountAlert.cshtml
+    Contains (Partial Views Used):
+
+    Contained In (Where we Use this View):
+     a-/Views/Account/Layout1/_UserAddress.cshtml
+     b-/Views/Account/Layout1/MyAccount.cshtml
+    */
+}
+<div class="alertBlock">
+    <div ng-cloak class="alert alert-info" ng-show="am.errorMessage == null && !am.saving && !am.success">
+        Make changes below.
+    </div>
+    <div ng-cloak class="alert alert-info" ng-show="am.saving">
+        Saving changes...
+    </div>
+    <div ng-cloak class="alert alert-success" ng-show="am.success">
+        <span class="fa fa-check"></span>
+        Changes saved!
+    </div>
+    <div ng-cloak class="alert alert-danger" ng-show="am.errorMessage != null">
+        @*{{am.errorMessage}}*@
+        <div ng-repeat="err in am.errorMessage track by $index">
+            <i class="glyphicon-warning-sign"></i>&nbsp;&nbsp;&nbsp;<span ng-bind="err"></span>
+        </div>
+    </div>
+    <div id="divErrMsg" class="alert alert-danger hide">
+        <div>
+            <i class="fa fa-circle"></i><span></span>
+        </div>
+    </div>
+</div>

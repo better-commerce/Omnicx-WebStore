@@ -1,0 +1,28 @@
+﻿@{
+/*
+    Name: Survey Qualifying Questions
+    Purpose: Show Survey Questions
+    Structure: /Views/Survey/_QualifyingQuestionnaire.cshtml
+    Contains (Partial Views Used):
+    Contained In (Where we Use this View):
+        a-/Views/Survey/Layout1/Capture.cshtml
+    */
+}
+<div class="">
+    <div class="row">
+        <div class="col-sm-12" ng-repeat="ques in pm.model.survey.results.questions">
+            <div class=""><strong>Q. <span ng-bind="ques.question"></span></strong></div>
+            <div class="">
+                <survey-input-field question="{{ques}}"></survey-input-field>
+            </div>
+            <br />
+        </div>
+    </div>
+   <div class="row">
+       <div class="col-sm-12">
+           <button type="button" class="animate btn-primary" ng-hide="pm.canGoNext" ng-click="pm.submitSurvey()">
+               Submit <span class="fa fa-check-square" aria-hidden="true"></span>
+           </button>
+       </div>
+   </div>
+</div>
