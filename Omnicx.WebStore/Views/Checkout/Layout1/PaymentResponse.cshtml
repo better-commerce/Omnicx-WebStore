@@ -11,9 +11,10 @@
     */
 }
 @using Microsoft.Web.Mvc
-@using Omnicx.API.SDK.Entities
+@using Omnicx.WebStore.Models.Common
+@using Omnicx.WebStore.Models.Keys
 @using Omnicx.WebStore.Core.Controllers
-@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage< Omnicx.API.SDK.Models.Common.BoolResponse>
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<BoolResponse>
 @{
     ViewBag.Title = "PaymentResponse";
     Layout = "~/Views/Shared/Layout1/_OpcLayout.cshtml";

@@ -1,5 +1,6 @@
-﻿using Omnicx.API.SDK.Models.Common;
-using Omnicx.API.SDK.Entities;
+﻿using Omnicx.WebStore.Models.Common;
+using Omnicx.WebStore.Models.Enums;
+using Omnicx.WebStore.Models.Keys;
 
 namespace Omnicx.WebStore.Core.Services.Log
 {

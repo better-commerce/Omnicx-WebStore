@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Omnicx.API.SDK.Api.Catalog;
-using Omnicx.API.SDK.Models.Catalog;
-using Omnicx.API.SDK.Models.Helpers;
-using Omnicx.API.SDK.Entities;
+using Omnicx.WebStore.Models.Catalog;
+using Omnicx.WebStore.Models.Helpers;
+
 using Omnicx.WebStore.Core.Helpers;
 using Omnicx.API.SDK.Api.Site;
+using Omnicx.WebStore.Models.Keys;
+using Omnicx.WebStore.Models.Enums;
 using Microsoft.Security.Application;
+using DevTrends.MvcDonutCaching;
+using System.Web.UI;
 
 namespace Omnicx.WebStore.Core.Controllers
 {
@@ -106,6 +110,7 @@ namespace Omnicx.WebStore.Core.Controllers
         /// Displays the items in the selected dynamic list
         /// </summary>
         /// <returns></returns>
+        [DonutOutputCache(CacheProfile = "DefaultCacheProfile", Location = OutputCacheLocation.Server)]
         public ActionResult DynamicListItems()
         {
             var slug = SiteUtils.GetSlugFromUrl();
@@ -113,7 +118,7 @@ namespace Omnicx.WebStore.Core.Controllers
             var list = response.Result;
             if (response.Result == null && response.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
-                return RedirectToAction("PageNotFound", "Common");
+                return RedirectToAction("PageNotFound", "Common",new { @aspxerrorpath = slug});
             }
             if (list.Groups != null)
             {
@@ -127,7 +132,9 @@ namespace Omnicx.WebStore.Core.Controllers
             list.Products.CustomInfo1 = list.CustomInfo1;
             list.Products.CustomInfo2 = list.CustomInfo2;
             list.Products.CustomInfo3 = list.CustomInfo3;
-
+            list.Products.CustomFieldDisplayOrder = list.CustomFieldDisplayOrder;
+            list.Products.CustomFieldValue = list.CustomFieldValue;
+            list.Products.FilterCriteria = list.FilterCriteria;
             if (list.Products != null && list.Products.Results!=null && list.Products.Results.Any())
             {
                 var searchCriteria = new SearchRequestModel {CollectionId = list.Id ,AllowFacet = list.AllowFacets };
@@ -138,7 +145,7 @@ namespace Omnicx.WebStore.Core.Controllers
                 var validFilters = list.Products.Filters.GroupBy(c => new { c.Name }).Select(c => c.First()).ToList();
                 list.Products.Filters = validFilters;
                 list.Products.Filters = validFilters.Where(p => !validFilters.Any(p2 => p2.Name == p.Name && p.Items.Count == 0)).ToList();
-                var priceFacet = list.Products.Filters.Where(x => x.Name.ToLower() == Omnicx.API.SDK.Entities.Constants.PRICE_FILTER).FirstOrDefault();
+                var priceFacet = list.Products.Filters.Where(x => x.Name.ToLower() == Constants.PRICE_FILTER).FirstOrDefault();
                 if(priceFacet!=null)
                 {
                     foreach (var itm in priceFacet.Items)

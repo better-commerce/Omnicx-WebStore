@@ -19,7 +19,7 @@
     <div class="image">
         <span class="free-icon right" ng-show="product.freeProducts.length>0"><i class="fa fa-gift"></i></span>
         <a ng-href="/{{product.slug}}">
-            <img ng-src="{{product.image==''?'/assets/theme/ocx/images/noimagefound.jpg':product.image}}" alt="" class="image1" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'">
+            <img ng-src="{{product.image==''?DEFAULT_IMAGE_URL:product.image}}" alt="" class="image1" onerror="this.src = DEFAULT_IMAGE_URL">
         </a>
         @*<div class="quick-view-button">
                 <a ng-click="gm.addToBasket(product.recordId,1,0)" class="btn btn-default btn-sm" ng-if="!pm.isWhislist">@LT("ProductDetail.Links.AddtoBag", "Add to Bag")</a>

@@ -2,14 +2,16 @@
 using System.Threading.Tasks;
 using System.Web;
 using Omnicx.API.SDK.Api.Infra;
-using Omnicx.API.SDK.Models.Commerce;
-using Omnicx.API.SDK.Models.Common;
+using Omnicx.WebStore.Models.Commerce;
+using Omnicx.WebStore.Models.Common;
 
 using Omnicx.API.SDK.Helpers;
 using Omnicx.WebStore.Core.Services.Authentication;
-using Omnicx.API.SDK.Entities;
-using Omnicx.API.SDK.Models.Helpers;
-using Omnicx.API.SDK.Models.Infrastructure;
+
+using Omnicx.WebStore.Models.Helpers;
+using Omnicx.WebStore.Models.Infrastructure;
+using Omnicx.WebStore.Models.Keys;
+using Omnicx.WebStore.Models.Enums;
 
 namespace Omnicx.WebStore.Core.Services.Infrastructure
 {
@@ -61,6 +63,8 @@ namespace Omnicx.WebStore.Core.Services.Infrastructure
                     {
                         _httpContext.Session[Constants.SESSION_USERID] = user.UserId;
                         _httpContext.Session[Constants.SESSION_COMPANYID] = user.CompanyId;
+                        _httpContext.Session[Constants.SESSION_ISGHOSTLOGIN] = user.IsGhostLogin;
+                        _httpContext.Session[Constants.SESSION_ADMINUSER] = user.AdminUserName;
                         if (!Enum.IsDefined(typeof(CompanyUserRole), user.CompanyUserRole)) //Added check for Enum null
                         _httpContext.Session[Constants.SESSION_COMPANYUSERROLE] = (CompanyUserRole)user.CompanyUserRole.GetHashCode();
 
@@ -174,7 +178,17 @@ namespace Omnicx.WebStore.Core.Services.Infrastructure
 
             }
         }
-        
+        public string DeviceId
+        {
+            get
+            {
+                if (_httpContext == null || _httpContext.Response == null) return "";
+                if (_httpContext.Request.Cookies[Constants.COOKIE_DEVICEID] != null)
+                    return _httpContext.Request.Cookies[Constants.COOKIE_DEVICEID].Value;
+                return "";
+
+            }
+        }
         public ConfigModel CurrentSiteConfig
         {
             get {

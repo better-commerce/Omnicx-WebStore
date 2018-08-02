@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Omnicx.API.SDK.Models.Common;
+using Omnicx.WebStore.Models.Common;
 
 namespace Omnicx.API.SDK.Payments.Entities
 {

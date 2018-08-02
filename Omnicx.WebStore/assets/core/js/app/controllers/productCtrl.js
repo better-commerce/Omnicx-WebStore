@@ -69,7 +69,47 @@
         pm.getViewBycookie = false;
         pm.onTextFocus = onTextFocus;     
         pm.checkForSpecificAttributeinProductList = checkForSpecificAttributeinProductList;
+        pm.IsUserLoggedIn = ($.cookie('IsUserLoggedIn') === undefined) ? false : ($.cookie('IsUserLoggedIn') == 'true');
+        pm.COOKIE_LIMIT = 15;
+        pm.PRODUCT_COOKIE = '_rvp';
+        pm.getGrid = getGrid;
+        pm.getList = getList;
+        pm.getView = true;
         //pm.setVariantDetail = setVariantDetail;
+        
+        if (pm.model.recordId) {
+            var recentProducts = $.cookie(pm.PRODUCT_COOKIE);
+            if (recentProducts) {
+                var itemsInCookies = recentProducts.split(",");
+                if (itemsInCookies) {
+                    var flag = 1;
+                    angular.forEach(itemsInCookies, function (value, key) {
+                        if (value == pm.model.recordId) {
+                            flag = 0;
+                        }
+                    });
+                    if (flag) {
+                        if (itemsInCookies.length > pm.COOKIE_LIMIT) {
+                            angular.forEach(itemsInCookies, function (value, key) {
+                                itemsInCookies[key] = itemsInCookies[key + 1];
+                            });
+                            itemsInCookies[itemsInCookies.length - 1] = pm.model.recordId;
+                            recentProducts = itemsInCookies.join(',');
+                        }
+                        else {
+                            itemsInCookies.push(pm.model.recordId);
+                            recentProducts = itemsInCookies.join(',');
+                        }
+                        $.removeCookie(pm.PRODUCT_COOKIE);
+                        $.cookie(pm.PRODUCT_COOKIE, recentProducts, { path: '/' });
+                    }
+                }
+            }
+            else {
+                $.cookie(pm.PRODUCT_COOKIE, pm.model.recordId, { path: '/' });
+            }
+        }
+        
 
         function getBasketRelatedProducts(basketId) {
             $http.post(productConfig.basketRelatedProducts + '/' + basketId).success(function (resp) {
@@ -108,21 +148,91 @@
 
 
         function initProducts(responseModel) {
+            if (responseModel == null) {
+                responseModel = pm.model;
+            }
             pm.productResponse = responseModel;
+            //bind gradient value with product 
+            angular.forEach(pm.productResponse.results, function (item) {
+                angular.forEach(item.attributes, function (attr) {
+                    if (attr.key == "gradient") {
+                        item.title = attr.value;
+                    }
+                });
+            });
             pm.searchCriteria = responseModel.searchCriteria;
+            if (pm.productResponse.customFieldValue != null && pm.productResponse.customFieldValue != "")
+                pm.sortItems = JSON.parse(pm.productResponse.customFieldValue);
             pm.itemsPerPage = pm.searchCriteria.pageSize;
             pm.currentPage = pm.searchCriteria.currentPage;
             pm.sortByList = responseModel.sortList;
             pm.searchCriteria.sortBy = responseModel.sortBy;
             //pm.getToWishlist(pm.productResponse.results);
-            if ($.cookie("getView") === 'true' || $.cookie("getView") === undefined) 
+            if ($.cookie("pm.getView") === 'true' || $.cookie("pm.getView") === undefined) {
                 pm.getViewBycookie = true;
-            else 
+                $("#view").addClass('gridView');
+                $("#view").removeClass('listView');
+            }
+            else {
                 pm.getViewBycookie = false;
+                $("#view").removeClass('gridView');
+                $("#view").addClass('listView');
+            }
 
-            if (pm.productResponse.results == null || pm.productResponse.results.length == 0)
+
+            if (pm.productResponse.results == null || pm.productResponse.results.length == 0) {
                 $scope.noRecord = true;
+                pm.productResponse.results = [];
+            }
+            pm.productResponse.groupsWithProducts = [];
+            if (pm.productResponse.productGroupModel && pm.productResponse.productGroupModel.groups && pm.productResponse.productGroupModel.groups.length <= 0) {
+                pm.productResponse.groupsWithProducts.push({ groupName: "", products: pm.productResponse.results });
+            }
+            else {
+                var groups = [];
+                if (pm.sortItems != undefined) {
+                    angular.forEach(pm.sortItems, function (sortGrp) {
+                        angular.forEach(pm.productResponse.filterCriteria, function (grp) {
+                            if (sortGrp.key == grp.attributeValue) {
+                                groups.push(sortGrp.value);
+                            }
+                        });
+                    });
+                }
+                if (groups.length > 0)
+                    pm.productResponse.productGroupModel.groups = groups;
+
+                //angular.forEach(pm.productResponse.productGroupModel.groups, function (grp) {
+                //    var products = [];
+                //    angular.forEach(pm.productResponse.results, function (product) {
+                //        if (grp == product.groupName) {
+                //            products.push(product);
+                //        }
+                //    });
+                //    pm.productResponse.groupsWithProducts.push({ groupName: grp, products: products })
+                //});
+                if (pm.productResponse.productGroupModel) {
+                    for (var i = 0; i < pm.productResponse.productGroupModel.groups.length; i++) {
+                        var products = [];
+                        for (var j = 0; j < pm.productResponse.results.length; j++) {
+                            if (pm.productResponse.productGroupModel.groups[i] == pm.productResponse.results[j].groupName) {
+                                products.push(pm.productResponse.results[j]);
+                            }
+                        }
+                        pm.productResponse.groupsWithProducts.push({ groupName: pm.productResponse.productGroupModel.groups[i], products: products });
+                    }
+                }
+                else {
+                    if (pm.productResponse.results != null) {
+                        pm.productResponse.groupsWithProducts.push({ groupName: "", 'products': pm.productResponse.results });
+                    }
+
+                }
+            }
         };
+        function viewGridOrList(gridorlist) {
+            $.cookie("pm.getView", gridorlist);
+        }
         function initCollectionProducts(responseModel) {
             pm.productResponse = responseModel.collectionResult;
             if (pm.productResponse == null || pm.productResponse.results == null)
@@ -222,7 +332,16 @@
             $http.post(productConfig.searchProductUrl, searchFilter)
                 .success(function (data) {
                     pm.productResponse.results = data.results;
-                    if (typeof (data.groups) !== undefined && data.groups !== null) {                    
+                    //bind gradient value with product 
+                    angular.forEach(pm.productResponse.results, function (item) {
+                        angular.forEach(item.attributes, function (attr) {
+                            if (attr.key == "gradient") {
+                                item.title = attr.value;
+                            }
+                        });
+                    });
+
+                    if (typeof (data.groups) !== undefined && data.groups !== null) {
                         pm.productResponse.productGroupModel.groups = data.groups;
                     }
                     angular.forEach(pm.productResponse.results, function (pro) {
@@ -243,20 +362,53 @@
                         }
                     });
                     pm.productResponse.filters = data.filters;
-                    //pm.productResponse.filters = [];
-                    //angular.forEach(data.filters, function (value) {
-                    //    if ( pm.selectedKey== value.key) 
-                    //        pm.productResponse.filters.push(filter);
-                    //    else
-                    //        pm.productResponse.filters.push(value);
+                    pm.productResponse.groupsWithProducts = [];
+                    if (pm.productResponse.productGroupModel && pm.productResponse.productGroupModel.groups && pm.productResponse.productGroupModel.groups.length <= 0) {
+                        pm.productResponse.groupsWithProducts.push({ groupName: "", products: pm.productResponse.results });
+                    }
+                    else {
+                        var groups = [];
+                        if (pm.sortItems != undefined) {
+                            angular.forEach(pm.sortItems, function (sortGrp) {
+                                angular.forEach(pm.productResponse.filterCriteria, function (grp) {
+                                    if (sortGrp.key == grp.attributeValue) {
+                                        groups.push(sortGrp.value);
+                                    }
+                                });
+                            });
+                        }
+                    }
+                    if (groups.length > 0)
+                        pm.productResponse.productGroupModel.groups = groups;
 
-                    //});
-                    //pm.selectedKey 
-                    //pm.productResponse.filters = data.filters;
-                    //if (pm.temp == 1 || pm.searchCriteria.filters == null) {
-                    //    pm.productResponse.filters = data.filters;
-                    //    pm.temp = 0;
-                    //}
+                    if (pm.productResponse.productGroupModel) {
+                        for (var i = 0; i < pm.productResponse.productGroupModel.groups.length; i++) {
+                            var products = [];
+                            for (var j = 0; j < pm.productResponse.results.length; j++) {
+                                if (pm.productResponse.productGroupModel.groups[i] == pm.productResponse.results[j].groupName) {
+                                    products.push(pm.productResponse.results[j]);
+                                }
+                                var grpName = [];
+                                grpName = pm.productResponse.results[j].groupName.split(',');
+                                if (grpName && grpName.length > 1) {
+                                    if (grpName.find(ele => ele == pm.productResponse.productGroupModel.groups[i])) {
+                                        products.push(pm.productResponse.results[j]);
+                                    }
+                                }
+                            }
+                            if (products.length > 0)
+                                pm.productResponse.groupsWithProducts.push({ groupName: pm.productResponse.productGroupModel.groups[i], products: products });
+                        }
+                    }
+                    else {
+                        if (pm.productResponse.results != null) {
+                            pm.productResponse.groupsWithProducts.push({ groupName: "", 'products': pm.productResponse.results });
+                        }
+
+                    }
+                    //PubSub.publish("search", prodDetail);
+
+
                 })
                 .error(function (msg) {
 
@@ -515,6 +667,7 @@
                 });
         };
         function checkForWishlist() {
+            pm.IsUserLoggedIn = $.cookie('IsUserLoggedIn');
             $http.post(productConfig.getWishlist).success(function (resp) {
                 if (resp != null && pm.productId != null) {
                     angular.forEach(resp, function (resp, key) {
@@ -702,9 +855,6 @@
                 $('#QualifyingQuestionnaire').modal('show');
             });
         }
-        function viewGridOrList(gridorlist) {
-            $.cookie("getView", gridorlist);
-        }
 
         function submitSurvey(productId) {
 
@@ -751,6 +901,15 @@
         function onTextFocus(event) {
             event.target.select();
         }
-
+        function getGrid() {
+            $("#view").addClass('gridView');
+            $("#view").removeClass('listView');
+            pm.getView = true;
+        }
+        function getList() {
+            $("#view").removeClass('gridView');
+            $("#view").addClass('listView');
+            pm.getView = false;
+        }
     };
 })();

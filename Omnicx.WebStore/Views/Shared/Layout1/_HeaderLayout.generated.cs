@@ -29,16 +29,22 @@ namespace ASP
     using System.Web.WebPages;
     using DevTrends.MvcDonutCaching;
     
-    #line 13 "..\..\Views\Shared\Layout1\_HeaderLayout.cshtml"
-    using Omnicx.API.SDK.Entities;
+    #line 14 "..\..\Views\Shared\Layout1\_HeaderLayout.cshtml"
+    using Omnicx.API.SDK.Helpers;
     
     #line default
     #line hidden
     using Omnicx.WebStore;
     using Omnicx.WebStore.Core;
     
-    #line 14 "..\..\Views\Shared\Layout1\_HeaderLayout.cshtml"
-    using Omnicx.WebStore.Core.Helpers;
+    #line 15 "..\..\Views\Shared\Layout1\_HeaderLayout.cshtml"
+    using Omnicx.WebStore.Models.Enums;
+    
+    #line default
+    #line hidden
+    
+    #line 13 "..\..\Views\Shared\Layout1\_HeaderLayout.cshtml"
+    using Omnicx.WebStore.Models.Keys;
     
     #line default
     #line hidden
@@ -72,7 +78,7 @@ namespace ASP
 WriteLiteral("\r\n");
 
             
-            #line 16 "..\..\Views\Shared\Layout1\_HeaderLayout.cshtml"
+            #line 17 "..\..\Views\Shared\Layout1\_HeaderLayout.cshtml"
    
     bool? showBulkOrderPad = SessionContext.CurrentSiteConfig?.B2BSettings?.ShowBulkOrderPad;
     bool? isB2b = SessionContext.CurrentSiteConfig?.B2BSettings?.EnableB2B;
@@ -82,7 +88,7 @@ WriteLiteral("\r\n");
             #line hidden
 WriteLiteral("\r\n<nav");
 
-WriteLiteral(" class=\"userControls hidden-xs\"");
+WriteLiteral(" class=\"userControls hidden\"");
 
 WriteLiteral(">\r\n    <div");
 
@@ -104,14 +110,14 @@ WriteLiteral(" class=\"pos-rel\"");
 
 WriteLiteral(">\r\n                    <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 943), Tuple.Create("\"", 978)
+WriteAttribute("href", Tuple.Create(" href=\"", 975), Tuple.Create("\"", 1010)
             
-            #line 26 "..\..\Views\Shared\Layout1\_HeaderLayout.cshtml"
-, Tuple.Create(Tuple.Create("", 950), Tuple.Create<System.Object, System.Int32>(Url.Action("blogs", "blog")
+            #line 27 "..\..\Views\Shared\Layout1\_HeaderLayout.cshtml"
+, Tuple.Create(Tuple.Create("", 982), Tuple.Create<System.Object, System.Int32>(Url.Action("blogs", "blog")
             
             #line default
             #line hidden
-, 950), false)
+, 982), false)
 );
 
 WriteLiteral(" class=\"userControls__langBtn\"");
@@ -127,14 +133,14 @@ WriteLiteral(" class=\"pos-rel\"");
 
 WriteLiteral(">\r\n                    <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1221), Tuple.Create("\"", 1261)
+WriteAttribute("href", Tuple.Create(" href=\"", 1253), Tuple.Create("\"", 1293)
             
-            #line 32 "..\..\Views\Shared\Layout1\_HeaderLayout.cshtml"
-, Tuple.Create(Tuple.Create("", 1228), Tuple.Create<System.Object, System.Int32>(Url.Action("BrandList", "Brand")
+            #line 33 "..\..\Views\Shared\Layout1\_HeaderLayout.cshtml"
+, Tuple.Create(Tuple.Create("", 1260), Tuple.Create<System.Object, System.Int32>(Url.Action("BrandList", "Brand")
             
             #line default
             #line hidden
-, 1228), false)
+, 1260), false)
 );
 
 WriteLiteral(" class=\"userControls__currencyBtn\"");
@@ -145,90 +151,8 @@ WriteLiteral("\r\n            <ul");
 
 WriteLiteral(" class=\"left list-inline col-sm-6 col-xs-7 pull-right text-right\"");
 
-WriteLiteral(">\r\n                <li");
-
-WriteLiteral(" class=\"pos-rel margin-right-md\"");
-
-WriteLiteral(">\r\n                    <button");
-
-WriteLiteral(" type=\"button\"");
-
-WriteLiteral(" class=\"btn navbar-btn btn-header-currency\"");
-
-WriteLiteral(" data-toggle=\"modal\"");
-
-WriteLiteral(" data-target=\"#currency-modal\"");
-
-WriteLiteral(">\r\n                        <span");
-
-WriteLiteral(" class=\"text-uppercase\"");
-
-WriteLiteral(">");
-
-            
-            #line 40 "..\..\Views\Shared\Layout1\_HeaderLayout.cshtml"
-                                                Write(SessionContext.CurrentSiteConfig.RegionalSettings.DefaultLanguageCode);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</span>-\r\n                        <span");
-
-WriteLiteral(" class=\"text-uppercase\"");
-
-WriteLiteral(">");
-
-            
-            #line 41 "..\..\Views\Shared\Layout1\_HeaderLayout.cshtml"
-                                                Write(SessionContext.CurrentSiteConfig.RegionalSettings.DefaultCurrencyCode);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</span>-\r\n                        <span");
-
-WriteLiteral(" class=\"text-uppercase\"");
-
-WriteLiteral(">");
-
-            
-            #line 42 "..\..\Views\Shared\Layout1\_HeaderLayout.cshtml"
-                                                Write(SessionContext.CurrentSiteConfig.RegionalSettings.DefaultCountry);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("<i");
-
-WriteAttribute("class", Tuple.Create(" class=\"", 2089), Tuple.Create("\"", 2168)
-, Tuple.Create(Tuple.Create("", 2097), Tuple.Create("fa", 2097), true)
-, Tuple.Create(Tuple.Create(" ", 2099), Tuple.Create("fa-", 2100), true)
-            
-            #line 42 "..\..\Views\Shared\Layout1\_HeaderLayout.cshtml"
-                                                      , Tuple.Create(Tuple.Create("", 2103), Tuple.Create<System.Object, System.Int32>(SessionContext.CurrentSiteConfig.RegionalSettings.DefaultCountry
-            
-            #line default
-            #line hidden
-, 2103), false)
-);
-
-WriteLiteral("></i></span>\r\n                    </button>\r\n                </li>\r\n             " +
-"   <li>\r\n                    <span");
-
-WriteLiteral(" class=\"userControls__linkSeperator\"");
-
-WriteLiteral(">|</span>\r\n                </li>\r\n");
-
-WriteLiteral("               ");
-
-            
-            #line 48 "..\..\Views\Shared\Layout1\_HeaderLayout.cshtml"
-          Write(Html.Action("HeaderLoginInfo", "Home", true));
-
-            
-            #line default
-            #line hidden
-WriteLiteral(" \r\n            </ul>\r\n        </div>\r\n    </div>\r\n</nav>\r\n<section");
+WriteLiteral(">\r\n                \r\n            </ul>\r\n        </div>\r\n    </div>\r\n</nav>\r\n<sect" +
+"ion");
 
 WriteLiteral(" class=\"meta\"");
 
@@ -289,14 +213,14 @@ WriteLiteral("></span>\r\n                </a>\r\n            </div>\r\n\r\n    
 
 WriteLiteral("\r\n            <div");
 
-WriteLiteral(" class=\"col-xs-3 col-sm-2 xs-padding-lr-0 no-padding\"");
+WriteLiteral(" class=\"col-xs-3 col-sm-1 xs-padding-lr-0\"");
 
 WriteLiteral(">\r\n");
 
 WriteLiteral("                ");
 
             
-            #line 75 "..\..\Views\Shared\Layout1\_HeaderLayout.cshtml"
+            #line 66 "..\..\Views\Shared\Layout1\_HeaderLayout.cshtml"
            Write(Html.Partial(CustomViews.SITE_LOGO));
 
             
@@ -306,7 +230,7 @@ WriteLiteral("\r\n            </div>\r\n\r\n            ");
 
 WriteLiteral("\r\n            <div");
 
-WriteLiteral(" class=\"mobShowHide col-xs-12 col-sm-7\"");
+WriteLiteral(" class=\"mobShowHide col-xs-12 col-sm-5\"");
 
 WriteLiteral(">\r\n                <div");
 
@@ -317,7 +241,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                    ");
 
             
-            #line 81 "..\..\Views\Shared\Layout1\_HeaderLayout.cshtml"
+            #line 72 "..\..\Views\Shared\Layout1\_HeaderLayout.cshtml"
                Write(Html.Partial(CustomViews.HEADER_SEARCHBOX));
 
             
@@ -327,7 +251,7 @@ WriteLiteral("                   \r\n                </div>\r\n            </div
 
 WriteLiteral("\r\n            <div");
 
-WriteLiteral(" class=\"col-xs-6 col-sm-3 xs-padding-lr-0 no-padding\"");
+WriteLiteral(" class=\"col-xs-6 col-sm-6 xs-padding-lr-0\"");
 
 WriteLiteral(">\r\n                <nav");
 
@@ -348,7 +272,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                                ");
 
             
-            #line 91 "..\..\Views\Shared\Layout1\_HeaderLayout.cshtml"
+            #line 82 "..\..\Views\Shared\Layout1\_HeaderLayout.cshtml"
                            Write(Html.Action("HeaderBasket", "Basket", true));
 
             
@@ -357,13 +281,13 @@ WriteLiteral("                                ");
 WriteLiteral("\r\n                            </div>\r\n                        </li>\r\n");
 
             
-            #line 94 "..\..\Views\Shared\Layout1\_HeaderLayout.cshtml"
+            #line 85 "..\..\Views\Shared\Layout1\_HeaderLayout.cshtml"
                         
             
             #line default
             #line hidden
             
-            #line 94 "..\..\Views\Shared\Layout1\_HeaderLayout.cshtml"
+            #line 85 "..\..\Views\Shared\Layout1\_HeaderLayout.cshtml"
                          if (isB2b.GetValueOrDefault() && showBulkOrderPad.GetValueOrDefault())
                         {
                             
@@ -371,28 +295,103 @@ WriteLiteral("\r\n                            </div>\r\n                        
             #line default
             #line hidden
             
-            #line 96 "..\..\Views\Shared\Layout1\_HeaderLayout.cshtml"
+            #line 87 "..\..\Views\Shared\Layout1\_HeaderLayout.cshtml"
                        Write(Html.Partial(CustomViews.HEADER_BULKORDER_VIEW));
 
             
             #line default
             #line hidden
             
-            #line 96 "..\..\Views\Shared\Layout1\_HeaderLayout.cshtml"
+            #line 87 "..\..\Views\Shared\Layout1\_HeaderLayout.cshtml"
                                                                             
                         }
 
             
             #line default
             #line hidden
-WriteLiteral("                                         \r\n                    </ul>\r\n           " +
-"     </nav>\r\n            </div>\r\n        </div>\r\n    </div>\r\n");
+WriteLiteral("                        ");
+
+            
+            #line 89 "..\..\Views\Shared\Layout1\_HeaderLayout.cshtml"
+                   Write(Html.Action("HeaderLoginInfo", "Home", true));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n                        \r\n                        <li");
+
+WriteLiteral(" class=\"margin-right-md margin-top-md\"");
+
+WriteLiteral(">\r\n                            <button");
+
+WriteLiteral(" type=\"button\"");
+
+WriteLiteral(" class=\"btn navbar-btn btn-header-currency\"");
+
+WriteLiteral(" data-toggle=\"modal\"");
+
+WriteLiteral(" data-target=\"#currency-modal\"");
+
+WriteLiteral(">\r\n                                ");
+
+WriteLiteral("\r\n                                <span");
+
+WriteLiteral(" class=\"text-uppercase\"");
+
+WriteLiteral(">");
+
+            
+            #line 95 "..\..\Views\Shared\Layout1\_HeaderLayout.cshtml"
+                                                        Write(SessionContext.CurrentSiteConfig.RegionalSettings.DefaultCountry);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("<i");
+
+WriteAttribute("class", Tuple.Create(" class=\"", 4321), Tuple.Create("\"", 4400)
+, Tuple.Create(Tuple.Create("", 4329), Tuple.Create("fa", 4329), true)
+, Tuple.Create(Tuple.Create(" ", 4331), Tuple.Create("fa-", 4332), true)
+            
+            #line 95 "..\..\Views\Shared\Layout1\_HeaderLayout.cshtml"
+                                                              , Tuple.Create(Tuple.Create("", 4335), Tuple.Create<System.Object, System.Int32>(SessionContext.CurrentSiteConfig.RegionalSettings.DefaultCountry
+            
+            #line default
+            #line hidden
+, 4335), false)
+);
+
+WriteLiteral("></i></span>\r\n                            </button>\r\n                        </li" +
+">                            \r\n                    </ul>\r\n                </nav>" +
+"\r\n            </div>\r\n        </div>\r\n    </div>\r\n");
+
+WriteLiteral("    ");
+
+            
+            #line 103 "..\..\Views\Shared\Layout1\_HeaderLayout.cshtml"
+Write(Html.GetGlobalSnipptes(SnippetPlacements.HeaderMenuBefore));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n");
 
 WriteLiteral("    ");
 
             
             #line 104 "..\..\Views\Shared\Layout1\_HeaderLayout.cshtml"
 Write(Html.Action("GetNav", "Home"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n");
+
+WriteLiteral("    ");
+
+            
+            #line 105 "..\..\Views\Shared\Layout1\_HeaderLayout.cshtml"
+Write(Html.GetGlobalSnipptes(SnippetPlacements.HeaderMenuAfter));
 
             
             #line default

@@ -39,7 +39,7 @@ namespace ASP
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Account/Layout1/_UserAddress.cshtml")]
-    public partial class _Views_Account_Layout1__UserAddress_cshtml : System.Web.Mvc.WebViewPage<Omnicx.API.SDK.Models.Commerce.AddressModel>
+    public partial class _Views_Account_Layout1__UserAddress_cshtml : System.Web.Mvc.WebViewPage<Omnicx.WebStore.Models.Commerce.AddressModel>
     {
         public _Views_Account_Layout1__UserAddress_cshtml()
         {

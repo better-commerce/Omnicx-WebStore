@@ -30,7 +30,7 @@ namespace ASP
     using DevTrends.MvcDonutCaching;
     
     #line 12 "..\..\Views\Checkout\Layout1\_GuestRegistration.cshtml"
-    using Omnicx.API.SDK.Models.Common;
+    using Omnicx.WebStore.Models.Common;
     
     #line default
     #line hidden

@@ -28,17 +28,17 @@ namespace ASP
     using System.Web.UI;
     using System.Web.WebPages;
     using DevTrends.MvcDonutCaching;
-    
-    #line 12 "..\..\Views\Shared\Layout1\_Register.cshtml"
-    using Omnicx.API.SDK.Models.Commerce;
-    
-    #line default
-    #line hidden
     using Omnicx.WebStore;
     using Omnicx.WebStore.Core;
     
     #line 13 "..\..\Views\Shared\Layout1\_Register.cshtml"
     using Omnicx.WebStore.Framework.Helpers;
+    
+    #line default
+    #line hidden
+    
+    #line 12 "..\..\Views\Shared\Layout1\_Register.cshtml"
+    using Omnicx.WebStore.Models.Commerce;
     
     #line default
     #line hidden
@@ -122,6 +122,10 @@ WriteLiteral(">");
 WriteLiteral("</div>\r\n                <button");
 
 WriteLiteral(" type=\"button\"");
+
+WriteLiteral("  ng-click=\"gm.formReset(registrationForm);gm.model.registerViewModel.email=null;" +
+"gm.model.registerViewModel.password =null;gm.model.registerViewModel.confirmPass" +
+"word=null\"");
 
 WriteLiteral(" class=\"close\"");
 
@@ -252,30 +256,30 @@ WriteLiteral("</button>\r\n                    </div>\r\n                    <di
 
 WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding checkout-button\"");
 
-WriteAttribute("ng-if", Tuple.Create(" ng-if=\"", 2795), Tuple.Create("\"", 2881)
-, Tuple.Create(Tuple.Create("", 2803), Tuple.Create("\'", 2803), true)
+WriteAttribute("ng-if", Tuple.Create(" ng-if=\"", 2967), Tuple.Create("\"", 3053)
+, Tuple.Create(Tuple.Create("", 2975), Tuple.Create("\'", 2975), true)
             
             #line 48 "..\..\Views\Shared\Layout1\_Register.cshtml"
-        , Tuple.Create(Tuple.Create("", 2804), Tuple.Create<System.Object, System.Int32>(ViewBag.isB2BEnable
+        , Tuple.Create(Tuple.Create("", 2976), Tuple.Create<System.Object, System.Int32>(ViewBag.isB2BEnable
             
             #line default
             #line hidden
-, 2804), false)
-, Tuple.Create(Tuple.Create("", 2824), Tuple.Create("\'", 2824), true)
-, Tuple.Create(Tuple.Create(" ", 2825), Tuple.Create("==", 2826), true)
-, Tuple.Create(Tuple.Create(" ", 2828), Tuple.Create("\'True\'", 2829), true)
-, Tuple.Create(Tuple.Create(" ", 2835), Tuple.Create("&&", 2836), true)
-, Tuple.Create(Tuple.Create(" ", 2838), Tuple.Create("\'", 2839), true)
+, 2976), false)
+, Tuple.Create(Tuple.Create("", 2996), Tuple.Create("\'", 2996), true)
+, Tuple.Create(Tuple.Create(" ", 2997), Tuple.Create("==", 2998), true)
+, Tuple.Create(Tuple.Create(" ", 3000), Tuple.Create("\'True\'", 3001), true)
+, Tuple.Create(Tuple.Create(" ", 3007), Tuple.Create("&&", 3008), true)
+, Tuple.Create(Tuple.Create(" ", 3010), Tuple.Create("\'", 3011), true)
             
             #line 48 "..\..\Views\Shared\Layout1\_Register.cshtml"
-                                            , Tuple.Create(Tuple.Create("", 2840), Tuple.Create<System.Object, System.Int32>(ViewBag.isRegistrationAllowed
+                                            , Tuple.Create(Tuple.Create("", 3012), Tuple.Create<System.Object, System.Int32>(ViewBag.isRegistrationAllowed
             
             #line default
             #line hidden
-, 2840), false)
-, Tuple.Create(Tuple.Create("", 2870), Tuple.Create("\'", 2870), true)
-, Tuple.Create(Tuple.Create(" ", 2871), Tuple.Create("==", 2872), true)
-, Tuple.Create(Tuple.Create(" ", 2874), Tuple.Create("\'True\'", 2875), true)
+, 3012), false)
+, Tuple.Create(Tuple.Create("", 3042), Tuple.Create("\'", 3042), true)
+, Tuple.Create(Tuple.Create(" ", 3043), Tuple.Create("==", 3044), true)
+, Tuple.Create(Tuple.Create(" ", 3046), Tuple.Create("\'True\'", 3047), true)
 );
 
 WriteLiteral(">\r\n                        <button");

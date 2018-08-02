@@ -51,7 +51,7 @@ namespace ASP
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Account/Layout1/PasswordRecovery.cshtml")]
-    public partial class _Views_Account_Layout1_PasswordRecovery_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage <Omnicx.API.SDK.Models.Commerce.ForgotPasswordViewModel>
+    public partial class _Views_Account_Layout1_PasswordRecovery_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage <Omnicx.WebStore.Models.Commerce.ForgotPasswordViewModel>
     {
         public _Views_Account_Layout1_PasswordRecovery_cshtml()
         {
@@ -88,7 +88,7 @@ WriteLiteral("\r\n");
             #line hidden
 WriteLiteral("\r\n\r\n<div");
 
-WriteLiteral(" class=\"col-sm-12 col-xs-12\"");
+WriteLiteral(" class=\"col-sm-12 col-xs-12 dataContainer\"");
 
 WriteLiteral(" ng-controller=\"accountCtrl as am\"");
 

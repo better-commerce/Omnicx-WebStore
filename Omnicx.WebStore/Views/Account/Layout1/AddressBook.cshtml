@@ -16,12 +16,12 @@
     */
 }
 @using Microsoft.Web.Mvc
-@using Omnicx.API.SDK.Entities
+@using Omnicx.WebStore.Models.Enums
 @using Omnicx.WebStore.Core.Controllers
 
 @using Omnicx.WebStore.Framework.Helpers
-@using Omnicx.API.SDK.Models.Helpers
-@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Commerce.AddressModel>
+@using Omnicx.WebStore.Models.Helpers
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Commerce.AddressModel>
 @{
     ViewBag.Title = "AddressBook";
     Layout = "~/Views/Shared/Layout1/_Layout.cshtml";
@@ -31,7 +31,7 @@
     var userRole = SessionContext.CurrentUserRole;
 
 }
-<section ng-controller="accountCtrl as am">
+<section class="container dataContainer" ng-controller="accountCtrl as am">
     <div class="row">
         <div class="col-md-12">
             <ul class="breadcrumb">
@@ -53,22 +53,20 @@
         </div>
     </div>
     @{ /*End Alert information message */ }
+    
     <div class="row">
-        <div class="col-sm-12 col-xs-12">
-            <h3 class="panel-h2 hidden-xs">@LT("MyAccount.Text.Name", "My Address Book")</h3>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12 visible-xs margin-bottom-lg" id="exTab1">
+        <div class="col-xs-12 visible-xs" id="exTab1">
             @Html.Partial("~/Views/Account/Layout1/_MobileSideNav.cshtml")
         </div>
         <div class="col-md-3 col-sm-4 col-xs-12 hidden-xs">
             @Html.Partial("~/Views/Account/Layout1/_SideNav.cshtml")
         </div>
-        <!-- *** LEFT COLUMN ***
-        _________________________________________________________ -->
         <div class="col-md-9 col-sm-8 col-xs-12" ng-init="am.custAddressGrid()">
-
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <h3 class="panel-h2">@LT("MyAccount.Text.Name", "My Address Book")</h3>
+                </div>
+            </div>
             <div class="col-sm-12 col-xs-12 no-padding" ng-show="am.showGrid">
                 @if (userRole == (CompanyUserRole.None) || userRole == (CompanyUserRole.Admin))
                 {
@@ -121,7 +119,7 @@
                 </div>
             </div>
             <div ng-show="am.showAddressGrid">
-                @Html.Partial("~/Views/Account/Layout1/_UserAddress.cshtml", new Omnicx.API.SDK.Models.Commerce.AddressModel())
+                @Html.Partial("~/Views/Account/Layout1/_UserAddress.cshtml", new Omnicx.WebStore.Models.Commerce.AddressModel())
             </div>
             @Html.Partial("~/Views/Account/Layout1/_AddressModal.cshtml")
             <!-- /.col-md-9 -->

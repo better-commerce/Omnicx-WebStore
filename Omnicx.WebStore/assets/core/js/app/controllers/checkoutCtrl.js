@@ -1,5 +1,7 @@
 ﻿(function () {
     'use strict';
+    // ADD CONSTANT FOR THEME DEFAULT IMAGE
+    window.DEFAULT_IMAGE_URL = '/assets/theme/ocx/images/noimagefound.jpg';
     window.app.controller('checkoutCtrl', checkoutCtrl);
     checkoutCtrl.$inject = ['$scope', 'checkoutConfig', 'globalConfig', '$http', 'model', '$timeout', 'loader', 'CapturePlus'];
 
@@ -16,6 +18,7 @@
         ck.paymentMethod = paymentMethod;
         ck.setShipping = setShipping;
         ck.placeOrder = placeOrder;
+        ck.continuePlaceOrder = continuePlaceOrder;
         ck.custAddressGrid = custAddressGrid;
         ck.setShipAddress = setShipAddress;
         ck.continueToDelivery = continueToDelivery;
@@ -68,6 +71,9 @@
         ck.cookiepostCode = 'POSTCODE';
         ck.confirmPostCodeChange = confirmPostCodeChange;
         ck.isPostCodeDiff = false;
+        ck.continue = false;
+        ck.orderResp = '';
+        ck.basketerror = null;
         //***********TEMPORARY METHOD FOR POWDER COATING **********************
         ck.reCalculateServiceCharge = reCalculateServiceCharge;
         ck.serializedData = serializedData;
@@ -381,9 +387,14 @@
                                 window.location.href = data.authorizationTransactionUrl;
                             } else if (data.usePostForm) {
                                 $(data.postForm).appendTo('body').submit();
+                            } else if (ck.model.checkout.selectedPayment.systemName == checkoutConfig.klarna) {
+                                ck.orderResp = data;
+                                KlarnaPaymentInit(data.authorizationTransactionCode);
+                                ck.continue = true;
                             } else {
                                 masterCardPay(data.refOrderId, ck.basket.id, data.orderId, data.currencyCode, data.timeStamp, data.orderTotal, ck.model.checkout.selectedPayment.notificationUrl);
                             }
+                            
                         } else {
                             ck.errorMessage = true;
                             if (data.errors != undefined) {
@@ -435,6 +446,23 @@
                 }
             }
         };
+
+        function continuePlaceOrder(selectedPayment) {
+            if (ck.isPostCodeDiff && ck.model.checkout.shippingAddress.postCode.replace(" ", "").toLowerCase() != ck.model.checkout.basket.postCode.replace(" ", "").toLowerCase()) {
+                $("#postCodeAlert-modal").modal();
+                return;
+            }
+            if (ck.isGuest == undefined) {
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+            } else {
+                if (ck.model.checkout.selectedPayment == null) {
+                    ck.errors = true;
+                } else {
+                    KlarnaAuthorize(ck.model.checkout, ck.orderResp);
+                }
+            }
+        };
+
         function oldBasketPopup() {
             $http.post(checkoutConfig.savedBaskets).success(function (data) {
                 if (data != null && data.result != null) {
@@ -733,7 +761,11 @@
             $http.post(checkoutConfig.addToBasket, { "basketId": ck.basket.id, "productId": recordId, "qty": qty, "displayOrder": ck.displayOrder, "itemType": itemType })
                 .success(function (data) {
                     //vm.success = true;
-                    var dataResult = ck.serializedData(data);
+                    if (data.messageCode == 'C002') {
+                        ck.basketerror = data.message;
+                        $('.alert').show(0).delay(4000).hide(0);
+                    }
+                    var dataResult = ck.serializedData(data.result);
                     ck.basket = dataResult;
                     //ck.showShippingGrid(ck.model.shippingCountries[0].twoLetterIsoCode, ck.model.checkout.basket.id, ck.model.checkout.basket.postCode, ck.model.checkout.basket.shippingMethodId);
                     ck.setBalanceAmt();
@@ -767,6 +799,7 @@
                     $('.promovalid').show(0).delay(2000).hide(0);
                     var dataResult = ck.serializedData(data.result.basket);
                     ck.basket = dataResult;
+                    ck.model.checkout.basket = dataResult;
                     ck.setBalanceAmt();
                 })
                     .error(function (msg) {
@@ -787,6 +820,7 @@
                 .success(function (data) {
                     var dataResult = ck.serializedData(data.result.basket);
                     ck.basket = dataResult;
+                    ck.model.checkout.basket = dataResult;
                     ck.setBalanceAmt();
                 })
                 .error(function (msg) {

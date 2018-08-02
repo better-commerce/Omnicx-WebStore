@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{404D2B03-F5CF-4E2E-B05E-0EC7311916A7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Omnicx.WebStore.Models</RootNamespace>
+    <AssemblyName>Omnicx.WebStore.Models</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FeatureToggle, Version=3.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FeatureToggle.3.5.1\lib\net40\FeatureToggle.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FeatureToggle.Core, Version=3.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FeatureToggle.Core.3.5.1\lib\portable-net40+sl50+wp81+wpa+win\FeatureToggle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="B2B\CompanyDetailModel.cs" />
+    <Compile Include="B2B\CompanyRegisterModel.cs" />
+    <Compile Include="B2B\CompanyUserModel.cs" />
+    <Compile Include="B2B\QuoteInfoModel.cs" />
+    <Compile Include="Catalog\AllBrandModel.cs" />
+    <Compile Include="Catalog\BrandDetailModel.cs" />
+    <Compile Include="Catalog\BrandModel.cs" />
+    <Compile Include="Catalog\CategoryModel.cs" />
+    <Compile Include="Catalog\CollectionModel.cs" />
+    <Compile Include="Catalog\DynamicListModel.cs" />
+    <Compile Include="Catalog\MicrositeModel.cs" />
+    <Compile Include="Catalog\PhysicalStoreModel.cs" />
+    <Compile Include="Catalog\ProductDetailModel.cs" />
+    <Compile Include="Catalog\ProductDetailModelPartialMedicine.cs" />
+    <Compile Include="Catalog\ProductModel.cs" />
+    <Compile Include="Catalog\ProductViewModel.cs" />
+    <Compile Include="Catalog\SearchCriteriaModel.cs" />
+    <Compile Include="Catalog\SearchFacetModel.cs" />
+    <Compile Include="Catalog\SearchModel.cs" />
+    <Compile Include="Catalog\SearchResultEntry.cs" />
+    <Compile Include="Catalog\TypeAheadSearchModel.cs" />
+    <Compile Include="Catalog\VariantModel.cs" />
+    <Compile Include="Commerce\AccountViewModels.cs" />
+    <Compile Include="Commerce\AddressModel.cs" />
+    <Compile Include="Commerce\AddressReadOnlyModel.cs" />
+    <Compile Include="Commerce\BasketAddModel.cs" />
+    <Compile Include="Commerce\BasketAddressModel.cs" />
+    <Compile Include="Commerce\BasketLineModel.cs" />
+    <Compile Include="Commerce\BasketModel.cs" />
+    <Compile Include="Commerce\CheckoutModel-1.cs" />
+    <Compile Include="Commerce\CheckoutModels.cs" />
+    <Compile Include="Commerce\ContactModel.cs" />
+    <Compile Include="Commerce\CustomerBasicModel.cs" />
+    <Compile Include="Commerce\CustomerModel.cs" />
+    <Compile Include="Commerce\NewsletterModel.cs" />
+    <Compile Include="Commerce\OrderLineModel.cs" />
+    <Compile Include="Commerce\OrderModel.cs" />
+    <Compile Include="Commerce\PaymentBasicModel.cs" />
+    <Compile Include="Commerce\PaymentMethodModel.cs" />
+    <Compile Include="Commerce\PaymentModel.cs" />
+    <Compile Include="Commerce\PromoResponseModel.cs" />
+    <Compile Include="Commerce\PromotionModel.cs" />
+    <Compile Include="Commerce\ReturnLineModel.cs" />
+    <Compile Include="Commerce\ReturnModel.cs" />
+    <Compile Include="Commerce\ShippingModel.cs" />
+    <Compile Include="Commerce\UserActivityListModel.cs" />
+    <Compile Include="Commerce\UserActivityModel.cs" />
+    <Compile Include="Commerce\UserActivitySearchModel.cs" />
+    <Compile Include="Commerce\UserPasswordTokenModel.cs" />
+    <Compile Include="Commerce\UserSubscriptionModel.cs" />
+    <Compile Include="Commerce\WishlistModel.cs" />
+    <Compile Include="Common\Amount.cs" />
+    <Compile Include="Common\AuthTokenModel.cs" />
+    <Compile Include="Common\BaseModel.cs" />
+    <Compile Include="Common\BoolResponse.cs" />
+    <Compile Include="Common\ChangePasswordModel.cs" />
+    <Compile Include="Common\Country.cs" />
+    <Compile Include="Common\CustomInfo.cs" />
+    <Compile Include="Common\DefaultSettingModel.cs" />
+    <Compile Include="Common\FileResponse.cs" />
+    <Compile Include="Common\GdprAttrModel.cs" />
+    <Compile Include="Common\Localized.cs" />
+    <Compile Include="Common\LogEntryModel.cs" />
+    <Compile Include="Common\LoginModel.cs" />
+    <Compile Include="Common\PasswordSetting.cs" />
+    <Compile Include="Common\PluginSettings.cs" />
+    <Compile Include="Common\SessionInfo.cs" />
+    <Compile Include="Common\TokenRequestModel.cs" />
+    <Compile Include="Common\UtmInfo.cs" />
+    <Compile Include="Enums\AcknowledgeType.cs" />
+    <Compile Include="Enums\BasketStage.cs" />
+    <Compile Include="Enums\BlogGroupType.cs" />
+    <Compile Include="Enums\CachingTypes.cs" />
+    <Compile Include="Enums\CompanyUserRole.cs" />
+    <Compile Include="Enums\DataLayerObjectType.cs" />
+    <Compile Include="Enums\EntitySlugTypes.cs" />
+    <Compile Include="Enums\ExistingBasket.cs" />
+    <Compile Include="Enums\FacetType.cs" />
+    <Compile Include="Enums\GeoLocatorPlugin.cs" />
+    <Compile Include="Enums\GroupTypes.cs" />
+    <Compile Include="Enums\ImageObjectTypes.cs" />
+    <Compile Include="Enums\ItemTypes.cs" />
+    <Compile Include="Enums\LinkType.cs" />
+    <Compile Include="Enums\ListDatasetSource.cs" />
+    <Compile Include="Enums\LogLevel.cs" />
+    <Compile Include="Enums\MenuTypes.cs" />
+    <Compile Include="Enums\OrderStatus.cs" />
+    <Compile Include="Enums\PurchasingAsGiftOrMe.cs" />
+    <Compile Include="Enums\RedirectType.cs" />
+    <Compile Include="Enums\ResultEntryType.cs" />
+    <Compile Include="Enums\ServiceType.cs" />
+    <Compile Include="Enums\ShippingTypes.cs" />
+    <Compile Include="Enums\SiteViewComponentTypes.cs" />
+    <Compile Include="Enums\Snippet.cs" />
+    <Compile Include="Enums\SourceProcessModel.cs" />
+    <Compile Include="Enums\SubscriptionTypes.cs" />
+    <Compile Include="Enums\TransactionType.cs" />
+    <Compile Include="Enums\UserSourceTypes.cs" />
+    <Compile Include="Enums\WebhookEntityTypes.cs" />
+    <Compile Include="Enums\WebhookEventTypes.cs" />
+    <Compile Include="FeatureToggle\CustomFeatures.cs" />
+    <Compile Include="Keys\Constant.cs" />
+    <Compile Include="Catalog\Facet.cs" />
+    <Compile Include="Helpers\JsonExtensions.cs" />
+    <Compile Include="Helpers\PaginatedResult.cs" />
+    <Compile Include="Catalog\SearchFilter.cs" />
+    <Compile Include="Keys\CacheKeys.cs" />
+    <Compile Include="Keys\ConfigKeys.cs" />
+    <Compile Include="Infrastructure\ConfigModel.cs" />
+    <Compile Include="Keys\CustomViews.cs" />
+    <Compile Include="Infrastructure\LogEntry.cs" />
+    <Compile Include="Infrastructure\Settings\B2BSettings.cs" />
+    <Compile Include="Infrastructure\Settings\BasketSettings.cs" />
+    <Compile Include="Infrastructure\Settings\CatalogSettings.cs" />
+    <Compile Include="Infrastructure\Settings\CurrencySettingModel.cs" />
+    <Compile Include="Infrastructure\Settings\DomainSettings.cs" />
+    <Compile Include="Infrastructure\Settings\ISettings.cs" />
+    <Compile Include="Infrastructure\Settings\OrderSettings.cs" />
+    <Compile Include="Infrastructure\Settings\ProductReviewSettings.cs" />
+    <Compile Include="Infrastructure\Settings\RegionalSettings.cs" />
+    <Compile Include="Infrastructure\Settings\SearchSettings.cs" />
+    <Compile Include="Infrastructure\Settings\SeoSettings.cs" />
+    <Compile Include="Infrastructure\Settings\ShippingSettings.cs" />
+    <Compile Include="Infrastructure\Settings\SocialSettings.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResponseModel.cs" />
+    <Compile Include="SampleFeatureToggles\SampleFeatureToggle.cs" />
+    <Compile Include="Site\BlogModel.cs" />
+    <Compile Include="Site\EmailTemplateModel.cs" />
+    <Compile Include="Site\FaqModel.cs" />
+    <Compile Include="Site\FaqModelTemp.cs" />
+    <Compile Include="Site\FeedModel.cs" />
+    <Compile Include="Site\IHaveSeoInfo.cs" />
+    <Compile Include="Site\LocalizeModel.cs" />
+    <Compile Include="Site\MenuModel.cs" />
+    <Compile Include="Site\NavigationModel.cs" />
+    <Compile Include="Site\PageModel.cs" />
+    <Compile Include="Site\SiteViewModel.cs" />
+    <Compile Include="Site\SnippetModel.cs" />
+    <Compile Include="Site\SurveyModels.cs" />
+    <Compile Include="Site\WidgetModel.cs" />
+    <Compile Include="Site\ZoneModel.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -36,7 +36,7 @@ namespace ASP
     #line hidden
     
     #line 17 "..\..\Views\Common\Layout1\BasketNotFound.cshtml"
-    using Omnicx.API.SDK.Models;
+    using Omnicx.WebStore.Models;
     
     #line default
     #line hidden

@@ -28,18 +28,18 @@ namespace ASP
     using System.Web.UI;
     using System.Web.WebPages;
     using DevTrends.MvcDonutCaching;
-    
-    #line 13 "..\..\Views\Product\Layout1\_QuickViewModal.cshtml"
-    using Omnicx.API.SDK.Models.Catalog;
-    
-    #line default
-    #line hidden
     using Omnicx.WebStore;
     using Omnicx.WebStore.Core;
     
+    #line 13 "..\..\Views\Product\Layout1\_QuickViewModal.cshtml"
+    using Omnicx.WebStore.Models.Catalog;
+    
+    #line default
+    #line hidden
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Product/Layout1/_QuickViewModal.cshtml")]
-    public partial class _Views_Product_Layout1__QuickViewModal_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Catalog.ProductDetailModel>
+    public partial class _Views_Product_Layout1__QuickViewModal_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Catalog.ProductDetailModel>
     {
         public _Views_Product_Layout1__QuickViewModal_cshtml()
         {
@@ -194,7 +194,7 @@ WriteLiteral(" ng-src=\"{{pm.model.image}}\"");
 
 WriteLiteral(" class=\"img-responsive\"");
 
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
 WriteLiteral(">\r\n                        </div>\r\n                        <div");
 
@@ -228,7 +228,7 @@ WriteLiteral(">\r\n                                                <img");
 
 WriteLiteral(" ng-src=\"{{img.url}}\"");
 
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
 WriteLiteral(" ng-click=\"pm.model.image=img.url\"");
 
@@ -553,14 +553,14 @@ WriteLiteral(" class=\"animate btn-default hidden-xs hidden-sm\"");
 
 WriteLiteral(" ng-click=\"pm.addToWishlist(pm.model.recordId)\"");
 
-WriteAttribute("title", Tuple.Create(" title=\"", 8812), Tuple.Create("\"", 8879)
+WriteAttribute("title", Tuple.Create(" title=\"", 8762), Tuple.Create("\"", 8829)
             
             #line 123 "..\..\Views\Product\Layout1\_QuickViewModal.cshtml"
-                                                                                        , Tuple.Create(Tuple.Create("", 8820), Tuple.Create<System.Object, System.Int32>(LT("ProductDetail.Links.Addtowishlist", "Add to wishlist")
+                                                                                        , Tuple.Create(Tuple.Create("", 8770), Tuple.Create<System.Object, System.Int32>(LT("ProductDetail.Links.Addtowishlist", "Add to wishlist")
             
             #line default
             #line hidden
-, 8820), false)
+, 8770), false)
 );
 
 WriteLiteral(" data-toggle=\"tooltip\"");
@@ -612,14 +612,14 @@ WriteLiteral(" data-placement=\"top\"");
 
 WriteLiteral(" ng-click=\"pm.addToWishlist(pm.model.recordId);pm.hideQickView()\"");
 
-WriteAttribute("title", Tuple.Create(" title=\"", 9645), Tuple.Create("\"", 9712)
+WriteAttribute("title", Tuple.Create(" title=\"", 9595), Tuple.Create("\"", 9662)
             
             #line 130 "..\..\Views\Product\Layout1\_QuickViewModal.cshtml"
-                                                                                                                                                           , Tuple.Create(Tuple.Create("", 9653), Tuple.Create<System.Object, System.Int32>(LT("ProductDetail.Links.Addtowishlist", "Add to wishlist")
+                                                                                                                                                           , Tuple.Create(Tuple.Create("", 9603), Tuple.Create<System.Object, System.Int32>(LT("ProductDetail.Links.Addtowishlist", "Add to wishlist")
             
             #line default
             #line hidden
-, 9653), false)
+, 9603), false)
 );
 
 WriteLiteral(">\r\n                                                <i");

@@ -34,12 +34,6 @@ namespace ASP
     
     #line default
     #line hidden
-    
-    #line 15 "..\..\Views\Checkout\Layout1\_BasketView.cshtml"
-    using Omnicx.API.SDK.Entities;
-    
-    #line default
-    #line hidden
     using Omnicx.WebStore;
     using Omnicx.WebStore.Core;
     
@@ -55,9 +49,15 @@ namespace ASP
     #line default
     #line hidden
     
+    #line 15 "..\..\Views\Checkout\Layout1\_BasketView.cshtml"
+    using Omnicx.WebStore.Models.Enums;
+    
+    #line default
+    #line hidden
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Checkout/Layout1/_BasketView.cshtml")]
-    public partial class _Views_Checkout_Layout1__BasketView_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Commerce.BasketModel>
+    public partial class _Views_Checkout_Layout1__BasketView_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Commerce.BasketModel>
     {
         public _Views_Checkout_Layout1__BasketView_cshtml()
         {
@@ -67,15 +67,15 @@ namespace ASP
             
             #line 1 "..\..\Views\Checkout\Layout1\_BasketView.cshtml"
   
-/*
-    Name: Basket View
-    Purpose: Show Previousaly Saved Basket in Modal
-    Structure: /Views/Checkout/Layout1/_BasketView.cshtml
-    Contains (Partial Views Used):
+    /*
+        Name: Basket View
+        Purpose: Show Previousaly Saved Basket in Modal
+        Structure: /Views/Checkout/Layout1/_BasketView.cshtml
+        Contains (Partial Views Used):
 
-    Contained In (Where we Use this View):
-        a-/Views/Basket/Layout1/OnePageCheckout.cshtml
-    */
+        Contained In (Where we Use this View):
+            a-/Views/Basket/Layout1/OnePageCheckout.cshtml
+        */
 
             
             #line default
@@ -214,7 +214,7 @@ WriteLiteral(">\r\n                                            <img");
 
 WriteLiteral(" ng-src=\"{{item.image}}\"");
 
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
 WriteLiteral(">\r\n                                        </a>\r\n                                " +
 "    </span>\r\n                                </div>\r\n                           " +
@@ -262,18 +262,18 @@ WriteLiteral(">\r\n                                        <strong");
 
 WriteLiteral(" class=\"text-orange small-cart-name\"");
 
-WriteAttribute("ng-show", Tuple.Create(" ng-show=\"", 3112), Tuple.Create("\"", 3194)
-, Tuple.Create(Tuple.Create("", 3122), Tuple.Create("item.displayInBasket", 3122), true)
-, Tuple.Create(Tuple.Create(" ", 3142), Tuple.Create("&&", 3143), true)
-, Tuple.Create(Tuple.Create(" ", 3145), Tuple.Create("items.itemType", 3146), true)
-, Tuple.Create(Tuple.Create(" ", 3160), Tuple.Create("==", 3161), true)
+WriteAttribute("ng-show", Tuple.Create(" ng-show=\"", 3124), Tuple.Create("\"", 3206)
+, Tuple.Create(Tuple.Create("", 3134), Tuple.Create("item.displayInBasket", 3134), true)
+, Tuple.Create(Tuple.Create(" ", 3154), Tuple.Create("&&", 3155), true)
+, Tuple.Create(Tuple.Create(" ", 3157), Tuple.Create("items.itemType", 3158), true)
+, Tuple.Create(Tuple.Create(" ", 3172), Tuple.Create("==", 3173), true)
             
             #line 48 "..\..\Views\Checkout\Layout1\_BasketView.cshtml"
-                                                      , Tuple.Create(Tuple.Create("", 3163), Tuple.Create<System.Object, System.Int32>(ItemTypes.Bundle.GetHashCode()
+                                                      , Tuple.Create(Tuple.Create("", 3175), Tuple.Create<System.Object, System.Int32>(ItemTypes.Bundle.GetHashCode()
             
             #line default
             #line hidden
-, 3163), false)
+, 3175), false)
 );
 
 WriteLiteral(">");

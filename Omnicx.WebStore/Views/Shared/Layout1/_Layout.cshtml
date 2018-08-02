@@ -16,22 +16,29 @@
 <!DOCTYPE html>
 @using Microsoft.Web.Mvc
 @using Omnicx.WebStore.Core.Controllers
-@using Omnicx.API.SDK.Models
+@using Omnicx.API.SDK.Helpers
+@using Omnicx.WebStore.Models.Enums;
 @inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
 
 <html ng-app="btApp" ng-controller="globalCtrl as gm" id="sidebarFix">
 
 @Html.Partial("~/Views/Shared/Layout1/_LayoutHeadTag.cshtml")
 <body>  
+    @Html.GetGlobalSnipptes(SnippetPlacements.BodyStartHtmlTagAfter)
     @RenderSection("siteheader", required: false)
     <header class="siteHeader">
-        
+
         @Html.Partial("~/Views/Shared/Layout1/_LayoutHeader.cshtml")
         <div class="container"></div>
+        <div>
+            @Html.Partial("~/Views/Shared/Layout1/_Alerts.cshtml")
+        </div>
+
         <div id="all">
             <div id="content" class="clearfix">
-                <div class="container">
-                    @RenderBody()                   
+                <div class="container-min">
+                    @RenderBody()
+                    @Html.GetGlobalSnipptes(SnippetPlacements.PageContainerAfter)
                 </div>
             </div>
         </div>
@@ -53,15 +60,14 @@
                     <div class="modal-footer"></div>
                 </div>
             </div>
-        </div>        
+        </div>
     </header>
-    
     @Html.Partial("~/Views/Shared/Layout1/_LayoutFooter.cshtml")               
     @{
         var pcaAccessCode = "";
         if (SessionContext.CurrentSiteConfig != null && SessionContext.CurrentSiteConfig.GeoLocators != null)
         {
-            var pca = SessionContext.CurrentSiteConfig.GeoLocators.FirstOrDefault(x => x.PluginCode == Omnicx.API.SDK.Entities.GeoLocatorPlugin.PCA.ToString());
+            var pca = SessionContext.CurrentSiteConfig.GeoLocators.FirstOrDefault(x => x.PluginCode == Omnicx.WebStore.Models.Enums.GeoLocatorPlugin.PCA.ToString());
             if (pca != null)
             {
                 pcaAccessCode = pca.AccessKey;
@@ -115,5 +121,6 @@
             getDefaultCountryUrl: getDefaultCountryUrl
         });
     </script>
+    @Html.GetGlobalSnipptes(SnippetPlacements.BodyEndHtmlTagBefore)
 </body>
 </html>

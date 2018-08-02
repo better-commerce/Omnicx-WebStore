@@ -9,7 +9,7 @@
     Contained In (Where we Use this View):
     */
 }
-@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Commerce.OrderModel>
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Commerce.OrderModel>
 @{
     ViewBag.Title = "OrderConfirmation";
     Layout = "~/Views/Shared/Layout1/_OpcLayout.cshtml";
@@ -38,7 +38,7 @@
                         <tr>
                             <td>
                                 <a ng-href="/@item.Slug">
-                                    <img src="@item.Image" alt="OCX" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'">
+                                    <img src="@item.Image" alt="OCX" onerror="this.src = DEFAULT_IMAGE_URL">
                                 </a>
                             </td>
                             <td>
@@ -69,7 +69,7 @@
                             </tr>
                             <tr>
                                 <td>@LT("Myaccount.Text.ShippingCharge", "Shipping and handling")</td>
-                                <th class="text-right">@Model.ShippingCharge.Formatted.WithTax</th>
+                                <th class="text-right">@Model.ShippingCharge.Formatted.WithoutTax</th>
                             </tr>
                             <tr>
                                 <td>@LT("MyAccount.Text.Discount", "Discount")</td>

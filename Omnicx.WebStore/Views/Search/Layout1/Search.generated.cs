@@ -35,20 +35,8 @@ namespace ASP
     #line default
     #line hidden
     
-    #line 17 "..\..\Views\Search\Layout1\Search.cshtml"
-    using Omnicx.API.SDK.Entities;
-    
-    #line default
-    #line hidden
-    
     #line 18 "..\..\Views\Search\Layout1\Search.cshtml"
     using Omnicx.API.SDK.Helpers;
-    
-    #line default
-    #line hidden
-    
-    #line 19 "..\..\Views\Search\Layout1\Search.cshtml"
-    using Omnicx.API.SDK.Models.Catalog;
     
     #line default
     #line hidden
@@ -73,9 +61,21 @@ namespace ASP
     #line default
     #line hidden
     
+    #line 19 "..\..\Views\Search\Layout1\Search.cshtml"
+    using Omnicx.WebStore.Models.Catalog;
+    
+    #line default
+    #line hidden
+    
+    #line 17 "..\..\Views\Search\Layout1\Search.cshtml"
+    using Omnicx.WebStore.Models.Enums;
+    
+    #line default
+    #line hidden
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Search/Layout1/Search.cshtml")]
-    public partial class _Views_Search_Layout1_Search_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Helpers.PaginatedResult<Omnicx.API.SDK.Models.Catalog.ProductModel>>
+    public partial class _Views_Search_Layout1_Search_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Helpers.PaginatedResult<Omnicx.WebStore.Models.Catalog.ProductModel>>
     {
         public _Views_Search_Layout1_Search_cshtml()
         {
@@ -116,90 +116,10 @@ WriteLiteral("\r\n");
             
             #line default
             #line hidden
-WriteLiteral("\r\n<div");
-
-WriteLiteral(" class=\"col-md-12 no-padding\"");
-
-WriteLiteral(">\r\n    <ul");
-
-WriteLiteral(" class=\"breadcrumb\"");
-
-WriteLiteral(">\r\n        <li><a");
-
-WriteLiteral(" href=\"/\"");
-
-WriteLiteral(">");
+WriteLiteral("\r\n\r\n");
 
             
-            #line 33 "..\..\Views\Search\Layout1\Search.cshtml"
-                   Write(LT("ProductListing.Breadcrumb.Home", "Home"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</a></li>\r\n");
-
-            
-            #line 34 "..\..\Views\Search\Layout1\Search.cshtml"
-        
-            
-            #line default
-            #line hidden
-            
-            #line 34 "..\..\Views\Search\Layout1\Search.cshtml"
-         if (!string.IsNullOrEmpty(Model.SearchCriteria.FreeText))
-            {
-
-            
-            #line default
-            #line hidden
-WriteLiteral("            <li>");
-
-            
-            #line 36 "..\..\Views\Search\Layout1\Search.cshtml"
-           Write(Model.SearchCriteria.FreeText);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</li>\r\n");
-
-            
-            #line 37 "..\..\Views\Search\Layout1\Search.cshtml"
-        }
-
-            
-            #line default
-            #line hidden
-WriteLiteral("        ");
-
-            
-            #line 38 "..\..\Views\Search\Layout1\Search.cshtml"
-         if (!string.IsNullOrEmpty(Model.SearchCriteria.BreadCrumb))
-            {
-            
-            
-            #line default
-            #line hidden
-            
-            #line 40 "..\..\Views\Search\Layout1\Search.cshtml"
-       Write(Html.Raw(Model.SearchCriteria.BreadCrumb));
-
-            
-            #line default
-            #line hidden
-            
-            #line 40 "..\..\Views\Search\Layout1\Search.cshtml"
-                                                      
-        }
-
-            
-            #line default
-            #line hidden
-WriteLiteral("    </ul>\r\n</div>\r\n\r\n");
-
-            
-            #line 45 "..\..\Views\Search\Layout1\Search.cshtml"
+            #line 32 "..\..\Views\Search\Layout1\Search.cshtml"
 Write(Html.Partial("~/Views/search/Layout1/_SearchResultProducts.cshtml", Model));
 
             
@@ -212,7 +132,7 @@ DefineSection("scripts", () => {
 WriteLiteral("\r\n    <script>\r\n        var searchProductUrl = \'");
 
             
-            #line 48 "..\..\Views\Search\Layout1\Search.cshtml"
+            #line 35 "..\..\Views\Search\Layout1\Search.cshtml"
                             Write(Html.BuildUrlFromExpression<SearchController>(c => c.SearchProducts(null)));
 
             
@@ -221,7 +141,7 @@ WriteLiteral("\r\n    <script>\r\n        var searchProductUrl = \'");
 WriteLiteral("\';\r\n        var productUrl = \'");
 
             
-            #line 49 "..\..\Views\Search\Layout1\Search.cshtml"
+            #line 36 "..\..\Views\Search\Layout1\Search.cshtml"
                       Write(Html.BuildUrlFromExpression<ProductController>(c => c.ProductDetails("")));
 
             
@@ -230,7 +150,7 @@ WriteLiteral("\';\r\n        var productUrl = \'");
 WriteLiteral("\';\r\n        var addToWishlistUrl = \'");
 
             
-            #line 50 "..\..\Views\Search\Layout1\Search.cshtml"
+            #line 37 "..\..\Views\Search\Layout1\Search.cshtml"
                             Write(Html.BuildUrlFromExpression<AccountController>(c => c.AddProductToWishlist(null)));
 
             
@@ -239,7 +159,7 @@ WriteLiteral("\';\r\n        var addToWishlistUrl = \'");
 WriteLiteral("\';     \r\n        var getWishlist = \'");
 
             
-            #line 51 "..\..\Views\Search\Layout1\Search.cshtml"
+            #line 38 "..\..\Views\Search\Layout1\Search.cshtml"
                        Write(Html.BuildUrlFromExpression<AccountController>(c => c.GetWishlist()));
 
             
@@ -255,7 +175,7 @@ WriteLiteral(@"';
         window.app.constant('model', ");
 
             
-            #line 58 "..\..\Views\Search\Layout1\Search.cshtml"
+            #line 45 "..\..\Views\Search\Layout1\Search.cshtml"
                                 Write(Html.JsonFor(Model));
 
             

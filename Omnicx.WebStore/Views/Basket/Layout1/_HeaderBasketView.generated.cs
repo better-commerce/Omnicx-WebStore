@@ -28,14 +28,20 @@ namespace ASP
     using System.Web.UI;
     using System.Web.WebPages;
     using DevTrends.MvcDonutCaching;
+    using Omnicx.WebStore;
+    using Omnicx.WebStore.Core;
     
-    #line 1 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
-    using Omnicx.API.SDK.Entities;
+    #line 13 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
+    using Omnicx.WebStore.Models.Enums;
     
     #line default
     #line hidden
-    using Omnicx.WebStore;
-    using Omnicx.WebStore.Core;
+    
+    #line 14 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
+    using Omnicx.WebStore.Models.Keys;
+    
+    #line default
+    #line hidden
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Basket/Layout1/_HeaderBasketView.cshtml")]
@@ -47,7 +53,26 @@ namespace ASP
         public override void Execute()
         {
             
-            #line 3 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
+            #line 1 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
+  
+    /*
+        Name: Mini Basker
+        Purpose: Show limited Information for added items in mini-cart
+        Structure: /Views/Basket/Layout1/_HeaderBasketView.cshtml
+        Contains (Partial Views Used):
+            a-/Views/Basket/Layout1/_QuickOrderPad.cshtml
+            b-/Views/Basket/Layout1/_BulkOrderMessage.cshtml
+        Contained In (Where we Use this View):
+            a-/Views/Shared/Layout1/_HeaderLayout.cshtml    (Link in Top Header)
+        */
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n");
+
+            
+            #line 16 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
   
 
     var checkoutUrl = Url.Action("OnePageCheckout", "Checkout");
@@ -65,7 +90,7 @@ WriteLiteral(" class=\"top-login-cart metaLinks\"");
 
 WriteLiteral(" ng-init=\"gm.initBasket()\"");
 
-WriteLiteral(">  \r\n    <ul");
+WriteLiteral(">\r\n    <ul");
 
 WriteLiteral(" class=\"list-inline\"");
 
@@ -75,33 +100,36 @@ WriteLiteral(" class=\"shopping-cart cartopen\"");
 
 WriteLiteral(">\r\n            <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 477), Tuple.Create("\"", 514)
+WriteAttribute("href", Tuple.Create(" href=\"", 1001), Tuple.Create("\"", 1038)
             
-            #line 15 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
-, Tuple.Create(Tuple.Create("", 484), Tuple.Create<System.Object, System.Int32>(Url.Action("Index", "Basket")
+            #line 28 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
+, Tuple.Create(Tuple.Create("", 1008), Tuple.Create<System.Object, System.Int32>(Url.Action("Index", "Basket")
             
             #line default
             #line hidden
-, 484), false)
+, 1008), false)
 );
 
 WriteLiteral(" class=\"metaLinks__basket minicart-custom\"");
 
-WriteAttribute("title", Tuple.Create(" title=\"", 557), Tuple.Create("\"", 601)
+WriteLiteral(">\r\n                <span");
+
+WriteLiteral(" class=\"metaLinks__basket__full\"");
+
+WriteLiteral("><i");
+
+WriteLiteral(" class=\"fa fa-shopping-cart\"");
+
+WriteLiteral("></i> ");
+
             
-            #line 15 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
-                       , Tuple.Create(Tuple.Create("", 565), Tuple.Create<System.Object, System.Int32>(LT("YourBag.Text.Basket", "Basket")
+            #line 29 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
+                                                                                     Write(LT("YourBag.Text.Cart", "Cart"));
+
             
             #line default
             #line hidden
-, 565), false)
-);
-
-WriteLiteral(">                \r\n                <span");
-
-WriteLiteral(" class=\"sprite-bag metaLinks__basket__full\"");
-
-WriteLiteral("></span>\r\n                <span");
+WriteLiteral("</span>\r\n                <span");
 
 WriteLiteral(" class=\"metaLinks__basket__indicator\"");
 
@@ -110,7 +138,7 @@ WriteLiteral(" ng-if=\"gm.count==0\"");
 WriteLiteral(">");
 
             
-            #line 17 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
+            #line 30 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
                                                                           Write(LT("YourBag.Text.Zero", "0"));
 
             
@@ -168,7 +196,7 @@ WriteLiteral(">\r\n                                                <img");
 
 WriteLiteral(" ng-src=\"{{items.image}}\"");
 
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
 WriteLiteral(">\r\n                                            </a>\r\n                            " +
 "            </span>\r\n                                    </div>\r\n               " +
@@ -186,14 +214,14 @@ WriteLiteral(" href=\"\"");
 
 WriteLiteral(" class=\"remove\"");
 
-WriteAttribute("title", Tuple.Create(" title=\"", 2179), Tuple.Create("\"", 2223)
+WriteAttribute("title", Tuple.Create(" title=\"", 2673), Tuple.Create("\"", 2717)
             
-            #line 35 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
-, Tuple.Create(Tuple.Create("", 2187), Tuple.Create<System.Object, System.Int32>(LT("YourBag.Text.Remove", "Remove")
+            #line 48 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
+, Tuple.Create(Tuple.Create("", 2681), Tuple.Create<System.Object, System.Int32>(LT("YourBag.Text.Remove", "Remove")
             
             #line default
             #line hidden
-, 2187), false)
+, 2681), false)
 );
 
 WriteLiteral(" ng-click=\"gm.addToBasket(items.productId,0,items.displayOrder)\"");
@@ -244,7 +272,7 @@ WriteLiteral(" ng-click=\"gm.onTextFocus($event)\"");
 WriteLiteral(" ng-blur=\"gm.updateQtyAndAdd(items.productId,items.qty,oldQty,items.displayOrder)" +
 "\"");
 
-WriteLiteral(" numbers-Only >\r\n                                            <button");
+WriteLiteral(" numbers-Only>\r\n                                            <button");
 
 WriteLiteral(" class=\"btn-cart\"");
 
@@ -276,24 +304,24 @@ WriteLiteral(">\r\n                                                <strong");
 
 WriteLiteral(" class=\"text-orange\"");
 
-WriteAttribute("ng-show", Tuple.Create(" ng-show=\"", 3784), Tuple.Create("\"", 3867)
-, Tuple.Create(Tuple.Create("", 3794), Tuple.Create("items.displayInBasket", 3794), true)
-, Tuple.Create(Tuple.Create(" ", 3815), Tuple.Create("&&", 3816), true)
-, Tuple.Create(Tuple.Create(" ", 3818), Tuple.Create("items.itemType", 3819), true)
-, Tuple.Create(Tuple.Create(" ", 3833), Tuple.Create("==", 3834), true)
+WriteAttribute("ng-show", Tuple.Create(" ng-show=\"", 4277), Tuple.Create("\"", 4360)
+, Tuple.Create(Tuple.Create("", 4287), Tuple.Create("items.displayInBasket", 4287), true)
+, Tuple.Create(Tuple.Create(" ", 4308), Tuple.Create("&&", 4309), true)
+, Tuple.Create(Tuple.Create(" ", 4311), Tuple.Create("items.itemType", 4312), true)
+, Tuple.Create(Tuple.Create(" ", 4326), Tuple.Create("==", 4327), true)
             
-            #line 48 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
-                                               , Tuple.Create(Tuple.Create("", 3836), Tuple.Create<System.Object, System.Int32>(ItemTypes.Bundle.GetHashCode()
+            #line 61 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
+                                               , Tuple.Create(Tuple.Create("", 4329), Tuple.Create<System.Object, System.Int32>(ItemTypes.Bundle.GetHashCode()
             
             #line default
             #line hidden
-, 3836), false)
+, 4329), false)
 );
 
 WriteLiteral(">");
 
             
-            #line 48 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
+            #line 61 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
                                                                                                                                                            Write(LT("YourBag.Text.IncludeComponents", "Included Components:"));
 
             
@@ -329,7 +357,7 @@ WriteLiteral(" class=\"col-sm-3 col-xs-3 no-padding text-right\"");
 WriteLiteral(">\r\n                                                        <strong>");
 
             
-            #line 54 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
+            #line 67 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
                                                            Write(LT("YourBag.Text.Qty", "Qty:"));
 
             
@@ -345,7 +373,7 @@ WriteLiteral(@"></span>
                                             </div>
                                         </div>
                                     </div>
-                                </div>                                
+                                </div>
                             </div>
                             ");
 
@@ -383,7 +411,7 @@ WriteLiteral(">\r\n                                                        <img"
 
 WriteLiteral(" ng-src=\"{{freeitem.image}}\"");
 
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
 WriteLiteral(">\r\n                                                    </a>\r\n                    " +
 "                            </span>\r\n                                           " +
@@ -414,7 +442,7 @@ WriteLiteral(" ng-show=\"freeitem.price.raw.withTax==0\"");
 WriteLiteral(">");
 
             
-            #line 78 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
+            #line 91 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
                                                                                                  Write(LT("YourBag.Text.Free", "FREE"));
 
             
@@ -447,8 +475,24 @@ WriteLiteral(@"></span>
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <select");
+                <li ng-cloak");
+
+WriteLiteral(" class=\"alert alert-danger\"");
+
+WriteLiteral(" style=\"float:right;\"");
+
+WriteLiteral(" ng-show=\"gm.errorMessage\"");
+
+WriteLiteral(">\r\n                    <i");
+
+WriteLiteral(" class=\"fa fa-circle\"");
+
+WriteLiteral("></i><span");
+
+WriteLiteral(" ng-bind=\"gm.errorMessage\"");
+
+WriteLiteral("></span>\r\n                </li>\r\n                <li>\r\n                    <selec" +
+"t");
 
 WriteLiteral(" id=\"deliverydrpdwn\"");
 
@@ -496,14 +540,14 @@ WriteLiteral(" class=\"form-control\"");
 
 WriteLiteral(" ng-model=\"promoCode\"");
 
-WriteAttribute("placeholder", Tuple.Create(" placeholder=\"", 8355), Tuple.Create("\"", 8439)
+WriteAttribute("placeholder", Tuple.Create(" placeholder=\"", 9007), Tuple.Create("\"", 9091)
             
-            #line 101 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
-                          , Tuple.Create(Tuple.Create("", 8369), Tuple.Create<System.Object, System.Int32>(LT("YourBag.Text.PlaceHolder.Enterpromotioncode", "Enter Promo Code")
+            #line 117 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
+                          , Tuple.Create(Tuple.Create("", 9021), Tuple.Create<System.Object, System.Int32>(LT("YourBag.Text.PlaceHolder.Enterpromotioncode", "Enter Promo Code")
             
             #line default
             #line hidden
-, 8369), false)
+, 9021), false)
 );
 
 WriteLiteral(" style=\"width: 99%;\"");
@@ -540,7 +584,7 @@ WriteLiteral(" ng-show=\"gm.invalidpromo && !gm.showCustomMsg\"");
 WriteLiteral(">");
 
             
-            #line 106 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
+            #line 122 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
                                                                                                                                               Write(LT("Checkout.Text.InValidPromoMessage", "PromoCode Invalid!"));
 
             
@@ -555,7 +599,7 @@ WriteLiteral(" ng-show=\"gm.validpromo\"");
 WriteLiteral(">");
 
             
-            #line 107 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
+            #line 123 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
                                                                                                                              Write(LT("Checkout.Text.ValidPromoMessage", "Successfully Applied"));
 
             
@@ -570,7 +614,7 @@ WriteLiteral(" ng-show=\"gm.promonull\"");
 WriteLiteral(">");
 
             
-            #line 108 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
+            #line 124 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
                                                                                                                           Write(LT("Checkout.Text.NullPromoMessage", "Please enter promo code!"));
 
             
@@ -596,7 +640,7 @@ WriteLiteral(" class=\"basket-price\"");
 WriteLiteral(">");
 
             
-            #line 114 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
+            #line 130 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
                                                Write(LT("Checkout.Text.PromotionApplied", "Promotion Applied"));
 
             
@@ -647,7 +691,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                            ");
 
             
-            #line 129 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
+            #line 145 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
                        Write(LT("YourBag.Text.Discount", "Discount"));
 
             
@@ -679,7 +723,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                            ");
 
             
-            #line 134 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
+            #line 150 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
                        Write(LT("YourBag.Text.GrandTotal", "Order Total"));
 
             
@@ -708,14 +752,14 @@ WriteLiteral(" class=\"col-sm-6 col-xs-12 no-padding-left\"");
 
 WriteLiteral(">\r\n                            <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 11874), Tuple.Create("\"", 11911)
+WriteAttribute("href", Tuple.Create(" href=\"", 12526), Tuple.Create("\"", 12563)
             
-            #line 140 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
-, Tuple.Create(Tuple.Create("", 11881), Tuple.Create<System.Object, System.Int32>(Url.Action("Index", "Basket")
+            #line 156 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
+, Tuple.Create(Tuple.Create("", 12533), Tuple.Create<System.Object, System.Int32>(Url.Action("Index", "Basket")
             
             #line default
             #line hidden
-, 11881), false)
+, 12533), false)
 );
 
 WriteLiteral(" class=\"animate btn-bordered\"");
@@ -723,7 +767,7 @@ WriteLiteral(" class=\"animate btn-bordered\"");
 WriteLiteral(">");
 
             
-            #line 140 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
+            #line 156 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
                                                                                              Write(LT("Header.Link.ViewCart", "View Cart"));
 
             
@@ -739,15 +783,15 @@ WriteLiteral(" class=\"col-sm-6 col-xs-12\"");
 
 WriteLiteral(">\r\n                            <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 12142), Tuple.Create("\"", 12187)
+WriteAttribute("href", Tuple.Create(" href=\"", 12794), Tuple.Create("\"", 12839)
             
-            #line 143 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
-, Tuple.Create(Tuple.Create("", 12149), Tuple.Create<System.Object, System.Int32>(checkoutUrl
+            #line 159 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
+, Tuple.Create(Tuple.Create("", 12801), Tuple.Create<System.Object, System.Int32>(checkoutUrl
             
             #line default
             #line hidden
-, 12149), false)
-, Tuple.Create(Tuple.Create("", 12161), Tuple.Create("//{{gm.basketResponse.id}}", 12161), true)
+, 12801), false)
+, Tuple.Create(Tuple.Create("", 12813), Tuple.Create("//{{gm.basketResponse.id}}", 12813), true)
 );
 
 WriteLiteral(" class=\"animate btn-primary\"");
@@ -755,7 +799,7 @@ WriteLiteral(" class=\"animate btn-primary\"");
 WriteLiteral(">");
 
             
-            #line 143 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
+            #line 159 "..\..\Views\Basket\Layout1\_HeaderBasketView.cshtml"
                                                                                                     Write(LT("Checkout.Title.Checkout", "Checkout"));
 
             
@@ -765,10 +809,8 @@ WriteLiteral(" <i");
 
 WriteLiteral(" class=\"fa fa-caret-right\"");
 
-WriteLiteral("></i></a>\r\n                        </div>                        \r\n              " +
-"      </div>\r\n                    ");
-
-WriteLiteral("\r\n                </li>\r\n            </ul>\r\n        </li>\r\n    </ul>\r\n</div>");
+WriteLiteral("></i></a>\r\n                        </div>\r\n                    </div>\r\n          " +
+"      </li>\r\n            </ul>\r\n        </li>\r\n    </ul>\r\n</div>");
 
         }
     }

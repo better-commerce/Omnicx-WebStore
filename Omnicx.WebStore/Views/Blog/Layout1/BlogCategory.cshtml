@@ -11,10 +11,10 @@ Contained In (Where we Use this View) :
 }
 @using Microsoft.Web.Mvc
 @using Omnicx.WebStore.Core.Controllers
-@using Omnicx.API.SDK.Models
+@using Omnicx.WebStore.Models
 @using Omnicx.WebStore.Core.Helpers
 @using Omnicx.WebStore.Framework.Helpers
-@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Site.BlogDetailViewModel>
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Site.BlogDetailViewModel>
 @{
     ViewBag.Title = @ViewBag.selectedGroup;
     Layout = "~/Views/Shared/Layout1/_LayoutBlog.cshtml";
@@ -73,7 +73,7 @@ else
                     }
                     else
                     {
-                        <a href="@Url.Action("blogdetail", "blog", new { url = @item.URL})"><img ng-src="@item.BlogImage" class="img-responsive" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'"></a>
+                        <a href="@Url.Action("blogdetail", "blog", new { url = @item.URL})"><img ng-src="@item.BlogImage" class="img-responsive" onerror="this.src = DEFAULT_IMAGE_URL"></a>
                     }
                 </div>
                 <div class="col-sm-8">

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using Omnicx.API.SDK.Models.Catalog;
-using Omnicx.API.SDK.Models;
+using Omnicx.WebStore.Models.Catalog;
+using Omnicx.WebStore.Models;
 namespace Omnicx.API.SDK.Api.Catalog
 {
     public interface ICategoryApi

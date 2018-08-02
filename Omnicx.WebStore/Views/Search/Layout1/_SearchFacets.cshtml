@@ -12,14 +12,13 @@
 @inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
 <div class="row" ng-cloak>
     <div class="col-sm-12 selected-search" ng-hide="pm.productResponse == null || pm.productResponse.results==null">
-        <h4 class="panel-h3">@LT("ProductListing.Label.YouHaveSelected", "You have selected")</h4>
+        <h4 class="panel-h3">@LT("ProductListing.Label.YouHaveSelected", "Filters")</h4>
         <div class="col-sm-12 no-padding" ng-show="pm.searchCriteria.freeText!=null && pm.searchCriteria.freeText.length>0" ng-cloak>
-            <span class="selected-h4"><strong>@LT("Dynamic.FacetHeading.FreeText", "Free Text")</strong>:&nbsp;</span>
+            @*<span class="selected-h4"><strong>@LT("Dynamic.FacetHeading.FreeText", "Free Text")</strong>:&nbsp;</span>*@
             <span class="selected-p"><span class="text-capitalize" ng-bind="pm.searchCriteria.freeText"></span>&nbsp;<a class="btn-cross" ng-click="pm.removeFilter(pm.searchCriteria)"><i class="fa fa-times"></i></a></span>
         </div>
         <div ng-repeat="group in pm.selectionGroup" class="selected-margin">
-            <div class="col-sm-12 no-padding">
-                <span class="selected-h4"><strong ng-bind="group"></strong> :&nbsp;</span>
+            <div class="col-sm-12 no-padding">                
                 <span ng-repeat="selected in pm.searchproductfilter  | filter:{name:group}">
                     <span class="selected-p" ng-if="selected.name!='Rating' && selected.value.indexOf('#')<0 ">
                         <span ng-bind="selected.value" style="padding-left: 5px;"></span>&nbsp;

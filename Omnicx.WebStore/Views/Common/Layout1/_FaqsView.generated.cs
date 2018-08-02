@@ -33,7 +33,7 @@ namespace ASP
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Common/Layout1/_FaqsView.cshtml")]
-    public partial class _Views_Common_Layout1__FaqsView_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Catalog.ProductDetailModel>
+    public partial class _Views_Common_Layout1__FaqsView_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Catalog.ProductDetailModel>
     {
         public _Views_Common_Layout1__FaqsView_cshtml()
         {
@@ -100,7 +100,7 @@ WriteLiteral(" data-parent=\"#description\"");
 
 WriteLiteral(" href=\"#Data\"");
 
-WriteLiteral(" aria-expanded=\"false\"");
+WriteLiteral(" aria-expanded=\"true\"");
 
 WriteLiteral(" aria-controls=\"Data\"");
 
@@ -108,7 +108,7 @@ WriteLiteral(">Description</a>\r\n            </h4>\r\n        </div>\r\n       
 
 WriteLiteral(" id=\"Data\"");
 
-WriteLiteral(" class=\"panel-collapse collapse\"");
+WriteLiteral(" class=\"panel-collapse collapse in\"");
 
 WriteLiteral(" role=\"tabpanel\"");
 
@@ -302,7 +302,7 @@ WriteLiteral("</span>\r\n                                    </p>\r\n");
             #line default
             #line hidden
 WriteLiteral("\r\n                    </div>\r\n                </div>\r\n            </div>\r\n       " +
-" </div>\r\n    </div>\r\n</div>\r\n<div");
+" </div>\r\n    </div>\r\n</div>\r\n\r\n<div");
 
 WriteLiteral(" id=\"accordion\"");
 
@@ -311,13 +311,13 @@ WriteLiteral(" class=\"panel-group\"");
 WriteLiteral(">\r\n");
 
             
-            #line 69 "..\..\Views\Common\Layout1\_FaqsView.cshtml"
+            #line 70 "..\..\Views\Common\Layout1\_FaqsView.cshtml"
     
             
             #line default
             #line hidden
             
-            #line 69 "..\..\Views\Common\Layout1\_FaqsView.cshtml"
+            #line 70 "..\..\Views\Common\Layout1\_FaqsView.cshtml"
      foreach (var items in @Model.FaqsCategory)
     {
 
@@ -328,15 +328,15 @@ WriteLiteral("        <div");
 
 WriteLiteral(" class=\"panel panel-default\"");
 
-WriteAttribute("ng-if", Tuple.Create(" ng-if=\"", 3965), Tuple.Create("\"", 3986)
+WriteAttribute("ng-if", Tuple.Create(" ng-if=\"", 3970), Tuple.Create("\"", 3991)
             
-            #line 71 "..\..\Views\Common\Layout1\_FaqsView.cshtml"
-, Tuple.Create(Tuple.Create("", 3973), Tuple.Create<System.Object, System.Int32>(items.Key
+            #line 72 "..\..\Views\Common\Layout1\_FaqsView.cshtml"
+, Tuple.Create(Tuple.Create("", 3978), Tuple.Create<System.Object, System.Int32>(items.Key
             
             #line default
             #line hidden
-, 3973), false)
-, Tuple.Create(Tuple.Create("", 3983), Tuple.Create("!=0", 3983), true)
+, 3978), false)
+, Tuple.Create(Tuple.Create("", 3988), Tuple.Create("!=0", 3988), true)
 );
 
 WriteLiteral(">\r\n            <div");
@@ -357,66 +357,66 @@ WriteLiteral(" data-toggle=\"collapse\"");
 
 WriteLiteral(" data-parent=\"#accordion\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 4179), Tuple.Create("\"", 4215)
-, Tuple.Create(Tuple.Create("", 4186), Tuple.Create("#", 4186), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 4184), Tuple.Create("\"", 4220)
+, Tuple.Create(Tuple.Create("", 4191), Tuple.Create("#", 4191), true)
             
-            #line 74 "..\..\Views\Common\Layout1\_FaqsView.cshtml"
-            , Tuple.Create(Tuple.Create("", 4187), Tuple.Create<System.Object, System.Int32>(items.Value.Replace(" ","")
+            #line 75 "..\..\Views\Common\Layout1\_FaqsView.cshtml"
+            , Tuple.Create(Tuple.Create("", 4192), Tuple.Create<System.Object, System.Int32>(items.Value.Replace(" ","")
             
             #line default
             #line hidden
-, 4187), false)
+, 4192), false)
 );
 
-WriteLiteral(" aria-expanded=\"false\"");
+WriteLiteral(" aria-expanded=\"true\"");
 
-WriteAttribute("aria-controls", Tuple.Create(" aria-controls=\"", 4238), Tuple.Create("\"", 4282)
+WriteAttribute("aria-controls", Tuple.Create(" aria-controls=\"", 4242), Tuple.Create("\"", 4286)
             
-            #line 74 "..\..\Views\Common\Layout1\_FaqsView.cshtml"
-                                                                               , Tuple.Create(Tuple.Create("", 4254), Tuple.Create<System.Object, System.Int32>(items.Value.Replace(" ","")
+            #line 75 "..\..\Views\Common\Layout1\_FaqsView.cshtml"
+                                                                              , Tuple.Create(Tuple.Create("", 4258), Tuple.Create<System.Object, System.Int32>(items.Value.Replace(" ","")
             
             #line default
             #line hidden
-, 4254), false)
+, 4258), false)
 );
 
 WriteLiteral(">");
 
             
-            #line 74 "..\..\Views\Common\Layout1\_FaqsView.cshtml"
-                                                                                                                                                                                        Write(items.Value);
+            #line 75 "..\..\Views\Common\Layout1\_FaqsView.cshtml"
+                                                                                                                                                                                       Write(items.Value);
 
             
             #line default
             #line hidden
 WriteLiteral("</a>\r\n                </h4>\r\n            </div>            \r\n            <div");
 
-WriteLiteral(" class=\"panel-collapse collapse\"");
+WriteLiteral(" class=\"panel-collapse collapse in\"");
 
-WriteAttribute("id", Tuple.Create(" id=\"", 4405), Tuple.Create("\"", 4438)
+WriteAttribute("id", Tuple.Create(" id=\"", 4412), Tuple.Create("\"", 4445)
             
-            #line 77 "..\..\Views\Common\Layout1\_FaqsView.cshtml"
-, Tuple.Create(Tuple.Create("", 4410), Tuple.Create<System.Object, System.Int32>(items.Value.Replace(" ","")
+            #line 78 "..\..\Views\Common\Layout1\_FaqsView.cshtml"
+, Tuple.Create(Tuple.Create("", 4417), Tuple.Create<System.Object, System.Int32>(items.Value.Replace(" ","")
             
             #line default
             #line hidden
-, 4410), false)
+, 4417), false)
 );
 
 WriteLiteral(">\r\n                <div");
 
-WriteLiteral(" class=\"panel-body no-border\"");
+WriteLiteral(" class=\"panel-body no-padding no-border\"");
 
 WriteLiteral(">\r\n");
 
             
-            #line 79 "..\..\Views\Common\Layout1\_FaqsView.cshtml"
+            #line 80 "..\..\Views\Common\Layout1\_FaqsView.cshtml"
                     
             
             #line default
             #line hidden
             
-            #line 79 "..\..\Views\Common\Layout1\_FaqsView.cshtml"
+            #line 80 "..\..\Views\Common\Layout1\_FaqsView.cshtml"
                      foreach (var subfaqs in @Model.FaqsSubCategory)
                     {
                         if (subfaqs.CategoryId == items.Key)
@@ -428,7 +428,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                            <p>");
 
             
-            #line 83 "..\..\Views\Common\Layout1\_FaqsView.cshtml"
+            #line 84 "..\..\Views\Common\Layout1\_FaqsView.cshtml"
                           Write(subfaqs.Question);
 
             
@@ -439,7 +439,7 @@ WriteLiteral("</p>\r\n");
 WriteLiteral("                            <span>");
 
             
-            #line 84 "..\..\Views\Common\Layout1\_FaqsView.cshtml"
+            #line 85 "..\..\Views\Common\Layout1\_FaqsView.cshtml"
                              Write(Html.Raw(@subfaqs.Answer));
 
             
@@ -448,7 +448,7 @@ WriteLiteral("                            <span>");
 WriteLiteral("</span>\r\n");
 
             
-            #line 85 "..\..\Views\Common\Layout1\_FaqsView.cshtml"
+            #line 86 "..\..\Views\Common\Layout1\_FaqsView.cshtml"
                         }
                     }
 
@@ -458,7 +458,7 @@ WriteLiteral("</span>\r\n");
 WriteLiteral("                </div>\r\n            </div>\r\n        </div>\r\n");
 
             
-            #line 90 "..\..\Views\Common\Layout1\_FaqsView.cshtml"
+            #line 91 "..\..\Views\Common\Layout1\_FaqsView.cshtml"
     }
 
             

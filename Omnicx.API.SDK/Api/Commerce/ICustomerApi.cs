@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Omnicx.API.SDK.Models.Catalog;
-using Omnicx.API.SDK.Models.Commerce;
-using Omnicx.API.SDK.Models.Common;
+using Omnicx.WebStore.Models.Catalog;
+using Omnicx.WebStore.Models.Commerce;
+using Omnicx.WebStore.Models.Common;
 using System;
-using Omnicx.API.SDK.Models;
+using Omnicx.WebStore.Models;
 
 namespace Omnicx.API.SDK.Api.Commerce
 {

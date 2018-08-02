@@ -34,18 +34,6 @@ namespace ASP
     
     #line default
     #line hidden
-    
-    #line 18 "..\..\Views\Account\Layout1\SignIn.cshtml"
-    using Omnicx.API.SDK.Models.B2B;
-    
-    #line default
-    #line hidden
-    
-    #line 19 "..\..\Views\Account\Layout1\SignIn.cshtml"
-    using Omnicx.API.SDK.Models.Commerce;
-    
-    #line default
-    #line hidden
     using Omnicx.WebStore;
     using Omnicx.WebStore.Core;
     
@@ -57,6 +45,18 @@ namespace ASP
     
     #line 17 "..\..\Views\Account\Layout1\SignIn.cshtml"
     using Omnicx.WebStore.Framework.Helpers;
+    
+    #line default
+    #line hidden
+    
+    #line 18 "..\..\Views\Account\Layout1\SignIn.cshtml"
+    using Omnicx.WebStore.Models.B2B;
+    
+    #line default
+    #line hidden
+    
+    #line 19 "..\..\Views\Account\Layout1\SignIn.cshtml"
+    using Omnicx.WebStore.Models.Commerce;
     
     #line default
     #line hidden
@@ -102,19 +102,23 @@ WriteLiteral("\r\n");
             
             #line default
             #line hidden
-WriteLiteral("\r\n\r\n<div");
+WriteLiteral("\r\n<div");
 
-WriteLiteral(" class=\"row\"");
+WriteLiteral(" class=\"container dataContainer\"");
 
 WriteLiteral(">\r\n    <div");
 
+WriteLiteral(" class=\"row\"");
+
+WriteLiteral(">\r\n        <div");
+
 WriteLiteral(" class=\"col-md-12\"");
 
-WriteLiteral(">\r\n        <ul");
+WriteLiteral(">\r\n            <ul");
 
 WriteLiteral(" class=\"breadcrumb\"");
 
-WriteLiteral(">\r\n            <li>\r\n                <a");
+WriteLiteral(">\r\n                <li>\r\n                    <a");
 
 WriteLiteral(" href=\"/\"");
 
@@ -122,12 +126,12 @@ WriteLiteral(">");
 
             
             #line 32 "..\..\Views\Account\Layout1\SignIn.cshtml"
-                       Write(LT("MyAccount.Links.Home", "Home"));
+                           Write(LT("MyAccount.Links.Home", "Home"));
 
             
             #line default
             #line hidden
-WriteLiteral("</a>\r\n            </li>\r\n            <li");
+WriteLiteral("</a>\r\n                </li>\r\n                <li");
 
 WriteLiteral(" ng-if=\"gm.createAccount==false\"");
 
@@ -135,12 +139,12 @@ WriteLiteral(">");
 
             
             #line 34 "..\..\Views\Account\Layout1\SignIn.cshtml"
-                                           Write(LT("MyAccount.Text.Login", "Login"));
+                                               Write(LT("MyAccount.Text.Login", "Login"));
 
             
             #line default
             #line hidden
-WriteLiteral("</li>\r\n            <li");
+WriteLiteral("</li>\r\n                <li");
 
 WriteLiteral(" ng-if=\"gm.createAccount==true\"");
 
@@ -148,62 +152,62 @@ WriteLiteral(">");
 
             
             #line 35 "..\..\Views\Account\Layout1\SignIn.cshtml"
-                                          Write(LT("Login.Text.NewAccount", "New User Registration"));
+                                              Write(LT("Login.Text.NewAccount", "New User Registration"));
 
             
             #line default
             #line hidden
-WriteLiteral("</li>\r\n        </ul>\r\n    </div>\r\n\r\n</div>\r\n<div");
+WriteLiteral("</li>\r\n            </ul>\r\n        </div>\r\n\r\n    </div>\r\n    <div");
 
 WriteLiteral(" class=\"row\"");
 
-WriteLiteral(">\r\n    <div");
+WriteLiteral(">\r\n        <div");
 
 WriteLiteral(" class=\"checkoutStepLogin\"");
 
-WriteLiteral(">\r\n\r\n        <div");
+WriteLiteral(">\r\n\r\n            <div");
 
 WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding\"");
 
-WriteLiteral(">\r\n            <section");
+WriteLiteral(">\r\n                <section");
 
 WriteLiteral(" class=\"checkout-accordion\"");
 
-WriteAttribute("ng-init", Tuple.Create(" ng-init=\"", 1613), Tuple.Create("\"", 1713)
-, Tuple.Create(Tuple.Create("", 1623), Tuple.Create("gm.loginAccount=\'", 1623), true)
+WriteAttribute("ng-init", Tuple.Create(" ng-init=\"", 1712), Tuple.Create("\"", 1812)
+, Tuple.Create(Tuple.Create("", 1722), Tuple.Create("gm.loginAccount=\'", 1722), true)
             
             #line 44 "..\..\Views\Account\Layout1\SignIn.cshtml"
-, Tuple.Create(Tuple.Create("", 1640), Tuple.Create<System.Object, System.Int32>(Model.isLogin
+, Tuple.Create(Tuple.Create("", 1739), Tuple.Create<System.Object, System.Int32>(Model.isLogin
             
             #line default
             #line hidden
-, 1640), false)
-, Tuple.Create(Tuple.Create("", 1654), Tuple.Create("\';gm.createAccount=!\'", 1654), true)
+, 1739), false)
+, Tuple.Create(Tuple.Create("", 1753), Tuple.Create("\';gm.createAccount=!\'", 1753), true)
             
             #line 44 "..\..\Views\Account\Layout1\SignIn.cshtml"
-                             , Tuple.Create(Tuple.Create("", 1675), Tuple.Create<System.Object, System.Int32>(Model.isLogin
+                                 , Tuple.Create(Tuple.Create("", 1774), Tuple.Create<System.Object, System.Int32>(Model.isLogin
             
             #line default
             #line hidden
-, 1675), false)
-, Tuple.Create(Tuple.Create("", 1689), Tuple.Create("\';gm.getSocialSettings()", 1689), true)
+, 1774), false)
+, Tuple.Create(Tuple.Create("", 1788), Tuple.Create("\';gm.getSocialSettings()", 1788), true)
 );
 
 WriteLiteral(">\r\n");
 
             
             #line 45 "..\..\Views\Account\Layout1\SignIn.cshtml"
-                
+                    
             
             #line default
             #line hidden
             
             #line 45 "..\..\Views\Account\Layout1\SignIn.cshtml"
-                  /*Registration Form*/
+                      /*Registration Form*/
             
             #line default
             #line hidden
-WriteLiteral("\r\n                <div>\r\n                    <input");
+WriteLiteral("\r\n                    <div>\r\n                        <input");
 
 WriteLiteral(" id=\"ac-2\"");
 
@@ -213,7 +217,7 @@ WriteLiteral(" type=\"radio\"");
 
 WriteLiteral(" class=\"visible-xs\"");
 
-WriteLiteral(" />\r\n                    <label");
+WriteLiteral(" />\r\n                        <label");
 
 WriteLiteral(" class=\"label-ac visible-xs\"");
 
@@ -221,13 +225,13 @@ WriteLiteral(" for=\"ac-2\"");
 
 WriteLiteral(" ng-click=\"gm.loginAccount=false;gm.createAccount=true;\"");
 
-WriteLiteral("> Create an account</label>\r\n                    <article");
+WriteLiteral("> Create an account</label>\r\n                        <article");
 
 WriteLiteral(" class=\"ac-large\"");
 
 WriteLiteral(" ng-hide=\"gm.createAccount==false\"");
 
-WriteLiteral(">\r\n                        <form");
+WriteLiteral(">\r\n                            <form");
 
 WriteLiteral(" name=\"registrationForm\"");
 
@@ -237,11 +241,277 @@ WriteLiteral(" ng-submit=\"gm.registration(gm.model.registerViewModel)\"");
 
 WriteLiteral(" method=\"post\"");
 
-WriteLiteral(">\r\n                            <div");
+WriteLiteral(">\r\n                                <div");
 
 WriteLiteral(" ng-show=\"gm.errorMessage != null\"");
 
-WriteLiteral(">\r\n                                <div ng-cloak");
+WriteLiteral(">\r\n                                    <div ng-cloak");
+
+WriteLiteral(" class=\"alert alert-danger\"");
+
+WriteLiteral(" ng-show=\"gm.errorMessage != null\"");
+
+WriteLiteral(">\r\n                                        <div");
+
+WriteLiteral(" ng-repeat=\"err in gm.errorMessage track by $index\"");
+
+WriteLiteral(">\r\n                                            <i");
+
+WriteLiteral(" class=\"fa fa-circle\"");
+
+WriteLiteral("></i>&nbsp;<span");
+
+WriteLiteral(" ng-bind=\"err\"");
+
+WriteLiteral("></span>\r\n                                        </div>\r\n                       " +
+"             </div>\r\n                                </div>\r\n                   " +
+"             <h2");
+
+WriteLiteral(" class=\"checkout-h2 hidden-xs\"");
+
+WriteLiteral(">");
+
+            
+            #line 58 "..\..\Views\Account\Layout1\SignIn.cshtml"
+                                                             Write(LT("Checkout.Text.Login", "Registration"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</h2>\r\n                                <p");
+
+WriteLiteral(" class=\"lead\"");
+
+WriteLiteral("><strong>");
+
+            
+            #line 59 "..\..\Views\Account\Layout1\SignIn.cshtml"
+                                                   Write(LT("MyAccount.Text.NotRegister", "Not our registered customer yet?"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</strong></p>\r\n                                <p>");
+
+            
+            #line 60 "..\..\Views\Account\Layout1\SignIn.cshtml"
+                              Write(LT("MyAccount.Text.RegisterBenifits", "Registration with us will introduce to a world of fashion, fantastic discounts and much more! Registration will take only a couple of minutes!"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</p>\r\n                                <p");
+
+WriteLiteral(" class=\"text-muted\"");
+
+WriteLiteral(">");
+
+            
+            #line 61 "..\..\Views\Account\Layout1\SignIn.cshtml"
+                                                 Write(LT("MyAccount.Text.FeelFree", "If you have any questions, please feel free to "));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("<a");
+
+WriteLiteral(" href=\"#\"");
+
+WriteLiteral(">");
+
+            
+            #line 61 "..\..\Views\Account\Layout1\SignIn.cshtml"
+                                                                                                                                              Write(LT("MyAccount.Text.ContactUs", "Contact Us"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral(",</a> ");
+
+            
+            #line 61 "..\..\Views\Account\Layout1\SignIn.cshtml"
+                                                                                                                                                                                                 Write(LT("MyAccount.Text.Support", " , our customer service center is working for you 24/7."));
+
+            
+            #line default
+            #line hidden
+WriteLiteral(".</p>\r\n                                <div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding form-group margin-bottom-sm checkoutForm\"");
+
+WriteLiteral(">\r\n");
+
+WriteLiteral("                                    ");
+
+            
+            #line 63 "..\..\Views\Account\Layout1\SignIn.cshtml"
+                               Write(userForm.FormGroupFor(x => x.RegisterViewModel.Email));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n                                </div>\r\n                                <div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding form-group margin-bottom-sm checkoutForm\"");
+
+WriteLiteral(">\r\n");
+
+WriteLiteral("                                    ");
+
+            
+            #line 66 "..\..\Views\Account\Layout1\SignIn.cshtml"
+                               Write(userForm.FormGroupFor(x => x.RegisterViewModel.Password));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n                                </div>\r\n                                <div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding form-group margin-bottom-sm checkoutForm\"");
+
+WriteLiteral(">\r\n");
+
+WriteLiteral("                                    ");
+
+            
+            #line 69 "..\..\Views\Account\Layout1\SignIn.cshtml"
+                               Write(userForm.FormGroupFor(x => x.RegisterViewModel.ConfirmPassword));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n                                </div>\r\n                                <div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12 text-center no-padding checkout-button\"");
+
+WriteLiteral(">\r\n                                    <button");
+
+WriteLiteral(" type=\"submit\"");
+
+WriteLiteral(" class=\"animate btn-primary\"");
+
+WriteLiteral("><i");
+
+WriteLiteral(" class=\"fa fa-user\"");
+
+WriteLiteral("></i>");
+
+            
+            #line 72 "..\..\Views\Account\Layout1\SignIn.cshtml"
+                                                                                                           Write(LT("Global.Buttons.Register", "Register"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</button>\r\n                                    <a");
+
+WriteLiteral(" class=\"animate btn-default\"");
+
+WriteLiteral(" ng-click=\"gm.loginAccount=true;gm.createAccount=false;gm.errorMessage=null;\"");
+
+WriteLiteral(">Login Here</a>\r\n                                </div>\r\n                        " +
+"        <div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12 text-center no-padding checkout-button\"");
+
+WriteAttribute("ng-if", Tuple.Create(" ng-if=\"", 5003), Tuple.Create("\"", 5089)
+, Tuple.Create(Tuple.Create("", 5011), Tuple.Create("\'", 5011), true)
+            
+            #line 75 "..\..\Views\Account\Layout1\SignIn.cshtml"
+                                , Tuple.Create(Tuple.Create("", 5012), Tuple.Create<System.Object, System.Int32>(ViewBag.isB2BEnable
+            
+            #line default
+            #line hidden
+, 5012), false)
+, Tuple.Create(Tuple.Create("", 5032), Tuple.Create("\'", 5032), true)
+, Tuple.Create(Tuple.Create(" ", 5033), Tuple.Create("==", 5034), true)
+, Tuple.Create(Tuple.Create(" ", 5036), Tuple.Create("\'True\'", 5037), true)
+, Tuple.Create(Tuple.Create(" ", 5043), Tuple.Create("&&", 5044), true)
+, Tuple.Create(Tuple.Create(" ", 5046), Tuple.Create("\'", 5047), true)
+            
+            #line 75 "..\..\Views\Account\Layout1\SignIn.cshtml"
+                                                                    , Tuple.Create(Tuple.Create("", 5048), Tuple.Create<System.Object, System.Int32>(ViewBag.isRegistrationAllowed
+            
+            #line default
+            #line hidden
+, 5048), false)
+, Tuple.Create(Tuple.Create("", 5078), Tuple.Create("\'", 5078), true)
+, Tuple.Create(Tuple.Create(" ", 5079), Tuple.Create("==", 5080), true)
+, Tuple.Create(Tuple.Create(" ", 5082), Tuple.Create("\'True\'", 5083), true)
+);
+
+WriteLiteral(">\r\n                                    <button");
+
+WriteLiteral(" type=\"button\"");
+
+WriteLiteral(" ng-click=\"gm.showCompanyForm()\"");
+
+WriteLiteral(" class=\"animate btn-success\"");
+
+WriteLiteral("><i");
+
+WriteLiteral(" class=\"fa fa-user\"");
+
+WriteLiteral("></i>");
+
+            
+            #line 76 "..\..\Views\Account\Layout1\SignIn.cshtml"
+                                                                                                                                           Write(LT("Global.Buttons.CompanyAccountRequest", "Request for Company Account"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</button>\r\n                                </div>\r\n                            </" +
+"form>\r\n                        </article>\r\n                    </div>\r\n");
+
+            
+            #line 81 "..\..\Views\Account\Layout1\SignIn.cshtml"
+                    
+            
+            #line default
+            #line hidden
+            
+            #line 81 "..\..\Views\Account\Layout1\SignIn.cshtml"
+                      /*Login Form*/
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n                    <div>\r\n                        <input");
+
+WriteLiteral(" id=\"ac-1\"");
+
+WriteLiteral(" name=\"accordion-1\"");
+
+WriteLiteral(" type=\"radio\"");
+
+WriteLiteral(" checked");
+
+WriteLiteral(" class=\"visible-xs\"");
+
+WriteLiteral(" />\r\n                        <label");
+
+WriteLiteral(" class=\"label-ac visible-xs\"");
+
+WriteLiteral(" for=\"ac-1\"");
+
+WriteLiteral(" ng-click=\"gm.loginAccount=true;gm.createAccount=false;\"");
+
+WriteLiteral("> Login. <span>Already a customer?</span></label>\r\n                        <artic" +
+"le");
+
+WriteLiteral(" class=\"ac-large\"");
+
+WriteLiteral(" ng-show=\"gm.createAccount==false\"");
+
+WriteLiteral(">\r\n                            <form");
+
+WriteLiteral(" role=\"form\"");
+
+WriteLiteral(" ng-submit=\"gm.login(gm.model.loginViewModel)\"");
+
+WriteLiteral(" method=\"post\"");
+
+WriteLiteral(" novalidate>\r\n                                <div ng-cloak");
 
 WriteLiteral(" class=\"alert alert-danger\"");
 
@@ -260,286 +530,35 @@ WriteLiteral("></i>&nbsp;<span");
 WriteLiteral(" ng-bind=\"err\"");
 
 WriteLiteral("></span>\r\n                                    </div>\r\n                           " +
-"     </div>\r\n                            </div>\r\n                            <h2" +
-"");
-
-WriteLiteral(" class=\"checkout-h2 hidden-xs\"");
-
-WriteLiteral(">");
-
-            
-            #line 58 "..\..\Views\Account\Layout1\SignIn.cshtml"
-                                                         Write(LT("Checkout.Text.Login", "Registration"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</h2>\r\n                            <p");
-
-WriteLiteral(" class=\"lead\"");
-
-WriteLiteral("><strong>");
-
-            
-            #line 59 "..\..\Views\Account\Layout1\SignIn.cshtml"
-                                               Write(LT("MyAccount.Text.NotRegister", "Not our registered customer yet?"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</strong></p>\r\n                            <p>");
-
-            
-            #line 60 "..\..\Views\Account\Layout1\SignIn.cshtml"
-                          Write(LT("MyAccount.Text.RegisterBenifits", "Registration with us will introduce to a world of fashion, fantastic discounts and much more! Registration will take only a couple of minutes!"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</p>\r\n                            <p");
-
-WriteLiteral(" class=\"text-muted\"");
-
-WriteLiteral(">");
-
-            
-            #line 61 "..\..\Views\Account\Layout1\SignIn.cshtml"
-                                             Write(LT("MyAccount.Text.FeelFree", "If you have any questions, please feel free to "));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("<a");
-
-WriteLiteral(" href=\"#\"");
-
-WriteLiteral(">");
-
-            
-            #line 61 "..\..\Views\Account\Layout1\SignIn.cshtml"
-                                                                                                                                          Write(LT("MyAccount.Text.ContactUs", "Contact Us"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral(",</a> ");
-
-            
-            #line 61 "..\..\Views\Account\Layout1\SignIn.cshtml"
-                                                                                                                                                                                             Write(LT("MyAccount.Text.Support", " , our customer service center is working for you 24/7."));
-
-            
-            #line default
-            #line hidden
-WriteLiteral(".</p>\r\n                            <div");
-
-WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding form-group margin-bottom-sm checkoutForm\"");
-
-WriteLiteral(">\r\n");
-
-WriteLiteral("                                ");
-
-            
-            #line 63 "..\..\Views\Account\Layout1\SignIn.cshtml"
-                           Write(userForm.FormGroupFor(x => x.RegisterViewModel.Email));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n                            </div>\r\n                            <div");
-
-WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding form-group margin-bottom-sm checkoutForm\"");
-
-WriteLiteral(">\r\n");
-
-WriteLiteral("                                ");
-
-            
-            #line 66 "..\..\Views\Account\Layout1\SignIn.cshtml"
-                           Write(userForm.FormGroupFor(x => x.RegisterViewModel.Password));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n                            </div>\r\n                            <div");
-
-WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding form-group margin-bottom-sm checkoutForm\"");
-
-WriteLiteral(">\r\n");
-
-WriteLiteral("                                ");
-
-            
-            #line 69 "..\..\Views\Account\Layout1\SignIn.cshtml"
-                           Write(userForm.FormGroupFor(x => x.RegisterViewModel.ConfirmPassword));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n                            </div>\r\n                            <div");
-
-WriteLiteral(" class=\"col-sm-12 col-xs-12 text-center no-padding checkout-button\"");
-
-WriteLiteral(">\r\n                                <button");
-
-WriteLiteral(" type=\"submit\"");
-
-WriteLiteral(" class=\"animate btn-primary\"");
-
-WriteLiteral("><i");
-
-WriteLiteral(" class=\"fa fa-user\"");
-
-WriteLiteral("></i>");
-
-            
-            #line 72 "..\..\Views\Account\Layout1\SignIn.cshtml"
-                                                                                                       Write(LT("Global.Buttons.Register", "Register"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</button>\r\n                            </div>\r\n                            <div");
-
-WriteLiteral(" class=\"col-sm-12 col-xs-12 text-center no-padding checkout-button\"");
-
-WriteAttribute("ng-if", Tuple.Create(" ng-if=\"", 4624), Tuple.Create("\"", 4710)
-, Tuple.Create(Tuple.Create("", 4632), Tuple.Create("\'", 4632), true)
-            
-            #line 74 "..\..\Views\Account\Layout1\SignIn.cshtml"
-                            , Tuple.Create(Tuple.Create("", 4633), Tuple.Create<System.Object, System.Int32>(ViewBag.isB2BEnable
-            
-            #line default
-            #line hidden
-, 4633), false)
-, Tuple.Create(Tuple.Create("", 4653), Tuple.Create("\'", 4653), true)
-, Tuple.Create(Tuple.Create(" ", 4654), Tuple.Create("==", 4655), true)
-, Tuple.Create(Tuple.Create(" ", 4657), Tuple.Create("\'True\'", 4658), true)
-, Tuple.Create(Tuple.Create(" ", 4664), Tuple.Create("&&", 4665), true)
-, Tuple.Create(Tuple.Create(" ", 4667), Tuple.Create("\'", 4668), true)
-            
-            #line 74 "..\..\Views\Account\Layout1\SignIn.cshtml"
-                                                                , Tuple.Create(Tuple.Create("", 4669), Tuple.Create<System.Object, System.Int32>(ViewBag.isRegistrationAllowed
-            
-            #line default
-            #line hidden
-, 4669), false)
-, Tuple.Create(Tuple.Create("", 4699), Tuple.Create("\'", 4699), true)
-, Tuple.Create(Tuple.Create(" ", 4700), Tuple.Create("==", 4701), true)
-, Tuple.Create(Tuple.Create(" ", 4703), Tuple.Create("\'True\'", 4704), true)
-);
-
-WriteLiteral(">\r\n                                <button");
-
-WriteLiteral(" type=\"button\"");
-
-WriteLiteral(" ng-click=\"gm.showCompanyForm()\"");
-
-WriteLiteral(" class=\"animate btn-success\"");
-
-WriteLiteral("><i");
-
-WriteLiteral(" class=\"fa fa-user\"");
-
-WriteLiteral("></i>");
-
-            
-            #line 75 "..\..\Views\Account\Layout1\SignIn.cshtml"
-                                                                                                                                       Write(LT("Global.Buttons.CompanyAccountRequest", "Request for Company Account"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</button>\r\n                            </div>\r\n                            <div");
-
-WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding group-divider margin-top-md hidden-xs\"");
-
-WriteLiteral(">\r\n                                <span>Already a customer?</span>\r\n            " +
-"                </div>\r\n                            <div");
-
-WriteLiteral(" class=\"col-sm-12 col-xs-12 text-center no-padding margin-top-md hidden-xs\"");
-
-WriteLiteral(">\r\n                                <a");
-
-WriteLiteral(" class=\"animate btn-success\"");
-
-WriteLiteral(" ng-click=\"gm.loginAccount=true;gm.createAccount=false;gm.errorMessage=null;\"");
-
-WriteLiteral(">Login Here</a>\r\n                            </div>\r\n                        </fo" +
-"rm>\r\n                    </article>\r\n                </div>\r\n");
-
-            
-            #line 86 "..\..\Views\Account\Layout1\SignIn.cshtml"
-                
-            
-            #line default
-            #line hidden
-            
-            #line 86 "..\..\Views\Account\Layout1\SignIn.cshtml"
-                  /*Login Form*/
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n                <div>\r\n                    <input");
-
-WriteLiteral(" id=\"ac-1\"");
-
-WriteLiteral(" name=\"accordion-1\"");
-
-WriteLiteral(" type=\"radio\"");
-
-WriteLiteral(" checked");
-
-WriteLiteral(" class=\"visible-xs\"");
-
-WriteLiteral(" />\r\n                    <label");
-
-WriteLiteral(" class=\"label-ac visible-xs\"");
-
-WriteLiteral(" for=\"ac-1\"");
-
-WriteLiteral(" ng-click=\"gm.loginAccount=true;gm.createAccount=false;\"");
-
-WriteLiteral("> Login. <span>Already a customer?</span></label>\r\n                    <article");
-
-WriteLiteral(" class=\"ac-large\"");
-
-WriteLiteral(" ng-show=\"gm.createAccount==false\"");
-
-WriteLiteral(">\r\n                        <form");
-
-WriteLiteral(" role=\"form\"");
-
-WriteLiteral(" ng-submit=\"gm.login(gm.model.loginViewModel)\"");
-
-WriteLiteral(" method=\"post\"");
-
-WriteLiteral(" novalidate>\r\n                            <div ng-cloak");
-
-WriteLiteral(" class=\"alert alert-danger\"");
-
-WriteLiteral(" ng-show=\"gm.errorMessage != null\"");
-
-WriteLiteral(">\r\n                                <div");
-
-WriteLiteral(" ng-repeat=\"err in gm.errorMessage track by $index\"");
-
-WriteLiteral(">\r\n                                    <i");
-
-WriteLiteral(" class=\"fa fa-circle\"");
-
-WriteLiteral("></i>&nbsp;<span");
-
-WriteLiteral(" ng-bind=\"err\"");
-
-WriteLiteral("></span>\r\n                                </div>\r\n                            </d" +
-"iv>\r\n                            <div ng-cloak");
+"     </div>\r\n                                <div ng-cloak");
 
 WriteLiteral(" class=\"alert alert-danger\"");
 
 WriteLiteral(" ng-show=\"gm.isValiduser\"");
 
-WriteLiteral(">\r\n                                <div>\r\n                                    <i");
+WriteLiteral(">\r\n                                    <div>\r\n                                   " +
+"     <i");
+
+WriteLiteral(" class=\"fa fa-circle\"");
+
+WriteLiteral("></i>&nbsp;<span>");
+
+            
+            #line 94 "..\..\Views\Account\Layout1\SignIn.cshtml"
+                                                                           Write(LT("Login.Message.InvalidUser", "Invalid User!"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</span>\r\n                                    </div>\r\n                            " +
+"    </div>\r\n                                <div ng-cloak");
+
+WriteLiteral(" class=\"alert alert-success\"");
+
+WriteLiteral(" ng-show=\"gm.isValid\"");
+
+WriteLiteral(">\r\n                                    <div>\r\n                                   " +
+"     <i");
 
 WriteLiteral(" class=\"fa fa-circle\"");
 
@@ -547,97 +566,77 @@ WriteLiteral("></i>&nbsp;<span>");
 
             
             #line 99 "..\..\Views\Account\Layout1\SignIn.cshtml"
-                                                                       Write(LT("Login.Message.InvalidUser", "Invalid User!"));
+                                                                           Write(LT("Login.Message.ResetPassword", "Link to reset your password sent"));
 
             
             #line default
             #line hidden
-WriteLiteral("</span>\r\n                                </div>\r\n                            </di" +
-"v>\r\n                            <div ng-cloak");
-
-WriteLiteral(" class=\"alert alert-success\"");
-
-WriteLiteral(" ng-show=\"gm.isValid\"");
-
-WriteLiteral(">\r\n                                <div>\r\n                                    <i");
-
-WriteLiteral(" class=\"fa fa-circle\"");
-
-WriteLiteral("></i>&nbsp;<span>");
-
-            
-            #line 104 "..\..\Views\Account\Layout1\SignIn.cshtml"
-                                                                       Write(LT("Login.Message.ResetPassword", "Link to reset your password sent"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</span>\r\n                                </div>\r\n                            </di" +
-"v>\r\n                            <h2");
+WriteLiteral("</span>\r\n                                    </div>\r\n                            " +
+"    </div>\r\n                                <h2");
 
 WriteLiteral(" class=\"checkout-h2 hidden-xs\"");
 
 WriteLiteral(">");
 
             
-            #line 107 "..\..\Views\Account\Layout1\SignIn.cshtml"
-                                                         Write(LT("Checkout.Text.Login", "Login"));
+            #line 102 "..\..\Views\Account\Layout1\SignIn.cshtml"
+                                                             Write(LT("Checkout.Text.Login", "Login"));
 
             
             #line default
             #line hidden
-WriteLiteral("</h2>\r\n                            <p");
+WriteLiteral("</h2>\r\n                                <p");
 
 WriteLiteral(" class=\"lead hidden-xs\"");
 
 WriteLiteral(">");
 
             
-            #line 108 "..\..\Views\Account\Layout1\SignIn.cshtml"
-                                                 Write(LT("MyAccount.Text.ExistingCustomer", "Already our customer?"));
+            #line 103 "..\..\Views\Account\Layout1\SignIn.cshtml"
+                                                     Write(LT("MyAccount.Text.ExistingCustomer", "Already our customer?"));
 
             
             #line default
             #line hidden
-WriteLiteral("</p>\r\n\r\n                            <div");
+WriteLiteral("</p>\r\n\r\n                                <div");
 
 WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding form-group margin-bottom-sm checkoutForm\"");
 
 WriteLiteral(">\r\n");
 
-WriteLiteral("                                ");
+WriteLiteral("                                    ");
 
             
-            #line 111 "..\..\Views\Account\Layout1\SignIn.cshtml"
-                           Write(userForm.FormGroupFor(x => x.LoginViewModel.Username));
+            #line 106 "..\..\Views\Account\Layout1\SignIn.cshtml"
+                               Write(userForm.FormGroupFor(x => x.LoginViewModel.Username));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n                            </div>\r\n                            <div");
+WriteLiteral("\r\n                                </div>\r\n                                <div");
 
 WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding form-group margin-bottom-sm checkoutForm\"");
 
 WriteLiteral(">\r\n");
 
-WriteLiteral("                                ");
+WriteLiteral("                                    ");
 
             
-            #line 114 "..\..\Views\Account\Layout1\SignIn.cshtml"
-                           Write(userForm.FormGroupFor(x => x.LoginViewModel.Password));
+            #line 109 "..\..\Views\Account\Layout1\SignIn.cshtml"
+                               Write(userForm.FormGroupFor(x => x.LoginViewModel.Password));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n                            </div>\r\n                            <div");
+WriteLiteral("\r\n                                </div>\r\n                                <div");
 
 WriteLiteral(" class=\"col-sm-6 col-xs-6 no-padding\"");
 
-WriteLiteral(">\r\n                                <label");
+WriteLiteral(">\r\n                                    <label");
 
 WriteLiteral(" class=\"checkout-label\"");
 
-WriteLiteral(">\r\n                                    <input");
+WriteLiteral(">\r\n                                        <input");
 
 WriteLiteral(" type=\"checkbox\"");
 
@@ -645,31 +644,31 @@ WriteLiteral(" name=\"keep\"");
 
 WriteLiteral(" value=\"1\"");
 
-WriteLiteral(" /> <span>Keep me signed in</span>\r\n                                </label>\r\n   " +
-"                         </div>\r\n                            <div");
+WriteLiteral(" /> <span>Keep me signed in</span>\r\n                                    </label>\r" +
+"\n                                </div>\r\n                                <div");
 
 WriteLiteral(" class=\"col-sm-6 col-xs-6 no-padding\"");
 
-WriteLiteral(">\r\n                                <a");
+WriteLiteral(">\r\n                                    <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 8328), Tuple.Create("\"", 8375)
+WriteAttribute("href", Tuple.Create(" href=\"", 8355), Tuple.Create("\"", 8402)
             
-            #line 122 "..\..\Views\Account\Layout1\SignIn.cshtml"
-, Tuple.Create(Tuple.Create("", 8335), Tuple.Create<System.Object, System.Int32>(Url.Action("forgotpassword", "account")
+            #line 117 "..\..\Views\Account\Layout1\SignIn.cshtml"
+, Tuple.Create(Tuple.Create("", 8362), Tuple.Create<System.Object, System.Int32>(Url.Action("forgotpassword", "account")
             
             #line default
             #line hidden
-, 8335), false)
+, 8362), false)
 );
 
 WriteLiteral(" class=\"checkout-link\"");
 
-WriteLiteral(">Forgot Password</a>\r\n                            </div>\r\n                       " +
-"     <div");
+WriteLiteral(">Forgot Password</a>\r\n                                </div>\r\n                   " +
+"             <div");
 
 WriteLiteral(" class=\"col-sm-12 col-xs-12 text-center no-padding checkout-button\"");
 
-WriteLiteral(">\r\n                                <button");
+WriteLiteral(">\r\n                                    <button");
 
 WriteLiteral(" type=\"submit\"");
 
@@ -678,8 +677,8 @@ WriteLiteral(" class=\"animate btn-primary\"");
 WriteLiteral(">");
 
             
-            #line 125 "..\..\Views\Account\Layout1\SignIn.cshtml"
-                                                                             Write(LT("Global.Buttons.Login", "Login"));
+            #line 120 "..\..\Views\Account\Layout1\SignIn.cshtml"
+                                                                                 Write(LT("Global.Buttons.Login", "Login"));
 
             
             #line default
@@ -688,22 +687,28 @@ WriteLiteral(" <i");
 
 WriteLiteral(" class=\"fa fa-caret-right\"");
 
-WriteLiteral("></i></button>\r\n                            </div>\r\n                            <" +
-"div");
+WriteLiteral("></i></button>\r\n                                    <a");
+
+WriteLiteral(" class=\"animate btn-default\"");
+
+WriteLiteral(" ng-click=\"gm.loginAccount=false;gm.createAccount=true;gm.errorMessage=null;\"");
+
+WriteLiteral(">Create an Account</a>\r\n                                </div>\r\n                 " +
+"               <div");
 
 WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding group-divider hidden-xs margin-bottom-sm\"");
 
 WriteLiteral(" ng-show=\"gm.model.socialSettings.GooglePlusEnabled || gm.model.socialSettings.Fa" +
 "cebookEnabled || gm.model.socialSettings.TwitterEnabled\"");
 
-WriteLiteral(">\r\n                                <span>Or Login With</span>\r\n                  " +
-"          </div>\r\n                            <div");
+WriteLiteral(">\r\n                                    <span>Or Login With</span>\r\n              " +
+"                  </div>\r\n                                <div");
 
 WriteLiteral(" class=\"col-xs-4 no-padding margin-bottom-sm\"");
 
 WriteLiteral(" ng-show=\"gm.model.socialSettings.FacebookEnabled\"");
 
-WriteLiteral(">\r\n                                <button");
+WriteLiteral(">\r\n                                    <button");
 
 WriteLiteral(" type=\"button\"");
 
@@ -715,14 +720,14 @@ WriteLiteral("><i");
 
 WriteLiteral(" class=\"fa fa-facebook\"");
 
-WriteLiteral("></i>Facebook</button>\r\n                            </div>\r\n                     " +
-"       <div");
+WriteLiteral("></i>Facebook</button>\r\n                                </div>\r\n                 " +
+"               <div");
 
 WriteLiteral(" class=\"col-xs-4 no-padding\"");
 
 WriteLiteral(" ng-show=\"gm.model.socialSettings.TwitterEnabled\"");
 
-WriteLiteral(">\r\n                                <button");
+WriteLiteral(">\r\n                                    <button");
 
 WriteLiteral(" type=\"button\"");
 
@@ -734,14 +739,14 @@ WriteLiteral("><i");
 
 WriteLiteral(" class=\"fa fa-twitter\"");
 
-WriteLiteral("></i>Twitter</button>\r\n                            </div>\r\n                      " +
-"      <div");
+WriteLiteral("></i>Twitter</button>\r\n                                </div>\r\n                  " +
+"              <div");
 
 WriteLiteral(" class=\"col-xs-4 no-padding\"");
 
 WriteLiteral(" ng-show=\"gm.model.socialSettings.GooglePlusEnabled\"");
 
-WriteLiteral(">\r\n                                <button");
+WriteLiteral(">\r\n                                    <button");
 
 WriteLiteral(" type=\"button\"");
 
@@ -753,28 +758,13 @@ WriteLiteral("><i");
 
 WriteLiteral(" class=\"fa fa-google\"");
 
-WriteLiteral("></i>Google</button>\r\n                            </div>\r\n                       " +
-"     <div");
-
-WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding group-divider hidden-xs\"");
-
-WriteLiteral(">\r\n                                <span>New to Store?</span>\r\n                  " +
-"          </div>\r\n                            <div");
-
-WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding margin-top-md hidden-xs text-center\"");
-
-WriteLiteral(">\r\n                                <a");
-
-WriteLiteral(" class=\"animate btn-success\"");
-
-WriteLiteral(" ng-click=\"gm.loginAccount=false;gm.createAccount=true;gm.errorMessage=null;\"");
-
-WriteLiteral(">Create an Account</a>\r\n                            </div>\r\n                     " +
-"   </form>\r\n                    </article>\r\n                </div>\r\n            " +
-"</section>\r\n        </div>\r\n    </div>\r\n</div>\r\n");
+WriteLiteral("></i>Google</button>\r\n                                </div>\r\n                   " +
+"         </form>\r\n                        </article>\r\n                    </div>" +
+"\r\n                </section>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</" +
+"div>\r\n");
 
             
-            #line 152 "..\..\Views\Account\Layout1\SignIn.cshtml"
+            #line 143 "..\..\Views\Account\Layout1\SignIn.cshtml"
 Write(Html.Partial("~/Views/B2B/Layout1/_Register.cshtml", new CompanyRegisterModel { }));
 
             
@@ -787,7 +777,7 @@ DefineSection("Scripts", () => {
 WriteLiteral("\r\n    <script>\r\n        var signIn = \'");
 
             
-            #line 156 "..\..\Views\Account\Layout1\SignIn.cshtml"
+            #line 147 "..\..\Views\Account\Layout1\SignIn.cshtml"
                   Write(Html.BuildUrlFromExpression<AccountController>(c => c.SignIn(null)));
 
             
@@ -796,7 +786,7 @@ WriteLiteral("\r\n    <script>\r\n        var signIn = \'");
 WriteLiteral("\';\r\n        var register = \'");
 
             
-            #line 157 "..\..\Views\Account\Layout1\SignIn.cshtml"
+            #line 148 "..\..\Views\Account\Layout1\SignIn.cshtml"
                     Write(Html.BuildUrlFromExpression<AccountController>(c => c.Registration(null)));
 
             
@@ -807,7 +797,7 @@ WriteLiteral("\';\r\n        window.app.constant(\'accountConfig\', {\r\n       
 "\', ");
 
             
-            #line 162 "..\..\Views\Account\Layout1\SignIn.cshtml"
+            #line 153 "..\..\Views\Account\Layout1\SignIn.cshtml"
                                 Write(Html.JsonFor(Model));
 
             

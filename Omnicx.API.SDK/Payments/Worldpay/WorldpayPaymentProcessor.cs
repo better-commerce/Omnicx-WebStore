@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Text;
 using Omnicx.API.SDK.Payments;
-using Omnicx.API.SDK.Models.Commerce;
+using Omnicx.WebStore.Models.Commerce;
 using Omnicx.API.SDK.Payments.Entities;
 using System.Security.Cryptography;
-using Omnicx.API.SDK.Entities;
+using Omnicx.WebStore.Models.Enums;
 
 namespace Omnicx.Plugin.Payment.Worldpay
 {
@@ -41,7 +41,7 @@ namespace Omnicx.Plugin.Payment.Worldpay
             var postForm = new StringBuilder();
             postForm.AppendLine("<form action=\"" + GetAuthlUrl() + "\" >");
             postForm.AppendLine("<input type=\"hidden\" name=\"instId\" value=\"" + Settings.UserName + "\" >");
-            postForm.AppendLine("<input type=\"hidden\" name=\"cartId\" value=\"" + processPaymentRequest.OrderId + "\" >");
+            postForm.AppendLine("<input type=\"hidden\" name=\"cartId\" value=\"" + processPaymentRequest.OrderNo + "\" >");
             postForm.AppendLine("<input type=\"hidden\" name=\"amount\" value=\"" + processPaymentRequest.OrderTotal + "\" >");
             postForm.AppendLine("<input type=\"hidden\" name=\"currency\" value=\"" + processPaymentRequest.CurrencyCode + "\" >");
             postForm.AppendLine("<input type=\"hidden\" name=\"testMode\" value=\"" + GetTestMode() + "\" >");

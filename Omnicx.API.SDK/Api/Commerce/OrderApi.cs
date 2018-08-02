@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Omnicx.API.SDK.Models.Commerce;
-using Omnicx.API.SDK.Models;
+using Omnicx.WebStore.Models.Commerce;
+using Omnicx.WebStore.Models;
+using Omnicx.WebStore.Models.Common;
+using RestSharp;
+
 namespace Omnicx.API.SDK.Api.Commerce
 {
     public class OrderApi : ApiBase, IOrderApi
@@ -24,9 +27,15 @@ namespace Omnicx.API.SDK.Api.Commerce
             return CallApi<List<OrderModel>>(string.Format(ApiUrls.GetOrders, customerId), "");
         }
 
-       public ResponseModel<List<ReturnModel>> GetAllReturns(string id)
+        public ResponseModel<List<ReturnModel>> GetAllReturns(string id)
         {
             return CallApi<List<ReturnModel>>(string.Format(ApiUrls.GetAllReturns, id), "");
         }
+
+        public ResponseModel<FileResponse> DownloadInvoice(Guid id)
+        {
+            return CallApi<FileResponse>(string.Format(ApiUrls.DownloadInvoice, id), "", Method.POST);
+        }
+
     }
 }

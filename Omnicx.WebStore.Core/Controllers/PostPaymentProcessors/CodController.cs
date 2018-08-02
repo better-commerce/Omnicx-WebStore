@@ -1,8 +1,9 @@
 ﻿using Microsoft.Security.Application;
 using Omnicx.API.SDK.Api.Commerce;
-using Omnicx.API.SDK.Entities;
-using Omnicx.API.SDK.Models.Common;
 
+using Omnicx.WebStore.Models.Common;
+using Omnicx.WebStore.Models.Enums;
+using Omnicx.WebStore.Models.Keys;
 using System.Web.Mvc;
 
 namespace Omnicx.WebStore.Core.Controllers.PostPaymentProcessors

@@ -1,15 +1,16 @@
 ﻿@{
-/*
-    Name: Mobile Header
-    Purpose: Mobile Site Header UI
-    Structure: /Views/Shared/Layout1/_MobileHeaderLayout.cshtml
-    Contains (Partial Views Used):
+    /*
+        Name: Mobile Header
+        Purpose: Mobile Site Header UI
+        Structure: /Views/Shared/Layout1/_MobileHeaderLayout.cshtml
+        Contains (Partial Views Used):
 
-    Contained In (Where we Use this View):
-        a-/Views/Shared/Layout1/_LayoutHeader.cshtml
-    */
+        Contained In (Where we Use this View):
+            a-/Views/Shared/Layout1/_LayoutHeader.cshtml
+        */
 }
-@using Omnicx.API.SDK.Entities
+@using Omnicx.WebStore.Models.Keys
+@using Omnicx.WebStore.Models.Enums
 @inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
 
 @{
@@ -20,7 +21,7 @@
         checkoutUrl = Url.Action("StandardCheckout", "Checkout");
     }
 }
-<div class="col-sm-12 col-xs-12 no-padding visible-xs bg-black">
+<div class="col-sm-12 col-xs-12 no-padding visible-xs mobile-header">
     <div class="col-xs-9">
         <div class="col-xs-9 pull-right text-right no-padding">
             @Html.Action("SiteLogo", "Home", true)
@@ -46,7 +47,7 @@
                                             <div class="col-sm-3 col-xs-3 no-padding">
                                                 <span class="cart-img no-border">
                                                     <a ng-href="/{{items.slug}}">
-                                                        <img ng-src="{{items.image}}" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'">
+                                                        <img ng-src="{{items.image}}" onerror="this.src = DEFAULT_IMAGE_URL">
                                                     </a>
                                                 </span>
                                             </div>
@@ -83,7 +84,7 @@
                                                 <div class="col-sm-3 col-xs-3 no-padding">
                                                     <span class="cart-img">
                                                         <a ng-href="/{{items.slug}}">
-                                                            <img ng-src="{{items.image}}" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'">
+                                                            <img ng-src="{{items.image}}" onerror="this.src = DEFAULT_IMAGE_URL">
                                                         </a>
                                                     </span>
                                                 </div>
@@ -149,7 +150,7 @@
                                     </div>
                                     <div class="col-sm-6 col-xs-6">
                                         <a href="@checkoutUrl//{{gm.basketResponse.id}}" class="animate btn-primary">@LT("Checkout.Title.Checkout", "Checkout") <i class="fa fa-caret-right"></i></a>
-                                    </div>                                       
+                                    </div>
                                 </div>
                             </li>
                             <li ng-hide="gm.basketResponse.lineItems.length > 0">
@@ -205,7 +206,7 @@
                     <div class="modal-content">
                         <div class="modal-header text-center">
                             <a class="text-center" href="/">
-                                <h3 class="heading-h3">Search</h3>                                
+                                <h3 class="heading-h3">Search</h3>
                             </a>
                             <button type="button" class="close search-close-btn" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">@LT("Checkout.Button.Close", "Close")</span></button>
                         </div>

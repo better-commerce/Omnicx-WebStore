@@ -156,7 +156,7 @@ WriteLiteral(" class=\"row hidden-xs hidden-sm\"");
 
 WriteLiteral(" ng-cloak>\r\n    <div");
 
-WriteLiteral(" class=\"col-sm-6 col-xs-6\"");
+WriteLiteral(" class=\"col-sm-6 col-xs-12\"");
 
 WriteLiteral(">\r\n        <form");
 
@@ -258,58 +258,78 @@ WriteLiteral("></strong> ");
 WriteLiteral("\r\n                </label>\r\n            </div>\r\n        </form>\r\n    </div>\r\n    " +
 "<div");
 
-WriteLiteral(" class=\"col-sm-6 col-xs-6 text-right\"");
+WriteLiteral(" class=\"col-sm-6 col-xs-12\"");
 
-WriteLiteral(">\r\n        <form");
+WriteLiteral(">\r\n        <div");
 
-WriteLiteral(" class=\"form-inline\"");
+WriteLiteral(" class=\"row\"");
 
 WriteLiteral(">\r\n            <div");
 
-WriteLiteral(" class=\"form-group no-margin-bottom\"");
+WriteLiteral(" class=\"col-sm-12 col-xs-12 text-right\"");
 
-WriteLiteral(">\r\n                <label");
+WriteLiteral(">\r\n                <a");
 
-WriteLiteral(" class=\"font-sm visible-lg visible-md inline-text-lg\"");
+WriteLiteral(" href=\"#\"");
 
-WriteLiteral(" for=\"Refine By\"");
+WriteLiteral(" class=\"text-sm\"");
 
-WriteLiteral(">");
+WriteLiteral(" ng-click=\"pm.viewGridOrList(true);pm.getGrid()\"");
 
-            
-            #line 62 "..\..\Views\Search\Layout1\_SearchTopBar.cshtml"
-                                                                                       Write(LT("ProductListing.FacetHeading.SortBy", "Sort by "));
+WriteLiteral(" ng-class=\"{\'text-orange\':pm.getView==true ?true :false}\"");
 
-            
-            #line default
-            #line hidden
-WriteLiteral("</label>\r\n                <select");
+WriteLiteral(" title=\"Grid View\"");
 
-WriteLiteral(" name=\"title\"");
+WriteLiteral("><i");
 
-WriteLiteral(" tabindex=\"1\"");
+WriteLiteral(" class=\"fa fa-th\"");
 
-WriteLiteral(" class=\"form-aux form-control select-no-border\"");
+WriteLiteral("></i></a>\r\n                <a");
 
-WriteLiteral(" data-label=\"Title\"");
+WriteLiteral(" href=\"#\"");
 
-WriteLiteral(" ng-model=\"pm.searchCriteria.sortBy\"");
+WriteLiteral(" class=\"text-sm\"");
 
-WriteLiteral(" ng-change=\"pm.searchCriteria.pageSize=pm.searchCriteria.pageSize;pm.searchProduc" +
-"ts(pm.searchCriteria);\"");
+WriteLiteral(" ng-click=\"pm.viewGridOrList(false);pm.getList()\"");
 
-WriteLiteral(">\r\n                    <option");
+WriteLiteral(" ng-class=\"{\'text-orange\':pm.getView==false ?true :false}\"");
+
+WriteLiteral(" title=\"List View\"");
+
+WriteLiteral("><i");
+
+WriteLiteral(" class=\"fa fa-list\"");
+
+WriteLiteral("></i></a>\r\n            </div>\r\n        </div>\r\n    </div>    \r\n</div>\r\n<div");
+
+WriteLiteral(" class=\"row hidden-xs hidden-sm\"");
+
+WriteLiteral(" ng-cloak>\r\n    <div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12 text-left border-bottom border-top\"");
+
+WriteLiteral(">\r\n        <div");
+
+WriteLiteral(" class=\"col-sm-1 col-xs-2 text-center\"");
 
 WriteLiteral(" ng-repeat=\"item in pm.sortByList\"");
 
-WriteLiteral(" value=\"{{item.key}}\"");
+WriteLiteral(">\r\n            <a");
 
-WriteLiteral(" ng-selected=\"item.key==pm.searchCriteria.sortBy\"");
+WriteLiteral(" href=\"#\"");
+
+WriteLiteral(" class=\"text-black facet-link\"");
+
+WriteLiteral(" ng-click=\"pm.searchCriteria.pageSize=pm.searchCriteria.pageSize;pm.searchProduct" +
+"s(item.key==pm.searchCriteria);\"");
+
+WriteLiteral("><strong");
 
 WriteLiteral(" ng-bind=\"item.value\"");
 
-WriteLiteral("></option>\r\n                </select>\r\n            </div>\r\n        </form>\r\n    <" +
-"/div>\r\n</div>");
+WriteLiteral("></strong></a>\r\n        </div>\r\n        ");
+
+WriteLiteral("\r\n    </div>\r\n</div>");
 
         }
     }

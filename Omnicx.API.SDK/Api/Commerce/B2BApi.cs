@@ -1,9 +1,10 @@
 ﻿using Newtonsoft.Json;
-using Omnicx.API.SDK.Entities;
-using Omnicx.API.SDK.Models;
-using Omnicx.API.SDK.Models.B2B;
-using Omnicx.API.SDK.Models.Commerce;
-using Omnicx.API.SDK.Models.Helpers;
+using Omnicx.WebStore.Models;
+using Omnicx.WebStore.Models.B2B;
+using Omnicx.WebStore.Models.Commerce;
+using Omnicx.WebStore.Models.Enums;
+using Omnicx.WebStore.Models.Helpers;
+using Omnicx.WebStore.Models.Keys;
 using RestSharp;
 using System;
 using System.Collections.Generic;

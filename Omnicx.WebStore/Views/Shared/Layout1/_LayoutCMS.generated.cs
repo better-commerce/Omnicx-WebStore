@@ -36,7 +36,7 @@ namespace ASP
     #line hidden
     
     #line 20 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
-    using Omnicx.API.SDK.Models;
+    using Omnicx.API.SDK.Helpers;
     
     #line default
     #line hidden
@@ -45,6 +45,12 @@ namespace ASP
     
     #line 19 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
     using Omnicx.WebStore.Core.Controllers;
+    
+    #line default
+    #line hidden
+    
+    #line 21 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
+    using Omnicx.WebStore.Models.Enums;
     
     #line default
     #line hidden
@@ -92,7 +98,7 @@ WriteLiteral(" id=\"sidebarFix\"");
 WriteLiteral(">\r\n\r\n");
 
             
-            #line 25 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
+            #line 26 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
 Write(Html.Partial("~/Views/Shared/Layout1/_LayoutHeadTag.cshtml"));
 
             
@@ -103,7 +109,18 @@ WriteLiteral("\r\n<body>\r\n");
 WriteLiteral("    ");
 
             
-            #line 27 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
+            #line 28 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
+Write(Html.GetGlobalSnipptes(SnippetPlacements.BodyStartHtmlTagAfter));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n");
+
+WriteLiteral("    ");
+
+            
+            #line 29 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
 Write(RenderSection("siteheader", required: false));
 
             
@@ -118,7 +135,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("        ");
 
             
-            #line 29 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
+            #line 31 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
    Write(Html.Partial("~/Views/Shared/Layout1/_LayoutHeader.cshtml"));
 
             
@@ -136,15 +153,26 @@ WriteLiteral(">\r\n            <div");
 
 WriteLiteral(" id=\"content\"");
 
-WriteLiteral(" class=\"clearfix\"");
+WriteLiteral(" class=\"container-min clearfix\"");
 
-WriteLiteral(">\r\n");
+WriteLiteral(">               \r\n");
 
 WriteLiteral("                ");
 
             
-            #line 33 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
+            #line 35 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
            Write(RenderBody());
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n");
+
+WriteLiteral("                ");
+
+            
+            #line 36 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
+           Write(Html.GetGlobalSnipptes(SnippetPlacements.PageContainerAfter));
 
             
             #line default
@@ -152,13 +180,13 @@ WriteLiteral("                ");
 WriteLiteral("\r\n            </div>\r\n        </div>\r\n");
 
             
-            #line 36 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
+            #line 39 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
         
             
             #line default
             #line hidden
             
-            #line 36 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
+            #line 39 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
           /*Search popup for Mobile View*/
             
             #line default
@@ -195,9 +223,9 @@ WriteLiteral(" href=\"/\"");
 
 WriteLiteral(">\r\n                            <img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 1618), Tuple.Create("\"", 1664)
-, Tuple.Create(Tuple.Create("", 1624), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/logo-small.png")
-, 1624), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 1835), Tuple.Create("\"", 1881)
+, Tuple.Create(Tuple.Create("", 1841), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/logo-small.png")
+, 1841), false)
 );
 
 WriteLiteral(" alt=\"OCX Store logo\"");
@@ -211,7 +239,7 @@ WriteLiteral(" class=\"sr-only\"");
 WriteLiteral(">");
 
             
-            #line 42 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
+            #line 45 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
                                                                                                                                                                     Write(LT("Header.Text.GoHome", "OCX Store - go to homepage"));
 
             
@@ -236,7 +264,7 @@ WriteLiteral(" class=\"sr-only\"");
 WriteLiteral(">");
 
             
-            #line 44 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
+            #line 47 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
                                                                                                                                                     Write(LT("Checkout.Button.Close", "Close"));
 
             
@@ -255,7 +283,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                            ");
 
             
-            #line 48 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
+            #line 51 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
                        Write(Html.Partial("~/Views/Shared/Layout1/_SearchBox.cshtml"));
 
             
@@ -279,9 +307,9 @@ WriteLiteral(" class=\"global-loader\"");
 
 WriteLiteral(">\r\n            <img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2587), Tuple.Create("\"", 2629)
-, Tuple.Create(Tuple.Create("", 2593), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/loader.svg")
-, 2593), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 2804), Tuple.Create("\"", 2846)
+, Tuple.Create(Tuple.Create("", 2810), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/loader.svg")
+, 2810), false)
 );
 
 WriteLiteral(" />\r\n        </span>\r\n    </div>\r\n");
@@ -289,7 +317,7 @@ WriteLiteral(" />\r\n        </span>\r\n    </div>\r\n");
 WriteLiteral("    ");
 
             
-            #line 62 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
+            #line 65 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
 Write(Html.Partial("~/Views/Shared/Layout1/_LayoutFooter.cshtml"));
 
             
@@ -300,7 +328,7 @@ WriteLiteral("   \r\n");
 DefineSection("scripts", () => {
 
             
-            #line 63 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
+            #line 66 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
     
             
             #line default
@@ -310,12 +338,12 @@ DefineSection("scripts", () => {
 WriteLiteral("    ");
 
             
-            #line 64 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
+            #line 67 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
       
         var pcaAccessCode = "";
         if (SessionContext.CurrentSiteConfig != null && SessionContext.CurrentSiteConfig.GeoLocators != null)
         {
-            var pca = SessionContext.CurrentSiteConfig.GeoLocators.FirstOrDefault(x => x.PluginCode == Omnicx.API.SDK.Entities.GeoLocatorPlugin.PCA.ToString());
+            var pca = SessionContext.CurrentSiteConfig.GeoLocators.FirstOrDefault(x => x.PluginCode == Omnicx.WebStore.Models.Enums.GeoLocatorPlugin.PCA.ToString());
             if (pca != null)
             {
                 pcaAccessCode = pca.AccessKey;
@@ -328,7 +356,7 @@ WriteLiteral("    ");
 WriteLiteral("        <script>\r\n            var pcaAccessCode = \"");
 
             
-            #line 75 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
+            #line 78 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
                             Write(pcaAccessCode);
 
             
@@ -337,7 +365,7 @@ WriteLiteral("        <script>\r\n            var pcaAccessCode = \"");
 WriteLiteral("\";\r\n        </script>\r\n");
 
             
-            #line 77 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
+            #line 80 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
     
             
             #line default
@@ -347,7 +375,7 @@ WriteLiteral("\r\n\r\n");
 WriteLiteral("    ");
 
             
-            #line 79 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
+            #line 82 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
 Write(RenderSection("scripts", required: false));
 
             
@@ -356,7 +384,7 @@ Write(RenderSection("scripts", required: false));
 WriteLiteral("\r\n    \r\n    <script>\r\n\r\n        var setContactForm = \'");
 
             
-            #line 83 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
+            #line 86 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
                           Write(Html.BuildUrlFromExpression<CommonController>(c => c.ContactForm(null)));
 
             
@@ -365,7 +393,7 @@ WriteLiteral("\r\n    \r\n    <script>\r\n\r\n        var setContactForm = \'");
 WriteLiteral("\';\r\n        var getBasketUrl = \'");
 
             
-            #line 84 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
+            #line 87 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
                         Write(Html.BuildUrlFromExpression<BasketController>(c => c.GetBasketData()));
 
             
@@ -374,7 +402,7 @@ WriteLiteral("\';\r\n        var getBasketUrl = \'");
 WriteLiteral("\';\r\n        var addToBasket = \'");
 
             
-            #line 85 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
+            #line 88 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
                        Write(Html.BuildUrlFromExpression<BasketController>(c => c.AddtoBasket(null)));
 
             
@@ -383,7 +411,7 @@ WriteLiteral("\';\r\n        var addToBasket = \'");
 WriteLiteral("\';\r\n        var signIn = \'");
 
             
-            #line 86 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
+            #line 89 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
                   Write(Html.BuildUrlFromExpression<AccountController>(c => c.SignIn(null)));
 
             
@@ -392,7 +420,7 @@ WriteLiteral("\';\r\n        var signIn = \'");
 WriteLiteral("\';\r\n        var register = \'");
 
             
-            #line 87 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
+            #line 90 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
                     Write(Html.BuildUrlFromExpression<AccountController>(c => c.Registration(null)));
 
             
@@ -401,7 +429,7 @@ WriteLiteral("\';\r\n        var register = \'");
 WriteLiteral("\';\r\n        var getShippingMethods = \'");
 
             
-            #line 88 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
+            #line 91 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
                               Write(Html.BuildUrlFromExpression<BasketController>(c => c.GetShippingMethods("")));
 
             
@@ -410,7 +438,7 @@ WriteLiteral("\';\r\n        var getShippingMethods = \'");
 WriteLiteral("\';\r\n        var updateShipping = \'");
 
             
-            #line 89 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
+            #line 92 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
                           Write(Html.BuildUrlFromExpression<BasketController>(c => c.UpdateShipping(null,null,null)));
 
             
@@ -419,7 +447,7 @@ WriteLiteral("\';\r\n        var updateShipping = \'");
 WriteLiteral("\';\r\n        var applyPromoCode = \'");
 
             
-            #line 90 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
+            #line 93 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
                           Write(Html.BuildUrlFromExpression<BasketController>(c => c.ApplyPromoCode(null,null)));
 
             
@@ -428,7 +456,7 @@ WriteLiteral("\';\r\n        var applyPromoCode = \'");
 WriteLiteral("\';\r\n        var currencySettingUrl = \'");
 
             
-            #line 91 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
+            #line 94 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
                               Write(Html.BuildUrlFromExpression<HomeController>(c => c.UpdateCurrencySetting()));
 
             
@@ -437,7 +465,7 @@ WriteLiteral("\';\r\n        var currencySettingUrl = \'");
 WriteLiteral("\';\r\n        var paymentMethodsUrl = \'");
 
             
-            #line 92 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
+            #line 95 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
                              Write(Html.BuildUrlFromExpression<CheckoutController>(c => c.GetPaymentMethods()));
 
             
@@ -446,7 +474,7 @@ WriteLiteral("\';\r\n        var paymentMethodsUrl = \'");
 WriteLiteral("\';\r\n        var newsLetterSubscription = \'");
 
             
-            #line 93 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
+            #line 96 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
                                   Write(Html.BuildUrlFromExpression<AccountController>(c => c.NewsletterSubscription(null)));
 
             
@@ -455,7 +483,7 @@ WriteLiteral("\';\r\n        var newsLetterSubscription = \'");
 WriteLiteral("\';\r\n        var removePromoCode = \'");
 
             
-            #line 94 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
+            #line 97 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
                            Write(Html.BuildUrlFromExpression<BasketController>(c => c.RemovePromoCode("","")));
 
             
@@ -464,7 +492,7 @@ WriteLiteral("\';\r\n        var removePromoCode = \'");
 WriteLiteral("\';\r\n        var forgotPassword = \'");
 
             
-            #line 95 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
+            #line 98 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
                           Write(Html.BuildUrlFromExpression<AccountController>(c => c.ForgotPassword(null)));
 
             
@@ -473,7 +501,7 @@ WriteLiteral("\';\r\n        var forgotPassword = \'");
 WriteLiteral("\';\r\n        var bulkAddproduct = \'");
 
             
-            #line 96 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
+            #line 99 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
                           Write(Html.BuildUrlFromExpression<BasketController>(c=> c.BulkAddProduct(null)));
 
             
@@ -482,7 +510,7 @@ WriteLiteral("\';\r\n        var bulkAddproduct = \'");
 WriteLiteral("\';\r\n        var getDefaultCountryUrl = \'");
 
             
-            #line 97 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
+            #line 100 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
                                 Write(Html.BuildUrlFromExpression<AccountController>(c => c.GetDefaultCountry()));
 
             
@@ -508,9 +536,18 @@ WriteLiteral(@"';
             getDefaultCountryUrl: getDefaultCountryUrl
         });
     </script>
-</body>
-</html>
 ");
+
+WriteLiteral("    ");
+
+            
+            #line 120 "..\..\Views\Shared\Layout1\_LayoutCMS.cshtml"
+Write(Html.GetGlobalSnipptes(SnippetPlacements.BodyEndHtmlTagBefore));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n</body>\r\n</html>\r\n");
 
         }
     }

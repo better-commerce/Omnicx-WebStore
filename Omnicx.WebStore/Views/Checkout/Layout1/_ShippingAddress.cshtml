@@ -9,11 +9,11 @@
         a-/Views/Checkout/Layout1/OnePageCheckout.cshtml
     */
 }
-@using Omnicx.API.SDK.Entities
+@using Omnicx.WebStore.Models.Enums
 @using Omnicx.WebStore.Core.Helpers;
 @using Omnicx.WebStore.Framework.Helpers
-@using Omnicx.API.SDK.Models.Helpers
-@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Commerce.AddressModel>
+@using Omnicx.WebStore.Models.Helpers
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Commerce.AddressModel>
 @{
     var addressForm = Html.Angular().ModelFor("ck.model.checkout.shippingAddress");
     var userRole = SessionContext.CurrentUserRole;

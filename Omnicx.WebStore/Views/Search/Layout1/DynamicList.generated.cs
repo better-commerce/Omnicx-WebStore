@@ -29,29 +29,29 @@ namespace ASP
     using System.Web.WebPages;
     using DevTrends.MvcDonutCaching;
     
-    #line 1 "..\..\Views\Search\Layout1\DynamicList.cshtml"
-    using Omnicx.API.SDK.Entities;
-    
-    #line default
-    #line hidden
-    
     #line 2 "..\..\Views\Search\Layout1\DynamicList.cshtml"
     using Omnicx.API.SDK.Helpers;
-    
-    #line default
-    #line hidden
-    
-    #line 3 "..\..\Views\Search\Layout1\DynamicList.cshtml"
-    using Omnicx.API.SDK.Models.Helpers;
     
     #line default
     #line hidden
     using Omnicx.WebStore;
     using Omnicx.WebStore.Core;
     
+    #line 1 "..\..\Views\Search\Layout1\DynamicList.cshtml"
+    using Omnicx.WebStore.Models.Enums;
+    
+    #line default
+    #line hidden
+    
+    #line 3 "..\..\Views\Search\Layout1\DynamicList.cshtml"
+    using Omnicx.WebStore.Models.Helpers;
+    
+    #line default
+    #line hidden
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Search/Layout1/DynamicList.cshtml")]
-    public partial class _Views_Search_Layout1_DynamicList_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Catalog.Collections>
+    public partial class _Views_Search_Layout1_DynamicList_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Catalog.Collections>
     {
         public _Views_Search_Layout1_DynamicList_cshtml()
         {
@@ -127,15 +127,15 @@ WriteLiteral(" style=\"position:relative; top:0px;\"");
 
 WriteLiteral(">\r\n                    <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1197), Tuple.Create("\"", 1215)
-, Tuple.Create(Tuple.Create("", 1204), Tuple.Create("/", 1204), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 1204), Tuple.Create("\"", 1222)
+, Tuple.Create(Tuple.Create("", 1211), Tuple.Create("/", 1211), true)
             
             #line 33 "..\..\Views\Search\Layout1\DynamicList.cshtml"
-, Tuple.Create(Tuple.Create("", 1205), Tuple.Create<System.Object, System.Int32>(name.Slug
+, Tuple.Create(Tuple.Create("", 1212), Tuple.Create<System.Object, System.Int32>(name.Slug
             
             #line default
             #line hidden
-, 1205), false)
+, 1212), false)
 );
 
 WriteLiteral(">\r\n                        <div");
@@ -146,15 +146,15 @@ WriteLiteral(" class=\"\"");
 
 WriteLiteral(">\r\n                            <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1299), Tuple.Create("\"", 1317)
-, Tuple.Create(Tuple.Create("", 1306), Tuple.Create("/", 1306), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 1306), Tuple.Create("\"", 1324)
+, Tuple.Create(Tuple.Create("", 1313), Tuple.Create("/", 1313), true)
             
             #line 35 "..\..\Views\Search\Layout1\DynamicList.cshtml"
-, Tuple.Create(Tuple.Create("", 1307), Tuple.Create<System.Object, System.Int32>(name.Slug
+, Tuple.Create(Tuple.Create("", 1314), Tuple.Create<System.Object, System.Int32>(name.Slug
             
             #line default
             #line hidden
-, 1307), false)
+, 1314), false)
 );
 
 WriteLiteral(" class=\"Centerer\"");
@@ -213,15 +213,15 @@ WriteLiteral(" style=\"position:relative; top:0px;\"");
 
 WriteLiteral(">\r\n                    <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1930), Tuple.Create("\"", 1948)
-, Tuple.Create(Tuple.Create("", 1937), Tuple.Create("/", 1937), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 1937), Tuple.Create("\"", 1955)
+, Tuple.Create(Tuple.Create("", 1944), Tuple.Create("/", 1944), true)
             
             #line 54 "..\..\Views\Search\Layout1\DynamicList.cshtml"
-, Tuple.Create(Tuple.Create("", 1938), Tuple.Create<System.Object, System.Int32>(name.Slug
+, Tuple.Create(Tuple.Create("", 1945), Tuple.Create<System.Object, System.Int32>(name.Slug
             
             #line default
             #line hidden
-, 1938), false)
+, 1945), false)
 );
 
 WriteLiteral(">\r\n                        <div");
@@ -232,15 +232,15 @@ WriteLiteral(" class=\"\"");
 
 WriteLiteral(">\r\n                            <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2032), Tuple.Create("\"", 2050)
-, Tuple.Create(Tuple.Create("", 2039), Tuple.Create("/", 2039), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 2039), Tuple.Create("\"", 2057)
+, Tuple.Create(Tuple.Create("", 2046), Tuple.Create("/", 2046), true)
             
             #line 56 "..\..\Views\Search\Layout1\DynamicList.cshtml"
-, Tuple.Create(Tuple.Create("", 2040), Tuple.Create<System.Object, System.Int32>(name.Slug
+, Tuple.Create(Tuple.Create("", 2047), Tuple.Create<System.Object, System.Int32>(name.Slug
             
             #line default
             #line hidden
-, 2040), false)
+, 2047), false)
 );
 
 WriteLiteral(" class=\"Centerer\"");
@@ -297,15 +297,15 @@ WriteLiteral(" style=\"position:relative; top:0px;\"");
 
 WriteLiteral(">\r\n                    <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2653), Tuple.Create("\"", 2671)
-, Tuple.Create(Tuple.Create("", 2660), Tuple.Create("/", 2660), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 2660), Tuple.Create("\"", 2678)
+, Tuple.Create(Tuple.Create("", 2667), Tuple.Create("/", 2667), true)
             
             #line 73 "..\..\Views\Search\Layout1\DynamicList.cshtml"
-, Tuple.Create(Tuple.Create("", 2661), Tuple.Create<System.Object, System.Int32>(name.Slug
+, Tuple.Create(Tuple.Create("", 2668), Tuple.Create<System.Object, System.Int32>(name.Slug
             
             #line default
             #line hidden
-, 2661), false)
+, 2668), false)
 );
 
 WriteLiteral(">\r\n                        <div");
@@ -316,15 +316,15 @@ WriteLiteral(" class=\"\"");
 
 WriteLiteral(">\r\n                            <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2755), Tuple.Create("\"", 2773)
-, Tuple.Create(Tuple.Create("", 2762), Tuple.Create("/", 2762), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 2762), Tuple.Create("\"", 2780)
+, Tuple.Create(Tuple.Create("", 2769), Tuple.Create("/", 2769), true)
             
             #line 75 "..\..\Views\Search\Layout1\DynamicList.cshtml"
-, Tuple.Create(Tuple.Create("", 2763), Tuple.Create<System.Object, System.Int32>(name.Slug
+, Tuple.Create(Tuple.Create("", 2770), Tuple.Create<System.Object, System.Int32>(name.Slug
             
             #line default
             #line hidden
-, 2763), false)
+, 2770), false)
 );
 
 WriteLiteral(" class=\"Centerer\"");
@@ -381,15 +381,15 @@ WriteLiteral(" style=\"position:relative; top:0px;\"");
 
 WriteLiteral(">\r\n                    <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 3376), Tuple.Create("\"", 3394)
-, Tuple.Create(Tuple.Create("", 3383), Tuple.Create("/", 3383), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 3383), Tuple.Create("\"", 3401)
+, Tuple.Create(Tuple.Create("", 3390), Tuple.Create("/", 3390), true)
             
             #line 92 "..\..\Views\Search\Layout1\DynamicList.cshtml"
-, Tuple.Create(Tuple.Create("", 3384), Tuple.Create<System.Object, System.Int32>(name.Slug
+, Tuple.Create(Tuple.Create("", 3391), Tuple.Create<System.Object, System.Int32>(name.Slug
             
             #line default
             #line hidden
-, 3384), false)
+, 3391), false)
 );
 
 WriteLiteral(">\r\n                        <div");
@@ -400,15 +400,15 @@ WriteLiteral(" class=\"\"");
 
 WriteLiteral(">\r\n                            <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 3478), Tuple.Create("\"", 3496)
-, Tuple.Create(Tuple.Create("", 3485), Tuple.Create("/", 3485), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 3485), Tuple.Create("\"", 3503)
+, Tuple.Create(Tuple.Create("", 3492), Tuple.Create("/", 3492), true)
             
             #line 94 "..\..\Views\Search\Layout1\DynamicList.cshtml"
-, Tuple.Create(Tuple.Create("", 3486), Tuple.Create<System.Object, System.Int32>(name.Slug
+, Tuple.Create(Tuple.Create("", 3493), Tuple.Create<System.Object, System.Int32>(name.Slug
             
             #line default
             #line hidden
-, 3486), false)
+, 3493), false)
 );
 
 WriteLiteral(" class=\"Centerer\"");
@@ -465,15 +465,15 @@ WriteLiteral(" style=\"position:relative; top:0px;\"");
 
 WriteLiteral(">\r\n                    <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 4097), Tuple.Create("\"", 4115)
-, Tuple.Create(Tuple.Create("", 4104), Tuple.Create("/", 4104), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 4104), Tuple.Create("\"", 4122)
+, Tuple.Create(Tuple.Create("", 4111), Tuple.Create("/", 4111), true)
             
             #line 111 "..\..\Views\Search\Layout1\DynamicList.cshtml"
-, Tuple.Create(Tuple.Create("", 4105), Tuple.Create<System.Object, System.Int32>(name.Slug
+, Tuple.Create(Tuple.Create("", 4112), Tuple.Create<System.Object, System.Int32>(name.Slug
             
             #line default
             #line hidden
-, 4105), false)
+, 4112), false)
 );
 
 WriteLiteral(">\r\n                        <div");
@@ -484,15 +484,15 @@ WriteLiteral(" class=\"\"");
 
 WriteLiteral(">\r\n                            <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 4199), Tuple.Create("\"", 4217)
-, Tuple.Create(Tuple.Create("", 4206), Tuple.Create("/", 4206), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 4206), Tuple.Create("\"", 4224)
+, Tuple.Create(Tuple.Create("", 4213), Tuple.Create("/", 4213), true)
             
             #line 113 "..\..\Views\Search\Layout1\DynamicList.cshtml"
-, Tuple.Create(Tuple.Create("", 4207), Tuple.Create<System.Object, System.Int32>(name.Slug
+, Tuple.Create(Tuple.Create("", 4214), Tuple.Create<System.Object, System.Int32>(name.Slug
             
             #line default
             #line hidden
-, 4207), false)
+, 4214), false)
 );
 
 WriteLiteral(" class=\"Centerer\"");

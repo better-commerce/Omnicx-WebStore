@@ -10,7 +10,7 @@
         a-/Views/Basket/Layout1/OnePageCheckout.cshtml
     */
 }
-@using Omnicx.API.SDK.Models.Common
+@using Omnicx.WebStore.Models.Common
 @using Omnicx.API.SDK.Payments.Entities
 @inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<CheckoutViewModel>
 @{
@@ -29,7 +29,7 @@
                     <label class="control control--radio">
                         <strong ng-bind="paymentMethod.displayName"></strong> 
                         <span class="label-span-desc" ng-bind="paymentMethod.description"></span>
-                        <input id="payment" name="payment" type="radio" value="{{paymentMethod.slug}}" class="ng-pristine ng-valid" ng-click="ck.errors=false;ck.payment(paymentMethod);">
+                        <input id="payment" name="payment" type="radio" value="{{paymentMethod.slug}}" class="ng-pristine ng-valid" ng-click="ck.errors=false;ck.continue=false;ck.payment(paymentMethod);">
                         <div class="control__indicator"></div>
                     </label>
                 </div>
@@ -139,12 +139,21 @@
                         </div>
 
                     }
-                    <div ng-cloak class="alert alert-success successBlock" ng-show="ck.messageSuccess">
-                        @LT("Checkout.Text.SelectPayment", "Select a Payment Method")@LT("Checkout.Text.PartialPayment", "Partial payment of amount") <span ng-bind="ck.partialAmount"></span> @LT("Checkout.Text.BeenDone", "has been done. You can choose to complete your remaining payment using any other mode.")
-                    </div>
-                    <div ng-cloak class="alert alert-danger alertBlock" ng-show="ck.errorMessage">
-                        <span>@LT("Checkout.Text.ConfirmingPayment", "There has been some issue confirming payment.Please check and try again.")</span>
-                    </div>
+                    @if (payment.SystemName == PaymentMethodTypes.Klarna.ToString())
+                    {
+                        <div class="row">
+                            <div class="col-sm-12 col-xs-12">
+                                <div id="klarna_container"></div>
+                            </div>
+                        </div>
+                        <script src="https://x.klarnacdn.net/kp/lib/v1/api.js" async></script>
+                    }
+                            <div ng-cloak class="alert alert-success successBlock" ng-show="ck.messageSuccess">
+                                @LT("Checkout.Text.SelectPayment", "Select a Payment Method")@LT("Checkout.Text.PartialPayment", "Partial payment of amount") <span ng-bind="ck.partialAmount"></span> @LT("Checkout.Text.BeenDone", "has been done. You can choose to complete your remaining payment using any other mode.")
+                            </div>
+                            <div ng-cloak class="alert alert-danger alertBlock" ng-show="ck.errorMessage">
+                                <span>@LT("Checkout.Text.ConfirmingPayment", "There has been some issue confirming payment.Please check and try again.")</span>
+                            </div>
                 </div>
             }
         }
@@ -171,21 +180,30 @@
         {
             if (Model.RegistrationPrompt)
             {
-                <button class="animate btn-primary" ng-click="ck.check=true;ck.setPassword()">
+                <button class="animate btn-primary" ng-hide="ck.continue" ng-click="ck.check=true;ck.setPassword()">
                     @LT("Checkout.Label.OrderSummary", "Place Order") <i class="fa fa-caret-right"></i>
+                </button>
+                <button ng-click="ck.continuePlaceOrder()" ng-show="ck.continue" class="animate btn-primary">
+                    @LT("Checkout.Label.OrderSummary", "Continue") <i class="fa fa-caret-right"></i>
                 </button>
             }
             else
             {
-                <button ng-click="ck.placeOrder()" class="animate btn-primary">
+                <button ng-click="ck.placeOrder()" ng-hide="ck.continue" class="animate btn-primary">
                     @LT("Checkout.Label.OrderSummary", "Place Order") <i class="fa fa-caret-right"></i>
+                </button>
+                <button ng-click="ck.continuePlaceOrder()" ng-show="ck.continue" class="animate btn-primary">
+                    @LT("Checkout.Label.OrderSummary", "Continue") <i class="fa fa-caret-right"></i>
                 </button>
             }
         }
         else
         {
-            <button ng-click="ck.placeOrder()" class="animate btn-primary">
+            <button ng-click="ck.placeOrder()" ng-hide="ck.continue" class="animate btn-primary">
                 @LT("Checkout.Label.OrderSummary", "Place Order") <i class="fa fa-caret-right"></i>
+            </button>
+            <button ng-click="ck.continuePlaceOrder()" ng-show="ck.continue" class="animate btn-primary">
+                @LT("Checkout.Label.OrderSummary", "Continue") <i class="fa fa-caret-right"></i>
             </button>
         }
 </div>

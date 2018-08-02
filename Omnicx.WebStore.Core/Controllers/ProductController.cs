@@ -5,12 +5,16 @@ using System.Web.UI;
 using DevTrends.MvcDonutCaching;
 using Omnicx.API.SDK.Api.Catalog;
 using Omnicx.WebStore.Core.Helpers;
-using Omnicx.API.SDK.Models.Catalog;
+using Omnicx.WebStore.Models.Catalog;
 using Microsoft.Security.Application;
 using System.Net;
-using Omnicx.API.SDK.Entities;
+
 using Omnicx.API.SDK.Api.Site;
-using Omnicx.API.SDK.Models.Site;
+using Omnicx.WebStore.Models.Site;
+using Omnicx.WebStore.Models.Keys;
+using Omnicx.WebStore.Models.Enums;
+using Omnicx.WebStore.Models.FeatureToggle;
+using System.Web;
 
 namespace Omnicx.WebStore.Core.Controllers
 {
@@ -38,9 +42,8 @@ namespace Omnicx.WebStore.Core.Controllers
             var product = _productApi.GetProductDetailBySlug(Sanitizer.GetSafeHtmlFragment(slug));
             if (product == null || (product.Result == null && product.StatusCode == HttpStatusCode.NotFound))
             {
-                return RedirectToAction("PageNotFound", "Common");
+                return RedirectToAction("PageNotFound", "Common", new{ @aspxerrorpath = "/product/" + name});
             }
-
             SetDataLayerVariables(product.Result, WebhookEventTypes.ProductViewed);
             //product.Result.BrandSlug = _brandApi.GetBrandDetails(Sanitizer.GetSafeHtmlFragment(product.Result.BrandRecordId)).Result?.Link;
             return View(CustomViews.PRODUCT_DETAIL, product.Result);

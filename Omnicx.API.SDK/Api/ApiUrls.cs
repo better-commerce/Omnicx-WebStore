@@ -99,6 +99,7 @@
         //Order
         public const string GetOrders = "commerce/customer/{0}/orders";
         public const string GetOrderDetail = "commerce/order/{0}";
+        public const string DownloadInvoice = "commerce/order/{0}/invoice";
 
         // Payment Methods
         public const string PaymentMethods = "commerce/payment/paymentmethod";

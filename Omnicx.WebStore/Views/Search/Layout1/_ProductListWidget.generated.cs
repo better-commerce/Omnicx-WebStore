@@ -103,14 +103,13 @@ WriteLiteral(" ng-href=\"/{{product.slug}}\"");
 
 WriteLiteral(">\r\n                <img");
 
-WriteLiteral(" ng-src=\"{{product.image==\'\'?\'/assets/theme/ocx/images/noimagefound.jpg\':product." +
-"image}}\"");
+WriteLiteral(" ng-src=\"{{product.image==\'\'?DEFAULT_IMAGE_URL:product.image}}\"");
 
 WriteLiteral(" alt=\"\"");
 
 WriteLiteral(" class=\"image1\"");
 
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
 WriteLiteral(">\r\n            </a>\r\n            <div");
 

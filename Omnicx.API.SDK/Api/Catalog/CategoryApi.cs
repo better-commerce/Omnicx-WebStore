@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Omnicx.API.SDK.Models.Catalog;
+using Omnicx.WebStore.Models.Catalog;
 using RestSharp;
-using Omnicx.API.SDK.Models;
-using Omnicx.API.SDK.Entities;
+using Omnicx.WebStore.Models;
+using Omnicx.WebStore.Models.Keys;
 
 namespace Omnicx.API.SDK.Api.Catalog
 {

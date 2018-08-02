@@ -34,18 +34,6 @@ namespace ASP
     
     #line default
     #line hidden
-    
-    #line 16 "..\..\Views\B2B\Layout1\MyCompany.cshtml"
-    using Omnicx.API.SDK.Entities;
-    
-    #line default
-    #line hidden
-    
-    #line 18 "..\..\Views\B2B\Layout1\MyCompany.cshtml"
-    using Omnicx.API.SDK.Models.Commerce;
-    
-    #line default
-    #line hidden
     using Omnicx.WebStore;
     using Omnicx.WebStore.Core;
     
@@ -57,6 +45,18 @@ namespace ASP
     
     #line 19 "..\..\Views\B2B\Layout1\MyCompany.cshtml"
     using Omnicx.WebStore.Framework.Helpers;
+    
+    #line default
+    #line hidden
+    
+    #line 18 "..\..\Views\B2B\Layout1\MyCompany.cshtml"
+    using Omnicx.WebStore.Models.Commerce;
+    
+    #line default
+    #line hidden
+    
+    #line 16 "..\..\Views\B2B\Layout1\MyCompany.cshtml"
+    using Omnicx.WebStore.Models.Enums;
     
     #line default
     #line hidden

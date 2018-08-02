@@ -10,8 +10,8 @@
         a-/Views/Product/Layout1/ProductDetail.cshtml
     */
 }
-@using Omnicx.API.SDK.Models.Catalog
-@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Catalog.ProductDetailModel>
+@using Omnicx.WebStore.Models.Catalog
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Catalog.ProductDetailModel>
 
 @{ /* Start modal popup */ }
 <div class="modal fade" id="product-quick-view-modal" tabindex="-1" role="dialog" aria-hidden="false" ng-show="productmodal">
@@ -35,7 +35,7 @@ Purpose: Show product big image, thumbnails and sale ribbon
                     <div class="col-sm-6 col-xs-12 pull-left">
                         <span class="free-icon right" ng-hide="pm.model.freeProducts.length==0"><i class="fa fa-gift"></i></span>
                         <div class="quick-view-main-image">
-                            <img ng-src="{{pm.model.image}}" class="img-responsive" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'">
+                            <img ng-src="{{pm.model.image}}" class="img-responsive" onerror="this.src = DEFAULT_IMAGE_URL">
                         </div>
                         <div class="row thumbs">
                             <div ng-repeat="img in pm.model.images" ng-if="$index!=1">
@@ -43,7 +43,7 @@ Purpose: Show product big image, thumbnails and sale ribbon
                                     <div class="col-xs-3 col-sm-3">
                                         <div class="thumbs">
                                             <a class="thumb">
-                                                <img ng-src="{{img.url}}" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'" ng-click="pm.model.image=img.url" class="img-responsive" />
+                                                <img ng-src="{{img.url}}" onerror="this.src = DEFAULT_IMAGE_URL" ng-click="pm.model.image=img.url" class="img-responsive" />
                                             </a>
                                         </div>
                                     </div>

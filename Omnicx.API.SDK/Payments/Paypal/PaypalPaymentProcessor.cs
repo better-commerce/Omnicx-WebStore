@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using Omnicx.API.SDK.Helpers;
-using Omnicx.API.SDK.Models.Commerce;
+using Omnicx.WebStore.Models.Commerce;
 using Omnicx.API.SDK.Payments.Entities;
 using Omnicx.API.SDK.PaypalService;
 

@@ -1,7 +1,8 @@
-@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
+.siteHeader .meta@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
 
 #all {
     margin-top: 10px !important;
+    min-height: 60vh;
 }
 
 .siteHeader .hamburger--3dx .hamburger-box, .siteHeader .hamburger--3dx-r .hamburger-box, .siteHeader .hamburger--3dy .hamburger-box, .siteHeader .hamburger--3dy-r .hamburger-box {
@@ -11,13 +12,6 @@
 .siteHeader {
     position: relative;
     height: 100%;
-    overflow: hidden; /*!
- * Hamburgers
- * @description Tasty CSS-animated hamburgers
- * @author Jonathan Suh @jonsuh
- * @site https://jonsuh.com/hamburgers
- * @link https://github.com/jonsuh/hamburgers
- */
 }
 
     .siteHeader .hamburger {
@@ -1002,6 +996,7 @@
     line-height: 1.2rem;
     text-transform: none;
     font-weight: 400;
+    color: #fff !important;
 }
 
 .siteHeader .alphabetBar .alphabetBar__list .alphabetBar__list__item, .siteHeader .megaNav .megaNav__header, .siteHeader .menu .menu__item, .siteHeader .predictiveSearch .predictiveSearch__title {
@@ -1159,23 +1154,24 @@
         .siteHeader .userControls .userControls__lang__link:active,
         .siteHeader .userControls .userControls__lang__link:focus,
         .siteHeader .userControls .userControls__lang__link:hover {
-            color: #ea0083;
+            color: #ffffff;
         }
 
     .siteHeader .userControls .userControls__accountLinks,
     .siteHeader .userControls .userControls__currencyBtn,
     .siteHeader .userControls .userControls__langBtn {
-        color: #000;
+        color: #fff;
     }
 
+    .userControls__linkSeperator,
     .siteHeader .userControls .userControls__linkSeperator {
         display: inline-block;
         margin: 0em;
-        color: #999;
+        color: #fff;
     }
 
 .siteHeader .meta {
-    background-color: #fff;
+    background-color: #182a3c !important;
     padding-top: .6em;
 }
 
@@ -1209,8 +1205,13 @@
 
 @media (min-width:768px) {
     .siteHeader .meta {
-        padding-top: .5em;
-        padding-bottom: 0.5em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 99999;
     }
 
         .siteHeader .meta .row {
@@ -1367,21 +1368,22 @@
         }
 
         .siteHeader .metaLinks .metaLinks__basket .metaLinks__basket__indicator {
-            background-color: transparent;
-            top: auto;
-            right: 5px;
-            bottom: 19px;
-            left: auto;
+            top: 6px;
+            right: auto;
+            left: 13px;
             position: absolute;
             text-align: center;
             padding: .3em;
-            height: 16px;
-            width: 17px;
-            color: #000;
+            height: 20px;
+            width: 20px;
+            color: #fff;
             z-index: 999;
-            line-height: 11px !important;
+            line-height: 10px !important;
             font-family: Poppins !important;
             font-weight: 600 !important;
+            border-radius: 50%;
+            background: #ff494b;
+            border: 2px solid #fff;
         }
 
         .siteHeader .metaLinks .metaLinks__basket.is-active .metaLinks__basket__empty {
@@ -1393,7 +1395,7 @@
         }
 
         .siteHeader .metaLinks .metaLinks__basket:active .metaLinks__basket__indicator, .siteHeader .metaLinks .metaLinks__basket:focus .metaLinks__basket__indicator, .siteHeader .metaLinks .metaLinks__basket:hover .metaLinks__basket__indicator {
-            color: #000;
+            color: #fff;
         }
 
     .siteHeader .metaLinks .metaLinks__basket, .siteHeader .metaLinks .metaLinks__stores {
@@ -1413,8 +1415,13 @@
         width: auto;
         min-width: 75px;
         float: right;
-        margin-top: 0px !important;
+        margin: 0px 10px;
     }
+
+        .siteHeader .metaLinks .list-inline > li a {
+            color: #fff;
+            font-weight: 600;
+        }
 
         .siteHeader .metaLinks .list-inline > li.shopping-cart {
             width: auto;
@@ -1948,8 +1955,8 @@
 
 @media (min-width:768px) {
     .siteHeader .siteNav {
-        background-color: #000;
-        border-top: none !important;
+        background-color: #fff;
+        border-top: none;
         width: auto;
         min-height: 0;
         position: static;
@@ -1957,6 +1964,7 @@
         transform: none;
         transition: none;
         overflow-x: visible;
+        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .16);
     }
 
         .siteHeader .siteNav.is-active {
@@ -1972,28 +1980,28 @@
 }
 
 .siteHeader .menu:hover {
-    background: #000000 !important;
+    background: #fff !important;
     -ms-transform: none;
     transform: none;
     transition: none;
 }
 
     .siteHeader .menu:hover .menu__item {
-        color: #fff !important;
+        color: #000 !important;
         -ms-transform: none;
         transform: none;
         transition: none;
     }
 
 .siteHeader .menu.is-active {
-    background: #000000 !important;
+    background: #fff !important;
     -ms-transform: none;
     transform: none;
     transition: none;
 }
 
     .siteHeader .menu.is-active .menu__item {
-        color: #fff !important;
+        color: #000 !important;
     }
 
 .siteHeader .menu ul {
@@ -2043,9 +2051,9 @@
 
         .siteHeader .menu .menu__item {
             padding: 0.7em .8em;
-            color: #fff;
+            color: #000;
             font-family: Poppins !important;
-            font-weight: 400 !important;
+            font-weight: 600 !important;
             position: relative;
             overflow: hidden;
             margin: 0;
@@ -2054,7 +2062,7 @@
         }
 
             .siteHeader .menu .menu__item.active {
-                color: #fff;
+                color: #000;
             }
 
             .siteHeader .menu .menu__item .menu__item__arrow {
@@ -2095,8 +2103,8 @@
                 }
 
                 .siteHeader .menu.is-active .menu__item.is-active, .siteHeader .menu:active .menu__item:active, .siteHeader .menu:focus .menu__item:focus, .siteHeader .menu:hover .menu__item:hover {
-                    color: #fff;
-                    background: #000000 !important;
+                    color: #000;
+                    background: #fff !important;
                     border-bottom: 2px solid #926957 !important;
                 }
 
@@ -2257,12 +2265,7 @@
     }
 
         .siteHeader .megaNav.is-active {
-            top: 133px;
-            /*top: 0px;*/
-            /*right: 0;
-            bottom: auto;
-            left: 0;
-            position: absolute;*/
+            top: 96px;
             display: block;
             -ms-transform: none;
             transform: none;
@@ -2355,7 +2358,6 @@
             z-index: 161;
             transition: right .3s;
             width: 100%;
-            background-color: #F1F1F1;
             height: 100%;
         }
 
@@ -2391,30 +2393,42 @@
 
         .siteHeader .menuOption .container, .siteHeader .menuOption .container .row {
             height: auto;
-            background: #F1F1F1 !important;
-            padding: 10px 15px 0 15px !important;
+            background: #fff !important;
+            padding: 0px 15px 0 15px !important;
             min-height: 390px;
             position: relative !important;
+            box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .16);
         }
 
-        .siteHeader .menuOption .menuOption__mobContainer {
+        .siteHeader .menuOption .menuOption__mobContainer:nth-child(even) {
             position: relative;
             overflow: hidden;
+            background: #f7f7f7;
+            padding: 15px;
+            min-height: 390px;
         }
 
-            .siteHeader .menuOption .menuOption__mobContainer .menuOption__mobContainer__list, .siteHeader .menuOption .menuOption__mobContainer .menuOption__mobContainer__list.is-active {
-                position: static;
-                top: auto;
-                right: auto;
-                bottom: auto;
-                left: auto;
-            }
+        .siteHeader .menuOption .menuOption__mobContainer:nth-child(odd) {
+            position: relative;
+            overflow: hidden;
+            background: #fff;
+            padding: 15px;
+            min-height: 390px;
+        }
 
-                .siteHeader .menuOption .menuOption__mobContainer .menuOption__mobContainer__list .megaNav__list__item {
-                    border-bottom: none;
-                    margin: 0 0 .4em;
-                    padding: 0;
-                }
+        .siteHeader .menuOption .menuOption__mobContainer .menuOption__mobContainer__list, .siteHeader .menuOption .menuOption__mobContainer .menuOption__mobContainer__list.is-active {
+            position: static;
+            top: auto;
+            right: auto;
+            bottom: auto;
+            left: auto;
+        }
+
+            .siteHeader .menuOption .menuOption__mobContainer .menuOption__mobContainer__list .megaNav__list__item {
+                border-bottom: none;
+                margin: 0 0 .4em;
+                padding: 0;
+            }
 
     .siteHeader .alphabetBar, .siteHeader .alphabetBar .container, .siteHeader .alphabetBar .container .row {
         height: 40px;
@@ -2724,8 +2738,19 @@
 
 .minicart-custom {
     margin-left: 0px !important;
-    color: #000 !important;
+    color: #fff !important;
+    font-size: 14px !important;
+    font-family: Poppins !important;
+    line-height: 50px !important;
 }
+
+    .minicart-custom i {
+        margin-left: 0px !important;
+        color: #fff !important;
+        font-size: 20px !important;
+        line-height: 50px !important;
+        margin-right: 5px !important;
+    }
 
 .megamenu-img {
     float: left !important;
@@ -2766,3 +2791,17 @@
     max-height: 380px;
     overflow-y: scroll;
 }
+
+.metaLinks__basket__full {
+    color: #fff !important;
+    font-size: 14px;
+    font-family: Poppins;
+    font-weight: 600;
+}
+
+    .metaLinks__basket__full > i {
+        font-size: 24px !important;
+        color: #fff;
+        margin-right: 5px !important;
+        line-height: 50px;
+    }

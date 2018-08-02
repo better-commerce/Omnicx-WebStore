@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
-using Omnicx.API.SDK.Models.Commerce;
-using Omnicx.API.SDK.Models;
+using Omnicx.WebStore.Models.Commerce;
+using Omnicx.WebStore.Models;
+using Omnicx.WebStore.Models.Common;
+using System;
+
 namespace Omnicx.API.SDK.Api.Commerce
 {
     public interface IOrderApi
@@ -9,5 +12,6 @@ namespace Omnicx.API.SDK.Api.Commerce
         ResponseModel<OrderModel>  GetOrdDetail(string id);
 
         ResponseModel<List<ReturnModel>>  GetAllReturns(string id);
+        ResponseModel<FileResponse> DownloadInvoice(Guid id);
     }
 }

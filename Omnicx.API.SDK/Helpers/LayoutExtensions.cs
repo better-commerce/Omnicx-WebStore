@@ -1,5 +1,6 @@
-﻿using System.Web.Mvc;
-using Omnicx.API.SDK.Entities;
+﻿using Omnicx.WebStore.Models.Enums;
+using System.Web.Mvc;
+
 
 namespace Omnicx.API.SDK.Helpers
 {
@@ -19,7 +20,7 @@ namespace Omnicx.API.SDK.Helpers
          {
             var pageHeadBuilder = DependencyResolver.Current.GetService<IHeadTagBuilder>();
             html.AppendTitleParts(part);
-            return MvcHtmlString.Create(html.Encode(pageHeadBuilder.GenerateTitle(addDefaultTitle)));
+            return MvcHtmlString.Create(pageHeadBuilder.GenerateTitle(addDefaultTitle));
         }
         public static void AppendTitleParts(this HtmlHelper html, string part)
         {
@@ -30,7 +31,7 @@ namespace Omnicx.API.SDK.Helpers
          {
             var pageHeadBuilder = DependencyResolver.Current.GetService<IHeadTagBuilder>();
             html.AppendMetaDescriptionParts(part);
-            return MvcHtmlString.Create(html.Encode(pageHeadBuilder.GenerateMetaDescription()));
+            return MvcHtmlString.Create(pageHeadBuilder.GenerateMetaDescription());
         }
         public static void AppendMetaDescriptionParts(this HtmlHelper html, string part)
         {
@@ -41,13 +42,13 @@ namespace Omnicx.API.SDK.Helpers
         {
             var pageHeadBuilder = DependencyResolver.Current.GetService<IHeadTagBuilder>();
             html.AddMetaTitle(part);
-            return MvcHtmlString.Create(html.Encode(pageHeadBuilder.GenerateMetaTitle()));
+            return MvcHtmlString.Create(pageHeadBuilder.GenerateMetaTitle());
         }
         public static MvcHtmlString MetaKeywords(this HtmlHelper html, string part = "")
         {
             var pageHeadBuilder = DependencyResolver.Current.GetService<IHeadTagBuilder>();
             html.AppendMetaKeywordParts(part);
-            return MvcHtmlString.Create(html.Encode(pageHeadBuilder.GenerateMetaKeywords()));
+            return MvcHtmlString.Create(pageHeadBuilder.GenerateMetaKeywords());
         }
         public static void AppendMetaKeywordParts(this HtmlHelper html, string part)
         {
@@ -75,7 +76,16 @@ namespace Omnicx.API.SDK.Helpers
             var pageHeadBuilder = DependencyResolver.Current.GetService<IHeadTagBuilder>();
             return MvcHtmlString.Create(pageHeadBuilder.GetOmnilyticId());
         }
-
+        public static MvcHtmlString GetGlobalSnipptes(this HtmlHelper html, SnippetPlacements placement)
+        {
+            var pageHeadBuilder = DependencyResolver.Current.GetService<IHeadTagBuilder>();
+            return MvcHtmlString.Create(pageHeadBuilder.GenerateGlobalSnippets(placement));
+        }
+        public static MvcHtmlString GetePageSnippets(this HtmlHelper html, SnippetPlacements placement)
+        {
+            var pageHeadBuilder = DependencyResolver.Current.GetService<IHeadTagBuilder>();
+            return MvcHtmlString.Create(pageHeadBuilder.GeneratePageSnippets(placement));
+        }
         #endregion
 
         #region AddPartMethods

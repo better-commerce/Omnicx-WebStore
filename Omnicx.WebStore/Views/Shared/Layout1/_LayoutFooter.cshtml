@@ -1,17 +1,19 @@
-﻿@using Omnicx.API.SDK.Entities
-@using Omnicx.API.SDK.Models.Commerce
+﻿@using Omnicx.WebStore.Models.Keys
+@using Omnicx.WebStore.Models.Commerce
+@using Omnicx.API.SDK.Helpers
+@using Omnicx.WebStore.Models.Enums
 @inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
 @{
     var StoreTheme = ConfigKeys.StoreTheme;
 }
-
-<div class="col-sm-12 col-xs-12 no-padding hidden-xs bg-black padding-top-sm">
+@Html.GetGlobalSnipptes(SnippetPlacements.FooterBefore)
+<div class="col-sm-12 col-xs-12 no-padding hidden-xs">
     @Html.Action("GetFooter", "Home")
 </div>
 <div class="col-sm-12 col-xs-12 no-padding visible-xs footerMenu-padding hide-dsk">
     @Html.Action("GetFooterMobile", "Home")
 </div>
-<div class="col-sm-12 col-xs-12 no-padding bg-black padding-top-sm">
+<div class="col-sm-12 col-xs-12 no-padding">
     <div id="copyright">
         <div class="container footer-copyright-border">
             <div class="col-md-12 no-padding">
@@ -23,7 +25,7 @@
         </div>
     </div>
 </div>
-
+@Html.GetGlobalSnipptes(SnippetPlacements.FooterAfter)
 
 @Html.Action("CurrencySettings", "Home")
 

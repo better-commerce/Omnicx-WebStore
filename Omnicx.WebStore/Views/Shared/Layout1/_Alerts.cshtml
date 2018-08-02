@@ -1,7 +1,4 @@
 ﻿<div class="alertBlock">
-    <div ng-cloak class="alert alert-info" ng-show="gm.errorMessage == null && !gm.saving && !gm.success">
-        Make changes below.
-    </div>
     <div ng-cloak class="alert alert-info" ng-show="gm.saving">
         Saving changes...
     </div>
@@ -10,10 +7,7 @@
         Changes saved!
     </div>
     <div ng-cloak class="alert alert-danger" ng-show="gm.errorMessage != null">
-        @*{{vm..errorMessage}}*@
-        <div ng-repeat="err in gm.errorMessage track by $index">
-            <i class="fa fa-circle"></i><span ng-bind="err"></span>
-        </div>
+            <i class="fa fa-circle"></i><span ng-bind="gm.errorMessage"></span>
     </div>
     <div id="divErrMsg" class="alert alert-danger hide">
         <div>

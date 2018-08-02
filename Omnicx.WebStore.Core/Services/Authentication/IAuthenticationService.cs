@@ -1,5 +1,5 @@
-﻿using Omnicx.API.SDK.Models.Commerce;
-using Omnicx.API.SDK.Models.Common;
+﻿using Omnicx.WebStore.Models.Commerce;
+using Omnicx.WebStore.Models.Common;
 
 namespace Omnicx.WebStore.Core.Services.Authentication
 {

@@ -33,7 +33,7 @@ namespace ASP
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Shared/_BreadCrumb.cshtml")]
-    public partial class _Views_Shared__BreadCrumb_cshtml : System.Web.Mvc.WebViewPage<Omnicx.API.SDK.Models.Catalog.SlugModel>
+    public partial class _Views_Shared__BreadCrumb_cshtml : System.Web.Mvc.WebViewPage<Omnicx.WebStore.Models.Catalog.SlugModel>
     {
         public _Views_Shared__BreadCrumb_cshtml()
         {

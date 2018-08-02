@@ -1,9 +1,11 @@
 ﻿using Omnicx.API.SDK.Api.Infra;
 using Omnicx.API.SDK.Api.Site;
-using Omnicx.API.SDK.Entities;
-using Omnicx.API.SDK.Models;
-using Omnicx.API.SDK.Models.Site;
+
+using Omnicx.WebStore.Models;
+using Omnicx.WebStore.Models.Site;
 using System.Web.Mvc;
+using Omnicx.WebStore.Models.Keys;
+using Omnicx.WebStore.Models.Enums;
 
 namespace Omnicx.WebStore.Core.Controllers
 {
@@ -93,6 +95,11 @@ namespace Omnicx.WebStore.Core.Controllers
         public ActionResult HeaderLoginInfo()
         {           
             return PartialView(CustomViews.HEADER_LOGIN_INFO);
+        }
+        [ChildActionOnly]
+        public ActionResult DynamicHeadTag()
+        {
+            return PartialView(CustomViews.HEADER_DYNAMIC_HEAD_TAG);
         }
         public ActionResult IndexV3()
         {

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 using System.Collections.Generic;
 
@@ -21,6 +22,25 @@ namespace Omnicx.API.SDK.Helpers
 
             var res = JsonConvert.DeserializeObject<IList<string>>(json);
             return res == null ? new List<string>() : res;
+        }
+        public static bool ValidateJSON(this string s)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(s))
+                {
+                    return false;
+                }
+                else
+                {
+                    JToken.Parse(s);
+                    return true;
+                }
+            }
+            catch 
+            {                
+                return false;
+            }
         }
     }
 }

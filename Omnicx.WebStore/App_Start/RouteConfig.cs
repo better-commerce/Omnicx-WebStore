@@ -1,7 +1,8 @@
 ﻿using Omnicx.API.SDK.Api.Site;
-using Omnicx.API.SDK.Entities;
+
 using Omnicx.API.SDK.Helpers;
 using Omnicx.WebStore.Core.Helpers;
+using Omnicx.WebStore.Models.Keys;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,7 +61,9 @@ namespace Omnicx.WebStore
                     slugCount++;
                 }
             }
-            routes.MapRoute(name: "sitemap", url: "sitemap.xml", defaults: new { controller = "Page", action = "GetFeedLink", slug = "sitemap" });
+            routes.MapRoute(name: "sitemap", url: "{slug}.xml", defaults: new { controller = "Page", action = "GetFeedLink", slug = UrlParameter.Optional });
+            routes.MapRoute(name: "feed", url: "feed{s}/{slug}", defaults: new { controller = "Page", action = "GetFeedLink", slug = UrlParameter.Optional, s = UrlParameter.Optional });
+
             routes.MapRoute(name: "brands-all", url: "brands", defaults: new { controller = "Brand", action = "BrandList", id = UrlParameter.Optional });
             routes.MapRoute(name: "brand-detail", url: "brands/{name}", defaults: new { controller = "Brand", action = "BrandDetail", id = UrlParameter.Optional });
             routes.MapRoute(name: "brand-productslist", url: "brands/{name}/all", defaults: new { controller = "Brand", action = "BrandProducts", id = UrlParameter.Optional });
@@ -83,8 +86,7 @@ namespace Omnicx.WebStore
             routes.MapRoute(name: "dynamic-list", url: "list/{slug}", defaults: new { controller = "Search", action = "DynamicListItems", slug = UrlParameter.Optional });
             routes.MapRoute(name: "dynamic-page", url: "{slug}", defaults: new { controller = "Page", action = "DynamicPage", slug = UrlParameter.Optional });
             routes.MapRoute(name: "passwordrecovery", url: "passwordrecovery/{id}", defaults: new { controller = "Account", action = "PasswordRecovery", id = UrlParameter.Optional });
-            routes.MapRoute(name: "feed", url: "feed/{slug}", defaults: new { controller = "Page", action = "GetFeedLink", slug = UrlParameter.Optional });
-
+           
             //Payment Method post notification route handlers
             routes.MapRoute(name: "MasterCardNotification", url: "checkout/mastercardnotification", defaults: new { controller = "MasterCard", action = "Notification", id = UrlParameter.Optional });
             routes.MapRoute(name: "MasterCardCheck3DSecure", url: "checkout/MasterCardCheck3DSecure", defaults: new { controller = "MasterCard", action = "Check3DSecure", id = UrlParameter.Optional });

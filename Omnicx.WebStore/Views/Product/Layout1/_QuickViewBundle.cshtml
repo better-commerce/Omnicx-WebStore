@@ -9,14 +9,14 @@
         a-/Views/Product/Layout1/ProductDetail.cshtml
     */
 }
-@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Catalog.ProductDetailModel>
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Catalog.ProductDetailModel>
 
 <div class="container-fluid bundle">    
     <div class="row">
         <div class="col-sm-5 col-xs-12">
             <div class="row animated zoomIn">
                 <div class="col-sm-12 col-xs-12 bundle-product-container">
-                    <img data-ng-magnify image-src="{{pm.model.image}}" class="img-responsive" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'" ng-cloak>
+                    <img data-ng-magnify image-src="{{pm.model.image}}" class="img-responsive" onerror="this.src = DEFAULT_IMAGE_URL" ng-cloak>
                 </div>
             </div>
         </div>
@@ -25,7 +25,7 @@
                 <div class="col-sm-4 col-xs-4" ng-repeat="productBundle in pm.model.componentProducts">
                     <div class="bundle-image-container">
                         <a ng-href="/{{productBundle.slug}}">
-                            <img ng-src="{{productBundle.images[0].url}}" class="img-responsive" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'" ng-cloak>
+                            <img ng-src="{{productBundle.images[0].url}}" class="img-responsive" onerror="this.src = DEFAULT_IMAGE_URL" ng-cloak>
                         </a>
                     </div>
                     <div>
@@ -50,7 +50,7 @@
     </div>
     <div class="row">
         <div class="col-sm-12 col-xs-12 quickView-image2">
-            <img ng-src="{{pm.model.images[1].url==''?'/assets/theme/ocx/images/noimagefound.jpg':pm.model.images[1].url}}" alt="" class="img-responsive" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'">
+            <img ng-src="{{pm.model.images[1].url==''?DEFAULT_IMAGE_URL:pm.model.images[1].url}}" alt="" class="img-responsive" onerror="this.src = DEFAULT_IMAGE_URL">
         </div>
     </div>
     <div class="row product-box quickView">

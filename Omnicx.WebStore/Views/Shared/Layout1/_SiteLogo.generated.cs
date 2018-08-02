@@ -28,14 +28,14 @@ namespace ASP
     using System.Web.UI;
     using System.Web.WebPages;
     using DevTrends.MvcDonutCaching;
+    using Omnicx.WebStore;
+    using Omnicx.WebStore.Core;
     
     #line 1 "..\..\Views\Shared\Layout1\_SiteLogo.cshtml"
-    using Omnicx.API.SDK.Entities;
+    using Omnicx.WebStore.Models.Keys;
     
     #line default
     #line hidden
-    using Omnicx.WebStore;
-    using Omnicx.WebStore.Core;
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Shared/Layout1/_SiteLogo.cshtml")]
@@ -81,27 +81,27 @@ WriteLiteral(">\r\n");
             #line hidden
 WriteLiteral("        <img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 405), Tuple.Create("\"", 453)
-, Tuple.Create(Tuple.Create("", 411), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/")
-, 411), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 409), Tuple.Create("\"", 457)
+, Tuple.Create(Tuple.Create("", 415), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/")
+, 415), false)
             
             #line 12 "..\..\Views\Shared\Layout1\_SiteLogo.cshtml"
-, Tuple.Create(Tuple.Create("", 426), Tuple.Create<System.Object, System.Int32>(StoreTheme
+, Tuple.Create(Tuple.Create("", 430), Tuple.Create<System.Object, System.Int32>(StoreTheme
             
             #line default
             #line hidden
-, 426), false)
-, Tuple.Create(Tuple.Create("", 437), Tuple.Create("/images/logo.png", 437), true)
+, 430), false)
+, Tuple.Create(Tuple.Create("", 441), Tuple.Create("/images/logo.png", 441), true)
 );
 
-WriteAttribute("alt", Tuple.Create(" alt=\"", 454), Tuple.Create("\"", 491)
+WriteAttribute("alt", Tuple.Create(" alt=\"", 458), Tuple.Create("\"", 495)
             
             #line 12 "..\..\Views\Shared\Layout1\_SiteLogo.cshtml"
-, Tuple.Create(Tuple.Create("", 460), Tuple.Create<System.Object, System.Int32>(LT("Header.Text.Logo", "Logo")
+, Tuple.Create(Tuple.Create("", 464), Tuple.Create<System.Object, System.Int32>(LT("Header.Text.Logo", "Logo")
             
             #line default
             #line hidden
-, 460), false)
+, 464), false)
 );
 
 WriteLiteral(" class=\"img-responsive logo-width\"");
@@ -119,24 +119,24 @@ WriteLiteral(">\r\n");
             #line hidden
 WriteLiteral("        <img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 565), Tuple.Create("\"", 579)
+WriteAttribute("src", Tuple.Create(" src=\"", 569), Tuple.Create("\"", 583)
             
             #line 16 "..\..\Views\Shared\Layout1\_SiteLogo.cshtml"
-, Tuple.Create(Tuple.Create("", 571), Tuple.Create<System.Object, System.Int32>(logoUrl
+, Tuple.Create(Tuple.Create("", 575), Tuple.Create<System.Object, System.Int32>(logoUrl
             
             #line default
             #line hidden
-, 571), false)
+, 575), false)
 );
 
-WriteAttribute("alt", Tuple.Create(" alt=\"", 580), Tuple.Create("\"", 617)
+WriteAttribute("alt", Tuple.Create(" alt=\"", 584), Tuple.Create("\"", 621)
             
             #line 16 "..\..\Views\Shared\Layout1\_SiteLogo.cshtml"
-, Tuple.Create(Tuple.Create("", 586), Tuple.Create<System.Object, System.Int32>(LT("Header.Text.Logo", "Logo")
+, Tuple.Create(Tuple.Create("", 590), Tuple.Create<System.Object, System.Int32>(LT("Header.Text.Logo", "Logo")
             
             #line default
             #line hidden
-, 586), false)
+, 590), false)
 );
 
 WriteLiteral(" class=\"img-responsive logo-width\"");
@@ -176,27 +176,27 @@ WriteLiteral(">\r\n");
             #line hidden
 WriteLiteral("        <img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 801), Tuple.Create("\"", 849)
-, Tuple.Create(Tuple.Create("", 807), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/")
-, 807), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 805), Tuple.Create("\"", 853)
+, Tuple.Create(Tuple.Create("", 811), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/")
+, 811), false)
             
             #line 23 "..\..\Views\Shared\Layout1\_SiteLogo.cshtml"
-, Tuple.Create(Tuple.Create("", 822), Tuple.Create<System.Object, System.Int32>(StoreTheme
+, Tuple.Create(Tuple.Create("", 826), Tuple.Create<System.Object, System.Int32>(StoreTheme
             
             #line default
             #line hidden
-, 822), false)
-, Tuple.Create(Tuple.Create("", 833), Tuple.Create("/images/logo.png", 833), true)
+, 826), false)
+, Tuple.Create(Tuple.Create("", 837), Tuple.Create("/images/logo.png", 837), true)
 );
 
-WriteAttribute("alt", Tuple.Create(" alt=\"", 850), Tuple.Create("\"", 887)
+WriteAttribute("alt", Tuple.Create(" alt=\"", 854), Tuple.Create("\"", 891)
             
             #line 23 "..\..\Views\Shared\Layout1\_SiteLogo.cshtml"
-, Tuple.Create(Tuple.Create("", 856), Tuple.Create<System.Object, System.Int32>(LT("Header.Text.Logo", "Logo")
+, Tuple.Create(Tuple.Create("", 860), Tuple.Create<System.Object, System.Int32>(LT("Header.Text.Logo", "Logo")
             
             #line default
             #line hidden
-, 856), false)
+, 860), false)
 );
 
 WriteLiteral(" class=\"img-responsive logo-width\"");
@@ -214,24 +214,24 @@ WriteLiteral(">\r\n");
             #line hidden
 WriteLiteral("        <img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 961), Tuple.Create("\"", 975)
+WriteAttribute("src", Tuple.Create(" src=\"", 965), Tuple.Create("\"", 979)
             
             #line 27 "..\..\Views\Shared\Layout1\_SiteLogo.cshtml"
-, Tuple.Create(Tuple.Create("", 967), Tuple.Create<System.Object, System.Int32>(logoUrl
+, Tuple.Create(Tuple.Create("", 971), Tuple.Create<System.Object, System.Int32>(logoUrl
             
             #line default
             #line hidden
-, 967), false)
+, 971), false)
 );
 
-WriteAttribute("alt", Tuple.Create(" alt=\"", 976), Tuple.Create("\"", 1013)
+WriteAttribute("alt", Tuple.Create(" alt=\"", 980), Tuple.Create("\"", 1017)
             
             #line 27 "..\..\Views\Shared\Layout1\_SiteLogo.cshtml"
-, Tuple.Create(Tuple.Create("", 982), Tuple.Create<System.Object, System.Int32>(LT("Header.Text.Logo", "Logo")
+, Tuple.Create(Tuple.Create("", 986), Tuple.Create<System.Object, System.Int32>(LT("Header.Text.Logo", "Logo")
             
             #line default
             #line hidden
-, 982), false)
+, 986), false)
 );
 
 WriteLiteral(" class=\"img-responsive logo-width\"");
@@ -271,27 +271,27 @@ WriteLiteral(">\r\n");
             #line hidden
 WriteLiteral("        <img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 1197), Tuple.Create("\"", 1252)
-, Tuple.Create(Tuple.Create("", 1203), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/")
-, 1203), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 1201), Tuple.Create("\"", 1256)
+, Tuple.Create(Tuple.Create("", 1207), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/")
+, 1207), false)
             
             #line 34 "..\..\Views\Shared\Layout1\_SiteLogo.cshtml"
-, Tuple.Create(Tuple.Create("", 1218), Tuple.Create<System.Object, System.Int32>(StoreTheme
+, Tuple.Create(Tuple.Create("", 1222), Tuple.Create<System.Object, System.Int32>(StoreTheme
             
             #line default
             #line hidden
-, 1218), false)
-, Tuple.Create(Tuple.Create("", 1229), Tuple.Create("/images/logo-footer.png", 1229), true)
+, 1222), false)
+, Tuple.Create(Tuple.Create("", 1233), Tuple.Create("/images/logo-footer.png", 1233), true)
 );
 
-WriteAttribute("alt", Tuple.Create(" alt=\"", 1253), Tuple.Create("\"", 1290)
+WriteAttribute("alt", Tuple.Create(" alt=\"", 1257), Tuple.Create("\"", 1294)
             
             #line 34 "..\..\Views\Shared\Layout1\_SiteLogo.cshtml"
-, Tuple.Create(Tuple.Create("", 1259), Tuple.Create<System.Object, System.Int32>(LT("Header.Text.Logo", "Logo")
+, Tuple.Create(Tuple.Create("", 1263), Tuple.Create<System.Object, System.Int32>(LT("Header.Text.Logo", "Logo")
             
             #line default
             #line hidden
-, 1259), false)
+, 1263), false)
 );
 
 WriteLiteral(" class=\"img-responsive logo-width\"");
@@ -309,24 +309,24 @@ WriteLiteral(">\r\n");
             #line hidden
 WriteLiteral("        <img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 1364), Tuple.Create("\"", 1378)
+WriteAttribute("src", Tuple.Create(" src=\"", 1368), Tuple.Create("\"", 1382)
             
             #line 38 "..\..\Views\Shared\Layout1\_SiteLogo.cshtml"
-, Tuple.Create(Tuple.Create("", 1370), Tuple.Create<System.Object, System.Int32>(logoUrl
+, Tuple.Create(Tuple.Create("", 1374), Tuple.Create<System.Object, System.Int32>(logoUrl
             
             #line default
             #line hidden
-, 1370), false)
+, 1374), false)
 );
 
-WriteAttribute("alt", Tuple.Create(" alt=\"", 1379), Tuple.Create("\"", 1416)
+WriteAttribute("alt", Tuple.Create(" alt=\"", 1383), Tuple.Create("\"", 1420)
             
             #line 38 "..\..\Views\Shared\Layout1\_SiteLogo.cshtml"
-, Tuple.Create(Tuple.Create("", 1385), Tuple.Create<System.Object, System.Int32>(LT("Header.Text.Logo", "Logo")
+, Tuple.Create(Tuple.Create("", 1389), Tuple.Create<System.Object, System.Int32>(LT("Header.Text.Logo", "Logo")
             
             #line default
             #line hidden
-, 1385), false)
+, 1389), false)
 );
 
 WriteLiteral(" class=\"img-responsive logo-width\"");

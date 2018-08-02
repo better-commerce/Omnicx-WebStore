@@ -48,12 +48,6 @@ WriteLiteral(">\r\n    <div ng-cloak");
 
 WriteLiteral(" class=\"alert alert-info\"");
 
-WriteLiteral(" ng-show=\"gm.errorMessage == null && !gm.saving && !gm.success\"");
-
-WriteLiteral(">\r\n        Make changes below.\r\n    </div>\r\n    <div ng-cloak");
-
-WriteLiteral(" class=\"alert alert-info\"");
-
 WriteLiteral(" ng-show=\"gm.saving\"");
 
 WriteLiteral(">\r\n        Saving changes...\r\n    </div>\r\n    <div ng-cloak");
@@ -72,21 +66,15 @@ WriteLiteral(" class=\"alert alert-danger\"");
 
 WriteLiteral(" ng-show=\"gm.errorMessage != null\"");
 
-WriteLiteral(">\r\n        ");
-
-WriteLiteral("\r\n        <div");
-
-WriteLiteral(" ng-repeat=\"err in gm.errorMessage track by $index\"");
-
 WriteLiteral(">\r\n            <i");
 
 WriteLiteral(" class=\"fa fa-circle\"");
 
 WriteLiteral("></i><span");
 
-WriteLiteral(" ng-bind=\"err\"");
+WriteLiteral(" ng-bind=\"gm.errorMessage\"");
 
-WriteLiteral("></span>\r\n        </div>\r\n    </div>\r\n    <div");
+WriteLiteral("></span>\r\n    </div>\r\n    <div");
 
 WriteLiteral(" id=\"divErrMsg\"");
 

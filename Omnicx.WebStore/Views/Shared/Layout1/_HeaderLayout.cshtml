@@ -10,14 +10,15 @@
         a-/Views/Shared/Layout1/_LayoutHeader.cshtml
     */
 }
-@using Omnicx.API.SDK.Entities
-@using Omnicx.WebStore.Core.Helpers
+@using Omnicx.WebStore.Models.Keys
+@using Omnicx.API.SDK.Helpers
+@using Omnicx.WebStore.Models.Enums
 @inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
 @{ 
     bool? showBulkOrderPad = SessionContext.CurrentSiteConfig?.B2BSettings?.ShowBulkOrderPad;
     bool? isB2b = SessionContext.CurrentSiteConfig?.B2BSettings?.EnableB2B;
 }
-<nav class="userControls hidden-xs">
+<nav class="userControls hidden">
     <div class="container">
         <div class="row">
             @*Header Top Left Panel Menu*@
@@ -35,17 +36,7 @@
 
             @*Header Top Right Panel Account and Localize Panel*@
             <ul class="left list-inline col-sm-6 col-xs-7 pull-right text-right">
-                <li class="pos-rel margin-right-md">
-                    <button type="button" class="btn navbar-btn btn-header-currency" data-toggle="modal" data-target="#currency-modal">
-                        <span class="text-uppercase">@SessionContext.CurrentSiteConfig.RegionalSettings.DefaultLanguageCode</span>-
-                        <span class="text-uppercase">@SessionContext.CurrentSiteConfig.RegionalSettings.DefaultCurrencyCode</span>-
-                        <span class="text-uppercase">@SessionContext.CurrentSiteConfig.RegionalSettings.DefaultCountry<i class="fa fa-@SessionContext.CurrentSiteConfig.RegionalSettings.DefaultCountry"></i></span>
-                    </button>
-                </li>
-                <li>
-                    <span class="userControls__linkSeperator">|</span>
-                </li>
-               @Html.Action("HeaderLoginInfo", "Home", true) 
+                
             </ul>
         </div>
     </div>
@@ -71,19 +62,19 @@
             </div>
 
             @*Site LOGO*@
-            <div class="col-xs-3 col-sm-2 xs-padding-lr-0 no-padding">
+            <div class="col-xs-3 col-sm-1 xs-padding-lr-0">
                 @Html.Partial(CustomViews.SITE_LOGO)
             </div>
 
             @*Site Search*@
-            <div class="mobShowHide col-xs-12 col-sm-7">
+            <div class="mobShowHide col-xs-12 col-sm-5">
                 <div class="mobShowHide__container">
                     @Html.Partial(CustomViews.HEADER_SEARCHBOX)                   
                 </div>
             </div>
 
             @*Basket and Store Panel*@
-            <div class="col-xs-6 col-sm-3 xs-padding-lr-0 no-padding">
+            <div class="col-xs-6 col-sm-6 xs-padding-lr-0">
                 <nav class="metaLinks">
                     <ul class="list-inline">
                         <li>
@@ -95,11 +86,21 @@
                         {
                             @Html.Partial(CustomViews.HEADER_BULKORDER_VIEW)
                         }
-                                         
+                        @Html.Action("HeaderLoginInfo", "Home", true)
+                        
+                        <li class="margin-right-md margin-top-md">
+                            <button type="button" class="btn navbar-btn btn-header-currency" data-toggle="modal" data-target="#currency-modal">
+                                @*<span class="text-uppercase">@SessionContext.CurrentSiteConfig.RegionalSettings.DefaultLanguageCode</span>-
+                                <span class="text-uppercase">@SessionContext.CurrentSiteConfig.RegionalSettings.DefaultCurrencyCode</span>-*@
+                                <span class="text-uppercase">@SessionContext.CurrentSiteConfig.RegionalSettings.DefaultCountry<i class="fa fa-@SessionContext.CurrentSiteConfig.RegionalSettings.DefaultCountry"></i></span>
+                            </button>
+                        </li>                            
                     </ul>
                 </nav>
             </div>
         </div>
     </div>
+    @Html.GetGlobalSnipptes(SnippetPlacements.HeaderMenuBefore)
     @Html.Action("GetNav", "Home")
+    @Html.GetGlobalSnipptes(SnippetPlacements.HeaderMenuAfter)
 </section>

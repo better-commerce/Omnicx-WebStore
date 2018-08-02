@@ -1,7 +1,7 @@
-﻿using Omnicx.API.SDK.Models.Helpers;
-using Omnicx.API.SDK.Models.Site;
+﻿using Omnicx.WebStore.Models.Helpers;
+using Omnicx.WebStore.Models.Site;
 using RestSharp;
-using Omnicx.API.SDK.Models;
+using Omnicx.WebStore.Models;
 namespace Omnicx.API.SDK.Api.Site
 {
     public class BlogApi:ApiBase, IBlogApi 

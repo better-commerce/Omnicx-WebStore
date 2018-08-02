@@ -9,7 +9,7 @@
     */
 }
 @using Omnicx.WebStore.Framework.Helpers
-@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Commerce.AddressModel>
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Commerce.AddressModel>
 @{
     var addressForm = Html.Angular().ModelFor("ck.model.checkout.billingAddress" + ViewData["prefix"]);
 }

@@ -75,7 +75,7 @@ WriteLiteral(" aria-hidden=\"true\"");
 
 WriteLiteral(">\r\n    <div");
 
-WriteLiteral(" class=\"modal-dialog\"");
+WriteLiteral(" class=\"modal-dialog top6\"");
 
 WriteLiteral(">\r\n        <div");
 
@@ -122,17 +122,21 @@ WriteLiteral(">\r\n                <div");
 
 WriteLiteral(" class=\"row\"");
 
-WriteLiteral(">\r\n                    <div ng-cloak");
+WriteLiteral(">\r\n                    <div");
 
-WriteLiteral(" class=\"alert alert-danger StockError\"");
+WriteLiteral(" class=\"col-sm-12 col-xs-12 alertBlock\"");
 
-WriteLiteral(" ng-show=\"gm.errorMessage\"");
+WriteLiteral(">\r\n                        <div ng-cloak");
 
-WriteLiteral(">\r\n                        <strong>");
+WriteLiteral(" class=\"alert alert-danger stockUnavailable\"");
+
+WriteLiteral(" ng-show=\"gm.stockUnavailable\"");
+
+WriteLiteral(">\r\n                            <strong>");
 
             
-            #line 25 "..\..\Views\Basket\Layout1\_QuickOrderPad.cshtml"
-                           Write(LT("YourBag.Message.DuplicateEntry", "Duplicate stockCode entry in rows "));
+            #line 26 "..\..\Views\Basket\Layout1\_QuickOrderPad.cshtml"
+                               Write(LT("YourBag.Message.DuplicateEntry", "Duplicate stockCode entry in rows "));
 
             
             #line default
@@ -141,28 +145,26 @@ WriteLiteral("<span");
 
 WriteLiteral(" ng-bind=\"gm.errorMessage\"");
 
-WriteLiteral("></span></strong>\r\n                    </div>\r\n                    <div ng-cloak");
+WriteLiteral("></span></strong>\r\n                        </div>\r\n                        <div n" +
+"g-cloak");
 
 WriteLiteral(" class=\"alert alert-danger wrongFormatError\"");
 
 WriteLiteral(" ng-show=\"gm.wrongFormatMessage\"");
 
-WriteLiteral(">\r\n                        <strong>");
+WriteLiteral(">\r\n                            <strong>");
 
             
-            #line 28 "..\..\Views\Basket\Layout1\_QuickOrderPad.cshtml"
-                           Write(LT("YourBag.Message.WrongFormat", "Wrong Input format"));
+            #line 29 "..\..\Views\Basket\Layout1\_QuickOrderPad.cshtml"
+                               Write(LT("YourBag.Message.WrongFormat", "Wrong Input format"));
 
             
             #line default
             #line hidden
-WriteLiteral("</strong>\r\n                    </div>\r\n                    ");
+WriteLiteral("</strong>\r\n                        </div>\r\n                    </div>\r\n          " +
+"          <div");
 
-WriteLiteral("\r\n                    ");
-
-WriteLiteral("\r\n                    <div");
-
-WriteLiteral(" class=\"col-sm-12 col-xs-12\"");
+WriteLiteral(" class=\"col-sm-12 col-xs-12 text-left\"");
 
 WriteLiteral(">\r\n                        <button");
 
@@ -185,7 +187,7 @@ WriteLiteral(" ng-click=\"gm.format1=false;gm.format2=true\"");
 WriteLiteral(" ng-hide=\"gm.format1==false\"");
 
 WriteLiteral(">Copy and Paste</button>\r\n                    </div>\r\n                </div>\r\n   " +
-"             <div");
+"             \r\n                <div");
 
 WriteLiteral(" class=\"row\"");
 

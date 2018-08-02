@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-using Omnicx.API.SDK.Models.Catalog;
-using Omnicx.API.SDK.Models.Commerce;
-using Omnicx.API.SDK.Models.Common;
+using Omnicx.WebStore.Models.Catalog;
+using Omnicx.WebStore.Models.Commerce;
+using Omnicx.WebStore.Models.Common;
 using RestSharp;
 using System;
-using Omnicx.API.SDK.Models;
+using Omnicx.WebStore.Models;
 
 namespace Omnicx.API.SDK.Api.Commerce
 {
@@ -41,7 +41,7 @@ namespace Omnicx.API.SDK.Api.Commerce
 
         public ResponseModel<bool> ChangePassword(string oldPassword, string newPassword, string userId)
         {
-            var model = new Models.Common.ChangePasswordModel
+            var model = new ChangePasswordModel
             {
                 OldPassword = oldPassword,
                 NewPassword = newPassword,

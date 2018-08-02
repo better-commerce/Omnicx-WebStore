@@ -13,9 +13,9 @@ Contained In (Where we Use this View) :
 @using Omnicx.WebStore.Core.Helpers
 @using Omnicx.WebStore.Core.Controllers
 @using Omnicx.WebStore.Framework.Helpers
-@using Omnicx.API.SDK.Models.Catalog
+@using Omnicx.WebStore.Models.Catalog
 @using Omnicx.API.SDK.Helpers
-@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Catalog.BrandDetailModel>
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Catalog.BrandDetailModel>
 @{
     ViewBag.Title = @LT("ProductDetail.Label.Search", "Search");
     Layout = "~/Views/Shared/Layout1/_Layout.cshtml";
@@ -27,17 +27,6 @@ Contained In (Where we Use this View) :
     Html.AddMetaKeywordsParts(Model.MetaKeywords);
 
 }
-<div class="col-md-12 no-padding">
-    <ul class="breadcrumb">
-        <li><a href="/">@LT("ProductListing.Breadcrumb.Home", "Home")</a></li>
-       <li><a href="@Url.Action("BrandList" , "Brand")" class="link2">Brand</a></li>
-       @if (@Model.ProductList.SearchCriteria.BreadCrumb != null)
-       {
-        <li>@Model.ProductList.SearchCriteria.BreadCrumb.ToCamelCase()</li>
-       }
-    </ul>
-</div>
-
 @Html.Partial("~/Views/search/Layout1/_SearchResultProducts.cshtml", Model.ProductList)
 
 @section scripts{
@@ -45,7 +34,7 @@ Contained In (Where we Use this View) :
         var searchProductUrl = '@(Html.BuildUrlFromExpression<SearchController>(c => c.SearchProducts(null)))';
         var productUrl = '@(Html.BuildUrlFromExpression<ProductController>(c => c.ProductDetails("")))';
         var addToWishlistUrl = '@(Html.BuildUrlFromExpression<AccountController>(c => c.AddProductToWishlist(null)))';
-        var getWishlist = '@(Html.BuildUrlFromExpression<AccountController>(c => c.GetWishlist()))'; 
+        var getWishlist = '@(Html.BuildUrlFromExpression<AccountController>(c => c.GetWishlist()))';
         window.app.constant('productConfig',{
             searchProductUrl:searchProductUrl,
             productUrl : productUrl,

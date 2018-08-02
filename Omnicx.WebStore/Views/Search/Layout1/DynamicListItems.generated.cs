@@ -29,29 +29,29 @@ namespace ASP
     using System.Web.WebPages;
     using DevTrends.MvcDonutCaching;
     
-    #line 1 "..\..\Views\Search\Layout1\DynamicListItems.cshtml"
-    using Omnicx.API.SDK.Entities;
-    
-    #line default
-    #line hidden
-    
     #line 2 "..\..\Views\Search\Layout1\DynamicListItems.cshtml"
     using Omnicx.API.SDK.Helpers;
-    
-    #line default
-    #line hidden
-    
-    #line 3 "..\..\Views\Search\Layout1\DynamicListItems.cshtml"
-    using Omnicx.API.SDK.Models.Helpers;
     
     #line default
     #line hidden
     using Omnicx.WebStore;
     using Omnicx.WebStore.Core;
     
+    #line 1 "..\..\Views\Search\Layout1\DynamicListItems.cshtml"
+    using Omnicx.WebStore.Models.Enums;
+    
+    #line default
+    #line hidden
+    
+    #line 3 "..\..\Views\Search\Layout1\DynamicListItems.cshtml"
+    using Omnicx.WebStore.Models.Helpers;
+    
+    #line default
+    #line hidden
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Search/Layout1/DynamicListItems.cshtml")]
-    public partial class _Views_Search_Layout1_DynamicListItems_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Catalog.DynamicListModel>
+    public partial class _Views_Search_Layout1_DynamicListItems_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Catalog.DynamicListModel>
     {
         public _Views_Search_Layout1_DynamicListItems_cshtml()
         {
@@ -155,32 +155,32 @@ WriteLiteral(" class=\"product-image-384\"");
 
 WriteLiteral(">\r\n                            <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1820), Tuple.Create("\"", 1838)
-, Tuple.Create(Tuple.Create("", 1827), Tuple.Create("/", 1827), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 1827), Tuple.Create("\"", 1845)
+, Tuple.Create(Tuple.Create("", 1834), Tuple.Create("/", 1834), true)
             
             #line 38 "..\..\Views\Search\Layout1\DynamicListItems.cshtml"
-, Tuple.Create(Tuple.Create("", 1828), Tuple.Create<System.Object, System.Int32>(prod.Slug
+, Tuple.Create(Tuple.Create("", 1835), Tuple.Create<System.Object, System.Int32>(prod.Slug
             
             #line default
             #line hidden
-, 1828), false)
+, 1835), false)
 );
 
 WriteLiteral("> <img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 1845), Tuple.Create("\"", 1862)
+WriteAttribute("src", Tuple.Create(" src=\"", 1852), Tuple.Create("\"", 1869)
             
             #line 38 "..\..\Views\Search\Layout1\DynamicListItems.cshtml"
-, Tuple.Create(Tuple.Create("", 1851), Tuple.Create<System.Object, System.Int32>(prod.Image
+, Tuple.Create(Tuple.Create("", 1858), Tuple.Create<System.Object, System.Int32>(prod.Image
             
             #line default
             #line hidden
-, 1851), false)
+, 1858), false)
 );
 
 WriteLiteral(" alt=\"\"");
 
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
 WriteLiteral(" class=\"img-responsive img-full\"");
 
@@ -190,15 +190,15 @@ WriteLiteral(" class=\"product-detail\"");
 
 WriteLiteral(">\r\n                            <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2090), Tuple.Create("\"", 2108)
-, Tuple.Create(Tuple.Create("", 2097), Tuple.Create("/", 2097), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 2071), Tuple.Create("\"", 2089)
+, Tuple.Create(Tuple.Create("", 2078), Tuple.Create("/", 2078), true)
             
             #line 41 "..\..\Views\Search\Layout1\DynamicListItems.cshtml"
-, Tuple.Create(Tuple.Create("", 2098), Tuple.Create<System.Object, System.Int32>(prod.Slug
+, Tuple.Create(Tuple.Create("", 2079), Tuple.Create<System.Object, System.Int32>(prod.Slug
             
             #line default
             #line hidden
-, 2098), false)
+, 2079), false)
 );
 
 WriteLiteral("><h4>");
@@ -268,16 +268,16 @@ WriteLiteral(" class=\"product-button\"");
 
 WriteLiteral(">\r\n                            <button");
 
-WriteAttribute("ng-click", Tuple.Create(" ng-click=\"", 2567), Tuple.Create("\"", 2614)
-, Tuple.Create(Tuple.Create("", 2578), Tuple.Create("gm.addToBasket(\'", 2578), true)
+WriteAttribute("ng-click", Tuple.Create(" ng-click=\"", 2548), Tuple.Create("\"", 2595)
+, Tuple.Create(Tuple.Create("", 2559), Tuple.Create("gm.addToBasket(\'", 2559), true)
             
             #line 50 "..\..\Views\Search\Layout1\DynamicListItems.cshtml"
-, Tuple.Create(Tuple.Create("", 2594), Tuple.Create<System.Object, System.Int32>(prod.RecordId
+, Tuple.Create(Tuple.Create("", 2575), Tuple.Create<System.Object, System.Int32>(prod.RecordId
             
             #line default
             #line hidden
-, 2594), false)
-, Tuple.Create(Tuple.Create("", 2608), Tuple.Create("\',1,0)", 2608), true)
+, 2575), false)
+, Tuple.Create(Tuple.Create("", 2589), Tuple.Create("\',1,0)", 2589), true)
 );
 
 WriteLiteral(" class=\"btn btn-success\"");
@@ -313,31 +313,31 @@ WriteLiteral(" class=\"product-image-384\"");
 
 WriteLiteral(">\r\n                            <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 3132), Tuple.Create("\"", 3148)
+WriteAttribute("href", Tuple.Create(" href=\"", 3113), Tuple.Create("\"", 3129)
             
             #line 65 "..\..\Views\Search\Layout1\DynamicListItems.cshtml"
-, Tuple.Create(Tuple.Create("", 3139), Tuple.Create<System.Object, System.Int32>(img.Link
+, Tuple.Create(Tuple.Create("", 3120), Tuple.Create<System.Object, System.Int32>(img.Link
             
             #line default
             #line hidden
-, 3139), false)
+, 3120), false)
 );
 
 WriteLiteral(">\r\n                                <img");
 
-WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 3188), Tuple.Create("\"", 3205)
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 3169), Tuple.Create("\"", 3186)
             
             #line 66 "..\..\Views\Search\Layout1\DynamicListItems.cshtml"
-, Tuple.Create(Tuple.Create("", 3197), Tuple.Create<System.Object, System.Int32>(img.Url
+, Tuple.Create(Tuple.Create("", 3178), Tuple.Create<System.Object, System.Int32>(img.Url
             
             #line default
             #line hidden
-, 3197), false)
+, 3178), false)
 );
 
 WriteLiteral(" alt=\"\"");
 
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
 WriteLiteral(" class=\"img-responsive img-full\"");
 
@@ -371,19 +371,19 @@ WriteLiteral(" class=\"product-image-384\"");
 
 WriteLiteral(">\r\n                            <img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 3823), Tuple.Create("\"", 3849)
+WriteAttribute("src", Tuple.Create(" src=\"", 3778), Tuple.Create("\"", 3804)
             
             #line 81 "..\..\Views\Search\Layout1\DynamicListItems.cshtml"
-, Tuple.Create(Tuple.Create("", 3829), Tuple.Create<System.Object, System.Int32>(brand.LogoImageName
+, Tuple.Create(Tuple.Create("", 3784), Tuple.Create<System.Object, System.Int32>(brand.LogoImageName
             
             #line default
             #line hidden
-, 3829), false)
+, 3784), false)
 );
 
 WriteLiteral(" alt=\"\"");
 
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
 WriteLiteral(" class=\"img-responsive img-full\"");
 
@@ -415,15 +415,15 @@ WriteLiteral(" class=\"product-button\"");
 
 WriteLiteral(">\r\n                            <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 4276), Tuple.Create("\"", 4295)
-, Tuple.Create(Tuple.Create("", 4283), Tuple.Create("/", 4283), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 4205), Tuple.Create("\"", 4224)
+, Tuple.Create(Tuple.Create("", 4212), Tuple.Create("/", 4212), true)
             
             #line 88 "..\..\Views\Search\Layout1\DynamicListItems.cshtml"
-, Tuple.Create(Tuple.Create("", 4284), Tuple.Create<System.Object, System.Int32>(brand.Link
+, Tuple.Create(Tuple.Create("", 4213), Tuple.Create<System.Object, System.Int32>(brand.Link
             
             #line default
             #line hidden
-, 4284), false)
+, 4213), false)
 );
 
 WriteLiteral(" class=\"shop-now\"");
@@ -457,19 +457,19 @@ WriteLiteral(" class=\"product-image-384\"");
 
 WriteLiteral(">\r\n                            <img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 4807), Tuple.Create("\"", 4833)
+WriteAttribute("src", Tuple.Create(" src=\"", 4736), Tuple.Create("\"", 4762)
             
             #line 101 "..\..\Views\Search\Layout1\DynamicListItems.cshtml"
-, Tuple.Create(Tuple.Create("", 4813), Tuple.Create<System.Object, System.Int32>(brand.LogoImageName
+, Tuple.Create(Tuple.Create("", 4742), Tuple.Create<System.Object, System.Int32>(brand.LogoImageName
             
             #line default
             #line hidden
-, 4813), false)
+, 4742), false)
 );
 
 WriteLiteral(" alt=\"\"");
 
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
 WriteLiteral(" class=\"img-responsive img-full\"");
 
@@ -501,15 +501,15 @@ WriteLiteral(" class=\"product-button\"");
 
 WriteLiteral(">\r\n                            <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 5260), Tuple.Create("\"", 5279)
-, Tuple.Create(Tuple.Create("", 5267), Tuple.Create("/", 5267), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 5163), Tuple.Create("\"", 5182)
+, Tuple.Create(Tuple.Create("", 5170), Tuple.Create("/", 5170), true)
             
             #line 108 "..\..\Views\Search\Layout1\DynamicListItems.cshtml"
-, Tuple.Create(Tuple.Create("", 5268), Tuple.Create<System.Object, System.Int32>(brand.Link
+, Tuple.Create(Tuple.Create("", 5171), Tuple.Create<System.Object, System.Int32>(brand.Link
             
             #line default
             #line hidden
-, 5268), false)
+, 5171), false)
 );
 
 WriteLiteral(" class=\"shop-now\"");
@@ -543,19 +543,19 @@ WriteLiteral(" class=\"product-image-384\"");
 
 WriteLiteral(">\r\n                            <img");
 
-WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 5792), Tuple.Create("\"", 5811)
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 5695), Tuple.Create("\"", 5714)
             
             #line 121 "..\..\Views\Search\Layout1\DynamicListItems.cshtml"
-, Tuple.Create(Tuple.Create("", 5801), Tuple.Create<System.Object, System.Int32>(cat.Image
+, Tuple.Create(Tuple.Create("", 5704), Tuple.Create<System.Object, System.Int32>(cat.Image
             
             #line default
             #line hidden
-, 5801), false)
+, 5704), false)
 );
 
 WriteLiteral(" alt=\"\"");
 
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
 WriteLiteral(" class=\"img-responsive img-full\"");
 
@@ -580,15 +580,15 @@ WriteLiteral(" class=\"product-button\"");
 
 WriteLiteral(">\r\n                            <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 6226), Tuple.Create("\"", 6243)
-, Tuple.Create(Tuple.Create("", 6233), Tuple.Create("/", 6233), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 6103), Tuple.Create("\"", 6120)
+, Tuple.Create(Tuple.Create("", 6110), Tuple.Create("/", 6110), true)
             
             #line 128 "..\..\Views\Search\Layout1\DynamicListItems.cshtml"
-, Tuple.Create(Tuple.Create("", 6234), Tuple.Create<System.Object, System.Int32>(cat.Link
+, Tuple.Create(Tuple.Create("", 6111), Tuple.Create<System.Object, System.Int32>(cat.Link
             
             #line default
             #line hidden
-, 6234), false)
+, 6111), false)
 );
 
 WriteLiteral(" class=\"shop-now\"");
@@ -623,19 +623,19 @@ WriteLiteral(" class=\"product-image-384\"");
 
 WriteLiteral(">\r\n                            <img");
 
-WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 6744), Tuple.Create("\"", 6768)
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 6621), Tuple.Create("\"", 6645)
             
             #line 142 "..\..\Views\Search\Layout1\DynamicListItems.cshtml"
-, Tuple.Create(Tuple.Create("", 6753), Tuple.Create<System.Object, System.Int32>(blog.BlogImage
+, Tuple.Create(Tuple.Create("", 6630), Tuple.Create<System.Object, System.Int32>(blog.BlogImage
             
             #line default
             #line hidden
-, 6753), false)
+, 6630), false)
 );
 
 WriteLiteral(" alt=\"\"");
 
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
 WriteLiteral(" class=\"img-responsive img-full\"");
 
@@ -676,15 +676,15 @@ WriteLiteral(" class=\"product-button\"");
 
 WriteLiteral(">\r\n                            <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 7228), Tuple.Create("\"", 7251)
-, Tuple.Create(Tuple.Create("", 7235), Tuple.Create("/blogs/", 7235), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 7079), Tuple.Create("\"", 7102)
+, Tuple.Create(Tuple.Create("", 7086), Tuple.Create("/blogs/", 7086), true)
             
             #line 150 "..\..\Views\Search\Layout1\DynamicListItems.cshtml"
-, Tuple.Create(Tuple.Create("", 7242), Tuple.Create<System.Object, System.Int32>(blog.URL
+, Tuple.Create(Tuple.Create("", 7093), Tuple.Create<System.Object, System.Int32>(blog.URL
             
             #line default
             #line hidden
-, 7242), false)
+, 7093), false)
 );
 
 WriteLiteral(" class=\"shop-now\"");

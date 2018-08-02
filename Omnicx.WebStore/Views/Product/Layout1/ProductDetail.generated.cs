@@ -35,26 +35,8 @@ namespace ASP
     #line default
     #line hidden
     
-    #line 20 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-    using Omnicx.API.SDK.Entities;
-    
-    #line default
-    #line hidden
-    
     #line 24 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
     using Omnicx.API.SDK.Helpers;
-    
-    #line default
-    #line hidden
-    
-    #line 25 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-    using Omnicx.API.SDK.Models;
-    
-    #line default
-    #line hidden
-    
-    #line 21 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-    using Omnicx.API.SDK.Models.Catalog;
     
     #line default
     #line hidden
@@ -73,9 +55,27 @@ namespace ASP
     #line default
     #line hidden
     
+    #line 25 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+    using Omnicx.WebStore.Models;
+    
+    #line default
+    #line hidden
+    
+    #line 21 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+    using Omnicx.WebStore.Models.Catalog;
+    
+    #line default
+    #line hidden
+    
+    #line 20 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+    using Omnicx.WebStore.Models.Enums;
+    
+    #line default
+    #line hidden
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Product/Layout1/ProductDetail.cshtml")]
-    public partial class _Views_Product_Layout1_ProductDetail_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Catalog.ProductDetailModel>
+    public partial class _Views_Product_Layout1_ProductDetail_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Catalog.ProductDetailModel>
     {
         public _Views_Product_Layout1_ProductDetail_cshtml()
         {
@@ -122,212 +122,46 @@ WriteLiteral("\r\n");
             
             #line default
             #line hidden
-WriteLiteral("\r\n\r\n");
-
-            
-            #line 38 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-   /* Start breadcrumb container */ 
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n<div");
-
-WriteLiteral(" class=\"col-md-12 col-xs-12 no-padding\"");
-
-WriteLiteral(">\r\n    <ul");
-
-WriteLiteral(" class=\"breadcrumb\"");
-
-WriteLiteral(">\r\n        <li><a");
-
-WriteLiteral(" href=\"/\"");
-
-WriteLiteral(">");
-
-            
-            #line 41 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-                   Write(LT("ProductListing.Breadcrumb.Home", "Home"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</a></li>\r\n        <li><a");
-
-WriteAttribute("href", Tuple.Create(" href=\"", 1934), Tuple.Create("\"", 1973)
-            
-            #line 42 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-, Tuple.Create(Tuple.Create("", 1941), Tuple.Create<System.Object, System.Int32>(Url.Action("BrandList","Brand")
-            
-            #line default
-            #line hidden
-, 1941), false)
-);
-
-WriteLiteral(">");
-
-            
-            #line 42 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-                                                  Write(LT("Product.Breadcrumb.Brands", "Brands"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</a></li>\r\n");
-
-            
-            #line 43 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-        
-            
-            #line default
-            #line hidden
-            
-            #line 43 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-         if (Model.BreadCrumbs != null)
-        {
-            var catBreadCrumb = Model.BreadCrumbs.FirstOrDefault(x => x.SlugType == EntitySlugTypes.Manufacturer.ToString());
-            if (catBreadCrumb != null && catBreadCrumb.Slug != null)
-            {
-                
-            
-            #line default
-            #line hidden
-            
-            #line 48 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-           Write(Html.Partial("~/Views/Shared/_BreadCrumb.cshtml", catBreadCrumb.Slug));
-
-            
-            #line default
-            #line hidden
-            
-            #line 48 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-                                                                                      ;
-            }
-        }
-
-            
-            #line default
-            #line hidden
-WriteLiteral("        <li><a");
-
-WriteLiteral(" href=\"#\"");
-
-WriteLiteral("></a>");
-
-            
-            #line 51 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-                       Write(Model.Name);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</li>\r\n    </ul>\r\n</div>\r\n");
-
-            
-            #line 54 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-   /* End breadcrumb container */ 
-            
-            #line default
-            #line hidden
 WriteLiteral("\r\n\r\n<div");
 
-WriteLiteral(" class=\"col-md-12 margin-top-md\"");
+WriteLiteral(" class=\"container-fluid\"");
+
+WriteLiteral(">\r\n    <div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12\"");
 
 WriteLiteral(" ng-cloak");
 
 WriteLiteral(" ng-controller=\"productCtrl as pm\"");
 
-WriteLiteral(">\r\n    ");
+WriteLiteral(">\r\n        <div");
 
-WriteLiteral("\r\n");
-
-            
-            #line 60 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-    
-            
-            #line default
-            #line hidden
-            
-            #line 60 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-       /* Start product detail Panel */ 
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n    <div");
-
-WriteLiteral(" class=\"row\"");
+WriteLiteral(" class=\"row dataContainer\"");
 
 WriteLiteral(" id=\"productMain\"");
 
-WriteLiteral("  ng-if=\"pm.model.componentProducts.length == 0 || pm.model.componentProducts.len" +
-"gth == null\"");
+WriteLiteral(" ng-if=\"pm.model.componentProducts.length == 0 || pm.model.componentProducts.leng" +
+"th == null\"");
 
-WriteAttribute("ng-init", Tuple.Create(" ng-init=\"", 2988), Tuple.Create("\"", 3052)
-, Tuple.Create(Tuple.Create("", 2998), Tuple.Create("pm.productId=\'", 2998), true)
+WriteAttribute("ng-init", Tuple.Create(" ng-init=\"", 1994), Tuple.Create("\"", 2058)
+, Tuple.Create(Tuple.Create("", 2004), Tuple.Create("pm.productId=\'", 2004), true)
             
-            #line 61 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-                                                                          , Tuple.Create(Tuple.Create("", 3012), Tuple.Create<System.Object, System.Int32>(Model.RecordId
+            #line 40 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                                                                                           , Tuple.Create(Tuple.Create("", 2018), Tuple.Create<System.Object, System.Int32>(Model.RecordId
             
             #line default
             #line hidden
-, 3012), false)
-, Tuple.Create(Tuple.Create("", 3027), Tuple.Create("\';pm.image=pm.model.image", 3027), true)
+, 2018), false)
+, Tuple.Create(Tuple.Create("", 2033), Tuple.Create("\';pm.image=pm.model.image", 2033), true)
 );
 
-WriteLiteral(">\r\n        <div");
+WriteLiteral(">\r\n            <div");
 
 WriteLiteral(" class=\"col-xs-12 col-sm-12 visible-xs\"");
 
 WriteLiteral(" ng-init=\"pm.checkForWishlist()\"");
 
-WriteLiteral(">\r\n            <div");
-
-WriteLiteral(" class=\"row\"");
-
 WriteLiteral(">\r\n                <div");
-
-WriteLiteral(" class=\"col-sm-12 no-padding\"");
-
-WriteLiteral(">\r\n                    <h3");
-
-WriteLiteral(" class=\"product-headline\"");
-
-WriteLiteral("><span");
-
-WriteLiteral(" ng-bind=\"pm.model.name\"");
-
-WriteLiteral("></span></h3>\r\n                    ");
-
-WriteLiteral("\r\n                </div>\r\n            </div>\r\n");
-
-            
-            #line 69 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-            
-            
-            #line default
-            #line hidden
-            
-            #line 69 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-               /* Product Price */ 
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n");
-
-            
-            #line 70 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-            
-            
-            #line default
-            #line hidden
-            
-            #line 70 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-             if (@Model.ListPrice != null)
-            {
-
-            
-            #line default
-            #line hidden
-WriteLiteral("                <div");
 
 WriteLiteral(" class=\"row\"");
 
@@ -335,7 +169,53 @@ WriteLiteral(">\r\n                    <div");
 
 WriteLiteral(" class=\"col-sm-12 no-padding\"");
 
-WriteLiteral(">\r\n                        <h5");
+WriteLiteral(">\r\n                        <h3");
+
+WriteLiteral(" class=\"product-headline\"");
+
+WriteLiteral("><span");
+
+WriteLiteral(" ng-bind=\"pm.model.name\"");
+
+WriteLiteral("></span></h3>\r\n                    </div>\r\n                </div>\r\n");
+
+            
+            #line 47 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                
+            
+            #line default
+            #line hidden
+            
+            #line 47 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                   /* Product Price */ 
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n");
+
+            
+            #line 48 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                
+            
+            #line default
+            #line hidden
+            
+            #line 48 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                 if (@Model.ListPrice != null)
+            {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                    <div");
+
+WriteLiteral(" class=\"row\"");
+
+WriteLiteral(">\r\n                        <div");
+
+WriteLiteral(" class=\"col-sm-12 no-padding\"");
+
+WriteLiteral(">\r\n                            <h5");
 
 WriteLiteral(" class=\"price-h5\"");
 
@@ -343,15 +223,15 @@ WriteLiteral("><span");
 
 WriteLiteral(" ng-bind=\"pm.model.price.formatted.withoutTax\"");
 
-WriteLiteral("></span></h5>\r\n                        <h5");
+WriteLiteral("></span></h5>\r\n                            <h5");
 
 WriteLiteral(" class=\"price-h5-save hidden-xs\"");
 
 WriteLiteral(">");
 
             
-            #line 75 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-                                                       Write(LT("ProductDetail.Label.Rrp", "RRP"));
+            #line 53 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                                                           Write(LT("ProductDetail.Label.Rrp", "RRP"));
 
             
             #line default
@@ -360,7 +240,7 @@ WriteLiteral(" <span");
 
 WriteLiteral(" ng-bind=\"pm.model.listPrice.formatted.withTax\"");
 
-WriteLiteral("></span></h5>\r\n                        <h5");
+WriteLiteral("></span></h5>\r\n                            <h5");
 
 WriteLiteral(" class=\"price-h5-rrp hidden-xs\"");
 
@@ -375,15 +255,15 @@ WriteLiteral("></span><span");
 WriteLiteral(" ng-bind=\"(pm.model.listPrice.raw.withTax - pm.model.price.raw.withTax).toFixed(2" +
 ")\"");
 
-WriteLiteral("></span></h5>\r\n                        <h5");
+WriteLiteral("></span></h5>\r\n                            <h5");
 
 WriteLiteral(" class=\"price-h5-rrp-mob visible-xs\"");
 
 WriteLiteral(">");
 
             
-            #line 77 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-                                                           Write(LT("ProductDetail.Label.Rrp", "RRP"));
+            #line 55 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                                                               Write(LT("ProductDetail.Label.Rrp", "RRP"));
 
             
             #line default
@@ -392,7 +272,7 @@ WriteLiteral(" <span");
 
 WriteLiteral(" ng-bind=\"pm.model.listPrice.formatted.withTax\"");
 
-WriteLiteral("></span></h5>\r\n                        <h5");
+WriteLiteral("></span></h5>\r\n                            <h5");
 
 WriteLiteral(" class=\"price-h5-save-mob visible-xs\"");
 
@@ -407,495 +287,183 @@ WriteLiteral("></span><span");
 WriteLiteral(" ng-bind=\"(pm.model.listPrice.raw.withTax - pm.model.price.raw.withTax).toFixed(2" +
 ")\"");
 
-WriteLiteral("></span></h5>\r\n\r\n                    </div>\r\n                </div>\r\n");
+WriteLiteral("></span></h5>\r\n\r\n                        </div>\r\n                    </div>\r\n");
 
             
-            #line 82 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-            }
+            #line 60 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                }
 
             
             #line default
             #line hidden
-WriteLiteral("        </div>\r\n");
+WriteLiteral("            </div>\r\n            <div");
 
-            
-            #line 84 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-        
-            
-            #line default
-            #line hidden
-            
-            #line 84 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-           /*Start product left image and thumbnail panel*/ 
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n        <div");
-
-WriteLiteral(" class=\"col-sm-5 col-xs-12 no-padding margin-bottom-lg animated zoomIn\"");
-
-WriteLiteral(">\r\n            <div");
-
-WriteLiteral(" class=\"row\"");
+WriteLiteral(" class=\"row flex\"");
 
 WriteLiteral(">\r\n");
 
             
-            #line 87 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+            #line 63 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
                 
             
             #line default
             #line hidden
             
-            #line 87 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-                 if (@Model.Images != null)
-                {
-                    if (@Model.Images.Count != 0)
-                    {
+            #line 63 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                   /*Start product left image and thumbnail panel*/ 
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n                <div");
+
+WriteLiteral(" class=\"col-sm-4 col-xs-12 margin-bottom-lg animated zoomIn\"");
+
+WriteLiteral(" id=\"imageContainer\"");
+
+WriteLiteral(">\r\n                    <div");
+
+WriteLiteral(" class=\"row stickyImage\"");
+
+WriteLiteral(">\r\n");
+
+            
+            #line 66 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                        
+            
+            #line default
+            #line hidden
+            
+            #line 66 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                         if (@Model.Images != null)
+                        {
+                            if (@Model.Images.Count != 0)
+                            {
 
             
             #line default
             #line hidden
-WriteLiteral("                        <div");
+WriteLiteral("                                <div");
 
-WriteLiteral(" class=\"col-sm-3 col-xs-3\"");
+WriteLiteral(" class=\"col-sm-2 col-xs-3\"");
 
-WriteLiteral(">\r\n                            <div");
+WriteLiteral(">\r\n                                    <div");
 
 WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding\"");
 
 WriteLiteral(" ng-repeat=\"img in pm.model.images track by $index\"");
 
-WriteLiteral(">\r\n                                <a");
+WriteLiteral(" ng-if=\"img.url!=\'\'\"");
+
+WriteLiteral(">\r\n                                        <a");
 
 WriteLiteral(" ng-href=\"img.url\"");
 
 WriteLiteral(" class=\"thumb image-bordered\"");
 
-WriteLiteral(">\r\n                                    <img");
+WriteLiteral(">\r\n                                            <img");
 
 WriteLiteral(" ng-src=\"{{img.url}}\"");
 
 WriteLiteral(" class=\"img-responsive\"");
 
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
 WriteLiteral(" ng-click=\"pm.image=img.url\"");
 
-WriteLiteral(">\r\n                                </a>\r\n                            </div>\r\n    " +
-"                        <div");
+WriteLiteral(">\r\n                                        </a>\r\n                                " +
+"    </div>\r\n                                    <div");
 
 WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding\"");
 
 WriteLiteral(" ng-repeat=\"giftItem in pm.model.freeProducts track by $index\"");
 
-WriteLiteral(">\r\n                                <a");
+WriteLiteral(">\r\n                                        <a");
 
 WriteLiteral(" ng-href=\"giftItem.image\"");
 
 WriteLiteral(" class=\"thumb image-bordered\"");
 
-WriteLiteral(">\r\n                                    <img");
+WriteLiteral(">\r\n                                            <img");
 
 WriteLiteral(" ng-src=\"{{giftItem.image}}\"");
 
 WriteLiteral(" class=\"img-responsive\"");
 
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
 WriteLiteral(" ng-click=\"pm.image=giftItem.image\"");
 
-WriteLiteral(">\r\n                                </a>\r\n                            </div>\r\n    " +
-"                    </div>\r\n");
+WriteLiteral(">\r\n                                        </a>\r\n                                " +
+"    </div>\r\n                                </div>\r\n");
 
             
-            #line 103 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-                    }
-                }
-
-            
-            #line default
-            #line hidden
-WriteLiteral("                <div");
-
-WriteLiteral(" class=\"col-sm-9 col-xs-9 text-center-mob\"");
-
-WriteLiteral(">\r\n                    <div ");
-
-WriteLiteral(">\r\n                        <img data-ng-magnify");
-
-WriteLiteral(" image-src=\"{{pm.image}}\"");
-
-WriteLiteral(" class=\"img-responsive\"");
-
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
-
-WriteLiteral(" ng-cloak>\r\n                    </div>\r\n                </div>\r\n                <" +
-"div");
-
-WriteLiteral(" class=\"col-sm-12 col-xs-12 margin-top-sm hidden-xs\"");
-
-WriteLiteral(">\r\n                    <a");
-
-WriteLiteral(" data-toggle=\"modal\"");
-
-WriteLiteral(" data-target=\"#productLarge\"");
-
-WriteLiteral(" class=\"faq-ques\"");
-
-WriteLiteral("><i");
-
-WriteLiteral(" class=\"fa fa-arrows-alt\"");
-
-WriteLiteral("></i>View Larger Image</a>\r\n                </div>\r\n            </div>\r\n        <" +
-"/div>\r\n        <div");
-
-WriteLiteral(" class=\"col-sm-1 col-xs-12\"");
-
-WriteLiteral(">&nbsp;</div>\r\n");
-
-            
-            #line 116 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-        
-            
-            #line default
-            #line hidden
-            
-            #line 116 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-           /*Start product information panel*/ 
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n        <div");
-
-WriteLiteral(" class=\"col-sm-6 col-xs-12\"");
-
-WriteLiteral(">\r\n            <div");
-
-WriteLiteral(" class=\"row hidden-xs\"");
-
-WriteLiteral(">\r\n                <div");
-
-WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding\"");
-
-WriteLiteral(">\r\n                    <h3");
-
-WriteLiteral(" class=\"product-headline\"");
-
-WriteLiteral("><span");
-
-WriteLiteral(" ng-bind=\"pm.model.name\"");
-
-WriteLiteral("></span></h3>\r\n                    <h5");
-
-WriteLiteral(" class=\"category-headline\"");
-
-WriteLiteral(">\r\n                        <span");
-
-WriteLiteral(" ng-repeat=\"freeProduct in pm.model.freeProducts\"");
-
-WriteLiteral(" class=\"text-bold\"");
-
-WriteLiteral(">\r\n                            <i");
-
-WriteLiteral(" class=\"pluse-icon sprite\"");
-
-WriteLiteral(">+</i> ");
-
-            
-            #line 123 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-                                                          Write(LT("ProductDetail.Label.Free", "Free"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral(" <span");
-
-WriteLiteral(" ng-bind=\"freeProduct.name\"");
-
-WriteLiteral("></span>\r\n                        </span>\r\n                    </h5>\r\n           " +
-"     </div>\r\n            </div>\r\n");
-
-            
-            #line 128 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-            
-            
-            #line default
-            #line hidden
-            
-            #line 128 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-               /* Product Price */ 
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n");
-
-            
-            #line 129 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-            
-            
-            #line default
-            #line hidden
-            
-            #line 129 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-             if (@Model.ListPrice != null)
-            {
-
-            
-            #line default
-            #line hidden
-WriteLiteral("                <div");
-
-WriteLiteral(" class=\"row hidden-xs\"");
-
-WriteLiteral(">\r\n                    <div");
-
-WriteLiteral(" class=\"col-sm-12 no-padding\"");
-
-WriteLiteral(">\r\n                        <h5");
-
-WriteLiteral(" class=\"price-h5\"");
-
-WriteLiteral("><span");
-
-WriteLiteral(" ng-bind=\"pm.model.price.formatted.withoutTax\"");
-
-WriteLiteral("></span> <span");
-
-WriteLiteral(" class=\"price-h5-rrp\"");
-
-WriteLiteral(">RRP <span");
-
-WriteLiteral(" ng-bind=\"pm.model.listPrice.formatted.withTax\"");
-
-WriteLiteral("></span></span></h5>\r\n                        ");
-
-WriteLiteral("\r\n\r\n                    </div>\r\n                </div>\r\n");
-
-            
-            #line 138 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-            }
-
-            
-            #line default
-            #line hidden
-WriteLiteral("            ");
-
-            
-            #line 139 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-               /*End Product Price */ 
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n\r\n");
-
-            
-            #line 141 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-            
-            
-            #line default
-            #line hidden
-            
-            #line 141 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-               /* Product Varient */ 
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n\r\n            <div>\r\n");
-
-            
-            #line 144 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-                
-            
-            #line default
-            #line hidden
-            
-            #line 144 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-                 if (Model.VariantProducts != null && Model.VariantProducts.Count > 0)
-                {
-                    if (Model.VariantProductsAttribute != null && Model.VariantProductsAttribute.Count > 0 && Model.VariantProductsAttribute[0].DisplayInProductDetail)
-                    {
+            #line 82 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                            }
+                        }
 
             
             #line default
             #line hidden
 WriteLiteral("                        <div");
 
-WriteLiteral(" class=\"row\"");
-
-WriteLiteral(" ng-init=\'pm.initProductVariant()\'");
+WriteLiteral(" class=\"col-sm-10 col-xs-9 border-default text-center-mob\"");
 
 WriteLiteral(">\r\n                            <div");
 
-WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding\"");
+WriteLiteral(" class=\"row\"");
 
-WriteLiteral(" ng-repeat=\"attr in pm.model.variantProductsAttribute\"");
+WriteLiteral(">\r\n                                <div");
 
-WriteLiteral(">\r\n                                <h3");
+WriteLiteral(" class=\"col-sm-12 col-xs-12\"");
 
-WriteLiteral(" class=\"variant-headline\"");
+WriteLiteral(">\r\n                                    <img data-ng-magnify");
 
-WriteLiteral(" ng-bind=\"attr.fieldName\"");
+WriteLiteral(" image-src=\"{{pm.image}}\"");
 
-WriteLiteral("></h3>\r\n                                <span");
+WriteLiteral(" class=\"img-responsive\"");
 
-WriteLiteral(" ng-show=\"attr.selectedValue==\'\'\"");
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
-WriteLiteral(" class=\"color-error-validation\"");
-
-WriteLiteral(">Please Select {{attr.fieldName}} </span>\r\n                                <div");
-
-WriteLiteral(" ng-if=\"attr.inputType != \'Dropdown\'\"");
-
-WriteLiteral(">\r\n                                    <div");
-
-WriteLiteral(" ng-repeat=\"item in attr.fieldValues\"");
-
-WriteLiteral(">\r\n\r\n                                        <a");
-
-WriteLiteral(" ng-if=\"attr.fieldCode==\'global.colour\'\"");
-
-WriteLiteral(" id=\"{{item.fieldValue}}\"");
-
-WriteLiteral(" href=\"#\"");
-
-WriteLiteral(" ng-click=\"pm.getAvailableAttributeValues(attr.fieldCode,item.fieldValue,item.sel" +
-"ected,attr.independentProductUrl)\"");
-
-WriteLiteral("\r\n                                           class=\"varient-box btn\"");
-
-WriteLiteral(" ng-class=\"item.available==true?\'\':\' grayOut-Color\'\"");
-
-WriteLiteral(" style=\"background-color: {{item.fieldValue}}\"");
-
-WriteLiteral(">\r\n                                            <i");
-
-WriteLiteral(" ng-if=\"item.selected && item.available\"");
-
-WriteLiteral(" class=\"fa-1x fa fa-check varient-check\"");
-
-WriteLiteral("></i>\r\n                                        </a>\r\n\r\n                          " +
-"              <a");
-
-WriteLiteral(" ng-if=\"attr.fieldCode!=\'global.colour\'\"");
-
-WriteLiteral(" id=\"{{item.fieldValue}}\"");
-
-WriteLiteral(" href=\"#\"");
-
-WriteLiteral(" ng-click=\"pm.getAvailableAttributeValues(attr.fieldCode,item.fieldValue,item.sel" +
-"ected,attr.independentProductUrl)\"");
-
-WriteLiteral("\r\n                                           class=\"varient-box-large \"");
-
-WriteLiteral(" ng-class=\"item.available==true?\'\':\' grayOut\'\"");
-
-WriteLiteral(">\r\n                                            {{item.fieldValue}}\r\n             " +
-"                               <i");
-
-WriteLiteral(" ng-if=\"item.selected && item.available\"");
-
-WriteLiteral(" class=\"fa-1x fa fa-check varient-check-range\"");
-
-WriteLiteral("></i>\r\n                                        </a>\r\n                            " +
-"        </div>\r\n                                </div>\r\n                        " +
-"        <div");
-
-WriteLiteral(" ng-if=\"attr.inputType == \'Dropdown\'\"");
-
-WriteLiteral(">\r\n                                    <select");
-
-WriteLiteral(" ng-model=\"attr.selectedValue\"");
-
-WriteLiteral(" ng-change=\"pm.getAvailableAttributeValues(attr.fieldCode,attr.selectedValue,fals" +
-"e)\"");
-
-WriteLiteral(" class=\"varientDdb\"");
-
-WriteLiteral(">\r\n                                        <option");
-
-WriteLiteral(" ng-disabled=\"!item.available\"");
-
-WriteLiteral(" ng-repeat=\"item in attr.fieldValues\"");
-
-WriteLiteral(" id=\"{{item.fieldValue}}\"");
-
-WriteLiteral(" ng-class=\"item.available==true?\'\':\' grayOut\'\"");
-
-WriteLiteral(" value={{item.fieldValue}}");
-
-WriteLiteral(">{{item.fieldValue}}</option>\r\n                                    </select>\r\n   " +
-"                             </div>\r\n                            </div>\r\n       " +
-"                 </div>\r\n");
+WriteLiteral(" ng-cloak>\r\n                                </div>\r\n                            <" +
+"/div>\r\n                        </div>\r\n");
 
             
-            #line 174 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-                    }
-                }
-
-            
-            #line default
-            #line hidden
-WriteLiteral("            </div>\r\n\r\n\r\n");
-
-            
-            #line 179 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-            
+            #line 91 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                        
             
             #line default
             #line hidden
             
-            #line 179 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-               /*End Product Varient */ 
+            #line 91 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                           /* Add to bag and wishlist button */ 
             
             #line default
             #line hidden
-WriteLiteral("\r\n\r\n");
-
-            
-            #line 181 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-            
-            
-            #line default
-            #line hidden
-            
-            #line 181 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-               /* Add to bag and wishlist button */ 
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n            <div");
+WriteLiteral("\r\n                        <div");
 
 WriteLiteral(" class=\"row\"");
 
-WriteLiteral(">\r\n                <div");
+WriteLiteral(">\r\n                            <div");
 
-WriteLiteral(" class=\"col-sm-12 no-padding\"");
+WriteLiteral(" class=\"col-sm-12 col-xs-12 text-right\"");
 
 WriteLiteral(">\r\n");
 
             
-            #line 184 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-                    
+            #line 94 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                                
             
             #line default
             #line hidden
             
-            #line 184 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-                      if (Model.RequiresQuestionnaire)
-                        {
-                            
-            
-            #line default
-            #line hidden
-            
-            #line 194 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-                                   
+            #line 94 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                                 if (Model.RequiresQuestionnaire)
+                                {
 
             
             #line default
             #line hidden
-WriteLiteral("                            <button");
+WriteLiteral("                                    <button");
 
 WriteLiteral(" type=\"submit\"");
 
@@ -911,20 +479,20 @@ WriteLiteral(" ng-click=\"gm.addToBasket(pm.productId,1,0)\"");
 
 WriteLiteral("><i");
 
-WriteLiteral(" class=\"fa fa-shopping-bag\"");
+WriteLiteral(" class=\"fa fa-shopping-cart\"");
 
 WriteLiteral("></i> ");
 
             
-            #line 195 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-                                                                                                                                                                                                                                                                                    Write(LT("Checkout.Button.AddtoBag", "Add to Bag"));
+            #line 96 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                                                                                                                                                                                                                                                                                             Write(LT("Checkout.Button.AddtoCart", "Add to Cart"));
 
             
             #line default
             #line hidden
 WriteLiteral("</button>\r\n");
 
-WriteLiteral("                            <button");
+WriteLiteral("                                    <button");
 
 WriteLiteral(" type=\"submit\"");
 
@@ -934,34 +502,33 @@ WriteLiteral(" ng-hide=\"pm.model.canAddToBag==true\"");
 
 WriteLiteral(" ng-if=\"pm.model.isDiscontinued==false && pm.model.currentStock>0\"");
 
-WriteLiteral("\r\n                                    ng-click=\"pm.beginQuestionnaire(pm.productI" +
-"d, pm.model.questionnaireCode)\"");
+WriteLiteral(" ng-click=\"pm.beginQuestionnaire(pm.productId, pm.model.questionnaireCode)\"");
 
-WriteLiteral(">\r\n                                <i");
+WriteLiteral("><i");
 
 WriteLiteral(" class=\"fa fa-connectdevelop\"");
 
 WriteLiteral("></i> ");
 
             
-            #line 198 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-                                                                Write(LT("Checkout.Button.BeginQuestionnaire", "Begin Consultation"));
+            #line 97 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                                                                                                                                                                                                                                                                                                   Write(LT("Checkout.Button.BeginQuestionnaire", "Begin Consultation"));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n                            </button>\r\n");
+WriteLiteral("</button>\r\n");
 
             
-            #line 200 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-                        }
-                        else
-                        {
+            #line 98 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                                }
+                                else
+                                {
 
             
             #line default
             #line hidden
-WriteLiteral("                            <button");
+WriteLiteral("                                    <button");
 
 WriteLiteral(" type=\"submit\"");
 
@@ -975,13 +542,13 @@ WriteLiteral(" ng-click=\"gm.addToBasket(pm.productId,1,0)\"");
 
 WriteLiteral("><i");
 
-WriteLiteral(" class=\"fa fa-shopping-bag\"");
+WriteLiteral(" class=\"fa fa-shopping-cart\"");
 
 WriteLiteral("></i> ");
 
             
-            #line 203 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-                                                                                                                                                                                                                                               Write(LT("Checkout.Button.AddtoBag", "Add to Bag"));
+            #line 101 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                                                                                                                                                                                                                                                        Write(LT("Checkout.Button.AddtoCart", "Add to Cart"));
 
             
             #line default
@@ -989,33 +556,19 @@ WriteLiteral("></i> ");
 WriteLiteral("</button>\r\n");
 
             
-            #line 204 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-                        }
-                    
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n");
-
-            
-            #line 206 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-                    
-            
-            #line default
-            #line hidden
-            
-            #line 206 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-                     if (SessionContext.CurrentUser != null)
-                    {
+            #line 102 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                                }
 
             
             #line default
             #line hidden
-WriteLiteral("                        <button");
+WriteLiteral("                                <button");
 
 WriteLiteral(" type=\"submit\"");
 
 WriteLiteral(" class=\"btn btn-wishlist\"");
+
+WriteLiteral(" ng-if=\"pm.IsUserLoggedIn\"");
 
 WriteLiteral(" data-toggle=\"tooltip\"");
 
@@ -1025,28 +578,28 @@ WriteLiteral(" ng-hide=\"pm.model.inWishList\"");
 
 WriteLiteral(" ng-click=\"pm.addToWishlist(pm.model.recordId)\"");
 
-WriteLiteral(" title=\"Add to wishlist\"");
+WriteLiteral(" title=\"Add To WishList\"");
 
-WriteLiteral(">\r\n                            <i");
+WriteLiteral("><i");
 
-WriteLiteral(" class=\"fa fa-heart-o\"");
+WriteLiteral(" class=\"fa fa-heart\"");
 
-WriteLiteral("></i>\r\n                        </button>\r\n");
+WriteLiteral("></i> ");
 
             
-            #line 211 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-                    }
-                    else
-                    {
+            #line 103 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                                                                                                                                                                                                                                                                                Write(LT("Checkout.Button.AddtoWishlist", "Add to Wishlist"));
 
             
             #line default
             #line hidden
-WriteLiteral("                        <button");
+WriteLiteral("</button>\r\n                                <button");
 
 WriteLiteral(" type=\"button\"");
 
 WriteLiteral(" class=\"btn btn-wishlist\"");
+
+WriteLiteral(" ng-if=\"!pm.IsUserLoggedIn\"");
 
 WriteLiteral(" data-toggle=\"modal\"");
 
@@ -1056,46 +609,388 @@ WriteLiteral(" data-placement=\"top\"");
 
 WriteLiteral(" ng-hide=\"pm.model.inWishList\"");
 
-WriteLiteral(" ng-click=\"pm.addToWishlist(pm.model.recordId)\"");
+WriteLiteral(" title=\"Add To WishList\"");
 
-WriteLiteral(" title=\"Add to wishlist\"");
+WriteLiteral("><i");
 
-WriteLiteral(">\r\n                            <i");
-
-WriteLiteral(" class=\"fa fa-heart-o\"");
+WriteLiteral(" class=\"fa fa-heart\"");
 
 WriteLiteral(" data-toggle=\"tooltip\"");
 
-WriteLiteral(" title=\"Add to wishlist\"");
+WriteLiteral(" title=\"Add to Wishlist\"");
 
 WriteLiteral(" data-placement=\"top\"");
 
-WriteLiteral("></i>\r\n                        </button>\r\n");
+WriteLiteral("></i> ");
 
             
-            #line 217 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+            #line 104 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                                                                                                                                                                                                                                                                                                                              Write(LT("Checkout.Button.AddtoWishlist", "Add to Wishlist"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</button>\r\n                            </div>\r\n                        </div>\r\n\r\n" +
+"                    </div>\r\n                </div>\r\n\r\n");
+
+            
+            #line 111 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                
+            
+            #line default
+            #line hidden
+            
+            #line 111 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                   /*Start product information panel*/ 
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n                <div");
+
+WriteLiteral(" class=\"col-sm-8 col-xs-12 _data\"");
+
+WriteLiteral(">\r\n                    <div");
+
+WriteLiteral(" class=\"row\"");
+
+WriteLiteral(">\r\n                        <div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding\"");
+
+WriteLiteral(">\r\n                            <ul");
+
+WriteLiteral(" class=\"breadcrumb\"");
+
+WriteLiteral(">\r\n                                <li><a");
+
+WriteLiteral(" href=\"/\"");
+
+WriteLiteral(">");
+
+            
+            #line 116 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                                           Write(LT("ProductListing.Breadcrumb.Home", "Home"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</a></li>\r\n                                <li><a");
+
+WriteAttribute("href", Tuple.Create(" href=\"", 8582), Tuple.Create("\"", 8621)
+            
+            #line 117 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+, Tuple.Create(Tuple.Create("", 8589), Tuple.Create<System.Object, System.Int32>(Url.Action("BrandList","Brand")
+            
+            #line default
+            #line hidden
+, 8589), false)
+);
+
+WriteLiteral(">");
+
+            
+            #line 117 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                                                                          Write(LT("Product.Breadcrumb.Brands", "Brands"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</a></li>\r\n");
+
+            
+            #line 118 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                                
+            
+            #line default
+            #line hidden
+            
+            #line 118 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                                 if (Model.BreadCrumbs != null)
+                                {
+                                    var catBreadCrumb = Model.BreadCrumbs.FirstOrDefault(x => x.SlugType == EntitySlugTypes.Manufacturer.ToString());
+                                    if (catBreadCrumb != null && catBreadCrumb.Slug != null)
+                                    {
+                                        
+            
+            #line default
+            #line hidden
+            
+            #line 123 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                                   Write(Html.Partial("~/Views/Shared/_BreadCrumb.cshtml", catBreadCrumb.Slug));
+
+            
+            #line default
+            #line hidden
+            
+            #line 123 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                                                                                                              ;
+                                    }
+                                }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                <li><a");
+
+WriteLiteral(" href=\"#\"");
+
+WriteLiteral("></a>");
+
+            
+            #line 126 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                                               Write(Model.Name);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</li>\r\n                            </ul>\r\n                        </div>\r\n       " +
+"             </div>\r\n                    <div");
+
+WriteLiteral(" class=\"row hidden-xs\"");
+
+WriteLiteral(">\r\n                        <div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding\"");
+
+WriteLiteral(">\r\n                            <h3");
+
+WriteLiteral(" class=\"product-headline\"");
+
+WriteLiteral("><span");
+
+WriteLiteral(" ng-bind=\"pm.model.name\"");
+
+WriteLiteral("></span></h3>\r\n                            <h5");
+
+WriteLiteral(" class=\"category-headline\"");
+
+WriteLiteral(">\r\n                                <span");
+
+WriteLiteral(" ng-repeat=\"freeProduct in pm.model.freeProducts\"");
+
+WriteLiteral(" class=\"text-bold\"");
+
+WriteLiteral(">\r\n                                    <i");
+
+WriteLiteral(" class=\"pluse-icon sprite\"");
+
+WriteLiteral(">+</i> ");
+
+            
+            #line 135 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                                                                  Write(LT("ProductDetail.Label.Free", "Free"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral(" <span");
+
+WriteLiteral(" ng-bind=\"freeProduct.name\"");
+
+WriteLiteral("></span>\r\n                                </span>\r\n                            </" +
+"h5>\r\n                        </div>\r\n                    </div>\r\n");
+
+            
+            #line 140 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                    
+            
+            #line default
+            #line hidden
+            
+            #line 140 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                     if (@Model.ListPrice != null)
+                    {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                        <div");
+
+WriteLiteral(" class=\"row hidden-xs\"");
+
+WriteLiteral(">\r\n                            <div");
+
+WriteLiteral(" class=\"col-sm-12 no-padding\"");
+
+WriteLiteral(">\r\n                                <h5");
+
+WriteLiteral(" class=\"price-h5\"");
+
+WriteLiteral("><span");
+
+WriteLiteral(" ng-bind=\"pm.model.price.formatted.withoutTax\"");
+
+WriteLiteral("></span> <span");
+
+WriteLiteral(" class=\"price-h5-rrp\"");
+
+WriteLiteral(">RRP <span");
+
+WriteLiteral(" ng-bind=\"pm.model.listPrice.formatted.withTax\"");
+
+WriteLiteral("></span></span></h5>\r\n                            </div>\r\n                       " +
+" </div>\r\n");
+
+            
+            #line 147 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
                     }
 
             
             #line default
             #line hidden
-WriteLiteral("                </div>\r\n\r\n            </div>\r\n            <div");
+WriteLiteral("                    <div>\r\n");
+
+            
+            #line 149 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                        
+            
+            #line default
+            #line hidden
+            
+            #line 149 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                         if (Model.VariantProducts != null && Model.VariantProducts.Count > 0)
+                        {
+                            if (Model.VariantProductsAttribute != null && Model.VariantProductsAttribute.Count > 0 && Model.VariantProductsAttribute[0].DisplayInProductDetail)
+                            {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                <div");
 
 WriteLiteral(" class=\"row\"");
 
-WriteLiteral(">\r\n                <div");
+WriteLiteral(" ng-init=\'pm.initProductVariant()\'");
+
+WriteLiteral(">\r\n                                    <div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding\"");
+
+WriteLiteral(" ng-repeat=\"attr in pm.model.variantProductsAttribute\"");
+
+WriteLiteral(">\r\n                                        <h3");
+
+WriteLiteral(" class=\"variant-headline\"");
+
+WriteLiteral(" ng-bind=\"attr.fieldName\"");
+
+WriteLiteral("></h3>\r\n                                        <span");
+
+WriteLiteral(" ng-show=\"attr.selectedValue==\'\'\"");
+
+WriteLiteral(" class=\"color-error-validation\"");
+
+WriteLiteral(">Please Select {{attr.fieldName}} </span>\r\n                                      " +
+"  <div");
+
+WriteLiteral(" ng-if=\"attr.inputType != \'Dropdown\'\"");
+
+WriteLiteral(">\r\n                                            <div");
+
+WriteLiteral(" ng-repeat=\"item in attr.fieldValues\"");
+
+WriteLiteral(">\r\n\r\n                                                <a");
+
+WriteLiteral(" ng-if=\"attr.fieldCode==\'global.colour\'\"");
+
+WriteLiteral(" id=\"{{item.fieldValue}}\"");
+
+WriteLiteral(" href=\"#\"");
+
+WriteLiteral(" ng-click=\"pm.getAvailableAttributeValues(attr.fieldCode,item.fieldValue,item.sel" +
+"ected,attr.independentProductUrl)\"");
+
+WriteLiteral("\r\n                                                   class=\"varient-box btn\"");
+
+WriteLiteral(" ng-class=\"item.available==true?\'\':\' grayOut-Color\'\"");
+
+WriteLiteral(" style=\"background-color: {{item.fieldValue}}\"");
+
+WriteLiteral(">\r\n                                                    <i");
+
+WriteLiteral(" ng-if=\"item.selected && item.available\"");
+
+WriteLiteral(" class=\"fa-1x fa fa-check varient-check\"");
+
+WriteLiteral("></i>\r\n                                                </a>\r\n\r\n                  " +
+"                              <a");
+
+WriteLiteral(" ng-if=\"attr.fieldCode!=\'global.colour\'\"");
+
+WriteLiteral(" id=\"{{item.fieldValue}}\"");
+
+WriteLiteral(" href=\"#\"");
+
+WriteLiteral(" ng-click=\"pm.getAvailableAttributeValues(attr.fieldCode,item.fieldValue,item.sel" +
+"ected,attr.independentProductUrl)\"");
+
+WriteLiteral("\r\n                                                   class=\"varient-box-large \"");
+
+WriteLiteral(" ng-class=\"item.available==true?\'\':\' grayOut\'\"");
+
+WriteLiteral(">\r\n                                                    {{item.fieldValue}}\r\n     " +
+"                                               <i");
+
+WriteLiteral(" ng-if=\"item.selected && item.available\"");
+
+WriteLiteral(" class=\"fa-1x fa fa-check varient-check-range\"");
+
+WriteLiteral("></i>\r\n                                                </a>\r\n                    " +
+"                        </div>\r\n                                        </div>\r\n" +
+"                                        <div");
+
+WriteLiteral(" ng-if=\"attr.inputType == \'Dropdown\'\"");
+
+WriteLiteral(">\r\n                                            <select");
+
+WriteLiteral(" ng-model=\"attr.selectedValue\"");
+
+WriteLiteral(" ng-change=\"pm.getAvailableAttributeValues(attr.fieldCode,attr.selectedValue,fals" +
+"e)\"");
+
+WriteLiteral(" class=\"varientDdb\"");
+
+WriteLiteral(">\r\n                                                <option");
+
+WriteLiteral(" ng-disabled=\"!item.available\"");
+
+WriteLiteral(" ng-repeat=\"item in attr.fieldValues\"");
+
+WriteLiteral(" id=\"{{item.fieldValue}}\"");
+
+WriteLiteral(" ng-class=\"item.available==true?\'\':\' grayOut\'\"");
+
+WriteLiteral(" value={{item.fieldValue}}");
+
+WriteLiteral(">{{item.fieldValue}}</option>\r\n                                            </sele" +
+"ct>\r\n                                        </div>\r\n                           " +
+"         </div>\r\n                                </div>\r\n");
+
+            
+            #line 179 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                            }
+                        }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                    </div>\r\n                    <div");
+
+WriteLiteral(" class=\"row\"");
+
+WriteLiteral(">\r\n                        <div");
 
 WriteLiteral(" class=\"col-sm-4 col-xs-12 no-padding\"");
 
 WriteLiteral(" ng-show=\"pm.model.flags.isFreeDelivery\"");
 
-WriteLiteral(">\r\n                    <label");
+WriteLiteral(">\r\n                            <label");
 
 WriteLiteral(" ng-show=\"pm.model.flags.isFreeDelivery\"");
 
 WriteLiteral(" class=\"free-label\"");
 
-WriteLiteral(" ng-cloak>\r\n                        <span");
+WriteLiteral(" ng-cloak>\r\n                                <span");
 
 WriteLiteral(" class=\"free-icon\"");
 
@@ -1103,15 +998,15 @@ WriteLiteral("><i");
 
 WriteLiteral(" class=\"fa fa-truck\"");
 
-WriteLiteral("></i></span>\r\n                        <span");
+WriteLiteral("></i></span>\r\n                                <span");
 
 WriteLiteral(" class=\"free-text\"");
 
 WriteLiteral("><strong>");
 
             
-            #line 225 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-                                                   Write(LT("ProductDetail.Label.FreeDelivery", "FREE DELIVERY"));
+            #line 186 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                                                           Write(LT("ProductDetail.Label.FreeDelivery", "FREE DELIVERY"));
 
             
             #line default
@@ -1119,26 +1014,26 @@ WriteLiteral("><strong>");
 WriteLiteral("</strong><br /> ");
 
             
-            #line 225 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-                                                                                                                           Write(LT("ProductDetail.Label.onitem", "on this item"));
+            #line 186 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                                                                                                                                   Write(LT("ProductDetail.Label.onitem", "on this item"));
 
             
             #line default
             #line hidden
-WriteLiteral("</span>\r\n                    </label>\r\n                </div>\r\n                <d" +
-"iv");
+WriteLiteral("</span>\r\n                            </label>\r\n                        </div>\r\n  " +
+"                      <div");
 
 WriteLiteral(" class=\"col-sm-4 col-xs-12 no-padding\"");
 
 WriteLiteral(" ng-if=\"pm.model.freeProducts.length > 0\"");
 
-WriteLiteral(">\r\n                    <label");
+WriteLiteral(">\r\n                            <label");
 
 WriteLiteral(" ng-if=\"pm.model.freeProducts.length > 0\"");
 
 WriteLiteral(" class=\"free-label\"");
 
-WriteLiteral(" ng-cloak>\r\n                        <span");
+WriteLiteral(" ng-cloak>\r\n                                <span");
 
 WriteLiteral(" class=\"free-icon\"");
 
@@ -1146,15 +1041,15 @@ WriteLiteral("><i");
 
 WriteLiteral(" class=\"fa fa-gift\"");
 
-WriteLiteral("></i></span>\r\n                        <span");
+WriteLiteral("></i></span>\r\n                                <span");
 
 WriteLiteral(" class=\"free-text\"");
 
 WriteLiteral("><strong>");
 
             
-            #line 231 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-                                                   Write(LT("ProductDetail.Label.FreeGift", "Free Gift"));
+            #line 192 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                                                           Write(LT("ProductDetail.Label.FreeGift", "Free Gift"));
 
             
             #line default
@@ -1162,211 +1057,128 @@ WriteLiteral("><strong>");
 WriteLiteral(" </strong><br /> ");
 
             
-            #line 231 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-                                                                                                                    Write(LT("ProductDetail.Label.withitem", "with this item"));
+            #line 192 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                                                                                                                            Write(LT("ProductDetail.Label.withitem", "with this item"));
 
             
             #line default
             #line hidden
-WriteLiteral("</span>\r\n                    </label>\r\n                </div>\r\n            </div>" +
-"\r\n");
-
-            
-            #line 235 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-            
-            
-            #line default
-            #line hidden
-            
-            #line 235 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-               /*End Add to bag and wishlist button */ 
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n\r\n");
-
-            
-            #line 237 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-            
-            
-            #line default
-            #line hidden
-            
-            #line 237 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-               /* Alert information message */ 
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n            <div");
+WriteLiteral("</span>\r\n                            </label>\r\n                        </div>\r\n  " +
+"                  </div>\r\n                    <div");
 
 WriteLiteral(" class=\"row\"");
 
-WriteLiteral(">\r\n                <div");
+WriteLiteral(">\r\n                        <div");
 
 WriteLiteral(" class=\"col-sm-12 no-padding\"");
 
-WriteLiteral(">\r\n                    <p");
+WriteLiteral(">\r\n                            <p");
 
 WriteLiteral(" class=\"text-center\"");
 
-WriteLiteral(">\r\n                        <div ng-cloak");
+WriteLiteral(">\r\n                                <div ng-cloak");
 
 WriteLiteral(" class=\"alert alert-info wishdiv\"");
 
 WriteLiteral(" ng-show=\"pm.wishlistsaved\"");
 
-WriteLiteral(">\r\n                            <strong>");
+WriteLiteral(">\r\n                                    <strong>");
 
             
-            #line 242 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-                               Write(LT("ProductDetail.Message.AddToWishlist", "Product added to wishlist"));
+            #line 200 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                                       Write(LT("ProductDetail.Message.AddToWishlist", "Product added to wishlist"));
 
             
             #line default
             #line hidden
-WriteLiteral("!</strong>\r\n                        </div>\r\n                        <div ng-cloak" +
-"");
+WriteLiteral("!</strong>\r\n                                </div>\r\n                             " +
+"   <div ng-cloak");
 
 WriteLiteral(" class=\"alert alert-danger wishdiv\"");
 
 WriteLiteral(" ng-show=\"pm.wishlistexistserror\"");
 
-WriteLiteral(">\r\n                            <strong>");
+WriteLiteral(">\r\n                                    <strong>");
 
             
-            #line 245 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-                               Write(LT("ProductDetail.Message.AlreadyAddedToWishlist", "Product already added in wishlist"));
+            #line 203 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                                       Write(LT("ProductDetail.Message.AlreadyAddedToWishlist", "Product already added in wishlist"));
 
             
             #line default
             #line hidden
-WriteLiteral("!</strong>\r\n                        </div>\r\n                        ");
-
-WriteLiteral("\r\n                    </p>\r\n                </div>\r\n            </div>\r\n");
-
-            
-            #line 253 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-            
-            
-            #line default
-            #line hidden
-            
-            #line 253 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-               /*End Alert information message */ 
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n\r\n\r\n");
-
-            
-            #line 256 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-            
-            
-            #line default
-            #line hidden
-            
-            #line 256 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-               /* product detail accordion */ 
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n            <div");
+WriteLiteral("!</strong>\r\n                                </div>\r\n                            <" +
+"/p>\r\n                        </div>\r\n                    </div>\r\n               " +
+"     <div");
 
 WriteLiteral(" class=\"row\"");
 
-WriteLiteral(">\r\n                <div");
+WriteLiteral(">\r\n                        <div");
 
 WriteLiteral(" class=\"col-sm-12 no-padding\"");
 
 WriteLiteral(">\r\n");
 
-WriteLiteral("                    ");
+WriteLiteral("                            ");
 
             
-            #line 259 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-               Write(Html.Action("GetAllFaqs", "Common", @Model));
+            #line 210 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                       Write(Html.Action("GetAllFaqs", "Common", @Model));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n                </div>\r\n            </div>\r\n");
-
-            
-            #line 262 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-            
-            
-            #line default
-            #line hidden
-            
-            #line 262 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-               /*End product detail accordion */ 
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n\r\n");
-
-            
-            #line 264 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-            
-            
-            #line default
-            #line hidden
-            
-            #line 264 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-               /* product social sharing links */ 
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n            <div");
+WriteLiteral("\r\n                        </div>\r\n                    </div>\r\n                   " +
+" <div");
 
 WriteLiteral(" class=\"row\"");
 
-WriteLiteral(">\r\n                <div");
+WriteLiteral(">\r\n                        <div");
 
 WriteLiteral(" class=\"col-sm-12 no-padding quick-view-social text-left\"");
 
 WriteLiteral(" ng-init=\"pm.getUrl();\"");
 
-WriteLiteral(">\r\n                    <h4");
+WriteLiteral(">\r\n                            <h4");
 
 WriteLiteral(" class=\"panel-h5\"");
 
 WriteLiteral(">");
 
             
-            #line 267 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-                                    Write(LT("ProductDetail.Label.ShowFriends", "Show it to your friends or Email"));
+            #line 215 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                                            Write(LT("ProductDetail.Label.ShowFriends", "Show it to your friends or Email"));
 
             
             #line default
             #line hidden
-WriteLiteral("</h4>\r\n                    <div");
+WriteLiteral("</h4>\r\n                            <div");
 
 WriteLiteral(" class=\"sharethis-inline-share-buttons col-xs-2 col-sm-1 pull-left\"");
 
-WriteLiteral("></div>\r\n                    <p");
+WriteLiteral("></div>\r\n                            <p");
 
 WriteLiteral(" class=\"col-xs-10 cl-sm-10 pull-left no-padding\"");
 
-WriteLiteral(">\r\n                        <a");
+WriteLiteral(">\r\n                                <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 17738), Tuple.Create("\"", 17821)
-, Tuple.Create(Tuple.Create("", 17745), Tuple.Create("https://www.facebook.com/share.php?u={{pm.url}}/", 17745), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 16505), Tuple.Create("\"", 16588)
+, Tuple.Create(Tuple.Create("", 16512), Tuple.Create("https://www.facebook.com/share.php?u={{pm.url}}/", 16512), true)
             
-            #line 270 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-, Tuple.Create(Tuple.Create("", 17793), Tuple.Create<System.Object, System.Int32>(Model.Link
-            
-            #line default
-            #line hidden
-, 17793), false)
-, Tuple.Create(Tuple.Create("", 17804), Tuple.Create("-", 17804), true)
-            
-            #line 270 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-            , Tuple.Create(Tuple.Create("", 17805), Tuple.Create<System.Object, System.Int32>(Model.StockCode
+            #line 218 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+        , Tuple.Create(Tuple.Create("", 16560), Tuple.Create<System.Object, System.Int32>(Model.Link
             
             #line default
             #line hidden
-, 17805), false)
+, 16560), false)
+, Tuple.Create(Tuple.Create("", 16571), Tuple.Create("-", 16571), true)
+            
+            #line 218 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                    , Tuple.Create(Tuple.Create("", 16572), Tuple.Create<System.Object, System.Int32>(Model.StockCode
+            
+            #line default
+            #line hidden
+, 16572), false)
 );
 
 WriteLiteral(" class=\"external facebook\"");
@@ -1377,25 +1189,25 @@ WriteLiteral("><i");
 
 WriteLiteral(" class=\"fa fa-facebook\"");
 
-WriteLiteral("></i></a>\r\n                        <a");
+WriteLiteral("></i></a>\r\n                                <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 17938), Tuple.Create("\"", 18033)
-, Tuple.Create(Tuple.Create("", 17945), Tuple.Create("https://pinterest.com/pin/create/button/?url=", 17945), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 16713), Tuple.Create("\"", 16808)
+, Tuple.Create(Tuple.Create("", 16720), Tuple.Create("https://pinterest.com/pin/create/button/?url=", 16720), true)
             
-            #line 271 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-, Tuple.Create(Tuple.Create("", 17990), Tuple.Create<System.Object, System.Int32>(Model.Image
-            
-            #line default
-            #line hidden
-, 17990), false)
-, Tuple.Create(Tuple.Create("", 18002), Tuple.Create("&media=&description=", 18002), true)
-            
-            #line 271 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-                             , Tuple.Create(Tuple.Create("", 18022), Tuple.Create<System.Object, System.Int32>(Model.Name
+            #line 219 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+     , Tuple.Create(Tuple.Create("", 16765), Tuple.Create<System.Object, System.Int32>(Model.Image
             
             #line default
             #line hidden
-, 18022), false)
+, 16765), false)
+, Tuple.Create(Tuple.Create("", 16777), Tuple.Create("&media=&description=", 16777), true)
+            
+            #line 219 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                                     , Tuple.Create(Tuple.Create("", 16797), Tuple.Create<System.Object, System.Int32>(Model.Name
+            
+            #line default
+            #line hidden
+, 16797), false)
 );
 
 WriteLiteral(" class=\"external gplus\"");
@@ -1406,25 +1218,25 @@ WriteLiteral("><i");
 
 WriteLiteral(" class=\"fa fa-pinterest\"");
 
-WriteLiteral("></i></a>\r\n                        <a");
+WriteLiteral("></i></a>\r\n                                <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 18148), Tuple.Create("\"", 18226)
-, Tuple.Create(Tuple.Create("", 18155), Tuple.Create("https://twitter.com/home?status={{pm.url}}/", 18155), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 16931), Tuple.Create("\"", 17009)
+, Tuple.Create(Tuple.Create("", 16938), Tuple.Create("https://twitter.com/home?status={{pm.url}}/", 16938), true)
             
-            #line 272 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-, Tuple.Create(Tuple.Create("", 18198), Tuple.Create<System.Object, System.Int32>(Model.Link
-            
-            #line default
-            #line hidden
-, 18198), false)
-, Tuple.Create(Tuple.Create("", 18209), Tuple.Create("-", 18209), true)
-            
-            #line 272 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-       , Tuple.Create(Tuple.Create("", 18210), Tuple.Create<System.Object, System.Int32>(Model.StockCode
+            #line 220 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+   , Tuple.Create(Tuple.Create("", 16981), Tuple.Create<System.Object, System.Int32>(Model.Link
             
             #line default
             #line hidden
-, 18210), false)
+, 16981), false)
+, Tuple.Create(Tuple.Create("", 16992), Tuple.Create("-", 16992), true)
+            
+            #line 220 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+               , Tuple.Create(Tuple.Create("", 16993), Tuple.Create<System.Object, System.Int32>(Model.StockCode
+            
+            #line default
+            #line hidden
+, 16993), false)
 );
 
 WriteLiteral(" class=\"external twitter\"");
@@ -1435,82 +1247,63 @@ WriteLiteral("><i");
 
 WriteLiteral(" class=\"fa fa-twitter\"");
 
-WriteLiteral("></i></a>\r\n                    </p>\r\n\r\n                </div>\r\n            </div>" +
-"\r\n");
+WriteLiteral("></i></a>\r\n                            </p>\r\n\r\n                        </div>\r\n  " +
+"                  </div>\r\n                    <div");
+
+WriteLiteral(" class=\"row\"");
+
+WriteLiteral(">\r\n                        <div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding\"");
+
+WriteLiteral(">\r\n");
+
+WriteLiteral("                            ");
 
             
-            #line 277 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-            
-            
-            #line default
-            #line hidden
-            
-            #line 277 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-               /*End product social sharing links */ 
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n\r\n");
+            #line 227 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                       Write(Html.Partial("~/Views/Product/Layout1/_ProductReviews.cshtml"));
 
             
-            #line 279 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-            
-            
             #line default
             #line hidden
-            
-            #line 279 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-              /*Start Store Find Form*/
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n            ");
-
-WriteLiteral("\r\n");
+WriteLiteral("\r\n                        </div>\r\n                    </div>\r\n");
 
             
-            #line 297 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-            
-            
-            #line default
-            #line hidden
-            
-            #line 297 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-              /*End Store Find form*/
+            #line 230 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                    
             
             #line default
             #line hidden
-WriteLiteral("\r\n\r\n        </div>\r\n");
+            
+            #line 230 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                       /* Start product login review*/ 
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n                    <div");
+
+WriteLiteral(" class=\"row\"");
+
+WriteLiteral(">\r\n                        <div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding\"");
+
+WriteLiteral(">\r\n");
+
+WriteLiteral("                            ");
 
             
-            #line 300 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-        
-            
-            #line default
-            #line hidden
-            
-            #line 300 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-           /*End product information panel*/ 
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n    </div>\r\n");
+            #line 233 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                       Write(Html.Partial("~/Views/Product/Layout1/_ProductReviewLogin.cshtml", new ProductReviewLoginModel { }));
 
             
-            #line 302 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-    
-            
             #line default
             #line hidden
-            
-            #line 302 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-       /*End product left image and thumbnail panel*/ 
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n\r\n    ");
+WriteLiteral("\r\n                        </div>\r\n                    </div>\r\n                </d" +
+"iv>\r\n            </div>\r\n            ");
 
-WriteLiteral("\r\n    <div");
+WriteLiteral("\r\n            <div");
 
 WriteLiteral(" class=\"row\"");
 
@@ -1518,168 +1311,74 @@ WriteLiteral(" ng-if=\"pm.model.componentProducts.length > 0\"");
 
 WriteLiteral(">\r\n");
 
+WriteLiteral("                ");
+
+            
+            #line 240 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+           Write(Html.Partial("~/Views/Product/Layout1/_ProductBundle.cshtml"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n            </div>\r\n        </div>\r\n");
+
+            
+            #line 243 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+        
+            
+            #line default
+            #line hidden
+            
+            #line 243 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+           /* Start product review*/ 
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n        <div");
+
+WriteLiteral(" class=\"row\"");
+
+WriteLiteral(">\r\n            <div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12 whiteContainer\"");
+
+WriteLiteral(">\r\n");
+
+WriteLiteral("                ");
+
+            
+            #line 246 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+           Write(Html.Partial("~/Views/Product/Layout1/_RelatedProducts.cshtml"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n            </div>\r\n        </div>\r\n");
+
+            
+            #line 249 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+        
+            
+            #line default
+            #line hidden
+            
+            #line 249 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+           /* End product review */ 
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n");
+
 WriteLiteral("        ");
 
             
-            #line 306 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-   Write(Html.Partial("~/Views/Product/Layout1/_ProductBundle.cshtml"));
+            #line 250 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+   Write(Html.Partial("~/Views/Product/Layout1/_ProductDetailSlider.cshtml"));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n    </div>\r\n\r\n");
-
-            
-            #line 309 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-    
-            
-            #line default
-            #line hidden
-            
-            #line 309 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-       /* Start product review*/ 
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n    <div");
-
-WriteLiteral(" class=\"row\"");
-
-WriteLiteral(">\r\n        <div");
-
-WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding\"");
-
-WriteLiteral(">\r\n");
-
-WriteLiteral("            ");
-
-            
-            #line 312 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-       Write(Html.Partial("~/Views/Product/Layout1/_ProductReviews.cshtml"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n        </div>\r\n    </div>\r\n");
-
-            
-            #line 315 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-    
-            
-            #line default
-            #line hidden
-            
-            #line 315 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-       /* End product review */ 
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n\r\n");
-
-            
-            #line 317 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-    
-            
-            #line default
-            #line hidden
-            
-            #line 317 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-       /* Start product login review*/ 
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n    <div");
-
-WriteLiteral(" class=\"row\"");
-
-WriteLiteral(">\r\n        <div");
-
-WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding\"");
-
-WriteLiteral(">\r\n");
-
-WriteLiteral("            ");
-
-            
-            #line 320 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-       Write(Html.Partial("~/Views/Product/Layout1/_ProductReviewLogin.cshtml", new ProductReviewLoginModel { }));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n        </div>\r\n    </div>\r\n");
-
-            
-            #line 323 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-    
-            
-            #line default
-            #line hidden
-            
-            #line 323 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-       /* End product login review */ 
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n");
-
-            
-            #line 324 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-    
-            
-            #line default
-            #line hidden
-            
-            #line 324 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-       /* Start product review*/ 
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n    <div");
-
-WriteLiteral(" class=\"row\"");
-
-WriteLiteral(">\r\n        <div");
-
-WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding\"");
-
-WriteLiteral(">\r\n");
-
-WriteLiteral("            ");
-
-            
-            #line 327 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-       Write(Html.Partial("~/Views/Product/Layout1/_RelatedProducts.cshtml"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n        </div>\r\n    </div>\r\n");
-
-            
-            #line 330 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-    
-            
-            #line default
-            #line hidden
-            
-            #line 330 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-       /* End product review */ 
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n");
-
-WriteLiteral("    ");
-
-            
-            #line 331 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-Write(Html.Partial("~/Views/Product/Layout1/_ProductDetailSlider.cshtml"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n    <div");
+WriteLiteral("\r\n        <div");
 
 WriteLiteral(" id=\"QualifyingQuestionnaire\"");
 
@@ -1687,19 +1386,19 @@ WriteLiteral(" class=\"modal fade\"");
 
 WriteLiteral(" role=\"dialog\"");
 
-WriteLiteral(">\r\n        <div");
+WriteLiteral(">\r\n            <div");
 
 WriteLiteral(" class=\"modal-dialog\"");
 
-WriteLiteral(">\r\n            <div");
+WriteLiteral(">\r\n                <div");
 
 WriteLiteral(" class=\"modal-content\"");
 
-WriteLiteral(">\r\n                <div");
+WriteLiteral(">\r\n                    <div");
 
 WriteLiteral(" class=\"modal-header\"");
 
-WriteLiteral(">\r\n                    <button");
+WriteLiteral(">\r\n                        <button");
 
 WriteLiteral(" type=\"button\"");
 
@@ -1711,35 +1410,37 @@ WriteLiteral("><span");
 
 WriteLiteral(" aria-hidden=\"true\"");
 
-WriteLiteral(">&times;</span></button>\r\n                    <h4");
+WriteLiteral(">&times;</span></button>\r\n                        <h4");
 
 WriteLiteral(" class=\"modal-title text-modal\"");
 
 WriteLiteral(" id=\"myModalLabel\"");
 
-WriteLiteral(">Qualifying Questionnaire</h4>\r\n                </div>\r\n                <div");
+WriteLiteral(">Qualifying Questionnaire</h4>\r\n                    </div>\r\n                    <" +
+"div");
 
 WriteLiteral(" class=\"modal-body\"");
 
 WriteLiteral(">\r\n");
 
-WriteLiteral("                    ");
+WriteLiteral("                        ");
 
             
-            #line 340 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-               Write(Html.Partial("~/Views/Product/Layout1/_Questionnaire.cshtml"));
+            #line 259 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+                   Write(Html.Partial("~/Views/Product/Layout1/_Questionnaire.cshtml"));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n                </div>\r\n                <div");
+WriteLiteral("\r\n                    </div>\r\n                    <div");
 
 WriteLiteral(" class=\"modal-footer\"");
 
-WriteLiteral("></div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n");
+WriteLiteral("></div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n" +
+"</div>\r\n\r\n");
 
             
-            #line 348 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+            #line 268 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
    /* End product detail Panel */ 
             
             #line default
@@ -1801,7 +1502,7 @@ WriteLiteral(" class=\"text-center\"");
 WriteLiteral(">");
 
             
-            #line 360 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+            #line 280 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
                                            Write(LT("ProductReview.Label.Success", "Thank you for your review."));
 
             
@@ -1812,61 +1513,25 @@ WriteLiteral("</h3>\r\n                    </div>\r\n                </div>\r\n 
 
 WriteLiteral(" class=\"modal-footer\"");
 
-WriteLiteral("></div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n\r\n\r\n\r\n");
-
-            
-            #line 372 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-   /* Start related product listing*/ 
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n");
-
-WriteLiteral("\r\n");
-
-            
-            #line 374 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-   /* End related product listing */ 
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n\r\n");
-
-            
-            #line 376 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-   /* Start recentlt view products */ 
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n\r\n");
-
-WriteLiteral("\r\n");
-
-            
-            #line 379 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
-   /* End recentlt view products */ 
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n\r\n");
+WriteLiteral("></div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n");
 
 DefineSection("scripts", () => {
-
-WriteLiteral("\r\n    ");
 
 WriteLiteral("\r\n    <script");
 
 WriteLiteral(" type=\'text/javascript\'");
+
+WriteLiteral(" async");
 
 WriteLiteral(" src=\'//platform-api.sharethis.com/js/sharethis.js#property=593f6e515d6c340012d5d" +
 "e72&product=inline-share-buttons\'");
 
 WriteLiteral(" async=\'async\'");
 
-WriteLiteral("></script>\r\n    <script>\r\n        var addToWishlistUrl = \'");
+WriteLiteral("></script>\r\n    <script defer>\r\n        var addToWishlistUrl = \'");
 
             
-            #line 385 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+            #line 292 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
                             Write(Html.BuildUrlFromExpression<AccountController>(c => c.AddProductToWishlist(null)));
 
             
@@ -1875,7 +1540,7 @@ WriteLiteral("></script>\r\n    <script>\r\n        var addToWishlistUrl = \'");
 WriteLiteral("\';\r\n        var productUrl = \'");
 
             
-            #line 386 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+            #line 293 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
                       Write(Html.BuildUrlFromExpression<ProductController>(c => c.ProductDetails("")));
 
             
@@ -1884,7 +1549,7 @@ WriteLiteral("\';\r\n        var productUrl = \'");
 WriteLiteral("\';\r\n        var signIn = \'");
 
             
-            #line 387 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+            #line 294 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
                   Write(Html.BuildUrlFromExpression<AccountController>(c => c.SignIn(null)));
 
             
@@ -1893,7 +1558,7 @@ WriteLiteral("\';\r\n        var signIn = \'");
 WriteLiteral("\';\r\n        var register = \'");
 
             
-            #line 388 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+            #line 295 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
                     Write(Html.BuildUrlFromExpression<AccountController>(c => c.Registration(null)));
 
             
@@ -1902,7 +1567,7 @@ WriteLiteral("\';\r\n        var register = \'");
 WriteLiteral("\';\r\n        var addReview = \'");
 
             
-            #line 389 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+            #line 296 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
                      Write(Html.BuildUrlFromExpression<ProductController>(c => c.AddProductReview("",null)));
 
             
@@ -1911,7 +1576,7 @@ WriteLiteral("\';\r\n        var addReview = \'");
 WriteLiteral("\';\r\n        var getWishlist = \'");
 
             
-            #line 390 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+            #line 297 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
                        Write(Html.BuildUrlFromExpression<AccountController>(c => c.GetWishlist()));
 
             
@@ -1920,7 +1585,7 @@ WriteLiteral("\';\r\n        var getWishlist = \'");
 WriteLiteral("\';\r\n        var questionnaireCode = \'");
 
             
-            #line 391 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+            #line 298 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
                              Write(Html.BuildUrlFromExpression<ProductController>(c => c.QuestionnaireCode(null)));
 
             
@@ -1929,7 +1594,7 @@ WriteLiteral("\';\r\n        var questionnaireCode = \'");
 WriteLiteral("\';\r\n        var reviewConfig = \'");
 
             
-            #line 392 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+            #line 299 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
                         Write(Html.BuildUrlFromExpression<ProductController>(c => c.GetProductReviewConfig()));
 
             
@@ -1949,7 +1614,7 @@ WriteLiteral(@"';
         window.app.constant('model', ");
 
             
-            #line 403 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
+            #line 310 "..\..\Views\Product\Layout1\ProductDetail.cshtml"
                                 Write(Html.Json(Model));
 
             

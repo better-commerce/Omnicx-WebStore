@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using Omnicx.API.SDK.Models.Common;
-using SessionInfo = Omnicx.API.SDK.Models.Common.SessionInfo;
-using Omnicx.API.SDK.Models;
+using Omnicx.WebStore.Models.Common;
+using SessionInfo = Omnicx.WebStore.Models.Common.SessionInfo;
+using Omnicx.WebStore.Models;
 namespace Omnicx.API.SDK.Api.Infra
 {
     public interface ISessionApi

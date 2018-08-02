@@ -1,14 +1,14 @@
-﻿@using Omnicx.API.SDK.Entities
+﻿@using Omnicx.WebStore.Models.Enums
 @inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
 
 @if (SessionContext.CurrentUser != null)
 {
-    <li>
+    <li class="margin-top-md">
 
         @if (SessionContext.CurrentUser.FirstName != null)
         {
             <span class="userControls__linkSeperator">Hi! </span>
-                            <a class="userControls__accountLinks" href="@Url.Action("MyAccount", "Account")">@SessionContext.CurrentUser.FirstName @SessionContext.CurrentUser.LastName</a>
+            <a class="userControls__accountLinks" href="@Url.Action("MyAccount", "Account")">@SessionContext.CurrentUser.FirstName</a>
         }
         else
         {
@@ -20,10 +20,10 @@
 }
 else
 {
-    <li>
-        <span class="userControls__linkSeperator">Hi!</span>
-        <a class="userControls__accountLinks" href="@Url.Action("SignIn", "Account")">Sign In</a>
+    <li class="margin-top-md">
+        <span class="userControls__linkSeperator"></span>
+        <a class="userControls__accountLinks" href="@Url.Action("SignIn", "Account")">Login</a>
         <span class="userControls__linkSeperator">or</span>
-        <a class="userControls__accountLinks" href="@Url.Action("SignUp", "Account")">Register</a>
+        <a class="userControls__accountLinks" href="@Url.Action("SignUp", "Account")">Signup</a>
     </li>
 }

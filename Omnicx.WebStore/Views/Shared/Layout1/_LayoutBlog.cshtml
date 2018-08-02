@@ -19,9 +19,9 @@
 <!DOCTYPE html>
 @using Microsoft.Web.Mvc
 @using Omnicx.WebStore.Core.Controllers
-@using Omnicx.API.SDK.Models
+@using Omnicx.WebStore.Models
 @inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
-@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Site.BlogDetailViewModel>
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Site.BlogDetailViewModel>
 
 <html ng-app="btApp" ng-controller="globalCtrl as gm">
 @Html.Partial("~/Views/Shared/Layout1/_LayoutHeadTag.cshtml")

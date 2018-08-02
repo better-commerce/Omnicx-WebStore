@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography;
 using System.Text;
-using Omnicx.API.SDK.Models.Commerce;
+using Omnicx.WebStore.Models.Commerce;
 using Omnicx.API.SDK.Payments.Entities;
 
 namespace Omnicx.API.SDK.Payments.Realex

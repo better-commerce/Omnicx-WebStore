@@ -33,7 +33,7 @@ namespace ASP
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Shared/Layout1/_MainFooter.mobile.cshtml")]
-    public partial class _Views_Shared_Layout1__MainFooter_mobile_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Site.NavigationModel>
+    public partial class _Views_Shared_Layout1__MainFooter_mobile_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Site.NavigationModel>
     {
         public _Views_Shared_Layout1__MainFooter_mobile_cshtml()
         {

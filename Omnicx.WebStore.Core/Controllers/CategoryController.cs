@@ -2,9 +2,10 @@
 using System.Linq;
 using System.Web.Mvc;
 using Omnicx.API.SDK.Api.Catalog;
-using Omnicx.API.SDK.Models.Catalog;
-using Omnicx.API.SDK.Models.Helpers;
-using Omnicx.API.SDK.Entities;
+using Omnicx.WebStore.Models.Catalog;
+using Omnicx.WebStore.Models.Helpers;
+using Omnicx.WebStore.Models.Keys;
+using Omnicx.WebStore.Models.Enums;
 using Omnicx.WebStore.Core.Helpers;
 using Microsoft.Security.Application;
 using Omnicx.API.SDK.Helpers;
@@ -39,7 +40,7 @@ namespace Omnicx.WebStore.Core.Controllers
                 response = _categoryApi.GetCategory(MaincategorySlug);
                 if (response.Result == null && response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
-                    return RedirectToAction("PageNotFound", "Common");
+                    return RedirectToAction("PageNotFound", "Common", new { @aspxerrorpath = slug });
                 }
             }
             var category = response.Result;

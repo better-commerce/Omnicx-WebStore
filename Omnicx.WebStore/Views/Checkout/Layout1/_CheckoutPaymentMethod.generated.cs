@@ -30,7 +30,7 @@ namespace ASP
     using DevTrends.MvcDonutCaching;
     
     #line 13 "..\..\Views\Checkout\Layout1\_CheckoutPaymentMethod.cshtml"
-    using Omnicx.API.SDK.Models.Common;
+    using Omnicx.WebStore.Models.Common;
     
     #line default
     #line hidden

@@ -4,7 +4,9 @@ using System.Web.UI;
 using DevTrends.MvcDonutCaching;
 using Omnicx.API.SDK.Api.Site;
 using Omnicx.WebStore.Core.Helpers;
-using Omnicx.API.SDK.Entities;
+using Omnicx.WebStore.Models.Keys;
+using Omnicx.WebStore.Models.Enums;
+
 using System.Net;
 using System.IO;
 using System.Xml;
@@ -54,7 +56,7 @@ namespace Omnicx.WebStore.Core.Controllers
             }          
             var siteView = result.Result;
             
-            if (siteView == null) return RedirectToAction("PageNotFound", "Common");
+            if (siteView == null) return RedirectToAction("PageNotFound", "Common", new { @aspxerrorpath = slug });
             if(slug == "/")
                 SetDataLayerVariables(siteView, WebhookEventTypes.PageViewed);
             else

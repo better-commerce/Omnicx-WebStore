@@ -4,14 +4,15 @@ using System.Web.Mvc;
 using Newtonsoft.Json;
 using Omnicx.WebStore.Framework.Entities;
 using Omnicx.WebStore.Framework.Security;
-using Omnicx.API.SDK.Entities;
 using RestSharp;
 using Omnicx.API.SDK.Helpers;
 using System.Threading.Tasks;
 using System.Threading;
-using Omnicx.API.SDK.Models;
+using Omnicx.WebStore.Models;
 using System.Security;
-using Omnicx.API.SDK.Models.Infrastructure;
+using Omnicx.WebStore.Models.Infrastructure;
+using Omnicx.WebStore.Models.Keys;
+using Omnicx.API.SDK.Api.Infra;
 
 namespace Omnicx.API.SDK.Api
 {
@@ -88,7 +89,9 @@ namespace Omnicx.API.SDK.Api
             var restResponse = restClient.Execute(restRequest);
             try
             {
-                return JsonConvert.DeserializeObject<ResponseModel<T>>(restResponse.Content);
+                var result= JsonConvert.DeserializeObject<ResponseModel<T>>(restResponse.Content);
+                SetContentSnippets(result);
+                return result;
             }
             catch (Exception ex)
             {
@@ -135,6 +138,7 @@ namespace Omnicx.API.SDK.Api
                     throw ex;
                 }
             });
+            SetContentSnippets(tcs.Task.Result);
             return Task.FromResult(tcs.Task.Result);
 
         }
@@ -217,12 +221,21 @@ namespace Omnicx.API.SDK.Api
             return httpContext.Request.Cookies[cookieName].Value;
 
         }
-
+        private void SetContentSnippets<T>(ResponseModel<T> response)
+        {
+            if (response!=null && response.Snippets != null)
+            {
+                System.Web.HttpContext.Current.Items[Constants.HTTP_CONTEXT_ITEM_SNIPPETS] = response.Snippets;
+            }
+        }
         private void AddDefaultHeader(ref RestRequest request)
         {
             var httpContext = DependencyResolver.Current.GetService<HttpContextBase>();
+            
             if (httpContext == null || httpContext.Handler == null || httpContext.Session == null) return;
 
+            var sessionContext = DependencyResolver.Current.GetService<ISessionContext>();
+        
             var ipAddress = Utils.GetCurrentIpAddress();
             request.AddHeader("IpAddress", ipAddress);
 
@@ -252,6 +265,12 @@ namespace Omnicx.API.SDK.Api
             if (httpContext.Session[Constants.SESSION_COMPANYID] != null)
                 request.AddHeader("CompanyId", httpContext.Session[Constants.SESSION_COMPANYID].ToString());
 
+            if (httpContext.Session[Constants.SESSION_ISGHOSTLOGIN] != null)         
+                request.AddHeader("IsGhostLogin", httpContext.Session[Constants.SESSION_ISGHOSTLOGIN].ToString());
+            if (httpContext.Session[Constants.SESSION_ADMINUSER] != null)
+                request.AddHeader("AdminUserName", httpContext.Session[Constants.SESSION_ADMINUSER].ToString());
+           
+
             var configModel = (ConfigModel)httpContext.Session[Constants.SESSION_CONFIG_SETTINGS];
 
             if (configModel == null) {
@@ -274,7 +293,7 @@ namespace Omnicx.API.SDK.Api
                 //this is doen because at times, an error is thrown and the error is cached fro the respective key.
                 // so, if an error is found in the message, the API call si triggered else teh data is returned from the cache
                 if (data.Message == null) return data;
-                if (!data.Message.Contains("error")) { return data; }
+                if (!data.Message.Contains("error")) { SetContentSnippets(data); return data; }
             }
             var response = CallApi<T>(apiUrl, requestJson, method,paramName, parameterType, contentType);
             data = response;
@@ -283,6 +302,7 @@ namespace Omnicx.API.SDK.Api
                 //this is doen because at times, an error is thrown and the error is cached fro the respective key.
                 // so, if an error is found in the message, the data is NOT cached by the key
                 CacheManager.Set(cacheKey, data);
+                SetContentSnippets(data);
             }
 
             return data;
@@ -296,7 +316,7 @@ namespace Omnicx.API.SDK.Api
                 //this is doen because at times, an error is thrown and the error is cached fro the respective key.
                 // so, if an error is found in the message, the API call si triggered else teh data is returned from the cache
                 if (data.Message == null) return data;
-                if (!data.Message.Contains("error")) { return data; }
+                if (!data.Message.Contains("error")) { SetContentSnippets(data); return data; }
             }
             var task = await CallApiAsync<T>(apiUrl, requestJson, method, paramName, parameterType, contentType);
             
@@ -305,6 +325,7 @@ namespace Omnicx.API.SDK.Api
                 //this is doen because at times, an error is thrown and the error is cached fro the respective key.
                 // so, if an error is found in the message, the data is NOT cached by the key
                 CacheManager.Set(cacheKey, task);
+                SetContentSnippets(task);
             }
 
             return task;

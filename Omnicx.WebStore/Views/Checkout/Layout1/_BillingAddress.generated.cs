@@ -39,7 +39,7 @@ namespace ASP
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Checkout/Layout1/_BillingAddress.cshtml")]
-    public partial class _Views_Checkout_Layout1__BillingAddress_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Commerce.AddressModel>
+    public partial class _Views_Checkout_Layout1__BillingAddress_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Commerce.AddressModel>
     {
         public _Views_Checkout_Layout1__BillingAddress_cshtml()
         {

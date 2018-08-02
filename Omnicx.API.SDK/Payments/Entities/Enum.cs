@@ -9,7 +9,8 @@
         Givex,
         AccountCredit,
         Cheque,
-        Worldpay
+        Worldpay,
+        Klarna
     }
     public enum PaymentStatus : int
     {

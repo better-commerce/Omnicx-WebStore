@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
-using Omnicx.API.SDK.Entities;
-using Omnicx.API.SDK.Models.Site;
+
+using Omnicx.WebStore.Models.Site;
 using RestSharp;
-using Omnicx.API.SDK.Models;
+using Omnicx.WebStore.Models;
+using Omnicx.WebStore.Models.Keys;
+
 namespace Omnicx.API.SDK.Api.Site
 {
     public class ContentApi : ApiBase, IContentApi

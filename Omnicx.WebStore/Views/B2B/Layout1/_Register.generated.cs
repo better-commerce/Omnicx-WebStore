@@ -30,7 +30,7 @@ namespace ASP
     using DevTrends.MvcDonutCaching;
     
     #line 14 "..\..\Views\B2B\Layout1\_Register.cshtml"
-    using Omnicx.API.SDK.Models.B2B;
+    using Omnicx.WebStore.Models.B2B;
     
     #line default
     #line hidden

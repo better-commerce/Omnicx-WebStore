@@ -120,7 +120,7 @@ WriteLiteral(" ng-src=\"{{pm.model.image}}\"");
 
 WriteLiteral(" class=\"img-responsive\"");
 
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
 WriteLiteral(" ng-cloak>\r\n                    </div>\r\n                    <div");
 
@@ -162,7 +162,7 @@ WriteLiteral(">\r\n                                                    <img");
 
 WriteLiteral(" ng-src=\"{{img.url}}\"");
 
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
 WriteLiteral(" ng-click=\"pm.model.image=img.url\"");
 

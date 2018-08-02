@@ -10,9 +10,9 @@
     */
 }
 @inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
-@using Omnicx.API.SDK.Entities
+@using Omnicx.WebStore.Models.Enums
 @using Omnicx.WebStore.Framework.Helpers
-@using Omnicx.API.SDK.Models.Helpers
+@using Omnicx.WebStore.Models.Helpers
 @{
     var customerAddressForm = Html.Angular().ModelFor("am.model");
     var userRole = SessionContext.CurrentUserRole;

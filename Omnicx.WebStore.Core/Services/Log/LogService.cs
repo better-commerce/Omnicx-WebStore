@@ -2,10 +2,12 @@
 using Omnicx.WebStore.Core.Services.Authentication;
 using System;
 using Omnicx.API.SDK.Api.Infra;
-using Omnicx.API.SDK.Models.Common;
-using Omnicx.API.SDK.Models.Infrastructure;
+using Omnicx.WebStore.Models.Common;
+using Omnicx.WebStore.Models.Infrastructure;
 using Omnicx.API.SDK.Helpers;
-using Omnicx.API.SDK.Entities;
+using Omnicx.WebStore.Models.Keys;
+using Omnicx.WebStore.Models.Enums;
+
 namespace Omnicx.WebStore.Core.Services.Log
 {
     public partial class LogService: ILogService

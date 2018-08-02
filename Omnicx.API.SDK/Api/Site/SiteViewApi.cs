@@ -1,12 +1,13 @@
 ﻿using System.Threading.Tasks;
-using Omnicx.API.SDK.Models.Site;
+using Omnicx.WebStore.Models.Site;
 using RestSharp;
-using Omnicx.API.SDK.Models;
-using Omnicx.API.SDK.Entities;
+using Omnicx.WebStore.Models;
+
 using Omnicx.API.SDK.Helpers;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using Omnicx.API.SDK.Api.Infra;
+using Omnicx.WebStore.Models.Keys;
 
 namespace Omnicx.API.SDK.Api.Site
 {
@@ -36,16 +37,10 @@ namespace Omnicx.API.SDK.Api.Site
         public async Task<ResponseModel<SiteViewModel>> GetSiteViewComponentsAsync(string slug)
         {
             var sessionContext = DependencyResolver.Current.GetService<ISessionContext>();
-            var key = string.Format(CacheKeys.SITEVIEW_MODEL_BY_SLUG, Utils.GetSlugFromUrl(), sessionContext.CurrentSiteConfig?.RegionalSettings?.DefaultLanguageCulture);
+            var key = string.Format(CacheKeys.SITEVIEW_MODEL_BY_SLUG, Utils.GetSlugFromUrl(), sessionContext.CurrentSiteConfig?.RegionalSettings?.DefaultLanguageCulture, Utils.GetBrowserInfo().IsMobileDevice);
 
             var task= await  FetchFromCacheOrApiAsync<SiteViewModel>(key, ApiUrls.SiteViewComponents, slug, Method.POST, "slug", ParameterType.QueryString, "text/plain");
-            return task;
-            //var siteview = CacheManager.Get<ResponseModel<SiteViewModel>>(key);
-            //if (siteview != null) return siteview;
-
-            //var task= await CallApiAsync<SiteViewModel>(ApiUrls.SiteViewComponents, slug, Method.POST, "slug", ParameterType.QueryString, "text/plain");
-            //CacheManager.Set(key, task);
-            //return task;
+            return task;            
         }
         public ResponseModel<FeedModel> GetFeedLink(string slug)
         {

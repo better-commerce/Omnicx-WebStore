@@ -36,7 +36,7 @@ namespace ASP
     #line hidden
     
     #line 16 "..\..\Views\B2B\Layout1\Users.cshtml"
-    using Omnicx.API.SDK.Models;
+    using Omnicx.WebStore.Models;
     
     #line default
     #line hidden
@@ -57,7 +57,7 @@ namespace ASP
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/B2B/Layout1/Users.cshtml")]
-    public partial class _Views_B2B_Layout1_Users_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<List<Omnicx.API.SDK.Models.B2B.CompanyUserModel>>
+    public partial class _Views_B2B_Layout1_Users_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<List<Omnicx.WebStore.Models.B2B.CompanyUserModel>>
     {
         public _Views_B2B_Layout1_Users_cshtml()
         {

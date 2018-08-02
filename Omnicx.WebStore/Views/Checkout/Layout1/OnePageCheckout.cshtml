@@ -19,7 +19,7 @@
     */
 }
 @using Microsoft.Web.Mvc
-@using Omnicx.API.SDK.Models.Common
+@using Omnicx.WebStore.Models.Common
 @using Omnicx.WebStore.Framework.Helpers
 @using Omnicx.WebStore.Core.Controllers
 @inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<CheckoutViewModel>
@@ -29,17 +29,10 @@
     Layout = "~/Views/Shared/Layout1/_OpcLayout.cshtml";
 }
 @{
-    <div class="row">
-        <div class="col-md-12 clearfix">
-            <ul class="breadcrumb">
-                <li>
-                    <a href="/">@LT("ProductListing.Breadcrumb.Home", "Home")</a>
-                </li>
-                <li>@LT("Checkout.Title.Checkout", "Checkout")</li>
-            </ul>
+    <div class="row margin-top-md" ng-controller="checkoutCtrl as ck">
+        <div ng-cloak class="alert alert-danger" ng-show="ck.basketerror != null">
+            <i class="fa fa-circle"></i><span ng-bind="ck.basketerror"></span>
         </div>
-    </div>
-    <div class="row" ng-controller="checkoutCtrl as ck">
         @if (Model.Checkout != null && Model.Checkout.Basket.GrandTotal.Raw.WithTax > 0)
         {
             <div class="row" ng-show="ck.basket.lineItems.length>0">
@@ -56,7 +49,7 @@
                     </div>
                     <div class="row" ng-init="ck.initMethod();ck.oldBasketPopup();">
                         <div class="col-sm-12">
-                            <div class="summery-border">
+                            <div class="summery-border bg-white">
                                 @if (SessionContext.CurrentUser == null)
                                 {
                                     <div class="row" ng-init="ck.custInfoCheck();">
@@ -263,7 +256,7 @@
         var addPersistentBasket = '@(Html.BuildUrlFromExpression<CommonController>(c => c.AddPersistentBasket(new Guid(), new Guid())))';
         var UpdateBasketDeliveryAddress = '@(Html.BuildUrlFromExpression<CheckoutController>(c => c.UpdateBasketDeliveryAddress(null)))';
         var savedBaskets = '@(Html.BuildUrlFromExpression<BasketController>(c => c.GetSavedBaskets()))';
-          var register = '@(Html.BuildUrlFromExpression<AccountController>(c => c.Registration(null)))';
+        var register = '@(Html.BuildUrlFromExpression<AccountController>(c => c.Registration(null)))';
         window.app.constant('checkoutConfig',{
             signIn : signIn,
             converToOrder : converToOrder,
@@ -283,7 +276,8 @@
             addPersistentBasket: addPersistentBasket,
             UpdateBasketDeliveryAddress: UpdateBasketDeliveryAddress,
             savedBaskets: savedBaskets,
-            register: register
+            register: register,
+            klarna: 'Klarna'
         });
         window.app.constant('model', @Html.JsonFor(Model));
     </script>

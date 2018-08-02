@@ -3,14 +3,16 @@ using System.Linq;
 using System.Web.Mvc;
 using Omnicx.API.SDK.Api.Commerce;
 using Omnicx.API.SDK.Api.Infra;
-using Omnicx.API.SDK.Models.Common;
-using Omnicx.API.SDK.Models.Commerce;
+using Omnicx.WebStore.Models.Common;
+using Omnicx.WebStore.Models.Commerce;
 using Microsoft.Security.Application;
 using Omnicx.API.SDK.Payments;
 using Omnicx.WebStore.Core.Services.Authentication;
 using Omnicx.API.SDK.Payments.Entities;
-using Omnicx.API.SDK.Entities;
-using Omnicx.API.SDK.Models;
+using Omnicx.WebStore.Models.Keys;
+using Omnicx.WebStore.Models.Enums;
+
+using Omnicx.WebStore.Models;
 
 namespace Omnicx.WebStore.Core.Controllers
 {
@@ -41,22 +43,33 @@ namespace Omnicx.WebStore.Core.Controllers
             _b2bRepository = b2bRepository;
         }
         // GET: Checkout
-        public ActionResult OnePageCheckout(string basketId)
+        public virtual ActionResult OnePageCheckout(string basketId)
+        {
+            var model = GetCheckoutData(basketId);
+            if(model==null)
+                RedirectToAction("BasketNotFound", "Common");            
+            return View(CustomViews.ONE_PAGE_CHECKOUT, model);
+        }
+
+        protected CheckoutViewModel GetCheckoutData(string basketId)
         {
             var response = _checkoutApi.Checkout(Sanitizer.GetSafeHtmlFragment(basketId));
+
             var checkout = response.Result;
             if (checkout.BasketId == null || checkout.Basket == null || checkout.Basket.LineItems.Count < 1)
             {
-                return RedirectToAction("BasketNotFound", "Common");
+                return null; 
             }
             foreach (var pay in checkout.PaymentOptions)
             {
                 pay.CardInfo.Amount = checkout.BalanceAmount.Raw.WithTax;
             }
-            var result= _configApi.GetConfig();
+            checkout.LanuguageCode = _sessionContext.CurrentSiteConfig.RegionalSettings.DefaultLanguageCulture;
+            checkout.CurrencyCode = _sessionContext.CurrentSiteConfig.RegionalSettings.DefaultCurrencyCode;
+            var result = _configApi.GetConfig();
             var data = result.Result;
             //checkout.Basket.shippingMethods = 0  is simpl check this implementation later
-            data.ShippingCountries = data.ShippingCountries.Where(x => checkout.Basket.shippingMethods.Any(y => y.CountryCode == x.TwoLetterIsoCode) || checkout.Basket.shippingMethods.Count() == 0).Distinct().ToList();           
+            data.ShippingCountries = data.ShippingCountries.Where(x => checkout.Basket.shippingMethods.Any(y => y.CountryCode == x.TwoLetterIsoCode) || checkout.Basket.shippingMethods.Count() == 0).Distinct().ToList();
             var model = new CheckoutViewModel
             {
                 Checkout = checkout,
@@ -64,10 +77,10 @@ namespace Omnicx.WebStore.Core.Controllers
                 Login = new LoginViewModel(),
                 BillingCountries = data.BillingCountries,
                 ShippingCountries = data.ShippingCountries,
-                CurrentDate = DateTime.Today.Date.AddDays(1)               
+                CurrentDate = DateTime.Today.Date.AddDays(1)
             };
 
-            if(_sessionContext.CurrentUser==null)
+            if (_sessionContext.CurrentUser == null)
             {
                 model.RegistrationPrompt = Convert.ToBoolean(_sessionContext.CurrentSiteConfig.BasketSettings.RegistrationPrompt);
             }
@@ -99,16 +112,15 @@ namespace Omnicx.WebStore.Core.Controllers
                     checkout.Stage = BasketStage.Anonymous.GetHashCode();
                 }
                 SetDataLayerVariables(response.Result?.Basket, WebhookEventTypes.CheckoutStarted);
-                return View(CustomViews.ONE_PAGE_CHECKOUT, model);
+                return model;
             }
             model.Checkout.CustomerId = _sessionContext.CurrentUser.UserId.ToString();
             model.Checkout.Email = _sessionContext.CurrentUser.Email;
             var WishlistResponse = _customerRepository.GetWishlist(model.Checkout.CustomerId, true);
             model.Checkout.WishlistProducts = WishlistResponse.Result;
             SetDataLayerVariables(response.Result?.Basket, WebhookEventTypes.CheckoutStarted);
-            return View(CustomViews.ONE_PAGE_CHECKOUT, model);
+            return model;
         }
-
         public ActionResult UpdateBasketDeliveryAddress(CheckoutModel checkout)
         {
             var response = _checkoutApi.UpdateBasketDeliveryAddress(Sanitizer.GetSafeHtmlFragment(checkout.BasketId), checkout);
@@ -127,7 +139,8 @@ namespace Omnicx.WebStore.Core.Controllers
             if (checkout.CustomerId == Guid.Empty.ToString() || checkout.CustomerId == null) {
                 var user = new CustomerModel {
                     Email = Sanitizer.GetSafeHtmlFragment(checkout.Email),
-                    Password = Sanitizer.GetSafeHtmlFragment(checkout.Password)
+                    Password = Sanitizer.GetSafeHtmlFragment(checkout.Password),
+                    SourceProcess = SourceProcessType.SITE_CHECKOUTGUEST.ToString()
                 };
 
                var responseTemp = _customerRepository.GetExistingUser(user.Email);              
@@ -152,6 +165,7 @@ namespace Omnicx.WebStore.Core.Controllers
             if (response.Result==null) {
                 return JsonSuccess(response, JsonRequestBehavior.AllowGet);
             }
+           
             _b2bRepository.RemoveQuoteBasket(); 
             var order = response.Result;
             var paymentRequest=new ProcessPaymentRequest
@@ -183,22 +197,33 @@ namespace Omnicx.WebStore.Core.Controllers
             if (paymentResponse.Success && paymentResponse.AuthorizedAmount>0)
             {
                 order.Payment.IsValid = true;
-                order.Payment.Status = order.Payment.IsValid.GetHashCode();
+                order.Payment.Status = PaymentStatus.Authorized.GetHashCode();
+                order.Payment.OrderAmount = paymentResponse.AuthorizedAmount;
                 order.Payment.AuthCode = paymentResponse.AuthorizationTransactionCode;
                 order.Payment.CardNo = paymentRequest.CardNo;
-                order.Payment.OrderAmount = paymentResponse.AuthorizedAmount;
-                var result =  _checkoutApi.UpdatePayment(order.Id, order.Payment);
-                paymentResponse.BalanceAmount = result.Result?.BalanceAmount;
-               
-            }      
-            
+                order.Payment.PspResponseCode = paymentRequest.PspSessionCookie;
+
+                var paymentResult = _checkoutApi.UpdatePayment(order.Id, order.Payment);
+                paymentResponse.BalanceAmount = paymentResult.Result?.BalanceAmount;
+            }
+            else
+            {
+                order.Payment.IsValid = false;
+                order.Payment.Status = PaymentStatus.Pending.GetHashCode();
+                order.Payment.AuthCode = paymentResponse.AuthorizationTransactionCode;
+                order.Payment.PspSessionCookie = paymentResponse.PspSessionCookie;
+                var paymentResult = _checkoutApi.UpdatePayment(order.Id, order.Payment);
+                //paymentResponse.RefOrderId = order.Payment.Id;
+            }
+           
+
             return JsonSuccess(paymentResponse, JsonRequestBehavior.AllowGet);
         }
 
         
         public ActionResult OrderConfirmation()
         {
-            return RedirectToAction("PageNotFound", "Common");
+            return RedirectToAction("PageNotFound", "Common", new { @aspxerrorpath = "/checkout/OrderConfirmation" });
         }
 
         [HttpPost]
@@ -435,13 +460,13 @@ namespace Omnicx.WebStore.Core.Controllers
             return JsonSuccess(true , JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult GuestCheckout(CheckoutModel model)
+        public virtual ActionResult GuestCheckout(CheckoutModel model)
         {
             if (!ModelState.IsValid)
             {
                 return JsonValidationError();
             }
-            var responseresult = new ResponseModel<Omnicx.API.SDK.Models.Commerce.BasketModel>();
+            var responseresult = new ResponseModel<Omnicx.WebStore.Models.Commerce.BasketModel>();
             var response = _customerRepository.GetUserdetailsByUserName(Sanitizer.GetSafeHtmlFragment(model.Email));
             var existingUser = response.Result;
             if (existingUser.Count > 0)
@@ -459,7 +484,8 @@ namespace Omnicx.WebStore.Core.Controllers
                 var user = new CustomerModel
                 {
                     Email = Sanitizer.GetSafeHtmlFragment(model.Email),
-                    Password = Sanitizer.GetSafeHtmlFragment(model.Password)
+                    Password = Sanitizer.GetSafeHtmlFragment(model.Password),
+                    SourceProcess = SourceProcessType.SITE_CHECKOUTGUEST.ToString()
                 };
                 var result = _customerRepository.Register(user);
                 if (result.Result.IsValid)

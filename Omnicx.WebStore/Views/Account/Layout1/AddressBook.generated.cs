@@ -34,18 +34,6 @@ namespace ASP
     
     #line default
     #line hidden
-    
-    #line 19 "..\..\Views\Account\Layout1\AddressBook.cshtml"
-    using Omnicx.API.SDK.Entities;
-    
-    #line default
-    #line hidden
-    
-    #line 23 "..\..\Views\Account\Layout1\AddressBook.cshtml"
-    using Omnicx.API.SDK.Models.Helpers;
-    
-    #line default
-    #line hidden
     using Omnicx.WebStore;
     using Omnicx.WebStore.Core;
     
@@ -61,9 +49,21 @@ namespace ASP
     #line default
     #line hidden
     
+    #line 19 "..\..\Views\Account\Layout1\AddressBook.cshtml"
+    using Omnicx.WebStore.Models.Enums;
+    
+    #line default
+    #line hidden
+    
+    #line 23 "..\..\Views\Account\Layout1\AddressBook.cshtml"
+    using Omnicx.WebStore.Models.Helpers;
+    
+    #line default
+    #line hidden
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Account/Layout1/AddressBook.cshtml")]
-    public partial class _Views_Account_Layout1_AddressBook_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Commerce.AddressModel>
+    public partial class _Views_Account_Layout1_AddressBook_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Commerce.AddressModel>
     {
         public _Views_Account_Layout1_AddressBook_cshtml()
         {
@@ -118,6 +118,8 @@ WriteLiteral("\r\n");
             #line default
             #line hidden
 WriteLiteral("\r\n<section");
+
+WriteLiteral(" class=\"container dataContainer\"");
 
 WriteLiteral(" ng-controller=\"accountCtrl as am\"");
 
@@ -211,34 +213,13 @@ WriteLiteral("!</strong>\r\n                </div>\r\n            </p>\r\n      
             
             #line default
             #line hidden
-WriteLiteral("\r\n    <div");
+WriteLiteral("\r\n    \r\n    <div");
 
 WriteLiteral(" class=\"row\"");
 
 WriteLiteral(">\r\n        <div");
 
-WriteLiteral(" class=\"col-sm-12 col-xs-12\"");
-
-WriteLiteral(">\r\n            <h3");
-
-WriteLiteral(" class=\"panel-h2 hidden-xs\"");
-
-WriteLiteral(">");
-
-            
-            #line 58 "..\..\Views\Account\Layout1\AddressBook.cshtml"
-                                      Write(LT("MyAccount.Text.Name", "My Address Book"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</h3>\r\n        </div>\r\n    </div>\r\n    <div");
-
-WriteLiteral(" class=\"row\"");
-
-WriteLiteral(">\r\n        <div");
-
-WriteLiteral(" class=\"col-xs-12 visible-xs margin-bottom-lg\"");
+WriteLiteral(" class=\"col-xs-12 visible-xs\"");
 
 WriteLiteral(" id=\"exTab1\"");
 
@@ -247,7 +228,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("            ");
 
             
-            #line 63 "..\..\Views\Account\Layout1\AddressBook.cshtml"
+            #line 59 "..\..\Views\Account\Layout1\AddressBook.cshtml"
        Write(Html.Partial("~/Views/Account/Layout1/_MobileSideNav.cshtml"));
 
             
@@ -262,20 +243,40 @@ WriteLiteral(">\r\n");
 WriteLiteral("            ");
 
             
-            #line 66 "..\..\Views\Account\Layout1\AddressBook.cshtml"
+            #line 62 "..\..\Views\Account\Layout1\AddressBook.cshtml"
        Write(Html.Partial("~/Views/Account/Layout1/_SideNav.cshtml"));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n        </div>\r\n        <!-- *** LEFT COLUMN ***\r\n        _____________________" +
-"____________________________________ -->\r\n        <div");
+WriteLiteral("\r\n        </div>\r\n        <div");
 
 WriteLiteral(" class=\"col-md-9 col-sm-8 col-xs-12\"");
 
 WriteLiteral(" ng-init=\"am.custAddressGrid()\"");
 
-WriteLiteral(">\r\n\r\n            <div");
+WriteLiteral(">\r\n            <div");
+
+WriteLiteral(" class=\"row\"");
+
+WriteLiteral(">\r\n                <div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12\"");
+
+WriteLiteral(">\r\n                    <h3");
+
+WriteLiteral(" class=\"panel-h2\"");
+
+WriteLiteral(">");
+
+            
+            #line 67 "..\..\Views\Account\Layout1\AddressBook.cshtml"
+                                    Write(LT("MyAccount.Text.Name", "My Address Book"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</h3>\r\n                </div>\r\n            </div>\r\n            <div");
 
 WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding\"");
 
@@ -284,13 +285,13 @@ WriteLiteral(" ng-show=\"am.showGrid\"");
 WriteLiteral(">\r\n");
 
             
-            #line 73 "..\..\Views\Account\Layout1\AddressBook.cshtml"
+            #line 71 "..\..\Views\Account\Layout1\AddressBook.cshtml"
                 
             
             #line default
             #line hidden
             
-            #line 73 "..\..\Views\Account\Layout1\AddressBook.cshtml"
+            #line 71 "..\..\Views\Account\Layout1\AddressBook.cshtml"
                  if (userRole == (CompanyUserRole.None) || userRole == (CompanyUserRole.Admin))
                 {
 
@@ -324,7 +325,7 @@ WriteLiteral(" class=\"animate btn-success\"");
 WriteLiteral(">\r\n                    </div>\r\n");
 
             
-            #line 79 "..\..\Views\Account\Layout1\AddressBook.cshtml"
+            #line 77 "..\..\Views\Account\Layout1\AddressBook.cshtml"
                 }
 
             
@@ -359,13 +360,13 @@ WriteLiteral(@">
 ");
 
             
-            #line 92 "..\..\Views\Account\Layout1\AddressBook.cshtml"
+            #line 90 "..\..\Views\Account\Layout1\AddressBook.cshtml"
                                     
             
             #line default
             #line hidden
             
-            #line 92 "..\..\Views\Account\Layout1\AddressBook.cshtml"
+            #line 90 "..\..\Views\Account\Layout1\AddressBook.cshtml"
                                      if (userRole == (CompanyUserRole.None) || userRole == (CompanyUserRole.Admin))
                                     {
 
@@ -379,7 +380,7 @@ WriteLiteral(" colspan=\"2\"");
 WriteLiteral(">Action</th>\r\n");
 
             
-            #line 95 "..\..\Views\Account\Layout1\AddressBook.cshtml"
+            #line 93 "..\..\Views\Account\Layout1\AddressBook.cshtml"
                                     }
 
             
@@ -433,13 +434,13 @@ WriteLiteral(" class=\"fa fa-times color-black\"");
 WriteLiteral("></i></td>\r\n");
 
             
-            #line 108 "..\..\Views\Account\Layout1\AddressBook.cshtml"
+            #line 106 "..\..\Views\Account\Layout1\AddressBook.cshtml"
                                     
             
             #line default
             #line hidden
             
-            #line 108 "..\..\Views\Account\Layout1\AddressBook.cshtml"
+            #line 106 "..\..\Views\Account\Layout1\AddressBook.cshtml"
                                      if (userRole == (CompanyUserRole.None) || userRole == (CompanyUserRole.Admin))
                                     {
 
@@ -473,7 +474,7 @@ WriteLiteral(" class=\"fa fa-trash-o\"");
 WriteLiteral("></i></a></td>\r\n");
 
             
-            #line 112 "..\..\Views\Account\Layout1\AddressBook.cshtml"
+            #line 110 "..\..\Views\Account\Layout1\AddressBook.cshtml"
                                     }
 
             
@@ -494,7 +495,7 @@ WriteLiteral(" class=\"lead\"");
 WriteLiteral(">");
 
             
-            #line 120 "..\..\Views\Account\Layout1\AddressBook.cshtml"
+            #line 118 "..\..\Views\Account\Layout1\AddressBook.cshtml"
                                Write(LT("MyAccount.Text.EmptyAddressBook", "No address saved in address book"));
 
             
@@ -509,8 +510,8 @@ WriteLiteral(">\r\n");
 WriteLiteral("                ");
 
             
-            #line 124 "..\..\Views\Account\Layout1\AddressBook.cshtml"
-           Write(Html.Partial("~/Views/Account/Layout1/_UserAddress.cshtml", new Omnicx.API.SDK.Models.Commerce.AddressModel()));
+            #line 122 "..\..\Views\Account\Layout1\AddressBook.cshtml"
+           Write(Html.Partial("~/Views/Account/Layout1/_UserAddress.cshtml", new Omnicx.WebStore.Models.Commerce.AddressModel()));
 
             
             #line default
@@ -520,7 +521,7 @@ WriteLiteral("\r\n            </div>\r\n");
 WriteLiteral("            ");
 
             
-            #line 126 "..\..\Views\Account\Layout1\AddressBook.cshtml"
+            #line 124 "..\..\Views\Account\Layout1\AddressBook.cshtml"
        Write(Html.Partial("~/Views/Account/Layout1/_AddressModal.cshtml"));
 
             
@@ -536,7 +537,7 @@ DefineSection("Scripts", () => {
 WriteLiteral("\r\n    <script>\r\n        var custGridUrl = \'");
 
             
-            #line 138 "..\..\Views\Account\Layout1\AddressBook.cshtml"
+            #line 136 "..\..\Views\Account\Layout1\AddressBook.cshtml"
                        Write(Html.BuildUrlFromExpression<AccountController>(c => c.GetCustomerAddress()));
 
             
@@ -545,7 +546,7 @@ WriteLiteral("\r\n    <script>\r\n        var custGridUrl = \'");
 WriteLiteral("\';\r\n        var getBillingCountriesUrl = \'");
 
             
-            #line 139 "..\..\Views\Account\Layout1\AddressBook.cshtml"
+            #line 137 "..\..\Views\Account\Layout1\AddressBook.cshtml"
                                   Write(Html.BuildUrlFromExpression<AccountController>(c => c.GetBillingCountries()));
 
             
@@ -554,7 +555,7 @@ WriteLiteral("\';\r\n        var getBillingCountriesUrl = \'");
 WriteLiteral("\';\r\n        var addByIdUrl = \'");
 
             
-            #line 140 "..\..\Views\Account\Layout1\AddressBook.cshtml"
+            #line 138 "..\..\Views\Account\Layout1\AddressBook.cshtml"
                       Write(Html.BuildUrlFromExpression<AccountController>(c => c.GetAddressById(null)));
 
             
@@ -563,7 +564,7 @@ WriteLiteral("\';\r\n        var addByIdUrl = \'");
 WriteLiteral("\';\r\n        var saveCustAddrUrl = \'");
 
             
-            #line 141 "..\..\Views\Account\Layout1\AddressBook.cshtml"
+            #line 139 "..\..\Views\Account\Layout1\AddressBook.cshtml"
                            Write(Html.BuildUrlFromExpression<AccountController>(c => c.SaveCustomerAddress(null)));
 
             
@@ -572,7 +573,7 @@ WriteLiteral("\';\r\n        var saveCustAddrUrl = \'");
 WriteLiteral("\';\r\n        var deleteAddressUrl = \'");
 
             
-            #line 142 "..\..\Views\Account\Layout1\AddressBook.cshtml"
+            #line 140 "..\..\Views\Account\Layout1\AddressBook.cshtml"
                             Write(Html.BuildUrlFromExpression<AccountController>(c => c.DeleteAddress(null)));
 
             
@@ -581,7 +582,7 @@ WriteLiteral("\';\r\n        var deleteAddressUrl = \'");
 WriteLiteral("\';\r\n        var changeDefaultAddressUrl = \'");
 
             
-            #line 143 "..\..\Views\Account\Layout1\AddressBook.cshtml"
+            #line 141 "..\..\Views\Account\Layout1\AddressBook.cshtml"
                                    Write(Html.BuildUrlFromExpression<AccountController>(c => c.changeDefaultAddress(null)));
 
             
@@ -599,7 +600,7 @@ WriteLiteral(@"';
         window.app.constant('model', ");
 
             
-            #line 152 "..\..\Views\Account\Layout1\AddressBook.cshtml"
+            #line 150 "..\..\Views\Account\Layout1\AddressBook.cshtml"
                                 Write(Html.JsonFor(Model));
 
             

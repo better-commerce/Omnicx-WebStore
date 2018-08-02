@@ -3,11 +3,13 @@ using System.Web.Mvc;
 using System.Web.UI;
 using DevTrends.MvcDonutCaching;
 using Omnicx.API.SDK.Api.Catalog;
-using Omnicx.API.SDK.Models.Catalog;
-using Omnicx.API.SDK.Entities;
+using Omnicx.WebStore.Models.Catalog;
+using Omnicx.WebStore.Models.Keys;
 using Omnicx.WebStore.Core.Helpers;
 using Microsoft.Security.Application;
 using System.Net;
+using Omnicx.WebStore.Models.Enums;
+
 namespace Omnicx.WebStore.Core.Controllers
 {
     /// <summary>
@@ -139,7 +141,7 @@ namespace Omnicx.WebStore.Core.Controllers
             //};
             if (branddetail.Result == null && branddetail.StatusCode == HttpStatusCode.NotFound)
             {
-                return RedirectToAction("pagenotfound", "common");
+                return RedirectToAction("pagenotfound", "common", new { @aspxerrorpath = slug });
             }
             SetDataLayerVariables(branddetail.Result, WebhookEventTypes.BrandViewed);
             return View(CustomViews.BRAND_PRODUCTS, branddetail.Result);

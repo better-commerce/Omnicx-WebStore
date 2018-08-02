@@ -28,14 +28,20 @@ namespace ASP
     using System.Web.UI;
     using System.Web.WebPages;
     using DevTrends.MvcDonutCaching;
+    using Omnicx.WebStore;
+    using Omnicx.WebStore.Core;
     
-    #line 12 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
-    using Omnicx.API.SDK.Entities;
+    #line 13 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
+    using Omnicx.WebStore.Models.Enums;
     
     #line default
     #line hidden
-    using Omnicx.WebStore;
-    using Omnicx.WebStore.Core;
+    
+    #line 12 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
+    using Omnicx.WebStore.Models.Keys;
+    
+    #line default
+    #line hidden
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Shared/Layout1/_MobileHeaderLayout.cshtml")]
@@ -49,15 +55,15 @@ namespace ASP
             
             #line 1 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
   
-/*
-    Name: Mobile Header
-    Purpose: Mobile Site Header UI
-    Structure: /Views/Shared/Layout1/_MobileHeaderLayout.cshtml
-    Contains (Partial Views Used):
+    /*
+        Name: Mobile Header
+        Purpose: Mobile Site Header UI
+        Structure: /Views/Shared/Layout1/_MobileHeaderLayout.cshtml
+        Contains (Partial Views Used):
 
-    Contained In (Where we Use this View):
-        a-/Views/Shared/Layout1/_LayoutHeader.cshtml
-    */
+        Contained In (Where we Use this View):
+            a-/Views/Shared/Layout1/_LayoutHeader.cshtml
+        */
 
             
             #line default
@@ -65,7 +71,7 @@ namespace ASP
 WriteLiteral("\r\n");
 
             
-            #line 15 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
+            #line 16 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
   
 
     var checkoutUrl = Url.Action("OnePageCheckout", "Checkout");
@@ -79,7 +85,7 @@ WriteLiteral("\r\n");
             #line hidden
 WriteLiteral("\r\n<div");
 
-WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding visible-xs bg-black\"");
+WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding visible-xs mobile-header\"");
 
 WriteLiteral(">\r\n    <div");
 
@@ -94,7 +100,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("            ");
 
             
-            #line 26 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
+            #line 27 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
        Write(Html.Action("SiteLogo", "Home", true));
 
             
@@ -182,7 +188,7 @@ WriteLiteral(">\r\n                                                        <img"
 
 WriteLiteral(" ng-src=\"{{items.image}}\"");
 
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
 WriteLiteral(">\r\n                                                    </a>\r\n                    " +
 "                            </span>\r\n                                           " +
@@ -273,24 +279,24 @@ WriteLiteral(">\r\n                                                        <stro
 
 WriteLiteral(" class=\"text-orange\"");
 
-WriteAttribute("ng-show", Tuple.Create(" ng-show=\"", 4401), Tuple.Create("\"", 4484)
-, Tuple.Create(Tuple.Create("", 4411), Tuple.Create("items.displayInBasket", 4411), true)
-, Tuple.Create(Tuple.Create(" ", 4432), Tuple.Create("&&", 4433), true)
-, Tuple.Create(Tuple.Create(" ", 4435), Tuple.Create("items.itemType", 4436), true)
-, Tuple.Create(Tuple.Create(" ", 4450), Tuple.Create("==", 4451), true)
+WriteAttribute("ng-show", Tuple.Create(" ng-show=\"", 4453), Tuple.Create("\"", 4536)
+, Tuple.Create(Tuple.Create("", 4463), Tuple.Create("items.displayInBasket", 4463), true)
+, Tuple.Create(Tuple.Create(" ", 4484), Tuple.Create("&&", 4485), true)
+, Tuple.Create(Tuple.Create(" ", 4487), Tuple.Create("items.itemType", 4488), true)
+, Tuple.Create(Tuple.Create(" ", 4502), Tuple.Create("==", 4503), true)
             
-            #line 68 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
-                                                       , Tuple.Create(Tuple.Create("", 4453), Tuple.Create<System.Object, System.Int32>(ItemTypes.Bundle.GetHashCode()
+            #line 69 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
+                                                       , Tuple.Create(Tuple.Create("", 4505), Tuple.Create<System.Object, System.Int32>(ItemTypes.Bundle.GetHashCode()
             
             #line default
             #line hidden
-, 4453), false)
+, 4505), false)
 );
 
 WriteLiteral(">");
 
             
-            #line 68 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
+            #line 69 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
                                                                                                                                                                    Write(LT("YourBag.Text.IncludeComponents", "Included Components:"));
 
             
@@ -326,7 +332,7 @@ WriteLiteral(" class=\"col-sm-4 col-xs-4 no-padding-left text-right\"");
 WriteLiteral(">\r\n                                                                <strong>");
 
             
-            #line 74 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
+            #line 75 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
                                                                    Write(LT("YourBag.Text.Qty", "Qty:"));
 
             
@@ -367,7 +373,7 @@ WriteLiteral(">\r\n                                                            <
 
 WriteLiteral(" ng-src=\"{{items.image}}\"");
 
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
 WriteLiteral(">\r\n                                                        </a>\r\n                " +
 "                                    </span>\r\n                                   " +
@@ -394,7 +400,7 @@ WriteLiteral(" class=\"pull-right text-right\"");
 WriteLiteral(">");
 
             
-            #line 93 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
+            #line 94 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
                                                                                        Write(LT("YourBag.Text.Free", "FREE"));
 
             
@@ -463,14 +469,14 @@ WriteLiteral(" class=\"form-control\"");
 
 WriteLiteral(" ng-model=\"promoCode\"");
 
-WriteAttribute("placeholder", Tuple.Create(" placeholder=\"", 8445), Tuple.Create("\"", 8529)
+WriteAttribute("placeholder", Tuple.Create(" placeholder=\"", 8471), Tuple.Create("\"", 8555)
             
-            #line 110 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
-                                      , Tuple.Create(Tuple.Create("", 8459), Tuple.Create<System.Object, System.Int32>(LT("YourBag.Text.PlaceHolder.Enterpromotioncode", "Enter Promo Code")
+            #line 111 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
+                                      , Tuple.Create(Tuple.Create("", 8485), Tuple.Create<System.Object, System.Int32>(LT("YourBag.Text.PlaceHolder.Enterpromotioncode", "Enter Promo Code")
             
             #line default
             #line hidden
-, 8459), false)
+, 8485), false)
 );
 
 WriteLiteral(" style=\"width: 99%;\"");
@@ -501,7 +507,7 @@ WriteLiteral(" ng-show=\"gm.invalidpromo\"");
 WriteLiteral(">");
 
             
-            #line 114 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
+            #line 115 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
                                                                                                                                      Write(LT("Checkout.Text.InValidPromoMessage", "PromoCode Invalid!"));
 
             
@@ -516,7 +522,7 @@ WriteLiteral(" ng-show=\"gm.validpromo\"");
 WriteLiteral(">");
 
             
-            #line 115 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
+            #line 116 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
                                                                                                                                          Write(LT("Checkout.Text.ValidPromoMessage", "Successfully Applied"));
 
             
@@ -531,7 +537,7 @@ WriteLiteral(" ng-show=\"gm.promonull\"");
 WriteLiteral(">");
 
             
-            #line 116 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
+            #line 117 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
                                                                                                                                       Write(LT("Checkout.Text.NullPromoMessage", "Please enter promo code!"));
 
             
@@ -608,7 +614,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                                        ");
 
             
-            #line 137 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
+            #line 138 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
                                    Write(LT("YourBag.Text.Discount", "Discount"));
 
             
@@ -642,7 +648,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                                        ");
 
             
-            #line 142 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
+            #line 143 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
                                    Write(LT("YourBag.Text.GrandTotal", "Order Total"));
 
             
@@ -673,14 +679,14 @@ WriteLiteral(" class=\"col-sm-6 col-xs-6 no-padding-left\"");
 
 WriteLiteral(">\r\n                                        <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 12345), Tuple.Create("\"", 12382)
+WriteAttribute("href", Tuple.Create(" href=\"", 12371), Tuple.Create("\"", 12408)
             
-            #line 148 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
-, Tuple.Create(Tuple.Create("", 12352), Tuple.Create<System.Object, System.Int32>(Url.Action("Index", "Basket")
+            #line 149 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
+, Tuple.Create(Tuple.Create("", 12378), Tuple.Create<System.Object, System.Int32>(Url.Action("Index", "Basket")
             
             #line default
             #line hidden
-, 12352), false)
+, 12378), false)
 );
 
 WriteLiteral(" class=\"animate btn-bordered\"");
@@ -688,7 +694,7 @@ WriteLiteral(" class=\"animate btn-bordered\"");
 WriteLiteral(">");
 
             
-            #line 148 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
+            #line 149 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
                                                                                                          Write(LT("Header.Link.ViewCart", "View Cart"));
 
             
@@ -705,15 +711,15 @@ WriteLiteral(" class=\"col-sm-6 col-xs-6\"");
 
 WriteLiteral(">\r\n                                        <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 12648), Tuple.Create("\"", 12693)
+WriteAttribute("href", Tuple.Create(" href=\"", 12674), Tuple.Create("\"", 12719)
             
-            #line 151 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
-, Tuple.Create(Tuple.Create("", 12655), Tuple.Create<System.Object, System.Int32>(checkoutUrl
+            #line 152 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
+, Tuple.Create(Tuple.Create("", 12681), Tuple.Create<System.Object, System.Int32>(checkoutUrl
             
             #line default
             #line hidden
-, 12655), false)
-, Tuple.Create(Tuple.Create("", 12667), Tuple.Create("//{{gm.basketResponse.id}}", 12667), true)
+, 12681), false)
+, Tuple.Create(Tuple.Create("", 12693), Tuple.Create("//{{gm.basketResponse.id}}", 12693), true)
 );
 
 WriteLiteral(" class=\"animate btn-primary\"");
@@ -721,7 +727,7 @@ WriteLiteral(" class=\"animate btn-primary\"");
 WriteLiteral(">");
 
             
-            #line 151 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
+            #line 152 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
                                                                                                                 Write(LT("Checkout.Title.Checkout", "Checkout"));
 
             
@@ -731,9 +737,9 @@ WriteLiteral(" <i");
 
 WriteLiteral(" class=\"fa fa-caret-right\"");
 
-WriteLiteral("></i></a>\r\n                                    </div>                            " +
-"           \r\n                                </div>\r\n                           " +
-" </li>\r\n                            <li");
+WriteLiteral("></i></a>\r\n                                    </div>\r\n                          " +
+"      </div>\r\n                            </li>\r\n                            <li" +
+"");
 
 WriteLiteral(" ng-hide=\"gm.basketResponse.lineItems.length > 0\"");
 
@@ -778,13 +784,13 @@ WriteLiteral(" id=\"accountList\"");
 WriteLiteral(">\r\n");
 
             
-            #line 170 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
+            #line 171 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
                             
             
             #line default
             #line hidden
             
-            #line 170 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
+            #line 171 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
                              if (SessionContext.CurrentUser != null)
                             {
 
@@ -806,7 +812,7 @@ WriteLiteral(" class=\"text-capitalize mincharName\"");
 WriteLiteral("> ");
 
             
-            #line 174 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
+            #line 175 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
                                                                                                          Write(SessionContext.CurrentUser.FirstName);
 
             
@@ -815,7 +821,7 @@ WriteLiteral("> ");
 WriteLiteral(" ");
 
             
-            #line 174 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
+            #line 175 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
                                                                                                                                                Write(SessionContext.CurrentUser.LastName);
 
             
@@ -825,7 +831,7 @@ WriteLiteral("</span>\r\n                                    </a>\r\n           
 "  </li>\r\n");
 
             
-            #line 177 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
+            #line 178 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
                             }
 
             
@@ -834,7 +840,7 @@ WriteLiteral("</span>\r\n                                    </a>\r\n           
 WriteLiteral("                            ");
 
             
-            #line 178 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
+            #line 179 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
                              if (SessionContext.CurrentUser != null)
                             {
 
@@ -843,14 +849,14 @@ WriteLiteral("                            ");
             #line hidden
 WriteLiteral("                                <li><a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 14438), Tuple.Create("\"", 14479)
+WriteAttribute("href", Tuple.Create(" href=\"", 14425), Tuple.Create("\"", 14466)
             
-            #line 180 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
-, Tuple.Create(Tuple.Create("", 14445), Tuple.Create<System.Object, System.Int32>(Url.Action("Wishlist", "Account")
+            #line 181 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
+, Tuple.Create(Tuple.Create("", 14432), Tuple.Create<System.Object, System.Int32>(Url.Action("Wishlist", "Account")
             
             #line default
             #line hidden
-, 14445), false)
+, 14432), false)
 );
 
 WriteLiteral("><i");
@@ -861,14 +867,14 @@ WriteLiteral("></i> Wishlist</a></li>\r\n");
 
 WriteLiteral("                                <li><a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 14566), Tuple.Create("\"", 14611)
+WriteAttribute("href", Tuple.Create(" href=\"", 14553), Tuple.Create("\"", 14598)
             
-            #line 181 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
-, Tuple.Create(Tuple.Create("", 14573), Tuple.Create<System.Object, System.Int32>(Url.Action("OrderHistory", "Account")
+            #line 182 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
+, Tuple.Create(Tuple.Create("", 14560), Tuple.Create<System.Object, System.Int32>(Url.Action("OrderHistory", "Account")
             
             #line default
             #line hidden
-, 14573), false)
+, 14560), false)
 );
 
 WriteLiteral("><i");
@@ -879,14 +885,14 @@ WriteLiteral("></i> Orders</a></li>\r\n");
 
 WriteLiteral("                                <li><a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 14706), Tuple.Create("\"", 14748)
+WriteAttribute("href", Tuple.Create(" href=\"", 14693), Tuple.Create("\"", 14735)
             
-            #line 182 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
-, Tuple.Create(Tuple.Create("", 14713), Tuple.Create<System.Object, System.Int32>(Url.Action("MyAccount", "Account")
+            #line 183 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
+, Tuple.Create(Tuple.Create("", 14700), Tuple.Create<System.Object, System.Int32>(Url.Action("MyAccount", "Account")
             
             #line default
             #line hidden
-, 14713), false)
+, 14700), false)
 );
 
 WriteLiteral("><i");
@@ -897,14 +903,14 @@ WriteLiteral("></i> Account</a></li>\r\n");
 
 WriteLiteral("                                <li><a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 14833), Tuple.Create("\"", 14872)
+WriteAttribute("href", Tuple.Create(" href=\"", 14820), Tuple.Create("\"", 14859)
             
-            #line 183 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
-, Tuple.Create(Tuple.Create("", 14840), Tuple.Create<System.Object, System.Int32>(Url.Action("Logout", "Account")
+            #line 184 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
+, Tuple.Create(Tuple.Create("", 14827), Tuple.Create<System.Object, System.Int32>(Url.Action("Logout", "Account")
             
             #line default
             #line hidden
-, 14840), false)
+, 14827), false)
 );
 
 WriteLiteral("><i");
@@ -914,7 +920,7 @@ WriteLiteral(" class=\"fa fa-sign-out\"");
 WriteLiteral("></i> Logout</a></li>\r\n");
 
             
-            #line 184 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
+            #line 185 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
                             }
                             else
                             {
@@ -924,14 +930,14 @@ WriteLiteral("></i> Logout</a></li>\r\n");
             #line hidden
 WriteLiteral("                                <li><a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 15056), Tuple.Create("\"", 15095)
+WriteAttribute("href", Tuple.Create(" href=\"", 15043), Tuple.Create("\"", 15082)
             
-            #line 187 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
-, Tuple.Create(Tuple.Create("", 15063), Tuple.Create<System.Object, System.Int32>(Url.Action("SignIn", "Account")
+            #line 188 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
+, Tuple.Create(Tuple.Create("", 15050), Tuple.Create<System.Object, System.Int32>(Url.Action("SignIn", "Account")
             
             #line default
             #line hidden
-, 15063), false)
+, 15050), false)
 );
 
 WriteLiteral("><i");
@@ -941,7 +947,7 @@ WriteLiteral(" class=\"fa fa-sign-in\"");
 WriteLiteral("></i> Sign in</a></li>\r\n");
 
             
-            #line 188 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
+            #line 189 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
                             }
 
             
@@ -1007,8 +1013,8 @@ WriteLiteral(">\r\n                                <h3");
 
 WriteLiteral(" class=\"heading-h3\"");
 
-WriteLiteral(">Search</h3>                                \r\n                            </a>\r\n " +
-"                           <button");
+WriteLiteral(">Search</h3>\r\n                            </a>\r\n                            <butt" +
+"on");
 
 WriteLiteral(" type=\"button\"");
 
@@ -1027,7 +1033,7 @@ WriteLiteral(" class=\"sr-only\"");
 WriteLiteral(">");
 
             
-            #line 210 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
+            #line 211 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
                                                                                                                                                         Write(LT("Checkout.Button.Close", "Close"));
 
             
@@ -1050,7 +1056,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                                    ");
 
             
-            #line 215 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
+            #line 216 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
                                Write(Html.Partial("~/Views/Shared/Layout1/_SearchBox.cshtml"));
 
             
@@ -1065,7 +1071,7 @@ WriteLiteral("></div>\r\n                    </div>\r\n                </div>\r\
 "        </div>\r\n    </div>\r\n</div>\r\n");
 
             
-            #line 226 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
+            #line 227 "..\..\Views\Shared\Layout1\_MobileHeaderLayout.cshtml"
 Write(Html.Action("GetMobileNav", "Home"));
 
             

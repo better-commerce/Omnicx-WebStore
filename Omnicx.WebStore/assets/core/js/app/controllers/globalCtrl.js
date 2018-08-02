@@ -8,6 +8,8 @@
     window.app.constant('SERVICE_CONSTANTS', {
         'CUTTING': 'Cutting', 'COATING': 'Coating'
     });
+    // ADD CONSTANT FOR THEME DEFAULT IMAGE
+    window.DEFAULT_IMAGE_URL = '/assets/theme/ocx/images/noimagefound.jpg';
     window.app.controller('globalCtrl', globalCtrl);
     globalCtrl.$inject = ['$scope', '$timeout', 'globalConfig', 'loader', '$http', 'CapturePlus', 'scriptLoader', 'BULKORDER_CONSTANTS', 'SERVICE_CONSTANTS'];
     function globalCtrl($scope, $timeout, globalConfig, $http, loader, CapturePlus, scriptLoader, BULKORDER_CONSTANTS, SERVICE_CONSTANTS) {
@@ -40,6 +42,7 @@
         $scope.register = false;
         $scope.global_login = false;
         gm.basketData = null;
+        gm.isPasswordPolicyMeet = isPasswordPolicyMeet;
 
         //methods
         gm.userLogin = userLogin;
@@ -89,6 +92,7 @@
         gm.basketAction = basketAction;
         gm.cancelChangePostCode = cancelChangePostCode;
         gm.serializedData = serializedData;
+        gm.formReset = formReset;
 
         //***********TEMPORARY METHOD FOR POWDER COATING **********************
         gm.reCalculateServiceCharge = reCalculateServiceCharge;
@@ -442,7 +446,9 @@
             $http.post(globalConfig.addToBasket, prod)
                 .success(function (data) {
                     //vm.success = true;
-                    gm.basketResponse = data;
+                    if (data.messageCode == 'C002')
+                        gm.errorMessage = data.message;
+                    gm.basketResponse = data.result;
                     var count = 0;
                     if (gm.basketResponse != null) {
                         if (gm.basketResponse.lineItems != null) {
@@ -467,7 +473,9 @@
                             gm.count = gm.basketResponse.lineItemCount;
                         }
                     }
-
+                    window.setTimeout(function () {
+                        gm.errorMessage = null;
+                    }, 3000);
                     if (qty >= 1) {
                         var scroll = $(window).scrollTop();
                         if (scroll >= 200) {
@@ -621,6 +629,10 @@
             $http.post(globalConfig.bulkAddproduct, $scope.bulkOrder)
                 .success(function (data) {
                     var dataResult = gm.serializedData(data.result);
+                    if (data.messageCode == 'C002') {
+                        gm.errorMessage = data.message;
+                        $('.alert').show(0).delay(4000).hide(0);
+                    }
                     gm.basketResponse = dataResult;
                     PubSub.publish("addToCartBulk", gm.basketResponse);
                     var count = 0;
@@ -748,6 +760,7 @@
                             gm.isChecked = $.cookie(model.username);
                         }, 3000);
                         $("#login-modal").modal('hide');
+                        $.cookie('IsUserLoggedIn', true, { path: '/' });
                         if ($scope.global_login)
                             window.location.reload();
                         else
@@ -765,9 +778,8 @@
                     gm.saving = false;
                 });
         }
-        function checkPassword(form, pwdId, cnfPwdId) {
-            if (!gm.myPlugin) { gm.myPlugin = $("input[id='" + pwdId + "']").password_strength(); }
-            if (!gm.myPlugin.metReq())
+        function isPasswordPolicyMeet(flag, form, pwdId, cnfPwdId) {
+            if (!flag)
                 form[pwdId].$valid = false;
             else
                 form[pwdId].$valid = true;
@@ -780,6 +792,14 @@
             else
                 return false;
         }
+        function checkPassword(form, pwdId, cnfPwdId) {
+            if (!gm.myPlugin) {
+                gm.myPlugin = $("input[id='" + pwdId + "']").password_strength();
+            }
+            var resp = false;
+            $timeout(function () { resp = gm.myPlugin.metReq() }, 1500);
+            $timeout(function () { gm.isPasswordPolicyMeet(resp, form, pwdId, cnfPwdId) }, 1500);
+        }
 
         function registration(model) {
             $scope.global_login = false;
@@ -789,12 +809,13 @@
             gm.errorMessage = null;
             gm.success = false;
             $(".alertBlock").fadeIn();
-            if (!gm.isPasswordValid)
+            if (!gm.isPasswordPolicyMeet)
                 return false;
 
             $http.post(globalConfig.register, model)
                 .success(function (data) {
                     if (data) {
+                        $.cookie('IsUserLoggedIn', true, { path: '/' });
                         window.location.href = "/MyAccount";
                     }
                 })
@@ -1175,5 +1196,11 @@
             }
             return data;
         }
+        function formReset(form) {
+            if (form) {
+                form.$setPristine();
+                form.$setUntouched();
+            }
+        }   
     };
 })();

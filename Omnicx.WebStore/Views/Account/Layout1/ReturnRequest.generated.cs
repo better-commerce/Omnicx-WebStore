@@ -34,18 +34,6 @@ namespace ASP
     
     #line default
     #line hidden
-    
-    #line 17 "..\..\Views\Account\Layout1\ReturnRequest.cshtml"
-    using Omnicx.API.SDK.Entities;
-    
-    #line default
-    #line hidden
-    
-    #line 21 "..\..\Views\Account\Layout1\ReturnRequest.cshtml"
-    using Omnicx.API.SDK.Models.Helpers;
-    
-    #line default
-    #line hidden
     using Omnicx.WebStore;
     using Omnicx.WebStore.Core;
     
@@ -67,9 +55,21 @@ namespace ASP
     #line default
     #line hidden
     
+    #line 17 "..\..\Views\Account\Layout1\ReturnRequest.cshtml"
+    using Omnicx.WebStore.Models.Enums;
+    
+    #line default
+    #line hidden
+    
+    #line 21 "..\..\Views\Account\Layout1\ReturnRequest.cshtml"
+    using Omnicx.WebStore.Models.Helpers;
+    
+    #line default
+    #line hidden
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Account/Layout1/ReturnRequest.cshtml")]
-    public partial class _Views_Account_Layout1_ReturnRequest_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Commerce.ReturnModel>
+    public partial class _Views_Account_Layout1_ReturnRequest_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Commerce.ReturnModel>
     {
         public _Views_Account_Layout1_ReturnRequest_cshtml()
         {
@@ -111,6 +111,8 @@ WriteLiteral("\r\n");
             #line hidden
 WriteLiteral("\r\n\r\n<section");
 
+WriteLiteral(" class=\"container dataContainer\"");
+
 WriteLiteral(" ng-controller=\"accountCtrl as am\"");
 
 WriteLiteral(" ng-init=\"selectedQty=0\"");
@@ -142,14 +144,14 @@ WriteLiteral(">");
             #line hidden
 WriteLiteral("</a>\r\n                </li>\r\n                <li>\r\n                    <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1459), Tuple.Create("\"", 1504)
+WriteAttribute("href", Tuple.Create(" href=\"", 1498), Tuple.Create("\"", 1543)
             
             #line 38 "..\..\Views\Account\Layout1\ReturnRequest.cshtml"
-, Tuple.Create(Tuple.Create("", 1466), Tuple.Create<System.Object, System.Int32>(Url.Action("OrderHistory", "Account")
+, Tuple.Create(Tuple.Create("", 1505), Tuple.Create<System.Object, System.Int32>(Url.Action("OrderHistory", "Account")
             
             #line default
             #line hidden
-, 1466), false)
+, 1505), false)
 );
 
 WriteLiteral(">");
@@ -163,14 +165,14 @@ WriteLiteral(">");
             #line hidden
 WriteLiteral("</a>\r\n                </li>\r\n                <li><a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1601), Tuple.Create("\"", 1665)
+WriteAttribute("href", Tuple.Create(" href=\"", 1640), Tuple.Create("\"", 1704)
             
             #line 40 "..\..\Views\Account\Layout1\ReturnRequest.cshtml"
-, Tuple.Create(Tuple.Create("", 1608), Tuple.Create<System.Object, System.Int32>(Url.Action("OrderDetail", "Account", new {id=Model.Id })
+, Tuple.Create(Tuple.Create("", 1647), Tuple.Create<System.Object, System.Int32>(Url.Action("OrderDetail", "Account", new {id=Model.Id })
             
             #line default
             #line hidden
-, 1608), false)
+, 1647), false)
 );
 
 WriteLiteral(">");
@@ -288,14 +290,14 @@ WriteLiteral(">");
             #line hidden
 WriteLiteral("<a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2845), Tuple.Create("\"", 2883)
+WriteAttribute("href", Tuple.Create(" href=\"", 2884), Tuple.Create("\"", 2922)
             
             #line 61 "..\..\Views\Account\Layout1\ReturnRequest.cshtml"
-                                                        , Tuple.Create(Tuple.Create("", 2852), Tuple.Create<System.Object, System.Int32>(Url.Action("Contact", "pages")
+                                                        , Tuple.Create(Tuple.Create("", 2891), Tuple.Create<System.Object, System.Int32>(Url.Action("Contact", "pages")
             
             #line default
             #line hidden
-, 2852), false)
+, 2891), false)
 );
 
 WriteLiteral(">");
@@ -322,7 +324,7 @@ WriteLiteral(" class=\"row\"");
 
 WriteLiteral(">\r\n        <div");
 
-WriteLiteral(" class=\"col-xs-12 margin-bottom-lg visible-xs\"");
+WriteLiteral(" class=\"col-xs-12 visible-xs\"");
 
 WriteLiteral(" id=\"exTab1\"");
 
@@ -418,13 +420,13 @@ WriteLiteral("</span> ");
 WriteLiteral("</h5>\r\n                    </li>\r\n                </ul>\r\n            </div>\r\n    " +
 "        <h3");
 
-WriteLiteral(" class=\"panel-h2 hidden-xs\"");
+WriteLiteral(" class=\"panel-h2\"");
 
 WriteLiteral(">");
 
             
             #line 81 "..\..\Views\Account\Layout1\ReturnRequest.cshtml"
-                                      Write(LT("MyAccount.Text.ProductOrdered", "Product Ordered"));
+                            Write(LT("MyAccount.Text.ProductOrdered", "Product Ordered"));
 
             
             #line default
@@ -538,15 +540,15 @@ WriteLiteral(">\r\n");
 WriteLiteral("                                            <tr>\r\n                               " +
 "                 <td>\r\n                                                    <a");
 
-WriteAttribute("ng-href", Tuple.Create(" ng-href=\"", 5587), Tuple.Create("\"", 5608)
-, Tuple.Create(Tuple.Create("", 5597), Tuple.Create("/", 5597), true)
+WriteAttribute("ng-href", Tuple.Create(" ng-href=\"", 5599), Tuple.Create("\"", 5620)
+, Tuple.Create(Tuple.Create("", 5609), Tuple.Create("/", 5609), true)
             
             #line 103 "..\..\Views\Account\Layout1\ReturnRequest.cshtml"
-, Tuple.Create(Tuple.Create("", 5598), Tuple.Create<System.Object, System.Int32>(item.Slug
+, Tuple.Create(Tuple.Create("", 5610), Tuple.Create<System.Object, System.Int32>(item.Slug
             
             #line default
             #line hidden
-, 5598), false)
+, 5610), false)
 );
 
 WriteLiteral(">");
@@ -589,15 +591,15 @@ WriteLiteral("</td>\r\n                                                <td>");
 WriteLiteral("</td>\r\n                                                <td>\r\n                    " +
 "                                <span");
 
-WriteAttribute("ng-if", Tuple.Create(" ng-if=\"", 6032), Tuple.Create("\"", 6061)
+WriteAttribute("ng-if", Tuple.Create(" ng-if=\"", 6044), Tuple.Create("\"", 6073)
             
             #line 109 "..\..\Views\Account\Layout1\ReturnRequest.cshtml"
-, Tuple.Create(Tuple.Create("", 6040), Tuple.Create<System.Object, System.Int32>(item.AvailableQty
+, Tuple.Create(Tuple.Create("", 6052), Tuple.Create<System.Object, System.Int32>(item.AvailableQty
             
             #line default
             #line hidden
-, 6040), false)
-, Tuple.Create(Tuple.Create("", 6058), Tuple.Create("<=0", 6058), true)
+, 6052), false)
+, Tuple.Create(Tuple.Create("", 6070), Tuple.Create("<=0", 6070), true)
 );
 
 WriteLiteral(">");
@@ -611,29 +613,29 @@ WriteLiteral(">");
             #line hidden
 WriteLiteral("</span>\r\n                                                    <select");
 
-WriteAttribute("ng-if", Tuple.Create(" ng-if=\"", 6149), Tuple.Create("\"", 6177)
+WriteAttribute("ng-if", Tuple.Create(" ng-if=\"", 6161), Tuple.Create("\"", 6189)
             
             #line 110 "..\..\Views\Account\Layout1\ReturnRequest.cshtml"
-, Tuple.Create(Tuple.Create("", 6157), Tuple.Create<System.Object, System.Int32>(item.AvailableQty
+, Tuple.Create(Tuple.Create("", 6169), Tuple.Create<System.Object, System.Int32>(item.AvailableQty
             
             #line default
             #line hidden
-, 6157), false)
-, Tuple.Create(Tuple.Create("", 6175), Tuple.Create(">0", 6175), true)
+, 6169), false)
+, Tuple.Create(Tuple.Create("", 6187), Tuple.Create(">0", 6187), true)
 );
 
 WriteLiteral(" ng-model=\"selectedQty\"");
 
-WriteAttribute("ng-change", Tuple.Create(" ng-change=\"", 6201), Tuple.Create("\"", 6260)
-, Tuple.Create(Tuple.Create("", 6213), Tuple.Create("am.returnProduct(\'", 6213), true)
+WriteAttribute("ng-change", Tuple.Create(" ng-change=\"", 6213), Tuple.Create("\"", 6272)
+, Tuple.Create(Tuple.Create("", 6225), Tuple.Create("am.returnProduct(\'", 6225), true)
             
             #line 110 "..\..\Views\Account\Layout1\ReturnRequest.cshtml"
-                                                             , Tuple.Create(Tuple.Create("", 6231), Tuple.Create<System.Object, System.Int32>(item.ProductId
+                                                             , Tuple.Create(Tuple.Create("", 6243), Tuple.Create<System.Object, System.Int32>(item.ProductId
             
             #line default
             #line hidden
-, 6231), false)
-, Tuple.Create(Tuple.Create("", 6246), Tuple.Create("\',selectedQty)", 6246), true)
+, 6243), false)
+, Tuple.Create(Tuple.Create("", 6258), Tuple.Create("\',selectedQty)", 6258), true)
 );
 
 WriteLiteral(" class=\"form-control\"");
@@ -642,18 +644,18 @@ WriteLiteral(">\r\n                                                        <opti
 
 WriteLiteral(" value=\"{{$index}}\"");
 
-WriteAttribute("ng-repeat", Tuple.Create(" ng-repeat=\"", 6367), Tuple.Create("\"", 6421)
-, Tuple.Create(Tuple.Create("", 6379), Tuple.Create("item", 6379), true)
-, Tuple.Create(Tuple.Create(" ", 6383), Tuple.Create("in", 6384), true)
-, Tuple.Create(Tuple.Create(" ", 6386), Tuple.Create("am.setQuantity(", 6387), true)
+WriteAttribute("ng-repeat", Tuple.Create(" ng-repeat=\"", 6379), Tuple.Create("\"", 6433)
+, Tuple.Create(Tuple.Create("", 6391), Tuple.Create("item", 6391), true)
+, Tuple.Create(Tuple.Create(" ", 6395), Tuple.Create("in", 6396), true)
+, Tuple.Create(Tuple.Create(" ", 6398), Tuple.Create("am.setQuantity(", 6399), true)
             
             #line 111 "..\..\Views\Account\Layout1\ReturnRequest.cshtml"
-                                     , Tuple.Create(Tuple.Create("", 6402), Tuple.Create<System.Object, System.Int32>(item.AvailableQty
+                                     , Tuple.Create(Tuple.Create("", 6414), Tuple.Create<System.Object, System.Int32>(item.AvailableQty
             
             #line default
             #line hidden
-, 6402), false)
-, Tuple.Create(Tuple.Create("", 6420), Tuple.Create(")", 6420), true)
+, 6414), false)
+, Tuple.Create(Tuple.Create("", 6432), Tuple.Create(")", 6432), true)
 );
 
 WriteLiteral(" ng-bind=\"$index\"");
@@ -1082,14 +1084,14 @@ WriteLiteral(">\r\n                                <a");
 
 WriteLiteral(" class=\"animate btn-default\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 14533), Tuple.Create("\"", 14578)
+WriteAttribute("href", Tuple.Create(" href=\"", 14545), Tuple.Create("\"", 14590)
             
             #line 233 "..\..\Views\Account\Layout1\ReturnRequest.cshtml"
-, Tuple.Create(Tuple.Create("", 14540), Tuple.Create<System.Object, System.Int32>(Url.Action("orderhistory", "account")
+, Tuple.Create(Tuple.Create("", 14552), Tuple.Create<System.Object, System.Int32>(Url.Action("orderhistory", "account")
             
             #line default
             #line hidden
-, 14540), false)
+, 14552), false)
 );
 
 WriteLiteral(">");

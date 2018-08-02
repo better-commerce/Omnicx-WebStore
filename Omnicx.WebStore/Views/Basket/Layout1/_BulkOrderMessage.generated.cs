@@ -28,14 +28,14 @@ namespace ASP
     using System.Web.UI;
     using System.Web.WebPages;
     using DevTrends.MvcDonutCaching;
+    using Omnicx.WebStore;
+    using Omnicx.WebStore.Core;
     
     #line 11 "..\..\Views\Basket\Layout1\_BulkOrderMessage.cshtml"
-    using Omnicx.API.SDK.Entities;
+    using Omnicx.WebStore.Models.Enums;
     
     #line default
     #line hidden
-    using Omnicx.WebStore;
-    using Omnicx.WebStore.Core;
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Basket/Layout1/_BulkOrderMessage.cshtml")]
@@ -136,14 +136,28 @@ WriteLiteral(">\r\n                    <div");
 
 WriteLiteral(" class=\"col-sm-12 col-xs-12\"");
 
-WriteLiteral(">\r\n                        <div");
+WriteLiteral(">\r\n                        <div ng-cloak");
+
+WriteLiteral(" class=\"alert alert-danger text-left\"");
+
+WriteLiteral(" ng-show=\"gm.errorMessage\"");
+
+WriteLiteral(">\r\n                            <i");
+
+WriteLiteral(" class=\"fa fa-circle\"");
+
+WriteLiteral("></i><span");
+
+WriteLiteral(" ng-bind=\"gm.errorMessage\"");
+
+WriteLiteral("></span>\r\n                        </div>\r\n                        <div");
 
 WriteLiteral(" ng-show=\"gm.stockUnavailable\"");
 
 WriteLiteral(">\r\n                            <h3>");
 
             
-            #line 28 "..\..\Views\Basket\Layout1\_BulkOrderMessage.cshtml"
+            #line 31 "..\..\Views\Basket\Layout1\_BulkOrderMessage.cshtml"
                            Write(LT("YourBag.Message.stockUnavailable", "0 Product(s) Added to Cart"));
 
             
@@ -156,7 +170,7 @@ WriteLiteral(" ng-show=\"!gm.stockUnavailable && !gm.basketMessage\"");
 WriteLiteral(">\r\n                            <h3>");
 
             
-            #line 31 "..\..\Views\Basket\Layout1\_BulkOrderMessage.cshtml"
+            #line 34 "..\..\Views\Basket\Layout1\_BulkOrderMessage.cshtml"
                            Write(LT("YourBag.Message.Success", "All Product(s) Added to Cart"));
 
             
@@ -169,7 +183,7 @@ WriteLiteral(" ng-show=\"gm.basketMessage && !gm.stockUnavailable\"");
 WriteLiteral(">\r\n                            <h3>");
 
             
-            #line 34 "..\..\Views\Basket\Layout1\_BulkOrderMessage.cshtml"
+            #line 37 "..\..\Views\Basket\Layout1\_BulkOrderMessage.cshtml"
                            Write(LT("YourBag.Message.BasketMessage", "Some Items are added to cart"));
 
             
@@ -203,7 +217,7 @@ WriteLiteral(" ng-if=\"gm.notFoundLength != 0\"");
 WriteLiteral("></span>");
 
             
-            #line 41 "..\..\Views\Basket\Layout1\_BulkOrderMessage.cshtml"
+            #line 44 "..\..\Views\Basket\Layout1\_BulkOrderMessage.cshtml"
                                                                                                                            Write(LT("YourBag.Message.NotAddToCart", " Product(s) Below Not Added to Cart."));
 
             
@@ -212,7 +226,7 @@ WriteLiteral("></span>");
 WriteLiteral("</h4>\r\n                            <h5>");
 
             
-            #line 42 "..\..\Views\Basket\Layout1\_BulkOrderMessage.cshtml"
+            #line 45 "..\..\Views\Basket\Layout1\_BulkOrderMessage.cshtml"
                            Write(LT("YourBag.Message.NotValid", "The quantity or stockcode are not valid."));
 
             
@@ -270,7 +284,7 @@ WriteLiteral(" class=\"img-responsive\"");
 
 WriteLiteral(" alt=\"\"");
 
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
 WriteLiteral(">\r\n                                        </a>\r\n                                " +
 "    </div>\r\n                                    <div");
@@ -407,24 +421,24 @@ WriteLiteral(">\r\n                                                <strong");
 
 WriteLiteral(" class=\"text-orange\"");
 
-WriteAttribute("ng-show", Tuple.Create(" ng-show=\"", 6078), Tuple.Create("\"", 6161)
-, Tuple.Create(Tuple.Create("", 6088), Tuple.Create("items.displayInBasket", 6088), true)
-, Tuple.Create(Tuple.Create(" ", 6109), Tuple.Create("&&", 6110), true)
-, Tuple.Create(Tuple.Create(" ", 6112), Tuple.Create("items.itemType", 6113), true)
-, Tuple.Create(Tuple.Create(" ", 6127), Tuple.Create("==", 6128), true)
+WriteAttribute("ng-show", Tuple.Create(" ng-show=\"", 6289), Tuple.Create("\"", 6372)
+, Tuple.Create(Tuple.Create("", 6299), Tuple.Create("items.displayInBasket", 6299), true)
+, Tuple.Create(Tuple.Create(" ", 6320), Tuple.Create("&&", 6321), true)
+, Tuple.Create(Tuple.Create(" ", 6323), Tuple.Create("items.itemType", 6324), true)
+, Tuple.Create(Tuple.Create(" ", 6338), Tuple.Create("==", 6339), true)
             
-            #line 80 "..\..\Views\Basket\Layout1\_BulkOrderMessage.cshtml"
-                                               , Tuple.Create(Tuple.Create("", 6130), Tuple.Create<System.Object, System.Int32>(ItemTypes.Bundle.GetHashCode()
+            #line 83 "..\..\Views\Basket\Layout1\_BulkOrderMessage.cshtml"
+                                               , Tuple.Create(Tuple.Create("", 6341), Tuple.Create<System.Object, System.Int32>(ItemTypes.Bundle.GetHashCode()
             
             #line default
             #line hidden
-, 6130), false)
+, 6341), false)
 );
 
 WriteLiteral(">");
 
             
-            #line 80 "..\..\Views\Basket\Layout1\_BulkOrderMessage.cshtml"
+            #line 83 "..\..\Views\Basket\Layout1\_BulkOrderMessage.cshtml"
                                                                                                                                                            Write(LT("YourBag.Text.IncludeComponents", "Included Components:"));
 
             
@@ -460,7 +474,7 @@ WriteLiteral(" class=\"col-sm-3 col-xs-3 no-padding text-right\"");
 WriteLiteral(">\r\n                                                        <strong>");
 
             
-            #line 86 "..\..\Views\Basket\Layout1\_BulkOrderMessage.cshtml"
+            #line 89 "..\..\Views\Basket\Layout1\_BulkOrderMessage.cshtml"
                                                            Write(LT("YourBag.Text.Qty", "Qty:"));
 
             
@@ -497,7 +511,7 @@ WriteLiteral(" class=\"pull-left\"");
 WriteLiteral("><strong>");
 
             
-            #line 125 "..\..\Views\Basket\Layout1\_BulkOrderMessage.cshtml"
+            #line 128 "..\..\Views\Basket\Layout1\_BulkOrderMessage.cshtml"
                                             Write(LT("YourBag.Text.YourHave", "You currently have "));
 
             
@@ -510,7 +524,7 @@ WriteLiteral(" ng-bind=\"gm.basketResponse.lineItems.length\"");
 WriteLiteral("></span>");
 
             
-            #line 125 "..\..\Views\Basket\Layout1\_BulkOrderMessage.cshtml"
+            #line 128 "..\..\Views\Basket\Layout1\_BulkOrderMessage.cshtml"
                                                                                                                                                          Write(LT("YourBag.Text.YourBag", " Items in Your Bag"));
 
             
@@ -531,7 +545,7 @@ WriteLiteral(" data-dismiss=\"modal\"");
 WriteLiteral(">");
 
             
-            #line 128 "..\..\Views\Basket\Layout1\_BulkOrderMessage.cshtml"
+            #line 131 "..\..\Views\Basket\Layout1\_BulkOrderMessage.cshtml"
                                                                             Write(LT("Header.Link.Shopping", "Continue Shopping"));
 
             
@@ -543,14 +557,14 @@ WriteLiteral(" class=\"fa fa-caret-right\"");
 
 WriteLiteral("></i></a>\r\n                    <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 10195), Tuple.Create("\"", 10232)
+WriteAttribute("href", Tuple.Create(" href=\"", 10380), Tuple.Create("\"", 10417)
             
-            #line 129 "..\..\Views\Basket\Layout1\_BulkOrderMessage.cshtml"
-, Tuple.Create(Tuple.Create("", 10202), Tuple.Create<System.Object, System.Int32>(Url.Action("Index", "Basket")
+            #line 132 "..\..\Views\Basket\Layout1\_BulkOrderMessage.cshtml"
+, Tuple.Create(Tuple.Create("", 10387), Tuple.Create<System.Object, System.Int32>(Url.Action("Index", "Basket")
             
             #line default
             #line hidden
-, 10202), false)
+, 10387), false)
 );
 
 WriteLiteral(" class=\"animate btn-primary\"");
@@ -558,7 +572,7 @@ WriteLiteral(" class=\"animate btn-primary\"");
 WriteLiteral(">");
 
             
-            #line 129 "..\..\Views\Basket\Layout1\_BulkOrderMessage.cshtml"
+            #line 132 "..\..\Views\Basket\Layout1\_BulkOrderMessage.cshtml"
                                                                                     Write(LT("Header.Link.ViewCart", "View Cart"));
 
             

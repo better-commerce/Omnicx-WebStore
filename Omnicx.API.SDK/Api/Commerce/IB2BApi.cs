@@ -1,6 +1,6 @@
-﻿using Omnicx.API.SDK.Models;
-using Omnicx.API.SDK.Models.B2B;
-using Omnicx.API.SDK.Models.Commerce;
+﻿using Omnicx.WebStore.Models;
+using Omnicx.WebStore.Models.B2B;
+using Omnicx.WebStore.Models.Commerce;
 using System.Collections.Generic;
 
 namespace Omnicx.API.SDK.Api.Commerce

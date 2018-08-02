@@ -34,24 +34,6 @@ namespace ASP
     
     #line default
     #line hidden
-    
-    #line 18 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-    using Omnicx.API.SDK.Entities;
-    
-    #line default
-    #line hidden
-    
-    #line 20 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-    using Omnicx.API.SDK.Models;
-    
-    #line default
-    #line hidden
-    
-    #line 23 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-    using Omnicx.API.SDK.Models.Helpers;
-    
-    #line default
-    #line hidden
     using Omnicx.WebStore;
     using Omnicx.WebStore.Core;
     
@@ -67,9 +49,27 @@ namespace ASP
     #line default
     #line hidden
     
+    #line 20 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+    using Omnicx.WebStore.Models;
+    
+    #line default
+    #line hidden
+    
+    #line 18 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+    using Omnicx.WebStore.Models.Enums;
+    
+    #line default
+    #line hidden
+    
+    #line 23 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+    using Omnicx.WebStore.Models.Helpers;
+    
+    #line default
+    #line hidden
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Account/Layout1/OrderDetail.cshtml")]
-    public partial class _Views_Account_Layout1_OrderDetail_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Commerce.OrderModel>
+    public partial class _Views_Account_Layout1_OrderDetail_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Commerce.OrderModel>
     {
         public _Views_Account_Layout1_OrderDetail_cshtml()
         {
@@ -112,123 +112,127 @@ WriteLiteral("\r\n");
             #line hidden
 WriteLiteral("\r\n<div");
 
-WriteLiteral(" class=\"row\"");
+WriteLiteral(" class=\"container dataContainer\"");
 
 WriteLiteral(">\r\n    <div");
 
+WriteLiteral(" class=\"row\"");
+
+WriteLiteral(">\r\n        <div");
+
 WriteLiteral(" class=\"col-md-12\"");
 
-WriteLiteral(">\r\n        <ul");
+WriteLiteral(">\r\n            <ul");
 
 WriteLiteral(" class=\"breadcrumb\"");
 
-WriteLiteral(">\r\n            <li>\r\n                <a");
+WriteLiteral(">\r\n                <li>\r\n                    <a");
 
 WriteLiteral(" href=\"/\"");
 
 WriteLiteral(">");
 
             
-            #line 35 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                       Write(LT("MyAccount.Links.Home" , "Home"));
+            #line 36 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                           Write(LT("MyAccount.Links.Home" , "Home"));
 
             
             #line default
             #line hidden
-WriteLiteral("</a>\r\n            </li>\r\n            <li>\r\n                <a");
+WriteLiteral("</a>\r\n                </li>\r\n                <li>\r\n                    <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1507), Tuple.Create("\"", 1552)
+WriteAttribute("href", Tuple.Create(" href=\"", 1586), Tuple.Create("\"", 1631)
             
-            #line 38 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-, Tuple.Create(Tuple.Create("", 1514), Tuple.Create<System.Object, System.Int32>(Url.Action("OrderHistory", "Account")
+            #line 39 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+, Tuple.Create(Tuple.Create("", 1593), Tuple.Create<System.Object, System.Int32>(Url.Action("OrderHistory", "Account")
             
             #line default
             #line hidden
-, 1514), false)
+, 1593), false)
 );
 
 WriteLiteral(">");
 
             
-            #line 38 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                            Write(LT("MyAccount.Links.MyOrders" , "My orders"));
+            #line 39 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                                                Write(LT("MyAccount.Links.MyOrders" , "My orders"));
 
             
             #line default
             #line hidden
-WriteLiteral("</a>\r\n            </li>\r\n            <li>");
+WriteLiteral("</a>\r\n                </li>\r\n                <li>");
 
             
-            #line 40 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-           Write(Model.OrderNo);
+            #line 41 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+               Write(Model.OrderNo);
 
             
             #line default
             #line hidden
-WriteLiteral("</li>\r\n        </ul>\r\n    </div>\r\n</div>\r\n<div");
+WriteLiteral("</li>\r\n            </ul>\r\n        </div>\r\n    </div>\r\n    \r\n    <div");
 
 WriteLiteral(" class=\"row\"");
 
-WriteLiteral(">\r\n    <div");
+WriteLiteral(">\r\n        <div");
+
+WriteLiteral(" class=\"col-xs-12 visible-xs\"");
+
+WriteLiteral(" id=\"exTab1\"");
+
+WriteLiteral(">\r\n");
+
+WriteLiteral("            ");
+
+            
+            #line 48 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+       Write(Html.Partial("~/Views/Account/Layout1/_MobileSideNav.cshtml"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n        </div>\r\n        <div");
+
+WriteLiteral(" class=\"col-md-3 col-sm-4 col-xs-12 hidden-xs\"");
+
+WriteLiteral(">\r\n");
+
+WriteLiteral("            ");
+
+            
+            #line 51 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+       Write(Html.Partial("~/Views/Account/Layout1/_SideNav.cshtml"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n        </div>\r\n        <div");
+
+WriteLiteral(" class=\"col-md-9 col-sm-8 col-xs-12\"");
+
+WriteLiteral(" id=\"customer-orders\"");
+
+WriteLiteral(">\r\n            <div");
+
+WriteLiteral(" class=\"row\"");
+
+WriteLiteral(">\r\n                <div");
 
 WriteLiteral(" class=\"col-sm-12 col-xs-12\"");
 
-WriteLiteral(">\r\n        <h3");
+WriteLiteral(">\r\n                    <h3");
 
 WriteLiteral(" class=\"panel-h2 hidden-xs\"");
 
 WriteLiteral(">");
 
             
-            #line 46 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                  Write(LT("MyAccount.Text.UpdateDetails", "Order Detail"));
+            #line 56 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                              Write(LT("MyAccount.Text.UpdateDetails", "Order Detail"));
 
             
             #line default
             #line hidden
-WriteLiteral("</h3>\r\n    </div>\r\n</div>\r\n<div");
-
-WriteLiteral(" class=\"row\"");
-
-WriteLiteral(">\r\n    <div");
-
-WriteLiteral(" class=\"col-xs-12 margin-bottom-lg visible-xs\"");
-
-WriteLiteral(" id=\"exTab1\"");
-
-WriteLiteral(">        \r\n");
-
-WriteLiteral("        ");
-
-            
-            #line 51 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-   Write(Html.Partial("~/Views/Account/Layout1/_MobileSideNav.cshtml"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n    </div>\r\n    <div");
-
-WriteLiteral(" class=\"col-md-3 col-sm-4 col-xs-12 hidden-xs\"");
-
-WriteLiteral(">\r\n");
-
-WriteLiteral("        ");
-
-            
-            #line 54 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-   Write(Html.Partial("~/Views/Account/Layout1/_SideNav.cshtml"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n    </div>\r\n\r\n    <div");
-
-WriteLiteral(" class=\"col-md-9 col-sm-8 col-xs-12\"");
-
-WriteLiteral(" id=\"customer-orders\"");
-
-WriteLiteral(">\r\n        <div");
+WriteLiteral("</h3>\r\n                </div>\r\n            </div>\r\n            <div");
 
 WriteLiteral(" class=\"row\"");
 
@@ -251,7 +255,7 @@ WriteLiteral(" ng-show=\"am.orderError\"");
 WriteLiteral(">\r\n                            <strong>");
 
             
-            #line 62 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+            #line 63 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
                                Write(LT("YourBag.Message.basketMessage", "There is an error adding some stock(s) - "));
 
             
@@ -271,7 +275,7 @@ WriteLiteral(" ng-show=\"am.orderUnavailable\"");
 WriteLiteral(">\r\n                            <strong>");
 
             
-            #line 65 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+            #line 66 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
                                Write(LT("YourBag.Message.stockUnavailable", "Stock Code(s) not available."));
 
             
@@ -286,66 +290,66 @@ WriteLiteral(" ng-show=\"am.orderSuccess\"");
 WriteLiteral(">\r\n                            <strong>");
 
             
-            #line 68 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+            #line 69 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
                                Write(LT("YourBag.Message.OrderSuccess", "Item(s) added successfully"));
 
             
             #line default
             #line hidden
 WriteLiteral("</strong>\r\n                        </div>\r\n                    </p>\r\n            " +
-"    </div>  \r\n            <div");
+"    </div>\r\n                <div");
 
 WriteLiteral(" class=\"col-sm-12 col-xs-12\"");
 
-WriteLiteral(">\r\n                <div");
+WriteLiteral(">\r\n                    <div");
 
 WriteLiteral(" class=\"col-lg-3 col-sm-12\"");
 
-WriteLiteral(">                    \r\n                    <h1");
+WriteLiteral(">\r\n                        <h1");
 
 WriteLiteral(" class=\"basket-h1\"");
 
 WriteLiteral(">");
 
             
-            #line 74 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                     Write(Model.OrderNo);
+            #line 75 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                         Write(Model.OrderNo);
 
             
             #line default
             #line hidden
-WriteLiteral("</h1>\r\n                </div>\r\n");
+WriteLiteral("</h1>\r\n                    </div>\r\n");
 
             
-            #line 76 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                
+            #line 77 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                    
             
             #line default
             #line hidden
             
-            #line 76 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                 if (Model.isB2BEnable && Model.AllowReorder)
+            #line 77 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                     if (Model.isB2BEnable && Model.AllowReorder)
                 {
 
             
             #line default
             #line hidden
-WriteLiteral("                    <div");
+WriteLiteral("                        <div");
 
 WriteLiteral(" class=\"col-lg-2 margin-top-sm\"");
 
 WriteLiteral("><a");
 
-WriteAttribute("ng-click", Tuple.Create(" ng-click=\"", 3623), Tuple.Create("\"", 3657)
-, Tuple.Create(Tuple.Create("", 3634), Tuple.Create("am.reOrder(\'", 3634), true)
+WriteAttribute("ng-click", Tuple.Create(" ng-click=\"", 3799), Tuple.Create("\"", 3833)
+, Tuple.Create(Tuple.Create("", 3810), Tuple.Create("am.reOrder(\'", 3810), true)
             
-            #line 78 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
- , Tuple.Create(Tuple.Create("", 3646), Tuple.Create<System.Object, System.Int32>(Model.Id
+            #line 79 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+     , Tuple.Create(Tuple.Create("", 3822), Tuple.Create<System.Object, System.Int32>(Model.Id
             
             #line default
             #line hidden
-, 3646), false)
-, Tuple.Create(Tuple.Create("", 3655), Tuple.Create("\')", 3655), true)
+, 3822), false)
+, Tuple.Create(Tuple.Create("", 3831), Tuple.Create("\')", 3831), true)
 );
 
 WriteLiteral(" title=\"Re-Order\"");
@@ -359,8 +363,8 @@ WriteLiteral(" class=\"fa fa-shopping-cart no-margin-left\"");
 WriteLiteral("></i>");
 
             
-            #line 78 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                                                                                                                                                        Write(LT("MyAccount.Text.ReOrder", "Reorder"));
+            #line 79 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                                                                                                                                                                            Write(LT("MyAccount.Text.ReOrder", "Reorder"));
 
             
             #line default
@@ -368,101 +372,88 @@ WriteLiteral("></i>");
 WriteLiteral("</a></div>\r\n");
 
             
-            #line 79 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                }                 
+            #line 80 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                }
 
             
             #line default
             #line hidden
-WriteLiteral("                <p");
+WriteLiteral("                    <p");
 
 WriteLiteral(" class=\"text-muted basket-text\"");
 
 WriteLiteral(">");
 
             
-            #line 80 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                             Write(string.Format(LT("MyAccount.Text.OrderInformation", "Order was placed on {0} and current order status is: "), @Model.OrderDate));
+            #line 81 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                                 Write(string.Format(LT("MyAccount.Text.OrderInformation", "Order was placed on {0} and current order status is: "), @Model.OrderDate));
 
             
             #line default
             #line hidden
 WriteLiteral("<label");
 
-WriteAttribute("class", Tuple.Create(" class=\"", 4026), Tuple.Create("\"", 4103)
-, Tuple.Create(Tuple.Create("", 4034), Tuple.Create("label", 4034), true)
-, Tuple.Create(Tuple.Create(" ", 4039), Tuple.Create("padding-xs", 4040), true)
-, Tuple.Create(Tuple.Create(" ", 4050), Tuple.Create("status-inline", 4051), true)
-, Tuple.Create(Tuple.Create(" ", 4064), Tuple.Create("margin-top-sm", 4065), true)
-, Tuple.Create(Tuple.Create(" ", 4078), Tuple.Create("label-", 4079), true)
+WriteAttribute("class", Tuple.Create(" class=\"", 4189), Tuple.Create("\"", 4266)
+, Tuple.Create(Tuple.Create("", 4197), Tuple.Create("label", 4197), true)
+, Tuple.Create(Tuple.Create(" ", 4202), Tuple.Create("padding-xs", 4203), true)
+, Tuple.Create(Tuple.Create(" ", 4213), Tuple.Create("status-inline", 4214), true)
+, Tuple.Create(Tuple.Create(" ", 4227), Tuple.Create("margin-top-sm", 4228), true)
+, Tuple.Create(Tuple.Create(" ", 4241), Tuple.Create("label-", 4242), true)
             
-            #line 80 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                                                                                                                                   , Tuple.Create(Tuple.Create("", 4085), Tuple.Create<System.Object, System.Int32>(Model.OrderStatus
+            #line 81 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                                                                                                                                                       , Tuple.Create(Tuple.Create("", 4248), Tuple.Create<System.Object, System.Int32>(Model.OrderStatus
             
             #line default
             #line hidden
-, 4085), false)
+, 4248), false)
 );
 
 WriteLiteral(">");
 
             
-            #line 80 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                                                                                                                                                                                                                                  Write(Model.OrderStatus);
+            #line 81 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                                                                                                                                                                                                                                                      Write(Model.OrderStatus);
 
             
             #line default
             #line hidden
-WriteLiteral("</label></p>\r\n            </div>\r\n        </div>\r\n        <div");
+WriteLiteral("</label></p>\r\n                </div>\r\n            </div>\r\n            <div");
 
 WriteLiteral(" class=\"box no-padding col-sm-12 col-xs-12 no-border-bottom\"");
 
-WriteLiteral(">\r\n            <div");
+WriteLiteral(">\r\n                <div");
 
 WriteLiteral(" class=\"row\"");
 
-WriteLiteral(">\r\n                <div");
+WriteLiteral(">\r\n                    <div");
 
 WriteLiteral(" class=\"col-md-12\"");
 
 WriteLiteral(" id=\"customer-order\"");
 
-WriteLiteral(">\r\n                    <div");
+WriteLiteral(">\r\n                        <div");
 
 WriteLiteral(" class=\"table-responsive\"");
 
-WriteLiteral(">\r\n                        <table");
+WriteLiteral(">\r\n                            <table");
 
 WriteLiteral(" class=\"table table-hover table-striped\"");
 
-WriteLiteral(">\r\n                            <thead>\r\n                                <tr>\r\n   " +
-"                                 <th");
+WriteLiteral(">\r\n                                <thead>\r\n                                    <" +
+"tr>\r\n                                        <th");
 
 WriteLiteral(" colspan=\"2\"");
 
 WriteLiteral(">");
 
             
-            #line 90 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                               Write(LT("MyAccount.Text.Product", "Product"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</th>\r\n                                    <th");
-
-WriteLiteral(" class=\"text-right\"");
-
-WriteLiteral(">");
-
-            
             #line 91 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                      Write(LT("MyAccount.Text.Qty", "Quantity"));
+                                                   Write(LT("MyAccount.Text.Product", "Product"));
 
             
             #line default
             #line hidden
-WriteLiteral("</th>\r\n                                    <th");
+WriteLiteral("</th>\r\n                                        <th");
 
 WriteLiteral(" class=\"text-right\"");
 
@@ -470,12 +461,12 @@ WriteLiteral(">");
 
             
             #line 92 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                      Write(LT("MyAccount.Text.Price", "Unit price"));
+                                                          Write(LT("MyAccount.Text.Qty", "Quantity"));
 
             
             #line default
             #line hidden
-WriteLiteral("</th>\r\n                                    <th");
+WriteLiteral("</th>\r\n                                        <th");
 
 WriteLiteral(" class=\"text-right\"");
 
@@ -483,12 +474,12 @@ WriteLiteral(">");
 
             
             #line 93 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                      Write(LT("MyAccount.Text.Discount", "Discount"));
+                                                          Write(LT("MyAccount.Text.Price", "Unit price"));
 
             
             #line default
             #line hidden
-WriteLiteral("</th>\r\n                                    <th");
+WriteLiteral("</th>\r\n                                        <th");
 
 WriteLiteral(" class=\"text-right\"");
 
@@ -496,104 +487,104 @@ WriteLiteral(">");
 
             
             #line 94 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                      Write(LT("MyAccount.Text.GrandTotal", "Total"));
+                                                          Write(LT("MyAccount.Text.Discount", "Discount"));
 
             
             #line default
             #line hidden
-WriteLiteral("</th>\r\n                                </tr>\r\n                            </thead" +
-">\r\n                            <tbody");
+WriteLiteral("</th>\r\n                                        <th");
+
+WriteLiteral(" class=\"text-right\"");
+
+WriteLiteral(">");
+
+            
+            #line 95 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                                          Write(LT("MyAccount.Text.GrandTotal", "Total"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</th>\r\n                                    </tr>\r\n                               " +
+" </thead>\r\n                                <tbody");
 
 WriteLiteral(" id=\"cart\"");
 
 WriteLiteral(">\r\n");
 
             
-            #line 98 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                
+            #line 99 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                    
             
             #line default
             #line hidden
             
-            #line 98 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                 foreach (var item in @Model.Items)
+            #line 99 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                     foreach (var item in @Model.Items)
                                 {
                                     var FinalAmount = item.TotalPrice.Raw.WithTax - item.DiscountAmt.Raw.WithTax;
 
             
             #line default
             #line hidden
-WriteLiteral("                                    <tr>\r\n                                       " +
-" <td>\r\n                                            <a");
+WriteLiteral("                                        <tr>\r\n                                   " +
+"         <td>\r\n                                                <a");
 
-WriteAttribute("ng-href", Tuple.Create(" ng-href=\"", 5541), Tuple.Create("\"", 5562)
-, Tuple.Create(Tuple.Create("", 5551), Tuple.Create("/", 5551), true)
-            
-            #line 103 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-, Tuple.Create(Tuple.Create("", 5552), Tuple.Create<System.Object, System.Int32>(item.Slug
-            
-            #line default
-            #line hidden
-, 5552), false)
-);
-
-WriteLiteral(">\r\n                                                <img");
-
-WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 5618), Tuple.Create("\"", 5638)
+WriteAttribute("ng-href", Tuple.Create(" ng-href=\"", 5788), Tuple.Create("\"", 5809)
+, Tuple.Create(Tuple.Create("", 5798), Tuple.Create("/", 5798), true)
             
             #line 104 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-, Tuple.Create(Tuple.Create("", 5627), Tuple.Create<System.Object, System.Int32>(item.Image
+, Tuple.Create(Tuple.Create("", 5799), Tuple.Create<System.Object, System.Int32>(item.Slug
             
             #line default
             #line hidden
-, 5627), false)
+, 5799), false)
+);
+
+WriteLiteral(">\r\n                                                    <img");
+
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 5869), Tuple.Create("\"", 5889)
+            
+            #line 105 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+, Tuple.Create(Tuple.Create("", 5878), Tuple.Create<System.Object, System.Int32>(item.Image
+            
+            #line default
+            #line hidden
+, 5878), false)
 );
 
 WriteLiteral(" alt=\"\"");
 
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
-WriteLiteral(">\r\n                                            </a>\r\n                            " +
-"            </td>\r\n                                        <td>\r\n               " +
-"                             <a");
+WriteLiteral(">\r\n                                                </a>\r\n                        " +
+"                    </td>\r\n                                            <td>\r\n   " +
+"                                             <a");
 
 WriteLiteral(" class=\"basket-item\"");
 
-WriteAttribute("ng-href", Tuple.Create(" ng-href=\"", 5923), Tuple.Create("\"", 5944)
-, Tuple.Create(Tuple.Create("", 5933), Tuple.Create("/", 5933), true)
+WriteAttribute("ng-href", Tuple.Create(" ng-href=\"", 6164), Tuple.Create("\"", 6185)
+, Tuple.Create(Tuple.Create("", 6174), Tuple.Create("/", 6174), true)
             
-            #line 108 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-, Tuple.Create(Tuple.Create("", 5934), Tuple.Create<System.Object, System.Int32>(item.Slug
+            #line 109 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+ , Tuple.Create(Tuple.Create("", 6175), Tuple.Create<System.Object, System.Int32>(item.Slug
             
             #line default
             #line hidden
-, 5934), false)
+, 6175), false)
 );
 
 WriteLiteral(">");
 
             
-            #line 108 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                                                    Write(item.Name);
+            #line 109 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                                                                        Write(item.Name);
 
             
             #line default
             #line hidden
-WriteLiteral("</a>\r\n                                        </td>\r\n                            " +
-"            <td");
-
-WriteLiteral(" align=\"right\"");
-
-WriteLiteral(">");
-
-            
-            #line 110 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                     Write(item.Qty);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</td>\r\n                                        <td");
+WriteLiteral("</a>\r\n                                            </td>\r\n                        " +
+"                    <td");
 
 WriteLiteral(" align=\"right\"");
 
@@ -601,12 +592,12 @@ WriteLiteral(">");
 
             
             #line 111 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                     Write(item.Price.Formatted.WithTax);
+                                                         Write(item.Qty);
 
             
             #line default
             #line hidden
-WriteLiteral("</td>\r\n                                        <td");
+WriteLiteral("</td>\r\n                                            <td");
 
 WriteLiteral(" align=\"right\"");
 
@@ -614,12 +605,12 @@ WriteLiteral(">");
 
             
             #line 112 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                     Write(item.DiscountAmt.Formatted.WithTax);
+                                                         Write(item.Price.Formatted.WithTax);
 
             
             #line default
             #line hidden
-WriteLiteral("</td>\r\n                                        <td");
+WriteLiteral("</td>\r\n                                            <td");
 
 WriteLiteral(" align=\"right\"");
 
@@ -627,76 +618,90 @@ WriteLiteral(">");
 
             
             #line 113 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                            
+                                                         Write(item.DiscountAmt.Formatted.WithTax);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</td>\r\n                                            <td");
+
+WriteLiteral(" align=\"right\"");
+
+WriteLiteral(">");
+
+            
+            #line 114 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                                                
             
             #line default
             #line hidden
             
-            #line 113 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                       Write(Model.CurrencySymbol);
+            #line 114 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                                           Write(Model.CurrencySymbol);
 
             
             #line default
             #line hidden
             
-            #line 113 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                                                  
+            #line 114 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                                                                      
             
             #line default
             #line hidden
             
-            #line 113 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                                             Write(FinalAmount);
+            #line 114 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                                                                 Write(FinalAmount);
 
             
             #line default
             #line hidden
             
-            #line 113 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                                                              
+            #line 114 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                                                                                  
             
             #line default
             #line hidden
-WriteLiteral("</td>\r\n\r\n                        </tr>\r\n");
+WriteLiteral("</td>\r\n\r\n                                        </tr>\r\n");
 
             
-            #line 116 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+            #line 117 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
                                             }
 
             
             #line default
             #line hidden
-WriteLiteral("                            </tbody>\r\n                        </table>\r\n         " +
-"           </div>\r\n                </div>\r\n            </div>\r\n            <div");
+WriteLiteral("                                </tbody>\r\n                            </table>\r\n " +
+"                       </div>\r\n                    </div>\r\n                </div" +
+">\r\n                <div");
 
 WriteLiteral(" class=\"row\"");
 
-WriteLiteral(">\r\n                <div");
+WriteLiteral(">\r\n                    <div");
 
 WriteLiteral(" class=\"col-sm-12 col-xs-12 addresses margin-bottom-lg\"");
 
-WriteLiteral(">\r\n                    <div");
+WriteLiteral(">\r\n                        <div");
 
 WriteLiteral(" class=\"col-sm-6 col-xs-12 billing-box\"");
 
-WriteLiteral(">\r\n                        <h2");
+WriteLiteral(">\r\n                            <h2");
 
 WriteLiteral(" class=\"billing-h2\"");
 
 WriteLiteral(">");
 
             
-            #line 125 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                          Write(LT("MyAccount.Text.BillingAdd", "Billing Address"));
+            #line 126 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                              Write(LT("MyAccount.Text.BillingAdd", "Billing Address"));
 
             
             #line default
             #line hidden
-WriteLiteral("</h2>\r\n                        <p><strong>Name: </strong>");
+WriteLiteral("</h2>\r\n                            <p><strong>Name: </strong>");
 
             
-            #line 126 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                             Write(Model.BillingAddress.FirstName);
+            #line 127 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                                 Write(Model.BillingAddress.FirstName);
 
             
             #line default
@@ -704,97 +709,17 @@ WriteLiteral("</h2>\r\n                        <p><strong>Name: </strong>");
 WriteLiteral(" ");
 
             
-            #line 126 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                                             Write(Model.BillingAddress.LastName);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</p>\r\n                        <p><strong>Address: </strong>");
-
-            
             #line 127 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                Write(Model.BillingAddress.Address1);
+                                                                                 Write(Model.BillingAddress.LastName);
 
             
             #line default
             #line hidden
-WriteLiteral(" <br />");
-
-            
-            #line 127 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                                                     Write(Model.BillingAddress.Address2);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</p>\r\n                        <p><strong>City: </strong>");
+WriteLiteral("</p>\r\n                            <p><strong>Address: </strong>");
 
             
             #line 128 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                             Write(Model.BillingAddress.City);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</p>\r\n                        <p><strong>Post Code: </strong>");
-
-            
-            #line 129 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                  Write(Model.BillingAddress.PostCode);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</p>\r\n                        <p><strong>Phone No: </strong>");
-
-            
-            #line 130 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                 Write(Model.BillingAddress.PhoneNo);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</p>\r\n                    </div>\r\n                    <div");
-
-WriteLiteral(" class=\"col-sm-6 col-xs-12 shipping-box\"");
-
-WriteLiteral(">\r\n                        <h2");
-
-WriteLiteral(" class=\"billing-h2\"");
-
-WriteLiteral(">");
-
-            
-            #line 133 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                          Write(LT("MyAccount.Text.ShippingAddress", "Shipping Address"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</h2>\r\n                        <p><strong>Name: </strong>");
-
-            
-            #line 134 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                             Write(Model.ShippingAddress.FirstName);
-
-            
-            #line default
-            #line hidden
-WriteLiteral(" ");
-
-            
-            #line 134 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                                              Write(Model.ShippingAddress.LastName);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</p>\r\n                        <p><strong>Address: </strong>");
-
-            
-            #line 135 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                Write(Model.ShippingAddress.Address1);
+                                                    Write(Model.BillingAddress.Address1);
 
             
             #line default
@@ -802,215 +727,296 @@ WriteLiteral("</p>\r\n                        <p><strong>Address: </strong>");
 WriteLiteral(" <br />");
 
             
-            #line 135 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                                                      Write(Model.ShippingAddress.Address2);
+            #line 128 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                                                                         Write(Model.BillingAddress.Address2);
 
             
             #line default
             #line hidden
-WriteLiteral("</p>\r\n                        <p><strong>City: </strong>");
+WriteLiteral("</p>\r\n                            <p><strong>City: </strong>");
+
+            
+            #line 129 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                                 Write(Model.BillingAddress.City);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</p>\r\n                            <p><strong>Post Code: </strong>");
+
+            
+            #line 130 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                                      Write(Model.BillingAddress.PostCode);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</p>\r\n                            <p><strong>Phone No: </strong>");
+
+            
+            #line 131 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                                     Write(Model.BillingAddress.PhoneNo);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</p>\r\n                        </div>\r\n                        <div");
+
+WriteLiteral(" class=\"col-sm-6 col-xs-12 shipping-box\"");
+
+WriteLiteral(">\r\n                            <h2");
+
+WriteLiteral(" class=\"billing-h2\"");
+
+WriteLiteral(">");
+
+            
+            #line 134 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                              Write(LT("MyAccount.Text.ShippingAddress", "Shipping Address"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</h2>\r\n                            <p><strong>Name: </strong>");
+
+            
+            #line 135 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                                 Write(Model.ShippingAddress.FirstName);
+
+            
+            #line default
+            #line hidden
+WriteLiteral(" ");
+
+            
+            #line 135 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                                                                  Write(Model.ShippingAddress.LastName);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</p>\r\n                            <p><strong>Address: </strong>");
 
             
             #line 136 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                             Write(Model.ShippingAddress.City);
+                                                    Write(Model.ShippingAddress.Address1);
 
             
             #line default
             #line hidden
-WriteLiteral("</p>\r\n                        <p><strong>Post Code: </strong>");
+WriteLiteral(" <br />");
+
+            
+            #line 136 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                                                                          Write(Model.ShippingAddress.Address2);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</p>\r\n                            <p><strong>City: </strong>");
 
             
             #line 137 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                  Write(Model.ShippingAddress.PostCode);
+                                                 Write(Model.ShippingAddress.City);
 
             
             #line default
             #line hidden
-WriteLiteral("</p>\r\n                        <p><strong>Phone No: </strong>");
+WriteLiteral("</p>\r\n                            <p><strong>Post Code: </strong>");
 
             
             #line 138 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                 Write(Model.ShippingAddress.PhoneNo);
+                                                      Write(Model.ShippingAddress.PostCode);
 
             
             #line default
             #line hidden
-WriteLiteral("</p>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n   " +
-"         <div");
+WriteLiteral("</p>\r\n                            <p><strong>Phone No: </strong>");
+
+            
+            #line 139 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                                     Write(Model.ShippingAddress.PhoneNo);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</p>\r\n                        </div>\r\n                    </div>\r\n               " +
+" </div>\r\n                <div");
 
 WriteLiteral(" class=\"row\"");
 
-WriteLiteral(">\r\n                <div");
+WriteLiteral(">\r\n                    <div");
 
 WriteLiteral(" class=\"col-md-12 col-sm-12 col-xs-12 margin-top-sm\"");
 
-WriteLiteral(">\r\n                    <div");
+WriteLiteral(">\r\n                        <div");
 
 WriteLiteral(" class=\"summery-border\"");
 
-WriteLiteral(">\r\n                        <div");
+WriteLiteral(">\r\n                            <div");
 
 WriteLiteral(" class=\"summery-box\"");
 
 WriteLiteral(" id=\"order-summary\"");
 
-WriteLiteral(">\r\n                            <div");
+WriteLiteral(">\r\n                                <div");
 
 WriteLiteral(" class=\"box-header\"");
 
-WriteLiteral(">\r\n                                <h3><i");
+WriteLiteral(">\r\n                                    <h3><i");
 
 WriteLiteral(" class=\"fa fa-shopping-basket\"");
 
 WriteLiteral("></i> ");
 
             
-            #line 147 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                                     Write(LT("Checkout.Label.OrderSummary", "Order Summary"));
+            #line 148 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                                                         Write(LT("Checkout.Label.OrderSummary", "Order Summary"));
 
             
             #line default
             #line hidden
-WriteLiteral("</h3>\r\n                            </div>\r\n                            <div");
+WriteLiteral("</h3>\r\n                                </div>\r\n                                <d" +
+"iv");
 
 WriteLiteral(" class=\"table-responsive\"");
 
-WriteLiteral(">\r\n                                <table");
+WriteLiteral(">\r\n                                    <table");
 
 WriteLiteral(" class=\"table no-margin-top\"");
 
-WriteLiteral(">\r\n                                    <tbody>\r\n                                 " +
-"       <tr>\r\n                                            <td>");
-
-            
-            #line 153 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                           Write(LT("MyAccount.Text.OrderSubtotal", "Order Subtotal"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</td>\r\n                                            <th");
-
-WriteLiteral(" class=\"text-right\"");
-
-WriteLiteral(">");
+WriteLiteral(">\r\n                                        <tbody>\r\n                             " +
+"               <tr>\r\n                                                <td>");
 
             
             #line 154 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                              Write(Model.SubTotal.Formatted.WithoutTax);
+                                               Write(LT("MyAccount.Text.OrderSubtotal", "Order Subtotal"));
 
             
             #line default
             #line hidden
-WriteLiteral("</th>\r\n                                        </tr>\r\n                           " +
-"             <tr>\r\n                                            <td>");
-
-            
-            #line 157 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                           Write(LT("Myaccount.Text.ShippingCharge", "Shipping and handling"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</td>\r\n                                            <th");
+WriteLiteral("</td>\r\n                                                <th");
 
 WriteLiteral(" class=\"text-right\"");
 
 WriteLiteral(">");
+
+            
+            #line 155 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                                                  Write(Model.SubTotal.Formatted.WithoutTax);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</th>\r\n                                            </tr>\r\n                       " +
+"                     <tr>\r\n                                                <td>");
 
             
             #line 158 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                              Write(Model.ShippingCharge.Formatted.WithTax);
+                                               Write(LT("Myaccount.Text.ShippingCharge", "Shipping and handling"));
 
             
             #line default
             #line hidden
-WriteLiteral("</th>\r\n                                        </tr>\r\n                           " +
-"             <tr>\r\n                                            <td>");
-
-            
-            #line 161 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                           Write(LT("MyAccount.Text.Discount", "Discount"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</td>\r\n                                            <th");
+WriteLiteral("</td>\r\n                                                <th");
 
 WriteLiteral(" class=\"text-right\"");
 
 WriteLiteral(">");
+
+            
+            #line 159 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                                                  Write(Model.ShippingCharge.Formatted.WithTax);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</th>\r\n                                            </tr>\r\n                       " +
+"                     <tr>\r\n                                                <td>");
 
             
             #line 162 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                              Write(Model.Discount.Formatted.WithoutTax);
+                                               Write(LT("MyAccount.Text.Discount", "Discount"));
 
             
             #line default
             #line hidden
-WriteLiteral("</th>\r\n                                        </tr>\r\n                           " +
-"             <tr>\r\n                                            <td>");
-
-            
-            #line 165 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                           Write(LT("MyAccount.Text.Tax", "Tax"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</td>\r\n                                            <th");
+WriteLiteral("</td>\r\n                                                <th");
 
 WriteLiteral(" class=\"text-right\"");
 
 WriteLiteral(">");
+
+            
+            #line 163 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                                                  Write(Model.Discount.Formatted.WithoutTax);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</th>\r\n                                            </tr>\r\n                       " +
+"                     <tr>\r\n                                                <td>");
 
             
             #line 166 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                              Write(Model.GrandTotal.Formatted.Tax);
+                                               Write(LT("MyAccount.Text.Tax", "Tax"));
 
             
             #line default
             #line hidden
-WriteLiteral("</th>\r\n                                        </tr>\r\n                           " +
-"             <tr");
-
-WriteLiteral(" class=\"total\"");
-
-WriteLiteral(">\r\n                                            <td>");
-
-            
-            #line 169 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                           Write(LT("MyAccount.Text.Amount", "Order Total"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</td>\r\n                                            <th");
+WriteLiteral("</td>\r\n                                                <th");
 
 WriteLiteral(" class=\"text-right\"");
 
 WriteLiteral(">");
 
             
+            #line 167 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                                                  Write(Model.GrandTotal.Formatted.Tax);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</th>\r\n                                            </tr>\r\n                       " +
+"                     <tr");
+
+WriteLiteral(" class=\"total\"");
+
+WriteLiteral(">\r\n                                                <td>");
+
+            
             #line 170 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                              Write(Model.GrandTotal.Formatted.WithTax);
+                                               Write(LT("MyAccount.Text.Amount", "Order Total"));
 
             
             #line default
             #line hidden
-WriteLiteral("</th>\r\n                                        </tr>\r\n                           " +
-"         </tbody>\r\n                                </table>\r\n                   " +
-"         </div>\r\n                        </div>\r\n");
+WriteLiteral("</td>\r\n                                                <th");
+
+WriteLiteral(" class=\"text-right\"");
+
+WriteLiteral(">");
 
             
-            #line 176 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                        
+            #line 171 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                                                  Write(Model.GrandTotal.Formatted.WithTax);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</th>\r\n                                            </tr>\r\n                       " +
+"                 </tbody>\r\n                                    </table>\r\n       " +
+"                         </div>\r\n                            </div>\r\n");
+
+            
+            #line 177 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                            
             
             #line default
             #line hidden
             
-            #line 176 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                         foreach (var item in Model.Items)
+            #line 177 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                             foreach (var item in Model.Items)
                         {
                             if (item.AvailableQty > 0)
                             {
@@ -1018,33 +1024,34 @@ WriteLiteral("</th>\r\n                                        </tr>\r\n        
             
             #line default
             #line hidden
-WriteLiteral("                                <strong>\r\n                                    <a");
+WriteLiteral("                                    <strong>\r\n                                   " +
+"     <a");
 
 WriteLiteral(" class=\"btn btn-sm primary-btn-border text-medium padding-xs pull-right\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 10816), Tuple.Create("\"", 10878)
+WriteAttribute("href", Tuple.Create(" href=\"", 11341), Tuple.Create("\"", 11403)
             
-            #line 181 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                    , Tuple.Create(Tuple.Create("", 10823), Tuple.Create<System.Object, System.Int32>(Url.Action("ReturnRequest", "Account", new {Model.Id})
+            #line 182 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                        , Tuple.Create(Tuple.Create("", 11348), Tuple.Create<System.Object, System.Int32>(Url.Action("ReturnRequest", "Account", new {Model.Id})
             
             #line default
             #line hidden
-, 10823), false)
+, 11348), false)
 );
 
 WriteLiteral(">");
 
             
-            #line 181 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                                                                                                                                         Write(LT("MyAccount.Text.CreateReturn", "I would like to create a return"));
+            #line 182 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                                                                                                                                                             Write(LT("MyAccount.Text.CreateReturn", "I would like to create a return"));
 
             
             #line default
             #line hidden
-WriteLiteral("</a>\r\n                                </strong>\r\n");
+WriteLiteral("</a>\r\n                                    </strong>\r\n");
 
             
-            #line 183 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+            #line 184 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
                                 break;
                             }
                         }
@@ -1052,45 +1059,45 @@ WriteLiteral("</a>\r\n                                </strong>\r\n");
             
             #line default
             #line hidden
-WriteLiteral("\r\n                    </div>\r\n                    <!-- /.col-md-3 -->\r\n          " +
-"      </div>\r\n            </div>\r\n            <div");
+WriteLiteral("\r\n                        </div>\r\n                        <!-- /.col-md-3 -->\r\n  " +
+"                  </div>\r\n                </div>\r\n                <div");
 
 WriteLiteral(" class=\"row\"");
 
-WriteLiteral(">\r\n                <div");
+WriteLiteral(">\r\n                    <div");
 
 WriteLiteral(" class=\"col-sm-12 col-xs-12\"");
 
-WriteLiteral(">\r\n                    <p");
+WriteLiteral(">\r\n                        <p");
 
 WriteLiteral(" class=\"text-muted basket-text\"");
 
 WriteLiteral(">");
 
             
-            #line 193 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                 Write(LT("MyAccount.Text.FeelFree", "If you have any questions, please feel free to "));
+            #line 194 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                                     Write(LT("MyAccount.Text.FeelFree", "If you have any questions, please feel free to "));
 
             
             #line default
             #line hidden
 WriteLiteral("<a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 11430), Tuple.Create("\"", 11468)
+WriteAttribute("href", Tuple.Create(" href=\"", 11987), Tuple.Create("\"", 12025)
             
-            #line 193 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                               , Tuple.Create(Tuple.Create("", 11437), Tuple.Create<System.Object, System.Int32>(Url.Action("Contact", "pages")
+            #line 194 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                                                   , Tuple.Create(Tuple.Create("", 11994), Tuple.Create<System.Object, System.Int32>(Url.Action("Contact", "pages")
             
             #line default
             #line hidden
-, 11437), false)
+, 11994), false)
 );
 
 WriteLiteral(">");
 
             
-            #line 193 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                                                                                                                                            Write(LT("MyAccount.Text.ContactUs", "Contact Us"));
+            #line 194 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                                                                                                                                                                Write(LT("MyAccount.Text.ContactUs", "Contact Us"));
 
             
             #line default
@@ -1098,25 +1105,25 @@ WriteLiteral(">");
 WriteLiteral(",</a> ");
 
             
-            #line 193 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
-                                                                                                                                                                                                                               Write(LT("MyAccount.Text.Support", " our customer service center is working for you 24/7 ."));
+            #line 194 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+                                                                                                                                                                                                                                   Write(LT("MyAccount.Text.Support", " our customer service center is working for you 24/7 ."));
 
             
             #line default
             #line hidden
 WriteLiteral(@" </p>
+                    </div>
                 </div>
-            </div>             
+            </div>
         </div>
+        <!-- /.col-md-9 -->
+        <!-- *** LEFT COLUMN END *** -->
+        <!-- *** RIGHT COLUMN ***
+        _________________________________________________________ -->
+
+
     </div>
-    <!-- /.col-md-9 -->
-    <!-- *** LEFT COLUMN END *** -->
-    <!-- *** RIGHT COLUMN ***
-    _________________________________________________________ -->
-
-    
 </div>
-
 ");
 
 DefineSection("Scripts", () => {
@@ -1124,7 +1131,7 @@ DefineSection("Scripts", () => {
 WriteLiteral("\r\n    <script>\r\n        var reOrderUrl = \'");
 
             
-            #line 208 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+            #line 209 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
                       Write(Html.BuildUrlFromExpression<BasketController>(c => c.ReOrder("")));
 
             
@@ -1134,7 +1141,7 @@ WriteLiteral("\';\r\n        window.app.constant(\'accountConfig\', {\r\n       
 "derUrl\r\n        });\r\n        window.app.constant(\'model\', ");
 
             
-            #line 212 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
+            #line 213 "..\..\Views\Account\Layout1\OrderDetail.cshtml"
                                 Write(Html.Json(Model));
 
             

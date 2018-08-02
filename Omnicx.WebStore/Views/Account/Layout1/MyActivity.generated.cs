@@ -34,18 +34,6 @@ namespace ASP
     
     #line default
     #line hidden
-    
-    #line 21 "..\..\Views\Account\Layout1\MyActivity.cshtml"
-    using Omnicx.API.SDK.Entities;
-    
-    #line default
-    #line hidden
-    
-    #line 18 "..\..\Views\Account\Layout1\MyActivity.cshtml"
-    using Omnicx.API.SDK.Models;
-    
-    #line default
-    #line hidden
     using Omnicx.WebStore;
     using Omnicx.WebStore.Core;
     
@@ -61,9 +49,21 @@ namespace ASP
     #line default
     #line hidden
     
+    #line 18 "..\..\Views\Account\Layout1\MyActivity.cshtml"
+    using Omnicx.WebStore.Models;
+    
+    #line default
+    #line hidden
+    
+    #line 21 "..\..\Views\Account\Layout1\MyActivity.cshtml"
+    using Omnicx.WebStore.Models.Enums;
+    
+    #line default
+    #line hidden
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Account/Layout1/MyActivity.cshtml")]
-    public partial class _Views_Account_Layout1_MyActivity_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<List<Omnicx.API.SDK.Models.Commerce.Activity>>
+    public partial class _Views_Account_Layout1_MyActivity_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<List<Omnicx.WebStore.Models.Commerce.Activity>>
     {
         public _Views_Account_Layout1_MyActivity_cshtml()
         {
@@ -105,6 +105,8 @@ WriteLiteral("\r\n");
             #line hidden
 WriteLiteral("\r\n<section");
 
+WriteLiteral(" class=\"container dataContainer\"");
+
 WriteLiteral(" ng-controller=\"accountCtrl as am\"");
 
 WriteLiteral(" ng-init=\"search.currentPage =1; am.getMyActivity(search)\"");
@@ -143,28 +145,7 @@ WriteLiteral("</a>\r\n                </li>\r\n                <li>");
             
             #line default
             #line hidden
-WriteLiteral("</li>\r\n            </ul>\r\n        </div>\r\n    </div>\r\n    <div");
-
-WriteLiteral(" class=\"row\"");
-
-WriteLiteral(">\r\n        <div");
-
-WriteLiteral(" class=\"col-sm-12 col-xs-12\"");
-
-WriteLiteral(">\r\n            <h3");
-
-WriteLiteral(" class=\"panel-h2 hidden-xs\"");
-
-WriteLiteral(">");
-
-            
-            #line 43 "..\..\Views\Account\Layout1\MyActivity.cshtml"
-                                      Write(LT("MyAccount.Text.Name", "My Activity"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</h3>\r\n        </div>\r\n    </div>\r\n    <div");
+WriteLiteral("</li>\r\n            </ul>\r\n        </div>\r\n    </div>\r\n    \r\n    <div");
 
 WriteLiteral(" class=\"row\"");
 
@@ -172,7 +153,7 @@ WriteLiteral(">\r\n        ");
 
 WriteLiteral("\r\n        <div");
 
-WriteLiteral(" class=\"col-xs-12 margin-bottom-lg visible-xs\"");
+WriteLiteral(" class=\"col-xs-12 visible-xs\"");
 
 WriteLiteral(" id=\"exTab1\"");
 
@@ -181,7 +162,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("            ");
 
             
-            #line 49 "..\..\Views\Account\Layout1\MyActivity.cshtml"
+            #line 45 "..\..\Views\Account\Layout1\MyActivity.cshtml"
        Write(Html.Partial("~/Views/Account/Layout1/_MobileSideNav.cshtml"));
 
             
@@ -196,7 +177,7 @@ WriteLiteral(">            \r\n");
 WriteLiteral("            ");
 
             
-            #line 52 "..\..\Views\Account\Layout1\MyActivity.cshtml"
+            #line 48 "..\..\Views\Account\Layout1\MyActivity.cshtml"
        Write(Html.Partial("~/Views/Account/Layout1/_SideNav.cshtml"));
 
             
@@ -216,12 +197,33 @@ WriteLiteral(">\r\n                <div");
 
 WriteLiteral(" class=\"col-sm-12 col-xs-12\"");
 
+WriteLiteral(">\r\n                    <h3");
+
+WriteLiteral(" class=\"panel-h2\"");
+
+WriteLiteral(">");
+
+            
+            #line 54 "..\..\Views\Account\Layout1\MyActivity.cshtml"
+                                    Write(LT("MyAccount.Text.Name", "My Activity"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</h3>\r\n                </div>\r\n            </div>\r\n            <div");
+
+WriteLiteral(" class=\"row\"");
+
+WriteLiteral(">\r\n                <div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12\"");
+
 WriteLiteral(">\r\n                    <h4>\r\n");
 
 WriteLiteral("                        ");
 
             
-            #line 59 "..\..\Views\Account\Layout1\MyActivity.cshtml"
+            #line 60 "..\..\Views\Account\Layout1\MyActivity.cshtml"
                    Write(LT("MyAccount.Text.Total", "Total"));
 
             
@@ -234,7 +236,7 @@ WriteLiteral(" ng-bind=\"am.activityList.totalRecord\"");
 WriteLiteral("></span> ");
 
             
-            #line 59 "..\..\Views\Account\Layout1\MyActivity.cshtml"
+            #line 60 "..\..\Views\Account\Layout1\MyActivity.cshtml"
                                                                                                             Write(LT("MyAccount.Text.Activities", "Activities"));
 
             
@@ -247,9 +249,7 @@ WriteLiteral(" class=\"fa fa-trash-o\"");
 WriteLiteral(" ng-click=\"am.deleteMyActivity()\"");
 
 WriteLiteral("></i>\r\n                        </a>\r\n                    </h4>\r\n                <" +
-"/div>\r\n            </div>\r\n            ");
-
-WriteLiteral("\r\n            <div");
+"/div>\r\n            </div>\r\n            <div");
 
 WriteLiteral(" class=\"row\"");
 
@@ -305,7 +305,7 @@ WriteLiteral(" ng-bind=\"item.firstActivityCreated | date:yyyy-dd-mm\"");
 WriteLiteral("></span> (<span>");
 
             
-            #line 81 "..\..\Views\Account\Layout1\MyActivity.cshtml"
+            #line 74 "..\..\Views\Account\Layout1\MyActivity.cshtml"
                                                                                                                                                                                                          Write(LT("MyAccount.Text.Total", "Total"));
 
             
@@ -318,7 +318,7 @@ WriteLiteral(" ng-bind=\"item.activityCount\"");
 WriteLiteral("></strong> <span>");
 
             
-            #line 81 "..\..\Views\Account\Layout1\MyActivity.cshtml"
+            #line 74 "..\..\Views\Account\Layout1\MyActivity.cshtml"
                                                                                                                                                                                                                                                                                                            Write(LT("MyAccount.Text.Total", "Activity"));
 
             
@@ -387,7 +387,7 @@ DefineSection("Scripts", () => {
 WriteLiteral("\r\n<script>\r\n        var saveCustomerUrl = \'");
 
             
-            #line 126 "..\..\Views\Account\Layout1\MyActivity.cshtml"
+            #line 119 "..\..\Views\Account\Layout1\MyActivity.cshtml"
                            Write(Html.BuildUrlFromExpression<AccountController>(c => c.SaveCustomerDetail(null)));
 
             
@@ -396,7 +396,7 @@ WriteLiteral("\r\n<script>\r\n        var saveCustomerUrl = \'");
 WriteLiteral("\';\r\n        var custGridUrl = \'");
 
             
-            #line 127 "..\..\Views\Account\Layout1\MyActivity.cshtml"
+            #line 120 "..\..\Views\Account\Layout1\MyActivity.cshtml"
                        Write(Html.BuildUrlFromExpression<AccountController>(c => c.GetCustomerAddress()));
 
             
@@ -405,7 +405,7 @@ WriteLiteral("\';\r\n        var custGridUrl = \'");
 WriteLiteral("\';\r\n        var saveCustAddrUrl = \'");
 
             
-            #line 128 "..\..\Views\Account\Layout1\MyActivity.cshtml"
+            #line 121 "..\..\Views\Account\Layout1\MyActivity.cshtml"
                            Write(Html.BuildUrlFromExpression<AccountController>(c => c.SaveCustomerAddress(null)));
 
             
@@ -414,7 +414,7 @@ WriteLiteral("\';\r\n        var saveCustAddrUrl = \'");
 WriteLiteral("\';\r\n        var getMyActivity = \'");
 
             
-            #line 129 "..\..\Views\Account\Layout1\MyActivity.cshtml"
+            #line 122 "..\..\Views\Account\Layout1\MyActivity.cshtml"
                          Write(Html.BuildUrlFromExpression<AccountController>(c => c.GetMyActivity(null)));
 
             
@@ -423,7 +423,7 @@ WriteLiteral("\';\r\n        var getMyActivity = \'");
 WriteLiteral("\';\r\n        var deleteMyActivity = \'");
 
             
-            #line 130 "..\..\Views\Account\Layout1\MyActivity.cshtml"
+            #line 123 "..\..\Views\Account\Layout1\MyActivity.cshtml"
                             Write(Html.BuildUrlFromExpression<AccountController>(c => c.DeleteMyActivity()));
 
             
@@ -441,7 +441,7 @@ WriteLiteral(@"';
         window.app.constant('model', ");
 
             
-            #line 139 "..\..\Views\Account\Layout1\MyActivity.cshtml"
+            #line 132 "..\..\Views\Account\Layout1\MyActivity.cshtml"
                                 Write(Html.JsonFor(Model));
 
             

@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Omnicx.API.SDK.Api.Infra;
-using Omnicx.API.SDK.Entities;
+
 
 using Newtonsoft.Json;
 using System.Web.Mvc;
+using Omnicx.WebStore.Models.Keys;
+using Omnicx.WebStore.Models.Enums;
+using Omnicx.WebStore.Models.Site;
 
 namespace Omnicx.API.SDK.Helpers
 {
@@ -183,7 +186,10 @@ namespace Omnicx.API.SDK.Helpers
             }
             _dataLayer.Add(key, value);
         }
-
+        public bool DataLayerKeyExists(string key)
+        {
+           return _dataLayer.ContainsKey(key);
+        }
         public virtual void AppendMetaKeywordParts(string part)
         {
             if (string.IsNullOrEmpty(part))
@@ -198,6 +204,40 @@ namespace Omnicx.API.SDK.Helpers
         public string GetOmnilyticId()
         {
             return ConfigKeys.OmnilyticId?.ToString();
+        }
+        public string GenerateGlobalSnippets(SnippetPlacements placement)
+        {
+            var sessionContext = DependencyResolver.Current.GetService<ISessionContext>();
+            var osb = new StringBuilder();
+            if (sessionContext.CurrentSiteConfig.Snippets != null)
+            {
+                foreach(var snippet in sessionContext.CurrentSiteConfig.Snippets.Where(x=>x.Placement== placement).ToList())
+                {
+                    osb.AppendLine(snippet.Content);
+                }
+            }
+            if (System.Web.HttpContext.Current.Items[Constants.HTTP_CONTEXT_ITEM_SNIPPETS] != null)
+            {
+                var snippets = (List<SnippetModel>)System.Web.HttpContext.Current.Items[Constants.HTTP_CONTEXT_ITEM_SNIPPETS];
+                foreach (var snippet in snippets.Where(x => x.Placement == placement).ToList())
+                {
+                    osb.AppendLine(snippet.Content);
+                }
+            }
+            return osb.ToString();
+        }
+        public string GeneratePageSnippets(SnippetPlacements placement)
+        {
+            var osb = new StringBuilder();
+            if (System.Web.HttpContext.Current.Items[Constants.HTTP_CONTEXT_ITEM_SNIPPETS] != null)
+            {
+                var snippets = (List<SnippetModel>)System.Web.HttpContext.Current.Items[Constants.HTTP_CONTEXT_ITEM_SNIPPETS];
+                foreach (var snippet in snippets.Where(x => x.Placement == placement).ToList())
+                {
+                    osb.AppendLine(snippet.Content);
+                }
+            }
+            return osb.ToString();
         }
         #endregion
     }

@@ -34,18 +34,6 @@ namespace ASP
     
     #line default
     #line hidden
-    
-    #line 17 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
-    using Omnicx.API.SDK.Entities;
-    
-    #line default
-    #line hidden
-    
-    #line 20 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
-    using Omnicx.API.SDK.Models.Helpers;
-    
-    #line default
-    #line hidden
     using Omnicx.WebStore;
     using Omnicx.WebStore.Core;
     
@@ -61,9 +49,21 @@ namespace ASP
     #line default
     #line hidden
     
+    #line 17 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
+    using Omnicx.WebStore.Models.Enums;
+    
+    #line default
+    #line hidden
+    
+    #line 20 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
+    using Omnicx.WebStore.Models.Helpers;
+    
+    #line default
+    #line hidden
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Account/Layout1/ReturnHistory.cshtml")]
-    public partial class _Views_Account_Layout1_ReturnHistory_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<List<Omnicx.API.SDK.Models.Commerce.ReturnModel>>
+    public partial class _Views_Account_Layout1_ReturnHistory_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<List<Omnicx.WebStore.Models.Commerce.ReturnModel>>
     {
         public _Views_Account_Layout1_ReturnHistory_cshtml()
         {
@@ -104,120 +104,103 @@ WriteLiteral("\r\n");
             #line hidden
 WriteLiteral("\r\n<div");
 
-WriteLiteral(" class=\"row\"");
+WriteLiteral(" class=\"container dataContainer\"");
 
 WriteLiteral(">\r\n    <div");
 
+WriteLiteral(" class=\"row\"");
+
+WriteLiteral(">\r\n        <div");
+
 WriteLiteral(" class=\"col-md-12\"");
 
-WriteLiteral(">\r\n        <ul");
+WriteLiteral(">\r\n            <ul");
 
 WriteLiteral(" class=\"breadcrumb\"");
 
-WriteLiteral(">\r\n            <li>\r\n                <a");
+WriteLiteral(">\r\n                <li>\r\n                    <a");
 
 WriteLiteral(" href=\"/\"");
 
 WriteLiteral(">");
 
             
-            #line 31 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
-                       Write(LT("MyAccount.Links.Home", "Home"));
+            #line 32 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
+                           Write(LT("MyAccount.Links.Home", "Home"));
 
             
             #line default
             #line hidden
-WriteLiteral("</a>\r\n            </li>\r\n            <li>");
+WriteLiteral("</a>\r\n                </li>\r\n                <li>");
 
             
-            #line 33 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
-           Write(LT("MyAccount.Text.ReturnHistory", "Return History"));
+            #line 34 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
+               Write(LT("MyAccount.Text.ReturnHistory", "Return History"));
 
             
             #line default
             #line hidden
-WriteLiteral("</li>\r\n        </ul>\r\n    </div>\r\n</div>\r\n<div");
+WriteLiteral("</li>\r\n            </ul>\r\n        </div>\r\n    </div>\r\n    \r\n    <div");
 
 WriteLiteral(" class=\"row\"");
-
-WriteLiteral(">\r\n    <div");
-
-WriteLiteral(" class=\"col-sm-12 col-xs-12\"");
-
-WriteLiteral(">\r\n        <h3");
-
-WriteLiteral(" class=\"panel-h2 hidden-xs\"");
-
-WriteLiteral(">");
-
-            
-            #line 39 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
-                                  Write(LT("MyAccount.Text.Name", "Return History"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</h3>\r\n    </div>\r\n</div>\r\n<div");
-
-WriteLiteral(" class=\"row\"");
-
-WriteLiteral(">\r\n    <div");
-
-WriteLiteral(" class=\"col-xs-12 margin-bottom-lg visible-xs\"");
-
-WriteLiteral(" id=\"exTab1\"");
 
 WriteLiteral(">\r\n        <div");
 
-WriteLiteral(" class=\"row\"");
+WriteLiteral(" class=\"col-xs-12 visible-xs\"");
+
+WriteLiteral(" id=\"exTab1\"");
 
 WriteLiteral(">\r\n            <div");
 
+WriteLiteral(" class=\"row\"");
+
+WriteLiteral(">\r\n                <div");
+
 WriteLiteral(" class=\"col-sm-12 col-xs-12\"");
 
-WriteLiteral(">\r\n                <h1");
+WriteLiteral(">\r\n                    <h1");
 
 WriteLiteral(" class=\"basket-h1\"");
 
 WriteLiteral(">");
 
             
-            #line 46 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
-                                 Write(LT("MyAccount.Links.OrderOnePlace", "Return History"));
+            #line 43 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
+                                     Write(LT("MyAccount.Links.OrderOnePlace", "Return History"));
 
             
             #line default
             #line hidden
-WriteLiteral("</h1>\r\n                <p");
+WriteLiteral("</h1>\r\n                    <p");
 
 WriteLiteral(" class=\"text-muted basket-text\"");
 
 WriteLiteral(">");
 
             
-            #line 47 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
-                                             Write(LT("MyAccount.Text.FeelFree", "If you have any questions, please feel free to "));
+            #line 44 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
+                                                 Write(LT("MyAccount.Text.FeelFree", "If you have any questions, please feel free to "));
 
             
             #line default
             #line hidden
 WriteLiteral("<a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1970), Tuple.Create("\"", 2008)
+WriteAttribute("href", Tuple.Create(" href=\"", 1901), Tuple.Create("\"", 1939)
             
-            #line 47 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
-                                                            , Tuple.Create(Tuple.Create("", 1977), Tuple.Create<System.Object, System.Int32>(Url.Action("Contact", "pages")
+            #line 44 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
+                                                                , Tuple.Create(Tuple.Create("", 1908), Tuple.Create<System.Object, System.Int32>(Url.Action("Contact", "pages")
             
             #line default
             #line hidden
-, 1977), false)
+, 1908), false)
 );
 
 WriteLiteral(">");
 
             
-            #line 47 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
-                                                                                                                                                                        Write(LT("MyAccount.Text.ContactUs", "Contact Us"));
+            #line 44 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
+                                                                                                                                                                            Write(LT("MyAccount.Text.ContactUs", "Contact Us"));
 
             
             #line default
@@ -225,195 +208,214 @@ WriteLiteral(">");
 WriteLiteral(",</a> ");
 
             
+            #line 44 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
+                                                                                                                                                                                                                               Write(LT("MyAccount.Text.Support", " our customer service center is working for you 24/7 ."));
+
+            
+            #line default
+            #line hidden
+WriteLiteral(" </p>\r\n                </div>\r\n            </div>\r\n");
+
+WriteLiteral("            ");
+
+            
             #line 47 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
-                                                                                                                                                                                                                           Write(LT("MyAccount.Text.Support", " our customer service center is working for you 24/7 ."));
+       Write(Html.Partial("~/Views/Account/Layout1/_MobileSideNav.cshtml"));
 
             
             #line default
             #line hidden
-WriteLiteral(" </p>\r\n            </div>\r\n        </div>\r\n");
-
-WriteLiteral("        ");
-
-            
-            #line 50 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
-   Write(Html.Partial("~/Views/Account/Layout1/_MobileSideNav.cshtml"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n    </div>\r\n    <div");
+WriteLiteral("\r\n        </div>\r\n        <div");
 
 WriteLiteral(" class=\"col-md-3 col-sm-4 col-xs-12 hidden-xs\"");
 
 WriteLiteral(">\r\n");
 
-WriteLiteral("        ");
+WriteLiteral("            ");
 
             
-            #line 53 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
-   Write(Html.Partial("~/Views/Account/Layout1/_SideNav.cshtml"));
+            #line 50 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
+       Write(Html.Partial("~/Views/Account/Layout1/_SideNav.cshtml"));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n    </div>\r\n\r\n    <div");
+WriteLiteral("\r\n        </div>\r\n\r\n        <div");
 
 WriteLiteral(" class=\"col-md-9 col-sm-8 col-xs-12\"");
 
-WriteLiteral(">\r\n        <div");
-
-WriteLiteral(" class=\"box no-padding col-sm-12 col-xs-12 no-border-bottom\"");
-
 WriteLiteral(">\r\n            <div");
 
-WriteLiteral(" class=\"table-responsive\"");
+WriteLiteral(" class=\"row\"");
 
 WriteLiteral(">\r\n                <div");
 
-WriteLiteral(" class=\"col-sm-12 no-padding\"");
+WriteLiteral(" class=\"col-sm-12 col-xs-12\"");
+
+WriteLiteral(">\r\n                    <h3");
+
+WriteLiteral(" class=\"panel-h2\"");
+
+WriteLiteral(">");
+
+            
+            #line 56 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
+                                    Write(LT("MyAccount.Text.Name", "Return History"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</h3>\r\n                </div>\r\n            </div>\r\n            <div");
+
+WriteLiteral(" class=\"box no-padding col-sm-12 col-xs-12 no-border-bottom\"");
+
+WriteLiteral(">\r\n                <div");
+
+WriteLiteral(" class=\"table-responsive\"");
 
 WriteLiteral(">\r\n                    <div");
 
+WriteLiteral(" class=\"col-sm-12 no-padding\"");
+
+WriteLiteral(">\r\n                        <div");
+
 WriteLiteral(" class=\"table-responsive max-history\"");
 
-WriteLiteral(">\r\n                        <table");
+WriteLiteral(">\r\n                            <table");
 
 WriteLiteral(" class=\"table table-hover no-border table-striped\"");
 
-WriteLiteral(">\r\n                            <thead>\r\n                                <tr>\r\n   " +
-"                                 <th>");
-
-            
-            #line 64 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
-                                   Write(LT("MyAccount.Text.Qty", "Order #"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</th>\r\n                                    <th>");
-
-            
-            #line 65 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
-                                   Write(LT("MyAccount.Text.GrandTotal", "Status"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</th>\r\n                                    <th>");
+WriteLiteral(">\r\n                                <thead>\r\n                                    <" +
+"tr>\r\n                                        <th>");
 
             
             #line 66 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
-                                   Write(LT("MyAccount.Text.Product", "Order Date"));
+                                       Write(LT("MyAccount.Text.Qty", "Order #"));
 
             
             #line default
             #line hidden
-WriteLiteral("</th>                                    \r\n                                    <t" +
-"h");
+WriteLiteral("</th>\r\n                                        <th>");
+
+            
+            #line 67 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
+                                       Write(LT("MyAccount.Text.GrandTotal", "Status"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</th>\r\n                                        <th>");
+
+            
+            #line 68 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
+                                       Write(LT("MyAccount.Text.Product", "Order Date"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</th>\r\n                                        <th");
 
 WriteLiteral(" class=\"text-right\"");
 
 WriteLiteral(">");
 
             
-            #line 67 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
-                                                      Write(LT("MyAccount.Text.Price", "Order Value"));
+            #line 69 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
+                                                          Write(LT("MyAccount.Text.Price", "Order Value"));
 
             
             #line default
             #line hidden
-WriteLiteral("</th>\r\n                                    \r\n                                </tr" +
-">\r\n                            </thead>\r\n                            <tbody");
+WriteLiteral("</th>\r\n\r\n                                    </tr>\r\n                             " +
+"   </thead>\r\n                                <tbody");
 
 WriteLiteral(" id=\"cart\"");
 
 WriteLiteral(">\r\n");
 
             
-            #line 72 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
-                                
+            #line 74 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
+                                    
             
             #line default
             #line hidden
             
-            #line 72 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
-                                 foreach (var item in @Model)
-                                {
+            #line 74 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
+                                     foreach (var item in @Model)
+                                    {
 
             
             #line default
             #line hidden
-WriteLiteral("                                    <tr>\r\n                                       " +
-" <td><strong>");
+WriteLiteral("                                        <tr>\r\n                                   " +
+"         <td><strong>");
 
             
-            #line 75 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
-                                               Write(item.OrderNumber);
+            #line 77 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
+                                                   Write(item.OrderNumber);
 
             
             #line default
             #line hidden
-WriteLiteral("</strong></td>\r\n                                        <td><label");
+WriteLiteral("</strong></td>\r\n                                            <td><label");
 
-WriteAttribute("class", Tuple.Create(" class=\"", 3695), Tuple.Create("\"", 3757)
-, Tuple.Create(Tuple.Create("", 3703), Tuple.Create("label", 3703), true)
-, Tuple.Create(Tuple.Create(" ", 3708), Tuple.Create("label-", 3709), true)
+WriteAttribute("class", Tuple.Create(" class=\"", 3880), Tuple.Create("\"", 3942)
+, Tuple.Create(Tuple.Create("", 3888), Tuple.Create("label", 3888), true)
+, Tuple.Create(Tuple.Create(" ", 3893), Tuple.Create("label-", 3894), true)
             
-            #line 76 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
-, Tuple.Create(Tuple.Create("", 3715), Tuple.Create<System.Object, System.Int32>(item.StatusLabel
+            #line 78 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
+, Tuple.Create(Tuple.Create("", 3900), Tuple.Create<System.Object, System.Int32>(item.StatusLabel
             
             #line default
             #line hidden
-, 3715), false)
-, Tuple.Create(Tuple.Create(" ", 3732), Tuple.Create("padding-xs", 3733), true)
-, Tuple.Create(Tuple.Create(" ", 3743), Tuple.Create("status-inline", 3744), true)
+, 3900), false)
+, Tuple.Create(Tuple.Create(" ", 3917), Tuple.Create("padding-xs", 3918), true)
+, Tuple.Create(Tuple.Create(" ", 3928), Tuple.Create("status-inline", 3929), true)
 );
 
 WriteLiteral(">");
 
             
-            #line 76 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
-                                                                                                             Write(item.StatusLabel);
+            #line 78 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
+                                                                                                                 Write(item.StatusLabel);
 
             
             #line default
             #line hidden
-WriteLiteral("</label></td>\r\n                                        <td>");
+WriteLiteral("</label></td>\r\n                                            <td>");
 
             
-            #line 77 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
-                                       Write(item.OrderDate);
+            #line 79 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
+                                           Write(item.OrderDate);
 
             
             #line default
             #line hidden
-WriteLiteral("</td>                                        \r\n                                  " +
-"      <td");
+WriteLiteral("</td>\r\n                                            <td");
 
 WriteLiteral(" align=\"right\"");
 
 WriteLiteral(">");
 
             
-            #line 78 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
-                                                     Write(item.SubTotal.Formatted.WithTax);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</td>\r\n                                    </tr>\r\n");
-
-            
             #line 80 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
-                                }
+                                                         Write(item.SubTotal.Formatted.WithTax);
 
             
             #line default
             #line hidden
-WriteLiteral("                            </tbody>\r\n                        </table>\r\n         " +
-"           </div>\r\n\r\n                </div>\r\n\r\n            </div>\r\n        </div" +
-">\r\n    </div>\r\n    \r\n</div>\r\n");
+WriteLiteral("</td>\r\n                                        </tr>\r\n");
+
+            
+            #line 82 "..\..\Views\Account\Layout1\ReturnHistory.cshtml"
+                                    }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                </tbody>\r\n                            </table>\r\n " +
+"                       </div>\r\n\r\n                    </div>\r\n\r\n                <" +
+"/div>\r\n            </div>\r\n        </div>\r\n\r\n    </div>\r\n</div>");
 
         }
     }

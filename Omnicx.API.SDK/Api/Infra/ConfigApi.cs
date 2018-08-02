@@ -1,11 +1,12 @@
 ﻿using System.Linq;
-using Omnicx.API.SDK.Entities;
+
 using Omnicx.API.SDK.Helpers;
-using Omnicx.API.SDK.Models.Infrastructure;
-using Omnicx.API.SDK.Models;
+using Omnicx.WebStore.Models.Infrastructure;
+using Omnicx.WebStore.Models;
 using System.ComponentModel;
-using Omnicx.API.SDK.Models.Infrastructure.Settings;
+using Omnicx.WebStore.Models.Infrastructure.Settings;
 using Omnicx.WebStore.Apps.OAuthHelper;
+using Omnicx.WebStore.Models.Keys;
 
 namespace Omnicx.API.SDK.Api.Infra
 {

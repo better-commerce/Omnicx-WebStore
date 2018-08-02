@@ -28,14 +28,14 @@ namespace ASP
     using System.Web.UI;
     using System.Web.WebPages;
     using DevTrends.MvcDonutCaching;
+    using Omnicx.WebStore;
+    using Omnicx.WebStore.Core;
     
     #line 1 "..\..\Views\Shared\Layout1\_LayoutFooterAccount.cshtml"
-    using Omnicx.API.SDK.Entities;
+    using Omnicx.WebStore.Models.Keys;
     
     #line default
     #line hidden
-    using Omnicx.WebStore;
-    using Omnicx.WebStore.Core;
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Shared/Layout1/_LayoutFooterAccount.cshtml")]
@@ -56,7 +56,7 @@ namespace ASP
             #line hidden
 WriteLiteral("\r\n<div");
 
-WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding hidden-xs bg-black padding-top-sm\"");
+WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding hidden-xs\"");
 
 WriteLiteral(">\r\n");
 
@@ -86,7 +86,7 @@ Write(Html.Action("GetFooterMobile", "Home"));
             #line hidden
 WriteLiteral("\r\n</div>\r\n<div");
 
-WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding bg-black padding-top-sm\"");
+WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding\"");
 
 WriteLiteral(">\r\n    <div");
 
@@ -125,9 +125,9 @@ WriteLiteral(" class=\"pull-right\"");
 
 WriteLiteral(">\r\n                    <img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 867), Tuple.Create("\"", 910)
-, Tuple.Create(Tuple.Create("", 873), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/payment.png")
-, 873), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 823), Tuple.Create("\"", 866)
+, Tuple.Create(Tuple.Create("", 829), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/payment.png")
+, 829), false)
 );
 
 WriteLiteral(" alt=\"payments accepted\"");

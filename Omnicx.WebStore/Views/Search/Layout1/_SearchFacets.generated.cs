@@ -76,7 +76,7 @@ WriteLiteral(">");
 
             
             #line 15 "..\..\Views\Search\Layout1\_SearchFacets.cshtml"
-                        Write(LT("ProductListing.Label.YouHaveSelected", "You have selected"));
+                        Write(LT("ProductListing.Label.YouHaveSelected", "Filters"));
 
             
             #line default
@@ -88,20 +88,9 @@ WriteLiteral(" class=\"col-sm-12 no-padding\"");
 WriteLiteral(" ng-show=\"pm.searchCriteria.freeText!=null && pm.searchCriteria.freeText.length>0" +
 "\"");
 
-WriteLiteral(" ng-cloak>\r\n            <span");
+WriteLiteral(" ng-cloak>\r\n            ");
 
-WriteLiteral(" class=\"selected-h4\"");
-
-WriteLiteral("><strong>");
-
-            
-            #line 17 "..\..\Views\Search\Layout1\_SearchFacets.cshtml"
-                                         Write(LT("Dynamic.FacetHeading.FreeText", "Free Text"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</strong>:&nbsp;</span>\r\n            <span");
+WriteLiteral("\r\n            <span");
 
 WriteLiteral(" class=\"selected-p\"");
 
@@ -131,15 +120,7 @@ WriteLiteral(">\r\n            <div");
 
 WriteLiteral(" class=\"col-sm-12 no-padding\"");
 
-WriteLiteral(">\r\n                <span");
-
-WriteLiteral(" class=\"selected-h4\"");
-
-WriteLiteral("><strong");
-
-WriteLiteral(" ng-bind=\"group\"");
-
-WriteLiteral("></strong> :&nbsp;</span>\r\n                <span");
+WriteLiteral(">                \r\n                <span");
 
 WriteLiteral(" ng-repeat=\"selected in pm.searchproductfilter  | filter:{name:group}\"");
 
@@ -226,7 +207,7 @@ WriteLiteral("\r\n                </span>\r\n            </div>\r\n        </div
 "\r\n");
 
             
-            #line 43 "..\..\Views\Search\Layout1\_SearchFacets.cshtml"
+            #line 42 "..\..\Views\Search\Layout1\_SearchFacets.cshtml"
    /* End Selected filter grig */ 
             
             #line default
@@ -234,7 +215,7 @@ WriteLiteral("\r\n                </span>\r\n            </div>\r\n        </div
 WriteLiteral("\r\n\r\n");
 
             
-            #line 45 "..\..\Views\Search\Layout1\_SearchFacets.cshtml"
+            #line 44 "..\..\Views\Search\Layout1\_SearchFacets.cshtml"
    /* Start left filters accordion */ 
             
             #line default
@@ -460,7 +441,7 @@ WriteLiteral("\r\n                        </label>\r\n                    </div>
 "/div>\r\n            </form>\r\n        </div>\r\n    </div>\r\n</div>\r\n");
 
             
-            #line 92 "..\..\Views\Search\Layout1\_SearchFacets.cshtml"
+            #line 91 "..\..\Views\Search\Layout1\_SearchFacets.cshtml"
    /* End left filters accordion */ 
             
             #line default

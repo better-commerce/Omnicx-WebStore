@@ -36,46 +36,40 @@ namespace ASP
     #line hidden
     
     #line 18 "..\..\Views\Category\Layout1\CategoryProducts.cshtml"
-    using Omnicx.API.SDK.Entities;
-    
-    #line default
-    #line hidden
-    
-    #line 19 "..\..\Views\Category\Layout1\CategoryProducts.cshtml"
     using Omnicx.API.SDK.Helpers;
-    
-    #line default
-    #line hidden
-    
-    #line 20 "..\..\Views\Category\Layout1\CategoryProducts.cshtml"
-    using Omnicx.API.SDK.Models.Catalog;
     
     #line default
     #line hidden
     using Omnicx.WebStore;
     using Omnicx.WebStore.Core;
     
-    #line 16 "..\..\Views\Category\Layout1\CategoryProducts.cshtml"
+    #line 15 "..\..\Views\Category\Layout1\CategoryProducts.cshtml"
     using Omnicx.WebStore.Core.Controllers;
     
     #line default
     #line hidden
     
-    #line 15 "..\..\Views\Category\Layout1\CategoryProducts.cshtml"
-    using Omnicx.WebStore.Core.Helpers;
+    #line 16 "..\..\Views\Category\Layout1\CategoryProducts.cshtml"
+    using Omnicx.WebStore.Framework.Helpers;
+    
+    #line default
+    #line hidden
+    
+    #line 19 "..\..\Views\Category\Layout1\CategoryProducts.cshtml"
+    using Omnicx.WebStore.Models.Catalog;
     
     #line default
     #line hidden
     
     #line 17 "..\..\Views\Category\Layout1\CategoryProducts.cshtml"
-    using Omnicx.WebStore.Framework.Helpers;
+    using Omnicx.WebStore.Models.Enums;
     
     #line default
     #line hidden
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Category/Layout1/CategoryProducts.cshtml")]
-    public partial class _Views_Category_Layout1_CategoryProducts_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Catalog.CategoryModel>
+    public partial class _Views_Category_Layout1_CategoryProducts_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Catalog.CategoryModel>
     {
         public _Views_Category_Layout1_CategoryProducts_cshtml()
         {
@@ -103,7 +97,7 @@ namespace ASP
 WriteLiteral("\r\n");
 
             
-            #line 22 "..\..\Views\Category\Layout1\CategoryProducts.cshtml"
+            #line 21 "..\..\Views\Category\Layout1\CategoryProducts.cshtml"
   
     ViewBag.Title = @LT("ProductDetail.Label.Search" , "Search");
     Layout = "~/Views/Shared/Layout1/_Layout.cshtml";
@@ -116,7 +110,7 @@ WriteLiteral("\r\n");
 WriteLiteral("\r\n");
 
             
-            #line 28 "..\..\Views\Category\Layout1\CategoryProducts.cshtml"
+            #line 27 "..\..\Views\Category\Layout1\CategoryProducts.cshtml"
  if (metaInfo != null)
 {
 
@@ -145,7 +139,7 @@ WriteLiteral(" href=\"/\"");
 WriteLiteral(">");
 
             
-            #line 39 "..\..\Views\Category\Layout1\CategoryProducts.cshtml"
+            #line 38 "..\..\Views\Category\Layout1\CategoryProducts.cshtml"
                    Write(LT("ProductListing.Breadcrumb.Home", "Home"));
 
             
@@ -154,13 +148,13 @@ WriteLiteral(">");
 WriteLiteral("</a></li>       \r\n");
 
             
-            #line 40 "..\..\Views\Category\Layout1\CategoryProducts.cshtml"
+            #line 39 "..\..\Views\Category\Layout1\CategoryProducts.cshtml"
         
             
             #line default
             #line hidden
             
-            #line 40 "..\..\Views\Category\Layout1\CategoryProducts.cshtml"
+            #line 39 "..\..\Views\Category\Layout1\CategoryProducts.cshtml"
          if (Model.BreadCrumbs != null)
         {
             var catBreadCrumb = Model.BreadCrumbs.FirstOrDefault(x => x.SlugType == EntitySlugTypes.Category.ToString());
@@ -171,14 +165,14 @@ WriteLiteral("</a></li>       \r\n");
             #line default
             #line hidden
             
-            #line 45 "..\..\Views\Category\Layout1\CategoryProducts.cshtml"
+            #line 44 "..\..\Views\Category\Layout1\CategoryProducts.cshtml"
            Write(Html.Partial("~/Views/Shared/_BreadCrumb.cshtml", catBreadCrumb.Slug));
 
             
             #line default
             #line hidden
             
-            #line 45 "..\..\Views\Category\Layout1\CategoryProducts.cshtml"
+            #line 44 "..\..\Views\Category\Layout1\CategoryProducts.cshtml"
                                                                                       ;
             }
         }
@@ -193,7 +187,7 @@ WriteLiteral(" href=\"#\"");
 WriteLiteral("></a>");
 
             
-            #line 48 "..\..\Views\Category\Layout1\CategoryProducts.cshtml"
+            #line 47 "..\..\Views\Category\Layout1\CategoryProducts.cshtml"
                        Write(Model.Name);
 
             
@@ -202,7 +196,7 @@ WriteLiteral("></a>");
 WriteLiteral("</li>\r\n    </ul>\r\n</div>\r\n\r\n");
 
             
-            #line 52 "..\..\Views\Category\Layout1\CategoryProducts.cshtml"
+            #line 51 "..\..\Views\Category\Layout1\CategoryProducts.cshtml"
 Write(Html.Partial("~/Views/search/Layout1/_SearchResultProducts.cshtml" , Model.ProductList));
 
             
@@ -215,7 +209,7 @@ DefineSection("scripts", () => {
 WriteLiteral("\r\n    <script>\r\n        var searchProductUrl = \'");
 
             
-            #line 56 "..\..\Views\Category\Layout1\CategoryProducts.cshtml"
+            #line 55 "..\..\Views\Category\Layout1\CategoryProducts.cshtml"
                             Write(Html.BuildUrlFromExpression<SearchController>(c => c.SearchProducts(null)));
 
             
@@ -224,7 +218,7 @@ WriteLiteral("\r\n    <script>\r\n        var searchProductUrl = \'");
 WriteLiteral("\';\r\n        var productUrl = \'");
 
             
-            #line 57 "..\..\Views\Category\Layout1\CategoryProducts.cshtml"
+            #line 56 "..\..\Views\Category\Layout1\CategoryProducts.cshtml"
                       Write(Html.BuildUrlFromExpression<ProductController>(c => c.ProductDetails("")));
 
             
@@ -233,7 +227,7 @@ WriteLiteral("\';\r\n        var productUrl = \'");
 WriteLiteral("\';\r\n        var addToWishlistUrl = \'");
 
             
-            #line 58 "..\..\Views\Category\Layout1\CategoryProducts.cshtml"
+            #line 57 "..\..\Views\Category\Layout1\CategoryProducts.cshtml"
                             Write(Html.BuildUrlFromExpression<AccountController>(c => c.AddProductToWishlist(null)));
 
             
@@ -242,7 +236,7 @@ WriteLiteral("\';\r\n        var addToWishlistUrl = \'");
 WriteLiteral("\';     \r\n        var getWishlist = \'");
 
             
-            #line 59 "..\..\Views\Category\Layout1\CategoryProducts.cshtml"
+            #line 58 "..\..\Views\Category\Layout1\CategoryProducts.cshtml"
                        Write(Html.BuildUrlFromExpression<AccountController>(c => c.GetWishlist()));
 
             
@@ -258,7 +252,7 @@ WriteLiteral(@"';
         window.app.constant('model', ");
 
             
-            #line 66 "..\..\Views\Category\Layout1\CategoryProducts.cshtml"
+            #line 65 "..\..\Views\Category\Layout1\CategoryProducts.cshtml"
                                 Write(Html.JsonFor(Model));
 
             

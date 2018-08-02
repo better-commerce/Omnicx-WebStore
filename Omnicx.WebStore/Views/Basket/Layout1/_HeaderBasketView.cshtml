@@ -1,16 +1,17 @@
 ﻿@{
-/*
-    Name: Mini Basker
-    Purpose: Show limited Information for added items in mini-cart
-    Structure: /Views/Basket/Layout1/_HeaderBasketView.cshtml
-    Contains (Partial Views Used):
-        a-/Views/Basket/Layout1/_QuickOrderPad.cshtml
-        b-/Views/Basket/Layout1/_BulkOrderMessage.cshtml
-    Contained In (Where we Use this View):
-        a-/Views/Shared/Layout1/_HeaderLayout.cshtml    (Link in Top Header)
-    */
+    /*
+        Name: Mini Basker
+        Purpose: Show limited Information for added items in mini-cart
+        Structure: /Views/Basket/Layout1/_HeaderBasketView.cshtml
+        Contains (Partial Views Used):
+            a-/Views/Basket/Layout1/_QuickOrderPad.cshtml
+            b-/Views/Basket/Layout1/_BulkOrderMessage.cshtml
+        Contained In (Where we Use this View):
+            a-/Views/Shared/Layout1/_HeaderLayout.cshtml    (Link in Top Header)
+        */
 }
-@using Omnicx.API.SDK.Entities
+@using Omnicx.WebStore.Models.Enums
+@using Omnicx.WebStore.Models.Keys 
 @inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
 @{
 
@@ -21,11 +22,11 @@
     }
 }
 
-<div class="top-login-cart metaLinks" ng-init="gm.initBasket()">  
+<div class="top-login-cart metaLinks" ng-init="gm.initBasket()">
     <ul class="list-inline">
         <li class="shopping-cart cartopen">
-            <a href="@Url.Action("Index", "Basket")" class="metaLinks__basket minicart-custom" title="@LT("YourBag.Text.Basket", "Basket")">                
-                <span class="sprite-bag metaLinks__basket__full"></span>
+            <a href="@Url.Action("Index", "Basket")" class="metaLinks__basket minicart-custom">
+                <span class="metaLinks__basket__full"><i class="fa fa-shopping-cart"></i> @LT("YourBag.Text.Cart", "Cart")</span>
                 <span class="metaLinks__basket__indicator" ng-if="gm.count==0">@LT("YourBag.Text.Zero", "0")</span>
                 <span class="metaLinks__basket__indicator" ng-if="gm.count>0" ng-bind="gm.count"></span>
             </a>
@@ -38,7 +39,7 @@
                                     <div class="col-sm-3 col-xs-3 no-padding">
                                         <span class="cart-img">
                                             <a ng-href="/{{items.slug}}">
-                                                <img ng-src="{{items.image}}" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'">
+                                                <img ng-src="{{items.image}}" onerror="this.src = DEFAULT_IMAGE_URL">
                                             </a>
                                         </span>
                                     </div>
@@ -49,7 +50,7 @@
                                         <span class="cart-info">
                                             <a class="small-cart-name" ng-href="/{{items.slug}}" ng-bind="items.name"></a>
                                             <button class="btn-cart" ng-init="oldQty=items.qty" ng-click="gm.addToBasket(items.productId,-1,items.displayOrder)"><i class="fa fa-minus"></i></button>
-                                            <input type="text" ng-mousedown="oldQty=items.qty" ng-model="items.qty" value="{{items.qty}}" class="cart-text form-control" ng-click="gm.onTextFocus($event)" ng-blur="gm.updateQtyAndAdd(items.productId,items.qty,oldQty,items.displayOrder)" numbers-Only >
+                                            <input type="text" ng-mousedown="oldQty=items.qty" ng-model="items.qty" value="{{items.qty}}" class="cart-text form-control" ng-click="gm.onTextFocus($event)" ng-blur="gm.updateQtyAndAdd(items.productId,items.qty,oldQty,items.displayOrder)" numbers-Only>
                                             <button class="btn-cart" ng-click="gm.addToBasket(items.productId,1,items.displayOrder)"><i class="fa fa-plus"></i></button>
                                             <span> * {{items.price.formatted.withTax}}</span>
                                             <span class="bag-price" ng-bind="items.totalPrice.formatted.withTax"></span>
@@ -69,7 +70,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>                                
+                                </div>
                             </div>
                             @*To Display Free Product*@
                             <ul id="cartdropdownFree">
@@ -79,7 +80,7 @@
                                             <div class="col-sm-3 col-xs-3 no-padding">
                                                 <span class="cart-img">
                                                     <a ng-href="/{{freeitem.slug}}">
-                                                        <img ng-src="{{freeitem.image}}" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'">
+                                                        <img ng-src="{{freeitem.image}}" onerror="this.src = DEFAULT_IMAGE_URL">
                                                     </a>
                                                 </span>
                                             </div>
@@ -100,6 +101,9 @@
                             </ul>
                         </li>
                     </ul>
+                </li>
+                <li ng-cloak class="alert alert-danger" style="float:right;" ng-show="gm.errorMessage">
+                    <i class="fa fa-circle"></i><span ng-bind="gm.errorMessage"></span>
                 </li>
                 <li>
                     <select id="deliverydrpdwn" ng-model="selectedid" ng-change="gm.updateShipping(selectedid)">
@@ -153,11 +157,8 @@
                         </div>
                         <div class="col-sm-6 col-xs-12">
                             <a href="@checkoutUrl//{{gm.basketResponse.id}}" class="animate btn-primary">@LT("Checkout.Title.Checkout", "Checkout") <i class="fa fa-caret-right"></i></a>
-                        </div>                        
+                        </div>
                     </div>
-                    @*<div class="col-sm-12 col-xs-12 margin-top-md">
-                            <a ng-click="gm.quick=null;gm.excelData=null;gm.format1=true;gm.format2=false;gm.openQuickBasketModal()" class="btn btn-primary">Quick Order Pad</a>
-                        </div>*@
                 </li>
             </ul>
         </li>

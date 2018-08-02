@@ -9,9 +9,9 @@ Contained In (Where we Use this View) :
 */
 }
 @using Omnicx.WebStore.Framework.Helpers
-@using Omnicx.API.SDK.Entities
+@using Omnicx.WebStore.Models.Enums
 @using Omnicx.API.SDK.Helpers
-@using Omnicx.API.SDK.Models.Catalog
+@using Omnicx.WebStore.Models.Catalog
 @using Omnicx.WebStore.Core.Helpers;
 @inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<AllBrandModel>
 
@@ -27,7 +27,7 @@ Contained In (Where we Use this View) :
 
 
 
-<div class="container" ng-controller="productCtrl as pm">
+<div class="container dataContainer" ng-controller="productCtrl as pm">
     @{ /* Start breadcrumb container */ }
     <div class="row no-padding" ng-init="pm.initBrandListing();">
         <ul class="breadcrumb">
@@ -46,7 +46,7 @@ Contained In (Where we Use this View) :
             </ol>
             <div class="carousel-inner">
                 <div class="item active">
-                    <img src="~/assets/images/carousal-banner-men.jpg" alt="Slide 1 of carousel">
+                    <img src="~/assets/theme/ocx/images/carousal-banner-men.jpg" alt="Slide 1 of carousel">
                     <div class="component-static-html img-topData hidden-xs">
                         <h2>MENSWEAR</h2>
                         <p>We have prepared for you different HTML pages, including 2 variations of homepage</p>
@@ -56,7 +56,7 @@ Contained In (Where we Use this View) :
                     </div>
                 </div>
                 <div class="item">
-                    <img src="~/assets/images/carousal-banner-women.jpg" alt="Slide 2 of Carousel">
+                    <img src="~/assets/theme/ocx/images/carousal-banner-women.jpg" alt="Slide 2 of Carousel">
                     <div class="omnicomponent component-static-html img-topData hidden-xs">
                         <h2>WOMENSWEAR</h2>
                         <p>We have prepared for you different HTML pages, including 2 variations of homepage</p>
@@ -100,7 +100,7 @@ Contained In (Where we Use this View) :
     @{ /* Start Brand Search panel */ }
     <div class="row no-padding" style="border-bottom:1px solid #ddd!important;">
         <form ng-submit="pm.filterBrands(search)">
-            <div class="col-sm-4 col-xs-12 no-padding form-inline">
+            <div class="col-sm-4 col-xs-12 form-inline">
                 <div class="input-group brand-search">
                     <input type="text" name="brandsearch" ng-model="search" id="brandsearch" class="form-control" placeholder="Search Brand" />
                     <span class="input-group-btn">
@@ -113,7 +113,7 @@ Contained In (Where we Use this View) :
     @{ /* End Brand Search panel */ }
     @{ /* Start Brand alphabatic filter links */ }
     <div class="row margin-top-md">
-        <div class="center-block" style="width:85%;background-color:#ccc;">
+        <div class="col-sm-12 col-xs-12 center-block">
             <ul class="selectcharacter-brand animated pulse">
                 <li class="" ng-class="{active: '#'=== pm.selectedRecord}"><a ng-click="pm.filterBrandListing('#')">#</a></li>
                 @foreach (var word in Model.PaginationWords)
@@ -151,7 +151,7 @@ Contained In (Where we Use this View) :
                 {
                     s = brand.ManufacturerName;
                 }
-                <div data-id="id-@brand.Id.ToString()" class="col-xs-12 col-md-4 col-sm-4 no-padding-left col-lg-4 text-center brands-list animated zoomIn" parent="1" firstchar="@categorygroup.Key" style="position:relative; top:0px;">
+                <div data-id="id-@brand.Id.ToString()" class="col-xs-12 col-md-4 col-sm-4 col-lg-4 text-center brands-list animated zoomIn" parent="1" firstchar="@categorygroup.Key" style="position:relative; top:0px;">
                     <a href="/@brand.Link">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center" data-id="id1-@brand.Id.ToString()" parent="1" firstchar="@categorygroup.Key" style="display:none;"> @s.ToCamelCaseString()</div>
                         <div id="over" class="">

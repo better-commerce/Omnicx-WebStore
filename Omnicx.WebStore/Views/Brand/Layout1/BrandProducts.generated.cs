@@ -40,12 +40,6 @@ namespace ASP
     
     #line default
     #line hidden
-    
-    #line 16 "..\..\Views\Brand\Layout1\BrandProducts.cshtml"
-    using Omnicx.API.SDK.Models.Catalog;
-    
-    #line default
-    #line hidden
     using Omnicx.WebStore;
     using Omnicx.WebStore.Core;
     
@@ -67,9 +61,15 @@ namespace ASP
     #line default
     #line hidden
     
+    #line 16 "..\..\Views\Brand\Layout1\BrandProducts.cshtml"
+    using Omnicx.WebStore.Models.Catalog;
+    
+    #line default
+    #line hidden
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Brand/Layout1/BrandProducts.cshtml")]
-    public partial class _Views_Brand_Layout1_BrandProducts_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Catalog.BrandDetailModel>
+    public partial class _Views_Brand_Layout1_BrandProducts_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Catalog.BrandDetailModel>
     {
         public _Views_Brand_Layout1_BrandProducts_cshtml()
         {
@@ -117,79 +117,10 @@ WriteLiteral("\r\n");
             
             #line default
             #line hidden
-WriteLiteral("\r\n<div");
-
-WriteLiteral(" class=\"col-md-12 no-padding\"");
-
-WriteLiteral(">\r\n    <ul");
-
-WriteLiteral(" class=\"breadcrumb\"");
-
-WriteLiteral(">\r\n        <li><a");
-
-WriteLiteral(" href=\"/\"");
-
-WriteLiteral(">");
+WriteLiteral("\r\n");
 
             
-            #line 32 "..\..\Views\Brand\Layout1\BrandProducts.cshtml"
-                   Write(LT("ProductListing.Breadcrumb.Home", "Home"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</a></li>\r\n       <li><a");
-
-WriteAttribute("href", Tuple.Create(" href=\"", 1139), Tuple.Create("\"", 1180)
-            
-            #line 33 "..\..\Views\Brand\Layout1\BrandProducts.cshtml"
-, Tuple.Create(Tuple.Create("", 1146), Tuple.Create<System.Object, System.Int32>(Url.Action("BrandList" , "Brand")
-            
-            #line default
-            #line hidden
-, 1146), false)
-);
-
-WriteLiteral(" class=\"link2\"");
-
-WriteLiteral(">Brand</a></li>\r\n");
-
-            
-            #line 34 "..\..\Views\Brand\Layout1\BrandProducts.cshtml"
-       
-            
-            #line default
-            #line hidden
-            
-            #line 34 "..\..\Views\Brand\Layout1\BrandProducts.cshtml"
-        if (@Model.ProductList.SearchCriteria.BreadCrumb != null)
-       {
-
-            
-            #line default
-            #line hidden
-WriteLiteral("        <li>");
-
-            
-            #line 36 "..\..\Views\Brand\Layout1\BrandProducts.cshtml"
-       Write(Model.ProductList.SearchCriteria.BreadCrumb.ToCamelCase());
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</li>\r\n");
-
-            
-            #line 37 "..\..\Views\Brand\Layout1\BrandProducts.cshtml"
-       }
-
-            
-            #line default
-            #line hidden
-WriteLiteral("    </ul>\r\n</div>\r\n\r\n");
-
-            
-            #line 41 "..\..\Views\Brand\Layout1\BrandProducts.cshtml"
+            #line 30 "..\..\Views\Brand\Layout1\BrandProducts.cshtml"
 Write(Html.Partial("~/Views/search/Layout1/_SearchResultProducts.cshtml", Model.ProductList));
 
             
@@ -202,7 +133,7 @@ DefineSection("scripts", () => {
 WriteLiteral("\r\n    <script>\r\n        var searchProductUrl = \'");
 
             
-            #line 45 "..\..\Views\Brand\Layout1\BrandProducts.cshtml"
+            #line 34 "..\..\Views\Brand\Layout1\BrandProducts.cshtml"
                             Write(Html.BuildUrlFromExpression<SearchController>(c => c.SearchProducts(null)));
 
             
@@ -211,7 +142,7 @@ WriteLiteral("\r\n    <script>\r\n        var searchProductUrl = \'");
 WriteLiteral("\';\r\n        var productUrl = \'");
 
             
-            #line 46 "..\..\Views\Brand\Layout1\BrandProducts.cshtml"
+            #line 35 "..\..\Views\Brand\Layout1\BrandProducts.cshtml"
                       Write(Html.BuildUrlFromExpression<ProductController>(c => c.ProductDetails("")));
 
             
@@ -220,7 +151,7 @@ WriteLiteral("\';\r\n        var productUrl = \'");
 WriteLiteral("\';\r\n        var addToWishlistUrl = \'");
 
             
-            #line 47 "..\..\Views\Brand\Layout1\BrandProducts.cshtml"
+            #line 36 "..\..\Views\Brand\Layout1\BrandProducts.cshtml"
                             Write(Html.BuildUrlFromExpression<AccountController>(c => c.AddProductToWishlist(null)));
 
             
@@ -229,13 +160,13 @@ WriteLiteral("\';\r\n        var addToWishlistUrl = \'");
 WriteLiteral("\';\r\n        var getWishlist = \'");
 
             
-            #line 48 "..\..\Views\Brand\Layout1\BrandProducts.cshtml"
+            #line 37 "..\..\Views\Brand\Layout1\BrandProducts.cshtml"
                        Write(Html.BuildUrlFromExpression<AccountController>(c => c.GetWishlist()));
 
             
             #line default
             #line hidden
-WriteLiteral(@"'; 
+WriteLiteral(@"';
         window.app.constant('productConfig',{
             searchProductUrl:searchProductUrl,
             productUrl : productUrl,
@@ -245,7 +176,7 @@ WriteLiteral(@"';
         window.app.constant('model', ");
 
             
-            #line 55 "..\..\Views\Brand\Layout1\BrandProducts.cshtml"
+            #line 44 "..\..\Views\Brand\Layout1\BrandProducts.cshtml"
                                 Write(Html.JsonFor(Model));
 
             

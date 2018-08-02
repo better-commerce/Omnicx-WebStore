@@ -28,17 +28,17 @@ namespace ASP
     using System.Web.UI;
     using System.Web.WebPages;
     using DevTrends.MvcDonutCaching;
-    
-    #line 12 "..\..\Views\Shared\Layout1\_Login.cshtml"
-    using Omnicx.API.SDK.Models.Commerce;
-    
-    #line default
-    #line hidden
     using Omnicx.WebStore;
     using Omnicx.WebStore.Core;
     
     #line 13 "..\..\Views\Shared\Layout1\_Login.cshtml"
     using Omnicx.WebStore.Framework.Helpers;
+    
+    #line default
+    #line hidden
+    
+    #line 12 "..\..\Views\Shared\Layout1\_Login.cshtml"
+    using Omnicx.WebStore.Models.Commerce;
     
     #line default
     #line hidden
@@ -122,6 +122,9 @@ WriteLiteral(">");
 WriteLiteral("</div>\r\n                <button");
 
 WriteLiteral(" type=\"button\"");
+
+WriteLiteral(" ng-click=\"gm.formReset(loginForm);gm.model.username=null;gm.model.password =null" +
+"\"");
 
 WriteLiteral(" class=\"close\"");
 
@@ -215,14 +218,14 @@ WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding text-center\"");
 
 WriteLiteral(">\r\n                        <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1891), Tuple.Create("\"", 1938)
+WriteAttribute("href", Tuple.Create(" href=\"", 1974), Tuple.Create("\"", 2021)
             
             #line 41 "..\..\Views\Shared\Layout1\_Login.cshtml"
-, Tuple.Create(Tuple.Create("", 1898), Tuple.Create<System.Object, System.Int32>(Url.Action("forgotpassword", "account")
+, Tuple.Create(Tuple.Create("", 1981), Tuple.Create<System.Object, System.Int32>(Url.Action("forgotpassword", "account")
             
             #line default
             #line hidden
-, 1898), false)
+, 1981), false)
 );
 
 WriteLiteral(" class=\"text-center\"");
@@ -257,7 +260,8 @@ WriteLiteral(" data-dismiss=\"modal\"");
 
 WriteLiteral(" aria-hidden=\"true\"");
 
-WriteLiteral(" ng-click=\"gm.model={}\"");
+WriteLiteral(" ng-click=\"gm.formReset(loginForm);gm.model.username=null;gm.model.password =null" +
+"\"");
 
 WriteLiteral(" class=\"text-black\"");
 
@@ -265,7 +269,7 @@ WriteLiteral("><strong>");
 
             
             #line 45 "..\..\Views\Shared\Layout1\_Login.cshtml"
-                                                                                                                                                                                                     Write(LT("Footer.Text.RegisterNow", "Register now"));
+                                                                                                                                                                                                                                                                Write(LT("Footer.Text.RegisterNow", "Register now"));
 
             
             #line default
@@ -274,7 +278,7 @@ WriteLiteral("</strong></a>!");
 
             
             #line 45 "..\..\Views\Shared\Layout1\_Login.cshtml"
-                                                                                                                                                                                                                                                                 Write(LT("MyAccount.Text.EasyRegister", " It is easy and done in 1 minute and gives you access to special discounts and much more"));
+                                                                                                                                                                                                                                                                                                                            Write(LT("MyAccount.Text.EasyRegister", " It is easy and done in 1 minute and gives you access to special discounts and much more"));
 
             
             #line default

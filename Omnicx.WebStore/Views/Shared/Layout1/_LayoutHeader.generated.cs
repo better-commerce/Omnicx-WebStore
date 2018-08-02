@@ -28,14 +28,14 @@ namespace ASP
     using System.Web.UI;
     using System.Web.WebPages;
     using DevTrends.MvcDonutCaching;
+    using Omnicx.WebStore;
+    using Omnicx.WebStore.Core;
     
     #line 17 "..\..\Views\Shared\Layout1\_LayoutHeader.cshtml"
-    using Omnicx.API.SDK.Entities;
+    using Omnicx.WebStore.Models.Keys;
     
     #line default
     #line hidden
-    using Omnicx.WebStore;
-    using Omnicx.WebStore.Core;
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Shared/Layout1/_LayoutHeader.cshtml")]
@@ -49,20 +49,20 @@ namespace ASP
             
             #line 1 "..\..\Views\Shared\Layout1\_LayoutHeader.cshtml"
   
-/*
-    Name: Page Header
-    Purpose: Select Header according to screen size
-    Structure: /Views/Shared/Layout1/_LayoutHeader.cshtml
-    Contains (Partial Views Used):
-        a-/Views/Shared/Layout1/_HeaderLayout.cshtml
-        b-/Views/Shared/Layout1/_MobileHeaderLayout.cshtml
+    /*
+        Name: Page Header
+        Purpose: Select Header according to screen size
+        Structure: /Views/Shared/Layout1/_LayoutHeader.cshtml
+        Contains (Partial Views Used):
+            a-/Views/Shared/Layout1/_HeaderLayout.cshtml
+            b-/Views/Shared/Layout1/_MobileHeaderLayout.cshtml
 
-    Contained In (Where we Use this View):
-        a-/Views/Shared/Layout1/_Layout.cshtml
-        b-/Views/Shared/Layout1/_LayoutAccount.cshtml
-        c-/Views/Shared/Layout1/_LayoutBlog.cshtml
-        d-/Views/Shared/Layout1/_LayoutCMS.cshtml
-    */
+        Contained In (Where we Use this View):
+            a-/Views/Shared/Layout1/_Layout.cshtml
+            b-/Views/Shared/Layout1/_LayoutAccount.cshtml
+            c-/Views/Shared/Layout1/_LayoutBlog.cshtml
+            d-/Views/Shared/Layout1/_LayoutCMS.cshtml
+        */
 
             
             #line default

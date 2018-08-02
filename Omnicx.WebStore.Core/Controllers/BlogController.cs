@@ -2,12 +2,14 @@
 using System.Linq;
 using System.Web.Mvc;
 using Omnicx.API.SDK.Api.Site;
-using Omnicx.API.SDK.Models.Helpers;
-using Omnicx.API.SDK.Models.Site;
+using Omnicx.WebStore.Models.Helpers;
+using Omnicx.WebStore.Models.Site;
 using Microsoft.Security.Application;
 using Omnicx.WebStore.Core.Helpers;
 using System.Net;
-using Omnicx.API.SDK.Entities;
+using Omnicx.WebStore.Models.Keys;
+using Omnicx.WebStore.Models.Enums;
+
 namespace Omnicx.WebStore.Core.Controllers
 {
     public class BlogController : BaseController
@@ -87,7 +89,7 @@ namespace Omnicx.WebStore.Core.Controllers
             var resp = _blogApi.BlogByGroup(BlogGroupType.Category.GetHashCode(), slug, currentpage, Convert.ToInt32(ConfigKeys.PageSize));
             if (resp == null && resp.StatusCode == HttpStatusCode.NotFound)
             {
-                return RedirectToAction("pagenotfound", "common");
+                return RedirectToAction("pagenotfound", "common", new { @aspxerrorpath = slug });
             }
             if (resp != null)
             {
@@ -117,7 +119,7 @@ namespace Omnicx.WebStore.Core.Controllers
             var results = _blogApi.BlogByGroup(BlogGroupType.BlogType.GetHashCode(), slug, currentpage, Convert.ToInt32(ConfigKeys.PageSize));
             if (results == null && results.StatusCode == HttpStatusCode.NotFound)
             {
-                return RedirectToAction("pagenotfound", "common");
+                return RedirectToAction("pagenotfound", "common", new { @aspxerrorpath = slug });
             }
             if (results != null)
             {
@@ -146,7 +148,7 @@ namespace Omnicx.WebStore.Core.Controllers
             var blog = _blogApi.BlogDetail(Sanitizer.GetSafeHtmlFragment(url));
             if (blog.Result == null && blog.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
-                return RedirectToAction("pagenotfound", "common");
+                return RedirectToAction("pagenotfound", "common", new { @aspxerrorpath = url });
             }
             var category = _blogApi.BlogGroups();
             var result = new BlogDetailViewModel
@@ -193,7 +195,7 @@ namespace Omnicx.WebStore.Core.Controllers
             var results = _blogApi.BlogByGroup(BlogGroupType.Editor.GetHashCode(), slug, currentpage, Convert.ToInt32(ConfigKeys.PageSize));
             if (results == null && results.StatusCode == HttpStatusCode.NotFound)
             {
-                return RedirectToAction("pagenotfound", "common");
+                return RedirectToAction("pagenotfound", "common", new { @aspxerrorpath = slug });
             }
             if (results != null)
             {

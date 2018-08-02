@@ -1,11 +1,12 @@
 ﻿using Omnicx.API.SDK.Api.Commerce;
 using Omnicx.API.SDK.Api.Infra;
 using Omnicx.API.SDK.Api.Site;
-using Omnicx.API.SDK.Models.Catalog;
-using Omnicx.API.SDK.Models.Commerce;
-using Omnicx.API.SDK.Models.Helpers;
-using Omnicx.API.SDK.Models.Site;
-using Omnicx.API.SDK.Entities;
+using Omnicx.WebStore.Models.Catalog;
+using Omnicx.WebStore.Models.Commerce;
+using Omnicx.WebStore.Models.Site;
+using Omnicx.WebStore.Models.Keys;
+using Omnicx.WebStore.Models.Enums;
+
 using Omnicx.WebStore.Core.Helpers;
 using System;
 using System.Collections.Generic;
@@ -33,7 +34,7 @@ namespace Omnicx.WebStore.Core.Controllers
         {
             Guid surveyId;
             if (Guid.TryParse(id, out surveyId) == false)
-                RedirectToAction("PageNotFound", "Common");
+                RedirectToAction("PageNotFound", "Common",new { @aspxerrorpath = "/survery/Capture/" + id});
 
             var apiResult = _surveyApi.GetSurvey(surveyId);
             var survey = apiResult.Result;
@@ -51,7 +52,7 @@ namespace Omnicx.WebStore.Core.Controllers
                 return View(CustomViews.SURVEY_CAPTURE, survey);
             }
             else
-                return RedirectToAction("PageNotFound", "Common");
+                return RedirectToAction("PageNotFound", "Common", new { @aspxerrorpath = "/survery/Capture/" + id });
         }
 
         public ActionResult SaveAnswer(string questionId, string answer)
@@ -67,7 +68,7 @@ namespace Omnicx.WebStore.Core.Controllers
                 stockCodes = stockCodes + (string.IsNullOrEmpty( stockCodes)?  prod.Product.StockCode: " " + prod.Product.StockCode);
                 bulkAdd.Add( new BasketAddModel { StockCode = prod.Product.StockCode, Qty = prod.qty});
             }
-            stockCodes = Omnicx.API.SDK.Entities.Constants.SURVEY_BUNDLE_PREFIX + " " + stockCodes;
+            stockCodes = Constants.SURVEY_BUNDLE_PREFIX + " " + stockCodes;
             bulkAdd.Add(new BasketAddModel { StockCode =  stockCodes, Qty = 1,ItemType=ItemTypes.DynamicBundle.GetHashCode(),ProductId= surveyResponse.Id.ToString(), ProductName = stockCodes });
             var basketApi = DependencyResolver.Current.GetService<IBasketApi>();
             var basket = basketApi.BulkAddProduct(bulkAdd);

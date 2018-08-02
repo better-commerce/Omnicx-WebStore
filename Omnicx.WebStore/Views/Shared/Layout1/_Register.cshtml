@@ -9,7 +9,7 @@
         a-/Views/Shared/Layout1/_LayoutFooter.cshtml        (Link in Footer)
     */
 }
-@using Omnicx.API.SDK.Models.Commerce
+@using Omnicx.WebStore.Models.Commerce
 @using Omnicx.WebStore.Framework.Helpers
 @inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<UserModel>
 @{
@@ -21,7 +21,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="modal-title" id="Login">@LT("Header.Text.UserLogin", "User Registration")</div>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <button type="button"  ng-click="gm.formReset(registrationForm);gm.model.registerViewModel.email=null;gm.model.registerViewModel.password =null;gm.model.registerViewModel.confirmPassword=null" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">
                 <form name="registrationForm" role="form" ng-submit="gm.registration(gm.model.registerViewModel)" method="post">

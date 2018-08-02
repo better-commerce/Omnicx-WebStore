@@ -12,12 +12,12 @@ Contained In (Where we Use this View) :
 }
 @using Microsoft.Web.Mvc
 @using Omnicx.WebStore.Core.Controllers
-@using Omnicx.API.SDK.Models
+@using Omnicx.WebStore.Models
 @using Omnicx.WebStore.Core.Helpers
 @using Omnicx.WebStore.Framework.Helpers
 @using Omnicx.API.SDK.Helpers
-@using Omnicx.API.SDK.Entities
-@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Site.BlogDetailViewModel>
+@using Omnicx.WebStore.Models.Enums
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Site.BlogDetailViewModel>
 @{
     ViewBag.Title = "Blogs";
     Layout = "~/Views/Shared/Layout1/_LayoutBlog.cshtml";
@@ -54,7 +54,7 @@ Contained In (Where we Use this View) :
             <div class="col-sm-8 col-md-8 pull-left">
                 <div class="image">
                     <a href="@Url.Action("blogdetail", "blog", new { url = @Model.BlogList.Results[0].URL })">
-                        <img ng-src="@Model.BlogList.Results[0].BlogImage" class="img-responsive blog-image-max-lrg" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'">
+                        <img ng-src="@Model.BlogList.Results[0].BlogImage" class="img-responsive blog-image-max-lrg" onerror="this.src = DEFAULT_IMAGE_URL">
                     </a>
                 </div>
             </div>
@@ -71,7 +71,7 @@ Contained In (Where we Use this View) :
             {
                 <div class="row">
                     <div class="col-sm-12">
-                        <img ng-src="@Model.BlogList.Results[1].BlogImage" class="img-responsive blog-image-max-mid" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'">
+                        <img ng-src="@Model.BlogList.Results[1].BlogImage" class="img-responsive blog-image-max-mid" onerror="this.src = DEFAULT_IMAGE_URL">
                     </div>
                     <div class="col-sm-12">
                         <h6 class="blog-h6">@Model.BlogList.Results[1].Category</h6>
@@ -95,7 +95,7 @@ Contained In (Where we Use this View) :
                     <div class="col-sm-6">
                         <div class="row">
                             <div class="col-sm-12">
-                                <img ng-src="@Model.BlogList.Results[i].BlogImage" class="img-responsive blog-image-max-sml" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'">
+                                <img ng-src="@Model.BlogList.Results[i].BlogImage" class="img-responsive blog-image-max-sml" onerror="this.src = DEFAULT_IMAGE_URL">
                             </div>
                             <div class="col-sm-12">
                                 <h6 class="blog-h6">@Model.BlogList.Results[i].Category</h6>
@@ -132,7 +132,7 @@ Contained In (Where we Use this View) :
         <div class="col-sm-8 col-md-8 col-md-offset-2 col-sm-offset-2">
             <div class="row border-bottom-blog">
                 <div class="col-sm-12">
-                    <img ng-src="@Model.BlogList.Results[4].BlogImage" class="img-responsive" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'">
+                    <img ng-src="@Model.BlogList.Results[4].BlogImage" class="img-responsive" onerror="this.src = DEFAULT_IMAGE_URL">
                 </div>
                 <div class="col-sm-12">
                     <h6 class="blog-h6">@Model.BlogList.Results[4].Category</h6>
@@ -156,7 +156,7 @@ Contained In (Where we Use this View) :
         <div class="col-sm-8 col-md-8 col-md-offset-2 col-sm-offset-2">
             <div class="row border-bottom-blog">
                 <div class="col-sm-4">
-                    <img ng-src="@Model.BlogList.Results[i].BlogImage" class="img-responsive blog-image-max-sml" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'">
+                    <img ng-src="@Model.BlogList.Results[i].BlogImage" class="img-responsive blog-image-max-sml" onerror="this.src = DEFAULT_IMAGE_URL">
                 </div>
                 <div class="col-sm-8">
                     <h6 class="blog-h6">@Model.BlogList.Results[i].Category</h6>
@@ -179,7 +179,7 @@ Contained In (Where we Use this View) :
     <div class="row margin-top-md">
         <div class="row border-bottom-blog" ng-repeat="item in bm.results">
             <div class="col-sm-4">
-                <img ng-src={{item.blogImage}} class="img-responsive blog-image-max-sml" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'">
+                <img ng-src={{item.blogImage}} class="img-responsive blog-image-max-sml" onerror="this.src = DEFAULT_IMAGE_URL">
             </div>
             <div class="col-sm-8">
                 <h6 class="blog-h6" ng-bind="item.category"></h6>

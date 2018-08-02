@@ -1,4 +1,4 @@
-﻿using Omnicx.API.SDK.Models.Commerce;
+﻿using Omnicx.WebStore.Models.Commerce;
 namespace Omnicx.API.SDK.Payments.Entities
 {
     public class PostProcessPaymentRequest

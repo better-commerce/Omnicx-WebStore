@@ -28,14 +28,14 @@ namespace ASP
     using System.Web.UI;
     using System.Web.WebPages;
     using DevTrends.MvcDonutCaching;
+    using Omnicx.WebStore;
+    using Omnicx.WebStore.Core;
     
     #line 12 "..\..\Views\Checkout\Layout1\_OrderSummary.cshtml"
-    using Omnicx.API.SDK.Entities;
+    using Omnicx.WebStore.Models.Enums;
     
     #line default
     #line hidden
-    using Omnicx.WebStore;
-    using Omnicx.WebStore.Core;
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Checkout/Layout1/_OrderSummary.cshtml")]
@@ -138,7 +138,7 @@ WriteLiteral(">\r\n                                <img");
 
 WriteLiteral(" ng-src=\"{{items.image}}\"");
 
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
 WriteLiteral(">\r\n                            </a>\r\n                        </span>\r\n           " +
 "         </div>\r\n                    <div");
@@ -325,18 +325,18 @@ WriteLiteral(">\r\n                                <strong");
 
 WriteLiteral(" class=\"text-orange\"");
 
-WriteAttribute("ng-show", Tuple.Create(" ng-show=\"", 3899), Tuple.Create("\"", 3982)
-, Tuple.Create(Tuple.Create("", 3909), Tuple.Create("items.displayInBasket", 3909), true)
-, Tuple.Create(Tuple.Create(" ", 3930), Tuple.Create("&&", 3931), true)
-, Tuple.Create(Tuple.Create(" ", 3933), Tuple.Create("items.itemType", 3934), true)
-, Tuple.Create(Tuple.Create(" ", 3948), Tuple.Create("==", 3949), true)
+WriteAttribute("ng-show", Tuple.Create(" ng-show=\"", 3878), Tuple.Create("\"", 3961)
+, Tuple.Create(Tuple.Create("", 3888), Tuple.Create("items.displayInBasket", 3888), true)
+, Tuple.Create(Tuple.Create(" ", 3909), Tuple.Create("&&", 3910), true)
+, Tuple.Create(Tuple.Create(" ", 3912), Tuple.Create("items.itemType", 3913), true)
+, Tuple.Create(Tuple.Create(" ", 3927), Tuple.Create("==", 3928), true)
             
             #line 58 "..\..\Views\Checkout\Layout1\_OrderSummary.cshtml"
-                               , Tuple.Create(Tuple.Create("", 3951), Tuple.Create<System.Object, System.Int32>(ItemTypes.Bundle.GetHashCode()
+                               , Tuple.Create(Tuple.Create("", 3930), Tuple.Create<System.Object, System.Int32>(ItemTypes.Bundle.GetHashCode()
             
             #line default
             #line hidden
-, 3951), false)
+, 3930), false)
 );
 
 WriteLiteral(">");
@@ -419,7 +419,7 @@ WriteLiteral(">\r\n                                <img");
 
 WriteLiteral(" ng-src=\"{{items.image}}\"");
 
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
 WriteLiteral(">\r\n                            </a>\r\n                        </span>\r\n           " +
 "         </div>\r\n                    <div");
@@ -536,7 +536,7 @@ WriteLiteral(">\r\n                                <img");
 
 WriteLiteral(" ng-src=\"{{items.image}}\"");
 
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
 WriteLiteral(">\r\n                            </a>\r\n                        </span>\r\n           " +
 "         </div>\r\n                    <div");
@@ -737,16 +737,16 @@ WriteLiteral(" class=\"text-right\"");
 WriteLiteral("></th>\r\n                </tr>\r\n                <tr>\r\n                    <td ng-c" +
 "loak");
 
-WriteAttribute("ng-bind", Tuple.Create(" ng-bind=\"", 10442), Tuple.Create("\"", 10543)
-, Tuple.Create(Tuple.Create("", 10452), Tuple.Create("\'", 10452), true)
+WriteAttribute("ng-bind", Tuple.Create(" ng-bind=\"", 10369), Tuple.Create("\"", 10470)
+, Tuple.Create(Tuple.Create("", 10379), Tuple.Create("\'", 10379), true)
             
             #line 164 "..\..\Views\Checkout\Layout1\_OrderSummary.cshtml"
-, Tuple.Create(Tuple.Create("", 10453), Tuple.Create<System.Object, System.Int32>(LT("YourBag.Text.IncludingVATof", "including VAT of")
+, Tuple.Create(Tuple.Create("", 10380), Tuple.Create<System.Object, System.Int32>(LT("YourBag.Text.IncludingVATof", "including VAT of")
             
             #line default
             #line hidden
-, 10453), false)
-, Tuple.Create(Tuple.Create("", 10507), Tuple.Create("\'+ck.basket.grandTotal.formatted.tax", 10507), true)
+, 10380), false)
+, Tuple.Create(Tuple.Create("", 10434), Tuple.Create("\'+ck.basket.grandTotal.formatted.tax", 10434), true)
 );
 
 WriteLiteral("></td>\r\n                </tr>\r\n                <tr");

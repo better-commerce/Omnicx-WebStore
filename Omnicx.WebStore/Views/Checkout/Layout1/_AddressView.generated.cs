@@ -28,23 +28,23 @@ namespace ASP
     using System.Web.UI;
     using System.Web.WebPages;
     using DevTrends.MvcDonutCaching;
-    
-    #line 13 "..\..\Views\Checkout\Layout1\_AddressView.cshtml"
-    using Omnicx.API.SDK.Entities;
-    
-    #line default
-    #line hidden
-    
-    #line 15 "..\..\Views\Checkout\Layout1\_AddressView.cshtml"
-    using Omnicx.API.SDK.Models.Helpers;
-    
-    #line default
-    #line hidden
     using Omnicx.WebStore;
     using Omnicx.WebStore.Core;
     
     #line 14 "..\..\Views\Checkout\Layout1\_AddressView.cshtml"
     using Omnicx.WebStore.Framework.Helpers;
+    
+    #line default
+    #line hidden
+    
+    #line 13 "..\..\Views\Checkout\Layout1\_AddressView.cshtml"
+    using Omnicx.WebStore.Models.Enums;
+    
+    #line default
+    #line hidden
+    
+    #line 15 "..\..\Views\Checkout\Layout1\_AddressView.cshtml"
+    using Omnicx.WebStore.Models.Helpers;
     
     #line default
     #line hidden

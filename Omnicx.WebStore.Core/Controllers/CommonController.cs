@@ -1,15 +1,17 @@
 ﻿using Omnicx.API.SDK.Api.Site;
-using Omnicx.API.SDK.Models.Site;
+using Omnicx.WebStore.Models.Site;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.Security.Application;
-using Omnicx.API.SDK.Entities;
+
 using Omnicx.API.SDK.Api.Commerce;
 using Omnicx.WebStore.Core.Services.Authentication;
-using Omnicx.API.SDK.Models.Common;
+using Omnicx.WebStore.Models.Common;
+using Omnicx.WebStore.Models.Keys;
+using Omnicx.WebStore.Models.Enums;
 
 namespace Omnicx.WebStore.Core.Controllers
 {
@@ -54,9 +56,9 @@ namespace Omnicx.WebStore.Core.Controllers
             return View(CustomViews.ERROR);
         }
 
-        public ActionResult GetAllFaqs( Omnicx.API.SDK.Models.Catalog.ProductDetailModel model)
+        public ActionResult GetAllFaqs( Omnicx.WebStore.Models.Catalog.ProductDetailModel model)
         {
-            //var model = new Omnicx.API.SDK.Models.Catalog.ProductDetailModel { };
+            //var model = new Omnicx.WebStore.Models.Catalog.ProductDetailModel { };
             var response = _contentApi.GetFaqsCategories();
             model.FaqsCategory = response.Result.ToList();
             model.FaqsSubCategory = new List<FaqsSubCategoryModel>();

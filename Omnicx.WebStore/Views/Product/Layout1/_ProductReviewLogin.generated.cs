@@ -30,7 +30,7 @@ namespace ASP
     using DevTrends.MvcDonutCaching;
     
     #line 13 "..\..\Views\Product\Layout1\_ProductReviewLogin.cshtml"
-    using Omnicx.API.SDK.Models.Catalog;
+    using Omnicx.WebStore.Models.Catalog;
     
     #line default
     #line hidden

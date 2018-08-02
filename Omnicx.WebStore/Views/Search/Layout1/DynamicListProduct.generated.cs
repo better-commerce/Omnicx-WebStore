@@ -29,29 +29,29 @@ namespace ASP
     using System.Web.WebPages;
     using DevTrends.MvcDonutCaching;
     
-    #line 12 "..\..\Views\Search\Layout1\DynamicListProduct.cshtml"
-    using Omnicx.API.SDK.Entities;
-    
-    #line default
-    #line hidden
-    
     #line 13 "..\..\Views\Search\Layout1\DynamicListProduct.cshtml"
     using Omnicx.API.SDK.Helpers;
-    
-    #line default
-    #line hidden
-    
-    #line 14 "..\..\Views\Search\Layout1\DynamicListProduct.cshtml"
-    using Omnicx.API.SDK.Models.Helpers;
     
     #line default
     #line hidden
     using Omnicx.WebStore;
     using Omnicx.WebStore.Core;
     
+    #line 12 "..\..\Views\Search\Layout1\DynamicListProduct.cshtml"
+    using Omnicx.WebStore.Models.Enums;
+    
+    #line default
+    #line hidden
+    
+    #line 14 "..\..\Views\Search\Layout1\DynamicListProduct.cshtml"
+    using Omnicx.WebStore.Models.Helpers;
+    
+    #line default
+    #line hidden
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Search/Layout1/DynamicListProduct.cshtml")]
-    public partial class _Views_Search_Layout1_DynamicListProduct_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Catalog.DynamicListModel>
+    public partial class _Views_Search_Layout1_DynamicListProduct_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Catalog.DynamicListModel>
     {
         public _Views_Search_Layout1_DynamicListProduct_cshtml()
         {

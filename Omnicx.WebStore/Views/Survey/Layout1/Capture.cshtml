@@ -1,20 +1,22 @@
 ﻿@{
-/*
-    Name: Survey View
-    Purpose: Show Survey
-    Structure: /Views/Survey/Layout1/Capture.cshtml
-    Contains (Partial Views Used):
-        a-/Views/Shared/Layout1/_LayoutCMS.cshtml
-        b-_BuildABundle
-        c-_WizardStyle
-    Contained In (Where we Use this View):
-    */
+    /*
+        Name: Survey View
+        Purpose: Show Survey
+        Structure: /Views/Survey/Layout1/Capture.cshtml
+        Contains (Partial Views Used):
+            a-/Views/Shared/Layout1/_LayoutCMS.cshtml
+            b-_BuildABundle
+            c-_WizardStyle
+        Contained In (Where we Use this View):
+        */
 }
-@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<SurveyModel>
-@using Omnicx.API.SDK.Models.Site
+@using Omnicx.WebStore.Models.Site
+@using Omnicx.WebStore.Models.Keys
+@using Omnicx.WebStore.Models.Enums
 @using Omnicx.WebStore.Framework.Helpers
 @using Microsoft.Web.Mvc
 @using Omnicx.WebStore.Core.Controllers
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<SurveyModel>
 @{
     Layout = "~/Views/Shared/Layout1/_LayoutCMS.cshtml";
 }
@@ -32,7 +34,7 @@
 
 @*layout1*@
 
-<div ng-controller="surveyCtrl as pm" ng-cloak>
+<div class="dataContainer" ng-controller="surveyCtrl as pm" ng-cloak>
     <h1 class="text-center survey-question">@Model.Name</h1>
     <center id="survey-wizard" class="margin-bottom-lg" style="background:linear-gradient(to right, rgba(0, 0, 0, 0.47) 0%,rgba(0, 0, 0, 0.87) 100%), url('{{pm.model.imageBaseUrl}}{{pm.model.backgroundImage}}')">
         <div class="row" ng-hide="pm.surveyCompleted">
@@ -55,8 +57,8 @@
                 <h2 class="text-center text-white">@Model.ThankYouText</h2>
                 <div class="container">
                     @{if (Model.Output == SurveyOutputStyle.SearchProducts)
-                    {
-                            <a class="animate btn-primary"  ng-click="pm.showRelevantProducts()">
+                        {
+                            <a class="animate btn-primary" ng-click="pm.showRelevantProducts()">
                                 @LT("ProductSurvey.Label.Buyrelevantproducts", "Buy relevant products") <span class="fa fa-product-hunt" aria-hidden="true"></span>
                             </a>
 
@@ -67,7 +69,7 @@
                                 <div class="col-sm-5ths col-lg-5ths col-md-5ths col-xs-5ths wizard-bundle-products" ng-repeat="productBundle in pm.surveyResponse.products">
                                     <div class="bundle-image-container">
                                         <a ng-href="/{{productBundle.product.slug}}">
-                                            <img ng-src="{{productBundle.product.image==''?'/assets/theme/ocx/images/noimagefound.jpg':productBundle.product.image}}" class="img-responsive">
+                                            <img ng-src="{{productBundle.product.image==''?DEFAULT_IMAGE_URL:productBundle.product.image}}" class="img-responsive">
                                             <span><span ng-bind="productBundle.product.name"></span></span>
                                         </a>
                                     </div>
@@ -97,9 +99,9 @@
                                     <button type="button" class="animate btn-primary" ng-click="pm.addToBag()">
                                         <span> @LT("ProductSurvey.Label.AddtoBag", "Add to Bag") <i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
                                     </button>
-                                </div>                                
+                                </div>
                             </div>
-                            
+
                         }
                     }
                 </div>
@@ -115,8 +117,8 @@
         var searchUrl = '@(Html.BuildUrlFromExpression<SearchController>(c => c.Search(null)))';
         var addToBagUrl = '@(Html.BuildUrlFromExpression<SurveyController>(c => c.AddToBag(null)))';
         var basketUrl = '@(Html.BuildUrlFromExpression<BasketController>(c => c.Index()))';
-        var searchFilterQryString = '@Omnicx.API.SDK.Entities.Constants.SEARCH_FILTER_QUERYSTRING';
-        var surveyQryString = '@Omnicx.API.SDK.Entities.Constants.SEARCH_SURVEY_QUERYSTRING';
+        var searchFilterQryString = '@Constants.SEARCH_FILTER_QUERYSTRING';
+        var surveyQryString = '@Constants.SEARCH_SURVEY_QUERYSTRING';
         window.app.constant('surveyConfig',{
             saveAnswerUrl: saveAnswer,
             searchUrl: searchUrl,

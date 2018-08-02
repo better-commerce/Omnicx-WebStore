@@ -28,14 +28,20 @@ namespace ASP
     using System.Web.UI;
     using System.Web.WebPages;
     using DevTrends.MvcDonutCaching;
+    using Omnicx.WebStore;
+    using Omnicx.WebStore.Core;
     
     #line 13 "..\..\Views\Basket\Layout1\_HeaderBulkOrder.cshtml"
-    using Omnicx.API.SDK.Entities;
+    using Omnicx.WebStore.Models.Enums;
     
     #line default
     #line hidden
-    using Omnicx.WebStore;
-    using Omnicx.WebStore.Core;
+    
+    #line 14 "..\..\Views\Basket\Layout1\_HeaderBulkOrder.cshtml"
+    using Omnicx.WebStore.Models.Keys;
+    
+    #line default
+    #line hidden
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Basket/Layout1/_HeaderBulkOrder.cshtml")]
@@ -51,61 +57,57 @@ WriteLiteral("﻿");
             
             #line 1 "..\..\Views\Basket\Layout1\_HeaderBulkOrder.cshtml"
    
-/*
-    Name: Quick Order Pad Link UI
-    Purpose: Button UI for Quick Order Pad
-    Structure: /Views/Basket/Layout1/_HeaderBulkOrder.cshtml
-    Contains (Partial Views Used):
+    /*
+        Name: Quick Order Pad Link UI
+        Purpose: Button UI for Quick Order Pad
+        Structure: /Views/Basket/Layout1/_HeaderBulkOrder.cshtml
+        Contains (Partial Views Used):
 
-    Contained In (Where we Use this View):
-        a-/Views/Shared/Layout1/_HeaderLayout.cshtml    (Link in Top Header)
-    */
+        Contained In (Where we Use this View):
+            a-/Views/Shared/Layout1/_HeaderLayout.cshtml    (Link in Top Header)
+        */
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n \r\n");
+WriteLiteral("\r\n\r\n");
 
-WriteLiteral("<li");
+WriteLiteral("\r\n<li");
 
 WriteLiteral(" class=\"pull-right\"");
 
-WriteLiteral(">\r\n        <div");
+WriteLiteral(">\r\n    <div");
 
 WriteLiteral(" class=\"top-login-cart metaLinks\"");
 
-WriteLiteral(">\r\n            <ul");
+WriteLiteral(">\r\n        <ul");
 
 WriteLiteral(" class=\"list-inline\"");
 
-WriteLiteral(">\r\n                <li");
+WriteLiteral(">\r\n            <li");
 
-WriteLiteral(" class=\"shopping-cart cartopen\"");
+WriteLiteral(" class=\"shopping-cart\"");
 
-WriteLiteral(">\r\n                    <a");
+WriteLiteral(">\r\n                <a");
 
 WriteLiteral(" ng-click=\"gm.quick=null;gm.excelData=null;gm.format1=true;gm.format2=false;gm.nu" +
 "mber=5;gm.openQuickBasketModal()\"");
 
 WriteLiteral(" class=\"metaLinks__basket minicart-custom text-center\"");
 
-WriteLiteral(">\r\n                        <i");
+WriteLiteral(">\r\n                    <i");
 
-WriteLiteral(" class=\"fa fa-clipboard font-lg\"");
+WriteLiteral(" class=\"fa fa-clipboard\"");
 
 WriteLiteral(" aria-hidden=\"true\"");
 
-WriteLiteral("></i>\r\n                        <span");
+WriteLiteral("></i>Quick Order                    \r\n                </a>\r\n            </li>\r\n  " +
+"      </ul>\r\n    </div>\r\n");
 
-WriteLiteral(" class=\"quick-view-text\"");
-
-WriteLiteral(">Quick Order</span>\r\n                    </a>\r\n                </li>\r\n           " +
-" </ul>\r\n        </div>\r\n");
-
-WriteLiteral("     ");
+WriteLiteral("    ");
 
             
-            #line 25 "..\..\Views\Basket\Layout1\_HeaderBulkOrder.cshtml"
+            #line 26 "..\..\Views\Basket\Layout1\_HeaderBulkOrder.cshtml"
 Write(Html.Partial(CustomViews.QUICK_ORDER_PAD));
 
             
@@ -113,16 +115,16 @@ Write(Html.Partial(CustomViews.QUICK_ORDER_PAD));
             #line hidden
 WriteLiteral("\r\n");
 
-WriteLiteral("     ");
+WriteLiteral("    ");
 
             
-            #line 26 "..\..\Views\Basket\Layout1\_HeaderBulkOrder.cshtml"
+            #line 27 "..\..\Views\Basket\Layout1\_HeaderBulkOrder.cshtml"
 Write(Html.Partial(CustomViews.BULK_ORDER_MESSAGE));
 
             
             #line default
             #line hidden
-WriteLiteral("  \r\n  </li>\r\n\r\n");
+WriteLiteral("\r\n</li>\r\n\r\n");
 
         }
     }

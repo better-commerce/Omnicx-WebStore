@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Omnicx.API.SDK.Models.Common;
+using Omnicx.WebStore.Models.Common;
 using RestSharp;
-using Omnicx.API.SDK.Models;
+using Omnicx.WebStore.Models;
 namespace Omnicx.API.SDK.Api.Infra
 {
     public class SessionApi : ApiBase, ISessionApi

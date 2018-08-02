@@ -51,7 +51,7 @@ namespace ASP
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Account/Layout1/MyAccount.cshtml")]
-    public partial class _Views_Account_Layout1_MyAccount_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Commerce.CustomerProfileModel>
+    public partial class _Views_Account_Layout1_MyAccount_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Commerce.CustomerProfileModel>
     {
         public _Views_Account_Layout1_MyAccount_cshtml()
         {
@@ -93,6 +93,8 @@ WriteLiteral("\r\n");
             #line hidden
 WriteLiteral("\r\n\r\n\r\n<section");
 
+WriteLiteral(" class=\"container dataContainer\"");
+
 WriteLiteral(" ng-controller=\"accountCtrl as am\"");
 
 WriteLiteral(">\r\n    <div");
@@ -129,40 +131,27 @@ WriteLiteral("</a>\r\n                </li>\r\n                <li>");
             
             #line default
             #line hidden
-WriteLiteral("</li>\r\n            </ul>\r\n        </div>\r\n    </div>\r\n    <div");
+WriteLiteral("</li>\r\n            </ul>\r\n        </div>\r\n    </div>    \r\n    <div");
 
 WriteLiteral(" class=\"row\"");
 
 WriteLiteral(">\r\n        <div");
 
-WriteLiteral(" class=\"col-sm-12 col-xs-12\"");
+WriteLiteral(" class=\"col-xs-12 visible-xs\"");
 
-WriteLiteral(">\r\n            <h3");
+WriteLiteral(" id=\"exTab1\"");
 
-WriteLiteral(" class=\"panel-h2 hidden-xs\"");
+WriteLiteral(">\r\n");
 
-WriteLiteral(">");
+WriteLiteral("            ");
 
             
             #line 42 "..\..\Views\Account\Layout1\MyAccount.cshtml"
-                                      Write(LT("MyAccount.Text.Name", "My Account"));
+       Write(Html.Partial("~/Views/Account/Layout1/_MobileSideNav.cshtml"));
 
             
             #line default
             #line hidden
-WriteLiteral("</h3>\r\n        </div>\r\n    </div>\r\n    <!-- *** LEFT COLUMN ***\r\n    ____________" +
-"_____________________________________________ -->\r\n    <div");
-
-WriteLiteral(" class=\"row\"");
-
-WriteLiteral(">\r\n        <div");
-
-WriteLiteral(" class=\"col-xs-12 margin-bottom-lg visible-xs\"");
-
-WriteLiteral(" id=\"exTab1\"");
-
-WriteLiteral(">\r\n            ");
-
 WriteLiteral("\r\n        </div>\r\n        <div");
 
 WriteLiteral(" class=\"col-md-3 col-sm-4 col-xs-12 hidden-xs\"");
@@ -172,7 +161,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("            ");
 
             
-            #line 52 "..\..\Views\Account\Layout1\MyAccount.cshtml"
+            #line 45 "..\..\Views\Account\Layout1\MyAccount.cshtml"
        Write(Html.Partial("~/Views/Account/Layout1/_SideNav.cshtml"));
 
             
@@ -186,9 +175,30 @@ WriteLiteral(" id=\"customer-account\"");
 
 WriteLiteral(">\r\n            <div");
 
-WriteLiteral(" class=\"col-sm-12 no-padding\"");
+WriteLiteral(" class=\"row\"");
 
-WriteLiteral(">\r\n\r\n                <form");
+WriteLiteral(">\r\n                <div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12\"");
+
+WriteLiteral(">\r\n                    <h3");
+
+WriteLiteral(" class=\"panel-h2\"");
+
+WriteLiteral(">");
+
+            
+            #line 50 "..\..\Views\Account\Layout1\MyAccount.cshtml"
+                                    Write(LT("MyAccount.Text.Name", "My Account"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</h3>\r\n                </div>\r\n            </div>\r\n            <div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding\"");
+
+WriteLiteral(">\r\n                <form");
 
 WriteLiteral(" name=\"changeForm\"");
 
@@ -196,7 +206,7 @@ WriteLiteral(" role=\"form\"");
 
 WriteLiteral(" ng-submit=\"am.saveCustomerDetail(am.model.customerDetail)\"");
 
-WriteLiteral(" novalidate>\r\n\r\n                    <div");
+WriteLiteral(" novalidate>\r\n                    <div");
 
 WriteLiteral(" class=\"row\"");
 
@@ -211,7 +221,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                            ");
 
             
-            #line 61 "..\..\Views\Account\Layout1\MyAccount.cshtml"
+            #line 57 "..\..\Views\Account\Layout1\MyAccount.cshtml"
                        Write(Html.Partial("~/Views/Account/Layout1/_AccountAlert.cshtml"));
 
             
@@ -235,7 +245,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                                ");
 
             
-            #line 67 "..\..\Views\Account\Layout1\MyAccount.cshtml"
+            #line 63 "..\..\Views\Account\Layout1\MyAccount.cshtml"
                            Write(customerAccountForm.FormGroupFor(x => x.CustomerDetail.Email));
 
             
@@ -271,7 +281,7 @@ WriteLiteral(" class=\"control-label ng-scope\"");
 WriteLiteral(">");
 
             
-            #line 75 "..\..\Views\Account\Layout1\MyAccount.cshtml"
+            #line 71 "..\..\Views\Account\Layout1\MyAccount.cshtml"
                                                                                  Write(LT("MyAccount.Text.Title", "Title"));
 
             
@@ -300,7 +310,7 @@ WriteLiteral(" value=\"\"");
 WriteLiteral(">");
 
             
-            #line 77 "..\..\Views\Account\Layout1\MyAccount.cshtml"
+            #line 73 "..\..\Views\Account\Layout1\MyAccount.cshtml"
                                                                                                         Write(LT("MyAccount.Text.Title", "Title"));
 
             
@@ -333,7 +343,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                                ");
 
             
-            #line 87 "..\..\Views\Account\Layout1\MyAccount.cshtml"
+            #line 83 "..\..\Views\Account\Layout1\MyAccount.cshtml"
                            Write(customerAccountForm.FormGroupFor(x => x.CustomerDetail.FirstName));
 
             
@@ -353,7 +363,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                                ");
 
             
-            #line 92 "..\..\Views\Account\Layout1\MyAccount.cshtml"
+            #line 88 "..\..\Views\Account\Layout1\MyAccount.cshtml"
                            Write(customerAccountForm.FormGroupFor(x => x.CustomerDetail.LastName));
 
             
@@ -389,7 +399,7 @@ WriteLiteral(" class=\"control-label ng-scope\"");
 WriteLiteral(">");
 
             
-            #line 101 "..\..\Views\Account\Layout1\MyAccount.cshtml"
+            #line 97 "..\..\Views\Account\Layout1\MyAccount.cshtml"
                                                                                   Write(LT("MyAccount.Text.Gender", "Gender"));
 
             
@@ -418,7 +428,7 @@ WriteLiteral(" value=\"\"");
 WriteLiteral(">");
 
             
-            #line 103 "..\..\Views\Account\Layout1\MyAccount.cshtml"
+            #line 99 "..\..\Views\Account\Layout1\MyAccount.cshtml"
                                                                                                          Write(LT("MyAccount.Text.Gender", "Gender"));
 
             
@@ -451,7 +461,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                                ");
 
             
-            #line 113 "..\..\Views\Account\Layout1\MyAccount.cshtml"
+            #line 109 "..\..\Views\Account\Layout1\MyAccount.cshtml"
                            Write(customerAccountForm.FormGroupFor(x => x.CustomerDetail.BirthDate));
 
             
@@ -477,7 +487,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                                ");
 
             
-            #line 125 "..\..\Views\Account\Layout1\MyAccount.cshtml"
+            #line 121 "..\..\Views\Account\Layout1\MyAccount.cshtml"
                            Write(customerAccountForm.FormGroupFor(x => x.CustomerDetail.Mobile));
 
             
@@ -497,7 +507,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                                ");
 
             
-            #line 130 "..\..\Views\Account\Layout1\MyAccount.cshtml"
+            #line 126 "..\..\Views\Account\Layout1\MyAccount.cshtml"
                            Write(customerAccountForm.FormGroupFor(x => x.CustomerDetail.Telephone));
 
             
@@ -537,7 +547,7 @@ WriteLiteral(" for=\"NewsLetterSubscribe\"");
 WriteLiteral(">");
 
             
-            #line 138 "..\..\Views\Account\Layout1\MyAccount.cshtml"
+            #line 134 "..\..\Views\Account\Layout1\MyAccount.cshtml"
                                                             Write(LT("MyAccount.Label.NewsLetterSubscribe", "NewsLetterSubscribe"));
 
             
@@ -565,7 +575,7 @@ WriteLiteral(" class=\"fa fa-save\"");
 WriteLiteral("></i>");
 
             
-            #line 144 "..\..\Views\Account\Layout1\MyAccount.cshtml"
+            #line 140 "..\..\Views\Account\Layout1\MyAccount.cshtml"
                                                                                                Write(LT("MyAccount.Button.SaveChanges", "Save Changes"));
 
             
@@ -579,7 +589,7 @@ DefineSection("Scripts", () => {
 WriteLiteral("\r\n    <script>\r\n        var saveCustomerUrl = \'");
 
             
-            #line 155 "..\..\Views\Account\Layout1\MyAccount.cshtml"
+            #line 151 "..\..\Views\Account\Layout1\MyAccount.cshtml"
                            Write(Html.BuildUrlFromExpression<AccountController>(c => c.SaveCustomerDetail(null)));
 
             
@@ -588,7 +598,7 @@ WriteLiteral("\r\n    <script>\r\n        var saveCustomerUrl = \'");
 WriteLiteral("\';\r\n        var custGridUrl = \'");
 
             
-            #line 156 "..\..\Views\Account\Layout1\MyAccount.cshtml"
+            #line 152 "..\..\Views\Account\Layout1\MyAccount.cshtml"
                        Write(Html.BuildUrlFromExpression<AccountController>(c => c.GetCustomerAddress()));
 
             
@@ -597,7 +607,7 @@ WriteLiteral("\';\r\n        var custGridUrl = \'");
 WriteLiteral("\';\r\n        var saveCustAddrUrl = \'");
 
             
-            #line 157 "..\..\Views\Account\Layout1\MyAccount.cshtml"
+            #line 153 "..\..\Views\Account\Layout1\MyAccount.cshtml"
                            Write(Html.BuildUrlFromExpression<AccountController>(c => c.SaveCustomerAddress(null)));
 
             
@@ -608,7 +618,7 @@ WriteLiteral("\';\r\n        window.app.constant(\'accountConfig\', {\r\n       
 "rUrl : saveCustomerUrl\r\n        });\r\n        window.app.constant(\'model\', ");
 
             
-            #line 163 "..\..\Views\Account\Layout1\MyAccount.cshtml"
+            #line 159 "..\..\Views\Account\Layout1\MyAccount.cshtml"
                                 Write(Html.JsonFor(Model));
 
             

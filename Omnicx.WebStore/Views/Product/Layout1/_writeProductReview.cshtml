@@ -9,12 +9,12 @@
         a-/Views/Product/Layout1/_ProductReviews.cshtml         (product Reviews)
     */
 }
-@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Catalog.ProductReviewAddModel>
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Catalog.ProductReviewAddModel>
 @using Omnicx.WebStore.Framework.Helpers
 @{
     var addReview = Html.Angular().ModelFor("pm.model.review");
 }
-<div class="col-sm-6" ng-show="pm.writeReview" ng-init="pm.configRating(0);">
+<div class="col-sm-12 col-xs-12" ng-show="pm.writeReview" ng-init="pm.configRating(0);">
     <form name="reviewForm" ng-submit="pm.model.review.rating=pm.trueRating.length;pm.addReview(pm.productId,pm.model.review)" novalidate>
         <div class="form-group">
             <label>@LT("ProductReview.Label.OverallRating" , "Overall rating")</label><br />
@@ -43,34 +43,6 @@
                 <div class="control__indicator"></div>
             </label>
         </div> 
-        @*<div class="form-group">
-            <label>Additional Data</label>
-            <label class="control control--radio">
-                <strong>Text1</strong>
-                <input type="radio" class="ng-pristine ng-valid" ng-click="pm.model.review.additionalData='good'">
-                <div class="control__indicator"></div>
-            </label>
-            <label class="control control--radio">
-                <strong>Text1</strong>
-                <input id="additionalData" name="additionalData" type="radio" class="ng-pristine ng-valid" ng-click="pm.model.review.additionalData='good'">
-                <div class="control__indicator"></div>
-            </label>
-            <label class="control control--radio">
-                <strong>Text1</strong>
-                <input id="additionalData" name="additionalData" type="radio" class="ng-pristine ng-valid" ng-click="pm.model.review.additionalData='good'">
-                <div class="control__indicator"></div>
-            </label>
-            <label class="control control--radio">
-                <strong>Text1</strong>
-                <input id="additionalData" name="additionalData" type="radio" class="ng-pristine ng-valid" ng-click="pm.model.review.additionalData='good'">
-                <div class="control__indicator"></div>
-            </label>
-            <label class="control control--radio">
-                <strong>Text1</strong>
-                <input id="additionalData" name="additionalData" type="radio" class="ng-pristine ng-valid" ng-click="pm.model.review.additionalData='good'">
-                <div class="control__indicator"></div>
-            </label>
-        </div>*@
         <div class="form-group">
             @addReview.FormGroupFor(x => x.Nickname)
         </div>

@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 using System.Text;
 using System.Web;
 using System.Net;
-using Omnicx.API.SDK.Models.Common;
+using Omnicx.WebStore.Models.Common;
 
 namespace Omnicx.API.SDK.Helpers
 {

@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Omnicx.API.SDK.Api.Commerce;
-using Omnicx.API.SDK.Models.Commerce;
-using Omnicx.API.SDK.Models.Common;
+using Omnicx.WebStore.Models.Commerce;
+using Omnicx.WebStore.Models.Common;
 using Omnicx.WebStore.Core.Helpers;
 using Omnicx.WebStore.Core.Services.Authentication;
-using Omnicx.API.SDK.Models.Catalog;
+using Omnicx.WebStore.Models.Catalog;
 using Microsoft.Security.Application;
 using System.Text.RegularExpressions;
-using Omnicx.API.SDK.Entities;
-using Omnicx.API.SDK.Models.Helpers;
-using Omnicx.API.SDK.Models;
+
+using Omnicx.WebStore.Models.Helpers;
+using Omnicx.WebStore.Models;
 using Omnicx.API.SDK.Api.Infra;
 using Omnicx.WebStore.Core.Data;
 using Omnicx.WebStore.Apps.OAuthHelper.Core;
@@ -20,7 +20,9 @@ using Newtonsoft.Json.Linq;
 using Omnicx.WebStore.Apps.OAuthHelper;
 using Omnicx.WebStore.Core.Filters;
 using Omnicx.WebStore.Core.Social;
-
+using Omnicx.WebStore.Models.Keys;
+using Omnicx.WebStore.Models.Enums;
+using System.Web;
 
 namespace Omnicx.WebStore.Core.Controllers
 {
@@ -227,8 +229,13 @@ namespace Omnicx.WebStore.Core.Controllers
                 var user = new CustomerModel
                 {
                     Email = Sanitizer.GetSafeHtmlFragment(register.Email),
-                    Password = Sanitizer.GetSafeHtmlFragment(register.Password)
-
+                    Password = Sanitizer.GetSafeHtmlFragment(register.Password),
+                    NotifyByEmail = register.NotifyByEmail,
+                    NotifyByPost = register.NotifyByPost,
+                    NotifyBySMS = register.NotifyBySMS,
+                    NewsLetterSubscribed = !register.NewsLetterSubscribed,
+                    SourceProcess = register.SourceProcess,
+                    IsRegistered = true
                 };
                 var result = _customerRepository.Register(user);
                 if (result.Result.IsValid)
@@ -278,6 +285,8 @@ namespace Omnicx.WebStore.Core.Controllers
             {
                 return JsonValidationError();
             }
+            model.MobileNo = SiteUtils.GenerateEncodedString(model.MobileNo);
+            model.PhoneNo = SiteUtils.GenerateEncodedString(model.PhoneNo);
             var addressModel = new AddressModel
             {
                 Address1 = Sanitizer.GetSafeHtmlFragment(model.Address1),
@@ -297,6 +306,8 @@ namespace Omnicx.WebStore.Core.Controllers
                 Title = Sanitizer.GetSafeHtmlFragment(model.Title),
                 IsDefault = model.Id == null ? true : model.IsDefault
             };
+            addressModel.MobileNo = SiteUtils.GenerateDecodeString(addressModel.MobileNo);
+            addressModel.PhoneNo = SiteUtils.GenerateDecodeString(addressModel.PhoneNo);
             if (addressModel.Id == null || addressModel.Id == "")
             {
                 addressModel.CustomerId = _sessionContext.CurrentUser.UserId.ToString();
@@ -351,7 +362,7 @@ namespace Omnicx.WebStore.Core.Controllers
         }
         [CustomAuthorizeAttribute]
         [HttpPost]
-        public ActionResult SaveCustomerDetail(CustomerDetailModel model)
+        public virtual ActionResult SaveCustomerDetail(CustomerDetailModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -379,8 +390,11 @@ namespace Omnicx.WebStore.Core.Controllers
                 Telephone = Sanitizer.GetSafeHtmlFragment(model.Telephone),
                 Title = Sanitizer.GetSafeHtmlFragment(model.Title),
                 YearOfBirth = Sanitizer.GetSafeHtmlFragment(model.YearOfBirth),
-                NewsLetterSubscribed = model.NewsLetterSubscribed
-
+                NewsLetterSubscribed = !model.NewsLetterSubscribed,
+                NotifyByEmail = model.NotifyByEmail,
+                NotifyByPost = model.NotifyByPost,
+                NotifyBySMS = model.NotifyBySMS,
+                SourceProcess = SourceProcessType.SITE_MYACCOUNT.ToString()
             };
             customerModel.DayOfBirth = "00";
             customerModel.MonthOfBirth = "00";
@@ -399,6 +413,12 @@ namespace Omnicx.WebStore.Core.Controllers
         {
             _authenticationService.Logout();
             SiteUtils.SetBasketAction(resetAction: true);
+            if (Request.Cookies["IsUserLoggedIn"] != null)
+            {
+                var c = new HttpCookie("IsUserLoggedIn");
+                c.Expires = DateTime.Now.AddDays(-1);
+                Response.Cookies.Add(c);
+            }
             return Redirect("~");
         }
         [CustomAuthorizeAttribute]
@@ -531,7 +551,7 @@ namespace Omnicx.WebStore.Core.Controllers
         {
             if (ConfigKeys.DisplayUserActivity == false)
             {
-                return RedirectToAction("PageNotFound", "Common");
+                return RedirectToAction("PageNotFound", "Common", new { @aspxerrorpath = "/account/myactivity" });
             }
             if (_sessionContext.CurrentUser == null) { return RedirectToAction("SignIn"); }
             return View(CustomViews.MY_ACTIVITY);
@@ -586,6 +606,16 @@ namespace Omnicx.WebStore.Core.Controllers
             {
                 Guid.TryParse(Sanitizer.GetSafeHtmlFragment(Request.QueryString["sid"]), out ghostSessionId);
             }
+            var httpContext = DependencyResolver.Current.GetService<HttpContextBase>();
+            httpContext.Session[Constants.SESSION_USERID] = Guid.Empty;
+            var sessionContext = DependencyResolver.Current.GetService<ISessionContext>();
+            sessionContext.CurrentUser = new CustomerModel { UserId = Guid.Empty };
+            sessionContext.CreateUserSession(true);
+            httpContext.Session[Constants.SESSION_CACHED_USER] = null;
+            var cookie_deviceId = new HttpCookie(Constants.COOKIE_DEVICEID) { HttpOnly = true, Value = Convert.ToString(Guid.NewGuid()), Expires = DateTime.Now.AddDays(Constants.COOKIE_DEVICEID_EXPIRES_DAYS) };
+            httpContext.Response.Cookies.Add(cookie_deviceId);
+            httpContext.Session.Abandon();
+
             if (ghostSessionId != Guid.Empty)
             {
                 var ghostLogin = _customerRepository.AuthenticateGhostLogin(Convert.ToString(ghostSessionId));
@@ -818,6 +848,16 @@ namespace Omnicx.WebStore.Core.Controllers
         {
             string xml = System.IO.File.ReadAllText(Server.MapPath("~/assets/core/xml/PasswordPolicy.xml"));
             return this.Content(xml, "text/xml");
+        }
+        public FileResult DownloadInvoice(Guid id)
+        {
+            var result = _orderRepository.DownloadInvoice(id);
+            if (result.Result != null && result.Result.ByteCode != null)
+            {
+                string fileName = result.Result.Filename + ".pdf";
+                return File(result.Result.ByteCode, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
+            }
+            return null;
         }
     }
 }

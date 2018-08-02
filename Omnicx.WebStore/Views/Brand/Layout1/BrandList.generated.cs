@@ -29,20 +29,8 @@ namespace ASP
     using System.Web.WebPages;
     using DevTrends.MvcDonutCaching;
     
-    #line 12 "..\..\Views\Brand\Layout1\BrandList.cshtml"
-    using Omnicx.API.SDK.Entities;
-    
-    #line default
-    #line hidden
-    
     #line 13 "..\..\Views\Brand\Layout1\BrandList.cshtml"
     using Omnicx.API.SDK.Helpers;
-    
-    #line default
-    #line hidden
-    
-    #line 14 "..\..\Views\Brand\Layout1\BrandList.cshtml"
-    using Omnicx.API.SDK.Models.Catalog;
     
     #line default
     #line hidden
@@ -57,6 +45,18 @@ namespace ASP
     
     #line 11 "..\..\Views\Brand\Layout1\BrandList.cshtml"
     using Omnicx.WebStore.Framework.Helpers;
+    
+    #line default
+    #line hidden
+    
+    #line 14 "..\..\Views\Brand\Layout1\BrandList.cshtml"
+    using Omnicx.WebStore.Models.Catalog;
+    
+    #line default
+    #line hidden
+    
+    #line 12 "..\..\Views\Brand\Layout1\BrandList.cshtml"
+    using Omnicx.WebStore.Models.Enums;
     
     #line default
     #line hidden
@@ -104,7 +104,7 @@ WriteLiteral("\r\n");
             #line hidden
 WriteLiteral("\r\n\r\n\r\n\r\n<div");
 
-WriteLiteral(" class=\"container\"");
+WriteLiteral(" class=\"container dataContainer\"");
 
 WriteLiteral(" ng-controller=\"productCtrl as pm\"");
 
@@ -217,9 +217,9 @@ WriteLiteral(" class=\"item active\"");
 
 WriteLiteral(">\r\n                    <img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 1808), Tuple.Create("\"", 1853)
-, Tuple.Create(Tuple.Create("", 1814), Tuple.Create<System.Object, System.Int32>(Href("~/assets/images/carousal-banner-men.jpg")
-, 1814), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 1828), Tuple.Create("\"", 1883)
+, Tuple.Create(Tuple.Create("", 1834), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/carousal-banner-men.jpg")
+, 1834), false)
 );
 
 WriteLiteral(" alt=\"Slide 1 of carousel\"");
@@ -243,9 +243,9 @@ WriteLiteral(" class=\"item\"");
 
 WriteLiteral(">\r\n                    <img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2361), Tuple.Create("\"", 2408)
-, Tuple.Create(Tuple.Create("", 2367), Tuple.Create<System.Object, System.Int32>(Href("~/assets/images/carousal-banner-women.jpg")
-, 2367), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 2391), Tuple.Create("\"", 2448)
+, Tuple.Create(Tuple.Create("", 2397), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/carousal-banner-women.jpg")
+, 2397), false)
 );
 
 WriteLiteral(" alt=\"Slide 2 of Carousel\"");
@@ -409,7 +409,7 @@ WriteLiteral(" ng-submit=\"pm.filterBrands(search)\"");
 
 WriteLiteral(">\r\n            <div");
 
-WriteLiteral(" class=\"col-sm-4 col-xs-12 no-padding form-inline\"");
+WriteLiteral(" class=\"col-sm-4 col-xs-12 form-inline\"");
 
 WriteLiteral(">\r\n                <div");
 
@@ -478,9 +478,7 @@ WriteLiteral(" class=\"row margin-top-md\"");
 
 WriteLiteral(">\r\n        <div");
 
-WriteLiteral(" class=\"center-block\"");
-
-WriteLiteral(" style=\"width:85%;background-color:#ccc;\"");
+WriteLiteral(" class=\"col-sm-12 col-xs-12 center-block\"");
 
 WriteLiteral(">\r\n            <ul");
 
@@ -519,42 +517,42 @@ WriteLiteral(">#</a></li>\r\n");
             #line hidden
 WriteLiteral("                    <li");
 
-WriteAttribute("class", Tuple.Create(" class=\"", 5721), Tuple.Create("\"", 5733)
+WriteAttribute("class", Tuple.Create(" class=\"", 5729), Tuple.Create("\"", 5741)
             
             #line 126 "..\..\Views\Brand\Layout1\BrandList.cshtml"
-, Tuple.Create(Tuple.Create("", 5729), Tuple.Create<System.Object, System.Int32>(cls
+, Tuple.Create(Tuple.Create("", 5737), Tuple.Create<System.Object, System.Int32>(cls
             
             #line default
             #line hidden
-, 5729), false)
+, 5737), false)
 );
 
-WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 5734), Tuple.Create("\"", 5783)
-, Tuple.Create(Tuple.Create("", 5745), Tuple.Create("{active:", 5745), true)
-, Tuple.Create(Tuple.Create(" ", 5753), Tuple.Create("\'", 5754), true)
+WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 5742), Tuple.Create("\"", 5791)
+, Tuple.Create(Tuple.Create("", 5753), Tuple.Create("{active:", 5753), true)
+, Tuple.Create(Tuple.Create(" ", 5761), Tuple.Create("\'", 5762), true)
             
             #line 126 "..\..\Views\Brand\Layout1\BrandList.cshtml"
-, Tuple.Create(Tuple.Create("", 5755), Tuple.Create<System.Object, System.Int32>(word
+, Tuple.Create(Tuple.Create("", 5763), Tuple.Create<System.Object, System.Int32>(word
             
             #line default
             #line hidden
-, 5755), false)
-, Tuple.Create(Tuple.Create("", 5760), Tuple.Create("\'===", 5760), true)
-, Tuple.Create(Tuple.Create(" ", 5764), Tuple.Create("pm.selectedRecord}", 5765), true)
+, 5763), false)
+, Tuple.Create(Tuple.Create("", 5768), Tuple.Create("\'===", 5768), true)
+, Tuple.Create(Tuple.Create(" ", 5772), Tuple.Create("pm.selectedRecord}", 5773), true)
 );
 
 WriteLiteral("><a");
 
-WriteAttribute("ng-click", Tuple.Create(" ng-click=\"", 5787), Tuple.Create("\"", 5840)
-, Tuple.Create(Tuple.Create("", 5798), Tuple.Create("search=null;pm.filterBrandListing(\'", 5798), true)
+WriteAttribute("ng-click", Tuple.Create(" ng-click=\"", 5795), Tuple.Create("\"", 5848)
+, Tuple.Create(Tuple.Create("", 5806), Tuple.Create("search=null;pm.filterBrandListing(\'", 5806), true)
             
             #line 126 "..\..\Views\Brand\Layout1\BrandList.cshtml"
-                                                       , Tuple.Create(Tuple.Create("", 5833), Tuple.Create<System.Object, System.Int32>(word
+                                                       , Tuple.Create(Tuple.Create("", 5841), Tuple.Create<System.Object, System.Int32>(word
             
             #line default
             #line hidden
-, 5833), false)
-, Tuple.Create(Tuple.Create("", 5838), Tuple.Create("\')", 5838), true)
+, 5841), false)
+, Tuple.Create(Tuple.Create("", 5846), Tuple.Create("\')", 5846), true)
 );
 
 WriteLiteral(">");
@@ -654,14 +652,14 @@ WriteLiteral(" class=\"col-xs-12 no-padding\"");
 
 WriteLiteral(" parent=\"1\"");
 
-WriteAttribute("firstchar", Tuple.Create(" firstchar=\"", 6462), Tuple.Create("\"", 6492)
+WriteAttribute("firstchar", Tuple.Create(" firstchar=\"", 6470), Tuple.Create("\"", 6500)
             
             #line 139 "..\..\Views\Brand\Layout1\BrandList.cshtml"
-                               , Tuple.Create(Tuple.Create("", 6474), Tuple.Create<System.Object, System.Int32>(categorygroup.Key
+                               , Tuple.Create(Tuple.Create("", 6482), Tuple.Create<System.Object, System.Int32>(categorygroup.Key
             
             #line default
             #line hidden
-, 6474), false)
+, 6482), false)
 );
 
 WriteLiteral(">\r\n                <h4");
@@ -710,34 +708,34 @@ WriteLiteral(" data-id=\"id-");
             #line hidden
 WriteLiteral("\"");
 
-WriteLiteral(" class=\"col-xs-12 col-md-4 col-sm-4 no-padding-left col-lg-4 text-center brands-l" +
-"ist animated zoomIn\"");
+WriteLiteral(" class=\"col-xs-12 col-md-4 col-sm-4 col-lg-4 text-center brands-list animated zoo" +
+"mIn\"");
 
 WriteLiteral(" parent=\"1\"");
 
-WriteAttribute("firstchar", Tuple.Create(" firstchar=\"", 7101), Tuple.Create("\"", 7131)
+WriteAttribute("firstchar", Tuple.Create(" firstchar=\"", 7093), Tuple.Create("\"", 7123)
             
             #line 154 "..\..\Views\Brand\Layout1\BrandList.cshtml"
-                                                                                                  , Tuple.Create(Tuple.Create("", 7113), Tuple.Create<System.Object, System.Int32>(categorygroup.Key
+                                                                                  , Tuple.Create(Tuple.Create("", 7105), Tuple.Create<System.Object, System.Int32>(categorygroup.Key
             
             #line default
             #line hidden
-, 7113), false)
+, 7105), false)
 );
 
 WriteLiteral(" style=\"position:relative; top:0px;\"");
 
 WriteLiteral(">\r\n                    <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 7193), Tuple.Create("\"", 7212)
-, Tuple.Create(Tuple.Create("", 7200), Tuple.Create("/", 7200), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 7185), Tuple.Create("\"", 7204)
+, Tuple.Create(Tuple.Create("", 7192), Tuple.Create("/", 7192), true)
             
             #line 155 "..\..\Views\Brand\Layout1\BrandList.cshtml"
-, Tuple.Create(Tuple.Create("", 7201), Tuple.Create<System.Object, System.Int32>(brand.Link
+, Tuple.Create(Tuple.Create("", 7193), Tuple.Create<System.Object, System.Int32>(brand.Link
             
             #line default
             #line hidden
-, 7201), false)
+, 7193), false)
 );
 
 WriteLiteral(">\r\n                        <div");
@@ -757,14 +755,14 @@ WriteLiteral("\"");
 
 WriteLiteral(" parent=\"1\"");
 
-WriteAttribute("firstchar", Tuple.Create(" firstchar=\"", 7350), Tuple.Create("\"", 7380)
+WriteAttribute("firstchar", Tuple.Create(" firstchar=\"", 7342), Tuple.Create("\"", 7372)
             
             #line 156 "..\..\Views\Brand\Layout1\BrandList.cshtml"
-                                                                  , Tuple.Create(Tuple.Create("", 7362), Tuple.Create<System.Object, System.Int32>(categorygroup.Key
+                                                                  , Tuple.Create(Tuple.Create("", 7354), Tuple.Create<System.Object, System.Int32>(categorygroup.Key
             
             #line default
             #line hidden
-, 7362), false)
+, 7354), false)
 );
 
 WriteLiteral(" style=\"display:none;\"");
@@ -786,15 +784,15 @@ WriteLiteral(" class=\"\"");
 
 WriteLiteral(">\r\n                            <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 7515), Tuple.Create("\"", 7534)
-, Tuple.Create(Tuple.Create("", 7522), Tuple.Create("/", 7522), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 7507), Tuple.Create("\"", 7526)
+, Tuple.Create(Tuple.Create("", 7514), Tuple.Create("/", 7514), true)
             
             #line 158 "..\..\Views\Brand\Layout1\BrandList.cshtml"
-, Tuple.Create(Tuple.Create("", 7523), Tuple.Create<System.Object, System.Int32>(brand.Link
+, Tuple.Create(Tuple.Create("", 7515), Tuple.Create<System.Object, System.Int32>(brand.Link
             
             #line default
             #line hidden
-, 7523), false)
+, 7515), false)
 );
 
 WriteLiteral(" class=\"Centerer\"");

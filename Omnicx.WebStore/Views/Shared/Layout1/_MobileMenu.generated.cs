@@ -28,18 +28,12 @@ namespace ASP
     using System.Web.UI;
     using System.Web.WebPages;
     using DevTrends.MvcDonutCaching;
-    
-    #line 13 "..\..\Views\Shared\Layout1\_MobileMenu.cshtml"
-    using Omnicx.API.SDK.Entities;
-    
-    #line default
-    #line hidden
     using Omnicx.WebStore;
     using Omnicx.WebStore.Core;
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Shared/Layout1/_MobileMenu.cshtml")]
-    public partial class _Views_Shared_Layout1__MobileMenu_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Site.NavigationModel>
+    public partial class _Views_Shared_Layout1__MobileMenu_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Site.NavigationModel>
     {
         public _Views_Shared_Layout1__MobileMenu_cshtml()
         {
@@ -133,15 +127,15 @@ WriteLiteral(">\r\n");
             #line hidden
 WriteLiteral("                                <li>\r\n                                    <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1070), Tuple.Create("\"", 1094)
-, Tuple.Create(Tuple.Create("", 1077), Tuple.Create("/", 1077), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 1040), Tuple.Create("\"", 1064)
+, Tuple.Create(Tuple.Create("", 1047), Tuple.Create("/", 1047), true)
             
             #line 27 "..\..\Views\Shared\Layout1\_MobileMenu.cshtml"
-, Tuple.Create(Tuple.Create("", 1078), Tuple.Create<System.Object, System.Int32>(items.Hyperlink
+, Tuple.Create(Tuple.Create("", 1048), Tuple.Create<System.Object, System.Int32>(items.Hyperlink
             
             #line default
             #line hidden
-, 1078), false)
+, 1048), false)
 );
 
 WriteLiteral(">");
@@ -228,15 +222,15 @@ WriteLiteral(">\r\n");
 WriteLiteral("                                                                <li>\r\n           " +
 "                                                         <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2077), Tuple.Create("\"", 2101)
-, Tuple.Create(Tuple.Create("", 2084), Tuple.Create("/", 2084), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 2047), Tuple.Create("\"", 2071)
+, Tuple.Create(Tuple.Create("", 2054), Tuple.Create("/", 2054), true)
             
             #line 42 "..\..\Views\Shared\Layout1\_MobileMenu.cshtml"
-, Tuple.Create(Tuple.Create("", 2085), Tuple.Create<System.Object, System.Int32>(child2.ItemLink
+, Tuple.Create(Tuple.Create("", 2055), Tuple.Create<System.Object, System.Int32>(child2.ItemLink
             
             #line default
             #line hidden
-, 2085), false)
+, 2055), false)
 );
 
 WriteLiteral("> ");
@@ -300,14 +294,14 @@ WriteLiteral("\r\n                                </li>\r\n");
             #line hidden
 WriteLiteral("                            <li>\r\n                                <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2841), Tuple.Create("\"", 2881)
+WriteAttribute("href", Tuple.Create(" href=\"", 2811), Tuple.Create("\"", 2851)
             
             #line 55 "..\..\Views\Shared\Layout1\_MobileMenu.cshtml"
-, Tuple.Create(Tuple.Create("", 2848), Tuple.Create<System.Object, System.Int32>(Url.Action("BrandList", "Brand")
+, Tuple.Create(Tuple.Create("", 2818), Tuple.Create<System.Object, System.Int32>(Url.Action("BrandList", "Brand")
             
             #line default
             #line hidden
-, 2848), false)
+, 2818), false)
 );
 
 WriteLiteral(">");
@@ -322,14 +316,14 @@ WriteLiteral(">");
 WriteLiteral("</a>\r\n                            </li>\r\n                            <li>\r\n      " +
 "                          <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 3026), Tuple.Create("\"", 3061)
+WriteAttribute("href", Tuple.Create(" href=\"", 2996), Tuple.Create("\"", 3031)
             
             #line 58 "..\..\Views\Shared\Layout1\_MobileMenu.cshtml"
-, Tuple.Create(Tuple.Create("", 3033), Tuple.Create<System.Object, System.Int32>(Url.Action("blogs", "blog")
+, Tuple.Create(Tuple.Create("", 3003), Tuple.Create<System.Object, System.Int32>(Url.Action("blogs", "blog")
             
             #line default
             #line hidden
-, 3033), false)
+, 3003), false)
 );
 
 WriteLiteral(" class=\"link1\"");

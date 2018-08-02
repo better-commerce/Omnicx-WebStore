@@ -34,12 +34,6 @@ namespace ASP
     
     #line default
     #line hidden
-    
-    #line 14 "..\..\Views\Blog\Layout1\BlogCategory.cshtml"
-    using Omnicx.API.SDK.Models;
-    
-    #line default
-    #line hidden
     using Omnicx.WebStore;
     using Omnicx.WebStore.Core;
     
@@ -61,9 +55,15 @@ namespace ASP
     #line default
     #line hidden
     
+    #line 14 "..\..\Views\Blog\Layout1\BlogCategory.cshtml"
+    using Omnicx.WebStore.Models;
+    
+    #line default
+    #line hidden
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Blog/Layout1/BlogCategory.cshtml")]
-    public partial class _Views_Blog_Layout1_BlogCategory_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Site.BlogDetailViewModel>
+    public partial class _Views_Blog_Layout1_BlogCategory_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Site.BlogDetailViewModel>
     {
         public _Views_Blog_Layout1_BlogCategory_cshtml()
         {
@@ -128,14 +128,14 @@ WriteLiteral(" href=\"/\"");
 
 WriteLiteral(">Home</a></li>\r\n        <li><a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 974), Tuple.Create("\"", 1009)
+WriteAttribute("href", Tuple.Create(" href=\"", 976), Tuple.Create("\"", 1011)
             
             #line 34 "..\..\Views\Blog\Layout1\BlogCategory.cshtml"
-, Tuple.Create(Tuple.Create("", 981), Tuple.Create<System.Object, System.Int32>(Url.Action("Blogs", "Blog")
+, Tuple.Create(Tuple.Create("", 983), Tuple.Create<System.Object, System.Int32>(Url.Action("Blogs", "Blog")
             
             #line default
             #line hidden
-, 981), false)
+, 983), false)
 );
 
 WriteLiteral(">");
@@ -291,21 +291,21 @@ WriteLiteral(">\r\n");
             #line hidden
 WriteLiteral("                         <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2234), Tuple.Create("\"", 2298)
+WriteAttribute("href", Tuple.Create(" href=\"", 2236), Tuple.Create("\"", 2300)
             
             #line 72 "..\..\Views\Blog\Layout1\BlogCategory.cshtml"
-, Tuple.Create(Tuple.Create("", 2241), Tuple.Create<System.Object, System.Int32>(Url.Action("blogdetail", "blog", new { url = @item.URL})
+, Tuple.Create(Tuple.Create("", 2243), Tuple.Create<System.Object, System.Int32>(Url.Action("blogdetail", "blog", new { url = @item.URL})
             
             #line default
             #line hidden
-, 2241), false)
+, 2243), false)
 );
 
 WriteLiteral("><img");
 
-WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 2304), Tuple.Create("\"", 2355)
-, Tuple.Create(Tuple.Create("", 2313), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/noimagefound.jpg")
-, 2313), false)
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 2306), Tuple.Create("\"", 2357)
+, Tuple.Create(Tuple.Create("", 2315), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/noimagefound.jpg")
+, 2315), false)
 );
 
 WriteLiteral(" class=\"img-responsive\"");
@@ -323,31 +323,31 @@ WriteLiteral("></a>\r\n");
             #line hidden
 WriteLiteral("                        <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2484), Tuple.Create("\"", 2548)
+WriteAttribute("href", Tuple.Create(" href=\"", 2486), Tuple.Create("\"", 2550)
             
             #line 76 "..\..\Views\Blog\Layout1\BlogCategory.cshtml"
-, Tuple.Create(Tuple.Create("", 2491), Tuple.Create<System.Object, System.Int32>(Url.Action("blogdetail", "blog", new { url = @item.URL})
+, Tuple.Create(Tuple.Create("", 2493), Tuple.Create<System.Object, System.Int32>(Url.Action("blogdetail", "blog", new { url = @item.URL})
             
             #line default
             #line hidden
-, 2491), false)
+, 2493), false)
 );
 
 WriteLiteral("><img");
 
-WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 2554), Tuple.Create("\"", 2578)
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 2556), Tuple.Create("\"", 2580)
             
             #line 76 "..\..\Views\Blog\Layout1\BlogCategory.cshtml"
-                         , Tuple.Create(Tuple.Create("", 2563), Tuple.Create<System.Object, System.Int32>(item.BlogImage
+                         , Tuple.Create(Tuple.Create("", 2565), Tuple.Create<System.Object, System.Int32>(item.BlogImage
             
             #line default
             #line hidden
-, 2563), false)
+, 2565), false)
 );
 
 WriteLiteral(" class=\"img-responsive\"");
 
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
 WriteLiteral("></a>\r\n");
 
@@ -381,14 +381,14 @@ WriteLiteral(" class=\"blog-h4\"");
 
 WriteLiteral(">\r\n                        <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2911), Tuple.Create("\"", 2975)
+WriteAttribute("href", Tuple.Create(" href=\"", 2887), Tuple.Create("\"", 2951)
             
             #line 82 "..\..\Views\Blog\Layout1\BlogCategory.cshtml"
-, Tuple.Create(Tuple.Create("", 2918), Tuple.Create<System.Object, System.Int32>(Url.Action("blogdetail", "blog", new { url = @item.URL})
+, Tuple.Create(Tuple.Create("", 2894), Tuple.Create<System.Object, System.Int32>(Url.Action("blogdetail", "blog", new { url = @item.URL})
             
             #line default
             #line hidden
-, 2918), false)
+, 2894), false)
 );
 
 WriteLiteral(">");
@@ -432,15 +432,15 @@ WriteLiteral("                        ");
             #line hidden
 WriteLiteral(" days ago. By <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 3228), Tuple.Create("\"", 3252)
-, Tuple.Create(Tuple.Create("", 3235), Tuple.Create("/", 3235), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 3204), Tuple.Create("\"", 3228)
+, Tuple.Create(Tuple.Create("", 3211), Tuple.Create("/", 3211), true)
             
             #line 88 "..\..\Views\Blog\Layout1\BlogCategory.cshtml"
-, Tuple.Create(Tuple.Create("", 3236), Tuple.Create<System.Object, System.Int32>(item.EditorSlug
+, Tuple.Create(Tuple.Create("", 3212), Tuple.Create<System.Object, System.Int32>(item.EditorSlug
             
             #line default
             #line hidden
-, 3236), false)
+, 3212), false)
 );
 
 WriteLiteral(">");
@@ -503,23 +503,23 @@ WriteLiteral(" class=\"ng-scope\"");
 
 WriteLiteral(">\r\n                                <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 3911), Tuple.Create("\"", 3961)
-, Tuple.Create(Tuple.Create("", 3918), Tuple.Create("/", 3918), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 3887), Tuple.Create("\"", 3937)
+, Tuple.Create(Tuple.Create("", 3894), Tuple.Create("/", 3894), true)
             
             #line 107 "..\..\Views\Blog\Layout1\BlogCategory.cshtml"
-, Tuple.Create(Tuple.Create("", 3919), Tuple.Create<System.Object, System.Int32>(Model.BlogList.Results[0].CategorySlug
+, Tuple.Create(Tuple.Create("", 3895), Tuple.Create<System.Object, System.Int32>(Model.BlogList.Results[0].CategorySlug
             
             #line default
             #line hidden
-, 3919), false)
-, Tuple.Create(Tuple.Create("", 3958), Tuple.Create("/", 3958), true)
+, 3895), false)
+, Tuple.Create(Tuple.Create("", 3934), Tuple.Create("/", 3934), true)
             
             #line 107 "..\..\Views\Blog\Layout1\BlogCategory.cshtml"
-  , Tuple.Create(Tuple.Create("", 3959), Tuple.Create<System.Object, System.Int32>(i
+  , Tuple.Create(Tuple.Create("", 3935), Tuple.Create<System.Object, System.Int32>(i
             
             #line default
             #line hidden
-, 3959), false)
+, 3935), false)
 );
 
 WriteLiteral(">");
@@ -551,23 +551,23 @@ WriteLiteral(" class=\"ng-scope\"");
 
 WriteLiteral(">\r\n                                <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 4369), Tuple.Create("\"", 4419)
-, Tuple.Create(Tuple.Create("", 4376), Tuple.Create("/", 4376), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 4345), Tuple.Create("\"", 4395)
+, Tuple.Create(Tuple.Create("", 4352), Tuple.Create("/", 4352), true)
             
             #line 116 "..\..\Views\Blog\Layout1\BlogCategory.cshtml"
-, Tuple.Create(Tuple.Create("", 4377), Tuple.Create<System.Object, System.Int32>(Model.BlogList.Results[0].CategorySlug
+, Tuple.Create(Tuple.Create("", 4353), Tuple.Create<System.Object, System.Int32>(Model.BlogList.Results[0].CategorySlug
             
             #line default
             #line hidden
-, 4377), false)
-, Tuple.Create(Tuple.Create("", 4416), Tuple.Create("/", 4416), true)
+, 4353), false)
+, Tuple.Create(Tuple.Create("", 4392), Tuple.Create("/", 4392), true)
             
             #line 116 "..\..\Views\Blog\Layout1\BlogCategory.cshtml"
-  , Tuple.Create(Tuple.Create("", 4417), Tuple.Create<System.Object, System.Int32>(i
+  , Tuple.Create(Tuple.Create("", 4393), Tuple.Create<System.Object, System.Int32>(i
             
             #line default
             #line hidden
-, 4417), false)
+, 4393), false)
 );
 
 WriteLiteral(">");

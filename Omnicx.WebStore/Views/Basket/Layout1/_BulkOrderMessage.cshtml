@@ -8,7 +8,7 @@
         a-/Views/Shared/Layout1/_HeaderBasketView.cshtml 
     */
 }
-@using Omnicx.API.SDK.Entities
+@using Omnicx.WebStore.Models.Enums
 @{
     ViewBag.Title = "Bulk Order Message";
 }
@@ -24,6 +24,9 @@
             <div class="modal-body" ng-init="gm.format2=false">
                 <div class="row">
                     <div class="col-sm-12 col-xs-12">
+                        <div ng-cloak class="alert alert-danger text-left" ng-show="gm.errorMessage">
+                            <i class="fa fa-circle"></i><span ng-bind="gm.errorMessage"></span>
+                        </div>
                         <div ng-show="gm.stockUnavailable">
                             <h3>@LT("YourBag.Message.stockUnavailable", "0 Product(s) Added to Cart")</h3>
                         </div>
@@ -50,7 +53,7 @@
                                 <div class="no-border">
                                     <div class="col-xs-3 col-sm-1 no-padding-left">
                                         <a href="/{{items.slug}}">
-                                            <img ng-src="{{items.image}}" class="img-responsive" alt="" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'">
+                                            <img ng-src="{{items.image}}" class="img-responsive" alt="" onerror="this.src = DEFAULT_IMAGE_URL">
                                         </a>
                                     </div>
                                     <div class="col-xs-9 col-sm-11 no-padding" ng-if="items.parentProductId == gm.emptyGuid">
@@ -98,7 +101,7 @@
                                                         <div class="col-sm-3 col-xs-3 no-padding">
                                                             <span class="cart-img">
                                                                 <a ng-href="/{{freeitem.slug}}">
-                                                                    <img ng-src="{{freeitem.image}}" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'">
+                                                                    <img ng-src="{{freeitem.image}}" onerror="this.src = DEFAULT_IMAGE_URL">
                                                                 </a>
                                                             </span>
                                                         </div>

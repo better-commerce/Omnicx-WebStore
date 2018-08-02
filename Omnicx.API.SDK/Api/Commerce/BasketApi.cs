@@ -2,13 +2,14 @@
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-using Omnicx.API.SDK.Models.Commerce;
+using Omnicx.WebStore.Models.Commerce;
 using RestSharp;
-using Omnicx.API.SDK.Models;
-using Omnicx.API.SDK.Entities;
+using Omnicx.WebStore.Models;
+
 using System.Collections.Generic;
-using Omnicx.API.SDK.Models.Catalog;
-using Omnicx.API.SDK.Models.Common;
+using Omnicx.WebStore.Models.Catalog;
+using Omnicx.WebStore.Models.Common;
+using Omnicx.WebStore.Models.Keys;
 
 namespace Omnicx.API.SDK.Api.Commerce
 {

@@ -33,7 +33,7 @@ namespace ASP
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Product/Layout1/_ProductBundle.cshtml")]
-    public partial class _Views_Product_Layout1__ProductBundle_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Catalog.ProductDetailModel>
+    public partial class _Views_Product_Layout1__ProductBundle_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Catalog.ProductDetailModel>
     {
         public _Views_Product_Layout1__ProductBundle_cshtml()
         {
@@ -98,7 +98,7 @@ WriteLiteral(" image-src=\"{{pm.model.image}}\"");
 
 WriteLiteral(" class=\"img-responsive\"");
 
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
 WriteLiteral(">\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div");
 
@@ -128,7 +128,7 @@ WriteLiteral(" ng-src=\"{{productBundle.images[0].url}}\"");
 
 WriteLiteral(" class=\"img-responsive\"");
 
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
 WriteLiteral(">\r\n                        </a>\r\n                    </div>\r\n                    " +
 "<div>\r\n                        <a");

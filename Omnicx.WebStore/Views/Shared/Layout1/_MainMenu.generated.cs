@@ -28,12 +28,6 @@ namespace ASP
     using System.Web.UI;
     using System.Web.WebPages;
     using DevTrends.MvcDonutCaching;
-    
-    #line 13 "..\..\Views\Shared\Layout1\_MainMenu.cshtml"
-    using Omnicx.API.SDK.Entities;
-    
-    #line default
-    #line hidden
     using Omnicx.WebStore;
     using Omnicx.WebStore.Core;
     
@@ -43,9 +37,15 @@ namespace ASP
     #line default
     #line hidden
     
+    #line 13 "..\..\Views\Shared\Layout1\_MainMenu.cshtml"
+    using Omnicx.WebStore.Models.Enums;
+    
+    #line default
+    #line hidden
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Shared/Layout1/_MainMenu.cshtml")]
-    public partial class _Views_Shared_Layout1__MainMenu_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Site.NavigationModel>
+    public partial class _Views_Shared_Layout1__MainMenu_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Site.NavigationModel>
     {
         public _Views_Shared_Layout1__MainMenu_cshtml()
         {
@@ -160,15 +160,15 @@ WriteLiteral(" data-show-menu-option=\"");
             #line hidden
 WriteLiteral("\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1494), Tuple.Create("\"", 1518)
-, Tuple.Create(Tuple.Create("", 1501), Tuple.Create("/", 1501), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 1499), Tuple.Create("\"", 1523)
+, Tuple.Create(Tuple.Create("", 1506), Tuple.Create("/", 1506), true)
             
             #line 35 "..\..\Views\Shared\Layout1\_MainMenu.cshtml"
-                        , Tuple.Create(Tuple.Create("", 1502), Tuple.Create<System.Object, System.Int32>(items.Hyperlink
+                        , Tuple.Create(Tuple.Create("", 1507), Tuple.Create<System.Object, System.Int32>(items.Hyperlink
             
             #line default
             #line hidden
-, 1502), false)
+, 1507), false)
 );
 
 WriteLiteral(">\r\n");
@@ -248,15 +248,15 @@ WriteLiteral("\"");
 
 WriteLiteral(" value=\"{{items.id}}\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2367), Tuple.Create("\"", 2391)
-, Tuple.Create(Tuple.Create("", 2374), Tuple.Create("/", 2374), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 2372), Tuple.Create("\"", 2396)
+, Tuple.Create(Tuple.Create("", 2379), Tuple.Create("/", 2379), true)
             
             #line 50 "..\..\Views\Shared\Layout1\_MainMenu.cshtml"
-                                             , Tuple.Create(Tuple.Create("", 2375), Tuple.Create<System.Object, System.Int32>(items.Hyperlink
+                                             , Tuple.Create(Tuple.Create("", 2380), Tuple.Create<System.Object, System.Int32>(items.Hyperlink
             
             #line default
             #line hidden
-, 2375), false)
+, 2380), false)
 );
 
 WriteLiteral(">\r\n");
@@ -429,16 +429,16 @@ WriteLiteral("                                <div");
 
 WriteLiteral(" class=\"col-sm-3 menuOption__mobContainer gutter-control-left\"");
 
-WriteAttribute("style", Tuple.Create(" style=\"", 4241), Tuple.Create("\"", 4273)
-, Tuple.Create(Tuple.Create("", 4249), Tuple.Create("width:", 4249), true)
+WriteAttribute("style", Tuple.Create(" style=\"", 4246), Tuple.Create("\"", 4278)
+, Tuple.Create(Tuple.Create("", 4254), Tuple.Create("width:", 4254), true)
             
             #line 90 "..\..\Views\Shared\Layout1\_MainMenu.cshtml"
-                                , Tuple.Create(Tuple.Create("", 4255), Tuple.Create<System.Object, System.Int32>(child1.WidthPct
+                                , Tuple.Create(Tuple.Create("", 4260), Tuple.Create<System.Object, System.Int32>(child1.WidthPct
             
             #line default
             #line hidden
-, 4255), false)
-, Tuple.Create(Tuple.Create("", 4271), Tuple.Create("%;", 4271), true)
+, 4260), false)
+, Tuple.Create(Tuple.Create("", 4276), Tuple.Create("%;", 4276), true)
 );
 
 WriteLiteral(">\r\n");
@@ -461,14 +461,14 @@ WriteLiteral("                                        <a");
 
 WriteLiteral(" class=\"megaNav__header mobileMenuBack visible-xs\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 4515), Tuple.Create("\"", 4549)
+WriteAttribute("href", Tuple.Create(" href=\"", 4520), Tuple.Create("\"", 4554)
             
             #line 93 "..\..\Views\Shared\Layout1\_MainMenu.cshtml"
-                   , Tuple.Create(Tuple.Create("", 4522), Tuple.Create<System.Object, System.Int32>(child1.ItemIds.ToFullUrl()
+                   , Tuple.Create(Tuple.Create("", 4527), Tuple.Create<System.Object, System.Int32>(child1.ItemIds.ToFullUrl()
             
             #line default
             #line hidden
-, 4522), false)
+, 4527), false)
 );
 
 WriteLiteral("><span");
@@ -490,14 +490,14 @@ WriteLiteral("                                        <a");
 
 WriteLiteral(" class=\"megaNav__header visible-xs\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 4693), Tuple.Create("\"", 4727)
+WriteAttribute("href", Tuple.Create(" href=\"", 4698), Tuple.Create("\"", 4732)
             
             #line 94 "..\..\Views\Shared\Layout1\_MainMenu.cshtml"
-    , Tuple.Create(Tuple.Create("", 4700), Tuple.Create<System.Object, System.Int32>(child1.ItemIds.ToFullUrl()
+    , Tuple.Create(Tuple.Create("", 4705), Tuple.Create<System.Object, System.Int32>(child1.ItemIds.ToFullUrl()
             
             #line default
             #line hidden
-, 4700), false)
+, 4705), false)
 );
 
 WriteLiteral(">");
@@ -519,14 +519,14 @@ WriteLiteral("                                        <a");
 
 WriteLiteral(" class=\"megaNav__header\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 4871), Tuple.Create("\"", 4905)
+WriteAttribute("href", Tuple.Create(" href=\"", 4876), Tuple.Create("\"", 4910)
             
             #line 95 "..\..\Views\Shared\Layout1\_MainMenu.cshtml"
-, Tuple.Create(Tuple.Create("", 4878), Tuple.Create<System.Object, System.Int32>(child1.ItemIds.ToFullUrl()
+, Tuple.Create(Tuple.Create("", 4883), Tuple.Create<System.Object, System.Int32>(child1.ItemIds.ToFullUrl()
             
             #line default
             #line hidden
-, 4878), false)
+, 4883), false)
 );
 
 WriteLiteral(">");
@@ -647,15 +647,15 @@ WriteLiteral("                                            <li><a");
 
 WriteLiteral(" class=\"megaNav__list__item\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 5969), Tuple.Create("\"", 5993)
-, Tuple.Create(Tuple.Create("", 5976), Tuple.Create("/", 5976), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 5974), Tuple.Create("\"", 5998)
+, Tuple.Create(Tuple.Create("", 5981), Tuple.Create("/", 5981), true)
             
             #line 107 "..\..\Views\Shared\Layout1\_MainMenu.cshtml"
-      , Tuple.Create(Tuple.Create("", 5977), Tuple.Create<System.Object, System.Int32>(child2.ItemLink
+      , Tuple.Create(Tuple.Create("", 5982), Tuple.Create<System.Object, System.Int32>(child2.ItemLink
             
             #line default
             #line hidden
-, 5977), false)
+, 5982), false)
 );
 
 WriteLiteral(">");

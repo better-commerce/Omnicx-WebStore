@@ -65,42 +65,80 @@ WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding\"");
 
 WriteLiteral(">\r\n    <div");
 
-WriteLiteral(" class=\"accordion\"");
+WriteLiteral(" class=\"panel-group no-margin\"");
 
-WriteLiteral(">\r\n        <dl>\r\n            <dt>\r\n                <a");
+WriteLiteral(" id=\"productReviews\"");
 
-WriteLiteral(" href=\"#review\"");
+WriteLiteral(" role=\"tablist\"");
 
-WriteLiteral(" aria-expanded=\"false\"");
+WriteLiteral(" aria-multiselectable=\"true\"");
 
-WriteLiteral(" aria-controls=\"review\"");
+WriteLiteral(">\r\n        <div");
 
-WriteLiteral(" class=\"accordion-title accordionTitle js-accordionTrigger\"");
+WriteLiteral(" class=\"panel panel-default\"");
+
+WriteLiteral(">\r\n            <div");
+
+WriteLiteral(" class=\"panel-heading\"");
+
+WriteLiteral(" role=\"tab\"");
+
+WriteLiteral(">\r\n                <h4");
+
+WriteLiteral(" class=\"panel-title heading-h4\"");
+
+WriteLiteral(">\r\n                    <a");
+
+WriteLiteral(" role=\"button\"");
+
+WriteLiteral(" data-toggle=\"collapse\"");
+
+WriteLiteral(" data-parent=\"#productReviews\"");
+
+WriteLiteral(" href=\"#reviewData\"");
+
+WriteLiteral(" aria-expanded=\"true\"");
+
+WriteLiteral(" aria-controls=\"Data\"");
 
 WriteLiteral(">");
 
             
-            #line 19 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
-                                                                                                                                     Write(LT("productDetail.label.ProductReviews", "Product Reviews"));
+            #line 20 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
+                                                                                                                                                  Write(LT("productDetail.label.ProductReviews", "Product Reviews"));
 
             
             #line default
             #line hidden
-WriteLiteral("</a>\r\n            </dt>\r\n            <dd");
+WriteLiteral("</a>\r\n                </h4>\r\n            </div>\r\n            <div");
 
-WriteLiteral(" class=\"accordion-content accordionItem-lg is-collapsed padding-lt-10\"");
+WriteLiteral(" id=\"reviewData\"");
 
-WriteLiteral(" id=\"review\"");
+WriteLiteral(" class=\"panel-collapse collapse in\"");
 
-WriteLiteral(" aria-hidden=\"true\"");
+WriteLiteral(" role=\"tabpanel\"");
 
-WriteLiteral(">\r\n                <h3");
+WriteLiteral(" aria-labelledby=\"productReviews\"");
+
+WriteLiteral(">\r\n                <div");
+
+WriteLiteral(" class=\"panel-body no-padding no-border\"");
+
+WriteLiteral(">\r\n                    <div");
+
+WriteLiteral(" class=\"row\"");
+
+WriteLiteral(">\r\n                        <div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12\"");
+
+WriteLiteral(">\r\n                            <h3");
 
 WriteLiteral(" class=\"category-headline\"");
 
 WriteLiteral(" ng-bind=\"pm.model.subBrand\"");
 
-WriteLiteral("></h3>\r\n                <i");
+WriteLiteral("></h3>\r\n                            <i");
 
 WriteLiteral(" class=\"fa fa-star text-orange\"");
 
@@ -112,7 +150,7 @@ WriteLiteral(" class=\"fa fa-star-o\"");
 
 WriteLiteral(" ng-repeat=\"1 in pm.setRating(pm.model.rating,0)\"");
 
-WriteLiteral("></i><br />               \r\n                <span");
+WriteLiteral("></i><br />\r\n                            <span");
 
 WriteLiteral(" ng-show=\"pm.model.reviews.length>0 && pm.model.reviews!=null\"");
 
@@ -123,13 +161,13 @@ WriteLiteral(" ng-bind=\"pm.model.reviews.length\"");
 WriteLiteral("></span> ");
 
             
-            #line 24 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
-                                                                                                                                Write(LT("ProductDetail.label.Reviews", "review(s)"));
+            #line 29 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
+                                                                                                                                            Write(LT("ProductDetail.label.Reviews", "review(s)"));
 
             
             #line default
             #line hidden
-WriteLiteral("<br /></span>\r\n                <p");
+WriteLiteral("<br /></span>\r\n                            <p");
 
 WriteLiteral(" class=\"faq-ans no-padding\"");
 
@@ -142,8 +180,8 @@ WriteLiteral(" ng-bind=\"pm.model.reviews.length\"");
 WriteLiteral("></span> ");
 
             
-            #line 25 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
-                                                                                                                                                       Write(LT("ProductDetail.Label.OutOf", "out of"));
+            #line 30 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
+                                                                                                                                                                   Write(LT("ProductDetail.Label.OutOf", "out of"));
 
             
             #line default
@@ -155,13 +193,13 @@ WriteLiteral(" ng-bind=\"pm.model.reviews.length\"");
 WriteLiteral("></span> ");
 
             
-            #line 25 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
-                                                                                                                                                                                                                                                 Write(LT("ProductDetail.Label.Recommend", "people would recommend this product"));
+            #line 30 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
+                                                                                                                                                                                                                                                             Write(LT("ProductDetail.Label.Recommend", "people would recommend this product"));
 
             
             #line default
             #line hidden
-WriteLiteral("</p>\r\n                <p");
+WriteLiteral("</p>\r\n                            <p");
 
 WriteLiteral(" class=\"faq-ans no-padding\"");
 
@@ -170,33 +208,33 @@ WriteLiteral(" ng-show=\"pm.model.reviews.length<=0\"");
 WriteLiteral(">");
 
             
-            #line 26 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
-                                                                              Write(LT("ProductDetail.Label.BeFirstReview", "Be the first one to review this product"));
+            #line 31 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
+                                                                                          Write(LT("ProductDetail.Label.BeFirstReview", "Be the first one to review this product"));
 
             
             #line default
             #line hidden
-WriteLiteral("</p>\r\n                <p");
+WriteLiteral("</p>\r\n                            <p");
 
 WriteLiteral(" class=\"text-center col-xs-12 col-sm-12 text-center\"");
 
 WriteLiteral(">\r\n");
 
             
-            #line 28 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
-                    
+            #line 33 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
+                                
             
             #line default
             #line hidden
             
-            #line 28 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
-                     if (SessionContext.CurrentUser == null)
-                    {
+            #line 33 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
+                                 if (SessionContext.CurrentUser == null)
+                                {
 
             
             #line default
             #line hidden
-WriteLiteral("                        <button");
+WriteLiteral("                                    <button");
 
 WriteLiteral(" class=\"animate btn-success\"");
 
@@ -208,27 +246,27 @@ WriteLiteral(" ng-click=\"pm.GetDynamicReviewConfig()\"");
 
 WriteLiteral(">\r\n");
 
-WriteLiteral("                            ");
+WriteLiteral("                                        ");
 
             
-            #line 31 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
-                       Write(LT("ProductReview.Button.WriteReview", " Write a Review"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n                        </button>\r\n");
-
-            
-            #line 33 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
-                    }
-                    else
-                    {
+            #line 36 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
+                                   Write(LT("ProductReview.Button.WriteReview", " Write a Review"));
 
             
             #line default
             #line hidden
-WriteLiteral("                        <button");
+WriteLiteral("\r\n                                    </button>\r\n");
+
+            
+            #line 38 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
+                                }
+                                else
+                                {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                    <button");
 
 WriteLiteral(" class=\"animate btn-success\"");
 
@@ -236,25 +274,25 @@ WriteLiteral(" ng-click=\"pm.GetDynamicReviewConfig();pm.writeReview = true;pm.r
 
 WriteLiteral(">\r\n");
 
-WriteLiteral("                            ");
+WriteLiteral("                                        ");
 
             
-            #line 37 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
-                       Write(LT("ProductReview.Button.WriteReview", " Write a Review"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n                        </button>\r\n");
-
-            
-            #line 39 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
-                    }
+            #line 42 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
+                                   Write(LT("ProductReview.Button.WriteReview", " Write a Review"));
 
             
             #line default
             #line hidden
-WriteLiteral("                </p>\r\n                <div");
+WriteLiteral("\r\n                                    </button>\r\n");
+
+            
+            #line 44 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
+                                }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                            </p>\r\n                            <div");
 
 WriteLiteral(" class=\"or-spacer\"");
 
@@ -262,11 +300,11 @@ WriteLiteral("><div");
 
 WriteLiteral(" class=\"mask\"");
 
-WriteLiteral("></div></div>\r\n                <div");
+WriteLiteral("></div></div>\r\n                            <div");
 
 WriteLiteral(" class=\"col-sm-12 col-xs-12 text-center \"");
 
-WriteLiteral(">\r\n                    <a");
+WriteLiteral(">\r\n                                <a");
 
 WriteLiteral(" class=\"img-full color-black\"");
 
@@ -281,31 +319,24 @@ WriteLiteral(" ng-click=\"pm.reviews=!pm.reviews\"");
 WriteLiteral(">");
 
             
-            #line 43 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
-                                                                                                                                                                                                       Write(LT("Product.Label.ReadAllReviews", "Read All Reviews"));
+            #line 48 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
+                                                                                                                                                                                                                   Write(LT("Product.Label.ReadAllReviews", "Read All Reviews"));
 
             
             #line default
             #line hidden
-WriteLiteral("</a>\r\n                </div>\r\n                <div");
+WriteLiteral("</a>\r\n                            </div>\r\n                        </div>\r\n       " +
+"             </div>\r\n                    <div");
 
-WriteLiteral(" class=\"panel-group\"");
+WriteLiteral(" class=\"row\"");
 
-WriteLiteral(">\r\n                    <div");
+WriteLiteral(">\r\n                        <div");
 
-WriteLiteral(" class=\"panel panel-default\"");
-
-WriteLiteral(">                        \r\n                        <div");
-
-WriteLiteral(" id=\"collapse1\"");
-
-WriteLiteral(" class=\"panel-collapse collapse in\"");
+WriteLiteral(" class=\"col-sm-12 col-xs-12\"");
 
 WriteLiteral(">\r\n                            <div");
 
 WriteLiteral(" class=\"panel-group\"");
-
-WriteLiteral(" ng-show=\"pm.model.reviews.length>0 && pm.model.reviews!=null\"");
 
 WriteLiteral(">\r\n                                <div");
 
@@ -313,81 +344,101 @@ WriteLiteral(" class=\"panel panel-default\"");
 
 WriteLiteral(">\r\n                                    <div");
 
+WriteLiteral(" id=\"collapse1\"");
+
+WriteLiteral(" class=\"panel-collapse collapse in\"");
+
+WriteLiteral(">\r\n                                        <div");
+
+WriteLiteral(" class=\"panel-group\"");
+
+WriteLiteral(" ng-show=\"pm.model.reviews.length>0 && pm.model.reviews!=null\"");
+
+WriteLiteral(">\r\n                                            <div");
+
+WriteLiteral(" class=\"panel panel-default\"");
+
+WriteLiteral(">\r\n                                                <div");
+
 WriteLiteral(" class=\"panel-heading\"");
 
-WriteLiteral(">\r\n                                        <hr />\r\n                              " +
-"          <h3");
+WriteLiteral(">\r\n                                                    <hr />\r\n                  " +
+"                                  <h3");
 
 WriteLiteral(" class=\"panel-title text-center pull-left width-full\"");
 
-WriteLiteral("></h3>\r\n                                    </div>\r\n                             " +
-"       <div");
+WriteLiteral("></h3>\r\n                                                </div>\r\n                 " +
+"                               <div");
 
 WriteLiteral(" id=\"collapse2\"");
 
 WriteLiteral(" class=\"panel-collapse collapse\"");
 
-WriteLiteral(">\r\n                                        <div");
+WriteLiteral(">\r\n                                                    <div");
 
 WriteLiteral(" class=\"row\"");
 
 WriteLiteral(" ng-repeat=\"review in pm.model.reviews\"");
 
-WriteLiteral(">\r\n                                            <div");
+WriteLiteral(">\r\n                                                        <div");
 
 WriteLiteral(" class=\"col-sm-12 col-xs-12\"");
 
-WriteLiteral(">\r\n                                                <h3");
+WriteLiteral(">\r\n                                                            <h3");
 
 WriteLiteral(" ng-bind=\"review.title\"");
 
 WriteLiteral(" class=\"category-headline\"");
 
-WriteLiteral("></h3>\r\n                                                <div");
+WriteLiteral("></h3>\r\n                                                            <div");
 
 WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding\"");
 
-WriteLiteral(">\r\n                                                    <ul");
+WriteLiteral(">\r\n                                                                <ul");
 
 WriteLiteral(" class=\"list-inline\"");
 
-WriteLiteral(">\r\n                                                        <li");
+WriteLiteral(">\r\n                                                                    <li");
 
 WriteLiteral(" class=\"no-padding\"");
 
-WriteLiteral(">\r\n                                                            <i");
+WriteLiteral(">\r\n                                                                        <i");
 
 WriteLiteral(" class=\"fa fa-star text-orange\"");
 
 WriteLiteral(" ng-repeat=\"1 in pm.setRating(review.rating,1)\"");
 
-WriteLiteral("></i>\r\n                                                            <i");
+WriteLiteral("></i>\r\n                                                                        <i" +
+"");
 
 WriteLiteral(" class=\"fa fa-star-o\"");
 
 WriteLiteral(" ng-repeat=\"1 in pm.setRating(review.rating,0)\"");
 
-WriteLiteral("></i>\r\n                                                        </li>\r\n           " +
-"                                         </ul>\r\n                                " +
-"                </div>\r\n                                                <p");
+WriteLiteral(@"></i>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <p");
 
 WriteLiteral(" class=\"faq-ans no-padding\"");
 
 WriteLiteral(" ng-bind=\"review.comment\"");
 
-WriteLiteral("></p>\r\n                                                <div");
+WriteLiteral("></p>\r\n                                                            <div");
 
 WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding margin-bottom-xs\"");
 
 WriteLiteral(" ng-repeat=\"section in review.sections\"");
 
-WriteLiteral(">\r\n                                                    <strong><span");
+WriteLiteral(">\r\n                                                                <strong><span");
 
 WriteLiteral(" class=\"text-capitalize\"");
 
 WriteLiteral(" ng-bind=\"section.sectionName\"");
 
-WriteLiteral("></span>:</strong>\r\n                                                    <span");
+WriteLiteral("></span>:</strong>\r\n                                                             " +
+"   <span");
 
 WriteLiteral(" ng-repeat=\"option in section.options\"");
 
@@ -397,17 +448,16 @@ WriteLiteral("><span");
 
 WriteLiteral(" ng-bind=\"option.name\"");
 
-WriteLiteral("></span></span>                                                    \r\n            " +
-"                                    </div>\r\n                                    " +
-"            <p");
+WriteLiteral("></span></span>\r\n                                                            </di" +
+"v>\r\n                                                            <p");
 
 WriteLiteral(" class=\"faq-ans no-padding\"");
 
 WriteLiteral(">");
 
             
-            #line 71 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
-                                                                         Write(LT("Product.detail.Label.WasHelpFul", "Was this review helpful?"));
+            #line 80 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
+                                                                                     Write(LT("Product.detail.Label.WasHelpFul", "Was this review helpful?"));
 
             
             #line default
@@ -416,7 +466,8 @@ WriteLiteral("<strong");
 
 WriteLiteral(" class=\"text-black\"");
 
-WriteLiteral(">Yes</strong></p>\r\n                                                <p");
+WriteLiteral(">Yes</strong></p>\r\n                                                            <p" +
+"");
 
 WriteLiteral(" class=\"faq-ans no-padding\"");
 
@@ -427,8 +478,8 @@ WriteLiteral(" class=\"text-black\"");
 WriteLiteral(">");
 
             
-            #line 72 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
-                                                                                                    Write(LT("ProductDetail.Label.Recommend", "Yes, "));
+            #line 81 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
+                                                                                                                Write(LT("ProductDetail.Label.Recommend", "Yes, "));
 
             
             #line default
@@ -436,20 +487,20 @@ WriteLiteral(">");
 WriteLiteral("</strong>");
 
             
-            #line 72 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
-                                                                                                                                                          Write(LT("ProductDetail.Label.Recommend", "I would recommend this product"));
+            #line 81 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
+                                                                                                                                                                      Write(LT("ProductDetail.Label.Recommend", "I would recommend this product"));
 
             
             #line default
             #line hidden
-WriteLiteral("</p>\r\n                                                <p");
+WriteLiteral("</p>\r\n                                                            <p");
 
 WriteLiteral(" class=\"faq-ques\"");
 
 WriteLiteral(" ng-bind=\"review.postedBy\"");
 
-WriteLiteral("></p>\r\n                                            </div>\r\n                      " +
-"                      <div");
+WriteLiteral("></p>\r\n                                                        </div>\r\n          " +
+"                                              <div");
 
 WriteLiteral(" class=\"or-spacer\"");
 
@@ -457,17 +508,17 @@ WriteLiteral("><div");
 
 WriteLiteral(" class=\"mask\"");
 
-WriteLiteral("></div></div>\r\n                                         \r\n                       " +
-"                 </div>\r\n                                        <div");
+WriteLiteral("></div></div>\r\n\r\n                                                    </div>\r\n    " +
+"                                                <div");
 
 WriteLiteral(" class=\"panel-heading\"");
 
-WriteLiteral(">\r\n                                            <hr />\r\n                          " +
-"                  <h3");
+WriteLiteral(">\r\n                                                        <hr />\r\n              " +
+"                                          <h3");
 
 WriteLiteral(" class=\"panel-title text-center pull-left width-full\"");
 
-WriteLiteral(">\r\n                                                <a");
+WriteLiteral(">\r\n                                                            <a");
 
 WriteLiteral(" class=\"img-full\"");
 
@@ -482,20 +533,20 @@ WriteLiteral(" ng-click=\"pm.reviews=!pm.reviews\"");
 WriteLiteral(">");
 
             
-            #line 81 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
-                                                                                                                                                               Write(LT("Product.Label.ReadLess", "Read Less"));
+            #line 90 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
+                                                                                                                                                                           Write(LT("Product.Label.ReadLess", "Read Less"));
 
             
             #line default
             #line hidden
 WriteLiteral(@"</a>
-                                            </h3>
+                                                        </h3>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div");
+                                    <div");
 
 WriteLiteral(" id=\"collapse3\"");
 
@@ -504,44 +555,54 @@ WriteLiteral(" class=\"panel-collapse collapse\"");
 WriteLiteral(">\r\n");
 
             
-            #line 89 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
-                            
+            #line 98 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
+                                        
             
             #line default
             #line hidden
             
-            #line 89 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
-                               /* Start product write review*/ 
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n");
-
-WriteLiteral("                            ");
-
-            
-            #line 90 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
-                       Write(Html.Partial("~/Views/Product/Layout1/_WriteProductReview.cshtml", new Omnicx.API.SDK.Models.Catalog.ProductReviewAddModel { }));
-
+            #line 98 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
+                                           /* Start product write review*/ 
             
             #line default
             #line hidden
 WriteLiteral("\r\n");
 
+WriteLiteral("                                        ");
+
             
-            #line 91 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
-                            
+            #line 99 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
+                                   Write(Html.Partial("~/Views/Product/Layout1/_WriteProductReview.cshtml", new Omnicx.WebStore.Models.Catalog.ProductReviewAddModel { }));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n");
+
+            
+            #line 100 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
+                                        
             
             #line default
             #line hidden
             
-            #line 91 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
-                               /* End product write review */ 
+            #line 100 "..\..\Views\Product\Layout1\_ProductReviews.cshtml"
+                                           /* End product write review */ 
             
             #line default
             #line hidden
-WriteLiteral("\r\n                        </div>\r\n                    </div>\r\n                </d" +
-"iv>\r\n            </dd>\r\n        </dl>\r\n    </div>\r\n</div>\r\n");
+WriteLiteral(@"
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+");
 
         }
     }

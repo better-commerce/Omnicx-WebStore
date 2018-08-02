@@ -30,13 +30,13 @@ namespace ASP
     using DevTrends.MvcDonutCaching;
     
     #line 12 "..\..\Views\Checkout\Layout1\_ShippingAddress.cshtml"
-    using Omnicx.API.SDK.Entities;
+    
     
     #line default
     #line hidden
     
     #line 15 "..\..\Views\Checkout\Layout1\_ShippingAddress.cshtml"
-    using Omnicx.API.SDK.Models.Helpers;
+    using Omnicx.WebStore.Models.Helpers;
     
     #line default
     #line hidden
@@ -57,7 +57,7 @@ namespace ASP
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Checkout/Layout1/_ShippingAddress.cshtml")]
-    public partial class _Views_Checkout_Layout1__ShippingAddress_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Commerce.AddressModel>
+    public partial class _Views_Checkout_Layout1__ShippingAddress_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Commerce.AddressModel>
     {
         public _Views_Checkout_Layout1__ShippingAddress_cshtml()
         {

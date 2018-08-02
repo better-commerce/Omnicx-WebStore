@@ -9,7 +9,7 @@
     Contained In (Where we Use this View):
     */
 }
-@using Omnicx.API.SDK.Models.Commerce
+@using Omnicx.WebStore.Models.Commerce
 @using Omnicx.WebStore.Framework.Helpers
 @inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<LoginViewModel>
 @{
@@ -21,7 +21,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="modal-title" id="Login">@LT("Header.Text.UserLogin", "User Login")</div>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <button type="button" ng-click="gm.formReset(loginForm);gm.model.username=null;gm.model.password =null" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">
                 <form role="form" method="post" ng-submit="gm.globalLogin(gm.model)" novalidate>
@@ -42,7 +42,7 @@
                     </div>
                 </form>
                 <p class="text-center text-muted">@LT("Footer.Text.NoAccount", "Not registered yet?")</p>
-                <p class="text-center text-muted"><a href="#" data-toggle="modal" data-target="#register-modal" data-dismiss="modal" aria-hidden="true" ng-click="gm.model={}" class="text-black"><strong>@LT("Footer.Text.RegisterNow", "Register now")</strong></a>!@LT("MyAccount.Text.EasyRegister", " It is easy and done in 1 minute and gives you access to special discounts and much more")!</p>
+                <p class="text-center text-muted"><a href="#" data-toggle="modal" data-target="#register-modal" data-dismiss="modal" aria-hidden="true" ng-click="gm.formReset(loginForm);gm.model.username=null;gm.model.password =null" class="text-black"><strong>@LT("Footer.Text.RegisterNow", "Register now")</strong></a>!@LT("MyAccount.Text.EasyRegister", " It is easy and done in 1 minute and gives you access to special discounts and much more")!</p>
             </div>
             <div class="modal-footer"></div>
         </div>

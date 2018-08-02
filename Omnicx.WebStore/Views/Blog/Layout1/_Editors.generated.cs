@@ -34,12 +34,6 @@ namespace ASP
     
     #line default
     #line hidden
-    
-    #line 13 "..\..\Views\Blog\Layout1\_Editors.cshtml"
-    using Omnicx.API.SDK.Models;
-    
-    #line default
-    #line hidden
     using Omnicx.WebStore;
     using Omnicx.WebStore.Core;
     
@@ -55,9 +49,15 @@ namespace ASP
     #line default
     #line hidden
     
+    #line 13 "..\..\Views\Blog\Layout1\_Editors.cshtml"
+    using Omnicx.WebStore.Models;
+    
+    #line default
+    #line hidden
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Blog/Layout1/_Editors.cshtml")]
-    public partial class _Views_Blog_Layout1__Editors_cshtml : System.Web.Mvc.WebViewPage<List<Omnicx.API.SDK.Models.Site.BlogGroupModel>>
+    public partial class _Views_Blog_Layout1__Editors_cshtml : System.Web.Mvc.WebViewPage<List<Omnicx.WebStore.Models.Site.BlogGroupModel>>
     {
         public _Views_Blog_Layout1__Editors_cshtml()
         {
@@ -143,36 +143,36 @@ WriteLiteral(" class=\"img-circle text-center\"");
 
 WriteLiteral(">\r\n                                <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 971), Tuple.Create("\"", 992)
-, Tuple.Create(Tuple.Create("", 978), Tuple.Create("/", 978), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 973), Tuple.Create("\"", 994)
+, Tuple.Create(Tuple.Create("", 980), Tuple.Create("/", 980), true)
             
             #line 31 "..\..\Views\Blog\Layout1\_Editors.cshtml"
-, Tuple.Create(Tuple.Create("", 979), Tuple.Create<System.Object, System.Int32>(editors.Slug
+, Tuple.Create(Tuple.Create("", 981), Tuple.Create<System.Object, System.Int32>(editors.Slug
             
             #line default
             #line hidden
-, 979), false)
+, 981), false)
 );
 
 WriteLiteral(" class=\"text-center\"");
 
 WriteLiteral(">                                    \r\n                                    <img");
 
-WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 1092), Tuple.Create("\"", 1120)
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 1094), Tuple.Create("\"", 1122)
             
             #line 32 "..\..\Views\Blog\Layout1\_Editors.cshtml"
-, Tuple.Create(Tuple.Create("", 1101), Tuple.Create<System.Object, System.Int32>(editors.GroupImage
+, Tuple.Create(Tuple.Create("", 1103), Tuple.Create<System.Object, System.Int32>(editors.GroupImage
             
             #line default
             #line hidden
-, 1101), false)
+, 1103), false)
 );
 
 WriteLiteral(" class=\"image-editor\"");
 
 WriteLiteral(" alt=\"\"");
 
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
 WriteLiteral(">\r\n                                </a>\r\n                            </div>\r\n");
 
@@ -212,15 +212,15 @@ WriteLiteral(" class=\"editor-name\"");
 
 WriteLiteral("><a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1500), Tuple.Create("\"", 1521)
-, Tuple.Create(Tuple.Create("", 1507), Tuple.Create("/", 1507), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 1476), Tuple.Create("\"", 1497)
+, Tuple.Create(Tuple.Create("", 1483), Tuple.Create("/", 1483), true)
             
             #line 39 "..\..\Views\Blog\Layout1\_Editors.cshtml"
-, Tuple.Create(Tuple.Create("", 1508), Tuple.Create<System.Object, System.Int32>(editors.Slug
+, Tuple.Create(Tuple.Create("", 1484), Tuple.Create<System.Object, System.Int32>(editors.Slug
             
             #line default
             #line hidden
-, 1508), false)
+, 1484), false)
 );
 
 WriteLiteral(">");

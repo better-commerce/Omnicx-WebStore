@@ -36,7 +36,7 @@ namespace ASP
     #line hidden
     
     #line 16 "..\..\Views\Brand\Layout1\BrandLanding.cshtml"
-    using Omnicx.API.SDK.Entities;
+    
     
     #line default
     #line hidden
@@ -48,7 +48,7 @@ namespace ASP
     #line hidden
     
     #line 15 "..\..\Views\Brand\Layout1\BrandLanding.cshtml"
-    using Omnicx.API.SDK.Models.Catalog;
+    using Omnicx.WebStore.Models.Catalog;
     
     #line default
     #line hidden
@@ -75,7 +75,7 @@ namespace ASP
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Brand/Layout1/BrandLanding.cshtml")]
-    public partial class _Views_Brand_Layout1_BrandLanding_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Catalog.BrandDetailModel>
+    public partial class _Views_Brand_Layout1_BrandLanding_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Catalog.BrandDetailModel>
     {
         public _Views_Brand_Layout1_BrandLanding_cshtml()
         {

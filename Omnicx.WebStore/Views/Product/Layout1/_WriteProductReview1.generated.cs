@@ -39,7 +39,7 @@ namespace ASP
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Product/Layout1/_WriteProductReview.cshtml")]
-    public partial class _Views_Product_Layout1__WriteProductReview_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Catalog.ProductReviewAddModel>
+    public partial class _Views_Product_Layout1__WriteProductReview_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Catalog.ProductReviewAddModel>
     {
         public _Views_Product_Layout1__WriteProductReview_cshtml()
         {
@@ -74,7 +74,7 @@ WriteLiteral("\r\n");
             #line hidden
 WriteLiteral("\r\n<div");
 
-WriteLiteral(" class=\"col-sm-6\"");
+WriteLiteral(" class=\"col-sm-12 col-xs-12\"");
 
 WriteLiteral(" ng-show=\"pm.writeReview\"");
 
@@ -223,9 +223,7 @@ WriteLiteral(">\r\n                <div");
 
 WriteLiteral(" class=\"control__indicator\"");
 
-WriteLiteral("></div>\r\n            </label>\r\n        </div> \r\n        ");
-
-WriteLiteral("\r\n        <div");
+WriteLiteral("></div>\r\n            </label>\r\n        </div> \r\n        <div");
 
 WriteLiteral(" class=\"form-group\"");
 
@@ -234,7 +232,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("            ");
 
             
-            #line 75 "..\..\Views\Product\Layout1\_WriteProductReview.cshtml"
+            #line 47 "..\..\Views\Product\Layout1\_WriteProductReview.cshtml"
        Write(addReview.FormGroupFor(x => x.Nickname));
 
             
@@ -249,7 +247,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("            ");
 
             
-            #line 78 "..\..\Views\Product\Layout1\_WriteProductReview.cshtml"
+            #line 50 "..\..\Views\Product\Layout1\_WriteProductReview.cshtml"
        Write(addReview.FormGroupFor(x => x.Location));
 
             
@@ -280,7 +278,7 @@ WriteLiteral(" value=\"Gender\"");
 WriteLiteral(">");
 
             
-            #line 82 "..\..\Views\Product\Layout1\_WriteProductReview.cshtml"
+            #line 54 "..\..\Views\Product\Layout1\_WriteProductReview.cshtml"
                                                                                Write(LT("Review.Label.Gender" , "Gender"));
 
             
@@ -313,7 +311,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("               ");
 
             
-            #line 91 "..\..\Views\Product\Layout1\_WriteProductReview.cshtml"
+            #line 63 "..\..\Views\Product\Layout1\_WriteProductReview.cshtml"
           Write(LT("ProductReview.Label.Submit" , " Submit your Review"));
 
             
@@ -332,7 +330,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                ");
 
             
-            #line 94 "..\..\Views\Product\Layout1\_WriteProductReview.cshtml"
+            #line 66 "..\..\Views\Product\Layout1\_WriteProductReview.cshtml"
            Write(LT("ProductReview.Label.Cancel" , "Cancel"));
 
             

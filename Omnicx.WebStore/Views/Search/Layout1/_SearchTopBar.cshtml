@@ -38,7 +38,7 @@
 
 @*DESKTOP VIEW OF TOPBAR*@
 <div class="row hidden-xs hidden-sm" ng-cloak>
-    <div class="col-sm-6 col-xs-6">
+    <div class="col-sm-6 col-xs-12">
         <form class="form-inline">
             <div class="form-group no-margin-bottom">
                 <label for="Refine By" class="font-sm">
@@ -56,14 +56,27 @@
             </div>
         </form>
     </div>
-    <div class="col-sm-6 col-xs-6 text-right">
-        <form class="form-inline">
-            <div class="form-group no-margin-bottom">
-                <label class="font-sm visible-lg visible-md inline-text-lg" for="Refine By">@LT("ProductListing.FacetHeading.SortBy", "Sort by ")</label>
-                <select name="title" tabindex="1" class="form-aux form-control select-no-border" data-label="Title" ng-model="pm.searchCriteria.sortBy" ng-change="pm.searchCriteria.pageSize=pm.searchCriteria.pageSize;pm.searchProducts(pm.searchCriteria);">
-                    <option ng-repeat="item in pm.sortByList" value="{{item.key}}" ng-selected="item.key==pm.searchCriteria.sortBy" ng-bind="item.value"></option>
-                </select>
+    <div class="col-sm-6 col-xs-12">
+        <div class="row">
+            <div class="col-sm-12 col-xs-12 text-right">
+                <a href="#" class="text-sm" ng-click="pm.viewGridOrList(true);pm.getGrid()" ng-class="{'text-orange':pm.getView==true ?true :false}" title="Grid View"><i class="fa fa-th"></i></a>
+                <a href="#" class="text-sm" ng-click="pm.viewGridOrList(false);pm.getList()" ng-class="{'text-orange':pm.getView==false ?true :false}" title="List View"><i class="fa fa-list"></i></a>
             </div>
-        </form>
+        </div>
+    </div>    
+</div>
+<div class="row hidden-xs hidden-sm" ng-cloak>
+    <div class="col-sm-12 col-xs-12 text-left border-bottom border-top">
+        <div class="col-sm-1 col-xs-2 text-center" ng-repeat="item in pm.sortByList">
+            <a href="#" class="text-black facet-link" ng-click="pm.searchCriteria.pageSize=pm.searchCriteria.pageSize;pm.searchProducts(item.key==pm.searchCriteria);"><strong ng-bind="item.value"></strong></a>
+        </div>
+        @*<form class="form-inline">
+                <div class="form-group no-margin-bottom">
+                    <label class="font-sm visible-lg visible-md inline-text-lg" for="Refine By">@LT("ProductListing.FacetHeading.SortBy", "Sort by ")</label>
+                    <select name="title" tabindex="1" class="form-aux form-control select-no-border" data-label="Title" ng-model="pm.searchCriteria.sortBy" ng-change="pm.searchCriteria.pageSize=pm.searchCriteria.pageSize;pm.searchProducts(pm.searchCriteria);">
+                        <option ng-repeat="item in pm.sortByList" value="{{item.key}}" ng-selected="item.key==pm.searchCriteria.sortBy" ng-bind="item.value"></option>
+                    </select>
+                </div>
+            </form>*@
     </div>
 </div>

@@ -29,19 +29,31 @@ namespace ASP
     using System.Web.WebPages;
     using DevTrends.MvcDonutCaching;
     
-    #line 1 "..\..\Views\Shared\Layout1\_LayoutFooter.cshtml"
-    using Omnicx.API.SDK.Entities;
-    
-    #line default
-    #line hidden
-    
-    #line 2 "..\..\Views\Shared\Layout1\_LayoutFooter.cshtml"
-    using Omnicx.API.SDK.Models.Commerce;
+    #line 3 "..\..\Views\Shared\Layout1\_LayoutFooter.cshtml"
+    using Omnicx.API.SDK.Helpers;
     
     #line default
     #line hidden
     using Omnicx.WebStore;
     using Omnicx.WebStore.Core;
+    
+    #line 2 "..\..\Views\Shared\Layout1\_LayoutFooter.cshtml"
+    using Omnicx.WebStore.Models.Commerce;
+    
+    #line default
+    #line hidden
+    
+    #line 4 "..\..\Views\Shared\Layout1\_LayoutFooter.cshtml"
+    using Omnicx.WebStore.Models.Enums;
+    
+    #line default
+    #line hidden
+    
+    #line 1 "..\..\Views\Shared\Layout1\_LayoutFooter.cshtml"
+    using Omnicx.WebStore.Models.Keys;
+    
+    #line default
+    #line hidden
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Shared/Layout1/_LayoutFooter.cshtml")]
@@ -53,23 +65,32 @@ namespace ASP
         public override void Execute()
         {
             
-            #line 4 "..\..\Views\Shared\Layout1\_LayoutFooter.cshtml"
+            #line 6 "..\..\Views\Shared\Layout1\_LayoutFooter.cshtml"
   
     var StoreTheme = ConfigKeys.StoreTheme;
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n\r\n<div");
+WriteLiteral("\r\n");
 
-WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding hidden-xs bg-black padding-top-sm\"");
+            
+            #line 9 "..\..\Views\Shared\Layout1\_LayoutFooter.cshtml"
+Write(Html.GetGlobalSnipptes(SnippetPlacements.FooterBefore));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n<div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding hidden-xs\"");
 
 WriteLiteral(">\r\n");
 
 WriteLiteral("    ");
 
             
-            #line 9 "..\..\Views\Shared\Layout1\_LayoutFooter.cshtml"
+            #line 11 "..\..\Views\Shared\Layout1\_LayoutFooter.cshtml"
 Write(Html.Action("GetFooter", "Home"));
 
             
@@ -84,7 +105,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("    ");
 
             
-            #line 12 "..\..\Views\Shared\Layout1\_LayoutFooter.cshtml"
+            #line 14 "..\..\Views\Shared\Layout1\_LayoutFooter.cshtml"
 Write(Html.Action("GetFooterMobile", "Home"));
 
             
@@ -92,7 +113,7 @@ Write(Html.Action("GetFooterMobile", "Home"));
             #line hidden
 WriteLiteral("\r\n</div>\r\n<div");
 
-WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding bg-black padding-top-sm\"");
+WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding\"");
 
 WriteLiteral(">\r\n    <div");
 
@@ -113,7 +134,7 @@ WriteLiteral(" class=\"pull-left\"");
 WriteLiteral(">&copy;2017-18. ");
 
             
-            #line 18 "..\..\Views\Shared\Layout1\_LayoutFooter.cshtml"
+            #line 20 "..\..\Views\Shared\Layout1\_LayoutFooter.cshtml"
                                                Write(LT("Footer.Text.Omnicx", "OCX Store Powered by "));
 
             
@@ -131,19 +152,19 @@ WriteLiteral(" class=\"pull-right\"");
 
 WriteLiteral(">\r\n                    <img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 908), Tuple.Create("\"", 951)
-, Tuple.Create(Tuple.Create("", 914), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/payment.png")
-, 914), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 988), Tuple.Create("\"", 1031)
+, Tuple.Create(Tuple.Create("", 994), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/payment.png")
+, 994), false)
 );
 
 WriteLiteral(" alt=\"payments accepted\"");
 
 WriteLiteral(">\r\n                </p>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n" +
-"\r\n\r\n");
+"");
 
             
             #line 28 "..\..\Views\Shared\Layout1\_LayoutFooter.cshtml"
-Write(Html.Action("CurrencySettings", "Home"));
+Write(Html.GetGlobalSnipptes(SnippetPlacements.FooterAfter));
 
             
             #line default
@@ -152,6 +173,15 @@ WriteLiteral("\r\n\r\n");
 
             
             #line 30 "..\..\Views\Shared\Layout1\_LayoutFooter.cshtml"
+Write(Html.Action("CurrencySettings", "Home"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n\r\n");
+
+            
+            #line 32 "..\..\Views\Shared\Layout1\_LayoutFooter.cshtml"
 Write(Html.Partial("~/Views/Shared/Layout1/_Login.cshtml", new LoginViewModel { Username = "", Password = "" }));
 
             
@@ -160,7 +190,7 @@ Write(Html.Partial("~/Views/Shared/Layout1/_Login.cshtml", new LoginViewModel { 
 WriteLiteral("\r\n");
 
             
-            #line 31 "..\..\Views\Shared\Layout1\_LayoutFooter.cshtml"
+            #line 33 "..\..\Views\Shared\Layout1\_LayoutFooter.cshtml"
 Write(Html.Partial("~/Views/Shared/Layout1/_Register.cshtml", new UserModel { }));
 
             
@@ -169,7 +199,7 @@ Write(Html.Partial("~/Views/Shared/Layout1/_Register.cshtml", new UserModel { })
 WriteLiteral("\r\n\r\n");
 
             
-            #line 33 "..\..\Views\Shared\Layout1\_LayoutFooter.cshtml"
+            #line 35 "..\..\Views\Shared\Layout1\_LayoutFooter.cshtml"
 Write(Scripts.Render("~/bundles/jq-ang"));
 
             
@@ -178,7 +208,7 @@ Write(Scripts.Render("~/bundles/jq-ang"));
 WriteLiteral("\r\n");
 
             
-            #line 34 "..\..\Views\Shared\Layout1\_LayoutFooter.cshtml"
+            #line 36 "..\..\Views\Shared\Layout1\_LayoutFooter.cshtml"
 Write(Scripts.Render("~/bundles/custom-libs"));
 
             
@@ -187,7 +217,7 @@ Write(Scripts.Render("~/bundles/custom-libs"));
 WriteLiteral("\r\n");
 
             
-            #line 35 "..\..\Views\Shared\Layout1\_LayoutFooter.cshtml"
+            #line 37 "..\..\Views\Shared\Layout1\_LayoutFooter.cshtml"
 Write(Scripts.Render("~/bundles/app-js"));
 
             

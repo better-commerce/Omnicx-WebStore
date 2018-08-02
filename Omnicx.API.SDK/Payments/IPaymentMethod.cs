@@ -1,5 +1,5 @@
 ﻿using Omnicx.API.SDK.Payments.Entities;
-using Omnicx.API.SDK.Models.Commerce;
+using Omnicx.WebStore.Models.Commerce;
 namespace Omnicx.API.SDK.Payments
 {
     public partial interface IPaymentMethod

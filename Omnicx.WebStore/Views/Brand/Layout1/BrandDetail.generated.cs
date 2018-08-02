@@ -35,26 +35,8 @@ namespace ASP
     #line default
     #line hidden
     
-    #line 18 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
-    using Omnicx.API.SDK.Entities;
-    
-    #line default
-    #line hidden
-    
-    #line 19 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
-    using Omnicx.API.SDK.Helpers;
-    
-    #line default
-    #line hidden
-    
-    #line 14 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
-    using Omnicx.API.SDK.Models;
-    
-    #line default
-    #line hidden
-    
     #line 20 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
-    using Omnicx.API.SDK.Models.Catalog;
+    using Omnicx.API.SDK.Helpers;
     
     #line default
     #line hidden
@@ -79,9 +61,33 @@ namespace ASP
     #line default
     #line hidden
     
+    #line 14 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+    using Omnicx.WebStore.Models;
+    
+    #line default
+    #line hidden
+    
+    #line 21 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+    using Omnicx.WebStore.Models.Catalog;
+    
+    #line default
+    #line hidden
+    
+    #line 18 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+    using Omnicx.WebStore.Models.Enums;
+    
+    #line default
+    #line hidden
+    
+    #line 19 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+    using Omnicx.WebStore.Models.Keys;
+    
+    #line default
+    #line hidden
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Brand/Layout1/BrandDetail.cshtml")]
-    public partial class _Views_Brand_Layout1_BrandDetail_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Catalog.BrandDetailModel>
+    public partial class _Views_Brand_Layout1_BrandDetail_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Catalog.BrandDetailModel>
     {
         public _Views_Brand_Layout1_BrandDetail_cshtml()
         {
@@ -108,7 +114,7 @@ namespace ASP
 WriteLiteral("\r\n");
 
             
-            #line 22 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 23 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
   
     ViewBag.Title = @LT("Brands.Label.Brand", "Brand") + " " + @LT("Brands.Label.Details", "Details");
     Layout = "~/Views/Shared/Layout1/_Layout.cshtml";
@@ -125,16 +131,16 @@ WriteLiteral("\r\n");
 WriteLiteral("\r\n");
 
             
-            #line 32 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 33 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
   
-/*
-Name: Brand detail page
-Purpose: Show all the related information of brand
-Structure: /Views/Catalog/BrandDetail.cshtml
-Contains (Partial Views Used):
-* Catalog/_ProductDetailModal.cshtml
-Contained In (Where we Use this View) :
-*/
+    /*
+    Name: Brand detail page
+    Purpose: Show all the related information of brand
+    Structure: /Views/Catalog/BrandDetail.cshtml
+    Contains (Partial Views Used):
+    * Catalog/_ProductDetailModal.cshtml
+    Contained In (Where we Use this View) :
+    */
 
             
             #line default
@@ -146,13 +152,13 @@ WriteLiteral(" ng-controller=\"productCtrl as pm\"");
 WriteLiteral(">\r\n");
 
             
-            #line 43 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 44 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
     
             
             #line default
             #line hidden
             
-            #line 43 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 44 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
        /* Start breadcrumb container */ 
             
             #line default
@@ -172,7 +178,7 @@ WriteLiteral(" href=\"/\"");
 WriteLiteral(">");
 
             
-            #line 47 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 48 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                        Write(LT("ProductListing.Breadcrumb.Home", "Home"));
 
             
@@ -180,20 +186,20 @@ WriteLiteral(">");
             #line hidden
 WriteLiteral("</a>\r\n            </li>\r\n            <li> <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1803), Tuple.Create("\"", 1843)
+WriteAttribute("href", Tuple.Create(" href=\"", 1880), Tuple.Create("\"", 1920)
             
-            #line 49 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
-, Tuple.Create(Tuple.Create("", 1810), Tuple.Create<System.Object, System.Int32>(Url.Action("BrandList", "Brand")
+            #line 50 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+, Tuple.Create(Tuple.Create("", 1887), Tuple.Create<System.Object, System.Int32>(Url.Action("BrandList", "Brand")
             
             #line default
             #line hidden
-, 1810), false)
+, 1887), false)
 );
 
 WriteLiteral(">");
 
             
-            #line 49 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 50 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                                                         Write(LT("Brands.Label.Brand", "Brand"));
 
             
@@ -208,7 +214,7 @@ WriteLiteral(" ng-click=\"pm.subBrandProducts=[]\"");
 WriteLiteral(">");
 
             
-            #line 50 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 51 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                                                                     Write(Model.Name);
 
             
@@ -225,13 +231,13 @@ WriteLiteral(" ng-bind=\"pm.subBrandProducts[0].subBrand\"");
 WriteLiteral("></span></li>\r\n        </ul>\r\n    </div>\r\n");
 
             
-            #line 54 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 55 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
     
             
             #line default
             #line hidden
             
-            #line 54 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 55 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
        /* End breadcrumb container */ 
             
             #line default
@@ -243,13 +249,13 @@ WriteLiteral(" class=\"col-sm-12 no-padding\"");
 WriteLiteral(">\r\n");
 
             
-            #line 57 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 58 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
         
             
             #line default
             #line hidden
             
-            #line 57 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 58 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
            /*Start Sub Brand Filter*/ 
             
             #line default
@@ -269,13 +275,13 @@ WriteLiteral(" class=\"col-sm-12 col-xs-12 left-filter-category max-panel\"");
 WriteLiteral(">\r\n                <ul>\r\n");
 
             
-            #line 62 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 63 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                     
             
             #line default
             #line hidden
             
-            #line 62 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 63 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                      foreach (var subbrands in @Model.SubBrands)
                     {
 
@@ -284,44 +290,44 @@ WriteLiteral(">\r\n                <ul>\r\n");
             #line hidden
 WriteLiteral("                        <li");
 
-WriteAttribute("id", Tuple.Create(" id=\"", 2585), Tuple.Create("\"", 2603)
+WriteAttribute("id", Tuple.Create(" id=\"", 2662), Tuple.Create("\"", 2680)
             
-            #line 64 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
-, Tuple.Create(Tuple.Create("", 2590), Tuple.Create<System.Object, System.Int32>(subbrands.Id
+            #line 65 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+, Tuple.Create(Tuple.Create("", 2667), Tuple.Create<System.Object, System.Int32>(subbrands.Id
             
             #line default
             #line hidden
-, 2590), false)
+, 2667), false)
 );
 
 WriteLiteral("><a");
 
 WriteLiteral(" href=\"javascript:;\"");
 
-WriteAttribute("ng-click", Tuple.Create(" ng-click=\"", 2627), Tuple.Create("\"", 2690)
-, Tuple.Create(Tuple.Create("", 2638), Tuple.Create("pm.fetchSubBrandProductList(", 2638), true)
+WriteAttribute("ng-click", Tuple.Create(" ng-click=\"", 2704), Tuple.Create("\"", 2767)
+, Tuple.Create(Tuple.Create("", 2715), Tuple.Create("pm.fetchSubBrandProductList(", 2715), true)
             
-            #line 64 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
-                            , Tuple.Create(Tuple.Create("", 2666), Tuple.Create<System.Object, System.Int32>(subbrands.Id
-            
-            #line default
-            #line hidden
-, 2666), false)
-, Tuple.Create(Tuple.Create("", 2679), Tuple.Create(",", 2679), true)
-            
-            #line 64 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
-                                          , Tuple.Create(Tuple.Create("", 2680), Tuple.Create<System.Object, System.Int32>(Model.Id
+            #line 65 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+                            , Tuple.Create(Tuple.Create("", 2743), Tuple.Create<System.Object, System.Int32>(subbrands.Id
             
             #line default
             #line hidden
-, 2680), false)
-, Tuple.Create(Tuple.Create("", 2689), Tuple.Create(")", 2689), true)
+, 2743), false)
+, Tuple.Create(Tuple.Create("", 2756), Tuple.Create(",", 2756), true)
+            
+            #line 65 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+                                          , Tuple.Create(Tuple.Create("", 2757), Tuple.Create<System.Object, System.Int32>(Model.Id
+            
+            #line default
+            #line hidden
+, 2757), false)
+, Tuple.Create(Tuple.Create("", 2766), Tuple.Create(")", 2766), true)
 );
 
 WriteLiteral(">");
 
             
-            #line 64 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 65 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                                                                                                                                  Write(subbrands.Name);
 
             
@@ -330,7 +336,7 @@ WriteLiteral(">");
 WriteLiteral("</a></li>\r\n");
 
             
-            #line 65 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 66 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                     }
 
             
@@ -339,13 +345,13 @@ WriteLiteral("</a></li>\r\n");
 WriteLiteral("                </ul>\r\n            </div>\r\n        </div>\r\n\r\n\r\n");
 
             
-            #line 71 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 72 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
         
             
             #line default
             #line hidden
             
-            #line 71 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 72 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
            /*End Sub Brand Filter*/ 
             
             #line default
@@ -353,13 +359,13 @@ WriteLiteral("                </ul>\r\n            </div>\r\n        </div>\r\n\
 WriteLiteral("\r\n\r\n");
 
             
-            #line 73 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 74 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
         
             
             #line default
             #line hidden
             
-            #line 73 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 74 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
            /*Start Brand product grid*/ 
             
             #line default
@@ -371,13 +377,13 @@ WriteLiteral(" class=\"col-sm-9 col-xs-12 no-padding\"");
 WriteLiteral(">\r\n");
 
             
-            #line 75 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 76 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
             
             
             #line default
             #line hidden
             
-            #line 75 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 76 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                /*Start Brand Name and description*/ 
             
             #line default
@@ -395,7 +401,7 @@ WriteLiteral(" class=\"brand-h4\"");
 WriteLiteral(">");
 
             
-            #line 77 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 78 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                                                                          Write(Model.Name);
 
             
@@ -419,13 +425,13 @@ WriteLiteral(" ng-bind-html=\"pm.subBrandProducts[0].description\"");
 WriteLiteral("></p>\r\n            </div>\r\n");
 
             
-            #line 81 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 82 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
             
             
             #line default
             #line hidden
             
-            #line 81 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 82 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                /*End Brand Name and description*/ 
             
             #line default
@@ -439,13 +445,13 @@ WriteLiteral(" ng-hide=\"pm.subBrandProducts.length>0\"");
 WriteLiteral(">\r\n\r\n");
 
             
-            #line 85 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 86 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                 
             
             #line default
             #line hidden
             
-            #line 85 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 86 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                    /* Start carousel slider */ 
             
             #line default
@@ -497,13 +503,13 @@ WriteLiteral(" class=\"carousel-inner\"");
 WriteLiteral(">\r\n");
 
             
-            #line 94 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 95 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                             
             
             #line default
             #line hidden
             
-            #line 94 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 95 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                              if (@Model.CarouselImage1 != null)
                             {
 
@@ -516,37 +522,37 @@ WriteLiteral(" class=\"item active\"");
 
 WriteLiteral(">\r\n                                    <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 4499), Tuple.Create("\"", 4527)
+WriteAttribute("href", Tuple.Create(" href=\"", 4576), Tuple.Create("\"", 4604)
             
-            #line 97 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
-, Tuple.Create(Tuple.Create("", 4506), Tuple.Create<System.Object, System.Int32>(Model
+            #line 98 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+, Tuple.Create(Tuple.Create("", 4583), Tuple.Create<System.Object, System.Int32>(Model
             
             #line default
             #line hidden
-, 4506), false)
-, Tuple.Create(Tuple.Create("", 4512), Tuple.Create("..CarouselLink1", 4512), true)
+, 4583), false)
+, Tuple.Create(Tuple.Create("", 4589), Tuple.Create("..CarouselLink1", 4589), true)
 );
 
 WriteLiteral("><img");
 
-WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 4533), Tuple.Create("\"", 4563)
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 4610), Tuple.Create("\"", 4640)
             
-            #line 97 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
- , Tuple.Create(Tuple.Create("", 4542), Tuple.Create<System.Object, System.Int32>(Model.CarouselImage1
+            #line 98 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+ , Tuple.Create(Tuple.Create("", 4619), Tuple.Create<System.Object, System.Int32>(Model.CarouselImage1
             
             #line default
             #line hidden
-, 4542), false)
+, 4619), false)
 );
 
 WriteLiteral(" alt=\"Slide 1 of carousel\"");
 
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
 WriteLiteral("></a>\r\n                                </div>\r\n");
 
             
-            #line 99 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 100 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                             }
 
             
@@ -555,7 +561,7 @@ WriteLiteral("></a>\r\n                                </div>\r\n");
 WriteLiteral("                            ");
 
             
-            #line 100 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 101 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                              if (@Model.CarouselImage2 != null)
                             {
 
@@ -568,36 +574,36 @@ WriteLiteral(" class=\"item\"");
 
 WriteLiteral(">\r\n                                    <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 4919), Tuple.Create("\"", 4946)
+WriteAttribute("href", Tuple.Create(" href=\"", 4970), Tuple.Create("\"", 4997)
             
-            #line 103 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
-, Tuple.Create(Tuple.Create("", 4926), Tuple.Create<System.Object, System.Int32>(Model.CarouselLink2
+            #line 104 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+, Tuple.Create(Tuple.Create("", 4977), Tuple.Create<System.Object, System.Int32>(Model.CarouselLink2
             
             #line default
             #line hidden
-, 4926), false)
+, 4977), false)
 );
 
 WriteLiteral("><img");
 
-WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 4952), Tuple.Create("\"", 4982)
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 5003), Tuple.Create("\"", 5033)
             
-            #line 103 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
-, Tuple.Create(Tuple.Create("", 4961), Tuple.Create<System.Object, System.Int32>(Model.CarouselImage2
+            #line 104 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+, Tuple.Create(Tuple.Create("", 5012), Tuple.Create<System.Object, System.Int32>(Model.CarouselImage2
             
             #line default
             #line hidden
-, 4961), false)
+, 5012), false)
 );
 
 WriteLiteral(" alt=\"Slide 1 of carousel\"");
 
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
 WriteLiteral("></a>\r\n                                </div>\r\n");
 
             
-            #line 105 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 106 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                             }
 
             
@@ -606,7 +612,7 @@ WriteLiteral("></a>\r\n                                </div>\r\n");
 WriteLiteral("                            ");
 
             
-            #line 106 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 107 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                              if (@Model.CarouselImage3 != null)
                             {
 
@@ -619,36 +625,36 @@ WriteLiteral(" class=\"item\"");
 
 WriteLiteral(">\r\n                                    <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 5338), Tuple.Create("\"", 5365)
+WriteAttribute("href", Tuple.Create(" href=\"", 5363), Tuple.Create("\"", 5390)
             
-            #line 109 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
-, Tuple.Create(Tuple.Create("", 5345), Tuple.Create<System.Object, System.Int32>(Model.CarouselLink3
+            #line 110 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+, Tuple.Create(Tuple.Create("", 5370), Tuple.Create<System.Object, System.Int32>(Model.CarouselLink3
             
             #line default
             #line hidden
-, 5345), false)
+, 5370), false)
 );
 
 WriteLiteral("><img");
 
-WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 5371), Tuple.Create("\"", 5401)
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 5396), Tuple.Create("\"", 5426)
             
-            #line 109 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
-, Tuple.Create(Tuple.Create("", 5380), Tuple.Create<System.Object, System.Int32>(Model.CarouselImage3
+            #line 110 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+, Tuple.Create(Tuple.Create("", 5405), Tuple.Create<System.Object, System.Int32>(Model.CarouselImage3
             
             #line default
             #line hidden
-, 5380), false)
+, 5405), false)
 );
 
 WriteLiteral(" alt=\"Slide 1 of carousel\"");
 
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
 WriteLiteral("></a>\r\n                                </div>\r\n");
 
             
-            #line 111 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 112 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                             }
 
             
@@ -738,13 +744,13 @@ WriteLiteral(">To Over 200 Countries</h6>\r\n                                </d
 "v>\r\n                </div>\r\n");
 
             
-            #line 140 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 141 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                 
             
             #line default
             #line hidden
             
-            #line 140 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 141 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                    /* End carousel slider */ 
             
             #line default
@@ -752,13 +758,13 @@ WriteLiteral(">To Over 200 Countries</h6>\r\n                                </d
 WriteLiteral("\r\n\r\n");
 
             
-            #line 142 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 143 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                 
             
             #line default
             #line hidden
             
-            #line 142 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 143 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                   /*Delivery Options*/
             
             #line default
@@ -782,13 +788,13 @@ WriteLiteral(" class=\"col-sm-12 col-xs-12 left-filter-category max-panel\"");
 WriteLiteral(">\r\n                            <ul>\r\n");
 
             
-            #line 148 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 149 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                                 
             
             #line default
             #line hidden
             
-            #line 148 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 149 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                                  foreach (var subbrands in @Model.SubBrands)
                                 {
 
@@ -797,44 +803,44 @@ WriteLiteral(">\r\n                            <ul>\r\n");
             #line hidden
 WriteLiteral("                                    <li");
 
-WriteAttribute("id", Tuple.Create(" id=\"", 7743), Tuple.Create("\"", 7761)
+WriteAttribute("id", Tuple.Create(" id=\"", 7742), Tuple.Create("\"", 7760)
             
-            #line 150 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
-, Tuple.Create(Tuple.Create("", 7748), Tuple.Create<System.Object, System.Int32>(subbrands.Id
+            #line 151 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+, Tuple.Create(Tuple.Create("", 7747), Tuple.Create<System.Object, System.Int32>(subbrands.Id
             
             #line default
             #line hidden
-, 7748), false)
+, 7747), false)
 );
 
 WriteLiteral("><a");
 
 WriteLiteral(" href=\"javascript:;\"");
 
-WriteAttribute("ng-click", Tuple.Create(" ng-click=\"", 7785), Tuple.Create("\"", 7848)
-, Tuple.Create(Tuple.Create("", 7796), Tuple.Create("pm.fetchSubBrandProductList(", 7796), true)
+WriteAttribute("ng-click", Tuple.Create(" ng-click=\"", 7784), Tuple.Create("\"", 7847)
+, Tuple.Create(Tuple.Create("", 7795), Tuple.Create("pm.fetchSubBrandProductList(", 7795), true)
             
-            #line 150 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
-                                        , Tuple.Create(Tuple.Create("", 7824), Tuple.Create<System.Object, System.Int32>(subbrands.Id
-            
-            #line default
-            #line hidden
-, 7824), false)
-, Tuple.Create(Tuple.Create("", 7837), Tuple.Create(",", 7837), true)
-            
-            #line 150 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
-                                                      , Tuple.Create(Tuple.Create("", 7838), Tuple.Create<System.Object, System.Int32>(Model.Id
+            #line 151 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+                                        , Tuple.Create(Tuple.Create("", 7823), Tuple.Create<System.Object, System.Int32>(subbrands.Id
             
             #line default
             #line hidden
-, 7838), false)
-, Tuple.Create(Tuple.Create("", 7847), Tuple.Create(")", 7847), true)
+, 7823), false)
+, Tuple.Create(Tuple.Create("", 7836), Tuple.Create(",", 7836), true)
+            
+            #line 151 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+                                                      , Tuple.Create(Tuple.Create("", 7837), Tuple.Create<System.Object, System.Int32>(Model.Id
+            
+            #line default
+            #line hidden
+, 7837), false)
+, Tuple.Create(Tuple.Create("", 7846), Tuple.Create(")", 7846), true)
 );
 
 WriteLiteral(">");
 
             
-            #line 150 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 151 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                                                                                                                                              Write(subbrands.Name);
 
             
@@ -843,7 +849,7 @@ WriteLiteral(">");
 WriteLiteral("</a></li>\r\n");
 
             
-            #line 151 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 152 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                                 }
 
             
@@ -853,13 +859,13 @@ WriteLiteral("                            </ul>\r\n                        </div
 "      </div>\r\n                </div>\r\n\r\n");
 
             
-            #line 157 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 158 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                 
             
             #line default
             #line hidden
             
-            #line 157 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 158 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                   /*Start Brand Category panel*/
             
             #line default
@@ -875,13 +881,13 @@ WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding\"");
 WriteLiteral(">\r\n");
 
             
-            #line 160 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 161 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                         
             
             #line default
             #line hidden
             
-            #line 160 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 161 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                          if (@Model.WidgetImage1 != null)
                         {
 
@@ -894,38 +900,38 @@ WriteLiteral(" class=\"col-sm-4 col-xs-6\"");
 
 WriteLiteral(">\r\n                                <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 8365), Tuple.Create("\"", 8390)
+WriteAttribute("href", Tuple.Create(" href=\"", 8364), Tuple.Create("\"", 8389)
             
-            #line 163 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
-, Tuple.Create(Tuple.Create("", 8372), Tuple.Create<System.Object, System.Int32>(Model.WidgetLink1
+            #line 164 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+, Tuple.Create(Tuple.Create("", 8371), Tuple.Create<System.Object, System.Int32>(Model.WidgetLink1
             
             #line default
             #line hidden
-, 8372), false)
+, 8371), false)
 );
 
 WriteLiteral(">  <img");
 
-WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 8398), Tuple.Create("\"", 8426)
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 8397), Tuple.Create("\"", 8425)
             
-            #line 163 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
-, Tuple.Create(Tuple.Create("", 8407), Tuple.Create<System.Object, System.Int32>(Model.WidgetImage1
+            #line 164 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+, Tuple.Create(Tuple.Create("", 8406), Tuple.Create<System.Object, System.Int32>(Model.WidgetImage1
             
             #line default
             #line hidden
-, 8407), false)
+, 8406), false)
 );
 
 WriteLiteral(" class=\"img-responsive \"");
 
 WriteLiteral(" alt=\"Brand Category\"");
 
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
 WriteLiteral(" /> </a>\r\n                            </div>\r\n");
 
             
-            #line 165 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 166 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                         }
 
             
@@ -934,7 +940,7 @@ WriteLiteral(" /> </a>\r\n                            </div>\r\n");
 WriteLiteral("                        ");
 
             
-            #line 166 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 167 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                          if (@Model.WidgetImage2 != null)
                         {
 
@@ -947,38 +953,38 @@ WriteLiteral(" class=\"col-sm-4 col-xs-6\"");
 
 WriteLiteral(">\r\n                                <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 8791), Tuple.Create("\"", 8816)
+WriteAttribute("href", Tuple.Create(" href=\"", 8764), Tuple.Create("\"", 8789)
             
-            #line 169 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
-, Tuple.Create(Tuple.Create("", 8798), Tuple.Create<System.Object, System.Int32>(Model.WidgetLink2
+            #line 170 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+, Tuple.Create(Tuple.Create("", 8771), Tuple.Create<System.Object, System.Int32>(Model.WidgetLink2
             
             #line default
             #line hidden
-, 8798), false)
+, 8771), false)
 );
 
 WriteLiteral("> <img");
 
-WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 8823), Tuple.Create("\"", 8851)
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 8796), Tuple.Create("\"", 8824)
             
-            #line 169 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
-, Tuple.Create(Tuple.Create("", 8832), Tuple.Create<System.Object, System.Int32>(Model.WidgetImage2
+            #line 170 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+, Tuple.Create(Tuple.Create("", 8805), Tuple.Create<System.Object, System.Int32>(Model.WidgetImage2
             
             #line default
             #line hidden
-, 8832), false)
+, 8805), false)
 );
 
 WriteLiteral(" class=\"img-responsive \"");
 
 WriteLiteral(" alt=\"Brand Category\"");
 
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
 WriteLiteral(" />  </a>\r\n                            </div>\r\n");
 
             
-            #line 171 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 172 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                         }
 
             
@@ -987,7 +993,7 @@ WriteLiteral(" />  </a>\r\n                            </div>\r\n");
 WriteLiteral("                        ");
 
             
-            #line 172 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 173 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                          if (@Model.WidgetImage3 != null)
                         {
 
@@ -1000,38 +1006,38 @@ WriteLiteral(" class=\"col-sm-4 col-xs-6\"");
 
 WriteLiteral(">\r\n                                <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 9217), Tuple.Create("\"", 9242)
+WriteAttribute("href", Tuple.Create(" href=\"", 9164), Tuple.Create("\"", 9189)
             
-            #line 175 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
-, Tuple.Create(Tuple.Create("", 9224), Tuple.Create<System.Object, System.Int32>(Model.WidgetLink3
+            #line 176 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+, Tuple.Create(Tuple.Create("", 9171), Tuple.Create<System.Object, System.Int32>(Model.WidgetLink3
             
             #line default
             #line hidden
-, 9224), false)
+, 9171), false)
 );
 
 WriteLiteral(">  <img");
 
-WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 9250), Tuple.Create("\"", 9278)
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 9197), Tuple.Create("\"", 9225)
             
-            #line 175 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
-, Tuple.Create(Tuple.Create("", 9259), Tuple.Create<System.Object, System.Int32>(Model.WidgetImage3
+            #line 176 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+, Tuple.Create(Tuple.Create("", 9206), Tuple.Create<System.Object, System.Int32>(Model.WidgetImage3
             
             #line default
             #line hidden
-, 9259), false)
+, 9206), false)
 );
 
 WriteLiteral(" class=\"img-responsive \"");
 
 WriteLiteral(" alt=\"Brand Category\"");
 
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
 WriteLiteral(" /> </a>\r\n                            </div>\r\n");
 
             
-            #line 177 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 178 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                         }
 
             
@@ -1069,7 +1075,7 @@ WriteLiteral(" class=\"brand-h2\"");
 WriteLiteral(">");
 
             
-            #line 191 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 192 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                                             Write(Model.Name);
 
             
@@ -1084,7 +1090,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                                ");
 
             
-            #line 193 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 194 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                            Write(Html.Raw(@Model.Description));
 
             
@@ -1101,15 +1107,15 @@ WriteLiteral(" width=\'320\'");
 
 WriteLiteral(" height=\'300\'");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 10436), Tuple.Create("\"", 10486)
-, Tuple.Create(Tuple.Create("", 10442), Tuple.Create("https://www.youtube.com/embed/", 10442), true)
+WriteAttribute("src", Tuple.Create(" src=\"", 10357), Tuple.Create("\"", 10407)
+, Tuple.Create(Tuple.Create("", 10363), Tuple.Create("https://www.youtube.com/embed/", 10363), true)
             
-            #line 198 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
-           , Tuple.Create(Tuple.Create("", 10472), Tuple.Create<System.Object, System.Int32>(Model.VideoId
+            #line 199 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+           , Tuple.Create(Tuple.Create("", 10393), Tuple.Create<System.Object, System.Int32>(Model.VideoId
             
             #line default
             #line hidden
-, 10472), false)
+, 10393), false)
 );
 
 WriteLiteral(" frameborder=\"0\"");
@@ -1119,13 +1125,13 @@ WriteLiteral(" allowfullscreen></iframe>\r\n                    </div>\r\n      
 WriteLiteral("\r\n                </div>\r\n");
 
             
-            #line 206 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 207 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                 
             
             #line default
             #line hidden
             
-            #line 206 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 207 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                   /*End Brand Category panel*/
             
             #line default
@@ -1133,13 +1139,13 @@ WriteLiteral("\r\n                </div>\r\n");
 WriteLiteral("\r\n            </div>\r\n\r\n");
 
             
-            #line 209 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 210 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
             
             
             #line default
             #line hidden
             
-            #line 209 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 210 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                /*Start brand product row*/ 
             
             #line default
@@ -1173,7 +1179,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                                ");
 
             
-            #line 216 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 217 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                            Write(LT("ProductListing.Label.Showing", "Showing"));
 
             
@@ -1187,7 +1193,7 @@ WriteLiteral(" ng-bind=\"((pm.subBrandProducts.currentPage-1) * pm.subBrandProdu
 WriteLiteral(">\r\n                                </strong> ");
 
             
-            #line 217 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 218 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                                      Write(LT("ProductListing.Label.To", "To"));
 
             
@@ -1217,7 +1223,7 @@ WriteLiteral("></strong>\r\n                                </span>\r\n");
 WriteLiteral("                                ");
 
             
-            #line 224 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 225 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                            Write(LT("ProductListing.Label.Of", "Of"));
 
             
@@ -1230,7 +1236,7 @@ WriteLiteral(" ng-bind=\"pm.subBrandProducts.total\"");
 WriteLiteral("></strong> ");
 
             
-            #line 224 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 225 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                                                                                                                       Write(LT("ProductListing.Label.Results", "Results"));
 
             
@@ -1279,18 +1285,18 @@ WriteLiteral(" ng-show=\"pm.subBrandProducts.length>0\"");
 WriteLiteral(">\r\n");
 
             
-            #line 246 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 247 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                 
             
             #line default
             #line hidden
             
-            #line 246 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 247 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                   
-/*
-Name : Product Listing grid
-Purpuse : show brands related products
-*/
+                    /*
+                    Name : Product Listing grid
+                    Purpuse : show brands related products
+                    */
                 
             
             #line default
@@ -1306,7 +1312,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                    ");
 
             
-            #line 253 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 254 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                Write(Html.Partial("~/Views/Search/Layout1/_ProductWidget.cshtml"));
 
             
@@ -1315,13 +1321,13 @@ WriteLiteral("                    ");
 WriteLiteral("\r\n");
 
             
-            #line 254 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 255 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                     
             
             #line default
             #line hidden
             
-            #line 254 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 255 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                        /*End brand product row*/ 
             
             #line default
@@ -1329,13 +1335,13 @@ WriteLiteral("\r\n");
 WriteLiteral("\r\n\r\n");
 
             
-            #line 256 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 257 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                     
             
             #line default
             #line hidden
             
-            #line 256 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 257 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                        /*Start product quick view modal*/ 
             
             #line default
@@ -1345,7 +1351,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                    ");
 
             
-            #line 257 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 258 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                Write(Html.Partial("~/Views/Product/Layout1/_QuickViewModal.cshtml", new ProductDetailModel { }));
 
             
@@ -1354,13 +1360,13 @@ WriteLiteral("                    ");
 WriteLiteral("\r\n");
 
             
-            #line 258 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 259 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                     
             
             #line default
             #line hidden
             
-            #line 258 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 259 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                        /*Start product quick view modal*/ 
             
             #line default
@@ -1368,13 +1374,13 @@ WriteLiteral("\r\n");
 WriteLiteral("\r\n                </div>\r\n");
 
             
-            #line 260 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 261 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                 
             
             #line default
             #line hidden
             
-            #line 260 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 261 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                    /*End Brand product grid*/ 
             
             #line default
@@ -1408,7 +1414,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                                ");
 
             
-            #line 268 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 269 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                            Write(LT("ProductListing.Label.Showing", "Showing"));
 
             
@@ -1422,7 +1428,7 @@ WriteLiteral(" ng-bind=\"((pm.subBrandProducts.currentPage-1) * pm.subBrandProdu
 WriteLiteral(">\r\n                                </strong> ");
 
             
-            #line 269 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 270 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                                      Write(LT("ProductListing.Label.To", "To"));
 
             
@@ -1452,7 +1458,7 @@ WriteLiteral("></strong>\r\n                                </span>\r\n");
 WriteLiteral("                                ");
 
             
-            #line 276 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 277 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                            Write(LT("ProductListing.Label.Of", "Of"));
 
             
@@ -1465,7 +1471,7 @@ WriteLiteral(" ng-bind=\"pm.subBrandProducts.total\"");
 WriteLiteral("></strong> ");
 
             
-            #line 276 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 277 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                                                                                                                       Write(LT("ProductListing.Label.Results", "Results"));
 
             
@@ -1512,7 +1518,7 @@ DefineSection("scripts", () => {
 WriteLiteral("\r\n    <script>\r\n        var searchDetailProductUrl = \'");
 
             
-            #line 303 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 304 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                                   Write(Html.BuildUrlFromExpression<ProductController>(c => c.ProductDetails("")));
 
             
@@ -1521,7 +1527,7 @@ WriteLiteral("\r\n    <script>\r\n        var searchDetailProductUrl = \'");
 WriteLiteral("\';\r\n        var addToWishlistUrl = \'");
 
             
-            #line 304 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 305 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                             Write(Html.BuildUrlFromExpression<AccountController>(c => c.AddProductToWishlist(null)));
 
             
@@ -1530,7 +1536,7 @@ WriteLiteral("\';\r\n        var addToWishlistUrl = \'");
 WriteLiteral("\';\r\n        var fetchSubBrandProducts  =  \'");
 
             
-            #line 305 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 306 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                                    Write(Html.BuildUrlFromExpression<BrandController>(c => c.SubBrandProducts(null, null)));
 
             
@@ -1539,7 +1545,7 @@ WriteLiteral("\';\r\n        var fetchSubBrandProducts  =  \'");
 WriteLiteral("\';\r\n        var productUrl = \'");
 
             
-            #line 306 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 307 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                       Write(Html.BuildUrlFromExpression<ProductController>(c => c.ProductDetails("")));
 
             
@@ -1555,7 +1561,7 @@ WriteLiteral(@"';
         window.app.constant('model', ");
 
             
-            #line 313 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
+            #line 314 "..\..\Views\Brand\Layout1\BrandDetail.cshtml"
                                 Write(Html.JsonFor(Model));
 
             

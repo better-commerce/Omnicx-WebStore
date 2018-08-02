@@ -13,13 +13,15 @@
         e-/Views/Shared/Layout1/_OpcLayout.cshtml
     */
 }
-@using Omnicx.API.SDK.Entities
+@using Omnicx.WebStore.Models.Keys
+@using Omnicx.WebStore.Models.Enums
 @using Omnicx.API.SDK.Helpers
 @{
     var StoreTheme = ConfigKeys.StoreTheme;
 }
 <head>
     <title>@Html.Title(false)</title>
+    @Html.GetGlobalSnipptes(SnippetPlacements.TopHead)
     <meta name="description" content="@(Html.MetaDescription())" />
     <meta name="title" content="@(Html.MetaTitle())">
     <meta name="keywords" content="@(Html.MetaKeywords())">
@@ -57,14 +59,17 @@
     <!--[if lt IE 9]>
         <script src="~/assets/js/js-lib/respond.min.js"></script>
     <![endif]-->
-    @*Data layer always placed above the GTM container snippet because otherwise, the GTM tag may stop firing or data layer variabels are no longer available to the container tag*@
-    <script>
-            dataLayer = @Html.DataLayer();
-    </script>
-
+    @Html.Action("DynamicHeadTag", "Home", true)
     @if (@Html.GetOmnilyticId().ToString() != "")
     {
-        <script src="@Html.GetOmnilyticUrl()"></script>
-        <script type="text/javascript">omnilytics.init('@Html.GetOmnilyticId()', 'dataLayer')</script>
+        <!--Start Omnilytics -->
+        <script>
+            (function(i, s, o, g, r, a, m){
+                a = s.createElement(o);m = s.getElementsByTagName(o)[0];a.async = 1;a.src = g;m.parentNode.insertBefore(a, m);
+                a.onload = function () { i[r].init('@Html.GetOmnilyticId()', 'dataLayer');};
+            })(window, document, 'script', "@Html.GetOmnilyticUrl()", 'omnilytics');
+        </script>
+        <!-- End Omnilytics -->
     }
+    @Html.GetGlobalSnipptes(SnippetPlacements.Head)
 </head>

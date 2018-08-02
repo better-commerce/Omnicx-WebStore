@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Omnicx.API.SDK.Api.Commerce;
-using Omnicx.API.SDK.Models.Commerce;
+using Omnicx.WebStore.Models.Commerce;
 using Microsoft.Security.Application;
-using Omnicx.API.SDK.Models;
+using Omnicx.WebStore.Models;
 using System.Linq;
-//using Omnicx.API.SDK.Entities;
-using Omnicx.API.SDK.Entities;
-using Omnicx.API.SDK.Models.Catalog;
-using Omnicx.API.SDK.Models.Common;
+using Omnicx.WebStore.Models.Keys;
+
+using Omnicx.WebStore.Models.Catalog;
+using Omnicx.WebStore.Models.Common;
 using Omnicx.API.SDK.Helpers;
 using Omnicx.WebStore.Core.Helpers;
-
+using Omnicx.WebStore.Models.Enums;
 namespace Omnicx.WebStore.Core.Controllers
 {
     public class BasketController : BaseController
@@ -36,7 +36,13 @@ namespace Omnicx.WebStore.Core.Controllers
         /// Renders the Basket View where the data is populated via an AJAX call given below
         /// </summary>
         /// <returns></returns>
-        public ActionResult Index()
+        public virtual ActionResult Index()
+        {
+            var basket = GetIndexBasketData();
+            return View(CustomViews.BASKET, basket??new BasketModel { });
+        }
+
+        protected BasketModel GetIndexBasketData()
         {
             var basket = _basketApi.GetBasketData("")?.Result;
             if (Request.UrlReferrer != null)
@@ -44,20 +50,20 @@ namespace Omnicx.WebStore.Core.Controllers
             else
                 ViewBag.PrevPage = SiteViewTypes.Home;
             SetDataLayerVariables(basket, WebhookEventTypes.BasketViewed);
-            return View(CustomViews.BASKET, basket??new BasketModel { });
+            return basket;
         }
-
         //public ActionResult GetBasketData()
         //{
         //    var basket = _basketApi.GetBasketData("");
         //    return JsonSuccess(basket, JsonRequestBehavior.AllowGet);
         //}
-        public async Task<ActionResult> GetBasketData()
+        public virtual async Task<ActionResult> GetBasketData()
         {
             var basket = SiteUtils.HasBasketAction() ? await _basketApi.GetBasketDataAsync("") : null;
             SiteUtils.SetBasketAction(basket?.Result.Id);
             return JsonSuccess(basket?.Result, JsonRequestBehavior.AllowGet);
         }
+    
         public ActionResult GetShippingMethods(string countryCode)
         {         
             var shippingMethods = _shippingApi.GetShippingMethods(_sessionContext.SessionId,Sanitizer.GetSafeHtmlFragment(countryCode));
@@ -65,7 +71,7 @@ namespace Omnicx.WebStore.Core.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddtoBasket(BasketAddModel model)
+        public virtual ActionResult AddtoBasket(BasketAddModel model)
         {
             var basketModel = new BasketAddModel
             {
@@ -79,11 +85,11 @@ namespace Omnicx.WebStore.Core.Controllers
             };
             var basket = _basketApi.AddToBasket(basketModel);
             SiteUtils.SetBasketAction(basket?.Result.Id);
-            return JsonSuccess(basket?.Result, JsonRequestBehavior.AllowGet);
+            return JsonSuccess(basket, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
-        public ActionResult ApplyPromoCode(string id, string promoCode)
+        public virtual ActionResult ApplyPromoCode(string id, string promoCode)
         {
             var resp = _basketApi.ApplyPromoCode(Sanitizer.GetSafeHtmlFragment(id), Sanitizer.GetSafeHtmlFragment(promoCode));
             if (resp.Result != null && resp.Result.IsVaild != false) return JsonSuccess(resp, JsonRequestBehavior.AllowGet);
@@ -95,7 +101,7 @@ namespace Omnicx.WebStore.Core.Controllers
             }
         }
         
-        public ActionResult RemovePromoCode(string id, string promoCode)
+        public virtual ActionResult RemovePromoCode(string id, string promoCode)
         {
             var resp = _basketApi.RemovePromoCode(Sanitizer.GetSafeHtmlFragment(id), Sanitizer.GetSafeHtmlFragment(promoCode));
             return JsonSuccess(resp, JsonRequestBehavior.AllowGet);
@@ -103,7 +109,7 @@ namespace Omnicx.WebStore.Core.Controllers
 
 
         [HttpPost]
-        public ActionResult UpdateShipping(string id,string shippingId,NominatedDeliveryModel nominatedDelivery)
+        public virtual ActionResult UpdateShipping(string id,string shippingId,NominatedDeliveryModel nominatedDelivery)
         {
             var response= _basketApi.UpdateShipping(Sanitizer.GetSafeHtmlFragment(id), Sanitizer.GetSafeHtmlFragment(shippingId), nominatedDelivery);
             var basket = response.Result;
@@ -134,6 +140,10 @@ namespace Omnicx.WebStore.Core.Controllers
             {
                  response = _customerRepository.AddProductToWishList(Sanitizer.GetSafeHtmlFragment(product.ProductId.ToLower()), _sessionContext.CurrentUser.UserId,false);
             }
+            var customerId = _sessionContext.CurrentUser.UserId.ToString();
+            var key = string.Format(CacheKeys.WishList, customerId);
+            var result = _customerRepository.GetWishlist(customerId, false);
+            System.Web.HttpContext.Current.Session[key] = result.Result;
             return JsonSuccess(response.Result, JsonRequestBehavior.AllowGet);
         }
 
@@ -148,12 +158,18 @@ namespace Omnicx.WebStore.Core.Controllers
             foreach (var product in model)
             {
                 var basket = _basketApi.AddToBasket(product);
+                _customerRepository.RemoveWishList(Convert.ToString(_sessionContext.CurrentUser.UserId), product.ProductId, false);
+                if (_sessionContext.CurrentUser != null)
+                {
+                    var key = string.Format(CacheKeys.WishList, Convert.ToString(_sessionContext.CurrentUser.UserId));
+                    System.Web.HttpContext.Current.Session[key] = null;
+                }
                 SiteUtils.SetBasketAction(basket?.Result.Id);
             }
             return JsonSuccess(true, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult BulkAddProduct(List<BasketAddModel> model)
+        public virtual ActionResult BulkAddProduct(List<BasketAddModel> model)
         {
             if(model.Any(prod => string.IsNullOrEmpty(prod.StockCode)))
                 return JsonError("false", JsonRequestBehavior.DenyGet);
@@ -165,7 +181,7 @@ namespace Omnicx.WebStore.Core.Controllers
             return JsonSuccess(basket,JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult ReOrder(string id)
+        public virtual ActionResult ReOrder(string id)
         {
             var result = _orderRepository.GetOrdDetail(Sanitizer.GetSafeHtmlFragment(id));
             var model = new List<BasketAddModel>();
@@ -230,9 +246,10 @@ namespace Omnicx.WebStore.Core.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
-        public JsonResult UpdateBasketInfo(HeaderCustomInfo model)
+        public virtual JsonResult UpdateBasketInfo(HeaderCustomInfo model)
         {
             var basket = _basketApi.GetBasketData(model.BasketId.ToString());
+            SiteUtils.SetBasketAction(resetAction:true);
             if (model.LineInfo != null)
             {
                 if (basket != null)
@@ -241,7 +258,7 @@ namespace Omnicx.WebStore.Core.Controllers
                                     where basket.Result.LineItems.Any(l => l.ProductId == p.ProductId.ToUpper()) == false
                                     select new BasketAddModel()
                                     { BasketId = model.BasketId.ToString(), ProductId = p.ProductId, DisplayOrder = 0, Qty = p.Qty,StockCode = p.StockCode, CustomInfo2 = p.CustomInfo2 }).ToList();
-                    if (newLines.Count > 0)
+                    if (newLines.Where(x => !string.IsNullOrEmpty(x.StockCode)).Any())
                     {
                         var basketData = _basketApi.BulkAddProduct(newLines);
                         model.BasketId = Guid.Parse(basketData.Result.Id);
@@ -259,7 +276,7 @@ namespace Omnicx.WebStore.Core.Controllers
             }
             return JsonSuccess(basket, JsonRequestBehavior.DenyGet);
         }
-        public ActionResult GetDeliveryMethodsByPostCode(string countryCode, string basketId, string postCode,string appliedShippingId)
+        public virtual ActionResult GetDeliveryMethodsByPostCode(string countryCode, string basketId, string postCode,string appliedShippingId)
         {
             var shippingMethods = _shippingApi.GetShippingMethods(basketId, Sanitizer.GetSafeHtmlFragment(countryCode), postCode);
             bool IsPriceOnRequest = false;
@@ -275,11 +292,13 @@ namespace Omnicx.WebStore.Core.Controllers
                     // In case shippingMethods list don't have applied shipping id default shipping will be apply
                     shippingMethod = shippingMethods.Result.Where(x => x.IsDefault = true).FirstOrDefault();
                     response = _basketApi.UpdateShipping(Sanitizer.GetSafeHtmlFragment(basketId), Sanitizer.GetSafeHtmlFragment(Convert.ToString(shippingMethod.Id)), null);
+                    IsPriceOnRequest = shippingMethod.IsPriceOnRequest;
                     if (shippingMethod == null)
                     {
                         // In case default shipping is not set that case first shipping will be apply
                         shippingMethod = shippingMethods.Result.FirstOrDefault();
                         response = _basketApi.UpdateShipping(Sanitizer.GetSafeHtmlFragment(basketId), Sanitizer.GetSafeHtmlFragment(Convert.ToString(shippingMethod.Id)), null);
+                        IsPriceOnRequest = shippingMethod.IsPriceOnRequest;
                     }
                 }
                 else

@@ -35,20 +35,8 @@ namespace ASP
     #line default
     #line hidden
     
-    #line 19 "..\..\Views\Blog\Layout1\BlogDetail.cshtml"
-    using Omnicx.API.SDK.Entities;
-    
-    #line default
-    #line hidden
-    
     #line 18 "..\..\Views\Blog\Layout1\BlogDetail.cshtml"
     using Omnicx.API.SDK.Helpers;
-    
-    #line default
-    #line hidden
-    
-    #line 14 "..\..\Views\Blog\Layout1\BlogDetail.cshtml"
-    using Omnicx.API.SDK.Models;
     
     #line default
     #line hidden
@@ -73,9 +61,21 @@ namespace ASP
     #line default
     #line hidden
     
+    #line 14 "..\..\Views\Blog\Layout1\BlogDetail.cshtml"
+    using Omnicx.WebStore.Models;
+    
+    #line default
+    #line hidden
+    
+    #line 19 "..\..\Views\Blog\Layout1\BlogDetail.cshtml"
+    using Omnicx.WebStore.Models.Enums;
+    
+    #line default
+    #line hidden
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Blog/Layout1/BlogDetail.cshtml")]
-    public partial class _Views_Blog_Layout1_BlogDetail_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Site.BlogDetailViewModel>
+    public partial class _Views_Blog_Layout1_BlogDetail_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Site.BlogDetailViewModel>
     {
         public _Views_Blog_Layout1_BlogDetail_cshtml()
         {
@@ -140,14 +140,14 @@ WriteLiteral(">");
             #line hidden
 WriteLiteral("</a>\r\n        </li>\r\n        <li>\r\n            <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1397), Tuple.Create("\"", 1432)
+WriteAttribute("href", Tuple.Create(" href=\"", 1409), Tuple.Create("\"", 1444)
             
             #line 45 "..\..\Views\Blog\Layout1\BlogDetail.cshtml"
-, Tuple.Create(Tuple.Create("", 1404), Tuple.Create<System.Object, System.Int32>(Url.Action("Blogs", "Blog")
+, Tuple.Create(Tuple.Create("", 1416), Tuple.Create<System.Object, System.Int32>(Url.Action("Blogs", "Blog")
             
             #line default
             #line hidden
-, 1404), false)
+, 1416), false)
 );
 
 WriteLiteral(">");
@@ -206,15 +206,15 @@ WriteLiteral(" class=\"blog-category\"");
 
 WriteLiteral(">\r\n            By <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1894), Tuple.Create("\"", 1926)
-, Tuple.Create(Tuple.Create("", 1901), Tuple.Create("/", 1901), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 1906), Tuple.Create("\"", 1938)
+, Tuple.Create(Tuple.Create("", 1913), Tuple.Create("/", 1913), true)
             
             #line 58 "..\..\Views\Blog\Layout1\BlogDetail.cshtml"
-, Tuple.Create(Tuple.Create("", 1902), Tuple.Create<System.Object, System.Int32>(Model.Detail.EditorSlug
+, Tuple.Create(Tuple.Create("", 1914), Tuple.Create<System.Object, System.Int32>(Model.Detail.EditorSlug
             
             #line default
             #line hidden
-, 1902), false)
+, 1914), false)
 );
 
 WriteLiteral(">");
@@ -228,15 +228,15 @@ WriteLiteral(">");
             #line hidden
 WriteLiteral("</a> in <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1958), Tuple.Create("\"", 1992)
-, Tuple.Create(Tuple.Create("", 1965), Tuple.Create("/", 1965), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 1970), Tuple.Create("\"", 2004)
+, Tuple.Create(Tuple.Create("", 1977), Tuple.Create("/", 1977), true)
             
             #line 58 "..\..\Views\Blog\Layout1\BlogDetail.cshtml"
-         , Tuple.Create(Tuple.Create("", 1966), Tuple.Create<System.Object, System.Int32>(Model.Detail.CategorySlug
+         , Tuple.Create(Tuple.Create("", 1978), Tuple.Create<System.Object, System.Int32>(Model.Detail.CategorySlug
             
             #line default
             #line hidden
-, 1966), false)
+, 1978), false)
 );
 
 WriteLiteral(">");
@@ -265,15 +265,15 @@ WriteLiteral("</span>\r\n                <a");
 
 WriteLiteral(" class=\"external-social facebook\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2202), Tuple.Create("\"", 2280)
-, Tuple.Create(Tuple.Create("", 2209), Tuple.Create("https://www.facebook.com/share.php?u={{bm.url}}/blogs/", 2209), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 2214), Tuple.Create("\"", 2292)
+, Tuple.Create(Tuple.Create("", 2221), Tuple.Create("https://www.facebook.com/share.php?u={{bm.url}}/blogs/", 2221), true)
             
             #line 61 "..\..\Views\Blog\Layout1\BlogDetail.cshtml"
-                                , Tuple.Create(Tuple.Create("", 2263), Tuple.Create<System.Object, System.Int32>(Model.Detail.URL
+                                , Tuple.Create(Tuple.Create("", 2275), Tuple.Create<System.Object, System.Int32>(Model.Detail.URL
             
             #line default
             #line hidden
-, 2263), false)
+, 2275), false)
 );
 
 WriteLiteral("><i");
@@ -284,15 +284,15 @@ WriteLiteral("></i></a>\r\n                <a");
 
 WriteLiteral(" class=\"external-social\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2360), Tuple.Create("\"", 2433)
-, Tuple.Create(Tuple.Create("", 2367), Tuple.Create("https://twitter.com/home?status={{bm.url}}/blogs/", 2367), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 2372), Tuple.Create("\"", 2445)
+, Tuple.Create(Tuple.Create("", 2379), Tuple.Create("https://twitter.com/home?status={{bm.url}}/blogs/", 2379), true)
             
             #line 62 "..\..\Views\Blog\Layout1\BlogDetail.cshtml"
-                  , Tuple.Create(Tuple.Create("", 2416), Tuple.Create<System.Object, System.Int32>(Model.Detail.URL
+                  , Tuple.Create(Tuple.Create("", 2428), Tuple.Create<System.Object, System.Int32>(Model.Detail.URL
             
             #line default
             #line hidden
-, 2416), false)
+, 2428), false)
 );
 
 WriteLiteral("><i");
@@ -303,23 +303,23 @@ WriteLiteral("></i></a>\r\n                <a");
 
 WriteLiteral(" class=\"external-social\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2512), Tuple.Create("\"", 2626)
-, Tuple.Create(Tuple.Create("", 2519), Tuple.Create("https://pinterest.com/pin/create/button/?url=", 2519), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 2524), Tuple.Create("\"", 2638)
+, Tuple.Create(Tuple.Create("", 2531), Tuple.Create("https://pinterest.com/pin/create/button/?url=", 2531), true)
             
             #line 63 "..\..\Views\Blog\Layout1\BlogDetail.cshtml"
-              , Tuple.Create(Tuple.Create("", 2564), Tuple.Create<System.Object, System.Int32>(Model.Detail.BlogImage
+              , Tuple.Create(Tuple.Create("", 2576), Tuple.Create<System.Object, System.Int32>(Model.Detail.BlogImage
             
             #line default
             #line hidden
-, 2564), false)
-, Tuple.Create(Tuple.Create("", 2587), Tuple.Create("&media=&description=", 2587), true)
+, 2576), false)
+, Tuple.Create(Tuple.Create("", 2599), Tuple.Create("&media=&description=", 2599), true)
             
             #line 63 "..\..\Views\Blog\Layout1\BlogDetail.cshtml"
-                                                         , Tuple.Create(Tuple.Create("", 2607), Tuple.Create<System.Object, System.Int32>(Model.Detail.Title
+                                                         , Tuple.Create(Tuple.Create("", 2619), Tuple.Create<System.Object, System.Int32>(Model.Detail.Title
             
             #line default
             #line hidden
-, 2607), false)
+, 2619), false)
 );
 
 WriteLiteral("><i");

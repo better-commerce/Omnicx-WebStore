@@ -39,7 +39,7 @@ namespace ASP
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Account/Layout1/ForgotPassword.cshtml")]
-    public partial class _Views_Account_Layout1_ForgotPassword_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Commerce.ForgotPasswordModel>
+    public partial class _Views_Account_Layout1_ForgotPassword_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Commerce.ForgotPasswordModel>
     {
         public _Views_Account_Layout1_ForgotPassword_cshtml()
         {
@@ -75,19 +75,23 @@ WriteLiteral("\r\n");
             
             #line default
             #line hidden
-WriteLiteral("\r\n\r\n<div");
+WriteLiteral("\r\n<div");
 
-WriteLiteral(" class=\"row\"");
+WriteLiteral(" class=\"container dataContainer\"");
 
 WriteLiteral(">\r\n    <div");
 
+WriteLiteral(" class=\"row\"");
+
+WriteLiteral(">\r\n        <div");
+
 WriteLiteral(" class=\"col-sm-12\"");
 
-WriteLiteral(">\r\n        <ul");
+WriteLiteral(">\r\n            <ul");
 
 WriteLiteral(" class=\"breadcrumb\"");
 
-WriteLiteral(">\r\n\r\n            <li>\r\n                <a");
+WriteLiteral(">\r\n\r\n                <li>\r\n                    <a");
 
 WriteLiteral(" href=\"/\"");
 
@@ -95,21 +99,21 @@ WriteLiteral(">");
 
             
             #line 26 "..\..\Views\Account\Layout1\ForgotPassword.cshtml"
-                       Write(LT("MyAccount.Links.Home", "Home"));
+                           Write(LT("MyAccount.Links.Home", "Home"));
 
             
             #line default
             #line hidden
-WriteLiteral("</a>\r\n            </li>\r\n            <li>");
+WriteLiteral("</a>\r\n                </li>\r\n                <li>");
 
             
             #line 28 "..\..\Views\Account\Layout1\ForgotPassword.cshtml"
-           Write(LT("MyAccount.Text.ForgotPassword", "Forgot Password"));
+               Write(LT("MyAccount.Text.ForgotPassword", "Forgot Password"));
 
             
             #line default
             #line hidden
-WriteLiteral("</li>\r\n        </ul>\r\n    </div>\r\n\r\n</div>\r\n<div");
+WriteLiteral("</li>\r\n            </ul>\r\n        </div>\r\n\r\n    </div>\r\n    <div");
 
 WriteLiteral(" class=\"col-sm-4\"");
 
@@ -123,7 +127,7 @@ WriteLiteral(" role=\"form\"");
 
 WriteLiteral(" ng-init=\"gm.returnUrl=\'/account/signin\'\"");
 
-WriteLiteral("  ng-submit=\"gm.forgotPassword(gm.model.forgotPassword)\"");
+WriteLiteral(" ng-submit=\"gm.forgotPassword(gm.model.forgotPassword)\"");
 
 WriteLiteral(" method=\"post\"");
 
@@ -234,12 +238,13 @@ WriteLiteral(" <i");
 
 WriteLiteral(" class=\"fa fa-caret-right\"");
 
-WriteLiteral("></i></button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n\r\n\r\n\r\n");
+WriteLiteral("></i></button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div>\r\n\r\n\r\n\r\n\r\n" +
+"");
 
 DefineSection("Scripts", () => {
 
             
-            #line 64 "..\..\Views\Account\Layout1\ForgotPassword.cshtml"
+            #line 66 "..\..\Views\Account\Layout1\ForgotPassword.cshtml"
     
             
             #line default
@@ -248,7 +253,7 @@ WriteLiteral("\r\n        <script>\r\n            window.app.constant(\'accountC
 "   });\r\n            window.app.constant(\'model\', ");
 
             
-            #line 68 "..\..\Views\Account\Layout1\ForgotPassword.cshtml"
+            #line 70 "..\..\Views\Account\Layout1\ForgotPassword.cshtml"
                                     Write(Html.JsonFor(Model));
 
             

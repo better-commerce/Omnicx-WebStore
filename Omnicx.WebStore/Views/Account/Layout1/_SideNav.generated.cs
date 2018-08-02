@@ -28,20 +28,20 @@ namespace ASP
     using System.Web.UI;
     using System.Web.WebPages;
     using DevTrends.MvcDonutCaching;
+    using Omnicx.WebStore;
+    using Omnicx.WebStore.Core;
     
     #line 23 "..\..\Views\Account\Layout1\_SideNav.cshtml"
-    using Omnicx.API.SDK.Entities;
+    using Omnicx.WebStore.Models.Enums;
     
     #line default
     #line hidden
     
     #line 24 "..\..\Views\Account\Layout1\_SideNav.cshtml"
-    using Omnicx.API.SDK.Models.Helpers;
+    using Omnicx.WebStore.Models.Keys;
     
     #line default
     #line hidden
-    using Omnicx.WebStore;
-    using Omnicx.WebStore.Core;
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Account/Layout1/_SideNav.cshtml")]
@@ -55,26 +55,26 @@ namespace ASP
             
             #line 1 "..\..\Views\Account\Layout1\_SideNav.cshtml"
   
-/*
-    Name: Site Nav
-    Purpose: List all the Navigation links for desktop and big screen
-    Structure: /Views/Account/Layout1/_SideNav.cshtml
-    Contains (Partial Views Used):
+    /*
+        Name: Site Nav
+        Purpose: List all the Navigation links for desktop and big screen
+        Structure: /Views/Account/Layout1/_SideNav.cshtml
+        Contains (Partial Views Used):
 
-    Contained In (Where we Use this View):
-        a-/Views/Account/Layout1/Wishlist.cshtml
-        b-/Views/Account/Layout1/ReturnRequest.cshtml
-        c-/Views/Account/Layout1/ReturnHistory.cshtml   
-        d-/Views/Account/Layout1/PasswordChange.cshtml)
-        e-/Views/Account/Layout1/OrderHistory.cshtml    
-        f-/Views/Account/Layout1/OrderDetail.cshtml     
-        g-/Views/Account/Layout1/MyActivity.cshtml      
-        h-/Views/Account/Layout1/MyAccount.cshtml       
-        i-/Views/Account/Layout1/AddressBook.cshtml   
-        j-/Views/B2B/Layout1/Users.cshtml
-        k-/Views/B2B/Layout1/Quotes.cshtml
-        l-/Views/B2B/Layout1/MyCompany.cshtml
-    */
+        Contained In (Where we Use this View):
+            a-/Views/Account/Layout1/Wishlist.cshtml
+            b-/Views/Account/Layout1/ReturnRequest.cshtml
+            c-/Views/Account/Layout1/ReturnHistory.cshtml
+            d-/Views/Account/Layout1/PasswordChange.cshtml)
+            e-/Views/Account/Layout1/OrderHistory.cshtml
+            f-/Views/Account/Layout1/OrderDetail.cshtml
+            g-/Views/Account/Layout1/MyActivity.cshtml
+            h-/Views/Account/Layout1/MyAccount.cshtml
+            i-/Views/Account/Layout1/AddressBook.cshtml
+            j-/Views/B2B/Layout1/Users.cshtml
+            k-/Views/B2B/Layout1/Quotes.cshtml
+            l-/Views/B2B/Layout1/MyCompany.cshtml
+        */
 
             
             #line default
@@ -114,31 +114,31 @@ WriteLiteral(" class=\"nav nav-pills nav-stacked\"");
 
 WriteLiteral(">\r\n            <li");
 
-WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 1621), Tuple.Create("\"", 1678)
-, Tuple.Create(Tuple.Create("", 1632), Tuple.Create("{\'active-ac\'", 1632), true)
-, Tuple.Create(Tuple.Create(" ", 1644), Tuple.Create(":\'", 1645), true)
+WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 1672), Tuple.Create("\"", 1729)
+, Tuple.Create(Tuple.Create("", 1683), Tuple.Create("{\'active-ac\'", 1683), true)
+, Tuple.Create(Tuple.Create(" ", 1695), Tuple.Create(":\'", 1696), true)
             
             #line 43 "..\..\Views\Account\Layout1\_SideNav.cshtml"
-, Tuple.Create(Tuple.Create("", 1647), Tuple.Create<System.Object, System.Int32>(ViewBag.Title
+, Tuple.Create(Tuple.Create("", 1698), Tuple.Create<System.Object, System.Int32>(ViewBag.Title
             
             #line default
             #line hidden
-, 1647), false)
-, Tuple.Create(Tuple.Create("", 1661), Tuple.Create("\'==", 1661), true)
-, Tuple.Create(Tuple.Create(" ", 1664), Tuple.Create("\'MyAccount\'", 1665), true)
-, Tuple.Create(Tuple.Create(" ", 1676), Tuple.Create("}", 1677), true)
+, 1698), false)
+, Tuple.Create(Tuple.Create("", 1712), Tuple.Create("\'==", 1712), true)
+, Tuple.Create(Tuple.Create(" ", 1715), Tuple.Create("\'MyAccount\'", 1716), true)
+, Tuple.Create(Tuple.Create(" ", 1727), Tuple.Create("}", 1728), true)
 );
 
 WriteLiteral(">\r\n                <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1700), Tuple.Create("\"", 1742)
+WriteAttribute("href", Tuple.Create(" href=\"", 1751), Tuple.Create("\"", 1793)
             
             #line 44 "..\..\Views\Account\Layout1\_SideNav.cshtml"
-, Tuple.Create(Tuple.Create("", 1707), Tuple.Create<System.Object, System.Int32>(Url.Action("myaccount", "account")
+, Tuple.Create(Tuple.Create("", 1758), Tuple.Create<System.Object, System.Int32>(Url.Action("myaccount", "account")
             
             #line default
             #line hidden
-, 1707), false)
+, 1758), false)
 );
 
 WriteLiteral(" class=\"color-black\"");
@@ -174,31 +174,31 @@ WriteLiteral("</a>\r\n            </li>\r\n");
             #line hidden
 WriteLiteral("                <li");
 
-WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 1939), Tuple.Create("\"", 1997)
-, Tuple.Create(Tuple.Create("", 1950), Tuple.Create("{\'active-ac\'", 1950), true)
-, Tuple.Create(Tuple.Create(" ", 1962), Tuple.Create(":\'", 1963), true)
+WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 1990), Tuple.Create("\"", 2048)
+, Tuple.Create(Tuple.Create("", 2001), Tuple.Create("{\'active-ac\'", 2001), true)
+, Tuple.Create(Tuple.Create(" ", 2013), Tuple.Create(":\'", 2014), true)
             
             #line 48 "..\..\Views\Account\Layout1\_SideNav.cshtml"
-, Tuple.Create(Tuple.Create("", 1965), Tuple.Create<System.Object, System.Int32>(ViewBag.Title
+, Tuple.Create(Tuple.Create("", 2016), Tuple.Create<System.Object, System.Int32>(ViewBag.Title
             
             #line default
             #line hidden
-, 1965), false)
-, Tuple.Create(Tuple.Create("", 1979), Tuple.Create("\'==", 1979), true)
-, Tuple.Create(Tuple.Create(" ", 1982), Tuple.Create("\'MyActivity\'", 1983), true)
-, Tuple.Create(Tuple.Create(" ", 1995), Tuple.Create("}", 1996), true)
+, 2016), false)
+, Tuple.Create(Tuple.Create("", 2030), Tuple.Create("\'==", 2030), true)
+, Tuple.Create(Tuple.Create(" ", 2033), Tuple.Create("\'MyActivity\'", 2034), true)
+, Tuple.Create(Tuple.Create(" ", 2046), Tuple.Create("}", 2047), true)
 );
 
 WriteLiteral(">\r\n                    <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2023), Tuple.Create("\"", 2066)
+WriteAttribute("href", Tuple.Create(" href=\"", 2074), Tuple.Create("\"", 2117)
             
             #line 49 "..\..\Views\Account\Layout1\_SideNav.cshtml"
-, Tuple.Create(Tuple.Create("", 2030), Tuple.Create<System.Object, System.Int32>(Url.Action("myactivity", "account")
+, Tuple.Create(Tuple.Create("", 2081), Tuple.Create<System.Object, System.Int32>(Url.Action("myactivity", "account")
             
             #line default
             #line hidden
-, 2030), false)
+, 2081), false)
 );
 
 WriteLiteral(" class=\"color-black\"");
@@ -237,31 +237,31 @@ WriteLiteral("            ");
             #line hidden
 WriteLiteral("                    <li");
 
-WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 2272), Tuple.Create("\"", 2329)
-, Tuple.Create(Tuple.Create("", 2283), Tuple.Create("{\'active-ac\'", 2283), true)
-, Tuple.Create(Tuple.Create(" ", 2295), Tuple.Create(":\'", 2296), true)
+WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 2323), Tuple.Create("\"", 2380)
+, Tuple.Create(Tuple.Create("", 2334), Tuple.Create("{\'active-ac\'", 2334), true)
+, Tuple.Create(Tuple.Create(" ", 2346), Tuple.Create(":\'", 2347), true)
             
             #line 54 "..\..\Views\Account\Layout1\_SideNav.cshtml"
-, Tuple.Create(Tuple.Create("", 2298), Tuple.Create<System.Object, System.Int32>(ViewBag.Title
+, Tuple.Create(Tuple.Create("", 2349), Tuple.Create<System.Object, System.Int32>(ViewBag.Title
             
             #line default
             #line hidden
-, 2298), false)
-, Tuple.Create(Tuple.Create("", 2312), Tuple.Create("\'==", 2312), true)
-, Tuple.Create(Tuple.Create(" ", 2315), Tuple.Create("\'MyCompany\'", 2316), true)
-, Tuple.Create(Tuple.Create(" ", 2327), Tuple.Create("}", 2328), true)
+, 2349), false)
+, Tuple.Create(Tuple.Create("", 2363), Tuple.Create("\'==", 2363), true)
+, Tuple.Create(Tuple.Create(" ", 2366), Tuple.Create("\'MyCompany\'", 2367), true)
+, Tuple.Create(Tuple.Create(" ", 2378), Tuple.Create("}", 2379), true)
 );
 
 WriteLiteral(">\r\n                        <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2359), Tuple.Create("\"", 2397)
+WriteAttribute("href", Tuple.Create(" href=\"", 2410), Tuple.Create("\"", 2448)
             
             #line 55 "..\..\Views\Account\Layout1\_SideNav.cshtml"
-, Tuple.Create(Tuple.Create("", 2366), Tuple.Create<System.Object, System.Int32>(Url.Action("MyCompany", "b2b")
+, Tuple.Create(Tuple.Create("", 2417), Tuple.Create<System.Object, System.Int32>(Url.Action("MyCompany", "b2b")
             
             #line default
             #line hidden
-, 2366), false)
+, 2417), false)
 );
 
 WriteLiteral(" class=\"color-black\"");
@@ -283,31 +283,31 @@ WriteLiteral("</a>\r\n                    </li>\r\n");
 
 WriteLiteral("                    <li");
 
-WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 2545), Tuple.Create("\"", 2599)
-, Tuple.Create(Tuple.Create("", 2556), Tuple.Create("{\'active-ac\'", 2556), true)
-, Tuple.Create(Tuple.Create(" ", 2568), Tuple.Create(":\'", 2569), true)
+WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 2596), Tuple.Create("\"", 2650)
+, Tuple.Create(Tuple.Create("", 2607), Tuple.Create("{\'active-ac\'", 2607), true)
+, Tuple.Create(Tuple.Create(" ", 2619), Tuple.Create(":\'", 2620), true)
             
             #line 57 "..\..\Views\Account\Layout1\_SideNav.cshtml"
-, Tuple.Create(Tuple.Create("", 2571), Tuple.Create<System.Object, System.Int32>(ViewBag.Title
+, Tuple.Create(Tuple.Create("", 2622), Tuple.Create<System.Object, System.Int32>(ViewBag.Title
             
             #line default
             #line hidden
-, 2571), false)
-, Tuple.Create(Tuple.Create("", 2585), Tuple.Create("\'==", 2585), true)
-, Tuple.Create(Tuple.Create(" ", 2588), Tuple.Create("\'Quotes\'", 2589), true)
-, Tuple.Create(Tuple.Create(" ", 2597), Tuple.Create("}", 2598), true)
+, 2622), false)
+, Tuple.Create(Tuple.Create("", 2636), Tuple.Create("\'==", 2636), true)
+, Tuple.Create(Tuple.Create(" ", 2639), Tuple.Create("\'Quotes\'", 2640), true)
+, Tuple.Create(Tuple.Create(" ", 2648), Tuple.Create("}", 2649), true)
 );
 
 WriteLiteral(">\r\n                        <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2629), Tuple.Create("\"", 2664)
+WriteAttribute("href", Tuple.Create(" href=\"", 2680), Tuple.Create("\"", 2715)
             
             #line 58 "..\..\Views\Account\Layout1\_SideNav.cshtml"
-, Tuple.Create(Tuple.Create("", 2636), Tuple.Create<System.Object, System.Int32>(Url.Action("quotes", "b2b")
+, Tuple.Create(Tuple.Create("", 2687), Tuple.Create<System.Object, System.Int32>(Url.Action("quotes", "b2b")
             
             #line default
             #line hidden
-, 2636), false)
+, 2687), false)
 );
 
 WriteLiteral(" class=\"color-black\"");
@@ -337,31 +337,31 @@ WriteLiteral("</a>\r\n                    </li>\r\n");
             #line hidden
 WriteLiteral("                        <li");
 
-WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 2893), Tuple.Create("\"", 2946)
-, Tuple.Create(Tuple.Create("", 2904), Tuple.Create("{\'active-ac\'", 2904), true)
-, Tuple.Create(Tuple.Create(" ", 2916), Tuple.Create(":\'", 2917), true)
+WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 2944), Tuple.Create("\"", 2997)
+, Tuple.Create(Tuple.Create("", 2955), Tuple.Create("{\'active-ac\'", 2955), true)
+, Tuple.Create(Tuple.Create(" ", 2967), Tuple.Create(":\'", 2968), true)
             
             #line 62 "..\..\Views\Account\Layout1\_SideNav.cshtml"
-, Tuple.Create(Tuple.Create("", 2919), Tuple.Create<System.Object, System.Int32>(ViewBag.Title
+, Tuple.Create(Tuple.Create("", 2970), Tuple.Create<System.Object, System.Int32>(ViewBag.Title
             
             #line default
             #line hidden
-, 2919), false)
-, Tuple.Create(Tuple.Create("", 2933), Tuple.Create("\'==", 2933), true)
-, Tuple.Create(Tuple.Create(" ", 2936), Tuple.Create("\'Users\'", 2937), true)
-, Tuple.Create(Tuple.Create(" ", 2944), Tuple.Create("}", 2945), true)
+, 2970), false)
+, Tuple.Create(Tuple.Create("", 2984), Tuple.Create("\'==", 2984), true)
+, Tuple.Create(Tuple.Create(" ", 2987), Tuple.Create("\'Users\'", 2988), true)
+, Tuple.Create(Tuple.Create(" ", 2995), Tuple.Create("}", 2996), true)
 );
 
 WriteLiteral(">\r\n                            <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2980), Tuple.Create("\"", 3014)
+WriteAttribute("href", Tuple.Create(" href=\"", 3031), Tuple.Create("\"", 3065)
             
             #line 63 "..\..\Views\Account\Layout1\_SideNav.cshtml"
-, Tuple.Create(Tuple.Create("", 2987), Tuple.Create<System.Object, System.Int32>(Url.Action("users", "b2b")
+, Tuple.Create(Tuple.Create("", 3038), Tuple.Create<System.Object, System.Int32>(Url.Action("users", "b2b")
             
             #line default
             #line hidden
-, 2987), false)
+, 3038), false)
 );
 
 WriteLiteral(" class=\"color-black\"");
@@ -391,51 +391,51 @@ WriteLiteral("</a>\r\n                        </li>\r\n");
             #line hidden
 WriteLiteral("\r\n\r\n            <li");
 
-WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 3211), Tuple.Create("\"", 3339)
-, Tuple.Create(Tuple.Create("", 3222), Tuple.Create("{\'active-ac\'", 3222), true)
-, Tuple.Create(Tuple.Create(" ", 3234), Tuple.Create(":\'", 3235), true)
+WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 3262), Tuple.Create("\"", 3390)
+, Tuple.Create(Tuple.Create("", 3273), Tuple.Create("{\'active-ac\'", 3273), true)
+, Tuple.Create(Tuple.Create(" ", 3285), Tuple.Create(":\'", 3286), true)
             
             #line 69 "..\..\Views\Account\Layout1\_SideNav.cshtml"
-, Tuple.Create(Tuple.Create("", 3237), Tuple.Create<System.Object, System.Int32>(ViewBag.Title
+, Tuple.Create(Tuple.Create("", 3288), Tuple.Create<System.Object, System.Int32>(ViewBag.Title
             
             #line default
             #line hidden
-, 3237), false)
-, Tuple.Create(Tuple.Create("", 3251), Tuple.Create("\'==", 3251), true)
-, Tuple.Create(Tuple.Create(" ", 3254), Tuple.Create("\'Orders\'||", 3255), true)
-, Tuple.Create(Tuple.Create(" ", 3265), Tuple.Create("\'", 3266), true)
+, 3288), false)
+, Tuple.Create(Tuple.Create("", 3302), Tuple.Create("\'==", 3302), true)
+, Tuple.Create(Tuple.Create(" ", 3305), Tuple.Create("\'Orders\'||", 3306), true)
+, Tuple.Create(Tuple.Create(" ", 3316), Tuple.Create("\'", 3317), true)
             
             #line 69 "..\..\Views\Account\Layout1\_SideNav.cshtml"
-, Tuple.Create(Tuple.Create("", 3267), Tuple.Create<System.Object, System.Int32>(ViewBag.Title
+, Tuple.Create(Tuple.Create("", 3318), Tuple.Create<System.Object, System.Int32>(ViewBag.Title
             
             #line default
             #line hidden
-, 3267), false)
-, Tuple.Create(Tuple.Create("", 3281), Tuple.Create("\'==\'Return", 3281), true)
-, Tuple.Create(Tuple.Create(" ", 3291), Tuple.Create("Request\'||", 3292), true)
-, Tuple.Create(Tuple.Create(" ", 3302), Tuple.Create("\'", 3303), true)
+, 3318), false)
+, Tuple.Create(Tuple.Create("", 3332), Tuple.Create("\'==\'Return", 3332), true)
+, Tuple.Create(Tuple.Create(" ", 3342), Tuple.Create("Request\'||", 3343), true)
+, Tuple.Create(Tuple.Create(" ", 3353), Tuple.Create("\'", 3354), true)
             
             #line 69 "..\..\Views\Account\Layout1\_SideNav.cshtml"
-                            , Tuple.Create(Tuple.Create("", 3304), Tuple.Create<System.Object, System.Int32>(ViewBag.Title
+                            , Tuple.Create(Tuple.Create("", 3355), Tuple.Create<System.Object, System.Int32>(ViewBag.Title
             
             #line default
             #line hidden
-, 3304), false)
-, Tuple.Create(Tuple.Create("", 3318), Tuple.Create("\'", 3318), true)
-, Tuple.Create(Tuple.Create(" ", 3319), Tuple.Create("==", 3320), true)
-, Tuple.Create(Tuple.Create(" ", 3322), Tuple.Create("\'CustomerOrder\'}", 3323), true)
+, 3355), false)
+, Tuple.Create(Tuple.Create("", 3369), Tuple.Create("\'", 3369), true)
+, Tuple.Create(Tuple.Create(" ", 3370), Tuple.Create("==", 3371), true)
+, Tuple.Create(Tuple.Create(" ", 3373), Tuple.Create("\'CustomerOrder\'}", 3374), true)
 );
 
 WriteLiteral(">\r\n                <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 3361), Tuple.Create("\"", 3406)
+WriteAttribute("href", Tuple.Create(" href=\"", 3412), Tuple.Create("\"", 3457)
             
             #line 70 "..\..\Views\Account\Layout1\_SideNav.cshtml"
-, Tuple.Create(Tuple.Create("", 3368), Tuple.Create<System.Object, System.Int32>(Url.Action("orderhistory", "account")
+, Tuple.Create(Tuple.Create("", 3419), Tuple.Create<System.Object, System.Int32>(Url.Action("orderhistory", "account")
             
             #line default
             #line hidden
-, 3368), false)
+, 3419), false)
 );
 
 WriteLiteral(" class=\"color-black\"");
@@ -457,13 +457,13 @@ WriteLiteral("</a>\r\n            </li>\r\n");
 
             
             #line 72 "..\..\Views\Account\Layout1\_SideNav.cshtml"
-           
+            
             
             #line default
             #line hidden
             
             #line 72 "..\..\Views\Account\Layout1\_SideNav.cshtml"
-            if (userRole == (CompanyUserRole.None) || userRole == (CompanyUserRole.Admin))
+             if (userRole == (CompanyUserRole.None) || userRole == (CompanyUserRole.Admin))
             {
 
             
@@ -471,32 +471,32 @@ WriteLiteral("</a>\r\n            </li>\r\n");
             #line hidden
 WriteLiteral("                <li");
 
-WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 3658), Tuple.Create("\"", 3718)
-, Tuple.Create(Tuple.Create("", 3669), Tuple.Create("{\'active-ac\'", 3669), true)
-, Tuple.Create(Tuple.Create(" ", 3681), Tuple.Create(":", 3682), true)
-, Tuple.Create(Tuple.Create(" ", 3683), Tuple.Create("\'", 3684), true)
+WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 3710), Tuple.Create("\"", 3770)
+, Tuple.Create(Tuple.Create("", 3721), Tuple.Create("{\'active-ac\'", 3721), true)
+, Tuple.Create(Tuple.Create(" ", 3733), Tuple.Create(":", 3734), true)
+, Tuple.Create(Tuple.Create(" ", 3735), Tuple.Create("\'", 3736), true)
             
             #line 74 "..\..\Views\Account\Layout1\_SideNav.cshtml"
-, Tuple.Create(Tuple.Create("", 3685), Tuple.Create<System.Object, System.Int32>(ViewBag.Title
+, Tuple.Create(Tuple.Create("", 3737), Tuple.Create<System.Object, System.Int32>(ViewBag.Title
             
             #line default
             #line hidden
-, 3685), false)
-, Tuple.Create(Tuple.Create("", 3699), Tuple.Create("\'", 3699), true)
-, Tuple.Create(Tuple.Create(" ", 3700), Tuple.Create("==", 3701), true)
-, Tuple.Create(Tuple.Create(" ", 3703), Tuple.Create("\'AddressBook\'}", 3704), true)
+, 3737), false)
+, Tuple.Create(Tuple.Create("", 3751), Tuple.Create("\'", 3751), true)
+, Tuple.Create(Tuple.Create(" ", 3752), Tuple.Create("==", 3753), true)
+, Tuple.Create(Tuple.Create(" ", 3755), Tuple.Create("\'AddressBook\'}", 3756), true)
 );
 
 WriteLiteral(">\r\n                    <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 3744), Tuple.Create("\"", 3788)
+WriteAttribute("href", Tuple.Create(" href=\"", 3796), Tuple.Create("\"", 3840)
             
             #line 75 "..\..\Views\Account\Layout1\_SideNav.cshtml"
-, Tuple.Create(Tuple.Create("", 3751), Tuple.Create<System.Object, System.Int32>(Url.Action("AddressBook", "account")
+, Tuple.Create(Tuple.Create("", 3803), Tuple.Create<System.Object, System.Int32>(Url.Action("AddressBook", "account")
             
             #line default
             #line hidden
-, 3751), false)
+, 3803), false)
 );
 
 WriteLiteral(" class=\"color-black\"");
@@ -525,33 +525,33 @@ WriteLiteral("</a>\r\n                </li>\r\n");
             #line hidden
 WriteLiteral("            <li");
 
-WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 3945), Tuple.Create("\"", 4008)
-, Tuple.Create(Tuple.Create("", 3956), Tuple.Create("{\'active-ac\'", 3956), true)
-, Tuple.Create(Tuple.Create(" ", 3968), Tuple.Create(":", 3969), true)
-, Tuple.Create(Tuple.Create(" ", 3970), Tuple.Create("\'", 3971), true)
+WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 3997), Tuple.Create("\"", 4060)
+, Tuple.Create(Tuple.Create("", 4008), Tuple.Create("{\'active-ac\'", 4008), true)
+, Tuple.Create(Tuple.Create(" ", 4020), Tuple.Create(":", 4021), true)
+, Tuple.Create(Tuple.Create(" ", 4022), Tuple.Create("\'", 4023), true)
             
             #line 78 "..\..\Views\Account\Layout1\_SideNav.cshtml"
-, Tuple.Create(Tuple.Create("", 3972), Tuple.Create<System.Object, System.Int32>(ViewBag.Title
+, Tuple.Create(Tuple.Create("", 4024), Tuple.Create<System.Object, System.Int32>(ViewBag.Title
             
             #line default
             #line hidden
-, 3972), false)
-, Tuple.Create(Tuple.Create("", 3986), Tuple.Create("\'", 3986), true)
-, Tuple.Create(Tuple.Create(" ", 3987), Tuple.Create("==", 3988), true)
-, Tuple.Create(Tuple.Create(" ", 3990), Tuple.Create("\'Return", 3991), true)
-, Tuple.Create(Tuple.Create(" ", 3998), Tuple.Create("History\'}", 3999), true)
+, 4024), false)
+, Tuple.Create(Tuple.Create("", 4038), Tuple.Create("\'", 4038), true)
+, Tuple.Create(Tuple.Create(" ", 4039), Tuple.Create("==", 4040), true)
+, Tuple.Create(Tuple.Create(" ", 4042), Tuple.Create("\'Return", 4043), true)
+, Tuple.Create(Tuple.Create(" ", 4050), Tuple.Create("History\'}", 4051), true)
 );
 
 WriteLiteral(">\r\n                <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 4030), Tuple.Create("\"", 4076)
+WriteAttribute("href", Tuple.Create(" href=\"", 4082), Tuple.Create("\"", 4128)
             
             #line 79 "..\..\Views\Account\Layout1\_SideNav.cshtml"
-, Tuple.Create(Tuple.Create("", 4037), Tuple.Create<System.Object, System.Int32>(Url.Action("returnhistory", "account")
+, Tuple.Create(Tuple.Create("", 4089), Tuple.Create<System.Object, System.Int32>(Url.Action("returnhistory", "account")
             
             #line default
             #line hidden
-, 4037), false)
+, 4089), false)
 );
 
 WriteLiteral(" class=\"color-black\"");
@@ -571,30 +571,30 @@ WriteLiteral("></i>");
             #line hidden
 WriteLiteral("</a>\r\n            </li>\r\n            <li");
 
-WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 4234), Tuple.Create("\"", 4289)
-, Tuple.Create(Tuple.Create("", 4245), Tuple.Create("{\'active-ac\'", 4245), true)
-, Tuple.Create(Tuple.Create(" ", 4257), Tuple.Create(":\'", 4258), true)
+WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 4286), Tuple.Create("\"", 4341)
+, Tuple.Create(Tuple.Create("", 4297), Tuple.Create("{\'active-ac\'", 4297), true)
+, Tuple.Create(Tuple.Create(" ", 4309), Tuple.Create(":\'", 4310), true)
             
             #line 81 "..\..\Views\Account\Layout1\_SideNav.cshtml"
-, Tuple.Create(Tuple.Create("", 4260), Tuple.Create<System.Object, System.Int32>(ViewBag.Title
+, Tuple.Create(Tuple.Create("", 4312), Tuple.Create<System.Object, System.Int32>(ViewBag.Title
             
             #line default
             #line hidden
-, 4260), false)
-, Tuple.Create(Tuple.Create("", 4274), Tuple.Create("\'==", 4274), true)
-, Tuple.Create(Tuple.Create(" ", 4277), Tuple.Create("\'Wishlist\'}", 4278), true)
+, 4312), false)
+, Tuple.Create(Tuple.Create("", 4326), Tuple.Create("\'==", 4326), true)
+, Tuple.Create(Tuple.Create(" ", 4329), Tuple.Create("\'Wishlist\'}", 4330), true)
 );
 
 WriteLiteral(">\r\n                <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 4311), Tuple.Create("\"", 4352)
+WriteAttribute("href", Tuple.Create(" href=\"", 4363), Tuple.Create("\"", 4404)
             
             #line 82 "..\..\Views\Account\Layout1\_SideNav.cshtml"
-, Tuple.Create(Tuple.Create("", 4318), Tuple.Create<System.Object, System.Int32>(Url.Action("wishlist", "account")
+, Tuple.Create(Tuple.Create("", 4370), Tuple.Create<System.Object, System.Int32>(Url.Action("wishlist", "account")
             
             #line default
             #line hidden
-, 4318), false)
+, 4370), false)
 );
 
 WriteLiteral(" class=\"color-black\"");
@@ -614,30 +614,30 @@ WriteLiteral("></i>");
             #line hidden
 WriteLiteral("</a>\r\n            </li>\r\n\r\n            <li");
 
-WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 4489), Tuple.Create("\"", 4550)
-, Tuple.Create(Tuple.Create("", 4500), Tuple.Create("{\'active-ac\'", 4500), true)
-, Tuple.Create(Tuple.Create(" ", 4512), Tuple.Create(":\'", 4513), true)
+WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 4541), Tuple.Create("\"", 4602)
+, Tuple.Create(Tuple.Create("", 4552), Tuple.Create("{\'active-ac\'", 4552), true)
+, Tuple.Create(Tuple.Create(" ", 4564), Tuple.Create(":\'", 4565), true)
             
             #line 85 "..\..\Views\Account\Layout1\_SideNav.cshtml"
-, Tuple.Create(Tuple.Create("", 4515), Tuple.Create<System.Object, System.Int32>(ViewBag.Title
+, Tuple.Create(Tuple.Create("", 4567), Tuple.Create<System.Object, System.Int32>(ViewBag.Title
             
             #line default
             #line hidden
-, 4515), false)
-, Tuple.Create(Tuple.Create("", 4529), Tuple.Create("\'==\'Change", 4529), true)
-, Tuple.Create(Tuple.Create(" ", 4539), Tuple.Create("Password\'}", 4540), true)
+, 4567), false)
+, Tuple.Create(Tuple.Create("", 4581), Tuple.Create("\'==\'Change", 4581), true)
+, Tuple.Create(Tuple.Create(" ", 4591), Tuple.Create("Password\'}", 4592), true)
 );
 
 WriteLiteral(">\r\n                <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 4572), Tuple.Create("\"", 4620)
+WriteAttribute("href", Tuple.Create(" href=\"", 4624), Tuple.Create("\"", 4672)
             
             #line 86 "..\..\Views\Account\Layout1\_SideNav.cshtml"
-, Tuple.Create(Tuple.Create("", 4579), Tuple.Create<System.Object, System.Int32>(Url.Action("PasswordChange" , "account")
+, Tuple.Create(Tuple.Create("", 4631), Tuple.Create<System.Object, System.Int32>(Url.Action("PasswordChange" , "account")
             
             #line default
             #line hidden
-, 4579), false)
+, 4631), false)
 );
 
 WriteLiteral(" class=\"color-black\"");
@@ -657,14 +657,14 @@ WriteLiteral("></i>");
             #line hidden
 WriteLiteral("</a>\r\n            </li>\r\n            <li>\r\n                <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 4783), Tuple.Create("\"", 4822)
+WriteAttribute("href", Tuple.Create(" href=\"", 4835), Tuple.Create("\"", 4874)
             
             #line 89 "..\..\Views\Account\Layout1\_SideNav.cshtml"
-, Tuple.Create(Tuple.Create("", 4790), Tuple.Create<System.Object, System.Int32>(Url.Action("logout", "account")
+, Tuple.Create(Tuple.Create("", 4842), Tuple.Create<System.Object, System.Int32>(Url.Action("logout", "account")
             
             #line default
             #line hidden
-, 4790), false)
+, 4842), false)
 );
 
 WriteLiteral(" class=\"color-black\"");

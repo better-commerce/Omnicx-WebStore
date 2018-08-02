@@ -36,7 +36,7 @@ namespace ASP
     #line hidden
     
     #line 20 "..\..\Views\Shared\Layout1\_LayoutAccount.cshtml"
-    using Omnicx.API.SDK.Models;
+    using Omnicx.WebStore.Models;
     
     #line default
     #line hidden

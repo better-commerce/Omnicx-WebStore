@@ -29,13 +29,7 @@ namespace ASP
     using System.Web.WebPages;
     using DevTrends.MvcDonutCaching;
     
-    #line 14 "..\..\Views\Page\Layout1\Index.cshtml"
-    using Omnicx.API.SDK.Entities;
-    
-    #line default
-    #line hidden
-    
-    #line 15 "..\..\Views\Page\Layout1\Index.cshtml"
+    #line 16 "..\..\Views\Page\Layout1\Index.cshtml"
     using Omnicx.API.SDK.Helpers;
     
     #line default
@@ -43,9 +37,21 @@ namespace ASP
     using Omnicx.WebStore;
     using Omnicx.WebStore.Core;
     
+    #line 15 "..\..\Views\Page\Layout1\Index.cshtml"
+    using Omnicx.WebStore.Models.Enums;
+    
+    #line default
+    #line hidden
+    
+    #line 14 "..\..\Views\Page\Layout1\Index.cshtml"
+    using Omnicx.WebStore.Models.Keys;
+    
+    #line default
+    #line hidden
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Page/Layout1/Index.cshtml")]
-    public partial class _Views_Page_Layout1_Index_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Site.SiteViewModel>
+    public partial class _Views_Page_Layout1_Index_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Site.SiteViewModel>
     {
         public _Views_Page_Layout1_Index_cshtml()
         {
@@ -55,17 +61,17 @@ namespace ASP
             
             #line 1 "..\..\Views\Page\Layout1\Index.cshtml"
   
-/*
-    Name: Home Page
-    Purpose: WebStore Home Page Call Json or CMS View
-    Structure: /Views/Page/Layout1/_IndexJson.cshtml
-    Contains (Partial Views Used): 
-        a-/Views/Page/Layout1/_IndexJson.cshtml OR      (JSON DATA Customize View)
-        b-/Views/Page/Layout1/_IndexCms.cshtml          (CMS View With HTML Render)
+    /*
+        Name: Home Page
+        Purpose: WebStore Home Page Call Json or CMS View
+        Structure: /Views/Page/Layout1/_IndexJson.cshtml
+        Contains (Partial Views Used):
+            a-/Views/Page/Layout1/_IndexJson.cshtml OR      (JSON DATA Customize View)
+            b-/Views/Page/Layout1/_IndexCms.cshtml          (CMS View With HTML Render)
 
-    Contained In (Where we Use this View):
-        a-/Views/Page/Layout1/Index.cshtml
-    */
+        Contained In (Where we Use this View):
+            a-/Views/Page/Layout1/Index.cshtml
+        */
 
             
             #line default
@@ -73,7 +79,7 @@ namespace ASP
 WriteLiteral("\r\n");
 
             
-            #line 17 "..\..\Views\Page\Layout1\Index.cshtml"
+            #line 18 "..\..\Views\Page\Layout1\Index.cshtml"
   
     var StoreTheme = ConfigKeys.StoreTheme;
     ViewBag.Title = "Home";
@@ -92,7 +98,7 @@ WriteLiteral("\r\n");
 WriteLiteral("\r\n");
 
             
-            #line 28 "..\..\Views\Page\Layout1\Index.cshtml"
+            #line 29 "..\..\Views\Page\Layout1\Index.cshtml"
 Write(Html.Partial("~/Views/Page/Layout1/_IndexJson.cshtml", Model));
 
             

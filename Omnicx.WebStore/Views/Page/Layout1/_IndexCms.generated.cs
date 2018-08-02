@@ -33,7 +33,7 @@ namespace ASP
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Page/Layout1/_IndexCms.cshtml")]
-    public partial class _Views_Page_Layout1__IndexCms_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Site.SiteViewModel>
+    public partial class _Views_Page_Layout1__IndexCms_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Site.SiteViewModel>
     {
         public _Views_Page_Layout1__IndexCms_cshtml()
         {

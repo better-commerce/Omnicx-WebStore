@@ -9,7 +9,7 @@
         a-/Views/Basket/Layout1/OnePageCheckout.cshtml
     */
 }
-@using Omnicx.API.SDK.Entities
+@using Omnicx.WebStore.Models.Enums
 @inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
 <div class="summery-box" id="order-summary" ng-contr>
     <div ng-cloak class="alert alert-danger wishdiv" ng-show="ck.wishlisterror">
@@ -25,7 +25,7 @@
                     <div class="col-sm-3 col-xs-3 no-padding">
                         <span class="cart-img">
                             <a ng-href="/{{items.slug}}">
-                                <img ng-src="{{items.image}}" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'">
+                                <img ng-src="{{items.image}}" onerror="this.src = DEFAULT_IMAGE_URL">
                             </a>
                         </span>
                     </div>
@@ -76,7 +76,7 @@
                     <div class="col-sm-3 col-xs-3 no-padding">
                         <span class="cart-img">
                             <a ng-href="/{{items.slug}}">
-                                <img ng-src="{{items.image}}" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'">
+                                <img ng-src="{{items.image}}" onerror="this.src = DEFAULT_IMAGE_URL">
                             </a>
                         </span>
                     </div>
@@ -105,7 +105,7 @@
                     <div class="col-sm-3 col-xs-3 no-padding">
                         <span class="cart-img">
                             <a ng-href="/{{items.slug}}">
-                                <img ng-src="{{items.image}}" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'">
+                                <img ng-src="{{items.image}}" onerror="this.src = DEFAULT_IMAGE_URL">
                             </a>
                         </span>
                     </div>

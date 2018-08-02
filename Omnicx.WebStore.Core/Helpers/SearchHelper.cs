@@ -2,11 +2,12 @@
 using System.Linq;
 using System.Web.Mvc;
 using Omnicx.API.SDK.Api.Catalog;
-using Omnicx.API.SDK.Models.Catalog;
-using Omnicx.API.SDK.Models.Helpers;
-using Omnicx.API.SDK.Entities;
-using Omnicx.API.SDK.Api.Infra;
+using Omnicx.WebStore.Models.Catalog;
+using Omnicx.WebStore.Models.Helpers;
 
+using Omnicx.API.SDK.Api.Infra;
+using Omnicx.WebStore.Models.Keys;
+using Omnicx.WebStore.Models.Enums;
 namespace Omnicx.WebStore.Core.Helpers
 {
     public static class SearchHelper
@@ -35,7 +36,7 @@ namespace Omnicx.WebStore.Core.Helpers
                 {
                     foreach (var itm in filter.Items)
                     {
-                        if (filter.Name != null && filter.Name.ToLower() == Omnicx.API.SDK.Entities.Constants.PRICE_FILTER && itm.From != null)
+                        if (filter.Name != null && filter.Name.ToLower() == Constants.PRICE_FILTER && itm.From != null)
                         {
                             itm.PriceFilter = ((int)Convert.ToDecimal(itm.From));
                         }

@@ -267,12 +267,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Entities\CacheKeys.cs" />
-    <Compile Include="Entities\ConfigKeys.cs" />
-    <Compile Include="Entities\CustomExceptions.cs" />
-    <Compile Include="Entities\CustomViews.cs" />
-    <Compile Include="Entities\Enum.cs" />
-    <Compile Include="Entities\PasswordSetting.cs" />
     <Compile Include="Helpers\CacheManager.cs" />
     <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Helpers\DefaultCache.cs" />
@@ -283,108 +277,6 @@
     <Compile Include="Helpers\LayoutExtensions.cs" />
     <Compile Include="Helpers\RedisCache.cs" />
     <Compile Include="Helpers\Utils.cs" />
-    <Compile Include="Models\Account\IdentityModels.cs" />
-    <Compile Include="Models\B2B\CompanyDetailModel.cs" />
-    <Compile Include="Models\B2B\CompanyRegisterModel.cs" />
-    <Compile Include="Models\B2B\CompanyUserModel.cs" />
-    <Compile Include="Models\B2B\QuoteInfoModel.cs" />
-    <Compile Include="Models\Catalog\AllBrandModel.cs" />
-    <Compile Include="Models\Catalog\BrandDetailModel.cs" />
-    <Compile Include="Models\Catalog\BrandModel.cs" />
-    <Compile Include="Models\Catalog\CategoryModel.cs" />
-    <Compile Include="Models\Catalog\CollectionModel.cs" />
-    <Compile Include="Models\Catalog\DynamicListModel.cs" />
-    <Compile Include="Models\Catalog\MicrositeModel.cs" />
-    <Compile Include="Models\Catalog\PhysicalStoreModel.cs" />
-    <Compile Include="Models\Catalog\ProductDetailModel.cs" />
-    <Compile Include="Models\Catalog\ProductDetailModelPartialMedicine.cs" />
-    <Compile Include="Models\Catalog\ProductModel.cs" />
-    <Compile Include="Models\Catalog\ProductViewModel.cs" />
-    <Compile Include="Models\Catalog\SearchCriteriaModel.cs" />
-    <Compile Include="Models\Catalog\SearchFacetModel.cs" />
-    <Compile Include="Models\Catalog\SearchModel.cs" />
-    <Compile Include="Models\Catalog\SearchResultEntry.cs" />
-    <Compile Include="Models\Catalog\TypeAheadSearchModel.cs" />
-    <Compile Include="Models\Catalog\VariantModel.cs" />
-    <Compile Include="Models\Commerce\AccountViewModels.cs" />
-    <Compile Include="Models\Commerce\AddressModel.cs" />
-    <Compile Include="Models\Commerce\AddressReadOnlyModel.cs" />
-    <Compile Include="Models\Commerce\BasketAddModel.cs" />
-    <Compile Include="Models\Commerce\BasketAddressModel.cs" />
-    <Compile Include="Models\Commerce\BasketLineModel.cs" />
-    <Compile Include="Models\Commerce\BasketModel.cs" />
-    <Compile Include="Models\Commerce\CheckoutModel-1.cs" />
-    <Compile Include="Models\Commerce\CheckoutModels.cs" />
-    <Compile Include="Models\Commerce\ContactModel.cs" />
-    <Compile Include="Models\Commerce\CustomerBasicModel.cs" />
-    <Compile Include="Models\Commerce\CustomerModel.cs" />
-    <Compile Include="Models\Commerce\NewsletterModel.cs" />
-    <Compile Include="Models\Commerce\OrderLineModel.cs" />
-    <Compile Include="Models\Commerce\OrderModel.cs" />
-    <Compile Include="Models\Commerce\PaymentBasicModel.cs" />
-    <Compile Include="Models\Commerce\PaymentMethodModel.cs" />
-    <Compile Include="Models\Commerce\PaymentModel.cs" />
-    <Compile Include="Models\Commerce\PromoResponseModel.cs" />
-    <Compile Include="Models\Commerce\PromotionModel.cs" />
-    <Compile Include="Models\Commerce\ReturnLineModel.cs" />
-    <Compile Include="Models\Commerce\ReturnModel.cs" />
-    <Compile Include="Models\Commerce\ShippingModel.cs" />
-    <Compile Include="Models\Commerce\UserActivityListModel.cs" />
-    <Compile Include="Models\Commerce\UserActivityModel.cs" />
-    <Compile Include="Models\Commerce\UserActivitySearchModel.cs" />
-    <Compile Include="Models\Commerce\UserPasswordTokenModel.cs" />
-    <Compile Include="Models\Commerce\UserSubscriptionModel.cs" />
-    <Compile Include="Models\Commerce\WishlistModel.cs" />
-    <Compile Include="Models\Common\Amount.cs" />
-    <Compile Include="Models\Common\AuthTokenModel.cs" />
-    <Compile Include="Models\Common\BaseModel.cs" />
-    <Compile Include="Models\Common\BoolResponse.cs" />
-    <Compile Include="Models\Common\ChangePasswordModel.cs" />
-    <Compile Include="Models\Common\Country.cs" />
-    <Compile Include="Models\Common\CustomInfo.cs" />
-    <Compile Include="Models\Common\DefaultSettingModel.cs" />
-    <Compile Include="Models\Common\Localized.cs" />
-    <Compile Include="Models\Common\LogEntryModel.cs" />
-    <Compile Include="Models\Common\LoginModel.cs" />
-    <Compile Include="Models\Common\PluginSettings.cs" />
-    <Compile Include="Models\Common\SessionInfo.cs" />
-    <Compile Include="Models\Common\TokenRequestModel.cs" />
-    <Compile Include="Models\Common\UtmInfo.cs" />
-    <Compile Include="Models\Helpers\Constant.cs" />
-    <Compile Include="Models\Helpers\Facet.cs" />
-    <Compile Include="Models\Helpers\PaginatedResult.cs" />
-    <Compile Include="Models\Helpers\SearchFilter.cs" />
-    <Compile Include="Models\Infrastructure\ConfigModel.cs" />
-    <Compile Include="Models\Infrastructure\LogENtry.cs" />
-    <Compile Include="Models\Infrastructure\Settings\B2BSettings.cs" />
-    <Compile Include="Models\Infrastructure\Settings\BasketSettings.cs" />
-    <Compile Include="Models\Infrastructure\Settings\CatalogSettings.cs" />
-    <Compile Include="Models\Infrastructure\Settings\CurrencySettingModel.cs" />
-    <Compile Include="Models\Infrastructure\Settings\DomainSettings.cs" />
-    <Compile Include="Models\Infrastructure\Settings\ISettings.cs" />
-    <Compile Include="Models\Infrastructure\Settings\OrderSettings.cs" />
-    <Compile Include="Models\Infrastructure\Settings\ProductReviewSettings.cs" />
-    <Compile Include="Models\Infrastructure\Settings\RegionalSettings.cs" />
-    <Compile Include="Models\Infrastructure\Settings\SearchSettings.cs" />
-    <Compile Include="Models\Infrastructure\Settings\SeoSettings.cs" />
-    <Compile Include="Models\Infrastructure\Settings\ShippingSettings.cs" />
-    <Compile Include="Models\Infrastructure\Settings\SocialSettings.cs" />
-    <Compile Include="Models\ResponseModel.cs" />
-    <Compile Include="Models\Site\BlogModel.cs" />
-    <Compile Include="Models\Site\EmailTemplateModel.cs" />
-    <Compile Include="Models\Site\FaqModel.cs" />
-    <Compile Include="Models\Site\FaqModelTemp.cs" />
-    <Compile Include="Models\Site\FeedModel.cs" />
-    <Compile Include="Models\Site\IHaveSeoInfo.cs" />
-    <Compile Include="Models\Site\LocalizeModel.cs" />
-    <Compile Include="Models\Site\MenuModel.cs" />
-    <Compile Include="Models\Site\NavigationModel.cs" />
-    <Compile Include="Models\Site\PageModel.cs" />
-    <Compile Include="Models\Site\SiteViewModel.cs" />
-    <Compile Include="Models\Site\SnippetModel.cs" />
-    <Compile Include="Models\Site\SurveyModels.cs" />
-    <Compile Include="Models\Site\WidgetModel.cs" />
-    <Compile Include="Models\Site\ZoneModel.cs" />
     <Compile Include="Payments\AccountCredit\AccountCreditPaymentProcessor.cs" />
     <Compile Include="Payments\Cheque\ChequePaymentProcessor.cs" />
     <Compile Include="Payments\Cod\CodPaymentProcessor.cs" />
@@ -396,6 +288,9 @@
     <Compile Include="Payments\Entities\ProcessPaymentResult.cs" />
     <Compile Include="Payments\Givex\GivexPaymentProcessor.cs" />
     <Compile Include="Payments\IPaymentMethod.cs" />
+    <Compile Include="Payments\Klarna\KlarnaApi.cs" />
+    <Compile Include="Payments\Klarna\KlarnaObject.cs" />
+    <Compile Include="Payments\Klarna\KlarnaPaymentProcessor.cs" />
     <Compile Include="Payments\MasterCard\MasterCardApi.cs" />
     <Compile Include="Payments\MasterCard\MasterCardObjects.cs" />
     <Compile Include="Payments\MasterCard\MasterCardPaymentProcessor.cs" />
@@ -1100,6 +995,12 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Omnicx.WebStore.Models\Omnicx.WebStore.Models.csproj">
+      <Project>{404d2b03-f5cf-4e2e-b05e-0ec7311916a7}</Project>
+      <Name>Omnicx.WebStore.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

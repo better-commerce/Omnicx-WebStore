@@ -1,14 +1,16 @@
 ﻿using Microsoft.Security.Application;
 using Omnicx.API.SDK.Api.Commerce;
-using Omnicx.API.SDK.Models.B2B;
-using Omnicx.API.SDK.Models.Commerce;
-using Omnicx.API.SDK.Entities;
+using Omnicx.WebStore.Models.B2B;
+using Omnicx.WebStore.Models.Commerce;
+using Omnicx.WebStore.Models.Keys;
 using Omnicx.WebStore.Core.Filters;
 using Omnicx.WebStore.Core.Helpers;
 using Omnicx.WebStore.Core.Services.Authentication;
 using System;
 using System.Text.RegularExpressions;
 using System.Web.Mvc;
+using RestSharp.Extensions.MonoHttp;
+using System.Linq;
 
 namespace Omnicx.WebStore.Core.Controllers
 {
@@ -45,6 +47,8 @@ namespace Omnicx.WebStore.Core.Controllers
                     return JsonValidationError();
                 }
             }
+            model.Mobile = SiteUtils.GenerateEncodedString(model.Mobile);
+            model.Telephone = SiteUtils.GenerateEncodedString(model.Telephone);
             var user = new CustomerModel
             {
                 Email = Sanitizer.GetSafeHtmlFragment(model.Email),
@@ -56,18 +60,25 @@ namespace Omnicx.WebStore.Core.Controllers
                 Title = Sanitizer.GetSafeHtmlFragment(model.Title),
                 BusinessType = Sanitizer.GetSafeHtmlFragment(model.BusinessType),
                 CompanyName = Sanitizer.GetSafeHtmlFragment(model.CompanyName),
-                RegisteredNumber = Sanitizer.GetSafeHtmlFragment(model.RegisteredNumber),   
+                RegisteredNumber = Sanitizer.GetSafeHtmlFragment(model.RegisteredNumber),
                 Password = Sanitizer.GetSafeHtmlFragment(model.Password),
-                Address = new CompanyAddress {
+                IsRegistered = true,
+                Address = new CompanyAddress
+                {
                     Address1 = Sanitizer.GetSafeHtmlFragment(model.Address1),
-                    Address2 =Sanitizer.GetSafeHtmlFragment(model.Address2),
+                    Address2 = Sanitizer.GetSafeHtmlFragment(model.Address2),
                     City = Sanitizer.GetSafeHtmlFragment(model.City),
                     State = Sanitizer.GetSafeHtmlFragment(model.State),
                     Country = Sanitizer.GetSafeHtmlFragment(model.Country),
                     PostCode = Sanitizer.GetSafeHtmlFragment(model.PostCode)
                 },
             };
+
+            user.Mobile = SiteUtils.GenerateDecodeString(user.Mobile);
+            user.Telephone = SiteUtils.GenerateDecodeString(user.Telephone);
+
             var result = _customerRepository.Register(user);
+            
             if (result.Result.IsValid)
             {
                 return JsonSuccess(result.Result, JsonRequestBehavior.AllowGet);
@@ -81,8 +92,9 @@ namespace Omnicx.WebStore.Core.Controllers
         [CustomAuthorizeAttribute]
         public ActionResult Quotes()
         {
-            var quotes = _b2bRepository.GetQuotes(_sessionContext.CurrentUser.UserId.ToString());
-            return View(CustomViews.QUOTES_B2B,quotes.Result);
+            var result = _b2bRepository.GetQuotes(_sessionContext.CurrentUser.UserId.ToString());
+            var quotes = result.Result.Where(x=> !(x.CreatedByAdmin && x.Status==QuoteStatus.Draft)).ToList();
+            return View(CustomViews.QUOTES_B2B, quotes);
         }
         [CustomAuthorizeAttribute]
         public ActionResult Users()
@@ -150,7 +162,7 @@ namespace Omnicx.WebStore.Core.Controllers
             var resp = _b2bRepository.RequestQuoteChange(userId.ToString(),quoteNo);
             return JsonSuccess(resp.Result, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult AddQuoteToBasket(string basketId,string basketAction)
+        public virtual ActionResult AddQuoteToBasket(string basketId,string basketAction)
         {          
             var basket = _b2bRepository.GetQuoteBasket(basketId, basketAction);
             return JsonSuccess(basket?.Result, JsonRequestBehavior.AllowGet);

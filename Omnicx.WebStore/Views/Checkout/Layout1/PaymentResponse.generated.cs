@@ -34,24 +34,30 @@ namespace ASP
     
     #line default
     #line hidden
-    
-    #line 14 "..\..\Views\Checkout\Layout1\PaymentResponse.cshtml"
-    using Omnicx.API.SDK.Entities;
-    
-    #line default
-    #line hidden
     using Omnicx.WebStore;
     using Omnicx.WebStore.Core;
     
-    #line 15 "..\..\Views\Checkout\Layout1\PaymentResponse.cshtml"
+    #line 16 "..\..\Views\Checkout\Layout1\PaymentResponse.cshtml"
     using Omnicx.WebStore.Core.Controllers;
+    
+    #line default
+    #line hidden
+    
+    #line 14 "..\..\Views\Checkout\Layout1\PaymentResponse.cshtml"
+    using Omnicx.WebStore.Models.Common;
+    
+    #line default
+    #line hidden
+    
+    #line 15 "..\..\Views\Checkout\Layout1\PaymentResponse.cshtml"
+    using Omnicx.WebStore.Models.Keys;
     
     #line default
     #line hidden
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Checkout/Layout1/PaymentResponse.cshtml")]
-    public partial class _Views_Checkout_Layout1_PaymentResponse_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage< Omnicx.API.SDK.Models.Common.BoolResponse>
+    public partial class _Views_Checkout_Layout1_PaymentResponse_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<BoolResponse>
     {
         public _Views_Checkout_Layout1_PaymentResponse_cshtml()
         {
@@ -78,7 +84,7 @@ namespace ASP
 WriteLiteral("\r\n");
 
             
-            #line 17 "..\..\Views\Checkout\Layout1\PaymentResponse.cshtml"
+            #line 18 "..\..\Views\Checkout\Layout1\PaymentResponse.cshtml"
   
     ViewBag.Title = "PaymentResponse";
     Layout = "~/Views/Shared/Layout1/_OpcLayout.cshtml";
@@ -89,7 +95,7 @@ WriteLiteral("\r\n");
 WriteLiteral("\r\n\r\n<h2>PaymentResponse</h2>\r\n");
 
             
-            #line 23 "..\..\Views\Checkout\Layout1\PaymentResponse.cshtml"
+            #line 24 "..\..\Views\Checkout\Layout1\PaymentResponse.cshtml"
   
 
             
@@ -102,13 +108,13 @@ WriteLiteral(" ng-controller=\"accountCtrl as am\"");
 WriteLiteral(">\r\n");
 
             
-            #line 25 "..\..\Views\Checkout\Layout1\PaymentResponse.cshtml"
+            #line 26 "..\..\Views\Checkout\Layout1\PaymentResponse.cshtml"
         
             
             #line default
             #line hidden
             
-            #line 25 "..\..\Views\Checkout\Layout1\PaymentResponse.cshtml"
+            #line 26 "..\..\Views\Checkout\Layout1\PaymentResponse.cshtml"
          if (Model.IsValid)
         {
 
@@ -120,7 +126,7 @@ WriteLiteral("            <p>\r\n");
 WriteLiteral("                ");
 
             
-            #line 28 "..\..\Views\Checkout\Layout1\PaymentResponse.cshtml"
+            #line 29 "..\..\Views\Checkout\Layout1\PaymentResponse.cshtml"
            Write(LT("Order.Label.SuccessMsg", "Please wait we are Redirecting you to the Order Confirmation Page, Please do not close this page before you See your order Details."));
 
             
@@ -130,14 +136,14 @@ WriteLiteral("\r\n            </p>\r\n");
 
 WriteLiteral("            <form");
 
-WriteAttribute("action", Tuple.Create(" action=\"", 1018), Tuple.Create("\"", 1095)
+WriteAttribute("action", Tuple.Create(" action=\"", 1030), Tuple.Create("\"", 1107)
             
-            #line 30 "..\..\Views\Checkout\Layout1\PaymentResponse.cshtml"
-, Tuple.Create(Tuple.Create("", 1027), Tuple.Create<System.Object, System.Int32>(Url.Action("OrderConfirmation","Checkout",new { id=Model.RecordId})
+            #line 31 "..\..\Views\Checkout\Layout1\PaymentResponse.cshtml"
+, Tuple.Create(Tuple.Create("", 1039), Tuple.Create<System.Object, System.Int32>(Url.Action("OrderConfirmation","Checkout",new { id=Model.RecordId})
             
             #line default
             #line hidden
-, 1027), false)
+, 1039), false)
 );
 
 WriteLiteral(" method=\"POST\"");
@@ -157,7 +163,7 @@ WriteLiteral(" ng-init=\"am.orderConfirmation(myForm)\"");
 WriteLiteral("></span>\r\n");
 
             
-            #line 32 "..\..\Views\Checkout\Layout1\PaymentResponse.cshtml"
+            #line 33 "..\..\Views\Checkout\Layout1\PaymentResponse.cshtml"
             //Response.Redirect(Html.BuildUrlFromExpression<CheckoutController>(c => c.OrderConfirmation(null)) + "/" + Model.RecordId);
         }
         else
@@ -167,14 +173,14 @@ WriteLiteral("></span>\r\n");
             #line default
             #line hidden
             
-            #line 36 "..\..\Views\Checkout\Layout1\PaymentResponse.cshtml"
+            #line 37 "..\..\Views\Checkout\Layout1\PaymentResponse.cshtml"
        Write(LT("Order.Label.DeclineMsg", "Your transaction has been declined."));
 
             
             #line default
             #line hidden
             
-            #line 36 "..\..\Views\Checkout\Layout1\PaymentResponse.cshtml"
+            #line 37 "..\..\Views\Checkout\Layout1\PaymentResponse.cshtml"
                                                                                 
             if (ConfigKeys.OnePageCheckout == false)
             {
@@ -194,7 +200,7 @@ WriteLiteral("></span>\r\n");
 WriteLiteral("    </section>\r\n");
 
             
-            #line 49 "..\..\Views\Checkout\Layout1\PaymentResponse.cshtml"
+            #line 50 "..\..\Views\Checkout\Layout1\PaymentResponse.cshtml"
 
             
             #line default

@@ -9,7 +9,7 @@
      a-/Views/Product/Layout1/ProductDetail.cshtml
     */
 }
-@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Catalog.ProductDetailModel>
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Catalog.ProductDetailModel>
 
 <div class="container-fluid no-padding bundle">
     <div class="row">
@@ -21,7 +21,7 @@
         <div class="col-sm-4 col-xs-12">
             <div class="row animated zoomIn">
                 <div class="col-sm-12 col-xs-12 bundle-product-container">
-                    <img data-ng-magnify image-src="{{pm.model.image}}" class="img-responsive" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'">
+                    <img data-ng-magnify image-src="{{pm.model.image}}" class="img-responsive" onerror="this.src = DEFAULT_IMAGE_URL">
                 </div>
             </div>
         </div>
@@ -30,7 +30,7 @@
                 <div class="col-sm-3 col-xs-4" ng-repeat="productBundle in pm.model.componentProducts">
                     <div class="bundle-image-container">
                         <a ng-href="/{{productBundle.slug}}">
-                            <img ng-src="{{productBundle.images[0].url}}" class="img-responsive" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'">
+                            <img ng-src="{{productBundle.images[0].url}}" class="img-responsive" onerror="this.src = DEFAULT_IMAGE_URL">
                         </a>
                     </div>
                     <div>

@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using CachingFramework.Redis;
+using Omnicx.WebStore.Models.Keys;
 using StackExchange.Redis;
-using Omnicx.API.SDK.Entities;
+
 namespace Omnicx.API.SDK.Helpers
 {
     class RedisCache : ICacheManager

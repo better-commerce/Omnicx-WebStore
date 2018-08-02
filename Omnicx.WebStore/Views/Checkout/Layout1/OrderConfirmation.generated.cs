@@ -33,7 +33,7 @@ namespace ASP
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Checkout/Layout1/OrderConfirmation.cshtml")]
-    public partial class _Views_Checkout_Layout1_OrderConfirmation_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Commerce.OrderModel>
+    public partial class _Views_Checkout_Layout1_OrderConfirmation_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Commerce.OrderModel>
     {
         public _Views_Checkout_Layout1_OrderConfirmation_cshtml()
         {
@@ -220,47 +220,47 @@ WriteLiteral(">\r\n");
 WriteLiteral("                        <tr>\r\n                            <td>\r\n                 " +
 "               <a");
 
-WriteAttribute("ng-href", Tuple.Create(" ng-href=\"", 2039), Tuple.Create("\"", 2060)
-, Tuple.Create(Tuple.Create("", 2049), Tuple.Create("/", 2049), true)
+WriteAttribute("ng-href", Tuple.Create(" ng-href=\"", 2040), Tuple.Create("\"", 2061)
+, Tuple.Create(Tuple.Create("", 2050), Tuple.Create("/", 2050), true)
             
             #line 40 "..\..\Views\Checkout\Layout1\OrderConfirmation.cshtml"
-, Tuple.Create(Tuple.Create("", 2050), Tuple.Create<System.Object, System.Int32>(item.Slug
+, Tuple.Create(Tuple.Create("", 2051), Tuple.Create<System.Object, System.Int32>(item.Slug
             
             #line default
             #line hidden
-, 2050), false)
+, 2051), false)
 );
 
 WriteLiteral(">\r\n                                    <img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2104), Tuple.Create("\"", 2121)
+WriteAttribute("src", Tuple.Create(" src=\"", 2105), Tuple.Create("\"", 2122)
             
             #line 41 "..\..\Views\Checkout\Layout1\OrderConfirmation.cshtml"
-, Tuple.Create(Tuple.Create("", 2110), Tuple.Create<System.Object, System.Int32>(item.Image
+, Tuple.Create(Tuple.Create("", 2111), Tuple.Create<System.Object, System.Int32>(item.Image
             
             #line default
             #line hidden
-, 2110), false)
+, 2111), false)
 );
 
 WriteLiteral(" alt=\"OCX\"");
 
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
 WriteLiteral(">\r\n                                </a>\r\n                            </td>\r\n     " +
 "                       <td>\r\n                                <a");
 
 WriteLiteral(" class=\"basket-item\"");
 
-WriteAttribute("ng-href", Tuple.Create(" ng-href=\"", 2361), Tuple.Create("\"", 2382)
-, Tuple.Create(Tuple.Create("", 2371), Tuple.Create("/", 2371), true)
+WriteAttribute("ng-href", Tuple.Create(" ng-href=\"", 2336), Tuple.Create("\"", 2357)
+, Tuple.Create(Tuple.Create("", 2346), Tuple.Create("/", 2346), true)
             
             #line 45 "..\..\Views\Checkout\Layout1\OrderConfirmation.cshtml"
-, Tuple.Create(Tuple.Create("", 2372), Tuple.Create<System.Object, System.Int32>(item.Slug
+, Tuple.Create(Tuple.Create("", 2347), Tuple.Create<System.Object, System.Int32>(item.Slug
             
             #line default
             #line hidden
-, 2372), false)
+, 2347), false)
 );
 
 WriteLiteral(">");
@@ -414,7 +414,7 @@ WriteLiteral(">");
 
             
             #line 72 "..\..\Views\Checkout\Layout1\OrderConfirmation.cshtml"
-                                                  Write(Model.ShippingCharge.Formatted.WithTax);
+                                                  Write(Model.ShippingCharge.Formatted.WithoutTax);
 
             
             #line default
@@ -778,7 +778,7 @@ WriteLiteral("></i>");
             
             #line default
             #line hidden
-WriteLiteral("</a>\r\n    </div>\r\n</div>");
+WriteLiteral("</a>\r\n    </div>\r\n</div>\r\n");
 
         }
     }

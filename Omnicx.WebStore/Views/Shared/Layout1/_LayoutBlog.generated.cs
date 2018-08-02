@@ -36,7 +36,7 @@ namespace ASP
     #line hidden
     
     #line 22 "..\..\Views\Shared\Layout1\_LayoutBlog.cshtml"
-    using Omnicx.API.SDK.Models;
+    using Omnicx.WebStore.Models;
     
     #line default
     #line hidden
@@ -51,7 +51,7 @@ namespace ASP
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Shared/Layout1/_LayoutBlog.cshtml")]
-    public partial class _Views_Shared_Layout1__LayoutBlog_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Site.BlogDetailViewModel>
+    public partial class _Views_Shared_Layout1__LayoutBlog_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Site.BlogDetailViewModel>
     {
         public _Views_Shared_Layout1__LayoutBlog_cshtml()
         {

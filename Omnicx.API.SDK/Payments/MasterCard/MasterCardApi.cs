@@ -7,8 +7,8 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 using Omnicx.API.SDK.Helpers;
-using Omnicx.API.SDK.Models.Commerce;
-using Omnicx.API.SDK.Models.Common;
+using Omnicx.WebStore.Models.Commerce;
+using Omnicx.WebStore.Models.Common;
 
 namespace Omnicx.API.SDK.Payments.MasterCard
 {
@@ -1244,6 +1244,7 @@ namespace Omnicx.API.SDK.Payments.MasterCard
 
             try
             {
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
                 response = (HttpWebResponse)request.GetResponse();
             }
             catch (WebException ex)

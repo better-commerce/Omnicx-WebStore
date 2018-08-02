@@ -51,7 +51,7 @@ namespace ASP
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Account/Layout1/PasswordChange.cshtml")]
-    public partial class _Views_Account_Layout1_PasswordChange_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Commerce.CustomerProfileModel>
+    public partial class _Views_Account_Layout1_PasswordChange_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Commerce.CustomerProfileModel>
     {
         public _Views_Account_Layout1_PasswordChange_cshtml()
         {
@@ -94,6 +94,8 @@ WriteLiteral("\r\n");
             #line hidden
 WriteLiteral("\r\n\r\n\r\n<section");
 
+WriteLiteral(" class=\"container dataContainer\"");
+
 WriteLiteral(" ng-controller=\"accountCtrl as am\"");
 
 WriteLiteral(">\r\n    <div");
@@ -130,34 +132,13 @@ WriteLiteral("</a>\r\n                </li>\r\n                <li>");
             
             #line default
             #line hidden
-WriteLiteral("</li>\r\n            </ul>\r\n        </div>\r\n    </div>\r\n    <div");
+WriteLiteral("</li>\r\n            </ul>\r\n        </div>\r\n    </div>\r\n    \r\n    <div");
 
 WriteLiteral(" class=\"row\"");
 
 WriteLiteral(">\r\n        <div");
 
-WriteLiteral(" class=\"col-sm-12 col-xs-12\"");
-
-WriteLiteral(">\r\n            <h3");
-
-WriteLiteral(" class=\"panel-h2 hidden-xs\"");
-
-WriteLiteral(">");
-
-            
-            #line 43 "..\..\Views\Account\Layout1\PasswordChange.cshtml"
-                                      Write(LT("MyAccount.Text.ChangePassword", "Change Password"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</h3>\r\n        </div>\r\n    </div>\r\n    <div");
-
-WriteLiteral(" class=\"row\"");
-
-WriteLiteral(">\r\n        <div");
-
-WriteLiteral(" class=\"col-xs-12 margin-bottom-lg visible-xs\"");
+WriteLiteral(" class=\"col-xs-12 visible-xs\"");
 
 WriteLiteral(" id=\"exTab1\"");
 
@@ -166,13 +147,13 @@ WriteLiteral(">\r\n");
 WriteLiteral("           ");
 
             
-            #line 48 "..\..\Views\Account\Layout1\PasswordChange.cshtml"
+            #line 44 "..\..\Views\Account\Layout1\PasswordChange.cshtml"
       Write(Html.Partial("~/Views/Account/Layout1/_MobileSideNav.cshtml"));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n           \r\n        </div>\r\n        <div");
+WriteLiteral("           \r\n        </div>\r\n        <div");
 
 WriteLiteral(" class=\"col-md-3 col-sm-4 col-xs-12 hidden-xs\"");
 
@@ -181,7 +162,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("            ");
 
             
-            #line 52 "..\..\Views\Account\Layout1\PasswordChange.cshtml"
+            #line 47 "..\..\Views\Account\Layout1\PasswordChange.cshtml"
        Write(Html.Partial("~/Views/Account/Layout1/_SideNav.cshtml"));
 
             
@@ -194,6 +175,27 @@ WriteLiteral(" class=\"col-md-9 col-sm-8 col-xs-12\"");
 WriteLiteral(" id=\"customer-account\"");
 
 WriteLiteral(">\r\n            <div");
+
+WriteLiteral(" class=\"row\"");
+
+WriteLiteral(">\r\n                <div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12\"");
+
+WriteLiteral(">\r\n                    <h3");
+
+WriteLiteral(" class=\"panel-h2\"");
+
+WriteLiteral(">");
+
+            
+            #line 52 "..\..\Views\Account\Layout1\PasswordChange.cshtml"
+                                    Write(LT("MyAccount.Text.ChangePassword", "Change Password"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</h3>\r\n                </div>\r\n            </div>\r\n            <div");
 
 WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding\"");
 

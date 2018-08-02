@@ -36,7 +36,7 @@ namespace ASP
     #line hidden
     
     #line 19 "..\..\Views\Checkout\Layout1\StandardCheckout.cshtml"
-    using Omnicx.API.SDK.Models.Common;
+    using Omnicx.WebStore.Models.Common;
     
     #line default
     #line hidden

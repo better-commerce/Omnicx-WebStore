@@ -4,9 +4,10 @@ using System.Web.Mvc;
 using System.Web.Security;
 using Omnicx.API.SDK.Api.Commerce;
 using Omnicx.API.SDK.Api.Infra;
-using Omnicx.API.SDK.Models.Commerce;
-using Omnicx.API.SDK.Models.Common;
-using Omnicx.API.SDK.Entities;
+using Omnicx.WebStore.Models.Commerce;
+using Omnicx.WebStore.Models.Common;
+using Omnicx.WebStore.Models.Keys;
+using Omnicx.WebStore.Models.Enums;
 
 namespace Omnicx.WebStore.Core.Services.Authentication
 {

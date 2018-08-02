@@ -1,7 +1,9 @@
-﻿using Omnicx.API.SDK.Models.Commerce;
-using Omnicx.API.SDK.Models.Infrastructure;
+﻿using Omnicx.WebStore.Models.Commerce;
+using Omnicx.WebStore.Models.Enums;
+using Omnicx.WebStore.Models.Infrastructure;
+using Omnicx.WebStore.Models.Keys;
 using System.Threading.Tasks;
-using Omnicx.API.SDK.Entities;
+
 
 namespace Omnicx.API.SDK.Api.Infra
 {
@@ -9,6 +11,7 @@ namespace Omnicx.API.SDK.Api.Infra
     {
         CustomerModel CurrentUser { get; set; }
         string SessionId { get; }
+        string DeviceId { get; }
         Task<string> CreateUserSession(bool resetSession = false);
         //DefaultSettingModel DefaultSetting { get; set; }
 

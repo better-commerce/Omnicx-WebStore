@@ -10,9 +10,9 @@ Contained In (Where we Use this View) :
 }
 @using Microsoft.Web.Mvc
 @using Omnicx.WebStore.Core.Controllers
-@using Omnicx.API.SDK.Models
+@using Omnicx.WebStore.Models
 @using Omnicx.WebStore.Core.Helpers
-@model List<Omnicx.API.SDK.Models.Site.BlogGroupModel>
+@model List<Omnicx.WebStore.Models.Site.BlogGroupModel>
 
 <div class="col-sm-12">
     <div class="row-products">
@@ -29,7 +29,7 @@ Contained In (Where we Use this View) :
                             @{/*Editor Image*/}
                             <div class="img-circle text-center">
                                 <a href="/@editors.Slug" class="text-center">                                    
-                                    <img ng-src="@editors.GroupImage" class="image-editor" alt="" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'">
+                                    <img ng-src="@editors.GroupImage" class="image-editor" alt="" onerror="this.src = DEFAULT_IMAGE_URL">
                                 </a>
                             </div>
                             @{/*End Editor Image*/}

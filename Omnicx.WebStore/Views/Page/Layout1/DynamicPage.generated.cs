@@ -35,20 +35,8 @@ namespace ASP
     #line default
     #line hidden
     
-    #line 15 "..\..\Views\Page\Layout1\DynamicPage.cshtml"
-    using Omnicx.API.SDK.Entities;
-    
-    #line default
-    #line hidden
-    
     #line 13 "..\..\Views\Page\Layout1\DynamicPage.cshtml"
     using Omnicx.API.SDK.Helpers;
-    
-    #line default
-    #line hidden
-    
-    #line 14 "..\..\Views\Page\Layout1\DynamicPage.cshtml"
-    using Omnicx.API.SDK.Models.Catalog;
     
     #line default
     #line hidden
@@ -73,9 +61,21 @@ namespace ASP
     #line default
     #line hidden
     
+    #line 14 "..\..\Views\Page\Layout1\DynamicPage.cshtml"
+    using Omnicx.WebStore.Models.Catalog;
+    
+    #line default
+    #line hidden
+    
+    #line 15 "..\..\Views\Page\Layout1\DynamicPage.cshtml"
+    using Omnicx.WebStore.Models.Enums;
+    
+    #line default
+    #line hidden
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Page/Layout1/DynamicPage.cshtml")]
-    public partial class _Views_Page_Layout1_DynamicPage_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Site.SiteViewModel>
+    public partial class _Views_Page_Layout1_DynamicPage_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Site.SiteViewModel>
     {
         public _Views_Page_Layout1_DynamicPage_cshtml()
         {

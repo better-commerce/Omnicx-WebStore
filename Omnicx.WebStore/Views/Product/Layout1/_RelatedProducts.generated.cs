@@ -61,7 +61,7 @@ WriteLiteral("\r\n");
 
 WriteLiteral("<div");
 
-WriteLiteral(" class=\"col-sm-12 no-padding\"");
+WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding gridView\"");
 
 WriteLiteral(" ng-init=\"pm.quickView=true;\"");
 
@@ -73,32 +73,33 @@ WriteLiteral(">\r\n        <dl>\r\n            <dt>\r\n                <a");
 
 WriteLiteral(" href=\"#relatedProduct\"");
 
-WriteLiteral(" aria-expanded=\"false\"");
+WriteLiteral(" aria-expanded=\"true\"");
 
 WriteLiteral(" aria-controls=\"relatedProduct\"");
 
-WriteLiteral(" class=\"accordion-title accordionTitle js-accordionTrigger\"");
+WriteLiteral(" class=\"accordion-title accordionTitle js-accordionTrigger is-collapsed is-expand" +
+"ed\"");
 
 WriteLiteral(">");
 
             
             #line 18 "..\..\Views\Product\Layout1\_RelatedProducts.cshtml"
-                                                                                                                                                     Write(LT("ProductDetail.label.AlsoLike", "You may also like these products"));
+                                                                                                                                                                             Write(LT("ProductDetail.label.AlsoLike", "You may also like these products"));
 
             
             #line default
             #line hidden
 WriteLiteral("</a>\r\n            </dt>\r\n            <dd");
 
-WriteLiteral(" class=\"accordion-content accordionItem-lg is-collapsed no-padding\"");
+WriteLiteral(" class=\"accordion-content accordionItem-lg no-padding is-expanded animateIn\"");
 
 WriteLiteral(" id=\"relatedProduct\"");
 
-WriteLiteral(" aria-hidden=\"true\"");
+WriteLiteral(" aria-hidden=\"false\"");
 
 WriteLiteral(">\r\n                <div");
 
-WriteLiteral(" class=\"col-sm-4 col-xs-6 col-lg-3 resultContainerRelated\"");
+WriteLiteral(" class=\"col-sm-5ths col-xs-5ths col-lg-5ths col-md-5ths resultContainerRelated\"");
 
 WriteLiteral(" ng-repeat=\"product in pm.model.relatedProductList track by $index\"");
 
@@ -108,7 +109,7 @@ WriteLiteral("                    ");
 
             
             #line 22 "..\..\Views\Product\Layout1\_RelatedProducts.cshtml"
-               Write(Html.Partial("~/Views/Search/Layout1/_ProductWidget.cshtml"));
+               Write(Html.Partial("~/Views/Search/Layout1/_ProductWidgetNew.cshtml"));
 
             
             #line default

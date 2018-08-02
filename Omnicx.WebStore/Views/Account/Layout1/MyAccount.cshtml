@@ -17,7 +17,7 @@
 @using Microsoft.Web.Mvc
 @using Omnicx.WebStore.Core.Controllers
 @using Omnicx.WebStore.Framework.Helpers
-@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Commerce.CustomerProfileModel>
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Commerce.CustomerProfileModel>
 
 @{
     var customerAccountForm = Html.Angular().ModelFor("am.model");
@@ -26,7 +26,7 @@
 }
 
 
-<section ng-controller="accountCtrl as am">
+<section class="container dataContainer" ng-controller="accountCtrl as am">
     <div class="row">
         <div class="col-md-12">
             <ul class="breadcrumb">
@@ -36,26 +36,22 @@
                 <li>@LT("MyAccount.Text.Name", "My Account")</li>
             </ul>
         </div>
-    </div>
+    </div>    
     <div class="row">
-        <div class="col-sm-12 col-xs-12">
-            <h3 class="panel-h2 hidden-xs">@LT("MyAccount.Text.Name", "My Account")</h3>
-        </div>
-    </div>
-    <!-- *** LEFT COLUMN ***
-    _________________________________________________________ -->
-    <div class="row">
-        <div class="col-xs-12 margin-bottom-lg visible-xs" id="exTab1">
-            @*@Html.Partial("~/Views/Account/Layout1/_MobileSideNav.cshtml")*@
+        <div class="col-xs-12 visible-xs" id="exTab1">
+            @Html.Partial("~/Views/Account/Layout1/_MobileSideNav.cshtml")
         </div>
         <div class="col-md-3 col-sm-4 col-xs-12 hidden-xs">
             @Html.Partial("~/Views/Account/Layout1/_SideNav.cshtml")
         </div>
         <div class="col-md-9 col-sm-8 col-xs-12 clearfix" id="customer-account">
-            <div class="col-sm-12 no-padding">
-
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <h3 class="panel-h2">@LT("MyAccount.Text.Name", "My Account")</h3>
+                </div>
+            </div>
+            <div class="col-sm-12 col-xs-12 no-padding">
                 <form name="changeForm" role="form" ng-submit="am.saveCustomerDetail(am.model.customerDetail)" novalidate>
-
                     <div class="row">
                         <div class="col-sm-12" ng-show="personalDetail">
                             @Html.Partial("~/Views/Account/Layout1/_AccountAlert.cshtml")

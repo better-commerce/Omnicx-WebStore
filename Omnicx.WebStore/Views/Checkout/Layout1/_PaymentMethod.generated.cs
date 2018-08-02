@@ -29,12 +29,6 @@ namespace ASP
     using System.Web.WebPages;
     using DevTrends.MvcDonutCaching;
     
-    #line 13 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
-    using Omnicx.API.SDK.Models.Common;
-    
-    #line default
-    #line hidden
-    
     #line 14 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
     using Omnicx.API.SDK.Payments.Entities;
     
@@ -42,6 +36,12 @@ namespace ASP
     #line hidden
     using Omnicx.WebStore;
     using Omnicx.WebStore.Core;
+    
+    #line 13 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
+    using Omnicx.WebStore.Models.Common;
+    
+    #line default
+    #line hidden
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Checkout/Layout1/_PaymentMethod.cshtml")]
@@ -83,24 +83,24 @@ WriteLiteral("\r\n");
             #line hidden
 WriteLiteral("        <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 742), Tuple.Create("\"", 870)
-, Tuple.Create(Tuple.Create("", 748), Tuple.Create("https://secure.eu.tnspayments.com/form/version/", 748), true)
+WriteAttribute("src", Tuple.Create(" src=\"", 743), Tuple.Create("\"", 871)
+, Tuple.Create(Tuple.Create("", 749), Tuple.Create("https://secure.eu.tnspayments.com/form/version/", 749), true)
             
             #line 20 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
-, Tuple.Create(Tuple.Create("", 795), Tuple.Create<System.Object, System.Int32>(masterCard.Version
+, Tuple.Create(Tuple.Create("", 796), Tuple.Create<System.Object, System.Int32>(masterCard.Version
             
             #line default
             #line hidden
-, 795), false)
-, Tuple.Create(Tuple.Create("", 814), Tuple.Create("/merchant/", 814), true)
+, 796), false)
+, Tuple.Create(Tuple.Create("", 815), Tuple.Create("/merchant/", 815), true)
             
             #line 20 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
-                  , Tuple.Create(Tuple.Create("", 824), Tuple.Create<System.Object, System.Int32>(masterCard.AccountCode
+                  , Tuple.Create(Tuple.Create("", 825), Tuple.Create<System.Object, System.Int32>(masterCard.AccountCode
             
             #line default
             #line hidden
-, 824), false)
-, Tuple.Create(Tuple.Create("", 847), Tuple.Create("/session.js?debug=false", 847), true)
+, 825), false)
+, Tuple.Create(Tuple.Create("", 848), Tuple.Create("/session.js?debug=false", 848), true)
 );
 
 WriteLiteral("></script>\r\n");
@@ -160,7 +160,7 @@ WriteLiteral(" value=\"{{paymentMethod.slug}}\"");
 
 WriteLiteral(" class=\"ng-pristine ng-valid\"");
 
-WriteLiteral(" ng-click=\"ck.errors=false;ck.payment(paymentMethod);\"");
+WriteLiteral(" ng-click=\"ck.errors=false;ck.continue=false;ck.payment(paymentMethod);\"");
 
 WriteLiteral(">\r\n                        <div");
 
@@ -209,16 +209,16 @@ WriteLiteral("                <div");
 
 WriteLiteral(" class=\"col-sm-12 col-xs-12 img-rounded\"");
 
-WriteAttribute("ng-show", Tuple.Create(" ng-show=\"", 2139), Tuple.Create("\"", 2216)
-, Tuple.Create(Tuple.Create("", 2149), Tuple.Create("ck.model.checkout.selectedPayment.systemName==\'", 2149), true)
+WriteAttribute("ng-show", Tuple.Create(" ng-show=\"", 2158), Tuple.Create("\"", 2235)
+, Tuple.Create(Tuple.Create("", 2168), Tuple.Create("ck.model.checkout.selectedPayment.systemName==\'", 2168), true)
             
             #line 46 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
-                                     , Tuple.Create(Tuple.Create("", 2196), Tuple.Create<System.Object, System.Int32>(payment.SystemName
+                                     , Tuple.Create(Tuple.Create("", 2215), Tuple.Create<System.Object, System.Int32>(payment.SystemName
             
             #line default
             #line hidden
-, 2196), false)
-, Tuple.Create(Tuple.Create("", 2215), Tuple.Create("\'", 2215), true)
+, 2215), false)
+, Tuple.Create(Tuple.Create("", 2234), Tuple.Create("\'", 2234), true)
 );
 
 WriteLiteral(">\r\n");
@@ -691,18 +691,18 @@ WriteLiteral(" class=\"form-control border-radius-none ng-pristine ng-valid\"");
 
 WriteLiteral(" ng-model=\"ck.givexCardNo\"");
 
-WriteAttribute("ng-blur", Tuple.Create(" ng-blur=\"", 9250), Tuple.Create("\"", 9349)
-, Tuple.Create(Tuple.Create("", 9260), Tuple.Create("ck.model.checkout.selectedPayment.cardInfo.cardNo=\'", 9260), true)
+WriteAttribute("ng-blur", Tuple.Create(" ng-blur=\"", 9269), Tuple.Create("\"", 9368)
+, Tuple.Create(Tuple.Create("", 9279), Tuple.Create("ck.model.checkout.selectedPayment.cardInfo.cardNo=\'", 9279), true)
             
             #line 122 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
-                                                                                                                                                                            , Tuple.Create(Tuple.Create("", 9311), Tuple.Create<System.Object, System.Int32>(payment.AccountCode
+                                                                                                                                                                            , Tuple.Create(Tuple.Create("", 9330), Tuple.Create<System.Object, System.Int32>(payment.AccountCode
             
             #line default
             #line hidden
-, 9311), false)
-, Tuple.Create(Tuple.Create("", 9331), Tuple.Create("\'", 9331), true)
-, Tuple.Create(Tuple.Create(" ", 9332), Tuple.Create("+", 9333), true)
-, Tuple.Create(Tuple.Create(" ", 9334), Tuple.Create("ck.givexCardNo", 9335), true)
+, 9330), false)
+, Tuple.Create(Tuple.Create("", 9350), Tuple.Create("\'", 9350), true)
+, Tuple.Create(Tuple.Create(" ", 9351), Tuple.Create("+", 9352), true)
+, Tuple.Create(Tuple.Create(" ", 9353), Tuple.Create("ck.givexCardNo", 9354), true)
 );
 
 WriteLiteral(" placeholder=\"CardNo\"");
@@ -772,7 +772,44 @@ WriteLiteral("></a></div>\r\n                                    </div>\r\n     
             
             #line default
             #line hidden
-WriteLiteral("                    <div ng-cloak");
+WriteLiteral("                    ");
+
+            
+            #line 142 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
+                     if (payment.SystemName == PaymentMethodTypes.Klarna.ToString())
+                    {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                        <div");
+
+WriteLiteral(" class=\"row\"");
+
+WriteLiteral(">\r\n                            <div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12\"");
+
+WriteLiteral(">\r\n                                <div");
+
+WriteLiteral(" id=\"klarna_container\"");
+
+WriteLiteral("></div>\r\n                            </div>\r\n                        </div>\r\n");
+
+WriteLiteral("                        <script");
+
+WriteLiteral(" src=\"https://x.klarnacdn.net/kp/lib/v1/api.js\"");
+
+WriteLiteral(" async></script>\r\n");
+
+            
+            #line 150 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
+                    }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                            <div ng-cloak");
 
 WriteLiteral(" class=\"alert alert-success successBlock\"");
 
@@ -780,18 +817,18 @@ WriteLiteral(" ng-show=\"ck.messageSuccess\"");
 
 WriteLiteral(">\r\n");
 
-WriteLiteral("                        ");
+WriteLiteral("                                ");
 
             
-            #line 143 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
-                   Write(LT("Checkout.Text.SelectPayment", "Select a Payment Method"));
+            #line 152 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
+                           Write(LT("Checkout.Text.SelectPayment", "Select a Payment Method"));
 
             
             #line default
             #line hidden
             
-            #line 143 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
-                                                                                Write(LT("Checkout.Text.PartialPayment", "Partial payment of amount"));
+            #line 152 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
+                                                                                        Write(LT("Checkout.Text.PartialPayment", "Partial payment of amount"));
 
             
             #line default
@@ -803,31 +840,31 @@ WriteLiteral(" ng-bind=\"ck.partialAmount\"");
 WriteLiteral("></span> ");
 
             
-            #line 143 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
-                                                                                                                                                                                          Write(LT("Checkout.Text.BeenDone", "has been done. You can choose to complete your remaining payment using any other mode."));
+            #line 152 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
+                                                                                                                                                                                                  Write(LT("Checkout.Text.BeenDone", "has been done. You can choose to complete your remaining payment using any other mode."));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n                    </div>\r\n                    <div ng-cloak");
+WriteLiteral("\r\n                            </div>\r\n                            <div ng-cloak");
 
 WriteLiteral(" class=\"alert alert-danger alertBlock\"");
 
 WriteLiteral(" ng-show=\"ck.errorMessage\"");
 
-WriteLiteral(">\r\n                        <span>");
+WriteLiteral(">\r\n                                <span>");
 
             
-            #line 146 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
-                         Write(LT("Checkout.Text.ConfirmingPayment", "There has been some issue confirming payment.Please check and try again."));
+            #line 155 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
+                                 Write(LT("Checkout.Text.ConfirmingPayment", "There has been some issue confirming payment.Please check and try again."));
 
             
             #line default
             #line hidden
-WriteLiteral("</span>\r\n                    </div>\r\n                </div>\r\n");
+WriteLiteral("</span>\r\n                            </div>\r\n                </div>\r\n");
 
             
-            #line 149 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
+            #line 158 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
             }
         
             
@@ -842,7 +879,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("    ");
 
             
-            #line 158 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
+            #line 167 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
 Write(Html.Partial("~/views/checkout/layout1/_billingaddress.cshtml", @Model.Checkout.BillingAddress, new ViewDataDictionary { { "prefix", "_payment" } }));
 
             
@@ -875,7 +912,7 @@ WriteLiteral(" ng-show=\"(ck.userAddresses.length>0) && ck.billingAddress\"");
 WriteLiteral(">");
 
             
-            #line 163 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
+            #line 172 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
                                                                                                                                                                                                          Write(LT("Checkout.Text.ChangeBillingAddress", "Change Billing Address"));
 
             
@@ -906,7 +943,7 @@ WriteLiteral(" class=\"fa fa-caret-left\"");
 WriteLiteral("></i> ");
 
             
-            #line 167 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
+            #line 176 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
                                                                                   Write(LT("Checkout.Text.Back", "Back"));
 
             
@@ -919,13 +956,13 @@ WriteLiteral(" class=\"pull-right col-sm-3 col-xs-7 no-padding text-right\"");
 WriteLiteral(">      \r\n");
 
             
-            #line 170 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
+            #line 179 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
         
             
             #line default
             #line hidden
             
-            #line 170 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
+            #line 179 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
          if (SessionContext.CurrentUser == null)
         {
             if (Model.RegistrationPrompt)
@@ -938,6 +975,8 @@ WriteLiteral("                <button");
 
 WriteLiteral(" class=\"animate btn-primary\"");
 
+WriteLiteral(" ng-hide=\"ck.continue\"");
+
 WriteLiteral(" ng-click=\"ck.check=true;ck.setPassword()\"");
 
 WriteLiteral(">\r\n");
@@ -945,7 +984,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                    ");
 
             
-            #line 175 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
+            #line 184 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
                Write(LT("Checkout.Label.OrderSummary", "Place Order"));
 
             
@@ -957,8 +996,33 @@ WriteLiteral(" class=\"fa fa-caret-right\"");
 
 WriteLiteral("></i>\r\n                </button>\r\n");
 
+WriteLiteral("                <button");
+
+WriteLiteral(" ng-click=\"ck.continuePlaceOrder()\"");
+
+WriteLiteral(" ng-show=\"ck.continue\"");
+
+WriteLiteral(" class=\"animate btn-primary\"");
+
+WriteLiteral(">\r\n");
+
+WriteLiteral("                    ");
+
             
-            #line 177 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
+            #line 187 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
+               Write(LT("Checkout.Label.OrderSummary", "Continue"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral(" <i");
+
+WriteLiteral(" class=\"fa fa-caret-right\"");
+
+WriteLiteral("></i>\r\n                </button>\r\n");
+
+            
+            #line 189 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
             }
             else
             {
@@ -970,6 +1034,8 @@ WriteLiteral("                <button");
 
 WriteLiteral(" ng-click=\"ck.placeOrder()\"");
 
+WriteLiteral(" ng-hide=\"ck.continue\"");
+
 WriteLiteral(" class=\"animate btn-primary\"");
 
 WriteLiteral(">\r\n");
@@ -977,7 +1043,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                    ");
 
             
-            #line 181 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
+            #line 193 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
                Write(LT("Checkout.Label.OrderSummary", "Place Order"));
 
             
@@ -989,8 +1055,33 @@ WriteLiteral(" class=\"fa fa-caret-right\"");
 
 WriteLiteral("></i>\r\n                </button>\r\n");
 
+WriteLiteral("                <button");
+
+WriteLiteral(" ng-click=\"ck.continuePlaceOrder()\"");
+
+WriteLiteral(" ng-show=\"ck.continue\"");
+
+WriteLiteral(" class=\"animate btn-primary\"");
+
+WriteLiteral(">\r\n");
+
+WriteLiteral("                    ");
+
             
-            #line 183 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
+            #line 196 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
+               Write(LT("Checkout.Label.OrderSummary", "Continue"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral(" <i");
+
+WriteLiteral(" class=\"fa fa-caret-right\"");
+
+WriteLiteral("></i>\r\n                </button>\r\n");
+
+            
+            #line 198 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
             }
         }
         else
@@ -1003,6 +1094,8 @@ WriteLiteral("            <button");
 
 WriteLiteral(" ng-click=\"ck.placeOrder()\"");
 
+WriteLiteral(" ng-hide=\"ck.continue\"");
+
 WriteLiteral(" class=\"animate btn-primary\"");
 
 WriteLiteral(">\r\n");
@@ -1010,7 +1103,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                ");
 
             
-            #line 188 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
+            #line 203 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
            Write(LT("Checkout.Label.OrderSummary", "Place Order"));
 
             
@@ -1022,8 +1115,33 @@ WriteLiteral(" class=\"fa fa-caret-right\"");
 
 WriteLiteral("></i>\r\n            </button>\r\n");
 
+WriteLiteral("            <button");
+
+WriteLiteral(" ng-click=\"ck.continuePlaceOrder()\"");
+
+WriteLiteral(" ng-show=\"ck.continue\"");
+
+WriteLiteral(" class=\"animate btn-primary\"");
+
+WriteLiteral(">\r\n");
+
+WriteLiteral("                ");
+
             
-            #line 190 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
+            #line 206 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
+           Write(LT("Checkout.Label.OrderSummary", "Continue"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral(" <i");
+
+WriteLiteral(" class=\"fa fa-caret-right\"");
+
+WriteLiteral("></i>\r\n            </button>\r\n");
+
+            
+            #line 208 "..\..\Views\Checkout\Layout1\_PaymentMethod.cshtml"
         }
 
             

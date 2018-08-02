@@ -32,7 +32,7 @@
                     <li class="single-cart-item clearfix" ng-repeat="items in ck.basket.lineItems">
                         <span class="cart-img">
                             <a ng-href="/{{items.slug}}">
-                                <img ng-src="{{items.image}}" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'">
+                                <img ng-src="{{items.image}}" onerror="this.src = DEFAULT_IMAGE_URL">
                             </a>
                         </span>
                         <span class="cart-info">

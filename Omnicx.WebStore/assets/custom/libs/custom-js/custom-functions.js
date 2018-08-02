@@ -42,9 +42,8 @@ $('.carousel[data-type="multi"] .item').each(function () {
         next = $(this).siblings(':first');
     }
     next.children(':first-child').clone().appendTo($(this));
-    //carouselImage variable is declared for defining the number of carousel Images shown in one go 
-    var carouselImage = 3;
-    for (var i = 0; i < carouselImage; i++) {
+
+    for (var i = 0; i < 4; i++) {
         next = next.next();
         if (!next.length) {
             next = $(this).siblings(':first');
@@ -53,6 +52,24 @@ $('.carousel[data-type="multi"] .item').each(function () {
         next.children(':first-child').clone().appendTo($(this));
     }
 });
+
+//$('.carousel[data-type="multi"] .item').each(function () {
+//    var next = $(this).next();
+//    if (!next.length) {
+//        next = $(this).siblings(':first');
+//    }
+//    next.children(':first-child').clone().appendTo($(this));
+//    //carouselImage variable is declared for defining the number of carousel Images shown in one go 
+//    var carouselImage = 3;
+//    for (var i = 0; i < carouselImage; i++) {
+//        next = next.next();
+//        if (!next.length) {
+//            next = $(this).siblings(':first');
+//        }
+
+//        next.children(':first-child').clone().appendTo($(this));
+//    }
+//});
 
 
 // Function Written For Mobile accordion
@@ -172,23 +189,7 @@ $(document).ready(function () {
 
 /*****************************************************
 FUNCTION For fix Left facet For AKC Layout on scroll*/
-$(window).scroll(function () {
-    var scroll = $(window).scrollTop();
 
-    if (scroll >= 180) {
-        $("#scrollFix").addClass("fix-facet");
-        $("#alert-pc").addClass("alert-pc");
-        $('#back2Top').fadeIn();
-        //$("#listing").addClass("list-panel");
-    } else {
-        $("#miniBasket").removeClass("fix-to-top");
-        $("#scrollFix").removeClass("fix-facet");
-        $("#alert-pc").removeClass("alert-pc");
-        $('#back2Top').fadeOut();
-        //$("#listing").removeClass("list-panel");
-    }
-        
-});
 /*END FUNCTION
 ******************************************************/
 

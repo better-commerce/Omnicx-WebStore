@@ -29,12 +29,6 @@ namespace ASP
     using System.Web.WebPages;
     using DevTrends.MvcDonutCaching;
     
-    #line 12 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-    using Omnicx.API.SDK.Entities;
-    
-    #line default
-    #line hidden
-    
     #line 13 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
     using Omnicx.API.SDK.Helpers;
     
@@ -49,9 +43,15 @@ namespace ASP
     #line default
     #line hidden
     
+    #line 12 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+    using Omnicx.WebStore.Models.Enums;
+    
+    #line default
+    #line hidden
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Category/Layout1/CategoryLanding.cshtml")]
-    public partial class _Views_Category_Layout1_CategoryLanding_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Catalog.CategoryModel>
+    public partial class _Views_Category_Layout1_CategoryLanding_cshtml : Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Catalog.CategoryModel>
     {
         public _Views_Category_Layout1_CategoryLanding_cshtml()
         {
@@ -100,62 +100,819 @@ WriteLiteral("\r\n\r\n");
             #line hidden
 WriteLiteral("\r\n<div");
 
-WriteLiteral(" class=\"row\"");
+WriteLiteral(" class=\"col-sm-3 col-xs-12\"");
 
 WriteLiteral(">\r\n    <div");
 
-WriteLiteral(" class=\"col-md-12\"");
+WriteLiteral(" class=\"col-sm-12 col-xs-12 filterContainer hidden-xs\"");
 
-WriteLiteral(">\r\n        <ul");
+WriteLiteral(">\r\n        <div");
+
+WriteLiteral(" class=\"sidebar-menu\"");
+
+WriteLiteral(">\r\n            <div");
+
+WriteLiteral(" class=\"image\"");
+
+WriteLiteral(">\r\n                <img");
+
+WriteAttribute("src", Tuple.Create(" src=\"", 1145), Tuple.Create("\"", 1163)
+            
+            #line 31 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+, Tuple.Create(Tuple.Create("", 1151), Tuple.Create<System.Object, System.Int32>(Model.Image
+            
+            #line default
+            #line hidden
+, 1151), false)
+);
+
+WriteLiteral(" alt=\"\"");
+
+WriteLiteral(" class=\"img-responsive image1\"");
+
+WriteLiteral(" onerror=\"this.src=DEFAULT_IMAGE_URL\"");
+
+WriteLiteral(">\r\n            </div>\r\n");
+
+            
+            #line 33 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+            
+            
+            #line default
+            #line hidden
+            
+            #line 33 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+             if (Model != null && Model.LinkGroups != null)
+            {
+                foreach (var group in Model.LinkGroups.OrderBy(o => o.DisplayOrder))
+                {
+
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                    <div");
+
+WriteLiteral(" class=\"left-filter\"");
+
+WriteLiteral(">\r\n                        <h3");
+
+WriteLiteral(" class=\"left-filter-headline\"");
+
+WriteLiteral(">");
+
+            
+            #line 39 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                                                    Write(group.Name);
+
+            
+            #line default
+            #line hidden
+WriteLiteral(" </h3>\r\n                    </div>\r\n");
+
+WriteLiteral("                        <div");
+
+WriteLiteral(" class=\"left-filter-category\"");
+
+WriteLiteral(">\r\n                            <ul");
+
+WriteLiteral(" class=\"nav nav-pills nav-stacked\"");
+
+WriteLiteral(">\r\n                                ");
+
+WriteLiteral("\r\n");
+
+            
+            #line 44 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                                
+            
+            #line default
+            #line hidden
+            
+            #line 44 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                                 if (group.AttributeInputType == 6)
+                                {
+                                    foreach (var link in group.Items)
+                                    {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                        <li");
+
+WriteLiteral(" class=\"colour inline-block\"");
+
+WriteLiteral(">\r\n                                            <a");
+
+WriteAttribute("href", Tuple.Create(" href=\"", 2139), Tuple.Create("\"", 2157)
+, Tuple.Create(Tuple.Create("", 2146), Tuple.Create("/", 2146), true)
+            
+            #line 49 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+, Tuple.Create(Tuple.Create("", 2147), Tuple.Create<System.Object, System.Int32>(link.Link
+            
+            #line default
+            #line hidden
+, 2147), false)
+);
+
+WriteLiteral("><span");
+
+WriteLiteral(" class=\"colour\"");
+
+WriteAttribute("style", Tuple.Create(" style=\"", 2179), Tuple.Create("\"", 2214)
+, Tuple.Create(Tuple.Create("", 2187), Tuple.Create("background-color:", 2187), true)
+            
+            #line 49 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                               , Tuple.Create(Tuple.Create("", 2204), Tuple.Create<System.Object, System.Int32>(link.Name
+            
+            #line default
+            #line hidden
+, 2204), false)
+);
+
+WriteLiteral("></span></a>\r\n                                        </li>\r\n");
+
+            
+            #line 51 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                                    }
+                                }
+                                else
+                                {
+                                    foreach (var link in group.Items)
+                                    {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                        <li>\r\n                                   " +
+"         <a");
+
+WriteAttribute("href", Tuple.Create(" href=\"", 2625), Tuple.Create("\"", 2643)
+, Tuple.Create(Tuple.Create("", 2632), Tuple.Create("/", 2632), true)
+            
+            #line 58 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+, Tuple.Create(Tuple.Create("", 2633), Tuple.Create<System.Object, System.Int32>(link.Link
+            
+            #line default
+            #line hidden
+, 2633), false)
+);
+
+WriteLiteral(">");
+
+            
+            #line 58 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                                                             Write(link.Name);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</a>\r\n                                        </li>\r\n");
+
+            
+            #line 60 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                                    }
+                                }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                            </ul>\r\n                        </div>\r\n");
+
+            
+            #line 64 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                }
+            }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("        </div>\r\n    </div>\r\n\r\n</div>\r\n<div");
+
+WriteLiteral(" class=\"col-sm-9 col-xs-12\"");
+
+WriteLiteral(">\r\n");
+
+            
+            #line 71 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+    
+            
+            #line default
+            #line hidden
+            
+            #line 71 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+       /* End Right category detail panel */ 
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n    <div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12 dataContainer clearfix\"");
+
+WriteLiteral(">\r\n        <div");
+
+WriteLiteral(" class=\"row\"");
+
+WriteLiteral(">\r\n            <div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12\"");
+
+WriteLiteral(">\r\n                <ul");
 
 WriteLiteral(" class=\"breadcrumb\"");
 
-WriteLiteral(">\r\n            <li><a");
+WriteLiteral(">\r\n                    <li><a");
 
 WriteLiteral(" href=\"/\"");
 
 WriteLiteral(">");
 
             
-            #line 30 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                       Write(LT("ProductListing.Breadcrumb.Home", "Home"));
+            #line 76 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                               Write(LT("ProductListing.Breadcrumb.Home", "Home"));
 
             
             #line default
             #line hidden
-WriteLiteral("</a></li>\r\n            <li>\r\n");
+WriteLiteral("</a></li>\r\n                    <li>\r\n");
 
             
-            #line 32 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                
+            #line 78 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                        
             
             #line default
             #line hidden
             
-            #line 32 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                 if (Model != null)
+            #line 78 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                         if (Model != null)
+                        {
+            
+            #line default
+            #line hidden
+            
+            #line 79 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                    Write(Model.Name.ToCamelCase());
+
+            
+            #line default
+            #line hidden
+            
+            #line 79 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                                                  }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                    </li>\r\n                </ul>\r\n            </div>\r\n        </d" +
+"iv>\r\n");
+
+            
+            #line 84 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+        
+            
+            #line default
+            #line hidden
+            
+            #line 84 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+           /* Start carousel slider */ 
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n        <div");
+
+WriteLiteral(" class=\"row margin-bottom-lg\"");
+
+WriteLiteral(">\r\n");
+
+            
+            #line 86 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+            
+            
+            #line default
+            #line hidden
+            
+            #line 86 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+             if (Model != null && Model.Images != null)
+            {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                <div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12\"");
+
+WriteLiteral(">\r\n                    <div");
+
+WriteLiteral(" id=\"carousel-example-generic\"");
+
+WriteLiteral(" class=\"carousel slide omnicomponent component-slider\"");
+
+WriteLiteral(" list-id=\"\"");
+
+WriteLiteral(" list-type=\"\"");
+
+WriteLiteral(" data-ride=\"carousel\"");
+
+WriteLiteral(">\r\n                        <ol");
+
+WriteLiteral(" class=\"carousel-indicators\"");
+
+WriteLiteral(">\r\n\r\n");
+
+            
+            #line 92 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                            
+            
+            #line default
+            #line hidden
+            
+            #line 92 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                             foreach (var img in Model.Images.Select((index) => new { index }))
+                            {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                <li");
+
+WriteLiteral(" data-target=\"#carousel-example-generic\"");
+
+WriteLiteral(" data-slide-to=\"");
+
+            
+            #line 94 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                                                                                      Write(img.index);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\"");
+
+WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 4137), Tuple.Create("\"", 4172)
+, Tuple.Create(Tuple.Create("", 4148), Tuple.Create("{active", 4148), true)
+, Tuple.Create(Tuple.Create(" ", 4155), Tuple.Create(":", 4156), true)
+            
+            #line 94 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                                          , Tuple.Create(Tuple.Create(" ", 4157), Tuple.Create<System.Object, System.Int32>(img.index
+            
+            #line default
+            #line hidden
+, 4158), false)
+, Tuple.Create(Tuple.Create("", 4168), Tuple.Create("==0}", 4168), true)
+);
+
+WriteLiteral("></li>\r\n");
+
+            
+            #line 95 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                            }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n                        </ol>\r\n                        <div");
+
+WriteLiteral(" class=\"carousel-inner\"");
+
+WriteLiteral(">\r\n");
+
+            
+            #line 99 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                            
+            
+            #line default
+            #line hidden
+            
+            #line 99 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                             foreach (var img in Model.Images.Select((obj, index) => new { index, obj }))
+                            {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                <div");
+
+WriteLiteral(" class=\"item\"");
+
+WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 4486), Tuple.Create("\"", 4521)
+, Tuple.Create(Tuple.Create("", 4497), Tuple.Create("{active", 4497), true)
+, Tuple.Create(Tuple.Create(" ", 4504), Tuple.Create(":", 4505), true)
+            
+            #line 101 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+, Tuple.Create(Tuple.Create(" ", 4506), Tuple.Create<System.Object, System.Int32>(img.index
+            
+            #line default
+            #line hidden
+, 4507), false)
+, Tuple.Create(Tuple.Create("", 4517), Tuple.Create("==0}", 4517), true)
+);
+
+WriteLiteral(">\r\n");
+
+            
+            #line 102 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                                    
+            
+            #line default
+            #line hidden
+            
+            #line 102 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                                     if (img.obj.LinkType == LinkType.Href.GetHashCode().ToString())
+                                    {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                        <a");
+
+WriteAttribute("href", Tuple.Create(" href=\"", 4708), Tuple.Create("\"", 4728)
+            
+            #line 104 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+, Tuple.Create(Tuple.Create("", 4715), Tuple.Create<System.Object, System.Int32>(img.obj.Link
+            
+            #line default
+            #line hidden
+, 4715), false)
+);
+
+WriteLiteral(">\r\n                                            <img");
+
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 4780), Tuple.Create("\"", 4801)
+            
+            #line 105 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+, Tuple.Create(Tuple.Create("", 4789), Tuple.Create<System.Object, System.Int32>(img.obj.Url
+            
+            #line default
+            #line hidden
+, 4789), false)
+);
+
+WriteAttribute("alt", Tuple.Create(" alt=\"", 4802), Tuple.Create("\"", 4836)
+, Tuple.Create(Tuple.Create("", 4808), Tuple.Create("Slide", 4808), true)
+            
+            #line 105 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+ , Tuple.Create(Tuple.Create(" ", 4813), Tuple.Create<System.Object, System.Int32>(img.index
+            
+            #line default
+            #line hidden
+, 4814), false)
+, Tuple.Create(Tuple.Create(" ", 4824), Tuple.Create("of", 4825), true)
+, Tuple.Create(Tuple.Create(" ", 4827), Tuple.Create("Carousel", 4828), true)
+);
+
+WriteLiteral(" class=\"img-responsive image1\"");
+
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
+
+WriteLiteral(">\r\n                                            <div");
+
+WriteLiteral(" class=\"component-static-html img-topData hidden-xs\"");
+
+WriteLiteral(">\r\n                                                <h2>");
+
+            
+            #line 107 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                                               Write(img.obj.Title);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</h2>\r\n                                                <h3>");
+
+            
+            #line 108 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                                               Write(img.obj.SubTitle);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</h3>\r\n                                                <p>");
+
+            
+            #line 109 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                                              Write(img.obj.Description);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</p>\r\n                                            </div>\r\n                       " +
+"                 </a>\r\n");
+
+            
+            #line 112 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                                    }
+                                    else
+                                    {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                        <img");
+
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 5500), Tuple.Create("\"", 5521)
+            
+            #line 115 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+, Tuple.Create(Tuple.Create("", 5509), Tuple.Create<System.Object, System.Int32>(img.obj.Url
+            
+            #line default
+            #line hidden
+, 5509), false)
+);
+
+WriteAttribute("alt", Tuple.Create(" alt=\"", 5522), Tuple.Create("\"", 5556)
+, Tuple.Create(Tuple.Create("", 5528), Tuple.Create("Slide", 5528), true)
+            
+            #line 115 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+, Tuple.Create(Tuple.Create(" ", 5533), Tuple.Create<System.Object, System.Int32>(img.index
+            
+            #line default
+            #line hidden
+, 5534), false)
+, Tuple.Create(Tuple.Create(" ", 5544), Tuple.Create("of", 5545), true)
+, Tuple.Create(Tuple.Create(" ", 5547), Tuple.Create("Carousel", 5548), true)
+);
+
+WriteLiteral(" class=\"img-responsive image1\"");
+
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
+
+WriteLiteral(">\r\n");
+
+WriteLiteral("                                        <div");
+
+WriteLiteral(" class=\"component-static-html img-topData hidden-xs\"");
+
+WriteLiteral(">\r\n                                            <h2>");
+
+            
+            #line 117 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                                           Write(img.obj.Title);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</h2>\r\n                                            <h3>");
+
+            
+            #line 118 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                                           Write(img.obj.SubTitle);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</h3>\r\n                                            <p>");
+
+            
+            #line 119 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                                          Write(img.obj.Description);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</p>\r\n                                            <p>\r\n");
+
+            
+            #line 121 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                                                
+            
+            #line default
+            #line hidden
+            
+            #line 121 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                                                 if (img.obj.LinkType == LinkType.Button.GetHashCode().ToString())
+                                                {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                                    <a");
+
+WriteAttribute("href", Tuple.Create(" href=\"", 6212), Tuple.Create("\"", 6232)
+            
+            #line 123 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+, Tuple.Create(Tuple.Create("", 6219), Tuple.Create<System.Object, System.Int32>(img.obj.Link
+            
+            #line default
+            #line hidden
+, 6219), false)
+);
+
+WriteLiteral(" class=\"shop-now\"");
+
+WriteLiteral("> ");
+
+            
+            #line 123 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                                                                                         Write(img.obj.ButtonText);
+
+            
+            #line default
+            #line hidden
+WriteLiteral(" </a>\r\n");
+
+            
+            #line 124 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                                                }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                            </p>\r\n                               " +
+"         </div>\r\n");
+
+            
+            #line 127 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                                    }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n                                </div>\r\n");
+
+            
+            #line 130 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                            }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                        </div><a");
+
+WriteLiteral(" class=\"left carousel-control\"");
+
+WriteLiteral(" href=\"#carousel-example-generic\"");
+
+WriteLiteral(" data-slide=\"prev\"");
+
+WriteLiteral(">\r\n                            <span");
+
+WriteLiteral(" class=\"fa fa-chevron-left\"");
+
+WriteLiteral("></span>\r\n                        </a>\r\n                        <a");
+
+WriteLiteral(" class=\"right carousel-control\"");
+
+WriteLiteral(" href=\"#carousel-example-generic\"");
+
+WriteLiteral(" data-slide=\"next\"");
+
+WriteLiteral(">\r\n                            <span");
+
+WriteLiteral(" class=\"fa fa-chevron-right\"");
+
+WriteLiteral("></span>\r\n                        </a>\r\n                    </div>\r\n             " +
+"   </div>\r\n");
+
+            
+            #line 139 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+            }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("        </div>\r\n");
+
+            
+            #line 141 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+        
+            
+            #line default
+            #line hidden
+            
+            #line 141 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+           /* End carousel slider */ 
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n\r\n        \r\n        <div");
+
+WriteLiteral(" class=\"row\"");
+
+WriteLiteral(">\r\n");
+
+            
+            #line 145 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+            
+            
+            #line default
+            #line hidden
+            
+            #line 145 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+             if (Model != null && Model.SubCategories != null)
+            {
+                foreach (var cat in Model.SubCategories.Where(x => x.IsFeatured).ToList())
                 {
-            
-            #line default
-            #line hidden
-            
-            #line 33 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-            Write(Model.Name.ToCamelCase());
 
             
             #line default
             #line hidden
+WriteLiteral("                    <div");
+
+WriteLiteral(" class=\"col-md-3 col-sm-4 col-xs-6 resultContainerRelated\"");
+
+WriteLiteral(">\r\n                        <div");
+
+WriteLiteral(" class=\"categoryLanding\"");
+
+WriteLiteral(">\r\n                            <div");
+
+WriteLiteral(" class=\"image\"");
+
+WriteLiteral(">\r\n                                <a");
+
+WriteAttribute("href", Tuple.Create(" href=\"", 7542), Tuple.Create("\"", 7559)
+, Tuple.Create(Tuple.Create("", 7549), Tuple.Create("/", 7549), true)
             
-            #line 33 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                                          }
+            #line 152 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+, Tuple.Create(Tuple.Create("", 7550), Tuple.Create<System.Object, System.Int32>(cat.Link
+            
+            #line default
+            #line hidden
+, 7550), false)
+);
+
+WriteLiteral(">\r\n                                    <img");
+
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 7603), Tuple.Create("\"", 7622)
+            
+            #line 153 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+, Tuple.Create(Tuple.Create("", 7612), Tuple.Create<System.Object, System.Int32>(cat.Image
+            
+            #line default
+            #line hidden
+, 7612), false)
+);
+
+WriteLiteral(" alt=\"\"");
+
+WriteLiteral(" class=\"img-responsive image1\"");
+
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
+
+WriteLiteral(">\r\n                                </a>  ");
+
+WriteLiteral("\r\n                            </div>\r\n                            <div");
+
+WriteLiteral(" class=\"category-name\"");
+
+WriteLiteral(">\r\n                                <h2");
+
+WriteLiteral(" class=\"brand-h3\"");
+
+WriteLiteral("><a");
+
+WriteAttribute("href", Tuple.Create(" href=\"", 7904), Tuple.Create("\"", 7921)
+, Tuple.Create(Tuple.Create("", 7911), Tuple.Create("/", 7911), true)
+            
+            #line 157 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+, Tuple.Create(Tuple.Create("", 7912), Tuple.Create<System.Object, System.Int32>(cat.Link
+            
+            #line default
+            #line hidden
+, 7912), false)
+);
+
+WriteLiteral(">");
+
+            
+            #line 157 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                                                                     Write(cat.Name);
 
             
             #line default
             #line hidden
-WriteLiteral("            </li>\r\n        </ul>\r\n    </div>\r\n</div>\r\n");
+WriteLiteral("</a></h2>\r\n                                ");
+
+WriteLiteral("\r\n                            </div>\r\n                        </div>\r\n           " +
+"         </div>\r\n");
 
             
-            #line 38 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+            #line 162 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                }
+            }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("        </div>\r\n\r\n    </div>\r\n");
+
+            
+            #line 167 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+    
+            
+            #line default
+            #line hidden
+            
+            #line 167 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+       /* End Right category detail panel */ 
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n</div>\r\n");
+
+            
+            #line 169 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
    /* End breadcrumb container */ 
             
             #line default
@@ -189,13 +946,13 @@ WriteLiteral(" class=\"col-sm-12 margin-top-md\"");
 WriteLiteral(">\r\n");
 
             
-            #line 46 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+            #line 177 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
         
             
             #line default
             #line hidden
             
-            #line 46 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+            #line 177 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
            /* Start Left category filter */ 
             
             #line default
@@ -232,32 +989,32 @@ WriteLiteral(" class=\"image\"");
 
 WriteLiteral(">\r\n                            <img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2041), Tuple.Create("\"", 2059)
+WriteAttribute("src", Tuple.Create(" src=\"", 8991), Tuple.Create("\"", 9009)
             
-            #line 53 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-, Tuple.Create(Tuple.Create("", 2047), Tuple.Create<System.Object, System.Int32>(Model.Image
+            #line 184 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+, Tuple.Create(Tuple.Create("", 8997), Tuple.Create<System.Object, System.Int32>(Model.Image
             
             #line default
             #line hidden
-, 2047), false)
+, 8997), false)
 );
 
 WriteLiteral(" alt=\"\"");
 
 WriteLiteral(" class=\"img-responsive image1\"");
 
-WriteLiteral(" onerror=\"this.src=\'/assets/theme/ocx/images/noimagefound.jpg\'\"");
+WriteLiteral(" onerror=\"this.src=DEFAULT_IMAGE_URL\"");
 
 WriteLiteral(">\r\n                        </div>\r\n");
 
             
-            #line 55 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+            #line 186 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
                         
             
             #line default
             #line hidden
             
-            #line 55 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+            #line 186 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
                          if (Model != null && Model.LinkGroups != null)
                         {
                             foreach (var group in Model.LinkGroups.OrderBy(o => o.DisplayOrder))
@@ -277,7 +1034,7 @@ WriteLiteral(" class=\"left-filter-headline\"");
 WriteLiteral(">");
 
             
-            #line 60 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+            #line 191 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
                                                                 Write(group.Name);
 
             
@@ -298,13 +1055,13 @@ WriteLiteral(">\r\n                                        ");
 WriteLiteral("\r\n");
 
             
-            #line 65 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+            #line 196 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
                                         
             
             #line default
             #line hidden
             
-            #line 65 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+            #line 196 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
                                          if (group.AttributeInputType == 6)
                                         {
                                             foreach (var link in group.Items)
@@ -320,36 +1077,36 @@ WriteLiteral(" class=\"colour inline-block\"");
 WriteLiteral(">\r\n                                                    \r\n                        " +
 "                            <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 3280), Tuple.Create("\"", 3298)
-, Tuple.Create(Tuple.Create("", 3287), Tuple.Create("/", 3287), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 10204), Tuple.Create("\"", 10222)
+, Tuple.Create(Tuple.Create("", 10211), Tuple.Create("/", 10211), true)
             
-            #line 71 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-, Tuple.Create(Tuple.Create("", 3288), Tuple.Create<System.Object, System.Int32>(link.Link
+            #line 202 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+, Tuple.Create(Tuple.Create("", 10212), Tuple.Create<System.Object, System.Int32>(link.Link
             
             #line default
             #line hidden
-, 3288), false)
+, 10212), false)
 );
 
 WriteLiteral(" ><span");
 
 WriteLiteral(" class=\"colour\"");
 
-WriteAttribute("style", Tuple.Create(" style=\"", 3321), Tuple.Create("\"", 3356)
-, Tuple.Create(Tuple.Create("", 3329), Tuple.Create("background-color:", 3329), true)
+WriteAttribute("style", Tuple.Create(" style=\"", 10245), Tuple.Create("\"", 10280)
+, Tuple.Create(Tuple.Create("", 10253), Tuple.Create("background-color:", 10253), true)
             
-            #line 71 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                                        , Tuple.Create(Tuple.Create("", 3346), Tuple.Create<System.Object, System.Int32>(link.Name
+            #line 202 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+                                       , Tuple.Create(Tuple.Create("", 10270), Tuple.Create<System.Object, System.Int32>(link.Name
             
             #line default
             #line hidden
-, 3346), false)
+, 10270), false)
 );
 
 WriteLiteral("></span></a>\r\n                                                 </li>\r\n");
 
             
-            #line 73 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+            #line 204 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
                                             }
                                         }
                                         else
@@ -363,21 +1120,21 @@ WriteLiteral("></span></a>\r\n                                                 <
 WriteLiteral("                                                <li>\r\n                           " +
 "                         <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 3840), Tuple.Create("\"", 3858)
-, Tuple.Create(Tuple.Create("", 3847), Tuple.Create("/", 3847), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 10764), Tuple.Create("\"", 10782)
+, Tuple.Create(Tuple.Create("", 10771), Tuple.Create("/", 10771), true)
             
-            #line 80 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-, Tuple.Create(Tuple.Create("", 3848), Tuple.Create<System.Object, System.Int32>(link.Link
+            #line 211 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+, Tuple.Create(Tuple.Create("", 10772), Tuple.Create<System.Object, System.Int32>(link.Link
             
             #line default
             #line hidden
-, 3848), false)
+, 10772), false)
 );
 
 WriteLiteral(">");
 
             
-            #line 80 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+            #line 211 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
                                                                      Write(link.Name);
 
             
@@ -386,7 +1143,7 @@ WriteLiteral(">");
 WriteLiteral("</a>\r\n                                                </li>\r\n");
 
             
-            #line 82 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+            #line 213 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
                                             }
                                         }
 
@@ -397,7 +1154,7 @@ WriteLiteral("                                    </ul>\r\n                     
 "\r\n");
 
             
-            #line 86 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+            #line 217 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
                             }
                         }
 
@@ -407,883 +1164,32 @@ WriteLiteral("                                    </ul>\r\n                     
 WriteLiteral("                    </div>\r\n");
 
             
-            #line 89 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+            #line 220 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
                     
             
             #line default
             #line hidden
             
-            #line 89 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+            #line 220 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
                        /* End left filters accordion */ 
             
             #line default
             #line hidden
-WriteLiteral("\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div");
-
-WriteLiteral(" class=\"col-sm-3 hidden-xs no-padding-left\"");
-
-WriteLiteral(">\r\n            <div");
-
-WriteLiteral(" class=\"sidebar-menu\"");
-
-WriteLiteral(">\r\n                <div");
-
-WriteLiteral(" class=\"image\"");
-
-WriteLiteral(">\r\n                    <img");
-
-WriteAttribute("src", Tuple.Create(" src=\"", 4468), Tuple.Create("\"", 4486)
-            
-            #line 96 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-, Tuple.Create(Tuple.Create("", 4474), Tuple.Create<System.Object, System.Int32>(Model.Image
-            
-            #line default
-            #line hidden
-, 4474), false)
-);
-
-WriteLiteral(" alt=\"\"");
-
-WriteLiteral(" class=\"img-responsive image1\"");
-
-WriteLiteral(" onerror=\"this.src=\'/assets/theme/ocx/images/noimagefound.jpg\'\"");
-
-WriteLiteral(">\r\n                </div>\r\n");
+WriteLiteral("\r\n                </div>\r\n            </div>\r\n        </div>\r\n        \r\n");
 
             
-            #line 98 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                
-            
-            #line default
-            #line hidden
-            
-            #line 98 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                 if (Model != null && Model.LinkGroups != null)
-                {
-                    foreach (var group in Model.LinkGroups.OrderBy(o => o.DisplayOrder))
-                    {
-
-
-            
-            #line default
-            #line hidden
-WriteLiteral("                        <div");
-
-WriteLiteral(" class=\"left-filter\"");
-
-WriteLiteral(">\r\n                            <h3");
-
-WriteLiteral(" class=\"left-filter-headline\"");
-
-WriteLiteral(">");
-
-            
-            #line 104 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                                                        Write(group.Name);
-
-            
-            #line default
-            #line hidden
-WriteLiteral(" </h3>\r\n                        </div>\r\n");
-
-WriteLiteral("                        <div");
-
-WriteLiteral(" class=\"left-filter-category\"");
-
-WriteLiteral(">\r\n                            <ul");
-
-WriteLiteral(" class=\"nav nav-pills nav-stacked\"");
-
-WriteLiteral(">\r\n                                ");
-
-WriteLiteral("\r\n");
-
-            
-            #line 109 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                                
-            
-            #line default
-            #line hidden
-            
-            #line 109 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                                 if (group.AttributeInputType == 6)
-                                {
-                                    foreach (var link in group.Items)
-                                    {
-
-            
-            #line default
-            #line hidden
-WriteLiteral("                                        <li");
-
-WriteLiteral(" class=\"colour inline-block\"");
-
-WriteLiteral(">\r\n                                            <a");
-
-WriteAttribute("href", Tuple.Create(" href=\"", 5520), Tuple.Create("\"", 5538)
-, Tuple.Create(Tuple.Create("", 5527), Tuple.Create("/", 5527), true)
-            
-            #line 114 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-, Tuple.Create(Tuple.Create("", 5528), Tuple.Create<System.Object, System.Int32>(link.Link
-            
-            #line default
-            #line hidden
-, 5528), false)
-);
-
-WriteLiteral(" ><span");
-
-WriteLiteral(" class=\"colour\"");
-
-WriteAttribute("style", Tuple.Create(" style=\"", 5561), Tuple.Create("\"", 5596)
-, Tuple.Create(Tuple.Create("", 5569), Tuple.Create("background-color:", 5569), true)
-            
-            #line 114 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                                , Tuple.Create(Tuple.Create("", 5586), Tuple.Create<System.Object, System.Int32>(link.Name
-            
-            #line default
-            #line hidden
-, 5586), false)
-);
-
-WriteLiteral("></span></a>\r\n                                        </li>\r\n");
-
-            
-            #line 116 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                                    }
-                                }
-                                else
-                                {
-                                    foreach (var link in group.Items)
-                                    {
-
-            
-            #line default
-            #line hidden
-WriteLiteral("                                        <li>\r\n                                   " +
-"         <a");
-
-WriteAttribute("href", Tuple.Create(" href=\"", 6007), Tuple.Create("\"", 6025)
-, Tuple.Create(Tuple.Create("", 6014), Tuple.Create("/", 6014), true)
-            
-            #line 123 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-, Tuple.Create(Tuple.Create("", 6015), Tuple.Create<System.Object, System.Int32>(link.Link
-            
-            #line default
-            #line hidden
-, 6015), false)
-);
-
-WriteLiteral(">");
-
-            
-            #line 123 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                                                             Write(link.Name);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</a>\r\n                                        </li>\r\n");
-
-            
-            #line 125 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                                    }
-                                }
-
-            
-            #line default
-            #line hidden
-WriteLiteral("                            </ul>\r\n                        </div>\r\n");
-
-            
-            #line 129 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                    }
-                }
-
-            
-            #line default
-            #line hidden
-WriteLiteral("            </div>\r\n        </div>\r\n");
-
-            
-            #line 133 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+            #line 225 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
         
             
             #line default
             #line hidden
             
-            #line 133 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
+            #line 225 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
            /* End Left category filter */ 
             
             #line default
             #line hidden
-WriteLiteral("\r\n\r\n");
-
-            
-            #line 135 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-        
-            
-            #line default
-            #line hidden
-            
-            #line 135 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-           /* End Right category detail panel */ 
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n        <div");
-
-WriteLiteral(" class=\"col-sm-9 clearfix\"");
-
-WriteLiteral(">\r\n");
-
-            
-            #line 137 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-            
-            
-            #line default
-            #line hidden
-            
-            #line 137 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-               /* Start carousel slider */ 
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n            <div");
-
-WriteLiteral(" class=\"row margin-bottom-lg\"");
-
-WriteLiteral(">\r\n");
-
-            
-            #line 139 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                
-            
-            #line default
-            #line hidden
-            
-            #line 139 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                 if (Model != null && Model.Images != null)
-                {
-
-            
-            #line default
-            #line hidden
-WriteLiteral("                    <div");
-
-WriteLiteral(" id=\"carousel-example-generic\"");
-
-WriteLiteral(" class=\"carousel slide omnicomponent component-slider\"");
-
-WriteLiteral(" list-id=\"\"");
-
-WriteLiteral(" list-type=\"\"");
-
-WriteLiteral(" data-ride=\"carousel\"");
-
-WriteLiteral(">\r\n                        <ol");
-
-WriteLiteral(" class=\"carousel-indicators\"");
-
-WriteLiteral(">\r\n\r\n");
-
-            
-            #line 144 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                            
-            
-            #line default
-            #line hidden
-            
-            #line 144 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                             foreach (var img in Model.Images.Select((index) => new { index }))
-                            {
-
-            
-            #line default
-            #line hidden
-WriteLiteral("                                <li");
-
-WriteLiteral(" data-target=\"#carousel-example-generic\"");
-
-WriteLiteral(" data-slide-to=\"");
-
-            
-            #line 146 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                                                                                      Write(img.index);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\"");
-
-WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 7069), Tuple.Create("\"", 7104)
-, Tuple.Create(Tuple.Create("", 7080), Tuple.Create("{active", 7080), true)
-, Tuple.Create(Tuple.Create(" ", 7087), Tuple.Create(":", 7088), true)
-            
-            #line 146 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                                          , Tuple.Create(Tuple.Create(" ", 7089), Tuple.Create<System.Object, System.Int32>(img.index
-            
-            #line default
-            #line hidden
-, 7090), false)
-, Tuple.Create(Tuple.Create("", 7100), Tuple.Create("==0}", 7100), true)
-);
-
-WriteLiteral("></li>\r\n");
-
-            
-            #line 147 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                            }
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n                        </ol>\r\n                        <div");
-
-WriteLiteral(" class=\"carousel-inner\"");
-
-WriteLiteral(">\r\n");
-
-            
-            #line 151 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                            
-            
-            #line default
-            #line hidden
-            
-            #line 151 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                             foreach (var img in Model.Images.Select((obj, index) => new { index, obj }))
-                            {
-
-            
-            #line default
-            #line hidden
-WriteLiteral("                                <div");
-
-WriteLiteral(" class=\"item\"");
-
-WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 7418), Tuple.Create("\"", 7453)
-, Tuple.Create(Tuple.Create("", 7429), Tuple.Create("{active", 7429), true)
-, Tuple.Create(Tuple.Create(" ", 7436), Tuple.Create(":", 7437), true)
-            
-            #line 153 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-, Tuple.Create(Tuple.Create(" ", 7438), Tuple.Create<System.Object, System.Int32>(img.index
-            
-            #line default
-            #line hidden
-, 7439), false)
-, Tuple.Create(Tuple.Create("", 7449), Tuple.Create("==0}", 7449), true)
-);
-
-WriteLiteral(">\r\n");
-
-            
-            #line 154 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                                    
-            
-            #line default
-            #line hidden
-            
-            #line 154 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                                     if (img.obj.LinkType == LinkType.Href.GetHashCode().ToString())
-                                    {
-
-            
-            #line default
-            #line hidden
-WriteLiteral("                                        <a");
-
-WriteAttribute("href", Tuple.Create(" href=\"", 7640), Tuple.Create("\"", 7660)
-            
-            #line 156 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-, Tuple.Create(Tuple.Create("", 7647), Tuple.Create<System.Object, System.Int32>(img.obj.Link
-            
-            #line default
-            #line hidden
-, 7647), false)
-);
-
-WriteLiteral(">\r\n                                            <img");
-
-WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 7712), Tuple.Create("\"", 7733)
-            
-            #line 157 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-, Tuple.Create(Tuple.Create("", 7721), Tuple.Create<System.Object, System.Int32>(img.obj.Url
-            
-            #line default
-            #line hidden
-, 7721), false)
-);
-
-WriteAttribute("alt", Tuple.Create(" alt=\"", 7734), Tuple.Create("\"", 7768)
-, Tuple.Create(Tuple.Create("", 7740), Tuple.Create("Slide", 7740), true)
-            
-            #line 157 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
- , Tuple.Create(Tuple.Create(" ", 7745), Tuple.Create<System.Object, System.Int32>(img.index
-            
-            #line default
-            #line hidden
-, 7746), false)
-, Tuple.Create(Tuple.Create(" ", 7756), Tuple.Create("of", 7757), true)
-, Tuple.Create(Tuple.Create(" ", 7759), Tuple.Create("Carousel", 7760), true)
-);
-
-WriteLiteral(" class=\"img-responsive image1\"");
-
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
-
-WriteLiteral(">\r\n                                            <div");
-
-WriteLiteral(" class=\"component-static-html img-topData hidden-xs\"");
-
-WriteLiteral(">\r\n                                                <h2>");
-
-            
-            #line 159 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                                               Write(img.obj.Title);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</h2>\r\n                                                <h3>");
-
-            
-            #line 160 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                                               Write(img.obj.SubTitle);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</h3>\r\n                                                <p>");
-
-            
-            #line 161 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                                              Write(img.obj.Description);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</p>\r\n                                            </div>\r\n                       " +
-"                 </a>\r\n");
-
-            
-            #line 164 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                                    }
-                                    else
-                                    {
-
-            
-            #line default
-            #line hidden
-WriteLiteral("                                        <img");
-
-WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 8458), Tuple.Create("\"", 8479)
-            
-            #line 167 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-, Tuple.Create(Tuple.Create("", 8467), Tuple.Create<System.Object, System.Int32>(img.obj.Url
-            
-            #line default
-            #line hidden
-, 8467), false)
-);
-
-WriteAttribute("alt", Tuple.Create(" alt=\"", 8480), Tuple.Create("\"", 8514)
-, Tuple.Create(Tuple.Create("", 8486), Tuple.Create("Slide", 8486), true)
-            
-            #line 167 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-, Tuple.Create(Tuple.Create(" ", 8491), Tuple.Create<System.Object, System.Int32>(img.index
-            
-            #line default
-            #line hidden
-, 8492), false)
-, Tuple.Create(Tuple.Create(" ", 8502), Tuple.Create("of", 8503), true)
-, Tuple.Create(Tuple.Create(" ", 8505), Tuple.Create("Carousel", 8506), true)
-);
-
-WriteLiteral(" class=\"img-responsive image1\"");
-
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
-
-WriteLiteral(">\r\n");
-
-WriteLiteral("                                        <div");
-
-WriteLiteral(" class=\"component-static-html img-topData hidden-xs\"");
-
-WriteLiteral(">\r\n                                            <h2>");
-
-            
-            #line 169 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                                           Write(img.obj.Title);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</h2>\r\n                                            <h3>");
-
-            
-            #line 170 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                                           Write(img.obj.SubTitle);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</h3>\r\n                                            <p>");
-
-            
-            #line 171 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                                          Write(img.obj.Description);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</p>\r\n                                            <p>\r\n");
-
-            
-            #line 173 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                                                
-            
-            #line default
-            #line hidden
-            
-            #line 173 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                                                 if (img.obj.LinkType == LinkType.Button.GetHashCode().ToString())
-                                                {
-
-            
-            #line default
-            #line hidden
-WriteLiteral("                                                    <a");
-
-WriteAttribute("href", Tuple.Create(" href=\"", 9196), Tuple.Create("\"", 9216)
-            
-            #line 175 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-, Tuple.Create(Tuple.Create("", 9203), Tuple.Create<System.Object, System.Int32>(img.obj.Link
-            
-            #line default
-            #line hidden
-, 9203), false)
-);
-
-WriteLiteral(" class=\"shop-now\"");
-
-WriteLiteral("> ");
-
-            
-            #line 175 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                                                                                         Write(img.obj.ButtonText);
-
-            
-            #line default
-            #line hidden
-WriteLiteral(" </a>\r\n");
-
-            
-            #line 176 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                                                }
-
-            
-            #line default
-            #line hidden
-WriteLiteral("                                            </p>\r\n                               " +
-"         </div>\r\n");
-
-            
-            #line 179 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                                    }
-
-            
-            #line default
-            #line hidden
-WriteLiteral("                                    \r\n                                </div>\r\n");
-
-            
-            #line 182 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                            }
-
-            
-            #line default
-            #line hidden
-WriteLiteral("                        </div><a");
-
-WriteLiteral(" class=\"left carousel-control\"");
-
-WriteLiteral(" href=\"#carousel-example-generic\"");
-
-WriteLiteral(" data-slide=\"prev\"");
-
-WriteLiteral(">\r\n                            <span");
-
-WriteLiteral(" class=\"fa fa-chevron-left\"");
-
-WriteLiteral("></span>\r\n                        </a>\r\n                        <a");
-
-WriteLiteral(" class=\"right carousel-control\"");
-
-WriteLiteral(" href=\"#carousel-example-generic\"");
-
-WriteLiteral(" data-slide=\"next\"");
-
-WriteLiteral(">\r\n                            <span");
-
-WriteLiteral(" class=\"fa fa-chevron-right\"");
-
-WriteLiteral("></span>\r\n                        </a>\r\n                    </div>\r\n");
-
-            
-            #line 190 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                }
-
-            
-            #line default
-            #line hidden
-WriteLiteral("            </div>\r\n");
-
-            
-            #line 192 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-            
-            
-            #line default
-            #line hidden
-            
-            #line 192 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-               /* End carousel slider */ 
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n\r\n");
-
-            
-            #line 194 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-            
-            
-            #line default
-            #line hidden
-            
-            #line 194 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-              /*Delivery Options*/
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n");
-
-            
-            #line 195 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-            
-            
-            #line default
-            #line hidden
-            
-            #line 195 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-             if (Model != null)
-            {
-
-            
-            #line default
-            #line hidden
-WriteLiteral("                <div");
-
-WriteLiteral(" class=\"row hidden-xs\"");
-
-WriteLiteral(">\r\n                    <div");
-
-WriteLiteral(" class=\"delivery-option-bar\"");
-
-WriteLiteral(">\r\n                        <div");
-
-WriteLiteral(" class=\"col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1\"");
-
-WriteLiteral(">\r\n                            <div");
-
-WriteLiteral(" class=\"row\"");
-
-WriteLiteral(">\r\n                                <div");
-
-WriteLiteral(" class=\"col-sm-4\"");
-
-WriteLiteral(">\r\n                                    <h5");
-
-WriteLiteral(" class=\"delivery-h5\"");
-
-WriteLiteral(">Free Standard Delivery</h5>\r\n                                    <h6");
-
-WriteLiteral(" class=\"delivery-h6\"");
-
-WriteLiteral(">On All Orders Over $50</h6>\r\n                                </div>\r\n           " +
-"                     <div");
-
-WriteLiteral(" class=\"col-sm-4\"");
-
-WriteLiteral(">\r\n                                    <h5");
-
-WriteLiteral(" class=\"delivery-h5\"");
-
-WriteLiteral(">Next Day Delivery</h5>\r\n                                    <h6");
-
-WriteLiteral(" class=\"delivery-h6\"");
-
-WriteLiteral(">From only $3.5</h6>\r\n                                </div>\r\n                   " +
-"             <div");
-
-WriteLiteral(" class=\"col-sm-4\"");
-
-WriteLiteral(">\r\n                                    <h5");
-
-WriteLiteral(" class=\"delivery-h5\"");
-
-WriteLiteral(">Worldwide Delivery</h5>\r\n                                    <h6");
-
-WriteLiteral(" class=\"delivery-h6\"");
-
-WriteLiteral(">To Over 200 Countries</h6>\r\n                                </div>\r\n            " +
-"                </div>\r\n                        </div>\r\n                    </di" +
-"v>\r\n                </div>\r\n");
-
-            
-            #line 217 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-            }
-
-            
-            #line default
-            #line hidden
-WriteLiteral("            ");
-
-            
-            #line 218 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-              /*Delivery Options*/
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n            <div");
-
-WriteLiteral(" class=\"row\"");
-
-WriteLiteral(">\r\n                <div");
-
-WriteLiteral(" class=\"row\"");
-
-WriteLiteral(">\r\n");
-
-            
-            #line 221 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                    
-            
-            #line default
-            #line hidden
-            
-            #line 221 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                     if (Model != null && Model.SubCategories != null)
-                    {
-                        foreach (var cat in Model.SubCategories.Where(x => x.IsFeatured).ToList())
-                        {
-
-            
-            #line default
-            #line hidden
-WriteLiteral("                            <div");
-
-WriteLiteral(" class=\"col-md-3 col-sm-4 col-xs-6 resultContainerRelated\"");
-
-WriteLiteral(">\r\n                                <div");
-
-WriteLiteral(" class=\"categoryLanding\"");
-
-WriteLiteral(">\r\n                                    <div");
-
-WriteLiteral(" class=\"image\"");
-
-WriteLiteral(">\r\n                                        <a");
-
-WriteAttribute("href", Tuple.Create(" href=\"", 11942), Tuple.Create("\"", 11959)
-, Tuple.Create(Tuple.Create("", 11949), Tuple.Create("/", 11949), true)
-            
-            #line 228 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-, Tuple.Create(Tuple.Create("", 11950), Tuple.Create<System.Object, System.Int32>(cat.Link
-            
-            #line default
-            #line hidden
-, 11950), false)
-);
-
-WriteLiteral(">\r\n                                            <img");
-
-WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 12011), Tuple.Create("\"", 12030)
-            
-            #line 229 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-, Tuple.Create(Tuple.Create("", 12020), Tuple.Create<System.Object, System.Int32>(cat.Image
-            
-            #line default
-            #line hidden
-, 12020), false)
-);
-
-WriteLiteral(" alt=\"\"");
-
-WriteLiteral(" class=\"img-responsive image1\"");
-
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
-
-WriteLiteral(">\r\n                                        </a>  ");
-
-WriteLiteral("\r\n                                    </div>\r\n                                   " +
-" <div");
-
-WriteLiteral(" class=\"category-name\"");
-
-WriteLiteral(">\r\n                                        <h2");
-
-WriteLiteral(" class=\"brand-h3\"");
-
-WriteLiteral("><a");
-
-WriteAttribute("href", Tuple.Create(" href=\"", 12370), Tuple.Create("\"", 12387)
-, Tuple.Create(Tuple.Create("", 12377), Tuple.Create("/", 12377), true)
-            
-            #line 233 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-, Tuple.Create(Tuple.Create("", 12378), Tuple.Create<System.Object, System.Int32>(cat.Link
-            
-            #line default
-            #line hidden
-, 12378), false)
-);
-
-WriteLiteral(">");
-
-            
-            #line 233 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                                                                             Write(cat.Name);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</a></h2>\r\n                                        ");
-
-WriteLiteral("\r\n                                    </div>\r\n                                </d" +
-"iv>\r\n                            </div>\r\n");
-
-            
-            #line 238 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-                        }
-                    }
-
-            
-            #line default
-            #line hidden
-WriteLiteral("                </div>\r\n            </div>\r\n\r\n        </div>\r\n");
-
-            
-            #line 244 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-        
-            
-            #line default
-            #line hidden
-            
-            #line 244 "..\..\Views\Category\Layout1\CategoryLanding.cshtml"
-           /* End Right category detail panel */ 
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n    </div>\r\n</div>");
+WriteLiteral("\r\n\r\n        \r\n    </div>\r\n</div>");
 
         }
     }

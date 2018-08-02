@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Omnicx.WebStore", "Omnicx.W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Omnicx.WebStore.Core", "Omnicx.WebStore.Core\Omnicx.WebStore.Core.csproj", "{634877C1-92FB-4B43-B59F-E8438A3F7424}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 Models", "4 Models", "{287AC0B4-B61E-42F7-BB88-123C05F83249}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Omnicx.WebStore.Models", "Omnicx.WebStore.Models\Omnicx.WebStore.Models.csproj", "{404D2B03-F5CF-4E2E-B05E-0EC7311916A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,10 @@ Global
 		{634877C1-92FB-4B43-B59F-E8438A3F7424}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{634877C1-92FB-4B43-B59F-E8438A3F7424}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{634877C1-92FB-4B43-B59F-E8438A3F7424}.Release|Any CPU.Build.0 = Release|Any CPU
+		{404D2B03-F5CF-4E2E-B05E-0EC7311916A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{404D2B03-F5CF-4E2E-B05E-0EC7311916A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{404D2B03-F5CF-4E2E-B05E-0EC7311916A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{404D2B03-F5CF-4E2E-B05E-0EC7311916A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,6 +49,7 @@ Global
 		{267B329B-0A25-4136-AF47-668C45F0F0CF} = {0C1138EE-E5CA-4473-A18F-D1E58E466BFA}
 		{D7E752DA-160E-4906-B839-896FF66FC991} = {D7328E88-6EA6-4EFF-A004-A8A37F2C69F1}
 		{634877C1-92FB-4B43-B59F-E8438A3F7424} = {88EFE818-F226-4041-B3DE-2996FFEBDEFD}
+		{404D2B03-F5CF-4E2E-B05E-0EC7311916A7} = {287AC0B4-B61E-42F7-BB88-123C05F83249}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {062E3A29-AB20-48D1-A1CC-B08EC1105256}

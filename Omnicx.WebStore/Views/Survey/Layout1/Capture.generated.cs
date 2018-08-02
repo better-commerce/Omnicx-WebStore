@@ -29,28 +29,40 @@ namespace ASP
     using System.Web.WebPages;
     using DevTrends.MvcDonutCaching;
     
-    #line 16 "..\..\Views\Survey\Layout1\Capture.cshtml"
+    #line 17 "..\..\Views\Survey\Layout1\Capture.cshtml"
     using Microsoft.Web.Mvc;
-    
-    #line default
-    #line hidden
-    
-    #line 14 "..\..\Views\Survey\Layout1\Capture.cshtml"
-    using Omnicx.API.SDK.Models.Site;
     
     #line default
     #line hidden
     using Omnicx.WebStore;
     using Omnicx.WebStore.Core;
     
-    #line 17 "..\..\Views\Survey\Layout1\Capture.cshtml"
+    #line 18 "..\..\Views\Survey\Layout1\Capture.cshtml"
     using Omnicx.WebStore.Core.Controllers;
     
     #line default
     #line hidden
     
-    #line 15 "..\..\Views\Survey\Layout1\Capture.cshtml"
+    #line 16 "..\..\Views\Survey\Layout1\Capture.cshtml"
     using Omnicx.WebStore.Framework.Helpers;
+    
+    #line default
+    #line hidden
+    
+    #line 15 "..\..\Views\Survey\Layout1\Capture.cshtml"
+    using Omnicx.WebStore.Models.Enums;
+    
+    #line default
+    #line hidden
+    
+    #line 14 "..\..\Views\Survey\Layout1\Capture.cshtml"
+    using Omnicx.WebStore.Models.Keys;
+    
+    #line default
+    #line hidden
+    
+    #line 13 "..\..\Views\Survey\Layout1\Capture.cshtml"
+    using Omnicx.WebStore.Models.Site;
     
     #line default
     #line hidden
@@ -67,16 +79,16 @@ namespace ASP
             
             #line 1 "..\..\Views\Survey\Layout1\Capture.cshtml"
   
-/*
-    Name: Survey View
-    Purpose: Show Survey
-    Structure: /Views/Survey/Layout1/Capture.cshtml
-    Contains (Partial Views Used):
-        a-/Views/Shared/Layout1/_LayoutCMS.cshtml
-        b-_BuildABundle
-        c-_WizardStyle
-    Contained In (Where we Use this View):
-    */
+    /*
+        Name: Survey View
+        Purpose: Show Survey
+        Structure: /Views/Survey/Layout1/Capture.cshtml
+        Contains (Partial Views Used):
+            a-/Views/Shared/Layout1/_LayoutCMS.cshtml
+            b-_BuildABundle
+            c-_WizardStyle
+        Contained In (Where we Use this View):
+        */
 
             
             #line default
@@ -84,7 +96,7 @@ namespace ASP
 WriteLiteral("\r\n");
 
             
-            #line 18 "..\..\Views\Survey\Layout1\Capture.cshtml"
+            #line 20 "..\..\Views\Survey\Layout1\Capture.cshtml"
   
     Layout = "~/Views/Shared/Layout1/_LayoutCMS.cshtml";
 
@@ -97,6 +109,8 @@ WriteLiteral("\r\n<style>\r\n    .fa-star-o {\r\n        color: #FF7700;\r\n    
 
 WriteLiteral("\r\n\r\n<div");
 
+WriteLiteral(" class=\"dataContainer\"");
+
 WriteLiteral(" ng-controller=\"surveyCtrl as pm\"");
 
 WriteLiteral(" ng-cloak>\r\n    <h1");
@@ -106,7 +120,7 @@ WriteLiteral(" class=\"text-center survey-question\"");
 WriteLiteral(">");
 
             
-            #line 36 "..\..\Views\Survey\Layout1\Capture.cshtml"
+            #line 38 "..\..\Views\Survey\Layout1\Capture.cshtml"
                                        Write(Model.Name);
 
             
@@ -130,13 +144,13 @@ WriteLiteral(" ng-hide=\"pm.surveyCompleted\"");
 WriteLiteral(">\r\n");
 
             
-            #line 39 "..\..\Views\Survey\Layout1\Capture.cshtml"
+            #line 41 "..\..\Views\Survey\Layout1\Capture.cshtml"
             
             
             #line default
             #line hidden
             
-            #line 39 "..\..\Views\Survey\Layout1\Capture.cshtml"
+            #line 41 "..\..\Views\Survey\Layout1\Capture.cshtml"
              switch (Model.Output)
             {
                 case SurveyOutputStyle.BuildABundle:
@@ -145,14 +159,14 @@ WriteLiteral(">\r\n");
             #line default
             #line hidden
             
-            #line 42 "..\..\Views\Survey\Layout1\Capture.cshtml"
+            #line 44 "..\..\Views\Survey\Layout1\Capture.cshtml"
                Write(Html.Partial("_BuildABundle"));
 
             
             #line default
             #line hidden
             
-            #line 42 "..\..\Views\Survey\Layout1\Capture.cshtml"
+            #line 44 "..\..\Views\Survey\Layout1\Capture.cshtml"
                                                   ;
                     break;
                 case SurveyOutputStyle.SearchProducts:
@@ -161,14 +175,14 @@ WriteLiteral(">\r\n");
             #line default
             #line hidden
             
-            #line 45 "..\..\Views\Survey\Layout1\Capture.cshtml"
+            #line 47 "..\..\Views\Survey\Layout1\Capture.cshtml"
                Write(Html.Partial("_WizardStyle"));
 
             
             #line default
             #line hidden
             
-            #line 45 "..\..\Views\Survey\Layout1\Capture.cshtml"
+            #line 47 "..\..\Views\Survey\Layout1\Capture.cshtml"
                                                  ;
                     break;
                 case SurveyOutputStyle.QualifyingQuestionnaire:
@@ -177,14 +191,14 @@ WriteLiteral(">\r\n");
             #line default
             #line hidden
             
-            #line 48 "..\..\Views\Survey\Layout1\Capture.cshtml"
+            #line 50 "..\..\Views\Survey\Layout1\Capture.cshtml"
                Write(Html.Partial("_WizardStyle"));
 
             
             #line default
             #line hidden
             
-            #line 48 "..\..\Views\Survey\Layout1\Capture.cshtml"
+            #line 50 "..\..\Views\Survey\Layout1\Capture.cshtml"
                                                  ;
                     break;
             }
@@ -209,7 +223,7 @@ WriteLiteral(" class=\"text-center text-white\"");
 WriteLiteral(">");
 
             
-            #line 55 "..\..\Views\Survey\Layout1\Capture.cshtml"
+            #line 57 "..\..\Views\Survey\Layout1\Capture.cshtml"
                                               Write(Model.ThankYouText);
 
             
@@ -222,15 +236,15 @@ WriteLiteral(" class=\"container\"");
 WriteLiteral(">\r\n");
 
             
-            #line 57 "..\..\Views\Survey\Layout1\Capture.cshtml"
+            #line 59 "..\..\Views\Survey\Layout1\Capture.cshtml"
                     
             
             #line default
             #line hidden
             
-            #line 57 "..\..\Views\Survey\Layout1\Capture.cshtml"
+            #line 59 "..\..\Views\Survey\Layout1\Capture.cshtml"
                       if (Model.Output == SurveyOutputStyle.SearchProducts)
-                    {
+                        {
 
             
             #line default
@@ -239,14 +253,14 @@ WriteLiteral("                            <a");
 
 WriteLiteral(" class=\"animate btn-primary\"");
 
-WriteLiteral("  ng-click=\"pm.showRelevantProducts()\"");
+WriteLiteral(" ng-click=\"pm.showRelevantProducts()\"");
 
 WriteLiteral(">\r\n");
 
 WriteLiteral("                                ");
 
             
-            #line 60 "..\..\Views\Survey\Layout1\Capture.cshtml"
+            #line 62 "..\..\Views\Survey\Layout1\Capture.cshtml"
                            Write(LT("ProductSurvey.Label.Buyrelevantproducts", "Buy relevant products"));
 
             
@@ -261,7 +275,7 @@ WriteLiteral(" aria-hidden=\"true\"");
 WriteLiteral("></span>\r\n                            </a>\r\n");
 
             
-            #line 62 "..\..\Views\Survey\Layout1\Capture.cshtml"
+            #line 64 "..\..\Views\Survey\Layout1\Capture.cshtml"
 
                         }
                         else
@@ -290,8 +304,8 @@ WriteLiteral(" ng-href=\"/{{productBundle.product.slug}}\"");
 
 WriteLiteral(">\r\n                                            <img");
 
-WriteLiteral(" ng-src=\"{{productBundle.product.image==\'\'?\'/assets/theme/ocx/images/noimagefound" +
-".jpg\':productBundle.product.image}}\"");
+WriteLiteral(" ng-src=\"{{productBundle.product.image==\'\'?DEFAULT_IMAGE_URL:productBundle.produc" +
+"t.image}}\"");
 
 WriteLiteral(" class=\"img-responsive\"");
 
@@ -319,7 +333,7 @@ WriteLiteral(" class=\"sml\"");
 WriteLiteral(">");
 
             
-            #line 77 "..\..\Views\Survey\Layout1\Capture.cshtml"
+            #line 79 "..\..\Views\Survey\Layout1\Capture.cshtml"
                                                          Write(LT("ProductDetail.Label.INCVAT", "INC VAT"));
 
             
@@ -341,7 +355,7 @@ WriteLiteral(" class=\"sml\"");
 WriteLiteral(">");
 
             
-            #line 81 "..\..\Views\Survey\Layout1\Capture.cshtml"
+            #line 83 "..\..\Views\Survey\Layout1\Capture.cshtml"
                                                          Write(LT("ProductDetail.Label.EXVAT", "EX VAT"));
 
             
@@ -355,7 +369,7 @@ WriteLiteral(" class=\"bundle-qty wizard-qty\"");
 WriteLiteral(">\r\n                                        <strong>");
 
             
-            #line 85 "..\..\Views\Survey\Layout1\Capture.cshtml"
+            #line 87 "..\..\Views\Survey\Layout1\Capture.cshtml"
                                            Write(LT("ProductSurvey.Label.Qty", "Qty"));
 
             
@@ -385,7 +399,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                                        ");
 
             
-            #line 92 "..\..\Views\Survey\Layout1\Capture.cshtml"
+            #line 94 "..\..\Views\Survey\Layout1\Capture.cshtml"
                                    Write(LT("ProductSurvey.Label.TotalPrice", "Total Price"));
 
             
@@ -419,7 +433,7 @@ WriteLiteral(" ng-click=\"pm.addToBag()\"");
 WriteLiteral(">\r\n                                        <span> ");
 
             
-            #line 98 "..\..\Views\Survey\Layout1\Capture.cshtml"
+            #line 100 "..\..\Views\Survey\Layout1\Capture.cshtml"
                                           Write(LT("ProductSurvey.Label.AddtoBag", "Add to Bag"));
 
             
@@ -432,12 +446,11 @@ WriteLiteral(" class=\"fa fa-shopping-cart\"");
 WriteLiteral(" aria-hidden=\"true\"");
 
 WriteLiteral("></i></span>\r\n                                    </button>\r\n                    " +
-"            </div>                                \r\n                            " +
-"</div>\r\n");
+"            </div>\r\n                            </div>\r\n");
 
             
-            #line 102 "..\..\Views\Survey\Layout1\Capture.cshtml"
-                            
+            #line 104 "..\..\Views\Survey\Layout1\Capture.cshtml"
+
                         }
                     
             
@@ -451,7 +464,7 @@ DefineSection("scripts", () => {
 WriteLiteral("\r\n    <script>\r\n        var saveAnswer = \'");
 
             
-            #line 114 "..\..\Views\Survey\Layout1\Capture.cshtml"
+            #line 116 "..\..\Views\Survey\Layout1\Capture.cshtml"
                       Write(Html.BuildUrlFromExpression<SurveyController>(c => c.SaveAnswer("","")));
 
             
@@ -460,7 +473,7 @@ WriteLiteral("\r\n    <script>\r\n        var saveAnswer = \'");
 WriteLiteral("\';\r\n        var searchUrl = \'");
 
             
-            #line 115 "..\..\Views\Survey\Layout1\Capture.cshtml"
+            #line 117 "..\..\Views\Survey\Layout1\Capture.cshtml"
                      Write(Html.BuildUrlFromExpression<SearchController>(c => c.Search(null)));
 
             
@@ -469,7 +482,7 @@ WriteLiteral("\';\r\n        var searchUrl = \'");
 WriteLiteral("\';\r\n        var addToBagUrl = \'");
 
             
-            #line 116 "..\..\Views\Survey\Layout1\Capture.cshtml"
+            #line 118 "..\..\Views\Survey\Layout1\Capture.cshtml"
                        Write(Html.BuildUrlFromExpression<SurveyController>(c => c.AddToBag(null)));
 
             
@@ -478,7 +491,7 @@ WriteLiteral("\';\r\n        var addToBagUrl = \'");
 WriteLiteral("\';\r\n        var basketUrl = \'");
 
             
-            #line 117 "..\..\Views\Survey\Layout1\Capture.cshtml"
+            #line 119 "..\..\Views\Survey\Layout1\Capture.cshtml"
                      Write(Html.BuildUrlFromExpression<BasketController>(c => c.Index()));
 
             
@@ -487,8 +500,8 @@ WriteLiteral("\';\r\n        var basketUrl = \'");
 WriteLiteral("\';\r\n        var searchFilterQryString = \'");
 
             
-            #line 118 "..\..\Views\Survey\Layout1\Capture.cshtml"
-                                Write(Omnicx.API.SDK.Entities.Constants.SEARCH_FILTER_QUERYSTRING);
+            #line 120 "..\..\Views\Survey\Layout1\Capture.cshtml"
+                                Write(Constants.SEARCH_FILTER_QUERYSTRING);
 
             
             #line default
@@ -496,8 +509,8 @@ WriteLiteral("\';\r\n        var searchFilterQryString = \'");
 WriteLiteral("\';\r\n        var surveyQryString = \'");
 
             
-            #line 119 "..\..\Views\Survey\Layout1\Capture.cshtml"
-                          Write(Omnicx.API.SDK.Entities.Constants.SEARCH_SURVEY_QUERYSTRING);
+            #line 121 "..\..\Views\Survey\Layout1\Capture.cshtml"
+                          Write(Constants.SEARCH_SURVEY_QUERYSTRING);
 
             
             #line default
@@ -514,7 +527,7 @@ WriteLiteral(@"';
         window.app.constant('model', ");
 
             
-            #line 128 "..\..\Views\Survey\Layout1\Capture.cshtml"
+            #line 130 "..\..\Views\Survey\Layout1\Capture.cshtml"
                                 Write(Html.JsonFor(Model));
 
             

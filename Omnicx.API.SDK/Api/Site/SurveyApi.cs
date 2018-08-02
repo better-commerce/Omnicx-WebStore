@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
-using Omnicx.API.SDK.Models;
-using Omnicx.API.SDK.Models.Common;
-using Omnicx.API.SDK.Models.Site;
+using Omnicx.WebStore.Models;
+using Omnicx.WebStore.Models.Common;
+using Omnicx.WebStore.Models.Site;
 using RestSharp;
 using System;
 

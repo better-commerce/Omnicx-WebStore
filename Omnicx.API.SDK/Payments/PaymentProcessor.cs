@@ -1,4 +1,4 @@
-﻿using Omnicx.API.SDK.Models.Commerce;
+﻿using Omnicx.WebStore.Models.Commerce;
 using Omnicx.API.SDK.Payments.Entities;
 using Omnicx.API.SDK.Payments.MasterCard;
 using Omnicx.API.SDK.Payments.Paypal;
@@ -8,6 +8,7 @@ using Omnicx.API.SDK.Payments.Realex;
 using Omnicx.API.SDK.Payments.AccountCredit;
 using Omnicx.API.SDK.Payments.Cheque;
 using Omnicx.Plugin.Payment.Worldpay;
+using Omnicx.API.SDK.Payments.Klarna;
 
 namespace Omnicx.API.SDK.Payments
 {
@@ -57,6 +58,8 @@ namespace Omnicx.API.SDK.Payments
                 paymentProcess = new ChequePaymentProcessor();
             if (systemName == PaymentMethodTypes.Worldpay.ToString())
                 paymentProcess = new WorldpayPaymentProcessor();
+            if (systemName == PaymentMethodTypes.Klarna.ToString())
+                paymentProcess = new KlarnaPaymentProcessor();
             return paymentProcess;
         }
     }

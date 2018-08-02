@@ -3,18 +3,21 @@ using System.Web.Mvc;
 using Omnicx.WebStore.Core.Helpers;
 using Omnicx.API.SDK.Helpers;
 using Omnicx.API.SDK.Api.Infra;
-using Omnicx.API.SDK.Entities;
-using Omnicx.API.SDK.Models.Catalog;
-using Omnicx.API.SDK.Models.Commerce;
-using Omnicx.API.SDK.Models.Site;
+
+using Omnicx.WebStore.Models.Catalog;
+using Omnicx.WebStore.Models.Commerce;
+using Omnicx.WebStore.Models.Site;
 using Newtonsoft.Json;
 using System.Web.Routing;
+using Omnicx.WebStore.Models.Keys;
+using Omnicx.WebStore.Models.Enums;
+
 namespace Omnicx.WebStore.Core.Controllers
 {
     /// <summary>
     /// This is an abstract base controller class inherited in the other controller classes.
     /// </summary>
-    public abstract class BaseController : Controller 
+    public abstract class BaseController : Controller
     {
         protected readonly IHeadTagBuilder _headTagbuilder;
         protected readonly ISessionContext _sessionContext;
@@ -23,7 +26,9 @@ namespace Omnicx.WebStore.Core.Controllers
         {
             _headTagbuilder = DependencyResolver.Current.GetService<IHeadTagBuilder>();
             _sessionContext = DependencyResolver.Current.GetService<ISessionContext>();
-             SetDataLayerSessionVariables();
+            // the below check is added to prevent the multiple calls to SetDataLayerSessionVariables in a single request
+           if  (!_headTagbuilder.DataLayerKeyExists("SessionId") && !IsAjaxRequest())
+                SetDataLayerSessionVariables();
         }
         protected StandardJsonResult<T> JsonSuccess<T>(T data, JsonRequestBehavior behavior = JsonRequestBehavior.DenyGet)
         {
@@ -65,24 +70,14 @@ namespace Omnicx.WebStore.Core.Controllers
 
         private void SetDataLayerSessionVariables()
         {
-
-               // var vId = (_sessionContext.CurrentUser == null) ? Guid.Parse(_sessionContext.SessionId) : _sessionContext.CurrentUser.UserId;
                 var uId = _sessionContext.CurrentUser?.UserId;
-                //_headTagbuilder.AddDataLayer("UserId", uId.ToString());
                 _headTagbuilder.AddDataLayer("VisitorId", uId.ToString());
                 _headTagbuilder.AddDataLayer("SessionId", _sessionContext.SessionId);
                 _headTagbuilder.AddDataLayer("AppId", ConfigKeys.OmnicxDomainId);
                 _headTagbuilder.AddDataLayer("OrgId", ConfigKeys.OmnicxOrgId);
                 _headTagbuilder.AddDataLayer("DomainId", ConfigKeys.OmnicxDomainId);
-                //_headTagbuilder.AddDataLayer("Url", System.Web.HttpContext.Current.Request.Url.ToString());
                  _headTagbuilder.AddDataLayer("Server", Utils.GetMaskedServerIpAddress()); 
                 _headTagbuilder.AddDataLayer("DeviceId", System.Web.HttpContext.Current.Request.Cookies[Constants.COOKIE_DEVICEID]?.Value);
-                //_headTagbuilder.AddDataLayer("Referer", Utils.GetUrlReferrer());
-                // var utm = Utils.GetUtm();
-                //_headTagbuilder.AddDataLayer("UtmCampaign", utm.Campaign);
-                //_headTagbuilder.AddDataLayer("UtmMedium", utm.Medium);
-                //_headTagbuilder.AddDataLayer("UtmSource", utm.Source);
-                //_headTagbuilder.AddDataLayer("UrlReferrer", System.Web.HttpContext.Current.Request.UrlReferrer);
                 _headTagbuilder.AddDataLayer("VisitorLoggedIn", (_sessionContext.CurrentUser?.UserId!=null));
                 _headTagbuilder.AddDataLayer("VisitorExistingCustomer", (_sessionContext.CurrentUser?.UserId != null));
                 _headTagbuilder.AddDataLayer("VisitorSegment", "");// to be reviewed
@@ -248,7 +243,17 @@ namespace Omnicx.WebStore.Core.Controllers
             _headTagbuilder.AddDataLayer("Action", requestContext?.RouteData?.Values["action"]?.ToString());
 
         }
-
+        private static bool IsAjaxRequest()
+        {
+            var request = System.Web.HttpContext.Current.Request;
+            if (request == null)
+                return false;
+            if (request["X-Requested-With"] == "XMLHttpRequest")
+                return true;
+            if (request.Headers != null)
+                return request.Headers["X-Requested-With"] == "XMLHttpRequest";
+            return false;
+        }
         public CustomJsonResult<T> CustomJson<T>(T model)
         {
             var retObj = new CustomJsonResult<T>() { Data = model };

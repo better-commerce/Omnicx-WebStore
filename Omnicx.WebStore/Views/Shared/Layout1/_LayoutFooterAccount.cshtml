@@ -1,15 +1,15 @@
-﻿@using Omnicx.API.SDK.Entities
+﻿@using Omnicx.WebStore.Models.Keys
 @inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
 @{
     var StoreTheme = ConfigKeys.StoreTheme;
 }
-<div class="col-sm-12 col-xs-12 no-padding hidden-xs bg-black padding-top-sm">
+<div class="col-sm-12 col-xs-12 no-padding hidden-xs">
     @Html.Action("GetFooter", "Home")
 </div>
 <div class="col-sm-12 col-xs-12 no-padding visible-xs footerMenu-padding hide-dsk">
     @Html.Action("GetFooterMobile", "Home")
 </div>
-<div class="col-sm-12 col-xs-12 no-padding bg-black padding-top-sm">
+<div class="col-sm-12 col-xs-12 no-padding">
     <div id="copyright">
         <div class="container footer-copyright-border">
             <div class="col-md-12 no-padding">

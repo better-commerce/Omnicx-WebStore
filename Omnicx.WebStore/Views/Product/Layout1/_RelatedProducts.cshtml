@@ -11,15 +11,15 @@
     */
 }
 @inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
-<div class="col-sm-12 no-padding" ng-init="pm.quickView=true;">
+<div class="col-sm-12 col-xs-12 no-padding gridView" ng-init="pm.quickView=true;">
     <div class="accordion">
         <dl>
             <dt>
-                <a href="#relatedProduct" aria-expanded="false" aria-controls="relatedProduct" class="accordion-title accordionTitle js-accordionTrigger">@LT("ProductDetail.label.AlsoLike", "You may also like these products")</a>
+                <a href="#relatedProduct" aria-expanded="true" aria-controls="relatedProduct" class="accordion-title accordionTitle js-accordionTrigger is-collapsed is-expanded">@LT("ProductDetail.label.AlsoLike", "You may also like these products")</a>
             </dt>
-            <dd class="accordion-content accordionItem-lg is-collapsed no-padding" id="relatedProduct" aria-hidden="true">
-                <div class="col-sm-4 col-xs-6 col-lg-3 resultContainerRelated" ng-repeat="product in pm.model.relatedProductList track by $index">
-                    @Html.Partial("~/Views/Search/Layout1/_ProductWidget.cshtml")
+            <dd class="accordion-content accordionItem-lg no-padding is-expanded animateIn" id="relatedProduct" aria-hidden="false">
+                <div class="col-sm-5ths col-xs-5ths col-lg-5ths col-md-5ths resultContainerRelated" ng-repeat="product in pm.model.relatedProductList track by $index">
+                    @Html.Partial("~/Views/Search/Layout1/_ProductWidgetNew.cshtml")
                 </div>
 
             </dd>

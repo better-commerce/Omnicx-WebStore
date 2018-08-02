@@ -14,10 +14,10 @@
 @using Omnicx.WebStore.Core.Helpers
 @using Omnicx.WebStore.Core.Controllers
 @using Omnicx.WebStore.Framework.Helpers
-@using Omnicx.API.SDK.Entities
+@using Omnicx.WebStore.Models.Enums
 @using Omnicx.API.SDK.Helpers
-@using Omnicx.API.SDK.Models.Catalog
-@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Helpers.PaginatedResult<Omnicx.API.SDK.Models.Catalog.ProductModel>>
+@using Omnicx.WebStore.Models.Catalog
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Helpers.PaginatedResult<Omnicx.WebStore.Models.Catalog.ProductModel>>
 @{
     ViewBag.Title = @LT("ProductDetail.Label.Search", "Search");
     Layout = "~/Views/Shared/Layout1/_Layout.cshtml";
@@ -28,19 +28,6 @@
     //Html.AddCanonicalUrl(Model.CanonicalTags);
     Html.AddDataLayer(DataLayerObjectType.ProductDetail, Model);
 }
-<div class="col-md-12 no-padding">
-    <ul class="breadcrumb">
-        <li><a href="/">@LT("ProductListing.Breadcrumb.Home", "Home")</a></li>
-        @if (!string.IsNullOrEmpty(Model.SearchCriteria.FreeText))
-            {
-            <li>@Model.SearchCriteria.FreeText</li>
-        }
-        @if (!string.IsNullOrEmpty(Model.SearchCriteria.BreadCrumb))
-            {
-            @Html.Raw(Model.SearchCriteria.BreadCrumb)
-        }
-    </ul>
-</div>
 
 @Html.Partial("~/Views/search/Layout1/_SearchResultProducts.cshtml", Model)
 @section scripts{

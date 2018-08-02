@@ -1,7 +1,7 @@
-﻿@using Omnicx.API.SDK.Entities
+﻿@using Omnicx.WebStore.Models.Enums
 @using Omnicx.API.SDK.Helpers
-@using Omnicx.API.SDK.Models.Helpers
-@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Catalog.DynamicListModel>
+@using Omnicx.WebStore.Models.Helpers
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Catalog.DynamicListModel>
 @{
     ViewBag.Title = Model != null ? Model.Name : "";
     Layout = "~/Views/Shared/Layout1/_Layout.cshtml";
@@ -35,7 +35,7 @@
                 <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
                     <div class="product-container">
                         <div class="product-image-384">
-                            <a href="/@prod.Slug"> <img src="@prod.Image" alt="" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'" class="img-responsive img-full"></a>
+                            <a href="/@prod.Slug"> <img src="@prod.Image" alt="" onerror="this.src = DEFAULT_IMAGE_URL" class="img-responsive img-full"></a>
                         </div>
                         <div class="product-detail">
                             <a href="/@prod.Slug"><h4>@prod.Name</h4></a>
@@ -63,7 +63,7 @@
                     <div class="product-container">
                         <div class="product-image-384">
                             <a href="@img.Link">
-                                <img ng-src="@img.Url" alt="" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'" class="img-responsive img-full">
+                                <img ng-src="@img.Url" alt="" onerror="this.src = DEFAULT_IMAGE_URL" class="img-responsive img-full">
                             </a>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                 <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
                     <div class="product-container">
                         <div class="product-image-384">
-                            <img src="@brand.LogoImageName" alt="" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'" class="img-responsive img-full">
+                            <img src="@brand.LogoImageName" alt="" onerror="this.src = DEFAULT_IMAGE_URL" class="img-responsive img-full">
                         </div>
                         <div class="product-detail">
                             <h4>@brand.ManufacturerName</h4>
@@ -98,7 +98,7 @@
                 <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
                     <div class="product-container">
                         <div class="product-image-384">
-                            <img src="@brand.LogoImageName" alt="" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'" class="img-responsive img-full">
+                            <img src="@brand.LogoImageName" alt="" onerror="this.src = DEFAULT_IMAGE_URL" class="img-responsive img-full">
                         </div>
                         <div class="product-detail">
                             <h4>@brand.ManufacturerName</h4>
@@ -118,7 +118,7 @@
                 <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
                     <div class="category-container">
                         <div class="product-image-384">
-                            <img ng-src="@cat.Image" alt="" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'" class="img-responsive img-full">
+                            <img ng-src="@cat.Image" alt="" onerror="this.src = DEFAULT_IMAGE_URL" class="img-responsive img-full">
                         </div>
                         <div class="product-detail">
                             <h4>@cat.Name</h4>
@@ -139,7 +139,7 @@
                 <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
                     <div class="product-container">
                         <div class="product-image-384">
-                            <img ng-src="@blog.BlogImage" alt="" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'" class="img-responsive img-full">
+                            <img ng-src="@blog.BlogImage" alt="" onerror="this.src = DEFAULT_IMAGE_URL" class="img-responsive img-full">
                         </div>
                         <div class="product-detail">
                             <h4>@blog.Title</h4>

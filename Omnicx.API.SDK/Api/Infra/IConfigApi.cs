@@ -1,5 +1,5 @@
-﻿using Omnicx.API.SDK.Models.Infrastructure;
-using Omnicx.API.SDK.Models;
+﻿using Omnicx.WebStore.Models.Infrastructure;
+using Omnicx.WebStore.Models;
 
 namespace Omnicx.API.SDK.Api.Infra
 {

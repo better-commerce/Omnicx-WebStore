@@ -4,7 +4,9 @@ using System.Text;
 using System.Web;
 using System.Linq;
 using System.Xml.Linq;
-using Omnicx.API.SDK.Entities;
+using Omnicx.WebStore.Models.Keys;
+using Omnicx.WebStore.Models.Enums;
+using Omnicx.WebStore.Models.Common;
 
 namespace Omnicx.WebStore.Core.Helpers
 {
@@ -66,6 +68,7 @@ namespace Omnicx.WebStore.Core.Helpers
                                        NumsLength = int.Parse(p.Element("numsLength").Value),
                                        SpecialLength = int.Parse(p.Element("specialLength").Value),
                                        UpperLength = int.Parse(p.Element("upperLength").Value),
+                                       LowerLength=int.Parse(p.Element("lowerLength").Value),
                                        SpecialChars = p.Element("specialChars").Value
                                    }).First();
 
@@ -77,10 +80,13 @@ namespace Omnicx.WebStore.Core.Helpers
             sbPasswordRegx.Append(@"(?=(?:.*?\d){" + passwordSetting.NumsLength + "})");
 
             //a-z characters
-            sbPasswordRegx.Append(@"(?=.*[a-z])");
+            //sbPasswordRegx.Append(@"(?=.*[a-z])");
 
             //A-Z length
             sbPasswordRegx.Append(@"(?=(?:.*?[A-Z]){" + passwordSetting.UpperLength + "})");
+
+            //a-z length
+            sbPasswordRegx.Append(@"(?=(?:.*?[a-z]){" + passwordSetting.LowerLength + "})");
 
             //special characters length
             sbPasswordRegx.Append(@"(?=(?:.*?[" + passwordSetting.SpecialChars + "]){" + passwordSetting.SpecialLength + "})");
@@ -111,5 +117,23 @@ namespace Omnicx.WebStore.Core.Helpers
             else
                 System.Web.HttpContext.Current.Session[Constants.SESSION_HAS_BASKET_ACTION] = !(string.IsNullOrEmpty(basketId) || basketId == Guid.Empty.ToString());
         }
+
+        #region Encode and Decode string 
+        public static string GenerateEncodedString(string encodeString)
+        {
+            if (!string.IsNullOrEmpty(encodeString))
+            {
+                byte[] toEncodeAsBytes = System.Text.Encoding.UTF8.GetBytes(encodeString);
+                return System.Convert.ToBase64String(toEncodeAsBytes);
+            }
+            else
+                return encodeString;
+        }
+        public static string GenerateDecodeString(string decodeString)
+        {
+            byte[] encodedDataAsBytes = System.Convert.FromBase64String(decodeString);
+            return System.Text.Encoding.UTF8.GetString(encodedDataAsBytes);
+        }
+        #endregion
     }
 }

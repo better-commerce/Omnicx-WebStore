@@ -11,14 +11,15 @@
     */
 }
 @using Microsoft.Web.Mvc
-@using Omnicx.API.SDK.Models
+@using Omnicx.WebStore.Models
 @using Omnicx.WebStore.Core.Helpers
 @using Omnicx.WebStore.Core.Controllers
 @using Omnicx.WebStore.Framework.Helpers
-@using Omnicx.API.SDK.Entities
+@using Omnicx.WebStore.Models.Enums
+@using Omnicx.WebStore.Models.Keys 
 @using Omnicx.API.SDK.Helpers
-@using Omnicx.API.SDK.Models.Catalog
-@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Catalog.BrandDetailModel>
+@using Omnicx.WebStore.Models.Catalog
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Catalog.BrandDetailModel>
 @{
     ViewBag.Title = @LT("Brands.Label.Brand", "Brand") + " " + @LT("Brands.Label.Details", "Details");
     Layout = "~/Views/Shared/Layout1/_Layout.cshtml";
@@ -30,14 +31,14 @@
     Html.AddDataLayer(DataLayerObjectType.BrandDetail, Model);
 }
 @{
-/*
-Name: Brand detail page
-Purpose: Show all the related information of brand
-Structure: /Views/Catalog/BrandDetail.cshtml
-Contains (Partial Views Used):
-* Catalog/_ProductDetailModal.cshtml
-Contained In (Where we Use this View) :
-*/
+    /*
+    Name: Brand detail page
+    Purpose: Show all the related information of brand
+    Structure: /Views/Catalog/BrandDetail.cshtml
+    Contains (Partial Views Used):
+    * Catalog/_ProductDetailModal.cshtml
+    Contained In (Where we Use this View) :
+    */
 }
 <section ng-controller="productCtrl as pm">
     @{ /* Start breadcrumb container */ }
@@ -94,19 +95,19 @@ Contained In (Where we Use this View) :
                             @if (@Model.CarouselImage1 != null)
                             {
                                 <div class="item active">
-                                    <a href="@Model..CarouselLink1"><img ng-src="@Model.CarouselImage1" alt="Slide 1 of carousel" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'"></a>
+                                    <a href="@Model..CarouselLink1"><img ng-src="@Model.CarouselImage1" alt="Slide 1 of carousel" onerror="this.src = DEFAULT_IMAGE_URL"></a>
                                 </div>
                             }
                             @if (@Model.CarouselImage2 != null)
                             {
                                 <div class="item">
-                                    <a href="@Model.CarouselLink2"><img ng-src="@Model.CarouselImage2" alt="Slide 1 of carousel" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'"></a>
+                                    <a href="@Model.CarouselLink2"><img ng-src="@Model.CarouselImage2" alt="Slide 1 of carousel" onerror="this.src = DEFAULT_IMAGE_URL"></a>
                                 </div>
                             }
                             @if (@Model.CarouselImage3 != null)
                             {
                                 <div class="item">
-                                    <a href="@Model.CarouselLink3"><img ng-src="@Model.CarouselImage3" alt="Slide 1 of carousel" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'"></a>
+                                    <a href="@Model.CarouselLink3"><img ng-src="@Model.CarouselImage3" alt="Slide 1 of carousel" onerror="this.src = DEFAULT_IMAGE_URL"></a>
                                 </div>
                             }
                         </div><a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
@@ -160,19 +161,19 @@ Contained In (Where we Use this View) :
                         @if (@Model.WidgetImage1 != null)
                         {
                             <div class="col-sm-4 col-xs-6">
-                                <a href="@Model.WidgetLink1">  <img ng-src="@Model.WidgetImage1" class="img-responsive " alt="Brand Category" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'" /> </a>
+                                <a href="@Model.WidgetLink1">  <img ng-src="@Model.WidgetImage1" class="img-responsive " alt="Brand Category" onerror="this.src = DEFAULT_IMAGE_URL" /> </a>
                             </div>
                         }
                         @if (@Model.WidgetImage2 != null)
                         {
                             <div class="col-sm-4 col-xs-6">
-                                <a href="@Model.WidgetLink2"> <img ng-src="@Model.WidgetImage2" class="img-responsive " alt="Brand Category" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'" />  </a>
+                                <a href="@Model.WidgetLink2"> <img ng-src="@Model.WidgetImage2" class="img-responsive " alt="Brand Category" onerror="this.src = DEFAULT_IMAGE_URL" />  </a>
                             </div>
                         }
                         @if (@Model.WidgetImage3 != null)
                         {
                             <div class="col-sm-4 col-xs-6">
-                                <a href="@Model.WidgetLink3">  <img ng-src="@Model.WidgetImage3" class="img-responsive " alt="Brand Category" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'" /> </a>
+                                <a href="@Model.WidgetLink3">  <img ng-src="@Model.WidgetImage3" class="img-responsive " alt="Brand Category" onerror="this.src = DEFAULT_IMAGE_URL" /> </a>
                             </div>
                         }
                     </div>
@@ -244,10 +245,10 @@ Contained In (Where we Use this View) :
             </div>
             <div class="col-sm-12 col-xs-12 no-padding products" ng-show="pm.subBrandProducts.length>0">
                 @{
-/*
-Name : Product Listing grid
-Purpuse : show brands related products
-*/
+                    /*
+                    Name : Product Listing grid
+                    Purpuse : show brands related products
+                    */
                 }
                 <div class="col-md-4 col-sm-6 col-xs-6 col-md-4 resultContainer" ng-repeat="product in pm.subBrandPaginated">
                     @Html.Partial("~/Views/Search/Layout1/_ProductWidget.cshtml")

@@ -1,27 +1,27 @@
 ﻿@{
-/*
-    Name: Site Nav
-    Purpose: List all the Navigation links for desktop and big screen
-    Structure: /Views/Account/Layout1/_SideNav.cshtml
-    Contains (Partial Views Used):
+    /*
+        Name: Site Nav
+        Purpose: List all the Navigation links for desktop and big screen
+        Structure: /Views/Account/Layout1/_SideNav.cshtml
+        Contains (Partial Views Used):
 
-    Contained In (Where we Use this View):
-        a-/Views/Account/Layout1/Wishlist.cshtml
-        b-/Views/Account/Layout1/ReturnRequest.cshtml
-        c-/Views/Account/Layout1/ReturnHistory.cshtml   
-        d-/Views/Account/Layout1/PasswordChange.cshtml)
-        e-/Views/Account/Layout1/OrderHistory.cshtml    
-        f-/Views/Account/Layout1/OrderDetail.cshtml     
-        g-/Views/Account/Layout1/MyActivity.cshtml      
-        h-/Views/Account/Layout1/MyAccount.cshtml       
-        i-/Views/Account/Layout1/AddressBook.cshtml   
-        j-/Views/B2B/Layout1/Users.cshtml
-        k-/Views/B2B/Layout1/Quotes.cshtml
-        l-/Views/B2B/Layout1/MyCompany.cshtml
-    */
+        Contained In (Where we Use this View):
+            a-/Views/Account/Layout1/Wishlist.cshtml
+            b-/Views/Account/Layout1/ReturnRequest.cshtml
+            c-/Views/Account/Layout1/ReturnHistory.cshtml
+            d-/Views/Account/Layout1/PasswordChange.cshtml)
+            e-/Views/Account/Layout1/OrderHistory.cshtml
+            f-/Views/Account/Layout1/OrderDetail.cshtml
+            g-/Views/Account/Layout1/MyActivity.cshtml
+            h-/Views/Account/Layout1/MyAccount.cshtml
+            i-/Views/Account/Layout1/AddressBook.cshtml
+            j-/Views/B2B/Layout1/Users.cshtml
+            k-/Views/B2B/Layout1/Quotes.cshtml
+            l-/Views/B2B/Layout1/MyCompany.cshtml
+        */
 }
-@using Omnicx.API.SDK.Entities
-@using Omnicx.API.SDK.Models.Helpers
+@using Omnicx.WebStore.Models.Enums
+@using Omnicx.WebStore.Models.Keys
 @inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
 
 @{
@@ -69,7 +69,7 @@
             <li ng-class="{'active-ac' :'@ViewBag.Title'== 'Orders'|| '@ViewBag.Title'=='Return Request'|| '@ViewBag.Title' == 'CustomerOrder'}">
                 <a href="@Url.Action("orderhistory", "account")" class="color-black"><i class="fa fa-shopping-cart"></i>@LT("MyAccount.Links.MyOrders", "My Orders")</a>
             </li>
-           @if (userRole == (CompanyUserRole.None) || userRole == (CompanyUserRole.Admin))
+            @if (userRole == (CompanyUserRole.None) || userRole == (CompanyUserRole.Admin))
             {
                 <li ng-class="{'active-ac' : '@ViewBag.Title' == 'AddressBook'}">
                     <a href="@Url.Action("AddressBook", "account")" class="color-black"><i class="fa fa-home"></i>@LT("MyAccount.Links.AddressBook", "Address Book")</a>

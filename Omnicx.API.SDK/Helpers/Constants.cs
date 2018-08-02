@@ -6,7 +6,7 @@
     }
     public static class SiteRouteUrl
     {
-        public const string Category = "catalogue";
+        public const string Category = "category";
         public const string Brand = "brands";
         public const string SubBrand = "subbrands";
         public const string Product = "Products";

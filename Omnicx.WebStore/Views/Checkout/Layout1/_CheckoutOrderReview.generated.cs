@@ -911,7 +911,7 @@ WriteLiteral(">\r\n                                    <img");
 
 WriteLiteral(" ng-src=\"{{items.image}}\"");
 
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
 WriteLiteral(">\r\n                                </a>\r\n                            </span>\r\n   " +
 "                         <span");
@@ -1103,7 +1103,7 @@ WriteLiteral(">\r\n                                    <img");
 
 WriteLiteral(" ng-src=\"{{items.image}}\"");
 
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/noimagefound.jpg\'\"");
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
 WriteLiteral(">\r\n                                </a>\r\n                            </span>\r\n   " +
 "                         <span");

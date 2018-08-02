@@ -4,65 +4,58 @@
     Purpose: WebStore Home page contain customize design with HTML Layout and json call
     Structure: /Views/Page/Layout1/_IndexJson.cshtml
     Contains (Partial Views Used): NO Partial View Used
-    Contained In (Where we Use this View): 
+    Contained In (Where we Use this View):
         a-/Views/Page/Layout1/Index.cshtml
     */
 }
-@using Omnicx.API.SDK.Entities
-@using Omnicx.API.SDK.Models.Helpers
-@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.API.SDK.Models.Site.SiteViewModel>
-@*Start Home Slider Banner*@
-<div class="container no-padding">
-    @{
+@using Omnicx.WebStore.Models.Enums
+@using Omnicx.WebStore.Models.Helpers
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Site.SiteViewModel>
 
+<div class="container-lg" ng-cloak>
+    @{
         if (Model.Components != null)
         {
             //Increment Carousal Dynamic ID
             var ProductSno = 1;
             foreach (var component in Model.Components)
             {
+                if (component.ComponentType == SiteViewComponentTypes.Slider && component != null && component.Images != null)
+                {
+                    <div class="row">
+                        <div class="col-sm-12 col-xs-12 no-padding dataContainer">
+                            <div id="carousel-example" class="carousel slide omnicomponent component-slider" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                    @foreach (var img in component.Images.Select((index) => new { index }))
+                                    {
+                                        <li data-target="#carousel-example" data-slide-to="@img.index" ng-class="{active : @img.index==0}"></li>
+                                    }
+                                </ol>
+                                <div class="carousel-inner">
+                                    @foreach (var img in component.Images.Select((obj, index) => new { index, obj }))
+                                    {
+                                        <div class="item" ng-class="{active : @img.index==0}">
+                                            <img ng-src="@img.obj.Url" class="img-responsive image1" onerror="this.src = '/assets/theme/ocx/images/carousal-banner-women.jpg'">
+                                        </div>
+                                    }
+                                </div><a class="left carousel-control" href="#carousel-example" data-slide="prev">
+                                    <span class="fa fa-chevron-left"></span>
+                                </a>
+                                <a class="right carousel-control" href="#carousel-example" data-slide="next">
+                                    <span class="fa fa-chevron-right"></span>
+                                </a>
+                            </div>
 
-                <div class="col-sm-12 col-md-12 no-padding">
-                    @if (component.ComponentType == SiteViewComponentTypes.Slider && component != null && component.Images != null)
-                    {
-                        { /* Start carousel slider */ }
-                        <div id="carousel-example" class="carousel slide omnicomponent component-slider" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                @foreach (var img in component.Images.Select((index) => new { index }))
-                                {
-                                    <li data-target="#carousel-example" data-slide-to="@img.index" ng-class="{active : @img.index==0}"></li>
-                                }
-                            </ol>
-                            <div class="carousel-inner">
-                                @foreach (var img in component.Images.Select((obj, index) => new { index, obj }))
-                                {
-                                    <div class="item" ng-class="{active : @img.index==0}">
-                                        <img ng-src="@img.obj.Url" class="img-responsive image1" onerror="this.src = '/assets/images/carousal-banner-women.jpg'">
-                                    </div>
-                                }
-                            </div><a class="left carousel-control" href="#carousel-example" data-slide="prev">
-                                <span class="fa fa-chevron-left"></span>
-                            </a>
-                            <a class="right carousel-control" href="#carousel-example" data-slide="next">
-                                <span class="fa fa-chevron-right"></span>
-                            </a>
                         </div>
-                        continue;
+                    </div>
+                    continue;
+                }
 
-                        { /* End carousel slider */
-                        }
-                    }
-                </div>
-
-                {/*Block for showing static Html headers*/ }
                 if (component.ComponentType == SiteViewComponentTypes.PageHeader || component.ComponentType == SiteViewComponentTypes.BlogHeader && component != null && component.Content != null)
                 {
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-12 col-xs-12 home-heading">
-                                <h3 class="home-h3">@Html.Raw(component.Content)</h3>
-                                <h3 class="home-h3 background"><span>***</span></h3>
-                            </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-xs-12 whiteheadingContainer">
+                            @Html.Raw(component.Content)
                         </div>
                     </div>
                     continue;
@@ -70,44 +63,34 @@
                 //For Image
                 if (component.ComponentType == SiteViewComponentTypes.Image && component != null && component.Image != null)
                 {
-                    <section class="inspired" id="about">
-                        <div class="row">
-                            <div class="container">
-                                <img src="@component.Image.Url" />
-                            </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-xs-12 whiteContainer">
+                            <img src="@component.Image.Url" />
                         </div>
-                    </section>
+                    </div>
                     continue;
                 }
                 //For Paragraph
                 if (component.ComponentType == SiteViewComponentTypes.Paragraph && component != null && component.Content != null)
                 {
-                    <section class="inspired" id="about">
-                        <div class="row">
-                            <div class="container">
-                                <div class="col-sm-12 col-xs-12 no-padding">
-                                    <h3 class="velaTitle velaHomeTitle text-center clearfix">
-                                        <span class="subtitle" style="margin-bottom:30px!important;">@Html.Raw(component.Content)</span>
-                                        <a><i class="fa fa-chevron-circle-right fa-2x"></i><br /><span class="text-black">@LT("ProductDetail.Label.View", "Read more")</span></a>
-                                    </h3>
-                                </div>
-                            </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-xs-12 whiteContainer">
+                            <h3 class="velaTitle velaHomeTitle text-center clearfix">
+                                <span class="subtitle" style="margin-bottom:30px!important;">@Html.Raw(component.Content)</span>
+                                <a><i class="fa fa-chevron-circle-right fa-2x"></i><br /><span class="text-black">@LT("ProductDetail.Label.View", "Read more")</span></a>
+                            </h3>
                         </div>
-                    </section>
+                    </div>
                     continue;
                 }
                 //For StaticHtml
                 if (component.ComponentType == SiteViewComponentTypes.StaticHtml && component != null && component.Content != null)
                 {
-                    <section class="inspired" id="about">
-                        <div class="row">
-                            <div class="container">
-                                <div class="col-sm-12 col-xs-12 no-padding">
-                                    @Html.Raw(component.Content)
-                                </div>
-                            </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-xs-12 whiteContainer">
+                            @Html.Raw(component.Content)
                         </div>
-                    </section>
+                    </div>
                     continue;
                 }
                 //For JSSnippts
@@ -120,25 +103,22 @@
                 }
                 if (component.ComponentType == SiteViewComponentTypes.VideoGallery && component != null && component.Content != null)
                 {
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-6 col-xs-12">
-                                <iframe ng-src="@component.Content" frameborder="0" allow="autoplay; encrypted-media" width="100%" height="350" allowfullscreen></iframe>
-                            </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-12 whiteContainer">
+                            <iframe ng-src="@component.Content" frameborder="0" allow="autoplay; encrypted-media" width="100%" height="350" allowfullscreen></iframe>
                         </div>
                     </div>
                     continue;
                 }
 
-                @*Start Product List*@
-                <div class="container">
-                    @if (component != null && component.ComponentType == SiteViewComponentTypes.ProductList && component.Products != null)
-                    {
-                        <div class="col-sm-12 col-md-12 no-padding">
-                            @if (component.Products.Count > 0)
-                            {
-                                <div id="Productcarousel{{@ProductSno}}" class="carousel slide" data-ride="carousel" data-type="multi" data-interval="8000">
 
+                if (component != null && component.ComponentType == SiteViewComponentTypes.ProductList && component.Products != null)
+                {
+                    if (component.Products.Count > 0)
+                    {
+                        <div class="row">
+                            <div class="col-sm-12 col-xs-12 no-padding whiteContainer">
+                                <div id="Productcarousel{{@ProductSno}}" class="carousel slide" data-ride="carousel" data-type="multi" data-interval="10000">
                                     <div class="carousel-inner">
                                         @foreach (var product in component.Products.ToList().Select((obj, index) => new { index, obj }))
                                         {
@@ -147,21 +127,17 @@
                                                     <div class="product-box-sm">
                                                         <div class="image-container gray">
                                                             <a ng-href="/@product.obj.Slug">
-                                                                <img ng-src="@product.obj.Image" alt="OCX Store" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'" />
+                                                                <img ng-src="@product.obj.Image" alt="OCX Store" onerror="this.src = DEFAULT_IMAGE_URL" />
                                                             </a>
                                                         </div>
                                                         <div class="data-container">
                                                             <h3>@product.obj.Name</h3>
                                                             <div class="price-box">
                                                                 <p class="product-price hidden-xs">
-                                                                    <span>@product.obj.Price.Formatted.WithTax</span>
-                                                                    @*<span class="sml">
-                                                                            <strong>@LT("ProductDetail.Label.RRP", "RRP")</strong>
-                                                                            <span>@product.obj.Price.Formatted.WithTax</span>
-                                                                        </span>*@
+                                                                    <span>@product.obj.Price.Formatted.WithTax</span>                                                                    
                                                                 </p>
                                                             </div>
-                                                            <a class="animate btn-default" href="#" ng-click="gm.addToBasket('@product.obj.RecordId',1,0)"><span>@LT("ProductDetail.Label.Buy Now", "Buy Now")</span></a>
+                                                            <a class="animate btn-primary width-full" ng-click="gm.addToBasket('@product.obj.RecordId',1,0)"><span>@LT("ProductDetail.Label.Buy Now", "Buy Now")</span></a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -171,88 +147,87 @@
                                     <a class="left carousel-control" href="#Productcarousel{{@ProductSno}}" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
                                     <a class="right carousel-control" href="#Productcarousel{{@ProductSno}}" data-slide="next"><i class="fa fa-chevron-right"></i></a>
                                 </div>
-                            }
+                            </div>
                         </div>
                     }
-                    <div class="col-sm-12 col-md-12 no-padding">
-                        @if (component.ComponentType == SiteViewComponentTypes.CategoryList && component != null && component.Categories != null)
-                        {
-                            <div class="row">
+                }
+                if (component.ComponentType == SiteViewComponentTypes.CategoryList && component != null && component.Categories != null)
+                {
+                    <div class="row">
+                        <div class="col-sm-12 col-xs-12 whiteContainer">
+                            <div class="row hover01">
                                 @foreach (var category in component.Categories)
                                 {
-                                    <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 ">
-                                        <div class="category-container">
-                                            <a ng-href="@category.Link">
-                                                <div class="product-image-240">
-                                                    <img ng-src="https://devocxblob.blob.core.windows.net/ocx-ib/@category.Image" component-type="@component.ComponentType" class="img-responsive image1" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'">
-                                                </div>
-                                                <div class="omnicomponent component-static-html product-detail">
-                                                    <h4>@category.Name</h4>
-                                                    <p>@category.Description</p>
-                                                </div>
-                                            </a>
+                                    <div class="col-sm-3 col-xs-6">
+                                        <figure>
+                                            <img ng-src="@category.Image" alt="Banner4" component-type="@component.ComponentType" onerror="this.src = DEFAULT_IMAGE_URL" />
+                                        </figure>
+                                        <div class="infornation">
+                                            <strong>@category.Name</strong>
+                                            <p>@category.Description</p>
                                         </div>
                                     </div>
                                 }
                             </div>
-                            continue;
-                        }
+                        </div>
                     </div>
+                    continue;
+                }
 
-                    <div class="col-sm-12 col-md-12 no-padding">
-                        @if (component.ComponentType == SiteViewComponentTypes.BrandList && component != null && component.Brands != null && component.Brands != null)
-                        {
-                            <div class="row">
+                if (component.ComponentType == SiteViewComponentTypes.BrandList && component != null && component.Brands != null)
+                {
+                    <div class="row">
+                        <div class="col-sm-12 col-xs-12 whiteContainer">
+                            <div class="row hover01">
                                 @foreach (var brands in component.Brands)
                                 {
-                                    <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 ">
-                                        <div class="brand-container">
-                                            <a ng-href="@brands.Link">
-                                                <div class="product-image-240">
-                                                    <img ng-src="@brands.LogoImageName!=null?@brands.LogoImageName:demo" component-type="@component.ComponentType" class="img-responsive image1" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'">
-                                                </div>
-                                                <div class="omnicomponent component-static-html product-detail">
-                                                    <h4>@brands.ManufacturerName</h4>
-                                                    <p>@brands.Description</p>
-                                                </div>
-                                            </a>
+                                    var imgurl = @brands.ManufacturerName + ".jpg";
+                                    <div class="col-sm-3 col-xs-6">
+                                        <figure>
+
+                                            <img ng-src="https://dev-ocxcdn.azureedge.net/ocx-ib/brands/@imgurl" alt="Banner3" component-type="@component.ComponentType" onerror="this.src = DEFAULT_IMAGE_URL">
+                                            @*<span>@brands.ManufacturerName</span>*@
+                                        </figure>
+                                        <div class="infornation">
+                                            <strong>@brands.ManufacturerName</strong>
+                                            <p>@brands.Description</p>
                                         </div>
                                     </div>
                                 }
                             </div>
-                            continue;
-                        }
+                        </div>
                     </div>
-
-                    <div class="col-sm-12 col-md-12 no-padding">
-                        @if (component != null && component.ComponentType == SiteViewComponentTypes.BlogList && component.Blogs != null)
-                        {
-                            foreach (var blog in component.Blogs.ToList().Select((obj, index) => new { index, obj }))
-                            {
-                                <div class="col-sm-4 col-xs-12">
-                                    <div class="home-categories">
-                                        <div class="image-container gray">
-                                            <img ng-src="@blog.obj.BlogImage" alt="@blog.obj.Author" class="img-responsive width-full" onerror="this.src = '/assets/theme/ocx/images/noimagefound.jpg'" />
-                                        </div>
-                                        <div class="sale-container">
-                                            <h4 class="text-left">@blog.obj.Title</h4>
-                                            <h2 class="text-left"><strong>@LT("YourBag.Text.Author", "Author:") </strong>@blog.obj.Author</h2>
-                                            <h4 class="text-left"><strong>@LT("YourBag.Text.Category", "Category:") </strong>@blog.obj.Category</h4>
-                                            <p><strong>@LT("YourBag.Text.Post Date", "Post Date:") </strong>@blog.obj.Created</p>
-                                            <p><a href="@blog.obj.CategorySlug" class="animate btn-default"><span>Read More</span></a></p>
+                    continue;
+                }
+                if (component != null && component.ComponentType == SiteViewComponentTypes.BlogList && component.Blogs != null)
+                {
+                    <div class="row">
+                        <div class="col-sm-12 col-xs-12 whiteContainer">
+                            <div class="row hover03">
+                                @foreach (var blog in component.Blogs.ToList().Select((obj, index) => new { index, obj }))
+                                {
+                                    <div class="col-sm-3 col-xs-12 no-padding">
+                                        <div class="col-sm-12 col-xs-12">
+                                            <figure>
+                                                <img ng-src="@blog.obj.BlogImage" alt="@blog.obj.Author" onerror="this.src = DEFAULT_IMAGE_URL" />
+                                            </figure>
+                                            <div class="infornation-blog">
+                                                <p class="post-date">@blog.obj.Created</p>
+                                                <strong>@blog.obj.Title</strong>
+                                                <h2 class="text-left">@blog.obj.Author</h2>
+                                                <h4 class="text-left">@blog.obj.Category</h4>
+                                                <p><a href="@blog.obj.CategorySlug" class="animate btn-bordered"><span>Read More</span></a></p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-
-                            }
-                        }
+                                }
+                            </div>
+                        </div>
                     </div>
-                </div>
-
+                }
                 //Increment Carousal Dynamic ID
                 ProductSno += 1;
             }
         }
-
     }
 </div>
