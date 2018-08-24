@@ -2,7 +2,7 @@
 using Omnicx.WebStore.Models.Keys;
 using System;
 using Omnicx.WebStore.Models.Common;
-
+using System.Threading;
 
 namespace Omnicx.WebStore.Models.Commerce
 {
@@ -10,6 +10,8 @@ namespace Omnicx.WebStore.Models.Commerce
     {
         private string _firstName;
         private string _postCode;
+        private string _companyName;
+        
 
         public Guid UserId { get; set; }
         public string SessionId { get; set; }
@@ -57,7 +59,19 @@ namespace Omnicx.WebStore.Models.Commerce
 
         //TEMP COMPANY PROPERTIES.
         public string CompanyId { get; set; }
-        public string CompanyName { get; set; }
+        public string CompanyName {
+            get
+            {
+                return _companyName;
+            }
+            set
+            {
+                if (!string.IsNullOrEmpty(value))
+                {
+                    _companyName=Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(value.ToLower());
+                }
+            }
+        }
         public string BusinessType { get; set; }
       //  public bool Cheque { get; set; }
         //public bool AccountCredit { get; set; }
@@ -78,6 +92,7 @@ namespace Omnicx.WebStore.Models.Commerce
         private string _address1;
         private string _address2;
         private string _postCode;
+        private string _city;
         public string Address1
         {
             get
@@ -103,7 +118,17 @@ namespace Omnicx.WebStore.Models.Commerce
             }
         }
 
-        public string City { get; set; }
+        public string City {
+            get
+            {
+                return _city;
+            }
+            set
+            {
+                if (!string.IsNullOrEmpty(value))
+                    _city = char.ToUpper(value[0]) + value.Substring(1);
+            }
+        }
         public string Country { get; set; }
         public string PostCode
         {

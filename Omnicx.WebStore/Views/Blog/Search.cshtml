@@ -1,0 +1,155 @@
+﻿@using Microsoft.Web.Mvc
+@using Omnicx.WebStore.Core.Controllers
+@using Omnicx.WebStore.Models
+@using Omnicx.WebStore.Core.Helpers
+@using Omnicx.WebStore.Framework.Helpers
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Site.BlogDetailViewModel>
+@{
+    ViewBag.Title = @Model.FreeText;
+    Layout = "~/Views/Shared/_LayoutBlog.cshtml";
+}
+
+@{
+/*
+Name: Blog Search result page
+Purpose: Show all blogs after search
+Structure: /Views/Blog/Search.cshtml
+Contains (Partial Views Used):
+    a-/Views/Shared/_LayoutBlog.cshtml
+Contained In (Where we Use this View) :
+*/
+}
+<style>
+    #landing-banner{
+        display:none!important;
+    }
+</style>
+<section ng-controller="blogCtrl as bm">
+    @{ /* Start breadcrumb container */ }
+    <div class="col-sm-12 margin-top-md">
+        <ul class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li><a href="@Url.Action("Blogs", "Blog")">@LT("Blogs.Links.Blogs","Blogs")</a></li>
+            <li>@Model.FreeText.ToCamelCase()</li>
+        </ul>
+    </div>
+    @{ /* End breadcrumb container */ }
+    @if (String.IsNullOrEmpty(Model.FreeText))
+    {
+        <div class="col-sm-12 no-padding margin-top-md">
+            <h4 class="text-center">@LT("Blogs.Text.EmptySearch", "Oops! We cannot search for an empty value, please enter a search term.")</h4>
+        </div>
+    }
+    else
+    {
+        <div class="col-sm-12">
+            <div id="blog-homepage" class="col-sm-12 no-padding">
+                @{ /* Start Blog search panel */ }
+                <div class="col-sm-12 no-padding">
+                    <h1 ng-hide="bm.freeText" class="blog-h1">@Model.FreeText <a ng-click="bm.searchAgain()"><span ng-show='@Model.BlogList.Results.Count == 0' class='fa fa-remove'></span></a></h1>
+                    <form ng-show="bm.freeSearch" action="/blog/search" method="post">
+                        <div class="text-right margin-top-2">
+                            <input type="text" name="search" ng-model="searchText" class="form-control" placeholder="Search blog" />
+                            <input type="hidden" name="currentPage" value="1" />
+                        </div>
+                    </form>
+                </div>
+                @{ /* End Blog search panel */ }
+
+                @{ /* SHow if no blog matching search criteria */ }
+                @if (@Model.BlogList.Results.Count == 0)
+                {
+                    <div class="col-sm-12 no-padding margin-top-md">
+                        <h4 class="text-center">@LT("Blogs.Text.NoResultFound", "There are no results for your search term, please try again or use the navigation to make your way around the site.")</h4>
+                    </div>
+                }
+                else
+                {
+                    @*pagination*@
+                    <div class="col-sm-12 no-padding">
+                        <div class="col-sm-6 no-padding" ng-init='bm.initCategoryResults(@Html.Json(Model))'>
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <label for="refine by">
+                                        @LT("productlisting.label.showing", "showing") <strong ng-bind="((@Model.BlogList.CurrentPage-1) * @Model.BlogList.Pages) +1">
+                                        </strong> @LT("productlisting.label.to", "to")
+                                        <span ng-hide="bm.total <(bm.currentPage * bm.pages)">
+                                            <strong ng-bind="((@Model.BlogList.CurrentPage)*@Model.BlogList.Pages)"></strong>
+                                        </span>
+                                        <span ng-show="bm.total<(bm.currentPage * bm.pages)">
+                                            <strong>@Model.BlogList.Total</strong>
+                                        </span>
+                                        @LT("productlisting.label.of", "of") <strong ng-bind="bm.total"></strong> @LT("productlisting.label.results", "results")
+                                    </label>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-sm-6 no-padding">
+                            <ul class="pull-right pagination">
+                                @if (@Model.BlogList.Total > @Model.BlogList.Pages)
+                                {
+                                    for (var i = 1; i <= Convert.ToDecimal(@Model.BlogList.Total / @Model.PageSize) + 1; i++)
+                                    {
+                                        <li class="ng-scope">
+                                            <a href="@Url.Action("search", "blog", new { search = @Model.FreeText, @currentpage = @i })">@i</a>
+                                        </li>
+                                    }
+                                }
+                                @if (@Model.BlogList.Total == @Model.BlogList.Pages)
+                                {
+                                    for (var i = 1; i <= Convert.ToDecimal(@Model.BlogList.Total / @Model.PageSize); i++)
+                                    {
+                                        <li class="ng-scope">
+                                            <a href="@Url.Action("search", "blog", new { search = @Model.FreeText, @currentpage = @i })">@i</a>
+                                        </li>
+                                    }
+                                }
+                                @*@if (@Model.BlogList.Total < @Model.BlogList.Pages)
+                                {
+                                    <li class="ng-scope active">
+                                        <a href="@Url.Action("search", "blog", new { search = @Model.FreeText, @currentpage = 1 })">1</a>
+                                    </li>
+                                }*@
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 no-padding margin-top-md">
+                        @foreach (var item in @Model.BlogList.Results)
+                        {
+                            <div class="col-sm-8 col-md-8 col-md-offset-2 col-sm-offset-2">
+                                <div class="row border-bottom-blog">
+                                    <div class="col-sm-4">
+                                        @if (item.BlogImage == null)
+                                        {
+                                            <img ng-src="~/assets/theme/ocx/images/noimagefound.jpg" class="img-responsive">
+                                        }
+                                        else
+                                        {
+                                            <img ng-src="@item.BlogImage" class="img-responsive" onerror="this.src = DEFAULT_IMAGE_URL">
+                                        }
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <h6 class="blog-h6">@Model.BlogList.Results[0].Category</h6>
+                                        <h4 class="blog-h4"><a href="@Url.Action("blogdetail", "blog", new { url = @item.URL})">@item.Title</a></h4>
+                                        <p class="blog-intro">
+                                            @item.Abstract
+                                        </p>
+                                        <p class="blog-category">
+                                            @item.Days days ago. By <a href="/@item.EditorSlug">@item.Author</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    }
+ 
+</section>
+@section scripts{
+    <script>
+        window.app.constant('blogConfig', {});
+    </script>
+}

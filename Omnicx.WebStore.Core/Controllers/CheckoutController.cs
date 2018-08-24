@@ -13,6 +13,7 @@ using Omnicx.WebStore.Models.Keys;
 using Omnicx.WebStore.Models.Enums;
 
 using Omnicx.WebStore.Models;
+using Omnicx.WebStore.Core.Helpers;
 
 namespace Omnicx.WebStore.Core.Controllers
 {
@@ -55,8 +56,8 @@ namespace Omnicx.WebStore.Core.Controllers
         {
             var response = _checkoutApi.Checkout(Sanitizer.GetSafeHtmlFragment(basketId));
 
-            var checkout = response.Result;
-            if (checkout.BasketId == null || checkout.Basket == null || checkout.Basket.LineItems.Count < 1)
+            var checkout = response.Result;           
+            if (checkout==null ||checkout.BasketId == null || checkout.Basket == null || checkout.Basket.LineItems.Count < 1)
             {
                 return null; 
             }
@@ -166,7 +167,7 @@ namespace Omnicx.WebStore.Core.Controllers
                 return JsonSuccess(response, JsonRequestBehavior.AllowGet);
             }
            
-            _b2bRepository.RemoveQuoteBasket(); 
+            //_b2bRepository.RemoveQuoteBasket(); 
             var order = response.Result;
             var paymentRequest=new ProcessPaymentRequest
             {
@@ -205,6 +206,10 @@ namespace Omnicx.WebStore.Core.Controllers
 
                 var paymentResult = _checkoutApi.UpdatePayment(order.Id, order.Payment);
                 paymentResponse.BalanceAmount = paymentResult.Result?.BalanceAmount;
+                if (paymentResponse.BalanceAmount.Raw.WithTax == 0)
+                {
+                    SiteUtils.ResetBasketCookie();
+                }
             }
             else
             {
@@ -223,7 +228,7 @@ namespace Omnicx.WebStore.Core.Controllers
         
         public ActionResult OrderConfirmation()
         {
-            return RedirectToAction("PageNotFound", "Common", new { @aspxerrorpath = "/checkout/OrderConfirmation" });
+            return RedirectToPageNotFound();
         }
 
         [HttpPost]

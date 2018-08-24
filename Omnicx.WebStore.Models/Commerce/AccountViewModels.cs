@@ -154,6 +154,10 @@ namespace Omnicx.WebStore.Models.Commerce
 
     public class CustomerDetailModel:GdprAttrModel
     {
+        private string _firstName;
+        private string _lastName;
+        private string _postCode;
+        private string _companyName;
         public string UserId { get; set; }
 
         public string UserName { get; set; }
@@ -165,12 +169,33 @@ namespace Omnicx.WebStore.Models.Commerce
         [Required]
         [Display(Name = "First Name", Prompt = "First Name")]
         [MaxLength(50, ErrorMessage = "FirstName Value can't be more than 50")]
-        public string FirstName { get; set; }
+        public string FirstName {
+            get
+            {
+                return _firstName;
+            }
+            set
+            {
+                if (!string.IsNullOrEmpty(value))
+                    _firstName = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(value.ToLower());
+            }
+        }
 
         [Required]
         [Display(Name = "Last Name", Prompt = "Last Name")]
         [MaxLength(50, ErrorMessage = "LastName Value can't be more than 50")]
-        public string LastName { get; set; }
+        public string LastName
+        {
+            get
+            {
+                return _lastName;
+            }
+            set
+            {
+                if (!string.IsNullOrEmpty(value))
+                    _lastName = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(value.ToLower());
+            }
+        }
 
        // [Required] akc requirement
         [Display(Name = "Gender")]
@@ -183,7 +208,17 @@ namespace Omnicx.WebStore.Models.Commerce
         //[Required]
         [Display(Name = "Post Code", Prompt = "Post Code")]
         [System.Web.Mvc.AdditionalMetadata("input.MaxLength", "10")]
-        public string PostCode { get; set; }
+        public string PostCode {
+            get
+            {
+                return _postCode;
+            }
+            set
+            {
+                if (!string.IsNullOrEmpty(value))
+                    _postCode = value.ToUpper();
+            }
+        }
 
         [Required]
         [Display(Name = "Phone No", Prompt = "Phone No")]
@@ -233,7 +268,19 @@ namespace Omnicx.WebStore.Models.Commerce
 
         //TEMP COMPANY PROPERTIES.
         public string CompanyId { get; set; }
-        public string CompanyName { get; set; }
+        public string CompanyName {
+            get
+            {
+                return _companyName;
+            }
+            set
+            {
+                if (!string.IsNullOrEmpty(value))
+                {
+                    _companyName = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(value.ToLower());
+                }
+            }
+        }
         public string BusinessType { get; set; }
         public bool Cheque { get; set; }
         public bool AccountCredit { get; set; }

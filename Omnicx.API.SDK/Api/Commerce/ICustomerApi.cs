@@ -30,7 +30,7 @@ namespace Omnicx.API.SDK.Api.Commerce
         ResponseModel<List<T> > GetCustomerAddress<T>(string customerId);
         ResponseModel<bool>  SaveCustomerAddress(AddressModel model);
         ResponseModel<bool>  UpdateCustomerAddress(string customerId, AddressModel model);
-
+        ResponseModel<BoolResponse> NoDefaultAddress(string customerId);
         //Return
         ResponseModel<ReturnModel>  ReturnRequest(string orderId);
         ResponseModel<BoolResponse> CreateReturn(ReturnModel returnModel);

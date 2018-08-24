@@ -1,0 +1,227 @@
+﻿@{
+    /*
+        Name: Mobile Header
+        Purpose: Mobile Site Header UI
+        Structure: /Views/Shared/_MobileHeaderLayout.cshtml
+        Contains (Partial Views Used):
+
+        Contained In (Where we Use this View):
+            a-/Views/Shared/_LayoutHeader.cshtml
+        */
+}
+@using Omnicx.WebStore.Models.Keys
+@using Omnicx.WebStore.Models.Enums
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
+
+@{
+
+    var checkoutUrl = Url.Action("OnePageCheckout", "Checkout");
+    if (ConfigKeys.OnePageCheckout == false)
+    {
+        checkoutUrl = Url.Action("StandardCheckout", "Checkout");
+    }
+}
+<div class="col-sm-12 col-xs-12 no-padding visible-xs mobile-header">
+    <div class="col-xs-9">
+        <div class="col-xs-9 pull-right text-right no-padding">
+            @Html.Action("SiteLogo", "Home", true)
+        </div>
+    </div>
+    @*<div class="col-xs-5 no-padding margin-top-xs">
+            @Html.Partial("_SearchBox")
+        </div>*@
+    <div class="col-xs-3 no-padding">
+        <div class="navbar-buttons text-right">
+            <div class="right-header">
+                <ul>
+                    <li class="shopping-cart cartopen" id="shoppingCart">
+                        <a href="javascript:;" ng-click="gm.isShow=!gm.isShow;gm.showBasket(gm.isShow);" title="Cart">
+                            <i class="fa fa-shopping-bag mobile-shopping-bag"></i>
+                            <span class="fa fa-shopping-bag-full dot-inline" ng-if="gm.basketResponse.lineItems.length > 0"></span>
+                        </a>
+                        <ul class="submenu-mainmenu cart-group-1" ng-show="gm.basketResponse.lineItems.length>0">
+                            <li ng-show="gm.basketResponse.lineItems.length>0">
+                                <ul id="cartdropdown">
+                                    <li class="single-cart-item clearfix" ng-repeat="items in gm.basketResponse.lineItems track by $index" ng-if="items.parentProductId == gm.emptyGuid">
+                                        <div class="col-sm-12 col-xs-12 no-padding" ng-if="items.parentProductId == gm.emptyGuid">
+                                            <div class="col-sm-3 col-xs-3 no-padding">
+                                                <span class="cart-img no-border">
+                                                    <a ng-href="/{{items.slug}}">
+                                                        <img ng-src="{{items.image}}" onerror="this.src = DEFAULT_IMAGE_URL">
+                                                    </a>
+                                                </span>
+                                            </div>
+                                            <div class="col-sm-9 col-xs-9 no-padding">
+                                                <span class="trash-cart">
+                                                    <a href="" class="remove" title="Remove" ng-click="gm.addToBasket(items.productId,0,items.displayOrder)"><i class="fa fa-trash-o"></i></a>
+                                                </span>
+                                                <span class="cart-info">
+                                                    <a class="small-cart-name" ng-href="/{{items.slug}}" ng-bind="items.name"></a>
+                                                    <button class="btn-cart" ng-click="gm.addToBasket(items.productId,-1,items.displayOrder)"><i class="fa fa-minus"></i></button>
+                                                    <input type="text" value="{{items.qty}}" class="cart-text form-control" numbers-Only ng-disabled="true">
+                                                    <button class="btn-cart" ng-click="gm.addToBasket(items.productId,1,items.displayOrder)"><i class="fa fa-plus"></i></button>
+                                                    <span class="text-right pull-right">
+                                                        {{items.qty}} x <span>{{items.price.formatted.withTax}}</span>
+                                                    </span>
+                                                </span>
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-xs-12 padding-sm">
+                                                        <strong class="text-orange" ng-show="items.displayInBasket && items.itemType ==@ItemTypes.Bundle.GetHashCode()">@LT("YourBag.Text.IncludeComponents", "Included Components:")</strong>
+                                                        <div class="row component-row" ng-repeat="bundle in gm.basketResponse.lineItems track by $index" ng-if="bundle.parentProductId == items.productId" ng-show="items.displayInBasket">
+                                                            <div class="col-sm-8 col-xs-8 no-padding">
+                                                                <a class="small-cart-name" ng-href="/{{bundle.slug}}" ng-bind="bundle.name"></a>
+                                                            </div>
+                                                            <div class="col-sm-4 col-xs-4 no-padding-left text-right">
+                                                                <strong>@LT("YourBag.Text.Qty", "Qty:") </strong><span ng-bind="bundle.qty"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div ng-if="items.parentProductId != gm.emptyGuid">
+                                            <div class="col-sm-12 col-xs-12 no-padding">
+                                                <div class="col-sm-3 col-xs-3 no-padding">
+                                                    <span class="cart-img">
+                                                        <a ng-href="/{{items.slug}}">
+                                                            <img ng-src="{{items.image}}" onerror="this.src = DEFAULT_IMAGE_URL">
+                                                        </a>
+                                                    </span>
+                                                </div>
+                                                <div class="col-sm-9 col-xs-9 no-padding">
+                                                    <span class="cart-info">
+                                                        <a class="small-cart-name" ng-href="/{{items.slug}}" ng-bind="items.name"></a>
+                                                        <span class="pull-right text-right">@LT("YourBag.Text.Free", "FREE")</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li ng-show="gm.basketResponse.lineItems.length>0">
+                                <select id="deliverydrpdwn" ng-model="selectedid" ng-change="gm.updateShipping(selectedid)">
+                                    <option ng-repeat="methods in gm.basketResponse.shippingMethods track by $index" ng-selected="methods.id == gm.basketResponse.shippingMethodId" ng-model="methods.id" id="{{methods.id}}" ng-value="methods.id" ng-bind="methods.displayName +' ' + '(' + methods.price.formatted.withTax + ')'"></option>
+                                </select>
+                            </li>
+                            <li class="total-amount sub_total_price" ng-show="gm.basketResponse.lineItems.length>0">
+                                <div class="sub-total-cart amount shopping-cart__total total col-lg-12 margin-top-sm no-padding">
+                                    <form ng-submit="gm.applyPromoCode(gm.basketResponse.id,promoCode)">
+                                        <div class="input-group basket-coupon-width">
+                                            <input type="text" class="form-control" ng-model="promoCode" placeholder="@LT("YourBag.Text.PlaceHolder.Enterpromotioncode", "Enter Promo Code")" style="width: 99%;" />
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-checkout no-margin" type="button" ng-click="gm.applyPromoCode(gm.basketResponse.id,promoCode)"><i class="fa fa-gift"></i></button>
+                                            </span>
+                                            <span ng-cloak class="alert alert-danger promo pull-left col-lg-12" ng-show="gm.invalidpromo">@LT("Checkout.Text.InValidPromoMessage", "PromoCode Invalid!")</span>
+                                            <span ng-cloak class="alert alert-success promovalid pull-left col-lg-12" ng-show="gm.validpromo">@LT("Checkout.Text.ValidPromoMessage", "Successfully Applied")</span>
+                                            <span ng-cloak class="alert alert-danger promonull pull-left col-lg-12" ng-show="gm.promonull">@LT("Checkout.Text.NullPromoMessage", "Please enter promo code!")</span>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="sub-total-cart amount shopping-cart__total total col-lg-12 no-padding" id="PromoApplied5" ng-show="gm.basketResponse.promotionsApplied.length>0">
+                                    <div class="col-sm-12 no-padding">
+                                        <p class="basket-price">Promotion Applied</p>
+                                    </div>
+                                    <div class="col-sm-12 no-padding">
+                                        <ul>
+                                            <li class="no-padding" ng-repeat="promotion in gm.basketResponse.promotionsApplied track by $index">
+                                                <a href="" class="promoApply" title="Remove" ng-click="gm.removePromoCode(gm.basketResponse.id,promotion.promoCode)">
+                                                    <span ng-bind="promotion.name" class="pull-left"></span>
+                                                    <i class="fa fa-remove pull-right promoRemove"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div ng-show="gm.basketResponse.lineItems.length>0" class="sub-total-cart amount shopping-cart__total total col-lg-12 no-padding">
+                                    <p class="basket-price">
+                                        @LT("YourBag.Text.Discount", "Discount"): <span class="money" data-currency-usd="$48.00" data-currency-eur="&amp;euro;45.42" data-currency="EUR" ng-bind="gm.basketResponse.discount.formatted.withTax"></span>
+                                    </p>
+                                </div>
+                                <div ng-show="gm.basketResponse.lineItems.length>0" class="sub-total-cart amount shopping-cart__total total col-lg-12 no-padding">
+                                    <p class="basket-price">
+                                        @LT("YourBag.Text.GrandTotal", "Order Total"): <span class="money" data-currency-usd="$48.00" data-currency-eur="&amp;euro;45.42" data-currency="EUR" ng-bind="gm.basketResponse.grandTotal.formatted.withTax"></span>
+                                    </p>
+                                </div>
+
+                                <div ng-show="gm.basketResponse.lineItems.length>0" class="sub-total-cart amount shopping-cart__total total col-lg-12 no-padding">
+                                    <div class="col-sm-6 col-xs-6 no-padding-left">
+                                        <a href="@Url.Action("Index", "Basket")" class="animate btn-bordered">@LT("Header.Link.ViewCart", "View Cart") <i class="fa fa-caret-right"></i></a>
+                                    </div>
+                                    <div class="col-sm-6 col-xs-6">
+                                        <a href="@checkoutUrl//{{gm.basketResponse.id}}" class="animate btn-primary">@LT("Checkout.Title.Checkout", "Checkout") <i class="fa fa-caret-right"></i></a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li ng-hide="gm.basketResponse.lineItems.length > 0">
+                                <p class="no-item">Your Bag is empty.</p>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="right-header">
+                <ul>
+                    <li class="shopping-cart" id="accountDrop">
+                        <a href="javascript:;" ng-click="gm.isShowAccount=!gm.isShowAccount;gm.showAccount(gm.isShowAccount);" title="Account">
+                            <i class="fa fa-user mobile-shopping-bag"></i>
+                        </a>
+                        <span class="arrow-top"></span>
+                        <ul class="submenu-mainmenu cart-group-1 accountDropRight" id="accountList">
+                            @if (SessionContext.CurrentUser != null)
+                            {
+                                <li>
+                                    <a href="javascript:;">
+                                        <i class="fa fa-user"></i> <span class="text-capitalize mincharName"> @SessionContext.CurrentUser.FirstName @SessionContext.CurrentUser.LastName</span>
+                                    </a>
+                                </li>
+                            }
+                            @if (SessionContext.CurrentUser != null)
+                            {
+                                <li><a href="@Url.Action("Wishlist", "Account")"><i class="fa fa-heart"></i> Wishlist</a></li>
+                                <li><a href="@Url.Action("OrderHistory", "Account")"><i class="fa fa-shopping-basket"></i> Orders</a></li>
+                                <li><a href="@Url.Action("MyAccount", "Account")"><i class="fa fa-gear"></i> Account</a></li>
+                                <li><a href="@Url.Action("Logout", "Account")"><i class="fa fa-sign-out"></i> Logout</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="@Url.Action("SignIn", "Account")"><i class="fa fa-sign-in"></i> Sign in</a></li>
+                            }
+
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="right-header">
+                <ul>
+                    <li class="shopping-cart" id="accountDrop">
+                        <a href="#" data-toggle="modal" data-target="#globalSearch-xs" class="pos-rel-search font-size13">
+                            <i class="fa fa-search mobile-shopping-bag"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="modal fade in" id="globalSearch-xs" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-search">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <a class="text-center" href="/">
+                                <h3 class="heading-h3">Search</h3>
+                            </a>
+                            <button type="button" class="close search-close-btn" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">@LT("Checkout.Button.Close", "Close")</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="container">
+                                    @Html.Partial("~/Views/Shared/_SearchBox.cshtml")
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Action("GetMobileNav", "Home")

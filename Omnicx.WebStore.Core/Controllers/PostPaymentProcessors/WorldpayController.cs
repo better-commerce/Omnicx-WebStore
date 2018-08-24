@@ -10,6 +10,7 @@ using System.Web;
 using System.Web.Mvc;
 using Omnicx.WebStore.Models.Enums;
 using Omnicx.WebStore.Models.Keys;
+using Omnicx.WebStore.Core.Helpers;
 
 namespace Omnicx.WebStore.Core.Controllers.PostPaymentProcessors
 {
@@ -55,7 +56,7 @@ namespace Omnicx.WebStore.Core.Controllers.PostPaymentProcessors
 
                 response = new BoolResponse { IsValid = true, RecordId = order.Id };
                 SetDataLayerVariables(order, WebhookEventTypes.CheckoutPayment);
-
+                SiteUtils.ResetBasketCookie();
                 return View(CustomViews.PAYMENT_RESPONSE, response);
             }
             return View(CustomViews.PAYMENT_RESPONSE, response);

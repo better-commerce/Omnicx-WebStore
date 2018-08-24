@@ -36,5 +36,7 @@ namespace Omnicx.WebStore.Models.Commerce
 
         public int ItemType { get; set; }
         public bool DisplayInBasket { get; set; }
+        public Amount CompanyDiscount { get; set; }
+        public Amount ListPrice { get; set; }
     }
 }

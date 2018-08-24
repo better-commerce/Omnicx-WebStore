@@ -42,9 +42,9 @@ namespace Omnicx.WebStore.Core.Controllers
             return View(CustomViews.BASKET, basket??new BasketModel { });
         }
 
-        protected BasketModel GetIndexBasketData()
+        protected BasketModel GetIndexBasketData(string basketId = "")
         {
-            var basket = _basketApi.GetBasketData("")?.Result;
+            var basket = _basketApi.GetBasketData(basketId)?.Result;
             if (Request.UrlReferrer != null)
                 ViewBag.PrevPage = Request.UrlReferrer.ToString();
             else
@@ -60,7 +60,8 @@ namespace Omnicx.WebStore.Core.Controllers
         public virtual async Task<ActionResult> GetBasketData()
         {
             var basket = SiteUtils.HasBasketAction() ? await _basketApi.GetBasketDataAsync("") : null;
-            SiteUtils.SetBasketAction(basket?.Result.Id);
+            if (basket?.Result != null)
+                SiteUtils.SetBasketAction(basket?.Result.Id);
             return JsonSuccess(basket?.Result, JsonRequestBehavior.AllowGet);
         }
     
@@ -84,7 +85,8 @@ namespace Omnicx.WebStore.Core.Controllers
                 PostCode = model.PostCode
             };
             var basket = _basketApi.AddToBasket(basketModel);
-            SiteUtils.SetBasketAction(basket?.Result.Id);
+            if (basket?.Result != null)
+                SiteUtils.SetBasketAction(basket?.Result.Id);
             return JsonSuccess(basket, JsonRequestBehavior.AllowGet);
         }
 

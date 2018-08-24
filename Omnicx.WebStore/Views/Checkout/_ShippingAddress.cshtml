@@ -1,0 +1,122 @@
+﻿@{
+/*
+    Name: Shipping Address
+    Purpose: Shipping Address Form
+    Structure: /Views/Checkout/_ShippingAddress.cshtml
+    Contains (Partial Views Used):
+
+    Contained In (Where we Use this View):
+        a-/Views/Checkout/OnePageCheckout.cshtml
+    */
+}
+@using Omnicx.WebStore.Models.Enums
+@using Omnicx.WebStore.Core.Helpers;
+@using Omnicx.WebStore.Framework.Helpers
+@using Omnicx.WebStore.Models.Helpers
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Commerce.AddressModel>
+@{
+    var addressForm = Html.Angular().ModelFor("ck.model.checkout.shippingAddress");
+    var userRole = SessionContext.CurrentUserRole;
+}
+<form name="shippingForm" role="form" novalidate>
+    @*<div class="col-sm-12 col-xs-12 margin-bottom-sm" ng-repeat="add in ck.userAddresses">
+        <div class="col-sm-1 col-xs-2">
+            <label class="control control--radio margin-bottom-lg" ng-click="ck.address=add">
+                <input id="address" name="address" type="radio" class="ng-pristine ng-valid">
+                <span class="control__indicator"></span>
+            </label>
+        </div>
+        <div class="col-sm-11 col-xs-10 no-padding">
+            <span><strong ng-bind="add.firstName"></strong>&nbsp;<strong ng-bind="add.lastName"></strong></span> <span ng-bind="add.phoneNo"></span>
+            <p class="no-padding no-margin"><span ng-bind="add.address1"></span>,<span ng-bind="add.city"></span>,<span ng-bind="add.postCode"></span>,<span ng-bind="add.country"></span></p>
+        </div>
+    </div>*@
+    <div class="content" ng-hide="ck.hideShippingAddress">
+        <div class="row">
+            <div class="col-sm-12">
+                <h5 class="margin-top-sm margin-bottom-sm checkout-h5">@LT("Checkout.Label.DeliveryAddress", "Delivery Address")</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <div class="form-group" ng-class="vm.getValidationClass()" form-group-validation="Title">
+                        <label for="Title" class="control-label ng-scope">@LT("MyAccount.Text.Title", "Title")</label>
+                        <select name="Title" tabindex="1" class="form-control" data-label="Title" ng-model="ck.model.checkout.shippingAddress.title" @*required*@>
+                            <option ng-selected="ck.model.checkout.shippingAddress.title == null" value="">@LT("MyAccount.Text.Title", "Title")</option>
+                            <option value="Miss">Miss</option>
+                            <option value="Mr">Mr</option>
+                            <option value="Mrs">Mrs</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    @addressForm.FormGroupFor(x => x.FirstName)
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    @addressForm.FormGroupFor(x => x.LastName)
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    @addressForm.FormGroupFor(x => x.Address1)
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    @addressForm.FormGroupFor(x => x.Address2)
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    @addressForm.FormGroupFor(x => x.City)
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    @addressForm.FormGroupFor(x => x.PostCode)
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    @addressForm.FormGroupFor(x => x.State)
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                @*<div class="form-group">
+                    <label>Country</label>
+                        <select name="title" tabindex="1" class="form-aux form-control" ng-disabled="ck.sameAsBillAddress" data-label="Title" ng-model="ck.model.shippingAddress.countryCode">
+                            <option>@LT("Checkout.Label.Select", "Select") @LT("Checkout.Label.State", "County")</option>
+                            <option ng-repeat="countries in ck.model.shippingAddress.countryList" ng-selected="ck.model.shippingAddress.countryCode==countries.twoLetterIsoCode" value="{{countries.twoLetterIsoCode}}">{{countries.name}}</option>
+                        </select>
+                    </div>*@
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    @addressForm.FormGroupFor(x => x.PhoneNo)
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+</form>

@@ -18,7 +18,16 @@ namespace Omnicx.WebStore.Models.Common
         public string CustomInfo4 { get; set; }
         [DisplayFormat(ConvertEmptyStringToNull = false)]
         public string CustomInfo5 { get; set; }
-
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
+        public string CustomInfo1Formatted { get; set; }
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
+        public string CustomInfo2Formatted { get; set; }
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
+        public string CustomInfo3Formatted { get; set; }
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
+        public string CustomInfo4Formatted { get; set; }
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
+        public string CustomInfo5Formatted { get; set; }
         public int Qty { get; set; }
         public decimal AdditionalCharge { get; set; }
         public string StockCode { get; set; }

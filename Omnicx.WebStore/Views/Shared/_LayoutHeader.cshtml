@@ -1,0 +1,37 @@
+﻿@{
+    /*
+        Name: Page Header
+        Purpose: Select Header according to screen size
+        Structure: /Views/Shared/_LayoutHeader.cshtml
+        Contains (Partial Views Used):
+            a-/Views/Shared/_HeaderLayout.cshtml
+            b-/Views/Shared/_MobileHeaderLayout.cshtml
+
+        Contained In (Where we Use this View):
+            a-/Views/Shared/_Layout.cshtml
+            b-/Views/Shared/_LayoutAccount.cshtml
+            c-/Views/Shared/_LayoutBlog.cshtml
+            d-/Views/Shared/_LayoutCMS.cshtml
+        */
+}
+@using Omnicx.WebStore.Models.Keys
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
+
+@{
+    var StoreTheme = ConfigKeys.StoreTheme;
+    var checkoutUrl = Url.Action("OnePageCheckout", "Checkout");
+    if (ConfigKeys.OnePageCheckout == false)
+    {
+        checkoutUrl = Url.Action("StandardCheckout", "Checkout");
+    }
+}
+@*Header Start*@
+<div class="hidden-xs">
+    @Html.Partial("~/Views/Shared/_HeaderLayout.cshtml")
+</div>
+<div class="visible-xs">
+    @Html.Partial("~/Views/Shared/_MobileHeaderLayout.cshtml")
+</div>
+@*Header END*@
+
+<div class="navOverlay"></div>

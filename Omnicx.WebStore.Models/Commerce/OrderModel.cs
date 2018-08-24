@@ -46,6 +46,7 @@ namespace Omnicx.WebStore.Models.Commerce
         public string CustomInfo5 { get; set; }
 
         public Amount AdditionalCharge { get; set; }
+        public Amount CompanyDiscount { get; set; }
 
     }
 }

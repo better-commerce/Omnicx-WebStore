@@ -272,6 +272,13 @@ namespace Omnicx.WebStore.Core.Controllers
 
             return retObj;
         }
+
+        public ActionResult RedirectToPageNotFound()
+        {
+            var referrer = System.Web.HttpContext.Current.Request.UrlReferrer;
+            var url = System.Web.HttpContext.Current.Request.Url.AbsolutePath;
+            return RedirectToAction("pagenotfound", "common", new { @aspxerrorpath = url, @UrlReferrer = referrer});
+        }
     }
    
 }

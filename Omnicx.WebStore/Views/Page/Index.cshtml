@@ -1,0 +1,29 @@
+﻿@{
+    /*
+        Name: Home Page
+        Purpose: WebStore Home Page Call Json or CMS View
+        Structure: /Views/Page/_IndexJson.cshtml
+        Contains (Partial Views Used):
+            a-/Views/Page/_IndexJson.cshtml OR      (JSON DATA Customize View)
+            b-/Views/Page/_IndexCms.cshtml          (CMS View With HTML Render)
+
+        Contained In (Where we Use this View):
+            a-/Views/Page/Index.cshtml
+        */
+}
+@using Omnicx.WebStore.Models.Keys
+@using Omnicx.WebStore.Models.Enums
+@using Omnicx.API.SDK.Helpers
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Site.SiteViewModel>
+@{
+    var StoreTheme = ConfigKeys.StoreTheme;
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+    Html.AddTitleParts(Model.Title);
+    Html.AddMetaDescriptionParts(Model.MetaDescription);
+    Html.AddMetaKeywordsParts(Model.MetaKeywords);
+    Html.AddCanonicalUrl(Model.CanonicalTags);
+    Html.AddDataLayer(DataLayerObjectType.CmsPage, Model);
+}
+@*Calling Home Page*@
+@Html.Partial("~/Views/Page/_IndexJson.cshtml", Model)

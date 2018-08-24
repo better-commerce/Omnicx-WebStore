@@ -41,12 +41,11 @@ namespace Omnicx.API.SDK.Api.Commerce
             var resp = CallApi<bool>(string.Format(ApiUrls.CreateQuote), JsonConvert.SerializeObject(model), Method.POST);
             if (!String.IsNullOrEmpty(resp.Message))
             {
-                System.Web.HttpCookie cookie_basket = HttpContext.Current.Request.Cookies[Constants.COOKIE_BASKETID];
-                HttpContext.Current.Response.Cookies.Remove(Constants.COOKIE_BASKETID);
+                System.Web.HttpCookie cookie_basket = HttpContext.Current.Request.Cookies[Constants.COOKIE_BASKETID];               
                 if (cookie_basket != null)
                 {
-                    cookie_basket.Expires = DateTime.Now.AddDays(-1);
-                    cookie_basket.Value = null;
+                    cookie_basket.Expires = DateTime.Now.AddDays(Constants.COOKIE_DEVICEID_EXPIRES_DAYS);
+                    cookie_basket.Value = Guid.NewGuid().ToString();
                     HttpContext.Current.Response.SetCookie(cookie_basket);
                 }
             }
@@ -87,7 +86,7 @@ namespace Omnicx.API.SDK.Api.Commerce
         public bool RemoveQuoteBasket()
         {
             //removes quoteBasketId from cookies when user has updated his quote and now wishes to get currentBasket back .
-            var cookie_basketId = new System.Web.HttpCookie(Constants.COOKIE_BASKETID) { HttpOnly = true, Value = null, Expires = DateTime.Now.AddDays(Constants.COOKIE_DEVICEID_EXPIRES_DAYS) };
+            var cookie_basketId = new System.Web.HttpCookie(Constants.COOKIE_BASKETID) { HttpOnly = true, Value = Guid.NewGuid().ToString(), Expires = DateTime.Now.AddDays(Constants.COOKIE_DEVICEID_EXPIRES_DAYS) };
             System.Web.HttpContext.Current.Response.Cookies.Set(cookie_basketId);
             return true;
         }

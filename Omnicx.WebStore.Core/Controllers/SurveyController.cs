@@ -34,7 +34,7 @@ namespace Omnicx.WebStore.Core.Controllers
         {
             Guid surveyId;
             if (Guid.TryParse(id, out surveyId) == false)
-                RedirectToAction("PageNotFound", "Common",new { @aspxerrorpath = "/survery/Capture/" + id});
+                return RedirectToPageNotFound();
 
             var apiResult = _surveyApi.GetSurvey(surveyId);
             var survey = apiResult.Result;
@@ -52,7 +52,7 @@ namespace Omnicx.WebStore.Core.Controllers
                 return View(CustomViews.SURVEY_CAPTURE, survey);
             }
             else
-                return RedirectToAction("PageNotFound", "Common", new { @aspxerrorpath = "/survery/Capture/" + id });
+                return RedirectToPageNotFound();
         }
 
         public ActionResult SaveAnswer(string questionId, string answer)

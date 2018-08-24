@@ -45,5 +45,6 @@ namespace Omnicx.WebStore.Models.Commerce
         public string PostCode { get; set; }
         public bool IsPriceOnRequest { get; set; }
         public decimal MaxDimensionMm { get; set; }
+        public Amount CompanyDiscount { get; set; }
     }
 }

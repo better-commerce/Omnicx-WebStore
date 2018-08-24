@@ -1,0 +1,102 @@
+﻿@{
+/*
+    Name: Header
+    Purpose: Header UI for all the big screens
+    Structure: /Views/Shared/_HeaderLayout.cshtml
+    Contains (Partial Views Used):
+        a-/Views/Shared/_SearchBox.cshtml
+
+    Contained In (Where we Use this View):
+        a-/Views/Shared/_LayoutHeader.cshtml
+    */
+}
+@using Omnicx.WebStore.Models.Keys
+@using Omnicx.API.SDK.Helpers
+@using Omnicx.WebStore.Models.Enums
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
+@{ 
+    bool? showBulkOrderPad = SessionContext.CurrentSiteConfig?.B2BSettings?.ShowBulkOrderPad;
+    bool? isB2b = SessionContext.CurrentSiteConfig?.B2BSettings?.EnableB2B;
+}
+<nav class="userControls hidden">
+    <div class="container">
+        <div class="row">
+            @*Header Top Left Panel Menu*@
+            <ul class="left list-inline col-sm-6 col-xs-5 pull-left text-left">
+                <li class="pos-rel">
+                    <a href="@Url.Action("blogs", "blog")" class="userControls__langBtn">Blogs</a>
+                </li>
+                <li>
+                    <span class="userControls__linkSeperator">|</span>
+                </li>
+                <li class="pos-rel">
+                    <a href="@Url.Action("BrandList", "Brand")" class="userControls__currencyBtn">Brand Directory</a>
+                </li>
+            </ul>
+
+            @*Header Top Right Panel Account and Localize Panel*@
+            <ul class="left list-inline col-sm-6 col-xs-7 pull-right text-right">
+                
+            </ul>
+        </div>
+    </div>
+</nav>
+<section class="meta">
+    <div class="container pos-rel">
+        <div class="row xs-no-margin">
+            @*Mobile Menu icon Hidden*@
+            <div class="col-xs-1 visible-xs xs-padding-lr-0">
+                <button class="mobileMenuBtn hamburger hamburger--squeeze" type="button" aria-label="Mobile Menu" aria-controls="navigation">
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
+                </button>
+            </div>
+
+            @*Mobile Search*@
+            <div class="col-xs-2 visible-xs xs-padding-lr-0 xs-text-center">
+                <a class="mobileSearchBtn" href="/">
+                    <span class="mobileSearchBtn__text hidden-xs">Search Site</span>
+                    <span class="icon icon-search"></span>
+                </a>
+            </div>
+
+            @*Site LOGO*@
+            <div class="col-xs-3 col-sm-1 no-padding">
+                @Html.Partial(CustomViews.SITE_LOGO)
+            </div>
+
+            @*Site Search*@
+            <div class="mobShowHide col-xs-12 col-sm-5">
+                <div class="mobShowHide__container">
+                    @Html.Partial(CustomViews.HEADER_SEARCHBOX)                   
+                </div>
+            </div>
+
+            @*Basket and Store Panel*@
+            <div class="col-xs-6 col-sm-6 no-padding">
+                <nav class="metaLinks">
+                    <ul class="list-inline">
+                        <li>
+                            <div id="miniBag" class="open">
+                                @Html.Action("HeaderBasket", "Basket", true)
+                            </div>
+                        </li>
+                        @*@if (isB2b.GetValueOrDefault() && showBulkOrderPad.GetValueOrDefault())
+                        {
+                            @Html.Partial(CustomViews.HEADER_BULKORDER_VIEW)
+                        }*@
+                        @Html.Action("HeaderLoginInfo", "Home", true)                        
+                    </ul>
+                </nav>
+            </div>
+            <div class="header-toggle">
+                <a data-toggle="modal" data-target="#country-modal"><i class="fa fa-chevron-down"></i><i class="fa fa-@SessionContext.CurrentSiteConfig.RegionalSettings.DefaultCountry"></i></a>
+                <button data-toggle="modal" data-target="#currency-modal"><i class="fa fa-chevron-down"></i>@SessionContext.CurrentSiteConfig.RegionalSettings.DefaultCountry</button>
+            </div>
+        </div>
+    </div>
+    @Html.GetGlobalSnipptes(SnippetPlacements.HeaderMenuBefore)
+    @Html.Action("GetNav", "Home")
+    @Html.GetGlobalSnipptes(SnippetPlacements.HeaderMenuAfter)
+</section>

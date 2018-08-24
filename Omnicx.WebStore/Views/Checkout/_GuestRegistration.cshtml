@@ -1,0 +1,68 @@
+﻿@{
+/*
+    Name: Guest Registration
+    Purpose: Guest Registration Form
+    Structure: /Views/Checkout/_GuestRegistration.cshtml
+    Contains (Partial Views Used):
+
+    Contained In (Where we Use this View):
+        a-/Views/Basket/OnePageCheckout.cshtml
+    */
+}
+@using Omnicx.WebStore.Models.Common
+@using Omnicx.WebStore.Framework.Helpers
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<LoginRegistrationModel>
+@{ 
+    var userForm = Html.Angular().ModelFor("ck.model.loginRegistration");
+}
+<div class="modal fade" id="guest-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="Login">Guest Checkout Options</h4>
+            </div>
+            <div class="modal-body">
+                <form ng-show="ck.model.checkout.customerId!=null" ng-submit="ck.validateLoginPassword(ck.model.login)">
+                    <div ng-cloak class="alert alert-danger" ng-show="ck.passwordError!=null">
+                        <div ng-repeat="err in ck.passwordError track by $index">
+                            <i class="fa fa-circle"></i><span ng-bind="err"></span>
+                        </div> 
+                    </div>
+                    <div class="form-group">
+                        <p>@LT("MyAccount.Text.LoginOrContinue", "This email is registered with us. You can login before checkout or continue as a guest.")</p>
+                    </div>
+                    <div class="form-group">
+                        @userForm.FormGroupFor(x => x.Login.Password)
+                    </div>
+                    <div class="">
+                        <button type="submit" class="animate btn-primary"><i class="fa fa-sign-in"></i>Login & @LT("Checkout.Label.OrderSummary", "Place Order")</button>
+                        <button type="button" ng-click="ck.placeOrder()" class="animate btn-primary" data-dismiss="modal" aria-hidden="true">Skip & @LT("Checkout.Label.OrderSummary", "Place Order")<i class="fa fa-angle-double-right"></i></button>
+                    </div>
+                </form>
+
+                <form role="form" method="post" ng-submit="ck.validateGuestPassword(ck.model.register)" novalidate ng-show="ck.model.checkout.customerId==null">
+                    <div class="form-group">
+                        <p>@LT("MyAccount.Text.RegisterBenifits", "With registration with us new world of fashion, fantastic discounts and much more opens to you! The whole process will not take you more than a minute!")</p>
+                        <p class="text-muted">@LT("MyAccount.Text.FeelFree", "If you have any questions, please feel free to ")<a href="@Url.Action("Contact", "pages")">@LT("MyAccount.Text.ContactUs", "Contact Us"),</a> @LT("MyAccount.Text.Support", " our customer service center is working for you 24/7").</p>
+                    </div>
+                    <div ng-cloak class="alert alert-danger" ng-show="ck.passwordError!=null">
+                        <div ng-repeat="err in ck.passwordError track by $index">
+                            <i class="fa fa-circle"></i><span ng-bind="err"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                      @userForm.FormGroupFor(x => x.Registration.Password)
+                    </div>
+                    <div class="form-group">
+                        @userForm.FormGroupFor(x => x.Registration.ConfirmPassword)
+                    </div>
+                    <div class="">
+                        <button type="submit" class="animate btn-success"><i class="fa fa-sign-in" ></i>Set Password</button>
+                        <button type="button"  ng-click="ck.placeOrder()" class="animate btn-primary" data-dismiss="modal" aria-hidden="true">Skip & @LT("Checkout.Label.OrderSummary", "Place Order")<i class="fa fa-angle-double-right"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

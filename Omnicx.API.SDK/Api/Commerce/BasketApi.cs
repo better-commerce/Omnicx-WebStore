@@ -17,16 +17,17 @@ namespace Omnicx.API.SDK.Api.Commerce
     {
         public ResponseModel<BasketModel> AddToBasket(BasketAddModel basketLine)
         {
-            Guid basketId;
-            Guid.TryParse(basketLine.BasketId, out basketId);
+            var basketId = GetBasketId(basketLine.BasketId);
+            basketLine.BasketId = basketId.ToString();
             var result = CallApi<BasketModel>(string.Format(ApiUrls.AddToBasket, basketId), JsonConvert.SerializeObject(basketLine), Method.POST);
             if (result.Result != null && !result.Result.IsQuote)
             {
                 var cookie_basketId = new System.Web.HttpCookie(Constants.COOKIE_BASKETID) { HttpOnly = true, Value = result.Result.Id, Expires = DateTime.Now.AddDays(Constants.COOKIE_DEVICEID_EXPIRES_DAYS) };
                 if ((result.Result.LineItems == null || result.Result.LineItems.Count == 0))
                 {
-                    cookie_basketId.Expires = DateTime.Now.AddDays(-1);
-                }
+                    cookie_basketId.Value =Guid.NewGuid().ToString();
+                    result.Result = new BasketModel();
+                }              
                 System.Web.HttpContext.Current.Response.Cookies.Add(cookie_basketId);
             }
             return result;
@@ -50,33 +51,22 @@ namespace Omnicx.API.SDK.Api.Commerce
         //}
         public ResponseModel<BasketModel> GetBasketData(string id)
         {
-            Guid basketId;
-            if (String.IsNullOrEmpty(id))
-            {
-                id = System.Web.HttpContext.Current.Request.Cookies[Constants.COOKIE_BASKETID]?.Value.ToString();
-            }
+            var basketId = GetBasketId(id);
             Guid.TryParse(id, out basketId);
             return CallApi<BasketModel>(string.Format(ApiUrls.GetBasket, basketId), "");
         }
 
+       
         public async Task<ResponseModel<BasketModel>> GetBasketDataAsync(string id)
         {
-            Guid basketId;
-            Guid.TryParse(id, out basketId);
-            System.Web.HttpCookie cookie_basket = null;
-            //removed condition in if statement(&& UserId == null)  . Statement not looking meaningfull . 
-            if (basketId == Guid.Empty)
-            {
-                cookie_basket = System.Web.HttpContext.Current.Request.Cookies[Constants.COOKIE_BASKETID];
-                var cookie_basketId = cookie_basket?.Value;
-                Guid.TryParse(cookie_basketId, out basketId);
-            }           
+            var basketId= GetBasketId(id);           
             var task = await CallApiAsync<BasketModel>(string.Format(ApiUrls.GetBasket, basketId), "");
             if(task.Result != null)
             {
+                var cookie_basket = System.Web.HttpContext.Current.Request.Cookies[Constants.COOKIE_BASKETID];
                 if ((task.Result.LineItems == null || task.Result.LineItems.Count == 0) && cookie_basket != null)
                 {
-                    cookie_basket.Expires = DateTime.Now.AddDays(-1);
+                    cookie_basket.Value = Guid.NewGuid().ToString();
                     System.Web.HttpContext.Current.Request.Cookies.Add(cookie_basket);
                 }
             }
@@ -88,9 +78,7 @@ namespace Omnicx.API.SDK.Api.Commerce
         }
         public ResponseModel<BasketModel> BulkAddProduct(List<BasketAddModel> basketLine)
         {
-            Guid basketId;
-            var currentbasket = System.Web.HttpContext.Current.Request.Cookies[Constants.COOKIE_BASKETID]?.Value;
-            Guid.TryParse(currentbasket, out basketId);
+            Guid basketId=GetBasketId("");          
             var result = CallApi<BasketModel>(string.Format(ApiUrls.BulkAddProduct, basketId), JsonConvert.SerializeObject(basketLine), Method.POST);
             if (result.Result != null)
             {
@@ -121,5 +109,18 @@ namespace Omnicx.API.SDK.Api.Commerce
         {
             return CallApi<BasketModel>(string.Format(ApiUrls.UpdateBasketLineCustomInfo, basketId), JsonConvert.SerializeObject(info), Method.POST);
         }
+        private Guid GetBasketId(string id)
+        {
+            Guid basketId;
+            Guid.TryParse(id, out basketId);
+            if (basketId == Guid.Empty)
+            {
+                var cookie_basket = System.Web.HttpContext.Current.Request.Cookies[Constants.COOKIE_BASKETID];
+                var cookie_basketId = cookie_basket?.Value;
+                Guid.TryParse(cookie_basketId, out basketId);
+            }
+            return basketId;
+        }
+
     }
 }

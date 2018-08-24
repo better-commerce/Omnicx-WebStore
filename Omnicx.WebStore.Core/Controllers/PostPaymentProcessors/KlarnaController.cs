@@ -3,6 +3,7 @@ using Omnicx.API.SDK.Api.Commerce;
 using Omnicx.API.SDK.Payments.Entities;
 using Omnicx.API.SDK.Payments.Klarna;
 using Omnicx.WebStore.Core.Controllers;
+using Omnicx.WebStore.Core.Helpers;
 using Omnicx.WebStore.Models.Commerce;
 using Omnicx.WebStore.Models.Common;
 using Omnicx.WebStore.Models.Enums;
@@ -37,6 +38,7 @@ namespace Omnicx.Site.Core.Controllers.PostPaymentProcessors
             if(Request.Params["status"] == "true")
             {
                 response = new BoolResponse { IsValid = true, RecordId = Request.Params["recordId"] };
+                SiteUtils.ResetBasketCookie();
                 return View(CustomViews.PAYMENT_RESPONSE, response);
             }
             return View(CustomViews.PAYMENT_RESPONSE, response);

@@ -135,5 +135,10 @@ namespace Omnicx.API.SDK.Api.Commerce
         {
             return CallApi<CustomerModel>(string.Format(ApiUrls.GhostUserAuth, id), "", Method.POST);
         }
+
+        public ResponseModel<BoolResponse> NoDefaultAddress(string customerId)
+        {
+            return CallApi<BoolResponse>(string.Format(ApiUrls.NoDefaultAddress, customerId), "", Method.POST);
+        }
     }
 }

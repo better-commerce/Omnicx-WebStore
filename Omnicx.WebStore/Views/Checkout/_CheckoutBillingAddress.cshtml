@@ -1,0 +1,98 @@
+﻿@{
+/*
+    Name: Standard Checkout Billing Address
+    Purpose: Billing Address
+    Structure: /Views/Checkout/_CheckoutBillingAddress.cshtml
+    Contains (Partial Views Used):
+    
+    Contained In (Where we Use this View):
+        a-/Views/Basket/_CheckoutPaymentMethod.cshtml
+    */
+}
+@using Omnicx.WebStore.Framework.Helpers
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Commerce.AddressModel>
+@{
+    var addressForm = Html.Angular().ModelFor("ck.model.checkout.billingAddress");
+}
+<form role="form" name="billingForm" novalidate ng-init="ck.model.checkout.billingAddress={}">
+    <div class="content">       
+        <div class="or-spacer"><div class="mask"></div></div>
+        <div class="row">
+            <div class="col-sm-12 margin-top-sm">
+                <h5 class="margin-top-sm margin-bottom-sm checkout-h2">@LT("Checkout.Label.BillingAddress" , "Billing Address")</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label class="control control--checkbox ng-binding">
+                        @LT("Checkout.Label.SameAs" , "Same As") @LT("Checkout.Label.BillingAdd" , "Delivery Address")
+                        <input id="billing" name="billing" type="checkbox" ng-model="ck.sameAsBillAddress" class="ng-pristine ng-valid" ng-click="ck.setShipAddress(ck.sameAsBillAddress)">
+                        <div class="control__indicator"></div>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    @addressForm.FormGroupFor(x => x.FirstName)
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    @addressForm.FormGroupFor(x => x.LastName)
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    @addressForm.FormGroupFor(x => x.Address1)
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    @addressForm.FormGroupFor(x => x.Address2)
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    @addressForm.FormGroupFor(x => x.City)
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    @addressForm.FormGroupFor(x => x.PostCode)
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    @addressForm.FormGroupFor(x => x.State)
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    <label class="col-sm-12 col-xs-12 no-padding">Country</label>
+                    <select id="ck.model.checkout.billingAddress.countryCode" name="title" tabindex="1" class="form-control" data-label="Title" ng-model="ck.model.checkout.billingAddress.countryCode">
+                        <option value="">@LT("Common.Label.Select" , "Select") @LT("Checkout.Label.State" , "County")</option>
+                        <option ng-repeat="countries in ck.model.billingCountries" value="{{countries.twoLetterIsoCode}}" ng-bind="countries.name"></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    @addressForm.FormGroupFor(x => x.PhoneNo)
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+</form>

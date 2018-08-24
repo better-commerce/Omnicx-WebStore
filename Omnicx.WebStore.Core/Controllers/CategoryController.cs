@@ -40,7 +40,7 @@ namespace Omnicx.WebStore.Core.Controllers
                 response = _categoryApi.GetCategory(MaincategorySlug);
                 if (response.Result == null && response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
-                    return RedirectToAction("PageNotFound", "Common", new { @aspxerrorpath = slug });
+                    return RedirectToPageNotFound();
                 }
             }
             var category = response.Result;

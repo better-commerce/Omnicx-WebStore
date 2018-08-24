@@ -74,6 +74,7 @@
         ck.continue = false;
         ck.orderResp = '';
         ck.basketerror = null;
+        ck.continueToSummery = continueToSummery;
         //***********TEMPORARY METHOD FOR POWDER COATING **********************
         ck.reCalculateServiceCharge = reCalculateServiceCharge;
         ck.serializedData = serializedData;
@@ -143,10 +144,12 @@
         
         function isGuestUser() {
             ck.isGuest = false;
-            $("#ac-1").removeAttr('checked');
-            $("#ac-3").removeAttr('checked');
-            $("#ac-2").removeAttr('checked');
-            $("#ac-2").prop('disabled', true);
+            $("#userLogin").removeAttr('checked');
+            $("#addressPanel").removeAttr('checked');
+            $("#paymentPanel").removeAttr('checked');
+            $("#addressPanel").prop('disabled', true);
+            $("#productSummery").prop('disabled', true);
+            $("#paymentPanel").prop('disabled', true);
         }
 
         function getShippingMethod(shippingMethod, selectedShippingId) {            
@@ -217,7 +220,7 @@
                     if (data) {
                         ck.isGuest = false;
                         window.location.reload();
-                        $("#ac-2").prop('checked', true);
+                        $("#paymentPanel").prop('checked', true);
                     }
                 })
                 .error(function (msg) {
@@ -631,20 +634,21 @@
         };
         function confirmPostCodeChange()
         {
-            $("#ac-1").prop('checked', true);
-            $("#ac-2").prop('checked', false);
-            $("#ac-3").prop('checked', false);
+            $("#userLogin").prop('checked', true);
+            $("#paymentPanel").prop('checked', false);
+            $("#addressPanel").prop('checked', false);
+            $("#productSummery").prop('checked', false);
             ck.postCode = ck.model.checkout.shippingAddress.postCode;
             ck.showShippingGrid(ck.model.checkout.shippingAddress.countryCode, ck.model.checkout.basket.id, ck.postCode, ck.model.checkout.basket.shippingMethodId);
         }
-        function continueToPayment_2(value) {
+        function continueToSummery(value) {
             if (ck.isPostCodeDiff && ck.model.checkout.shippingAddress.postCode.replace(" ", "").toLowerCase() != ck.model.checkout.basket.postCode.replace(" ", "").toLowerCase()) {
                 $("#postCodeAlert-modal").modal();
                 return;
             }
             $scope.shippingForm.$setSubmitted();
             $scope.billingForm.$setSubmitted();
-            if (value.$invalid) {             
+            if (value.$invalid) {
                 return
             }
             if (ck.sameAsBillAddress == false && $scope.billingForm.$invalid) {
@@ -663,16 +667,17 @@
                 ck.guest = $scope.guestForm.$invalid;
             }
             if ((!value.$invalid) && (!ck.guest)) {
-                $("#ac-2").prop('checked', true);
-                $("#ac-1").removeAttr('checked');
-                $("#ac-3").removeAttr('checked');
-                $("#ac-2").removeAttr('disabled');
+                $("#productSummery").prop('checked', true);
+                $("#addressPanel").removeAttr('checked');  
+                $("#userLogin").removeAttr('checked');
+                $("#paymentPanel").removeAttr('checked');
+                $("#productSummery").removeAttr('disabled');
                 $("html, body").animate({ scrollTop: 0 }, "slow");
                 if (ck.sameAsBillAddress)
                     ck.model.checkout.billingAddress = ck.model.checkout.shippingAddress;
             }
             else {
-                $("#ac-2").prop('disabled', true);
+                $("#productSummery").prop('disabled', true);
                 if ($scope.guestForm != null) {
                     if ($scope.guestForm.$error.required != null) {
                         $scope.guestForm.$setSubmitted();
@@ -691,6 +696,30 @@
                 })
         };
 
+        function continueToPayment_2(value) {            
+            //$scope.shippingForm.$setSubmitted();
+            //$scope.billingForm.$setSubmitted();
+            if ((!value.$invalid) && (!ck.guest)) {
+                $("#paymentPanel").prop('checked', true);
+                $("#userLogin").removeAttr('checked');
+                $("#addressPanel").removeAttr('checked');
+                $("#productSummery").removeAttr('checked');
+                $("#paymentPanel").removeAttr('disabled');
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                //if (ck.sameAsBillAddress)
+                //    ck.model.checkout.billingAddress = ck.model.checkout.shippingAddress;
+            }
+            else {
+                $("#paymentPanel").prop('disabled', true);
+                if ($scope.guestForm != null) {
+                    if ($scope.guestForm.$error.required != null) {
+                        $scope.guestForm.$setSubmitted();
+                        $("html, body").animate({ scrollTop: 0 }, "slow");
+                    }
+                }
+            }
+        };
+        
         function clickCollect() {
             if (ck.selectedDelivery.displayName == 'Click and Collect') {
                 if (ck.postCode == null) {
@@ -698,10 +727,10 @@
                 }
                 ck.model.checkout.storeAddress = ck.model.storeAddress;
                 ck.model.checkout.shippingAddress = {};
-                //$("#ac-2").attr('checked', true);
-                $("#ac-1").removeAttr('checked');
-                $("#ac-3").prop('checked', true);
-                //$("#ac-2").removeAttr('disabled');
+                //$("#paymentPanel").attr('checked', true);
+                $("#userLogin").removeAttr('checked');
+                $("#addressPanel").prop('checked', true);
+                //$("#paymentPanel").removeAttr('disabled');
                 $("html, body").animate({ scrollTop: 0 }, "slow");
             }
         };
@@ -1042,26 +1071,26 @@
 
         function initMethod() {
             ck.custAddressGrid();
-            $("#ac-1").prop('checked', true);
-            $("#ac-2").prop('checked', false);
-            $("#ac-3").prop('checked', false);
+            $("#userLogin").prop('checked', true);
+            $("#paymentPanel").prop('checked', false);
+            $("#addressPanel").prop('checked', false);
             if (ck.UserSelectedShippingEvent.length > 0)
             {
                 ck.shippingSelected = true;
                 if (ck.model.checkout.stage == 2) {
-                    $("#ac-1").prop('checked', true);
+                    $("#userLogin").prop('checked', true);
                     $("html, body").animate({ scrollTop: 0 }, "slow");
                 }
                 if (ck.model.checkout.stage == 3) {
-                    $("#ac-3").prop('checked', true);
-                    $("#ac-1").removeAttr('checked');
+                    $("#addressPanel").prop('checked', true);
+                    $("#userLogin").removeAttr('checked');
                     $("html, body").animate({ scrollTop: 0 }, "slow");
                 }
                 if (ck.model.checkout.stage == 4) {
-                    $("#ac-1").removeAttr('checked');
-                    $("#ac-2").removeAttr('disabled');
-                    $("#ac-3").removeAttr('checked');
-                    $("#ac-2").prop('checked', true);
+                    $("#userLogin").removeAttr('checked');
+                    $("#paymentPanel").removeAttr('disabled');
+                    $("#addressPanel").removeAttr('checked');
+                    $("#paymentPanel").prop('checked', false);
                     $("html, body").animate({ scrollTop: 0 }, "slow");
                 }
             }

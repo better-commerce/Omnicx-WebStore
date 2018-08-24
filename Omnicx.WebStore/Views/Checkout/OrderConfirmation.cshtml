@@ -1,0 +1,115 @@
+﻿@{
+/*
+    Name: Order Confirmation
+    Purpose: Show Order Overview after complete the order
+    Structure: /Views/Checkout/OrderConfirmation.cshtml
+    Contains (Partial Views Used):
+        a-/Views/Shared/_OpcLayout.cshtml                   (For Base Structure)
+
+    Contained In (Where we Use this View):
+    */
+}
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Commerce.OrderModel>
+@{
+    ViewBag.Title = "OrderConfirmation";
+    Layout = "~/Views/Shared/_OpcLayout.cshtml";
+}
+<div class="row whiteContainer">
+    <h1 class="basket-h1 margin-bottom-lg">@LT("Static.Checkout.PageHeading.OrderConfirmation", "Order Confirmation")</h1>
+    <p class="bg-success col-lg-12 confirmation-msg margin-top-md">@LT("OrderConfirmation.Label.Order", "Order") <strong>@Model.OrderNo</strong> @LT("OrderConfirmation.Label.SuccessfullyPlaced", "has been successfully placed and will be with you shortly.")</p>
+    <div class="col-md-8 col-sm-12 col-xs-12 whiteContainer" id="customer-order">
+        <div class="table-responsive">
+            <table class="table no-margin-bottom basket-table">
+                <thead>
+                    <tr>
+                        <th colspan="2">@LT("MyAccount.Text.Product", "Product")</th>
+                        <th class="text-right">@LT("MyAccount.Text.Qty", "Qty")</th>
+                        <th class="text-right">@LT("MyAccount.Text.Price", "Unit Price")</th>
+                        <th class="text-right">@LT("MyAccount.Text.Discount", "Discount")</th>
+                        <th class="text-right">@LT("MyAccount.Text.GrandTotal", "Grand Total")</th>
+                    </tr>
+                </thead>
+                <tbody id="cart">
+                    @foreach (var item in @Model.Items)
+                    {
+                        var FinalAmount = item.TotalPrice.Raw.WithTax - item.DiscountAmt.Raw.WithTax;
+                        <tr>
+                            <td>
+                                <a ng-href="/@item.Slug">
+                                    <img src="@item.Image" alt="OCX" onerror="this.src = DEFAULT_IMAGE_URL">
+                                </a>
+                            </td>
+                            <td>
+                                <a class="basket-item" ng-href="/@item.Slug">@item.Name</a>
+                            </td>
+                            <td align="right">@item.Qty</td>
+                            <td align="right">@item.Price.Formatted.WithTax</td>
+                            <td align="right">@item.DiscountAmt.Formatted.WithTax</td>
+                            <td align="right">@item.TotalPrice.Formatted.WithoutTax</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-12 col-xs-12 pull-left">
+        <div class="whiteContainer no-padding">
+            <div class="summery-box" id="order-summary">
+                <div class="box-header">
+                    <h3><i class="fa fa-shopping-basket"></i> @LT("Checkout.Label.OrderSummary", "Order Summary")</h3>
+                </div>
+                <div class="table-responsive">
+                    <table class="table no-margin-top">
+                        <tbody>
+                            <tr>
+                                <td>@LT("MyAccount.Text.OrderSubtotal", "OrderSubtotal")</td>
+                                <th class="text-right">@Model.SubTotal.Formatted.WithoutTax</th>
+                            </tr>
+                            <tr>
+                                <td>@LT("Myaccount.Text.ShippingCharge", "Shipping and handling")</td>
+                                <th class="text-right">@Model.ShippingCharge.Formatted.WithoutTax</th>
+                            </tr>
+                            <tr>
+                                <td>@LT("MyAccount.Text.Discount", "Discount")</td>
+                                <th class="text-right"> @Model.Discount.Formatted.WithTax</th>
+                            </tr>
+                            <tr>
+                                <td>@LT("MyAccount.Text.Tax", "Tax")</td>
+                                <th class="text-right">@Model.GrandTotal.Formatted.Tax</th>
+                            </tr>
+                            <tr class="total">
+                                <td>@LT("MyAccount.Text.Amount", "Total")</td>
+                                <th class="text-right">@Model.GrandTotal.Formatted.WithTax</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row addresses whiteContainer">
+    <div class="col-sm-6 billing-box">
+        <h2 class="billing-h2">@LT("MyAccount.Text.BillingAdd", "Billing Address")</h2>
+        <p><strong>@LT("MyAccount.Text.Product", "Name:") </strong>@Model.BillingAddress.FirstName @Model.BillingAddress.LastName</p>
+        <p><strong>@LT("MyAccount.Text.Product", "Address:") </strong>@Model.BillingAddress.Address1 <br />@Model.BillingAddress.Address2</p>
+        <p><strong>@LT("MyAccount.Text.Product", "City:") </strong>@Model.BillingAddress.City</p>
+        @*<p><strong>@LT("MyAccount.Text.Product", "Country:") </strong>@Model.BillingAddress.Country</p>*@
+        <p><strong>@LT("MyAccount.Text.Product", "Post Code:") </strong>@Model.BillingAddress.PostCode</p>
+        <p><strong>@LT("MyAccount.Text.Product", "Phone No:") </strong>@Model.BillingAddress.PhoneNo</p>
+    </div>
+    <div class="col-sm-6 shipping-box">
+        <h2 class="billing-h2">@LT("MyAccount.Text.ShippingAddress", "Shipping Address")</h2>
+        <p><strong>@LT("MyAccount.Text.Product", "Name:") </strong>@Model.ShippingAddress.FirstName @Model.ShippingAddress.LastName</p>
+        <p><strong>@LT("MyAccount.Text.Product", "Address:") </strong>@Model.ShippingAddress.Address1 <br />@Model.ShippingAddress.Address2</p>
+        <p><strong>@LT("MyAccount.Text.Product", "City:") </strong>@Model.ShippingAddress.City</p>
+        @*<p><strong>@LT("MyAccount.Text.Product", "Country:") </strong>@Model.ShippingAddress.Country</p>*@
+        <p><strong>@LT("MyAccount.Text.Product", "Post Code:") </strong>@Model.ShippingAddress.PostCode</p>
+        <p><strong>@LT("MyAccount.Text.Product", "Phone No:") </strong>@Model.ShippingAddress.PhoneNo</p>
+    </div>
+</div>
+<div class="row margin-bottom-lg">
+    <div class="col-sm-12 col-xs-12 text-center">
+        <a href="/" class="animate btn-default"><i class="fa fa-caret-left"></i>@LT("DiscoveryClub.Label.ContinueShopping", "Continue Shopping")</a>
+    </div>
+</div>

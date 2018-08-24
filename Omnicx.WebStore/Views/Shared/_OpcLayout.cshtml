@@ -1,0 +1,106 @@
+﻿@{
+    /*
+        Name: Checkout Screen Base Layout
+        Purpose: Show Registration Modal
+        Structure: /Views/Shared/_OpcLayout.cshtml
+        Contains (Partial Views Used):
+            a-/Views/Shared/_LayoutHeadTag.cshtml
+            b-/Views/Shared/_LayoutFooter.cshtml
+
+        Contained In (Where we Use this View):
+            a-/Views/Checkout/OnePageCheckout.cshtml
+            b-/Views/Checkout/StandardCheckout.cshtml
+        */
+}
+<!DOCTYPE html>
+@using Microsoft.Web.Mvc
+@using Omnicx.WebStore.Models.Keys
+@using Omnicx.WebStore.Core.Controllers
+@using Omnicx.API.SDK.Helpers
+@using Omnicx.WebStore.Models.Enums;
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
+@{
+    var StoreTheme = ConfigKeys.StoreTheme;
+}
+<html ng-app="btApp">
+@Html.Partial("~/Views/Shared/_LayoutHeadTag.cshtml")
+<body>
+    @Html.GetGlobalSnipptes(SnippetPlacements.BodyStartHtmlTagAfter)
+    <div class="navbar yamm border-bottom-page" role="navigation" id="navbar">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="navbar-header">
+                        <a class="navbar-brand no-padding home" href="/">
+                            <img src="~/assets/theme/@StoreTheme/images/logo.png" alt="OCX Store logo" class="hidden-xs hidden-sm img-responsive logo-width logo-width logo-tj">
+                            <img src="~/assets/theme/@StoreTheme/images/logo.png" alt="OCX Store logo" class="visible-xs visible-sm img-responsive logo-width"><span class="sr-only">@LT("Header.Text.GoHome", "OCX Store - go to homepage")</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="all">
+        <div id="content" class="clearfix">
+            <div class="container">
+                @RenderBody()
+                @Html.GetGlobalSnipptes(SnippetPlacements.PageContainerAfter)
+            </div>
+        </div>
+    </div>
+    @{
+        var pcaAccessCode = "";
+        if (SessionContext.CurrentSiteConfig != null && SessionContext.CurrentSiteConfig.GeoLocators != null)
+        {
+            var pca = SessionContext.CurrentSiteConfig.GeoLocators.FirstOrDefault(x => x.PluginCode == Omnicx.WebStore.Models.Enums.GeoLocatorPlugin.PCA.ToString());
+            if (pca != null)
+            {
+                pcaAccessCode = pca.AccessKey;
+                <link rel="stylesheet" type="text/css" href="//services.postcodeanywhere.co.uk/css/captureplus-2.30.min.css?key=@pcaAccessCode" />
+                <script type="text/javascript" src="//services.postcodeanywhere.co.uk/js/captureplus-2.30.min.js?key=@pcaAccessCode"></script>
+            }
+        }
+        <script>
+            var pcaAccessCode = "@pcaAccessCode";
+        </script>
+    }
+    @Html.Partial("~/Views/Shared/_LayoutFooter.cshtml")
+
+    @section scripts{}
+    @RenderSection("scripts", required: false)
+    <script>
+
+        var setContactForm = '@(Html.BuildUrlFromExpression<CommonController>(c => c.ContactForm(null)))';
+        var getBasketUrl = '@(Html.BuildUrlFromExpression<BasketController>(c => c.GetBasketData()))';
+        var addToBasket = '@(Html.BuildUrlFromExpression<BasketController>(c => c.AddtoBasket(null)))';
+        var signIn = '@(Html.BuildUrlFromExpression<AccountController>(c => c.SignIn(null)))';
+        var register = '@(Html.BuildUrlFromExpression<AccountController>(c => c.Registration(null)))';
+        var getShippingMethods = '@(Html.BuildUrlFromExpression<BasketController>(c => c.GetShippingMethods("")))';
+        var updateShipping = '@(Html.BuildUrlFromExpression<BasketController>(c => c.UpdateShipping(null,null,null)))';
+        var applyPromoCode = '@(Html.BuildUrlFromExpression<BasketController>(c => c.ApplyPromoCode(null,null)))';
+        var currencySettingUrl = '@(Html.BuildUrlFromExpression<HomeController>(c => c.UpdateCurrencySetting()))';
+        var paymentMethodsUrl = '@(Html.BuildUrlFromExpression<CheckoutController>(c => c.GetPaymentMethods()))';
+        var newsLetterSubscription = '@(Html.BuildUrlFromExpression<AccountController>(c => c.NewsletterSubscription(null)))';
+        var bulkAddproduct = '@(Html.BuildUrlFromExpression<BasketController>(c=> c.BulkAddProduct(null)))';
+
+        var baseUrl = ('https:' == document.location.protocol ? 'https://' : 'http://') + '@Request.ServerVariables["HTTP_HOST"]/';
+        window.app.constant('globalConfig', {
+            setContactForm: setContactForm,
+            getBasketUrl: getBasketUrl,
+            addToBasket: addToBasket,
+            signIn: signIn,
+            register: register,
+            getShippingMethods: getShippingMethods,
+            updateShipping: updateShipping,
+            applyPromoCode: applyPromoCode,
+            currencySettingUrl: currencySettingUrl,
+            paymentMethodsUrl: paymentMethodsUrl,
+            newsLetterSubscription: newsLetterSubscription,
+            baseUrl: baseUrl,
+            bulkAddproduct: bulkAddproduct,
+            pcaAccessCode: pcaAccessCode
+        });
+    </script>
+    @Html.GetGlobalSnipptes(SnippetPlacements.BodyEndHtmlTagBefore)
+</body>
+</html>

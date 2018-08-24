@@ -5,6 +5,7 @@ namespace Omnicx.WebStore.Models.B2B
     public class CompanyUserModel
     {
         private string _firstName;
+        private string _lastName;
 
         public Guid UserId { get; set; }
         public string FirstName
@@ -16,10 +17,21 @@ namespace Omnicx.WebStore.Models.B2B
             set
             {
                 if (!string.IsNullOrEmpty(value))
-                    _firstName = char.ToUpper(value[0]) + value.Substring(1);
+                    _firstName = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(value.ToLower());
             }
         }
-        public string LastName { get; set; }
+        public string LastName
+        {
+            get
+            {
+                return _lastName;
+            }
+            set
+            {
+                if (!string.IsNullOrEmpty(value))
+                    _lastName = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(value.ToLower());
+            }
+        }
         public string Title { get; set; }
         public string PhoneNo { get; set; }
         public string Gender { get; set; }

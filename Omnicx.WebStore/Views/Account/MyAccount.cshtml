@@ -1,0 +1,161 @@
+﻿@{
+/*
+    Name: My Account
+    Purpose: Customer Return Request View
+    Structure: /Views/Account/MyAccount.cshtml
+    Contains (Partial Views Used): 
+        a-/Views/Shared/_Layout.cshtml.cshtml   (For base Structure)
+        b-/Views/Account/_MobileSideNav.cshtml  (Navigatiopn For Mobile)
+        c-/Views/Account/_SideNav.cshtml        (Navigation For Desktop and Big Screen)
+        d-/Views/Search/_AccountAlert.cshtml    (validation Messages)
+
+    Contained In (Where we Use this View):
+     a-/Views/Account/_MobileSideNav.cshtml  (Navigatiopn Link Mobile)
+     b-/Views/Account/_SideNav.cshtml        (Navigation Link Desktop and Big Screen)
+    */
+}
+@using Microsoft.Web.Mvc
+@using Omnicx.WebStore.Core.Controllers
+@using Omnicx.WebStore.Framework.Helpers
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Commerce.CustomerProfileModel>
+
+@{
+    var customerAccountForm = Html.Angular().ModelFor("am.model");
+    ViewBag.Title = "MyAccount";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="container dataContainer" ng-controller="accountCtrl as am">
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="/">@LT("MyAccount.Links.Home", "Home")</a>
+                </li>
+                <li>@LT("MyAccount.Text.Name", "My Account")</li>
+            </ul>
+        </div>
+    </div>    
+    <div class="row">
+        <div class="col-xs-12 visible-xs" id="exTab1">
+            @Html.Partial("~/Views/Account/_MobileSideNav.cshtml")
+        </div>
+        <div class="col-md-3 col-sm-4 col-xs-12 hidden-xs">
+            @Html.Partial("~/Views/Account/_SideNav.cshtml")
+        </div>
+        <div class="col-md-9 col-sm-8 col-xs-12 clearfix" id="customer-account">
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <h3 class="panel-h2">@LT("MyAccount.Text.Name", "My Account")</h3>
+                </div>
+            </div>
+            <div class="col-sm-12 col-xs-12 no-padding">
+                <form name="changeForm" role="form" ng-submit="am.saveCustomerDetail(am.model.customerDetail)" novalidate>
+                    <div class="row">
+                        <div class="col-sm-12" ng-show="personalDetail">
+                            @Html.Partial("~/Views/Account/_AccountAlert.cshtml")
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                @customerAccountForm.FormGroupFor(x => x.CustomerDetail.Email)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2 col-xs-12">
+                            <div class="form-group">
+                                <div class="form-group" ng-class="vm.getValidationClass()" form-group-validation="Title">
+                                    <label for="Title" class="control-label ng-scope">@LT("MyAccount.Text.Title", "Title")</label>
+                                    <select name="Title" tabindex="1" class="form-control" data-label="Title" ng-model="am.model.customerDetail.title" @*required*@>
+                                        <option ng-selected="am.model.customerDetail.title == null" value="">@LT("MyAccount.Text.Title", "Title")</option>
+                                        <option value="Miss">Miss</option>
+                                        <option value="Mr">Mr</option>
+                                        <option value="Mrs">Mrs</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-5 col-xs-12">
+                            <div class="form-group">
+                                @customerAccountForm.FormGroupFor(x => x.CustomerDetail.FirstName)
+                            </div>
+                        </div>
+                        <div class="col-sm-5 col-xs-12">
+                            <div class="form-group">
+                                @customerAccountForm.FormGroupFor(x => x.CustomerDetail.LastName)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-2 col-xs-12">
+                            <div class="form-group">
+                                <div class="form-group" ng-class="vm.getValidationClass()" form-group-validation="Gender">
+                                    <label for="Gender" class="control-label ng-scope">@LT("MyAccount.Text.Gender", "Gender")</label>
+                                    <select name="Gender" tabindex="1" class="form-control" data-label="Gender" ng-model="am.model.customerDetail.gender" @*required*@>
+                                        <option ng-selected="am.model.customerDetail.gender == null" value="">@LT("MyAccount.Text.Gender", "Gender")</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-5 col-xs-12">
+                            <div class="form-group">
+                                @customerAccountForm.FormGroupFor(x => x.CustomerDetail.BirthDate)
+                            </div>
+                        </div>
+                        @*<div class="col-sm-5 col-xs-12">
+                                <div class="form-group">
+                                    @customerAccountForm.FormGroupFor(x => x.CustomerDetail.PostCode)
+                                </div>
+                            </div>*@
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                @customerAccountForm.FormGroupFor(x => x.CustomerDetail.Mobile)
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                @customerAccountForm.FormGroupFor(x => x.CustomerDetail.Telephone)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="control control--checkbox ng-binding">
+                                <input type="checkbox" name="NewsLetterSubscribe" checked="am.model.customerDetail.newsLetterSubscribed" ng-model="am.model.customerDetail.newsLetterSubscribed" class="ng-pristine ng-valid" ng-click="">
+                                <label for="NewsLetterSubscribe">@LT("MyAccount.Label.NewsLetterSubscribe", "NewsLetterSubscribe")</label>
+                                <div class="control__indicator"></div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xs-12 no-padding text-right">
+                        <button type="submit" class="animate btn-primary"><i class="fa fa-save"></i>@LT("MyAccount.Button.SaveChanges", "Save Changes")</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section Scripts{
+    <script>
+        var saveCustomerUrl = '@(Html.BuildUrlFromExpression<AccountController>(c => c.SaveCustomerDetail(null)))';
+        var custGridUrl = '@(Html.BuildUrlFromExpression<AccountController>(c => c.GetCustomerAddress()))';
+        var saveCustAddrUrl = '@(Html.BuildUrlFromExpression<AccountController>(c => c.SaveCustomerAddress(null)))';
+        window.app.constant('accountConfig', {
+            saveCustAddrUrl: saveCustAddrUrl,
+            custGridUrl: custGridUrl,
+            saveCustomerUrl : saveCustomerUrl
+        });
+        window.app.constant('model', @Html.JsonFor(Model));
+    </script>
+}

@@ -1,0 +1,25 @@
+﻿@{
+/*
+    Name: No Result
+    Purpose: Show No Result
+    Structure: /Views/Search/_NoResults.cshtml
+    Contains (Partial Views Used):
+
+    Contained In (Where we Use this View):
+        a-/Views/Search/_SearchResultProducts.cshtml
+    */
+}
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
+<div class="col-sm-12 col-xs-12" ng-show="noRecord" ng-cloak>
+    <div class="item_container_holder margin-bottom-lg">
+        <div class="fnl-landing-noresults">
+            <div class="fnl-plpsearch-firstLine">
+                <i class="fa fa-exclamation-triangle fa-5x"></i>
+            </div>
+            <div class="fnl-plpsearch-firstLine">@LT("ProductDetail.Label.NotFind", "Sorry! We couldn't find any matching items.")</div>
+            <div class="fnl-plpsearch-SecondLine word-break"><span ng-bind="pm.searchCriteria.freeText"></span></div>
+            <div class="fnl-plpsearch-wborder2"></div>
+            <div class="fnl-heading2a">@LT("ProductDetail.Label.SpellingCheck", "Don't give up - check the spelling, or try less specific search terms")</div>
+        </div>
+    </div>
+</div>

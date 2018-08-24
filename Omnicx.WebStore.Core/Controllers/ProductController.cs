@@ -42,7 +42,7 @@ namespace Omnicx.WebStore.Core.Controllers
             var product = _productApi.GetProductDetailBySlug(Sanitizer.GetSafeHtmlFragment(slug));
             if (product == null || (product.Result == null && product.StatusCode == HttpStatusCode.NotFound))
             {
-                return RedirectToAction("PageNotFound", "Common", new{ @aspxerrorpath = "/product/" + name});
+                return RedirectToPageNotFound();
             }
             SetDataLayerVariables(product.Result, WebhookEventTypes.ProductViewed);
             //product.Result.BrandSlug = _brandApi.GetBrandDetails(Sanitizer.GetSafeHtmlFragment(product.Result.BrandRecordId)).Result?.Link;

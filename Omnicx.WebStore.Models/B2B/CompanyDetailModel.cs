@@ -7,10 +7,23 @@ namespace Omnicx.WebStore.Models.B2B
 {
     public class CompanyDetailModel
     {
+        private string _companyName;
         public string Email { get; set; }
         public Guid CompanyId { get; set; }
         public string BusinessType { get; set; }
-        public string CompanyName { get; set; }
+        public string CompanyName {
+            get
+            {
+                return _companyName;
+            }
+            set
+            {
+                if (!string.IsNullOrEmpty(value))
+                {
+                    _companyName = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(value.ToLower());
+                }
+            }
+        }
         public string Telephone { get; set; }
         public string Mobile { get; set; }
         public AddressModel CompanyAddress { get; set; }

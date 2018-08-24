@@ -1,0 +1,5 @@
+﻿@using Omnicx.API.SDK.Helpers
+@*Data layer always placed above the GTM container snippet because otherwise, the GTM tag may stop firing or data layer variabels are no longer available to the container tag*@
+<script>
+        dataLayer = @Html.DataLayer();
+</script>

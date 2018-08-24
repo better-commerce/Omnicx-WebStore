@@ -551,7 +551,7 @@ namespace Omnicx.WebStore.Core.Controllers
         {
             if (ConfigKeys.DisplayUserActivity == false)
             {
-                return RedirectToAction("PageNotFound", "Common", new { @aspxerrorpath = "/account/myactivity" });
+                return RedirectToPageNotFound();
             }
             if (_sessionContext.CurrentUser == null) { return RedirectToAction("SignIn"); }
             return View(CustomViews.MY_ACTIVITY);
@@ -822,7 +822,7 @@ namespace Omnicx.WebStore.Core.Controllers
         }
 
         [CustomAuthorizeAttribute]
-        public ActionResult SavedBaskets()
+        public virtual ActionResult SavedBaskets()
         {
             if(_sessionContext.CurrentUser != null && _sessionContext.CurrentUser.UserId != null)
             {
@@ -856,6 +856,17 @@ namespace Omnicx.WebStore.Core.Controllers
             {
                 string fileName = result.Result.Filename + ".pdf";
                 return File(result.Result.ByteCode, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
+            }
+            return null;
+        }
+
+        public ActionResult NoDefaultAddress()
+        {
+            string customerId = _sessionContext.CurrentUser != null ? Convert.ToString(_sessionContext.CurrentUser.UserId) : string.Empty;
+            if (!string.IsNullOrEmpty(customerId))
+            {
+                var response = _customerRepository.NoDefaultAddress(customerId);
+                return JsonSuccess(response, JsonRequestBehavior.AllowGet);
             }
             return null;
         }

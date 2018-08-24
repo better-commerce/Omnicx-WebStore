@@ -10,6 +10,7 @@ using Omnicx.API.SDK.Payments.MasterCard;
 using System.Linq;
 using System.Web.Mvc;
 using Omnicx.WebStore.Models.Keys;
+using Omnicx.WebStore.Core.Helpers;
 
 namespace Omnicx.WebStore.Core.Controllers.PostPaymentProcessors
 {
@@ -63,6 +64,10 @@ namespace Omnicx.WebStore.Core.Controllers.PostPaymentProcessors
                     response.RecordId = Request.Params["bid"];
                     if (paymentResponse.Errors.Any())
                         response.Message = paymentResponse.Errors[0];
+                }
+                else
+                {
+                    SiteUtils.ResetBasketCookie();
                 }
             }
 

@@ -49,7 +49,7 @@ namespace ASP
     Structure: /Views/Survey/_BuildABundle.cshtml
     Contains (Partial Views Used):
     Contained In (Where we Use this View):
-        a-/Views/Survey/Layout1/Capture.cshtml
+        a-/Views/Survey/Capture.cshtml
     */
 
             

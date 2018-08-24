@@ -117,6 +117,11 @@ namespace Omnicx.WebStore.Core.Helpers
             else
                 System.Web.HttpContext.Current.Session[Constants.SESSION_HAS_BASKET_ACTION] = !(string.IsNullOrEmpty(basketId) || basketId == Guid.Empty.ToString());
         }
+        public static void ResetBasketCookie()
+        {
+            var cookie_basketId = new System.Web.HttpCookie(Constants.COOKIE_BASKETID) { HttpOnly = true, Value = Guid.NewGuid().ToString(), Expires = DateTime.Now.AddDays(Constants.COOKIE_DEVICEID_EXPIRES_DAYS) };
+            System.Web.HttpContext.Current.Response.Cookies.Set(cookie_basketId);
+        }
 
         #region Encode and Decode string 
         public static string GenerateEncodedString(string encodeString)

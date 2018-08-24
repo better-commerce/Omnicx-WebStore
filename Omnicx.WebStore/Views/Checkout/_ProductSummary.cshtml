@@ -1,0 +1,141 @@
+﻿@{
+/*
+    Name: Order Summery
+    Purpose: Contains Order item Lines, Promotion panel and Order Amount Information
+    Structure: /Views/Checkout/_OrderSummary.cshtml
+    Contains (Partial Views Used):
+
+    Contained In (Where we Use this View):
+        a-/Views/Basket/OnePageCheckout.cshtml
+    */
+}
+@using Omnicx.WebStore.Models.Enums
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
+<ul id="checkout-summery">
+    <li class="col-sm-12 col-xs-12 no-padding itemBorder clearfix" ng-repeat="items in ck.basket.lineItems track by $index" ng-if='items.parentProductId == ck.emptyGuid'>
+        <div ng-if="items.parentProductId == ck.emptyGuid">
+            <div class="col-sm-12 col-xs-12 no-padding">
+                <div class="col-sm-2 col-xs-3 no-padding">
+                    <span class="cart-img">
+                        <a ng-href="/{{items.slug}}">
+                            <img ng-src="{{items.image}}" onerror="this.src = DEFAULT_IMAGE_URL">
+                        </a>
+                    </span>
+                </div>
+                <div class="col-sm-10 col-xs-9 no-padding">
+                    <span class="trash-cart">
+                        <a href="" class="remove" title="Remove" ng-click="ck.addToBasket(items.productId,0,items.displayOrder)"><i class="fa fa-trash-o"></i></a>
+                    </span>
+                    <span class="cart-info">
+                        <a class="basket-item" ng-href="/{{items.slug}}" ng-bind="items.name"></a>
+                    </span>
+                    <span class="cart-info">
+                        <button class="btn-cart" ng-init="oldQty=items.qty" ng-click="ck.addToBasket(items.productId,-1,items.displayOrder)"><i class="fa fa-minus"></i></button>
+                        <input type="text" ng-mousedown="oldQty=items.qty" ng-click="ck.onTextFocus($event)" ng-model="items.qty" value="{{items.qty}}" class="cart-text form-control" ng-blur="ck.updateQtyAndAdd(items.productId,items.qty,oldQty,items.displayOrder)" numbers-Only @*ng-disabled="true"*@>
+                        <button class="btn-cart" ng-click="ck.addToBasket(items.productId,1,items.displayOrder)"><i class="fa fa-plus"></i></button>
+                        <span class="text-right pull-right label-span-price"><strong ng-bind="items.totalPrice.formatted.withTax"></strong></span>
+                    </span>
+                    <span class="cart-info margin-top-sm">
+                        @if (SessionContext.CurrentUser != null)
+                        {
+                            <a class="animate-sm btn-default" href="" ng-click="ck.addProductToWishlist(items);"><i class="fa fa-save no-margin-left"></i> @LT("YourBag.Text.Saveforlater", "Save for later")</a>
+                        }
+                        else
+                        {
+                            <a class="animate-sm btn-default" href="" ng-click="ck.validateWishlist();"><i class="fa fa-save no-margin-left"></i> @LT("YourBag.Text.Saveforlater", "Save for later")</a>
+                        }
+                    </span>
+                    @*BUNDLE PRODUCTS*@
+                    <div class="row margin-top-sm">
+                        <div class="col-sm-12 col-xs-12">
+                            <strong class="text-orange" ng-show="items.displayInBasket && items.itemType ==@ItemTypes.Bundle.GetHashCode()">@LT("YourBag.Text.IncludeComponents", "Included Components:")</strong>
+                            <div class="row component-row" ng-repeat="bundle in ck.basket.lineItems" ng-if="bundle.parentProductId == items.productId" ng-show="items.displayInBasket">
+                                <div class="col-sm-8 col-xs-8 no-padding">
+                                    <a class="small-cart-name" ng-href="/{{bundle.slug}}" ng-bind="bundle.name"></a>
+                                </div>
+                                <div class="col-sm-4 col-xs-4 no-padding text-right">
+                                    <strong>@LT("YourBag.Text.Qty", "Qty:") </strong><span ng-bind="bundle.qty"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        @*To Display Free Product*@
+        <div ng-if="items.parentProductId != ck.emptyGuid" ng-show="items.displayInBasket">
+            <div class="col-sm-12 col-xs-12 no-padding">
+                <div class="col-sm-3 col-xs-3 no-padding">
+                    <span class="cart-img">
+                        <a ng-href="/{{items.slug}}">
+                            <img ng-src="{{items.image}}" onerror="this.src = DEFAULT_IMAGE_URL">
+                        </a>
+                    </span>
+                </div>
+                <div class="col-sm-9 col-xs-9 no-padding">
+                    <span class="cart-info">
+                        <a class="small-cart-name" ng-href="/{{items.slug}}" ng-bind="items.name"></a>
+                    </span>
+                    <span class="cart-info">
+                        <span class="text-right pull-right text-right label-span-price"><strong>@LT("YourBag.Text.Free", "FREE")</strong></span>
+                        <span class="text-right pull-right text-right label-span-price"><strong> &times; </strong></span>
+                        <span class="text-right pull-right text-right label-span-price"><strong>{{items.qty}}</strong></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+@if (SessionContext.CurrentUser != null)
+{
+    <div class="box-header" ng-show="ck.model.checkout.wishlistProducts.length>0">
+        <h3><i class="fa fa-save"></i> @LT("Checkout.Label.OrderSummary", "Saved for Later") (<span ng-bind="ck.model.checkout.wishlistProducts.length"></span>)</h3>
+    </div>
+    <ul id="checkout-summery">
+        <li class="single-cart-item clearfix" ng-repeat="items in ck.model.checkout.wishlistProducts">
+            <div class="col-sm-12 col-xs-12 no-padding">
+                <div class="col-sm-3 col-xs-3 no-padding">
+                    <span class="cart-img">
+                        <a ng-href="/{{items.slug}}">
+                            <img ng-src="{{items.image}}" onerror="this.src = DEFAULT_IMAGE_URL">
+                        </a>
+                    </span>
+                </div>
+                <div class="col-sm-9 col-xs-9 no-padding">
+                    <span class="trash-cart">
+                        <a href="" class="remove" title="Remove" ng-click="ck.removeProductToWishlist(items)"><i class="fa fa-trash-o"></i></a>
+                    </span>
+                    <span class="cart-info">
+                        <a class="small-cart-name" ng-href="/{{items.slug}}" ng-bind="items.name"></a>
+                    </span>
+                    <span class="cart-info">
+                        <span class="text-right pull-right label-span-price"><strong ng-bind="items.price.formatted.withTax"></strong></span>
+                        <a href="" ng-click="ck.removeProductToWishlist(items);ck.addToBasket(items.recordId,1,0);" class="animate-sm btn-success"><i class="fa fa-shopping-cart no-margin-left"></i> Add to Cart</a>
+                    </span>
+                </div>
+            </div>
+        </li>
+    </ul>
+}
+<div class="box-footer row">
+    <div class="col-sm-7 col-xs-12 text-left">
+        @if (SessionContext.CurrentUser == null)
+        {
+            <p class="checkout-user">@LT("Checkout.Label.OrderConfirmation", "Order confirmation email will be send to ") <strong ng-bind="ck.GuestEmail"></strong></p>
+        }
+        else
+        {
+            <p class="checkout-user">@LT("Checkout.Label.OrderConfirmation", "Order confirmation email will be send to ") <strong>@SessionContext.CurrentUser.Email</strong></p>
+        }
+        
+    </div>
+    <div class="col-sm-5 col-xs-12 text-right" ng-show="!ck.isClickAndCollect">
+        <button type="submit" class="animate btn-orange btn-lg" ng-click="ck.model.storeAddress.phoneNumber=phoneNumber;ck.continueToPayment_2(shippingForm);" ng-show="!ck.isClickAndCollect" ng-disabled="ck.basket.lineItems==null || ck.basket.lineItems.length<1">
+            <span class="hidden-xs">@LT("Checkout.Label.PaymentMethod", "CONTINUE")</span><i class="fa fa-caret-right"></i>
+        </button>
+        <button type="submit" class="animate btn-orange btn-lg" ng-click="ck.model.storeAddress.phoneNumber=phoneNumber;ck.ValidateDeliveryMethod();ck.clickCollect()" ng-show="ck.isClickAndCollect" ng-disabled="ck.basket.lineItems==null || ck.basket.lineItems.length<1">
+            <span class="hidden-xs">@LT("Checkout.Label.PaymentMethod", "CONTINUE")</span><i class="fa fa-caret-right"></i>
+        </button>
+    </div>
+</div>

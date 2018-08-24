@@ -36,6 +36,8 @@ namespace Omnicx.WebStore.Models.Commerce
         public Amount Discount { get; set; }
         public Amount AdditionalCharge { get; set; }
         public string ShortDescription { get; set; }
+        public Amount CompanyDiscount { get; set; }
+        public Amount ListPrice { get; set; }
     }
 
     public class CategoryItemModel 

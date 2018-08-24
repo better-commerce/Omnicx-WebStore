@@ -30,7 +30,7 @@ namespace Omnicx.WebStore.Models.Keys
         public static Boolean DisplayUserActivity = Convert.ToBoolean(ConfigurationManager.AppSettings.Get("DisplayUserActivity"));
         public static string HideGiftOption = ConfigurationManager.AppSettings.Get("HideGiftOption");
         public static string StoreTheme = ConfigurationManager.AppSettings.Get("StoreTheme");
-        public static string StoreThemeDefaultLayout = ConfigurationManager.AppSettings.Get("StoreThemeDefaultLayout");
+        //public static string StoreThemeDefaultLayout = ConfigurationManager.AppSettings.Get("StoreThemeDefaultLayout");
         public static string PcaKey = ConfigurationManager.AppSettings.Get("PcaKey");
         public static string UseCDN = ConfigurationManager.AppSettings.Get("UseCDN");
         public static string CDNVersion = ConfigurationManager.AppSettings.Get("CDNVersion");

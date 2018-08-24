@@ -41,6 +41,8 @@ namespace Omnicx.WebStore.Models.Site
         public List<CategoryModel> SubCategories{ get; set; }
         public List<ImageModel> Images { get; set; }
         public ImageModel Image { get; set; }
+        public string DataType { get; set; }
+        public string DataNumItemsRow { get; set; }
         public List<BlogModel> Blogs { get; set; }
     }
 }

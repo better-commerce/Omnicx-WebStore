@@ -141,7 +141,7 @@ namespace Omnicx.WebStore.Core.Controllers
             //};
             if (branddetail.Result == null && branddetail.StatusCode == HttpStatusCode.NotFound)
             {
-                return RedirectToAction("pagenotfound", "common", new { @aspxerrorpath = slug });
+                return RedirectToPageNotFound();
             }
             SetDataLayerVariables(branddetail.Result, WebhookEventTypes.BrandViewed);
             return View(CustomViews.BRAND_PRODUCTS, branddetail.Result);

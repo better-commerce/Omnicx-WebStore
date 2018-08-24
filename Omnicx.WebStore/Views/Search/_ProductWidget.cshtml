@@ -1,0 +1,71 @@
+﻿@{
+/*
+    Name: Product List View Widget For Grid and List
+    Purpose: Show Product All detail in List view
+    Structure: /Views/Search/_ProductWidget.cshtml
+    Contains (Partial Views Used):
+
+    Contained In (Where we Use this View):
+        a-/Views/Search/_SearchResultCategory.cshtml
+    */
+}
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
+<div class="product-container-panel" ng-init="product.bulkQty= 1">
+    <a ng-if="pm.forDelete" href="~/Account/RemoveWishList/{{product.recordId}}" title="Remove" class="remove wishlist-remove"><i class="fa fa-trash-o"></i></a>
+    <div class="imagePanel">
+        <a ng-href="/{{product.slug}}">
+            <span class="tooltiptext" ng-bind="product.title"></span>
+            <img ng-src="{{product.image==''?DEFAULT_IMAGE_URL:product.images[0].url}}" alt=""  class="image1" onerror="this.src = DEFAULT_IMAGE_URL">
+        </a>
+    </div>
+    <div class="dataPanel">
+        <div class="ribbon-info">
+            <a ng-href="/{{product.slug}}">
+                <span ng-bind="product.name"></span>
+            </a>
+        </div>
+        <div class="name-info">
+            <span class="prod-list-desc"><strong>@LT("ProductDetail.Label.SKU", "SKU"): </strong><span ng-bind="product.sku"></span></span>            
+            <span class="prod-list-desc"><span class="comment more" id="decriptionText" ng-bind="product.description"></span></span>
+        </div>
+        <div class="price-info">
+            <div class="col-sm-8 col-xs-8 no-padding">
+                <h3>
+                    <span ng-bind="(product.price.formatted.withTax)"></span>
+                    <span class="sml" ng-bind="(product.listPrice.formatted.withTax)"></span>
+                </h3>
+            </div>
+            <div class="col-sm-4 col-xs-4 no-padding quantity-info">
+                <input type="number" class="form-control" ng-model="product.bulkQty" min="1" placeholder="Qty" ng-click="pm.onTextFocus($event)" numbers-Only />
+            </div>
+        </div>
+        <div class="button-info">
+            <div class="icon-info">
+                <a class="see-detail-icon" ng-click="pm.productDetail(product.recordId)" data-toggle="modal" data-target="#product-quick-view-modal" ng-hide="pm.quickView"></a>
+                @if (SessionContext.CurrentUser != null)
+                {
+                    <a class="see-wishlist-icon" ng-if="product.inWishList==false" ng-click="pm.addToWishlist(product.recordId)" ng-hide="fromWishList"></a>
+                }
+                else
+                {
+                    <a class="see-wishlist-icon" data-toggle="modal" data-target="#login-modal"></a>
+                }
+                <input type="number" class="form-control" ng-model="product.bulkQty" min="1" placeholder="Qty" ng-click="pm.onTextFocus($event)" numbers-Only />
+            </div>
+            <div class="action-info">
+                <a class="animate btn-success" ng-click="gm.addToBasket(product.recordId,product.bulkQty,0)" ng-if="!pm.isWhislist"><span>@LT("ProductDetail.Label.AddToCart", "Add To Cart")</span></a>
+                @if (SessionContext.CurrentUser != null)
+                {
+                    <a class="animate btn-success" ng-click="gm.addToBasket(product.recordId,product.bulkQty,0)" ng-if="pm.isWhislist"><span>@LT("ProductDetail.Label.AddToCart", "Add To Cart")</span></a>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="techImagePanel">
+        <div class="imagebig-info">
+            <a ng-click="pm.productDetail(product.recordId)" data-toggle="modal" ng-repeat="img in product.images track by $index" data-target="#product-quick-view-modal" ng-if="img.tag==='Image2'">
+                <img ng-src="{{img.url==''?DEFAULT_IMAGE_URL:img.url}}" alt="" class="image1" onerror="this.src = DEFAULT_IMAGE_URL">
+            </a>
+        </div>        
+    </div>    
+</div>

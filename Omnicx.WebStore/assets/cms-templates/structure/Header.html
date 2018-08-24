@@ -1,0 +1,104 @@
+<div class="container-fluid">
+    <header class="siteHeader">
+        <section class="meta">
+            <div class="container pos-rel" data-bt-no-add-row-btn>
+                <div class="row xs-no-margin" data-bt-no-edit-widget data-bt-no-speed-menu style="padding:0px!important; height:auto; min-height:inherit!important; margin-bottom:0px!important; border:0px!important;">
+                    <div class="col-xs-1 visible-xs xs-padding-lr-0">
+                        <button class="mobileMenuBtn hamburger hamburger--squeeze" type="button" aria-label="Mobile Menu" aria-controls="navigation">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="col-xs-2 visible-xs xs-padding-lr-0 xs-text-center">
+                        <a class="mobileSearchBtn" href="/">
+                            <span class="mobileSearchBtn__text hidden-xs">Search Site</span>
+                            <span class="icon icon-search"></span>
+                        </a>
+                    </div>
+                    <div class="col-xs-3 col-sm-1 no-padding">
+                        <a class="navbar-brand no-padding home hidden-xs" href="/">
+                            <img src="http://localhost:39136/assets/theme/ocx/images/logo.png" alt="Logo" class="img-responsive logo-width">
+                        </a>
+                        <a class="text-center width-full visible-xs" href="/">
+                            <img src="http://localhost:39136/assets/theme/ocx/images/logo-footer.png" alt="Logo" class="img-responsive logo-width">
+                        </a>
+                    </div>
+                    <div class="mobShowHide col-xs-12 col-sm-5">
+                        <div class="mobShowHide__container">
+                            <bt-auto-complete id="ex1" placeholder="I'm looking for.. " pause="1" selectedobject="autoCompleteSelected" localdata="" searchfields="" titlefield="name" minlength="2" descriptionfield="name" imagefield="url" inputclass="form-control siteSearch__input" matchclass="autocomplete-highlight" url="//localhost:39136/search/SearchAutoComplete/?freeText=" returnkeyios="Search" class="ng-isolate-scope"> <div class="navbar-collapse collapse right"><form method="post" class="navbar-form ng-pristine ng-valid ng-valid-maxlength" action=""><div class="autocomplete-holder"> <div class="input-group"><input title="Search" name="txtAutoSearch1535001310976" maxlength="60" autocomplete="false" ng-keyup="$event.keyCode == 13 &amp;&amp; headerSearch()" ng-model="searchStr" type="search" placeholder="I'm looking for.." class="form-control search-textbox search-textbox-mobile ng-pristine ng-valid ng-empty ng-valid-maxlength ng-touched" onmouseup="this.select();" ng-focus="resetHideResults()" ng-blur="hideResults()" autofocus=""><span class="input-group-btn"><button type="button" class="btn btn-search top-search-button" ng-click="headerSearch()"><i class="fa fa-search"></i></button></span></div><!-- ngIf: showDropdown --></div></form></div></bt-auto-complete>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 no-padding">
+                        <nav class="metaLinks">
+                            <ul class="list-inline">
+                                <li>
+                                    <div id="miniBag" class="open">
+                                        <div class="top-login-cart metaLinks" ng-init="gm.initBasket()">
+                                            <ul class="list-inline">
+                                                <li class="shopping-cart cartopen">
+                                                    <a href="/basket/index" class="metaLinks__basket minicart-custom">
+                                                        <span class="metaLinks__basket__full"><i class="fa fa-shopping-cart"></i> Cart</span>                                                        
+                                                    </a>                                                    
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="margin-top-md">
+                                    <span class="userControls__linkSeperator"></span>
+                                    <a class="userControls__accountLinks" href="/account/signin">Login</a>
+                                    <span class="userControls__linkSeperator">or</span>
+                                    <a class="userControls__accountLinks" href="/account/signup">Signup</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="header-toggle">
+                        <a data-toggle="modal" data-target="#country-modal"><i class="fa fa-chevron-down"></i><i class="fa fa-GB"></i></a>
+                        <button data-toggle="modal" data-target="#currency-modal"><i class="fa fa-chevron-down"></i>GB</button>
+                    </div>
+                </div>
+            </div>
+            <section class="siteNav" id="akc-container-fluid">
+                <div class="container" data-bt-no-add-row-btn>
+                    <div class="row" style="padding:0px!important; height:auto; min-height:inherit!important; margin-bottom:0px!important; border:0px!important;" data-bt-no-edit-widget data-bt-no-speed-menu>
+                        <nav class="menu">
+                            <button class="mobileMenuBtn hamburger hamburger--squeeze visible-xs" type="button" aria-label="Mobile Menu" aria-controls="navigation">
+                                <span class="hamburger-box">
+                                    <span class="hamburger-inner"></span>
+                                </span>
+                                <span class="mobileMenuBtn__text">Close</span>
+                            </button>
+                            <center>
+                                <ul>
+                                    <li>
+                                        <a class="menu__item" data-show-menu-option="Shop By Brands" value="" href="/">
+                                            Shop By Brands
+                                            <span class="hidden-xs menu__item__arrow menu__item__arrow--grey"></span>
+                                            <span class="visible-xs icon icon-arrow-right"></span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="menu__item" data-show-menu-option="Shop By Collection" value="" href="/">
+                                            Shop By Collection
+                                            <span class="hidden-xs menu__item__arrow menu__item__arrow--grey"></span>
+                                            <span class="visible-xs icon icon-arrow-right"></span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="menu__item" data-show-menu-option="Shop By category" value="" href="/">
+                                            Shop By category
+                                            <span class="hidden-xs menu__item__arrow menu__item__arrow--grey"></span>
+                                            <span class="visible-xs icon icon-arrow-right"></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </center>
+                        </nav>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </header>
+</div>

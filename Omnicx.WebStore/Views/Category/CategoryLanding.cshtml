@@ -1,0 +1,229 @@
+﻿@{
+    /*
+    Name: Category Landing
+    Purpose: Show all categoty
+    Structure: /Views/Catalog/CategoryLanding.cshtml
+    Contains (Partial Views Used):
+        a-/Views/Shared/_Layout.cshtml
+    Contained In (Where we Use this View) :
+    */
+}
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Catalog.CategoryModel>
+@using Omnicx.WebStore.Models.Enums
+@using Omnicx.API.SDK.Helpers;
+@using Omnicx.WebStore.Core.Helpers;
+@{
+    // ViewBag.Title = Model != null ? Model.Name : "";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Html.AddTitleParts(Model.Name);
+    Html.AddMetaTitle(Model.MetaTitle);
+    Html.AddMetaDescriptionParts(Model.MetaDescription);
+    Html.AddMetaKeywordsParts(Model.MetaKeywords);
+    Html.AddCanonicalUrl(Model.CanonicalTags);
+    Html.AddDataLayer(DataLayerObjectType.CategoryDetail, Model);
+}
+
+@{ /* Start breadcrumb container */ }
+<div class="col-sm-3 col-xs-12">
+    <div class="col-sm-12 col-xs-12 filterContainer hidden-xs">
+        <div class="sidebar-menu">
+            <div class="image">
+                <img src="@Model.Image" alt="" class="img-responsive image1" onerror="this.src=DEFAULT_IMAGE_URL">
+            </div>
+            @if (Model != null && Model.LinkGroups != null)
+            {
+                foreach (var group in Model.LinkGroups.OrderBy(o => o.DisplayOrder))
+                {
+
+                    <div class="left-filter">
+                        <h3 class="left-filter-headline">@group.Name </h3>
+                    </div>
+                        <div class="left-filter-category">
+                            <ul class="nav nav-pills nav-stacked">
+                                @*AttributeInputType 6 is used for colour type*@
+                                @if (group.AttributeInputType == 6)
+                                {
+                                    foreach (var link in group.Items)
+                                    {
+                                        <li class="colour inline-block">
+                                            <a href="/@link.Link"><span class="colour" style="background-color:@link.Name"></span></a>
+                                        </li>
+                                    }
+                                }
+                                else
+                                {
+                                    foreach (var link in group.Items)
+                                    {
+                                        <li>
+                                            <a href="/@link.Link">@link.Name</a>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                }
+            }
+        </div>
+    </div>
+
+</div>
+<div class="col-sm-9 col-xs-12">
+    @{ /* End Right category detail panel */ }
+    <div class="col-sm-12 col-xs-12 dataContainer clearfix">
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+                <ul class="breadcrumb">
+                    <li><a href="/">@LT("ProductListing.Breadcrumb.Home", "Home")</a></li>
+                    <li>
+                        @if (Model != null)
+                        {@Model.Name.ToCamelCase()}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        @{ /* Start carousel slider */ }
+        <div class="row margin-bottom-lg">
+            @if (Model != null && Model.Images != null)
+            {
+                <div class="col-sm-12 col-xs-12">
+                    <div id="carousel-example-generic" class="carousel slide omnicomponent component-slider" list-id="" list-type="" data-ride="carousel">
+                        <ol class="carousel-indicators">
+
+                            @foreach (var img in Model.Images.Select((index) => new { index }))
+                            {
+                                <li data-target="#carousel-example-generic" data-slide-to="@img.index" ng-class="{active : @img.index==0}"></li>
+                            }
+
+                        </ol>
+                        <div class="carousel-inner">
+                            @foreach (var img in Model.Images.Select((obj, index) => new { index, obj }))
+                            {
+                                <div class="item" ng-class="{active : @img.index==0}">
+                                    @if (img.obj.LinkType == LinkType.Href.GetHashCode().ToString())
+                                    {
+                                        <a href="@img.obj.Link">
+                                            <img ng-src="@img.obj.Url" alt="Slide @img.index of Carousel" class="img-responsive image1" onerror="this.src = DEFAULT_IMAGE_URL">
+                                            <div class="component-static-html img-topData hidden-xs">
+                                                <h2>@img.obj.Title</h2>
+                                                <h3>@img.obj.SubTitle</h3>
+                                                <p>@img.obj.Description</p>
+                                            </div>
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <img ng-src="@img.obj.Url" alt="Slide @img.index of Carousel" class="img-responsive image1" onerror="this.src = DEFAULT_IMAGE_URL">
+                                        <div class="component-static-html img-topData hidden-xs">
+                                            <h2>@img.obj.Title</h2>
+                                            <h3>@img.obj.SubTitle</h3>
+                                            <p>@img.obj.Description</p>
+                                            <p>
+                                                @if (img.obj.LinkType == LinkType.Button.GetHashCode().ToString())
+                                                {
+                                                    <a href="@img.obj.Link" class="shop-now"> @img.obj.ButtonText </a>
+                                                }
+                                            </p>
+                                        </div>
+                                    }
+
+                                </div>
+                            }
+                        </div><a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                            <span class="fa fa-chevron-left"></span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                            <span class="fa fa-chevron-right"></span>
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+        @{ /* End carousel slider */ }
+
+        
+        <div class="row">
+            @if (Model != null && Model.SubCategories != null)
+            {
+                foreach (var cat in Model.SubCategories.Where(x => x.IsFeatured).ToList())
+                {
+                    <div class="col-md-3 col-sm-4 col-xs-6 resultContainerRelated">
+                        <div class="categoryLanding">
+                            <div class="image">
+                                <a href="/@cat.Link">
+                                    <img ng-src="@cat.Image" alt="" class="img-responsive image1" onerror="this.src = DEFAULT_IMAGE_URL">
+                                </a>  @*@cat.Image*@
+                            </div>
+                            <div class="category-name">
+                                <h2 class="brand-h3"><a href="/@cat.Link">@cat.Name</a></h2>
+                                @*<p>@cat.Description</p>*@
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+
+    </div>
+    @{ /* End Right category detail panel */ }
+</div>
+@{ /* End breadcrumb container */ }
+<div class="row">
+    <div class="col-sm-6 col-xs-6 pull-right visible-xs">
+        <a class="pull-right text-right filter-right-anc" onclick="openNav()"><i class="fa fa-list-ul"></i> Filter</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12 margin-top-md">
+        @{ /* Start Left category filter */ }
+        <div class="col-sm-12 col-xs-12 visible-xs">
+            <div id="mySidenav" class="sidenav visible-xs">
+                <div class="sidenav-inner">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <div class="col-xs-12 no-padding margin-top-md">
+                        <div class="image">
+                            <img src="@Model.Image" alt="" class="img-responsive image1" onerror="this.src=DEFAULT_IMAGE_URL">
+                        </div>
+                        @if (Model != null && Model.LinkGroups != null)
+                        {
+                            foreach (var group in Model.LinkGroups.OrderBy(o => o.DisplayOrder))
+                            {
+                                <div class="left-filter">
+                                    <h3 class="left-filter-headline">@group.Name</h3>
+                                </div>
+                                <div class="left-filter-category">
+                                    <ul class="nav nav-pills nav-stacked">
+                                        @*AttributeInputType 6 is used for colour type*@
+                                        @if (group.AttributeInputType == 6)
+                                        {
+                                            foreach (var link in group.Items)
+                                            {
+                                                <li class="colour inline-block">
+                                                    
+                                                    <a href="/@link.Link" ><span class="colour" style="background-color:@link.Name"></span></a>
+                                                 </li>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            foreach (var link in group.Items)
+                                            {
+                                                <li>
+                                                    <a href="/@link.Link">@link.Name</a>
+                                                </li>
+                                            }
+                                        }
+                                    </ul>
+                                </div>
+                            }
+                        }
+                    </div>
+                    @{ /* End left filters accordion */ }
+                </div>
+            </div>
+        </div>
+        
+        @{ /* End Left category filter */ }
+
+        
+    </div>
+</div>

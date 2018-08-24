@@ -165,6 +165,7 @@ namespace Omnicx.WebStore.Core.Controllers
         public virtual ActionResult AddQuoteToBasket(string basketId,string basketAction)
         {          
             var basket = _b2bRepository.GetQuoteBasket(basketId, basketAction);
+            SiteUtils.SetBasketAction(basket?.Result.Id);
             return JsonSuccess(basket?.Result, JsonRequestBehavior.AllowGet);
         }
         public ActionResult RemoveQuoteBasket()

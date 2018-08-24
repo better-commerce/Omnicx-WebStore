@@ -1,8 +1,8 @@
-.siteHeader .meta@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
 
 #all {
-    margin-top: 10px !important;
     min-height: 60vh;
+    z-index: 7;
 }
 
 .siteHeader .hamburger--3dx .hamburger-box, .siteHeader .hamburger--3dx-r .hamburger-box, .siteHeader .hamburger--3dy .hamburger-box, .siteHeader .hamburger--3dy-r .hamburger-box {
@@ -868,7 +868,6 @@
 }
 
     .siteHeader a:active, .siteHeader a:focus, .siteHeader a:hover {
-        color: #ea0083;
         text-decoration: none;
         transition: color .2s;
     }
@@ -883,7 +882,6 @@
     }
 
 .siteHeader .miniBasket .miniBasket__itemDesc, .siteHeader .miniBasket .miniBasket__itemQuantity, .siteHeader .promosItem .promosItem__desc, .siteHeader .typeStyleGuide .mars, .siteHeader .userControls .userControls__currency__link, .siteHeader .userControls .userControls__lang__link {
-    font-family: Lato,sans-serif;
     margin: 0;
     padding: 0;
     font-style: normal;
@@ -893,7 +891,6 @@
 }
 
 .siteHeader .metaLinks .metaLinks__basket, .siteHeader .metaLinks .metaLinks__stores, .siteHeader .promosItem .promosItem__header, .siteHeader .typeStyleGuide .venus {
-    font-family: 'Lato',sans-serif;
     margin: 0;
     padding: 0;
     font-style: normal;
@@ -904,7 +901,6 @@
 }
 
 .siteHeader .predictiveSearch .predictiveSearch__brands__list__item h1, .siteHeader .predictiveSearch .predictiveSearch__perfumes__list__item h1, .siteHeader .predictiveSearch .predictiveSearch__products__list__item h1, .siteHeader .typeStyleGuide .earth {
-    font-family: Lato,sans-serif;
     margin: 0;
     padding: 0;
     font-style: normal;
@@ -914,7 +910,6 @@
 }
 
 .siteHeader .mobBrandSearch__list .mobBrandSearch__list__item, .siteHeader .mobileMenuBtn .mobileMenuBtn__text, .siteHeader .typeStyleGuide .mercury {
-    font-family: Lato,sans-serif;
     margin: 0;
     padding: 0;
     font-style: normal;
@@ -925,7 +920,6 @@
 }
 
 .siteHeader .mobBrandSearch__form .mobBrandSearch__form__input.placeholder, .siteHeader .mobBrandSearch__form .mobBrandSearch__form__input:-moz-placeholder, .siteHeader .mobBrandSearch__form .mobBrandSearch__form__input:-ms-input-placeholder, .siteHeader .mobBrandSearch__form .mobBrandSearch__form__input::-moz-placeholder, .siteHeader .mobBrandSearch__form .mobBrandSearch__form__input::-webkit-input-placeholder, .siteHeader .mobBrandSearch__form .mobBrandSearch__form__placeholder, .siteHeader .siteSearch .siteSearch__input.placeholder, .siteHeader .siteSearch .siteSearch__input:-moz-placeholder, .siteHeader .siteSearch .siteSearch__input:-ms-input-placeholder, .siteHeader .siteSearch .siteSearch__input::-moz-placeholder, .siteHeader .siteSearch .siteSearch__input::-webkit-input-placeholder, .siteHeader .siteSearch .siteSearch__placeholder, .siteHeader .typeStyleGuide .jupiter {
-    font-family: Lato,sans-serif;
     margin: 0;
     padding: 0;
     font-style: normal;
@@ -949,7 +943,6 @@
 }
 
 .siteHeader .metaLinks .metaLinks__basket .metaLinks__basket__indicator, .siteHeader .typeStyleGuide .neptune {
-    font-family: Lato,sans-serif;
     margin: 0;
     padding: 0;
     font-style: normal;
@@ -959,7 +952,6 @@
 }
 
 .siteHeader .miniBasket .miniBasket__bagButton, .siteHeader .predictiveSearch .predictiveSearch__brands__list__item p, .siteHeader .predictiveSearch .predictiveSearch__perfumes__list__item p, .siteHeader .predictiveSearch .predictiveSearch__products__list__item p, .siteHeader .typeStyleGuide .pluto {
-    font-family: Lato,sans-serif;
     margin: 0;
     padding: 0;
     font-style: normal;
@@ -969,7 +961,6 @@
 }
 
 .siteHeader .miniBasket .miniBasket__bagDelivery, .siteHeader .miniBasket .miniBasket__bagDeliveryPrice, .siteHeader .miniBasket .miniBasket__bagSubtotal, .siteHeader .miniBasket .miniBasket__bagSubtotalPrice, .siteHeader .miniBasket .miniBasket__itemBrand, .siteHeader .miniBasket .miniBasket__itemPrice, .siteHeader .typeStyleGuide .sun {
-    font-family: Lato,sans-serif;
     margin: 0;
     padding: 0;
     font-style: normal;
@@ -988,7 +979,6 @@
 }
 
 .siteHeader .userControls .userControls__accountLinks, .siteHeader .userControls .userControls__currencyBtn, .siteHeader .userControls .userControls__langBtn, .siteHeader .userControls .userControls__linkSeperator {
-    font-family: Lato,sans-serif;
     margin: 0;
     padding: 0;
     font-style: normal;
@@ -996,18 +986,17 @@
     line-height: 1.2rem;
     text-transform: none;
     font-weight: 400;
-    color: #fff !important;
+    color: #fff;
 }
 
 .siteHeader .alphabetBar .alphabetBar__list .alphabetBar__list__item, .siteHeader .megaNav .megaNav__header, .siteHeader .menu .menu__item, .siteHeader .predictiveSearch .predictiveSearch__title {
-    font-family: Lato,sans-serif;
     margin: 0;
     padding: 0;
     font-style: normal;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     line-height: 1.5rem;
-    text-transform: none;
-    font-weight: 600;
+    text-transform: uppercase;
+    font-weight: 500;
 }
 
 .siteHeader .megaNav .megaNav__list {
@@ -1021,7 +1010,6 @@
 }
 
 .siteHeader .miniBasket .miniBasket__bagTotal, .siteHeader .miniBasket .miniBasket__bagTotalPrice {
-    font-family: Lato,sans-serif;
     margin: 0;
     padding: 0;
     font-style: normal;
@@ -1060,7 +1048,7 @@
 
 .siteHeader .userControls {
     background-color: #fff;
-    border-bottom: 1px solid #fff !important;
+    border-bottom: 1px solid #fff;
     text-align: right;
     padding: .2em 0;
 }
@@ -1171,7 +1159,7 @@
     }
 
 .siteHeader .meta {
-    background-color: #182a3c !important;
+    background-color: #182a3c;
     padding-top: .6em;
 }
 
@@ -1211,7 +1199,7 @@
         width: 100%;
         top: 0;
         left: 0;
-        z-index: 99999;
+        z-index: 9;
     }
 
         .siteHeader .meta .row {
@@ -1355,7 +1343,6 @@
         }
 
         .siteHeader .metaLinks .metaLinks__basket:active, .siteHeader .metaLinks .metaLinks__basket:focus, .siteHeader .metaLinks .metaLinks__basket:hover {
-            color: #ea0083;
             text-decoration: none;
         }
 
@@ -1364,7 +1351,7 @@
         }
 
         .siteHeader .metaLinks .metaLinks__basket .metaLinks__basket__full, .siteHeader .metaLinks .metaLinks__basket .metaLinks__basket__indicator {
-            display: inline-block !important;
+            display: inline-block;
         }
 
         .siteHeader .metaLinks .metaLinks__basket .metaLinks__basket__indicator {
@@ -1378,9 +1365,8 @@
             width: 20px;
             color: #fff;
             z-index: 999;
-            line-height: 10px !important;
-            font-family: Poppins !important;
-            font-weight: 600 !important;
+            line-height: 11px;
+            font-weight: 600;
             border-radius: 50%;
             background: #ff494b;
             border: 2px solid #fff;
@@ -1391,7 +1377,7 @@
         }
 
         .siteHeader .metaLinks .metaLinks__basket.is-active .metaLinks__basket__full, .siteHeader .metaLinks .metaLinks__basket.is-active .metaLinks__basket__indicator {
-            display: inline-block !important;
+            display: inline-block;
         }
 
         .siteHeader .metaLinks .metaLinks__basket:active .metaLinks__basket__indicator, .siteHeader .metaLinks .metaLinks__basket:focus .metaLinks__basket__indicator, .siteHeader .metaLinks .metaLinks__basket:hover .metaLinks__basket__indicator {
@@ -1418,15 +1404,15 @@
         margin: 0px 10px;
     }
 
-        .siteHeader .metaLinks .list-inline > li a {
+        .siteHeader .metaLinks .list-inline > li a.userControls__accountLinks {
             color: #fff;
-            font-weight: 600;
+            font-weight: 400;
         }
 
         .siteHeader .metaLinks .list-inline > li.shopping-cart {
             width: auto;
-            min-width: 40px !important;
-            margin-top: 0px !important;
+            min-width: 40px;
+            margin-top: 0px;
         }
 
     .siteHeader .metaLinks .metaLinks__stores {
@@ -1459,7 +1445,6 @@
         }
 
         .siteHeader .metaLinks .metaLinks__basket:active, .siteHeader .metaLinks .metaLinks__basket:focus, .siteHeader .metaLinks .metaLinks__basket:hover {
-            color: #ea0083;
             text-decoration: none;
         }
 
@@ -1816,7 +1801,6 @@
     }
 
     .siteHeader .miniBasket .miniBasket__deliveryOptions {
-        font-family: Lato,sans-serif;
         margin: 0;
         font-style: normal;
         font-size: 1.4rem;
@@ -1980,28 +1964,28 @@
 }
 
 .siteHeader .menu:hover {
-    background: #fff !important;
+    background: #fff;
     -ms-transform: none;
     transform: none;
     transition: none;
 }
 
     .siteHeader .menu:hover .menu__item {
-        color: #000 !important;
+        color: #000;
         -ms-transform: none;
         transform: none;
         transition: none;
     }
 
 .siteHeader .menu.is-active {
-    background: #fff !important;
+    background: #fff;
     -ms-transform: none;
     transform: none;
     transition: none;
 }
 
     .siteHeader .menu.is-active .menu__item {
-        color: #000 !important;
+        color: #000;
     }
 
 .siteHeader .menu ul {
@@ -2041,7 +2025,7 @@
 
         .siteHeader .menu ul {
             height: 38px;
-            margin-bottom: 0 !important;
+            margin-bottom: 0;
         }
 
             .siteHeader .menu ul > li {
@@ -2052,8 +2036,7 @@
         .siteHeader .menu .menu__item {
             padding: 0.7em .8em;
             color: #000;
-            font-family: Poppins !important;
-            font-weight: 600 !important;
+            font-weight: 500;
             position: relative;
             overflow: hidden;
             margin: 0;
@@ -2095,7 +2078,7 @@
         }
 
             .siteHeader .menu.is-active .menu__item, .siteHeader .menu:active .menu__item, .siteHeader .menu:focus .menu__item, .siteHeader .menu:hover .menu__item {
-                color: rgba(255,255,255,.4);
+                color: rgba(0,0,0,1);
             }
 
                 .siteHeader .menu .menu__item.is-active, .siteHeader .menu:active .menu__item:active, .siteHeader .menu:focus .menu__item:focus, .siteHeader .menu:hover .menu__item:hover {
@@ -2104,8 +2087,8 @@
 
                 .siteHeader .menu.is-active .menu__item.is-active, .siteHeader .menu:active .menu__item:active, .siteHeader .menu:focus .menu__item:focus, .siteHeader .menu:hover .menu__item:hover {
                     color: #000;
-                    background: #fff !important;
-                    border-bottom: 2px solid #926957 !important;
+                    background: #fff;
+                    border-bottom: 2px solid #000;
                 }
 
                     .siteHeader .menu .menu__item.is-active .menu__item__arrow, .siteHeader .menu:active .menu__item:active .menu__item__arrow, .siteHeader .menu:focus .menu__item:focus .menu__item__arrow, .siteHeader .menu:hover .menu__item:hover .menu__item__arrow {
@@ -2114,7 +2097,7 @@
                         bottom: 0;
                         left: 50%;
                         position: absolute;
-                        display: none !important;
+                        display: none;
                     }
 }
 
@@ -2133,7 +2116,7 @@
 }
 
 .siteHeader .megaNav {
-    z-index: 158;
+    z-index: 8;
     position: absolute;
     transition: none;
     transition-delay: 0s;
@@ -2161,10 +2144,9 @@
         margin: 0 .1em;
         border-bottom: 1px solid rgba(0,0,0,.6);
         position: relative;
-        font-family: poppins;
         font-size: 13px;
         font-weight: 600;
-        color: #000 !important;
+        color: #000;
         font-style: normal;
     }
 
@@ -2334,7 +2316,7 @@
 
 .siteHeader .menuOption {
     display: none;
-    z-index: 160;
+    z-index: 8;
     width: 100%;
     height: 100%;
     background-color: transparent;
@@ -2393,10 +2375,10 @@
 
         .siteHeader .menuOption .container, .siteHeader .menuOption .container .row {
             height: auto;
-            background: #fff !important;
-            padding: 0px 15px 0 15px !important;
+            background: #fff;
+            padding: 0px 15px 0 15px;
             min-height: 390px;
-            position: relative !important;
+            position: relative;
             box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .16);
         }
 
@@ -2637,7 +2619,7 @@
     bottom: 0;
     left: 100%;
     position: absolute;
-    z-index: 156;
+    z-index: 7;
     opacity: 0;
     cursor: default;
     transition: opacity .5s;
@@ -2695,8 +2677,7 @@
 }
 
 .siteHeader .typeStyleGuide .earth, .siteHeader .typeStyleGuide .jupiter, .siteHeader .typeStyleGuide .mars, .siteHeader .typeStyleGuide .mercury, .siteHeader .typeStyleGuide .moon, .siteHeader .typeStyleGuide .neptune, .siteHeader .typeStyleGuide .pluto, .siteHeader .typeStyleGuide .saturn, .siteHeader .typeStyleGuide .sun, .siteHeader .typeStyleGuide .uranus, .siteHeader .typeStyleGuide .venus {
-    margin-top: 1em !important;
-    font-family: Lato,sans-serif;
+    margin-top: 1em;
 }
 
 .no-csstransforms3d .siteHeader .siteNav {
@@ -2733,35 +2714,34 @@
 }
 
 .miniBag:hover > .siteHeader.miniBasket {
-    display: block !important;
+    display: block;
 }
 
 .minicart-custom {
-    margin-left: 0px !important;
-    color: #fff !important;
-    font-size: 14px !important;
-    font-family: Poppins !important;
-    line-height: 50px !important;
+    margin-left: 0px;
+    color: #fff;
+    font-size: 14px;
+    line-height: 50px;
 }
 
     .minicart-custom i {
-        margin-left: 0px !important;
-        color: #fff !important;
-        font-size: 20px !important;
-        line-height: 50px !important;
-        margin-right: 5px !important;
+        margin-left: 0px;
+        color: #fff;
+        font-size: 20px;
+        line-height: 50px;
+        margin-right: 5px;
     }
 
 .megamenu-img {
-    float: left !important;
+    float: left;
     margin-top: 0px;
 }
 
     .megamenu-img > p > img,
     .megamenu-img > p > a > img {
-        height: 320px !important;
-        max-height: 320px !important;
-        width: auto !important;
+        height: 320px;
+        max-height: 320px;
+        width: auto;
         background: rgba(0,0,0,1);
         background: -moz-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(255,255,255,1) 81%, rgba(255,255,255,1) 100%);
         background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,0,0,1)), color-stop(81%, rgba(255,255,255,1)), color-stop(100%, rgba(255,255,255,1)));
@@ -2769,17 +2749,16 @@
         background: -o-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(255,255,255,1) 81%, rgba(255,255,255,1) 100%);
         background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(255,255,255,1) 81%, rgba(255,255,255,1) 100%);
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#ffffff', GradientType=0 );
-        padding: 7px !important;
+        padding: 7px;
     }
 
     .megamenu-img > p,
     .megamenu-img > p span {
-        padding: 10px 0px 5px 0px !important;
-        font-family: Poppins !important;
-        font-size: 16px !important;
-        font-weight: 600 !important;
-        text-align: left !important;
-        color: #000 !important;
+        padding: 10px 0px 5px 0px;
+        font-size: 16px;
+        font-weight: 600;
+        text-align: left;
+        color: #000;
     }
 
 .product-thumbnail {
@@ -2793,15 +2772,21 @@
 }
 
 .metaLinks__basket__full {
-    color: #fff !important;
+    color: #fff;
     font-size: 14px;
-    font-family: Poppins;
-    font-weight: 600;
+    font-weight: 400;
 }
 
     .metaLinks__basket__full > i {
-        font-size: 24px !important;
+        font-size: 24px;
         color: #fff;
-        margin-right: 5px !important;
+        margin-right: 5px;
         line-height: 50px;
     }
+
+@media only screen and (max-width:990px) {
+    .siteHeader .metaLinks .list-inline > li {
+        margin: 0px 2px;
+        text-align: left;
+    }
+}

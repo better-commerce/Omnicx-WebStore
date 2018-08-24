@@ -1,0 +1,25 @@
+﻿@{
+/*
+    Name: Page Internal Error 500
+    Purpose: Show This Error Page when found error 500
+    Structure: /Views/Common/Error500.cshtml
+    Contains (Partial Views Used):
+        a-/Views/Shared/_Layout.cshtml    (For base Structure)
+
+    Contained In (Where we Use this View):
+    */
+}
+@{
+    ViewBag.Title = "Service Unavailable";
+    Layout = "~/Views/Shared/_LayoutError.cshtml";
+}
+<div class="container">
+    <div class="row">
+        <div class="error-bg text-center">
+            <img src="~/assets/theme/ocx/images/503.png" />
+            <h3 class="error-h6">Service Unavailable</h3>
+            <p class="error-desc">Ooops! It seems we are currently unavailable !</p>
+            <p><a class="animate btn-bordered" href="~/" role="button">Go Back to Home Page</a></p>
+        </div>
+    </div>
+</div>

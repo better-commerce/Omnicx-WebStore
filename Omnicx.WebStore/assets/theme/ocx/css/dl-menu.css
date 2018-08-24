@@ -18,17 +18,17 @@
     }
 
     .dl-menuwrapper button {
-        background: #FFFFFF;
+        background: transparent;
         border: none;
         width: 28px;
-        height: 35px;
+        height: 20px;
         text-indent: -930em;
         overflow: hidden;
         position: absolute;
         cursor: pointer;
         outline: none;
         left: 30px;
-        top: -40px;
+        top: -65px;
     }
 
         .dl-menuwrapper button:hover,
@@ -122,6 +122,7 @@
     transform: translateY(0px);
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    background: #182a3c !important;
 }
 
     .dl-menuwrapper .dl-menu.dl-menu-toggle {

@@ -1,0 +1,88 @@
+﻿@{
+/*
+    Name: B2B Users
+    Purpose: Show B2B Company users
+    Structure: /Views/B2B/Users.cshtml
+    Contains (Partial Views Used):
+        a-/Views/Shared/_Layout.cshtml.cshtml   (For base Structure)
+        b-/Views/Account/_SideNav.cshtml        (Navigation For Desktop and Big Screen)
+
+    Contained In (Where we Use this View):
+     a-/Views/Account/_SideNav.cshtml        (Navigation Link Desktop and Big Screen)
+    */
+}
+@using Microsoft.Web.Mvc
+@using Omnicx.WebStore.Core.Controllers
+@using Omnicx.WebStore.Models
+@using Omnicx.WebStore.Core.Helpers
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<List<Omnicx.WebStore.Models.B2B.CompanyUserModel>>
+@{
+    ViewBag.Title = "Users";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <ul class="breadcrumb">
+            <li>
+                <a href="/">@LT("MyAccount.Links.Home", "Home")</a>
+            </li>
+            <li>@LT("MyAccount.Links.MyOrders", "Users")</li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12 col-xs-12">
+        <h3 class="panel-h2 hidden-xs">@LT("MyAccount.Text.UpdateDetails", "Users")</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 margin-bottom-lg visible-xs" id="exTab1">
+
+        @*@Html.Partial("~/Views/Account/_MobileSideNav.cshtml")*@
+    </div>
+
+    <div class="col-md-3 col-sm-4 col-xs-12 hidden-xs">
+        @Html.Partial("~/Views/Account/_SideNav.cshtml")
+    </div>
+    <div class="col-md-9 col-sm-8 col-xs-12" id="customer-orders">
+
+        <div class="box no-padding col-sm-12 col-xs-12 no-border-bottom" ng-if="@Model.Count() > 0">
+            <div class="table-responsive max-history">
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th class="width-10 hidden-md hidden-sm hidden-xs">@LT("MyAccount.Text.FirstName", "First Name")</th>
+                            <th class="width-10">@LT("MyAccount.Text.LastName", "Last Name")</th>
+                            <th class="width-10">@LT("MyAccount.Text.Email", "Email")</th>
+                            <th class="width-10">@LT("MyAccount.Text.PhoneNo", "Phone No")</th>
+                            <th class="width-10">@LT("MyAccount.Text.CompanyRole", "Company Role")</th>
+                            <th class="width-5 text-right">@LT("MyAccount.Text.Action", "Action")</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in @Model)
+                        {
+                            <tr>
+                                <td type="text">@item.FirstName</td>
+                                <td type="text">@item.LastName</td>
+                                <td type="text">@item.Email</td>
+                                <td type="text">@item.PhoneNo</td>
+                                <td type="text">@item.CompanyUserRole</td>
+                                <td align="right"><a href="" class="text-black"><i class="fa fa-pencil"></i></a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- /.table-responsive -->
+        <div class="text-center" ng-if="@Model.Count() == 0">
+            <div class="col-xs-12 nodata-customer">
+                <i class="fa fa-shopping-cart"></i>
+                <h1>@LT("MyAccount.Text.NoUsersAvailable", "No Users Available")</h1>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -56,7 +56,7 @@ namespace Omnicx.WebStore.Core.Controllers
             }          
             var siteView = result.Result;
             
-            if (siteView == null) return RedirectToAction("PageNotFound", "Common", new { @aspxerrorpath = slug });
+            if (siteView == null) return RedirectToPageNotFound(); 
             if(slug == "/")
                 SetDataLayerVariables(siteView, WebhookEventTypes.PageViewed);
             else

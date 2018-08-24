@@ -8,10 +8,13 @@ namespace Omnicx.WebStore.Models.Commerce
     public class AddressModel
     {
         private string _firstName;
+        private string _lastName;
         private string _address1;
         private string _address2;
         private string _address3;
+        private string _companyName;
         private string _postCode;
+        private string _city;
 
         public string Id { get; set; }
 
@@ -28,14 +31,24 @@ namespace Omnicx.WebStore.Models.Commerce
             set
             {
                 if (!string.IsNullOrEmpty(value))
-                    _firstName = char.ToUpper(value[0]) + value.Substring(1);
+                    _firstName = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(value.ToLower());
             }
         }
 
         [Required]
         [Display(Name = "LastName", Prompt = "Last Name...")]
 
-        public string LastName { get; set; }
+        public string LastName {
+            get
+            {
+                return _lastName;
+            }
+            set
+            {
+                if (!string.IsNullOrEmpty(value))
+                    _lastName = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(value.ToLower());
+            }
+        }
 
         [Required]
         [Display(Name = "Address1", Prompt = "Address 1...")]
@@ -50,7 +63,7 @@ namespace Omnicx.WebStore.Models.Commerce
             set
             {
                 if (!string.IsNullOrEmpty(value))
-                    _address1 = char.ToUpper(value[0]) + value.Substring(1);
+                    _address1 = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(value.ToLower());
             }
         }
 
@@ -66,7 +79,7 @@ namespace Omnicx.WebStore.Models.Commerce
             set
             {
                 if (!string.IsNullOrEmpty(value))
-                    _address2 = char.ToUpper(value[0]) + value.Substring(1);
+                    _address2 = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(value.ToLower());
             }
         }
 
@@ -79,7 +92,7 @@ namespace Omnicx.WebStore.Models.Commerce
             set
             {
                 if (!string.IsNullOrEmpty(value))
-                    _address3 = char.ToUpper(value[0]) + value.Substring(1);
+                    _address3 = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(value.ToLower());
             }
         }
 
@@ -87,7 +100,17 @@ namespace Omnicx.WebStore.Models.Commerce
         [System.Web.Mvc.AdditionalMetadata("capture-plus", "")]
         [Display(Name = "City", Prompt = "City...")]
 
-        public string City { get; set; }
+        public string City {
+            get
+            {
+                return _city;
+            }
+            set
+            {
+                if (!string.IsNullOrEmpty(value))
+                    _city = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(value.ToLower());
+            }
+        }
 
        
         [System.Web.Mvc.AdditionalMetadata("capture-plus", "")]
@@ -125,9 +148,8 @@ namespace Omnicx.WebStore.Models.Commerce
         //[DataType(DataType.PhoneNumber)]
         //[RegularExpression(@"^(\d{10})$", ErrorMessage = "Please enter valid Phone Number")]
         [System.Web.Mvc.AdditionalMetadata("input.MaxLength", "30")]
-        [System.Web.Mvc.AdditionalMetadata("input.MinLength", "10")]
         [MaxLength(30, ErrorMessage = "Mobile No Value can't be more than 30")]
-        [System.Web.Mvc.AdditionalMetadata("input.Pattern", @"^\+?(\d[\d-. ]+)?(\([\d-. ]+\))?[\d-. ]+\d$")]
+        [System.Web.Mvc.AdditionalMetadata("input.Pattern", @"^(\+?(\d[\d-.\w ]+)?(\([\d-.\w ]+\))?[\d-.\w ]+\d)|([a-zA-Z]\w*)$")]
         public string PhoneNo { get; set; }
 
         public string MobileNo { get; set; }
@@ -136,6 +158,19 @@ namespace Omnicx.WebStore.Models.Commerce
         public bool IsDefault { get; set; }
         public List<CountryModel> BillingCountries { get; set; }
         public string CompanyId { get; set; }
-        public string CompanyName { get; set; }
+        public string CompanyName
+        {
+            get
+            {
+                return _companyName;
+            }
+            set
+            {
+                if (!string.IsNullOrEmpty(value))
+                {
+                    _companyName = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(value.ToLower());
+                }
+            }
+        }
     }
 }

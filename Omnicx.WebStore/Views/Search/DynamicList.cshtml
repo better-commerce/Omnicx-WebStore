@@ -1,0 +1,127 @@
+﻿@using Omnicx.WebStore.Models.Enums
+@using Omnicx.API.SDK.Helpers
+@using Omnicx.WebStore.Models.Helpers
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Catalog.Collections>
+@{
+    ViewBag.Title = "CollectionList";
+}
+@{
+
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //Html.AddTitleParts(Model.Name);
+    //Html.AddMetaDescriptionParts(Model.MetaDescription);
+    //Html.AddMetaKeywordsParts(Model.MetaKeywords);
+    //Html.AddCanonicalUrl(Model.CanonicalTags);
+    Html.AddDataLayer(DataLayerObjectType.ProductDetail, Model);
+}
+
+<div class="row margin-top-md no-padding animated zoomIn">
+    <div class="col-xs-12 no-padding">
+        <h3 class="brand-naming-h3">Product List</h3>
+    </div>
+    @if (@Model.CollectionList != null && @Model.CollectionList.Count > 0)
+    {
+
+
+        foreach (var name in @Model.CollectionList)
+        {
+            if (@name.DataSource == ListDatasetSource.Product.GetHashCode())
+            {
+
+                <div class="col-xs-12 col-md-4 col-sm-4 no-padding-left col-lg-4 text-center brands-list animated zoomIn" style="position:relative; top:0px;">
+                    <a href="/@name.Slug">
+                        <div id="over" class="">
+                            <a href="/@name.Slug" class="Centerer">@name.Name</a>
+                        </div>
+                    </a>
+                </div>
+
+            }
+        }
+
+
+
+        <div class="col-xs-12 no-padding">
+            <h3 class="brand-naming-h3">Category List</h3>
+        </div>
+        foreach (var name in @Model.CollectionList)
+        {
+
+            if (@name.DataSource == ListDatasetSource.Category.GetHashCode())
+            {
+                <div class="col-xs-12 col-md-4 col-sm-4 no-padding-left col-lg-4 text-center brands-list animated zoomIn" style="position:relative; top:0px;">
+                    <a href="/@name.Slug">
+                        <div id="over" class="">
+                            <a href="/@name.Slug" class="Centerer">@name.Name</a>
+                        </div>
+                    </a>
+                </div>
+            }
+        }
+
+
+
+        <div class="col-xs-12 no-padding">
+            <h3 class="brand-naming-h3">Brand List</h3>
+        </div>
+        foreach (var name in @Model.CollectionList)
+        {
+            if (@name.DataSource == ListDatasetSource.Brand.GetHashCode())
+            {
+                <div class="col-xs-12 col-md-4 col-sm-4 no-padding-left col-lg-4 text-center brands-list animated zoomIn" style="position:relative; top:0px;">
+                    <a href="/@name.Slug">
+                        <div id="over" class="">
+                            <a href="/@name.Slug" class="Centerer">@name.Name</a>
+                        </div>
+                    </a>
+                </div>
+
+            }
+        }
+
+
+        <div class="col-xs-12 no-padding">
+            <h3 class="brand-naming-h3">Image List</h3>
+        </div>
+        foreach (var name in @Model.CollectionList)
+        {
+            if (@name.DataSource == ListDatasetSource.Image.GetHashCode())
+            {
+                <div class="col-xs-12 col-md-4 col-sm-4 no-padding-left col-lg-4 text-center brands-list animated zoomIn" style="position:relative; top:0px;">
+                    <a href="/@name.Slug">
+                        <div id="over" class="">
+                            <a href="/@name.Slug" class="Centerer">@name.Name</a>
+                        </div>
+                    </a>
+                </div>
+
+            }
+        }
+
+
+        <div class="col-xs-12 no-padding">
+            <h3 class="brand-naming-h3">Blog List</h3>
+        </div>
+        foreach (var name in @Model.CollectionList)
+        {
+            if (@name.DataSource == ListDatasetSource.Blog.GetHashCode())
+            {
+                <div class="col-xs-12 col-md-4 col-sm-4 no-padding-left col-lg-4 text-center brands-list animated zoomIn" style="position:relative; top:0px;">
+                    <a href="/@name.Slug">
+                        <div id="over" class="">
+                            <a href="/@name.Slug" class="Centerer">@name.Name</a>
+                        </div>
+                    </a>
+                </div>
+
+            }
+        }
+
+    }
+    else
+    {
+        <div><h3>No items in the dynamic lists.</h3></div>
+
+    }
+</div>

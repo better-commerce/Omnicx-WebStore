@@ -1,0 +1,76 @@
+﻿@{
+/*
+    Name: Blog Layout
+    Purpose: Layout for using Blog UI screen
+    Structure: /Views/Shared/_LayoutBlog.cshtml
+    Contains (Partial Views Used):
+        a-/Views/Shared/_LayoutHeadTag.cshtml
+        b-/Views/Shared/_LayoutHeader.cshtml
+        c-/Views/Blog/_BlogNav.cshtml
+        d-/Views/Shared/_LayoutFooter.cshtml
+
+    Contained In (Where we Use this View):
+        a-/Views/Blog/Blogs.cshtml
+        b-/Views/Blog/BlogCategory.cshtml
+        c-/Views/Blog/BlogDetail.cshtml
+        d-/Views/Blog/Search.cshtml
+    */
+}
+<!DOCTYPE html>
+@using Microsoft.Web.Mvc
+@using Omnicx.WebStore.Core.Controllers
+@using Omnicx.WebStore.Models
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Site.BlogDetailViewModel>
+
+<html ng-app="btApp" ng-controller="globalCtrl as gm">
+@Html.Partial("~/Views/Shared/_LayoutHeadTag.cshtml")
+<body>
+    <header class="siteHeader">
+        @Html.Partial("~/Views/Shared/_LayoutHeader.cshtml")
+        <div class="container"></div>
+        @Html.Partial("~/Views/Blog/_BlogNav.cshtml", Model)
+        <div id="all">
+            <div id="content" class="clearfix">
+                <div class="container">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </header>
+    @Html.Partial("~/Views/Shared/_LayoutFooter.cshtml")
+    <div class="dvloader">
+        <span class="global-loader">
+            <img src="~/assets/theme/ocx/images/loader.svg" />
+        </span>
+    </div>
+    @section scripts{}
+    @RenderSection("scripts", required: false)
+    <script>
+
+        var setContactForm = '@(Html.BuildUrlFromExpression<CommonController>(c => c.ContactForm(null)))';
+        var getBasketUrl = '@(Html.BuildUrlFromExpression<BasketController>(c => c.GetBasketData()))';
+        var addToBasket = '@(Html.BuildUrlFromExpression<BasketController>(c => c.AddtoBasket(null)))';
+        var signIn = '@(Html.BuildUrlFromExpression<AccountController>(c => c.SignIn(null)))';
+        var register = '@(Html.BuildUrlFromExpression<AccountController>(c => c.Registration(null)))';
+        var getShippingMethods = '@(Html.BuildUrlFromExpression<BasketController>(c => c.GetShippingMethods(null)))';
+        var updateShipping = '@(Html.BuildUrlFromExpression<BasketController>(c => c.UpdateShipping(null,null,null)))';
+        var applyPromoCode = '@(Html.BuildUrlFromExpression<BasketController>(c => c.ApplyPromoCode(null,null)))';
+        var currencySettingUrl = '@(Html.BuildUrlFromExpression<HomeController>(c => c.UpdateCurrencySetting()))';
+        var paymentMethodsUrl = '@(Html.BuildUrlFromExpression<CheckoutController>(c => c.GetPaymentMethods()))';
+
+        window.app.constant('globalConfig', {
+            setContactForm: setContactForm,
+            getBasketUrl: getBasketUrl,
+            addToBasket: addToBasket,
+            signIn: signIn,
+            register: register,
+            getShippingMethods: getShippingMethods,
+            updateShipping: updateShipping,
+            applyPromoCode: applyPromoCode,
+            currencySettingUrl: currencySettingUrl,
+            paymentMethodsUrl: paymentMethodsUrl
+        });
+    </script>
+</body>
+</html>

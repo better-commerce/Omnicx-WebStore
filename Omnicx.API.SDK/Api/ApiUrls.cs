@@ -81,7 +81,7 @@
         public const string SaveAddress = "commerce/customer/{0}/addresses/create";
         public const string GetAddress = "commerce/customer/{0}/addresses";
         public const string UpdateCustomerAddress = "commerce/customer/{0}/addresses/{1}/update";
-
+        public const string NoDefaultAddress = "commerce/customer/{0}/addresses/noDefaultAddress";
 
         //Survey
         public const string Survey = "content/survey/{0}";

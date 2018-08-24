@@ -1,0 +1,118 @@
+﻿@{
+/*
+    Name: Bundle View in Quick view modal
+    Purpose: Show Bundle View in Quick view modal
+    Structure: /Views/Product/_QuickViewBundle.cshtml
+    Contains (Partial Views Used):
+
+    Contained In (Where we Use this View):
+        a-/Views/Product/ProductDetail.cshtml
+    */
+}
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Catalog.ProductDetailModel>
+
+<div class="container-fluid bundle">    
+    <div class="row">
+        <div class="col-sm-5 col-xs-12">
+            <div class="row animated zoomIn">
+                <div class="col-sm-12 col-xs-12 bundle-product-container">
+                    <img data-ng-magnify image-src="{{pm.model.image}}" class="img-responsive" onerror="this.src = DEFAULT_IMAGE_URL" ng-cloak>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-7 col-xs-12">
+            <div class="row bundle-products">
+                <div class="col-sm-4 col-xs-4" ng-repeat="productBundle in pm.model.componentProducts">
+                    <div class="bundle-image-container">
+                        <a ng-href="/{{productBundle.slug}}">
+                            <img ng-src="{{productBundle.images[0].url}}" class="img-responsive" onerror="this.src = DEFAULT_IMAGE_URL" ng-cloak>
+                        </a>
+                    </div>
+                    <div>
+                        <a class="text-black" ng-href="/{{productBundle.slug}}">
+                            <span ng-bind="productBundle.name"></span>
+                        </a>
+                    </div>
+                    <div class="bundle-qty">
+                        <strong>@LT("ProductDetail.Label.Qty", "Qty"): </strong><span ng-bind="productBundle.qty"></span>
+                    </div>
+                </div>
+            </div>            
+        </div>        
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-xs-12">
+            <h2 ng-bind="pm.model.shortDescription"></h2>
+        </div>
+        <div class="col-sm-12 col-xs-12">
+            <p><strong>@LT("ProductDetail.Label.SKU", "SKU"): </strong> <span ng-bind="pm.model.sku"></span></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-xs-12 quickView-image2">
+            <img ng-src="{{pm.model.images[1].url==''?DEFAULT_IMAGE_URL:pm.model.images[1].url}}" alt="" class="img-responsive" onerror="this.src = DEFAULT_IMAGE_URL">
+        </div>
+    </div>
+    <div class="row product-box quickView">
+        <div class="col-sm-7 col-xs-12">
+            <p ng-bind="pm.model.description"></p>
+            <h3 class="price-h3 no-margin">
+                <span ng-bind="(pm.model.price.formatted.withoutTax)"></span>
+            </h3>
+        </div>
+        <div class="col-sm-5 col-xs-12">
+            <div class="data-container">
+                <div class="row">
+                    <div class="col-sm-3 col-xs-3 text-right pull-right">
+                        <input type="number" value="1" id="qtyBoxBundle" ng-model="pm.productCount" name="qty" autofocus min="1" class="form-control qty-textbox" numbers-Only />
+                    </div>
+                    <div class="col-sm-9 col-xs-9 text-right" ng-if="pm.model.isDiscontinued==false">
+                        <a class="animate btn-default no-margin-top" ng-click="gm.addToBasket(pm.model.recordId,1,0)"><span>@LT("Checkout.Button.AddBundle", "Add Bundle")</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-if="pm.model.variantProductsAttribute[0].displayInProductWidget">
+        <div class="col-sm-12 col-xs-12 no-padding">
+            <div class="row" ng-repeat="attr in pm.model.variantProductsAttribute">
+                <h3 class="variant-headline" ng-bind="attr.fieldName"></h3>
+                <span ng-show="attr.selectedValue==''" class="color-error-validation">@LT("ProductDetail.Label.PleaseSelect", "Please Select") {{attr.fieldName}} </span>
+                <div ng-if="attr.inputType != 'Dropdown'">
+                    <div ng-repeat="item in attr.fieldValues">
+
+                        <a ng-if="attr.fieldCode=='global.colour'" id="{{item.fieldValue}}" href="#" ng-click="pm.getAvailableAttributeValues(attr.fieldCode,item.fieldValue,item.selected,attr.independentProductUrl)"
+                           class="varient-box btn" ng-class="item.available==true?'':' grayOut-Color'" style="background-color: {{item.fieldValue}}">
+                            <i ng-if="item.selected && item.available" class="fa-1x fa fa-check varient-check"></i>
+                        </a>
+
+                        <a ng-if="attr.fieldCode!='global.colour'" id="{{item.fieldValue}}" href="#" ng-click="pm.getAvailableAttributeValues(attr.fieldCode,item.fieldValue,item.selected,attr.independentProductUrl)"
+                           class="varient-box-large " ng-class="item.available==true?'':' grayOut'">
+                            {{item.fieldValue}}
+                            <i ng-if="item.selected && item.available" class="fa-1x fa fa-check varient-check-range"></i>
+                        </a>
+                    </div>
+                </div>
+                <div ng-if="attr.inputType == 'Dropdown'">
+                    <select ng-model="attr.selectedValue" ng-change="pm.getAvailableAttributeValues(attr.fieldCode,attr.selectedValue,false,attr.independentProductUrl)" class="varientDdb">
+                        <option ng-disabled="!item.available" ng-repeat="item in attr.fieldValues" id="{{item.fieldValue}}" ng-class="item.available==true?'':' grayOut'" value={{item.fieldValue}}>{{item.fieldValue}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-xs-12 no-padding" ng-if="pm.model.flags.isFreeDelivery">
+            <label class="free-label" ng-cloak>
+                <span class="free-icon"><i class="fa fa-truck"></i></span>
+                <span class="free-text"><strong>@LT("ProductDetail.Label.FreeDelivery", "Free Delivery")</strong><br /> @LT("ProductDetail.Label.onthisitem", "on this item")</span>
+            </label>
+        </div>
+        <div class="col-sm-6 col-xs-12 no-padding" ng-if="pm.model.freeProducts.length > 0">
+            <label class="free-label" ng-cloak>
+                <span class="free-icon"><i class="fa fa-gift"></i></span>
+                <span class="free-text"><strong>@LT("ProductDetail.Label.FreeGift", "Free Gift") </strong><br /> @LT("ProductDetail.Label.withthisitem", "with this item")</span>
+            </label>
+        </div>
+    </div>
+</div>

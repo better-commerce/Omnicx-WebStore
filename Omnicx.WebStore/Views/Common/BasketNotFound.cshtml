@@ -1,0 +1,32 @@
+﻿@{
+/*
+    Name: Basket Not Found
+    Purpose: Show This Error Page when No Basket found
+    Structure: /Views/Common/BasketNotFound.cshtml
+    Contains (Partial Views Used):
+        a-/Views/Shared/_Layout.cshtml    (For base Structure)
+
+    Contained In (Where we Use this View):
+    */
+}
+@using Microsoft.Web.Mvc
+@using Omnicx.WebStore.Framework.Helpers
+@using Omnicx.WebStore.Core.Controllers
+
+@using Omnicx.WebStore.Core.Helpers
+@using Omnicx.WebStore.Models
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
+@{
+    ViewBag.Title = "Basket Not Found";
+    Layout = "~/Views/Shared/_OpcLayout.cshtml";
+}
+<div class="section-block replicable-content ">
+    <div class="row">
+        <div class="notFound-bg text-center">
+            <i class="fa fa-shopping-bag"></i>
+            <h3 class="error-h4">@LT("YourBag.Text.NoItem", "Basket Not Found")</h3>
+            <p class="message-desc">@LT("YourBag.Text.Basket", "The Basket you are looking for has already been") <strong>@LT("YourBag.Text.Basket", "Closed / Converted")</strong> @LT("YourBag.Text.Or", "or") <strong>@LT("YourBag.Text.exist", "does not exist")</strong>.</p>
+            <p><a href="/" class="animate btn-bordered"><i class="fa fa-caret-left"></i>@LT("YourBag.Text.ContinueShopping", "Continue Shopping")</a></p>
+        </div>
+    </div>
+</div>

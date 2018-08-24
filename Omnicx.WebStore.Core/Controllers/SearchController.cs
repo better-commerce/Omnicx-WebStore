@@ -118,7 +118,7 @@ namespace Omnicx.WebStore.Core.Controllers
             var list = response.Result;
             if (response.Result == null && response.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
-                return RedirectToAction("PageNotFound", "Common",new { @aspxerrorpath = slug});
+                return RedirectToPageNotFound();
             }
             if (list.Groups != null)
             {
