@@ -2,6 +2,7 @@
 using Omnicx.WebStore.Models.Common;
 using System;
 using Omnicx.WebStore.Models.B2B;
+using Omnicx.WebStore.Models.Helpers;
 
 namespace Omnicx.WebStore.Models.Commerce
 {
@@ -82,6 +83,7 @@ namespace Omnicx.WebStore.Models.Commerce
         [Display(Name = "Confirm password")]
         //[StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         public string ConfirmPassword { get; set; }
+        public CompanyNameModel Company { get; set; }
     }
 
     public class ResetPasswordViewModel
@@ -193,7 +195,7 @@ namespace Omnicx.WebStore.Models.Commerce
             set
             {
                 if (!string.IsNullOrEmpty(value))
-                    _lastName = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(value.ToLower());
+                    _lastName = value.ToSentenceCase();
             }
         }
 
@@ -220,7 +222,7 @@ namespace Omnicx.WebStore.Models.Commerce
             }
         }
 
-        [Required]
+        //[Required]
         [Display(Name = "Phone No", Prompt = "Phone No")]
         //[DataType(DataType.PhoneNumber)]
         //[RegularExpression("([0-9]+)", ErrorMessage = "Please enter valid Phone Number")]

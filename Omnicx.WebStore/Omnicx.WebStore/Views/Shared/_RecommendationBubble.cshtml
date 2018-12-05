@@ -1,0 +1,75 @@
+﻿@using Omnicx.WebStore.Models.Keys
+@using Omnicx.WebStore.Models.Commerce
+@using Omnicx.API.SDK.Helpers
+@using Omnicx.WebStore.Models.Enums
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
+
+<div class="modal fade in" id="bubbleOption" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog modal-full">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="myModalLabel">@LT("YourBag.Message.BulkOrderPad", "Your OmniCX Store")</div>
+                <button type="button" class="close search-close-btn" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">@LT("Checkout.Button.Close", "Close")</span></button>
+            </div>
+            <div class="modal-body no-padding" >
+                <div class="row maxHeight">
+                    <div class="col-sm-12 col-xs-12 tagScroll">
+                        <span class="tags">
+                            <img ng-src="https://devocxblob.blob.core.windows.net/demostore/products/77S520_48_BLU.jpg" />
+                            <strong>Recommended</strong>
+                        </span>
+                        <span class="tags">
+                            <img src="https://devocxblob.blob.core.windows.net/demostore/products/75B492XX_94_OCHRE.jpg" />
+                            <strong>Bags</strong>
+                        </span>
+                        <span class="tags active">
+                            <img src="https://devocxblob.blob.core.windows.net/demostore/products/73726.jpg" />
+                            <strong>Perfumes</strong>
+                        </span>
+                        <span class="tags">
+                            <img src="https://devocxblob.blob.core.windows.net/demostore/products/73726.jpg" />
+                            <strong>Perfumes</strong>
+                        </span>
+                        <span class="tags">
+                            <img src="https://devocxblob.blob.core.windows.net/demostore/products/73726.jpg" />
+                            <strong>Perfumes</strong>
+                        </span>
+                    </div>
+                    <div class="col-sm-12 col-xs-12 gridView">
+                        <div ng-repeat="prod in gm.recomendations.products" class="col-md-5ths col-sm-5ths col-xs-5ths col-lg-5ths resultContainerRelated ng-scope">
+                            <div class="product-container-panel">
+                                <div class="imagePanel">
+                                    <a ng-href="{{prod.slug}}">
+                                        <span class="tooltiptext ng-binding"></span>
+                                        <img ng-src="{{prod.image}}" alt="" class="image1">
+                                    </a>
+                                </div>
+                                <div class="dataPanel">
+                                    <div class="ribbon-info">
+                                        <a ng-href="{{prod.slug}}">
+                                            <span class="ng-binding" ng-bind="prod.name"></span>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <span><strong>SKU: </strong><span class="ng-binding" ng-bind="prod.sku"></span></span>
+                                    </div>
+                                    <div class="price-info">
+                                        <div class="col-sm-8 col-xs-12 no-padding">
+                                            <h3>
+                                                <span class="ng-binding" ng-bind="prod.price.formatted.withTax"></span>
+                                                <span class="sml ng-binding" ng-bind="prod.price.formatted.withTax"></span>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>          
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+</div>
+
+   

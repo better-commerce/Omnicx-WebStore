@@ -1,0 +1,93 @@
+﻿@{
+/*
+    Name: Delivery Method
+    Purpose: Show All delivery Methods
+    Structure: /Views/Checkout/_DeliveryMethod.cshtml
+    Contains (Partial Views Used):
+
+    Contained In (Where we Use this View):
+        a-/Views/Basket/OnePageCheckout.cshtml
+    */
+}
+@using Omnicx.WebStore.Models.Enums
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
+<div class="content">
+    <div class="row">
+        <div class="col-sm-12 col-xs-12">
+            <div class="form-group margin-bottom-sm">
+                <label class="padding-lt-xs">Select Shipping Country</label>
+                <select id="ck.model.checkout.shippingAddress.countryCode" name="title" tabindex="1" class="form-checkout form-control" data-label="Title" ng-model="ck.model.checkout.shippingAddress.countryCode" ng-change=" ck.errors = false;ck.ValidateDeliveryMethod();">
+                    <option ng-repeat="countries in ck.model.shippingCountries" ng-selected="countries.twoLetterIsoCode==ck.model.checkout.shippingAddress.countryCode" value="{{countries.twoLetterIsoCode}}" ng-bind="countries.name"></option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-xs-12">
+            <h5 class="margin-top-sm margin-bottom-sm checkout-h3"> Delivery Method </h5>
+        </div>
+    </div>
+    <div class="row equal-height-thumbnailAcco">
+        <div class="col-sm-6 col-xs-12 equalboxUserMid" ng-repeat="method in ck.basket.shippingMethods" ng-show="method.countryCode==ck.model.checkout.shippingAddress.countryCode">
+            <div class="col-sm-12 col-xs-12 checkout-method">
+                <div class="control-group">
+                    <label class="control control--radio">
+                        <span class="label-span" ng-bind="method.displayName"><strong class="pull-right" ng-bind="method.price.formatted.withTax"></strong></span>
+                        <span class="label-span-desc" ng-bind="method.description"></span>
+                        <input id="delivery" name="delivery" type="radio" value="{{method.id}}" class="ng-pristine ng-valid" ng-checked="method.id==ck.model.checkout.selectedShipping.id;" ng-init="ck.getShippingMethod(method,ck.model.checkout.selectedShipping.id)" ng-click="ck.selectedDelivery=method;">
+                        <div class="control__indicator"></div>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        @{/*Click and collect store UI*/}       
+        <div class="or-spacer"><div class="mask"></div></div>
+        
+        @{/*Nominated Days*/}
+
+        <div class="nominate-block-delivery" ng-show="ck.showDates == true">
+            <div class="pull-left margin-top-lg margin-right-xs hidden-xs">
+                <button ng-show="ck.prevDate" ng-click="ck.getNominatedDelivery(0)" class="prev-next-week"><i class="glyphicon icon-caret-left icon-3x"></i>Prev. Week </button>
+            </div>
+            <ul class="nominate-block">
+                <!-- ngRepeat: method in ck.nominatedDates -->
+                <li ng-repeat="day in ck.nominatedDates" class="default-light-bg">
+                    <div class="">
+                        <div class="mobile-pull-left "><b ng-bind="day.dayText"></b></div>
+                        <div class="default-bottom-border"><span ng-bind="day.deliveryDate | date:'dd-MM-yyyy'"></span></div>
+
+                        <div class="margin-top-xs" ng-show="day.price != null">
+                            <span class="mobile-input">
+                                <label class="control control--radio">
+                                    <input type="radio" name="nominatedDelivery" value="day.dayText" ng-checked="day.dayText==ck.selectedDayText" ng-click="ck.selectNominatedDelivery(day)">
+                                    <div class="control__indicator"></div>
+                                </label>
+                            </span>
+                            <div class="price-on-mobile"><span ng-bind="day.price.formatted.withTax"></span></div>
+                        </div>
+                        <div class="margin-top-xs" ng-show="day.price == null">
+                            Not Available
+                        </div>
+                    </div>
+                </li><!-- end ngRepeat: method in ck.nominatedDates -->
+            </ul>
+            <div class="pull-right margin-top-md hidden-xs"><a href="" ng-click="ck.getNominatedDelivery(1)" class="prev-next-week">Next Week <i class="glyphicon icon-caret-right icon-3x"></i></a></div>
+
+        </div>
+
+        @{/*End N D */}
+        <div class="col-sm-12 col-xs-12">
+            <div ng-cloak class="alert alert-danger" ng-show="ck.errors">
+                @LT("Checkout.Text.SelectDelivery", "Select a Delivery Method")
+            </div>
+        </div>
+    </div>
+    <div class="text-center" ng-show="ck.basket.shippingMethods.length==0">
+        <div class="nodata-customer">
+            <i class="fa fa-truck"></i>
+            <h1>@LT("Checkout.Text.SelectDelivery", "Delivery not available. Please select a different country")</h1>
+        </div>
+    </div>
+    <button type="submit" class="animate btn-orange btn-lg pull-right m-button-full" ng-click="ck.setShipping(ck.selectedDelivery)"><span>@LT("Checkout.Text.SelectDelivery", "CONTINUE")</span></button>
+</div>

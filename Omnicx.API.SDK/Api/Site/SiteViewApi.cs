@@ -21,7 +21,7 @@ namespace Omnicx.API.SDK.Api.Site
         public ResponseModel<SiteViewModel> GetSiteViewComponents(string slug)
         {
             var sessionContext = DependencyResolver.Current.GetService<ISessionContext>();
-            var key = string.Format(CacheKeys.SITEVIEW_MODEL_BY_SLUG, Utils.GetSlugFromUrl(), sessionContext.CurrentSiteConfig?.RegionalSettings?.DefaultLanguageCulture);
+            var key = string.Format(CacheKeys.SITEVIEW_MODEL_BY_SLUG, Utils.GetSlugFromUrl(), sessionContext.CurrentSiteConfig?.RegionalSettings?.DefaultLanguageCulture, Utils.GetBrowserInfo()?.IsMobileDevice, sessionContext.CurrencyCode);
 
             return FetchFromCacheOrApi<SiteViewModel>(key, ApiUrls.SiteViewComponents, slug, Method.POST, "slug", ParameterType.QueryString, "text/plain");
         }
@@ -37,7 +37,7 @@ namespace Omnicx.API.SDK.Api.Site
         public async Task<ResponseModel<SiteViewModel>> GetSiteViewComponentsAsync(string slug)
         {
             var sessionContext = DependencyResolver.Current.GetService<ISessionContext>();
-            var key = string.Format(CacheKeys.SITEVIEW_MODEL_BY_SLUG, Utils.GetSlugFromUrl(), sessionContext.CurrentSiteConfig?.RegionalSettings?.DefaultLanguageCulture, Utils.GetBrowserInfo().IsMobileDevice);
+            var key = string.Format(CacheKeys.SITEVIEW_MODEL_BY_SLUG, Utils.GetSlugFromUrl(), sessionContext.CurrentSiteConfig?.RegionalSettings?.DefaultLanguageCulture, Utils.GetBrowserInfo()?.IsMobileDevice, sessionContext.CurrencyCode);
 
             var task= await  FetchFromCacheOrApiAsync<SiteViewModel>(key, ApiUrls.SiteViewComponents, slug, Method.POST, "slug", ParameterType.QueryString, "text/plain");
             return task;            

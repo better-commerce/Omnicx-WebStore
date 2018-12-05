@@ -16,7 +16,7 @@ namespace Omnicx.WebStore.Core.Controllers
     {
         private readonly ICategoryApi _categoryApi;
         private readonly IProductApi _productApi;
-        //private string Layout = "~/Views/Category/Layout2/"; // Add Temp variable for call Layout2 Templates
+        //private string Layout = "~/Views/Category/"; // Add Temp variable for call Layout2 Templates
 
         public CategoryController(ICategoryApi categoryApi , IProductApi productApi)
         {

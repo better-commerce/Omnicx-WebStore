@@ -3,6 +3,8 @@ using Omnicx.WebStore.Models.Commerce;
 using Omnicx.WebStore.Models.Common;
 using RestSharp;
 using Omnicx.WebStore.Models;
+using Omnicx.WebStore.Models.Enums;
+
 namespace Omnicx.API.SDK.Api.Commerce
 {
     public class CheckoutApi :ApiBase, ICheckoutApi

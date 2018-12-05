@@ -7153,7 +7153,7 @@ namespace Omnicx.API.SDK.PaypalService {
         
         private DiscountInfoType[] cummulativePointsField;
         
-        private TupleType[][] merchantDataField;
+        private TupleType[] merchantDataField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
@@ -7710,7 +7710,7 @@ namespace Omnicx.API.SDK.PaypalService {
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayAttribute(Order=38)]
         [System.Xml.Serialization.XmlArrayItemAttribute("MerchantDataTuple", typeof(TupleType), IsNullable=false)]
-        public TupleType[][] MerchantData {
+        public TupleType[] MerchantData {
             get {
                 return this.merchantDataField;
             }

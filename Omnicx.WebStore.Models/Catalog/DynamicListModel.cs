@@ -8,6 +8,24 @@ using Omnicx.WebStore.Models.Enums;
 namespace Omnicx.WebStore.Models.Catalog
 {
     [Serializable]
+    public class DynamicListMinimalModel
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string MainImage { get; set; }
+        public string DisplayGroupName { get; set; }
+        public string Link { get; set; }
+    }
+
+    [Serializable]
+    public class DynamicListsGroupModel
+    {
+        public List<DynamicListMinimalModel> DynamicLists { get; set; }
+        public List<string> Groups { get; set; }
+
+    }
+    [Serializable]
     public class DynamicListModel : IHaveSeoInfo
     {
         public string Id { get; set; }
@@ -38,6 +56,18 @@ namespace Omnicx.WebStore.Models.Catalog
         public string CustomFieldValue { get; set; }
         public string CustomFieldDisplayOrder { get; set; }
         public List<ListDatasetFilter> FilterCriteria { get; set; }
+
+
+        public string Description { get; set; }
+        public string MainImage { get; set; }
+        public string Image1 { get; set; }
+        public string Image2 { get; set; }
+        public string Image3 { get; set; }
+        public string Image4 { get; set; }
+        public string Link { get; set; }
+
+        public string DisplayGroupName { get; set; }
+
     }
     [Serializable]
     public class ListDatasetFilter

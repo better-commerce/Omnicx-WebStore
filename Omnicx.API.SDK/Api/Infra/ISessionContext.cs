@@ -18,6 +18,6 @@ namespace Omnicx.API.SDK.Api.Infra
         ConfigModel CurrentSiteConfig { get; set; }
         string IpAddress { get; }
         CompanyUserRole CurrentUserRole { get; }
-
+        string CurrencyCode { get; }
     }
 }

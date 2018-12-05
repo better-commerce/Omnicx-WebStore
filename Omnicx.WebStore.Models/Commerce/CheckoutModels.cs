@@ -82,7 +82,7 @@ namespace Omnicx.WebStore.Models.Common
 
         public List<PaymentBasicModel> PaymentOptions { get; set; }
         public PaymentModel Payment { get; set; }
-        public PhysicalStoreModel StoreAddress { get; set; }
+        public ShippingPLan StoreAddress { get; set; }
         public Amount BalanceAmount { get; set; }
 
         public Amount PaidAmount { get; set; }
@@ -96,6 +96,7 @@ namespace Omnicx.WebStore.Models.Common
         public string CurrencyCode { get; set; }
 
         public string LanuguageCode { get; set; }
+        public string CardType { get; set; }
     }
 
     public class CheckoutViewModel

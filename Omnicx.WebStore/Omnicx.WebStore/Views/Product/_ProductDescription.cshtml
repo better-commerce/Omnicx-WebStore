@@ -1,0 +1,39 @@
+﻿@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Catalog.ProductDetailModel>
+<div class="row">
+    <div class="col-sm-2 col-xs-12">
+        <h4 class="detailHeading" ng-show="pm.model.shortDescription!='' && pm.model.shortDescription!=null">@LT("ProductDetail.Links.PRODUCTDESCRIPTION", "Description")</h4>
+    </div>
+    <div class="col-sm-10 col-xs-12">
+        <p class="faq-ans"><span ng-bind="pm.model.shortDescription"></span></p>
+    </div>
+</div>
+<div class="panel panel-default margin-top-sm">
+    <div class="panel-heading panelHeading bg-white">@LT("ProductDetail.Links.Specifications", "Specifications")</div>
+    <div class="panel-body no-border">
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+                <p class="faq-ans" ng-show="pm.model.brand!='' && pm.model.brand!=null">
+                    <strong>@LT("ProductListing.FacetHeading.Brand", "Brand") </strong>
+                    <span ng-bind="pm.model.brand"></span>
+                </p>
+                <p class="faq-ans" ng-show="pm.model.subBrand!='' && pm.model.subBrand!=null">
+                    <strong>@LT("Product.Label.Subbrand", "Sub-brand") </strong>
+                    <span ng-bind="pm.model.subBrand"></span>
+                </p>
+                <p class="faq-ans" ng-show="pm.model.uomValue!='' && pm.model.uomValue!=null && pm.model.uomValue>0">
+                    <strong> @LT("Product.Label.Volume", "Volume") </strong>
+                    <span ng-bind="pm.model.uomValue"></span> <span ng-bind="pm.model.uom"></span>
+                </p>
+                <p class="faq-ans" ng-show="pm.model.stockCode!='' && pm.model.stockCode!=null">
+                    <strong> @LT("ProductDetail.Label.StockCode", "Stock Code") </strong>
+                    <span ng-bind="pm.model.stockCode"></span>
+                </p>
+                <p class="faq-ans" ng-show="pm.model.currentStock!='' && pm.model.currentStock!=null">
+                    <strong> @LT("Product.Label.CurrentStock", "Current Stock") </strong>
+                    <span ng-bind="pm.model.currentStock"></span>
+                </p>
+                @*@Html.Partial("~/Views/Product/_ProductAttributes.cshtml", Model)*@
+            </div>
+        </div>
+    </div>
+</div>

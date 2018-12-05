@@ -46,6 +46,9 @@ namespace Omnicx.WebStore.Models.Catalog
         public ClassficationForIndex Classification { get; set; }
         public string GroupName { get; set; }
 
+        public List<VariantProductsModel> VariantProducts { get; set; }
+        public List<VariantProductAttributes> VariantProductsAttribute { get; set; }
+        public string ItemType { get; set; }
         #endregion
 
     }

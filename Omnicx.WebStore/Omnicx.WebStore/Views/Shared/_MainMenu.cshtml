@@ -1,0 +1,129 @@
+﻿@{
+/*
+    Name: Mega Menu
+    Purpose: Show Mega Menu For Desktop and big screens
+    Structure: /Views/Shared/_MainMenu.cshtml
+    Contains (Partial Views Used):
+
+    Contained In (Where we Use this View):
+        a-/Views/Shared/_HeaderLayout.cshtml
+    */
+}
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Site.NavigationModel>
+@using Omnicx.WebStore.Models.Enums
+@using Omnicx.WebStore.Core.Helpers;
+<section class="siteNav" id="akc-container-fluid">
+    <div class="container">
+        <div class="row">
+            <nav class="menu">
+                <button class="mobileMenuBtn hamburger hamburger--squeeze visible-xs" type="button" aria-label="Mobile Menu" aria-controls="navigation">
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
+                    <span class="mobileMenuBtn__text">Close</span>
+                </button>
+                @{ if (Model != null)
+                    {
+                <center>
+                    <ul>
+                        @foreach (var items in @Model.Header.OrderBy(o => o.DisplayOrder))
+                                {
+                                    if (items.NavBlocks.Count <= 0)
+                                    {
+
+                                <li>
+                                    <a class="menu__item" data-show-menu-option="@items.Caption" href="/@items.Hyperlink">
+                                        @items.Caption
+                                        @if (items.NavBlocks != null && items.NavBlocks.Count > 0)
+                                                {
+                                                <span class="hidden-xs menu__item__arrow menu__item__arrow--grey"></span>
+                                                <span class="visible-xs icon icon-arrow-right"></span>
+                                                }
+                                    </a>
+                                </li>
+
+                                    }
+                                    else
+                                    {
+
+                                <li>
+                                    <a class="menu__item" data-show-menu-option="@items.Caption" value="@items.Caption" href="/@items.Hyperlink">
+                                        @items.Caption
+                                        @if (items.NavBlocks != null && items.NavBlocks.Count > 0)
+                                                {
+                                                <span class="hidden-xs menu__item__arrow menu__item__arrow--grey"></span>
+                                                <span class="visible-xs icon icon-arrow-right"></span>
+                                                }
+                                    </a>
+                                </li>
+
+                                    }
+                                }
+                    </ul>
+                </center>
+                    }
+                }
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="megaNav">
+    <!-- START: Mega nav: WOMENS -->
+    @{ if (Model != null)
+        {
+            foreach (var items in @Model.Header.OrderBy(o => o.DisplayOrder))
+            {
+                if (items.NavBlocks != null && items.NavBlocks.Count > 0)
+                {
+    <div class="menuOption desktopHoverItem" data-menu-option="@items.Caption">
+        <div class="container padding-desktop-tb-2em">
+            <div class="row">
+                @if (items.HeaderContent != "0" && items.HeaderContent != null)
+                                {
+                                <div class="col-sm-12 megamenu-Header">
+                                    <span class="megamenu-img">@Html.Raw(items.HeaderContent)</span>
+                                </div>
+                                }
+                @foreach (var child1 in @items.NavBlocks.OrderBy(o => o.DisplayOrder))
+                                {
+                                <div class="col-sm-3 menuOption__mobContainer gutter-control-left" style="width:@child1.WidthPct%;">
+                                    @if (@child1.NavBlockType == @MenuTypes.SimpleLink.GetHashCode())
+                                        {
+                                        <a class="megaNav__header mobileMenuBack visible-xs" href="@child1.ItemIds.ToFullUrl()"><span class="icon icon-arrow-left"></span> @child1.BoxTitle</a>
+                                        <a class="megaNav__header visible-xs" href="@child1.ItemIds.ToFullUrl()">@child1.BoxTitle<span class="visible-xs icon icon-arrow-right"></span></a>
+                                        <a class="megaNav__header" href="@child1.ItemIds.ToFullUrl()">@child1.BoxTitle<span class="visible-xs icon icon-arrow-right"></span></a>
+                                        }
+                                        else
+                                        {
+                                        <label class="megaNav__header mobileMenuBack visible-xs" href="#"><span class="icon icon-arrow-left"></span> @child1.BoxTitle</label>
+                                        <label class="megaNav__header visible-xs" href="#">@child1.BoxTitle<span class="visible-xs icon icon-arrow-right"></span></label>
+                                        <label class="megaNav__header" href="#">@child1.BoxTitle<span class="visible-xs icon icon-arrow-right"></span></label>
+                                        }
+
+                                    <ul class="megaNav__list menuOption__mobContainer__list">
+                                        @foreach (var child2 in @child1.NavItems)
+                                            {
+                                            <li><a class="megaNav__list__item" href="/@child2.ItemLink">@child2.Caption</a> </li>
+                                            }
+
+                                    </ul>
+                                    <span class="megamenu-img">@Html.Raw(child1.ContentBody)</span>
+                                </div>
+                                }
+                @if (items.FooterCotent != "0" && items.FooterCotent != null)
+                                {
+                                <div class="col-sm-12 megamenu-Footer">
+                                    <span class="megamenu-img">@Html.Raw(items.FooterCotent)</span>
+                                </div>
+                                }
+            </div>
+        </div>
+    </div>
+                }
+            }
+        }
+    }
+
+    <!-- END: Mega nav: WOMENS -->
+</section>

@@ -5,6 +5,8 @@
         Flat = 1,
         ClickAndCollect = 4,
         CollectPlus = 5,
-        Shutl = 6
+        Shutl = 6,
+        WeightBased = 7,
+        OrderValueBased = 8,
     }
 }

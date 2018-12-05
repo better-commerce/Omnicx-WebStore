@@ -11,6 +11,8 @@ namespace Omnicx.WebStore.Models.Keys
         public static string OmnicxSharedSecret = ConfigurationManager.AppSettings.Get("OmniCXSharedSecret");
         public static string OmnicxDomainId = ConfigurationManager.AppSettings.Get("OmniCXDomainId");
         public static string OmnicxOrgId = ConfigurationManager.AppSettings.Get("OmniCXOrgId");
+        public static string OmsApiBaseUrl = ConfigurationManager.AppSettings.Get("OmsApiBaseUrl");
+
 
         public static string PageSize = ConfigurationManager.AppSettings.Get("PageSize");
         public static string SortOrder = ConfigurationManager.AppSettings.Get("SortOrder");
@@ -36,6 +38,12 @@ namespace Omnicx.WebStore.Models.Keys
         public static string CDNVersion = ConfigurationManager.AppSettings.Get("CDNVersion");
         public static string CDNUrl = ConfigurationManager.AppSettings.Get("CDNUrl");
         public static string AppInsightKey = ConfigurationManager.AppSettings.Get("APPINSIGHTS_INSTRUMENTATIONKEY");
+
+        //Recommendation API Keys
+        public static string RecommendationsEndPointUri = ConfigurationManager.AppSettings.Get("RecommendationsEndPointUri");
+        public static string RecommenderKey = ConfigurationManager.AppSettings.Get("RecommenderKey");
+        public static string RecommendationsModelId = ConfigurationManager.AppSettings.Get("RecommendationsModelId");
+        public static string RecommendationCount = ConfigurationManager.AppSettings.Get("RecommendationCount");
     }
 
     public static class Constants
@@ -51,6 +59,7 @@ namespace Omnicx.WebStore.Models.Keys
         public static string COOKIE_DOMAIN_CURRENCY = "curr";
         public static string COOKIE_DOMAIN_LANGCULTURE = "lang";
         public static string COOKIE_DOMAIN_COUNTRYOFORIGIN = "coo";
+        public static string COOKIE_CURRENCY = "cookie_currency";
 
         //device cookie should NEVER expire - hence its set for next 10 years.
         public static int COOKIE_DEVICEID_EXPIRES_DAYS = 10 * 365; //TODO make configurable
@@ -76,7 +85,7 @@ namespace Omnicx.WebStore.Models.Keys
 
         public static string PRICE_FILTER = "price";//Added for price display order in facet
         public static string SEARCH_FILTER_QUERYSTRING = "filter";
-        public static string SEARCH_SURVEY_QUERYSTRING = "servey";
+        public static string SEARCH_SURVEY_QUERYSTRING = "survey";
         public static string ATTRIBUTE_FILTER_PREFIX = "attributes.value~";
 
         public static string SURVEY_BUNDLE_PREFIX = "Interactive Bundle";

@@ -116,5 +116,10 @@ namespace Omnicx.WebStore.Models.Keys
         public static string MY_COMPANY_B2B = B2B_LAYOUT_FOLDER + "MyCompany.cshtml";
         public static string USERS_B2B = B2B_LAYOUT_FOLDER + "Users.cshtml"; 
         public static string QUOTES_B2B = B2B_LAYOUT_FOLDER + "Quotes.cshtml";
+
+        //LOOKBOOK CUSTOM VIEWS
+        public static string LOOKBOOK_LAYOUT_FOLDER = "~/Views/Lookbook/";
+        public static string LOOKBOOK_INDEX = LOOKBOOK_LAYOUT_FOLDER + "Index.cshtml";
+        public static string LOOKBOOK_DETAIL = LOOKBOOK_LAYOUT_FOLDER + "LookbookDetail.cshtml";
     }
 }

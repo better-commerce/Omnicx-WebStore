@@ -12,11 +12,12 @@ namespace Omnicx.API.SDK.Api.Commerce
         ResponseModel<bool> UpdateCompanyDetail(CompanyDetailModel model);
         //ResponseModel<T> GetUserdetailsById<T>(string userId);
         ResponseModel<CompanyDetailModel> GetCompanyDetail(string companyId);
-        ResponseModel<bool> CreateQuote(QuoteInfoModel quote);
+        ResponseModel<bool> SaveQuote(QuoteInfoModel quote);
         ResponseModel<BasketModel> GetQuoteDetail(string quoteId);
         ResponseModel<QuoteInfoModel> ValidateQuotePayment(string link);
         ResponseModel<bool> RequestQuoteChange(string userId,string quoteNo);
         ResponseModel<BasketModel> GetQuoteBasket(string id,string action);
         bool RemoveQuoteBasket();
+        ResponseModel<List<CompanyNameModel>> GetCompanies();
     }
 }

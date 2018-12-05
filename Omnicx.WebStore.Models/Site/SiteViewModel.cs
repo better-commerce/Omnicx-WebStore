@@ -43,6 +43,10 @@ namespace Omnicx.WebStore.Models.Site
         public ImageModel Image { get; set; }
         public string DataType { get; set; }
         public string DataNumItemsRow { get; set; }
+        public bool Autoplay { get; set; }
+        public string SliderTime { get; set; }
         public List<BlogModel> Blogs { get; set; }
+        public string Link { get; set; }
+        public int DisplayOrder { get; set; }
     }
 }

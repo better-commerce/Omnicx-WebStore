@@ -1,0 +1,113 @@
+﻿@{
+/*
+    Name: Order Summery
+    Purpose: Contains Order item Lines, Promotion panel and Order Amount Information
+    Structure: /Views/Checkout/_OrderSummary.cshtml
+    Contains (Partial Views Used):
+
+    Contained In (Where we Use this View):
+        a-/Views/Basket/OnePageCheckout.cshtml
+    */
+}
+@using Omnicx.WebStore.Models.Enums
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
+<div class="summery-box" id="order-summary" ng-contr>
+    <div ng-cloak class="alert alert-danger wishdiv" ng-show="ck.wishlisterror">
+        User <strong>@LT("ProductDetail.Message.LoginRequired", "Login Required")!</strong>
+    </div>
+    <div class="box-header">
+        <h3> @LT("Checkout.Label.PriceDetails", "Price Details")</h3>
+    </div>    
+    <p class="text-muted padding-sm label-span-desc">@LT("Checkout.Text.ShippingInfo", "Shipping and additional costs are calculated based on the values you have entered").</p>
+
+    <div class="table-responsive">
+        <table class="table no-margin-top">
+            <tbody>
+                <tr>
+                    <td>@LT("Checkout.Label.Subtotal", "Subtotal")</td>
+                    <th ng-bind="ck.basket.subTotal.formatted.withTax" class="text-right"></th>
+                </tr>
+                <tr>
+                    <td>@LT("Checkout.Label.ShippingCharge", "Shipping and handling")</td>
+                    <th ng-bind="ck.basket.shippingCharge.formatted.withTax" class="text-right"></th>
+                </tr>
+                @*<tr>
+                        <td>@LT("Checkout.Label.Tax", "Tax")</td>
+                        <th ng-bind="ck.basket.subTotal.formatted.tax" class="text-right"></th>
+                    </tr>*@
+                <tr>
+                    <td>@LT("Checkout.Label.Discount", "Discount")</td>
+                    <th ng-bind="ck.basket.discount.formatted.withTax" class="text-right"></th>
+                </tr>
+                <tr ng-show="ck.basket.promotionsApplied.length>0" id="promoApplied4">
+                    <td>Promotions Applied:</td>
+                    <th class="text-right">
+                        <ul class="promo-ul">
+                            <li class="no-padding" ng-repeat="promotion in ck.basket.promotionsApplied">
+                                <a href="" class="" title="Remove" ng-click="ck.removePromoCode(ck.basket.id,promotion.promoCode)"><span ng-bind="promotion.name"></span> <i class="fa fa-remove"></i></a>
+                            </li>
+                        </ul>
+                    </th>
+                </tr>
+                <tr class="total">
+                    <td>@LT("Checkout.Label.OrderTotal", "Amount Payable")</td>
+                    <th ng-bind="ck.basket.grandTotal.formatted.withTax" class="text-right"></th>
+                </tr>
+                <tr>
+                    <td colspan="2" class="sml-text" ng-cloak ng-bind="'@LT("YourBag.Text.IncludingVATof", "including VAT of")'+ck.basket.grandTotal.formatted.tax"></td                    
+                </tr>
+                <tr class="total" ng-show="ck.showRemainingAmount">
+                    <td>@LT("Checkout.Label.RemainingAmount", "Remaining Amount")</td>
+                    <th ng-bind="ck.model.checkout.balanceAmount.formatted.withTax" class="text-right"> </th>
+                    @*ng-hide="ck.basket.grandTotal.formatted.withTax==ck.model.checkout.balanceAmount.formatted.withTax"*@
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="summery-box">
+    <div class="box-header">
+        <h4><i class="fa fa-ticket"></i> @LT("Checkout.Label.PromotionCode", "Coupon code")</h4>
+    </div>
+    <p class="text-muted padding-sm label-span-desc">@LT("Checkout.Text.HaveCoupon", "If you have a coupon code, please enter it in the box below").</p>
+    <form ng-submit="ck.applyPromoCode(ck.basket.id,promoCode)">
+        <div class="input-group padding-sm">
+            <input type="text" class="form-control" ng-model="promoCode" placeholder="Enter Coupon Code" />
+            <span class="input-group-btn">
+                <button class="btn btn-orange" type="submit"><i class="fa fa-gift"></i></button>
+            </span>
+        </div>
+        <!-- /input-group -->
+    </form>
+    <div ng-cloak class="alert alert-danger promo" ng-show="ck.invalidpromo">
+        <span>@LT("Checkout.Text.InValidPromoMessage", "PromoCode Invalid!")</span>
+    </div>
+    <div ng-cloak class="alert alert-success promovalid" ng-show="ck.validpromo">
+        <span>@LT("Checkout.Text.ValidPromoMessage", "Successfully Applied")</span>
+    </div>
+    <div ng-cloak class="alert alert-danger promonull" ng-show="ck.promonull">
+        <span>@LT("Checkout.Text.NullPromoMessage", "Please enter promo code!")</span>
+    </div>
+</div>
+<div class="summery-box">
+    <div class="box-header">
+        <h4><i class="fa fa-gift"></i> @LT("Checkout.Label.GiftForMe", "Who are you purchasing for today?")</h4>
+    </div>
+    <div class="form-group padding-sm no-margin">
+        <label class="control control--checkbox">
+            <input type="checkbox" ng-change="ck.purchaseFor(purchase)" class="ng-pristine ng-valid" ng-model="purchase.me">
+            <label for="NewsLetterSubscribe">@LT("Checkout.Label.PurchasingForMe", "This order is just for me.")</label>
+            <div class="control__indicator"></div>
+        </label>
+    </div>
+    <div class="form-group padding-sm no-margin">
+        <label class="control control--checkbox ">
+            <input type="checkbox" ng-change="ck.purchaseFor(purchase)" class="ng-pristine ng-valid" ng-model="purchase.gift">
+            <label for="NewsLetterSubscribe">@LT("Checkout.Label.PurchasingForGift", "This order contains a gift.")</label>
+            <div class="control__indicator"></div>
+        </label>
+    </div>
+
+</div>
+<!-- /.col-md-3 -->

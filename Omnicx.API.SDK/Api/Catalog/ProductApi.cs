@@ -25,7 +25,7 @@ namespace Omnicx.API.SDK.Api.Catalog
         public ResponseModel<ProductDetailModel> GetProductDetail(string id)
         {           
             var sessionContext = DependencyResolver.Current.GetService<ISessionContext>();
-            var key = string.Format(CacheKeys.PRODUCT_MODEL_BY_ID, id, sessionContext.CurrentSiteConfig?.RegionalSettings?.DefaultLanguageCulture, sessionContext.CurrentUser?.CompanyId,Utils.GetBrowserInfo().IsMobileDevice);
+            var key = string.Format(CacheKeys.PRODUCT_MODEL_BY_ID, id, sessionContext.CurrentSiteConfig?.RegionalSettings?.DefaultLanguageCulture, sessionContext.CurrentUser?.CompanyId,Utils.GetBrowserInfo().IsMobileDevice, sessionContext.CurrencyCode);
 
             return FetchFromCacheOrApi<ProductDetailModel>(key, string.Format(ApiUrls.ProductDetail, id),"");           
         }
@@ -33,7 +33,7 @@ namespace Omnicx.API.SDK.Api.Catalog
         public ResponseModel<ProductDetailModel> GetProductDetailBySlug(string slug)
         {                   
             var sessionContext= DependencyResolver.Current.GetService<ISessionContext>();
-            var key = string.Format(CacheKeys.PRODUCT_MODEL_BY_SLUG, slug, sessionContext.CurrentSiteConfig?.RegionalSettings?.DefaultLanguageCulture, sessionContext.CurrentUser?.CompanyId, Utils.GetBrowserInfo().IsMobileDevice);
+            var key = string.Format(CacheKeys.PRODUCT_MODEL_BY_SLUG, slug, sessionContext.CurrentSiteConfig?.RegionalSettings?.DefaultLanguageCulture, sessionContext.CurrentUser?.CompanyId, Utils.GetBrowserInfo().IsMobileDevice, sessionContext.CurrencyCode);
 
             return FetchFromCacheOrApi<ProductDetailModel>(key, ApiUrls.ProductDetailBySlug, slug,Method.POST, "slug", ParameterType.QueryString, "text/plain");
         }

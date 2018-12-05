@@ -63,10 +63,10 @@ namespace Omnicx.API.SDK.Api
         //    }
 
         //}
-        protected ResponseModel<T> CallApi<T>(string apiUrl, string value, Method method = Method.GET, string paramName = "application/json", ParameterType parameterType = ParameterType.RequestBody, string contentType = "application/json")
+        protected ResponseModel<T> CallApi<T>(string apiUrl, string value, Method method = Method.GET, string paramName = "application/json", ParameterType parameterType = ParameterType.RequestBody, string contentType = "application/json",string apiBaseUrl=null)
         {
 
-            var restClient = new RestClient(ConfigKeys.OmnicxApiBaseUrl);
+            var restClient = new RestClient(apiBaseUrl ?? ConfigKeys.OmnicxApiBaseUrl);
             var restRequest = new RestRequest(apiUrl, method);
 
             if (!string.IsNullOrEmpty(value))
@@ -277,10 +277,20 @@ namespace Omnicx.API.SDK.Api
 
                 return;
             }
-            
+
             //var defaultSetting = (DefaultSettingModel)httpContext.Session[Constants.SESSION_DEFAULT_SETTINGS];
             //if (defaultSetting == null || string.IsNullOrEmpty(defaultSetting.Currency)) return;
-            request.AddHeader("Currency", configModel.RegionalSettings.DefaultCurrencyCode);
+            var currencyCode = "";
+            if (httpContext.Request.Cookies[Constants.COOKIE_CURRENCY] != null)
+            {
+                currencyCode = httpContext.Request.Cookies[Constants.COOKIE_CURRENCY].Value;
+            }
+            else
+            {
+                currencyCode = configModel.RegionalSettings.DefaultCurrencyCode;
+            }
+
+            request.AddHeader("Currency", currencyCode);
             request.AddHeader("Language", configModel.RegionalSettings.DefaultLanguageCulture);
             request.AddHeader("Country", configModel.RegionalSettings.DefaultCountry);
         }

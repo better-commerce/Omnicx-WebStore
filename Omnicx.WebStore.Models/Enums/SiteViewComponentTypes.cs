@@ -14,10 +14,14 @@
         PageHeader = 12,
         Paragraph = 13,
         VideoGallery = 17,
+        Tabs = 42,
         BrandList = 51,
         ProductList = 52,
         CategoryList = 53,
-        BlogList = 54
+        BlogList = 54,
+        Heading = 71,
+        ImageText = 72,
+        VideoText = 73
 
     }
 }

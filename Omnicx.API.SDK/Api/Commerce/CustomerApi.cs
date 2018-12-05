@@ -78,9 +78,9 @@ namespace Omnicx.API.SDK.Api.Commerce
             return CallApi<List<ProductModel>>(string.Format(ApiUrls.GetWishlist, customerId, flag), "");
         }
 
-        public ResponseModel<bool> NewsletterSubscription(CustomerModel customer)
+        public ResponseModel<bool> NewsletterSubscription(NewsletterModel newsletter)
         {
-            return CallApi<bool>(string.Format(ApiUrls.NewsletterSubscription), JsonConvert.SerializeObject(customer), Method.POST);
+            return CallApi<bool>(string.Format(ApiUrls.NewsletterSubscription), JsonConvert.SerializeObject(newsletter), Method.POST);
         }
 
         public ResponseModel<bool> UnSubscribeNewsletter(string customerId)

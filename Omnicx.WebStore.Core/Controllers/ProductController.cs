@@ -40,7 +40,8 @@ namespace Omnicx.WebStore.Core.Controllers
         {
             var slug = SiteUtils.GetSlugFromUrl();
             var product = _productApi.GetProductDetailBySlug(Sanitizer.GetSafeHtmlFragment(slug));
-            if (product == null || (product.Result == null && product.StatusCode == HttpStatusCode.NotFound))
+            if (product == null || (product.Result == null && product.StatusCode == HttpStatusCode.NotFound) 
+                || (product.Result != null && product.Result.Classification != null && product.Result.Classification.ItemType == ItemTypes.Addon.GetHashCode().ToString()))
             {
                 return RedirectToPageNotFound();
             }

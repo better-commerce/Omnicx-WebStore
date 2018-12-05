@@ -10,9 +10,9 @@
         public const string RegisterUser = "commerce/customer/create";
         
         public const string UpdateCustomerDetail = "commerce/customer/{0}/update";
-        public const string GetAddressById = "commerce/customer/{0}/addresses/{1}";
-        public const string DeleteAddress = "commerce/customer/{0}/addresses/{1}/delete";
-        public const string changeDefaultAddress = "commerce/customer/{0}/addresses/{1}/setdefault";
+        public const string GetAddressById = "commerce/address/{0}/{1}";
+        public const string DeleteAddress = "commerce/address/{0}/{1}/delete";
+        public const string changeDefaultAddress = "commerce/address/{0}/{1}/setdefault";
         public const string NewsletterSubscription = "commerce/customer/newsletter/subscribe";
         public const string UnSubscribeNewsletter = "commerce/customer/newsletter/unsubscribe/{0}";
 
@@ -45,6 +45,7 @@
 
         //basket 
         public const string GetBasket = "commerce/basket/{0}";
+        public const string UpdateBasketCampaign = "commerce/basket/{0}/campaign/{1}/update"; //0:basketId,1:campaignCode
         public const string AddToBasket = "commerce/basket/{0}/add";
         public const string ApplyPromoCode = "commerce/basket/{0}/promo/{1}/apply";
         //public const string ApplyPromoCodeBulk = "commerce/basket/{0}/promo/{1}/apply";
@@ -54,7 +55,7 @@
 
         public const string ShippingMethods = "commerce/shipping/country/{0}/{1}/{2}"; //0:basketId, 1:2LetterCountryIso
         public const string ShippingNominatedDays = "commerce/shipping/nominateddeiveries/{0}";//0:Date
-        public const string ShippingClickAndCollect = "commerce/shipping/clickandcollect/{0}/{1}";//0:basketId,1:PostCode
+        public const string ShippingPlans = "oms/shippingmethod/shippingplans";//0:basketId,1:PostCode
 
         public const string BulkAddProduct = "commerce/basket/{0}/bulkAdd";
         public const string PersistentBasket = "commerce/basket/{0}/merge/{1}";
@@ -62,7 +63,8 @@
         public const string BasketRelatedProducts = "commerce/basket/{0}/relatedproducts";
         public const string GetUserBaskets = "commerce/basket/{0}/baskets";
         public const string UpdateBasketLineCustomInfo = "commerce/basket/{0}/updateinfo";
-
+        public const string UpdatePoReference = "commerce/basket/{0}/poReference/{1}/update";
+        
 
 
         //brand
@@ -78,10 +80,10 @@
 
 
         //Address
-        public const string SaveAddress = "commerce/customer/{0}/addresses/create";
-        public const string GetAddress = "commerce/customer/{0}/addresses";
-        public const string UpdateCustomerAddress = "commerce/customer/{0}/addresses/{1}/update";
-        public const string NoDefaultAddress = "commerce/customer/{0}/addresses/noDefaultAddress";
+        public const string SaveAddress = "commerce/address/create";
+        public const string GetAddress = "commerce/address/{0}";
+        public const string UpdateCustomerAddress = "commerce/address/{0}/update";
+        public const string NoDefaultAddress = "commerce/address/{0}/noDefaultAddress";
 
         //Survey
         public const string Survey = "content/survey/{0}";
@@ -125,6 +127,8 @@
         //Collection
         public const string CollectionBySlug = "catalog/collection/slug";
         public const string CollectionList = "catalog/collection";
+        public const string GetAllLookbook = "catalog/collection/GetDynamicListsBySlug";
+        public const string GetLookbookByGroup = "catalog/collection/GetDynamicListsByGroupName";
 
         //Chekout
         /// <summary>
@@ -169,9 +173,13 @@
         public const string GetUsers = "commerce/b2b/{0}/users"; //{0}: CompanyId
         public const string GetQuotes = "commerce/b2b/{0}/quotes"; //{0}: UserId
         public const string CompanyDetail = "commerce/b2b/{0}/company"; //{0}: UserId
-        public const string CreateQuote = "commerce/b2b/quote/create";
+        public const string SaveQuote = "commerce/b2b/quote/save";
 
         public const string ValidateQuotePayment = "commerce/basket/{0}/validatepayment"; //{0}: Payment link ? 
         public const string RequestQuoteChange = "commerce/b2b/quote/{0}/{1}/requestchange"; //{0}:userid , {1}:quoteNumber
+        public const string GetCompanies = "commerce/b2b/Companies";
+
+        //Store
+        public const string StoreStockAvailability = "oms/stock/storestockavailability";
     }
 }

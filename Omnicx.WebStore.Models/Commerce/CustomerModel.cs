@@ -144,5 +144,6 @@ namespace Omnicx.WebStore.Models.Commerce
         }
 
         public string State { get; set; }
+
     }
 }

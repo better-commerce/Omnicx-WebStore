@@ -1,0 +1,53 @@
+﻿@{
+/*
+    Name: Address Book
+    Purpose: Show Logged in User all Address
+    Structure: /Views/Checkout/_AddressView.cshtml
+    Contains (Partial Views Used):
+
+    Contained In (Where we Use this View):
+        a-/Views/Basket/OnePageCheckout.cshtml
+    */
+}
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
+@using Omnicx.WebStore.Models.Enums
+@using Omnicx.WebStore.Framework.Helpers
+@using Omnicx.WebStore.Models.Helpers
+@{
+    var customerAddressForm = Html.Angular().ModelFor("am.model");
+    var userRole = SessionContext.CurrentUserRole;
+
+}
+<div class="modal fade in" id="userAddress-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">@LT("Checkout.Button.Close", "Close")</span></button>
+                <h4 class="modal-title" ng-show="ck.addressText=='delivery'">@LT("Checkout.Label.SelectDeliveryAddress", "Select your delivery address")</h4>
+                <h4 class="modal-title" ng-show="ck.addressText=='billing'">@LT("Checkout.Label.SelectBillingAddress", "Select your billing address")</h4>
+            </div>
+            <div class="modal-body no-padding-top no-padding-bottom">
+                <div class="row max-65">
+                    <div class="col-sm-12 col-xs-12 addressBar no-padding" ng-repeat="add in ck.userAddresses track by $index" ng-if="ck.addressText!='delivery' || add.countryCode==ck.model.checkout.shippingAddress.countryCode">
+                        <input id="address{{$index}}" name="address" type="radio" class="expand-toggle">
+                        <label for="address{{$index}}" class="addressBook" ng-click="ck.address=add;ck.addId=add.id" ng-class="{'active' : ck.address.id == add.id}">
+                            <p><span class="pull-left margin-right-md"><strong ng-bind="add.firstName"></strong>&nbsp;<strong ng-bind="add.lastName"></strong></span>&nbsp;&nbsp;<i class="fa fa-phone"></i>&nbsp;<strong ng-bind="add.phoneNo"></strong></p>
+                            <p><span ng-bind="add.companyName"></span> &nbsp;<span ng-bind="add.address1"></span>,<span ng-bind="add.city"></span>,&nbsp;<span ng-bind="add.postCode"></span>,&nbsp;<span ng-bind="add.country"></span></p>
+                        </label>
+                    </div>
+                </div>                
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-xs-12 col-lg-12 text-right">
+                        @if (userRole == (CompanyUserRole.None) || userRole == (CompanyUserRole.Admin))
+                        {
+                            <a data-dismiss="modal" class="animate btn-default" ng-click="ck.changeAddress(ck.addressText,'new')"><i class="fa fa-caret-left"></i> Add New Address</a>
+                        }
+                        <a class="animate btn-primary" data-dismiss="modal" ng-click="ck.changeAddress(ck.addressText,ck.address)">@LT("Checkout.Button.Continue", "Continue") <i class="fa fa-caret-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

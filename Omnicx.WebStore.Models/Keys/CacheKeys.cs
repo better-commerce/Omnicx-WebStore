@@ -14,15 +14,15 @@
         /// the logged in User is a B2B user and has specific pricing applied. 
         /// This is ONLY done at the Model level because the customer specific pricing is applied
         /// dynamically at the run time as of now. 
-        /// {0}:ProductId, {1}:LangCulture, {2}: CompanyId
+        /// {0}:ProductId, {1}:LangCulture, {2}: CompanyId,{3}: Device, {4}: CurrencyCode
         /// </summary>
-        public static string PRODUCT_MODEL_BY_ID = CacheKeyPrefix + ".PRODUCT.{0}.{1}.{2}.{3}.ById";
+        public static string PRODUCT_MODEL_BY_ID = CacheKeyPrefix + ".PRODUCT.{0}.{1}.{2}.{3}.{4}.ById";
 
         /// <summary>
         /// 
-        /// {0}:Slug, {1}:LangCulture, {2}: CompanyId
+        /// {0}:Slug, {1}:LangCulture, {2}: CompanyId. {3}: Device, {4}: CurrencyCode
         /// </summary>
-        public static string PRODUCT_MODEL_BY_SLUG = CacheKeyPrefix + ".PRODUCT.{0}.{1}.{2}.{3}.BySlug";
+        public static string PRODUCT_MODEL_BY_SLUG = CacheKeyPrefix + ".PRODUCT.{0}.{1}.{2}.{3}.{4}.BySlug";
 
         /// <summary>
         /// Complete Site Nav Tree Model (through all sub-levels)- including the Header & footer
@@ -32,9 +32,11 @@
 
         /// <summary>
         /// Represents a DynamicList (List Definition + Data) by SLUG
-        /// {0}:SLUG
+        /// {0}:SLUG,{1}:LangCulture, {2}: CompanyId. {3}: Device, {4}: CurrencyCode
         /// </summary>
-        public static string DYNAMIC_LIST_BY_SLUG = CacheKeyPrefix + ".DYNAMICLIST.{0}.{1}.{2}.{3}.BySLUG";
+        public static string DYNAMIC_LIST_BY_SLUG = CacheKeyPrefix + ".DYNAMICLIST.{0}.{1}.{2}.{3}.{4}.BySLUG";
+
+        public static string ALL_DYNAMIC_LISTS_BY_SLUG = CacheKeyPrefix + ".ALLDYNAMICLISTS.{0}.{1}.{2}.{3}.{4}.BySLUG";
 
         /// <summary>
         /// Represents a DynamicList (List Definition + Data) by SLUG
@@ -47,7 +49,7 @@
         /// Represents a SiteView Model returned by the API 
         /// {0}:Slug, {2}: Lang
         /// </summary>
-        public static string SITEVIEW_MODEL_BY_SLUG = CacheKeyPrefix + ".SITEVIEW.MODEL.BySlug.{0}.{1}.{2}";
+        public static string SITEVIEW_MODEL_BY_SLUG = CacheKeyPrefix + ".SITEVIEW.MODEL.BySlug.{0}.{1}.{2}.{3}";
 
         /// <summary>
         /// {0}: Config Key

@@ -6,6 +6,7 @@ using Omnicx.WebStore.Models.Site;
 using System.Web.Mvc;
 using Omnicx.WebStore.Models.Keys;
 using Omnicx.WebStore.Models.Enums;
+using System;
 
 namespace Omnicx.WebStore.Core.Controllers
 {
@@ -28,7 +29,7 @@ namespace Omnicx.WebStore.Core.Controllers
         {
             _configApi = configApi;
             _contentApi = contentApi;
-            SetDataLayerVariables("", WebhookEventTypes.CollectionViewed);
+            SetDataLayerVariables("", WebhookEventTypes.PageViewed);
         }
 
         public ActionResult GetFooter()
@@ -70,12 +71,20 @@ namespace Omnicx.WebStore.Core.Controllers
                 currencies = data?.Currencies,
                 languages = data?.Languages
             };
-            return PartialView(CustomViews.CURRENCY_VIEW, model);
+            return JsonSuccess(model, JsonRequestBehavior.AllowGet);
         }
 
-        public bool UpdateCurrencySetting()
+        public bool UpdateCurrencySetting(string currency)
         {
-            //TODO: implement proper currency updation 
+            if (Request.Cookies[Constants.COOKIE_CURRENCY] != null && Request.Cookies[Constants.COOKIE_CURRENCY].Value == currency)
+            {
+                currency = Request.Cookies[Constants.COOKIE_CURRENCY].Value;
+            }
+            else
+            {
+                Response.Cookies[Constants.COOKIE_CURRENCY].Value = currency;
+                Response.Cookies[Constants.COOKIE_CURRENCY].Expires = DateTime.Today.AddDays(1); // add expiry time
+            }
             return true;
         }
         //public bool UpdateCurrencySetting(DefaultSettingModel defaultSetting)

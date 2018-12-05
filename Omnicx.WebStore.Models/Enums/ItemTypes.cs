@@ -6,6 +6,7 @@
         GiftCard = 4,
         Variant = 6,
         Bundle = 7,
-        DynamicBundle = 8
+        DynamicBundle = 8,
+        Addon = 10
     }
 }

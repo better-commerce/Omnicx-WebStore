@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Omnicx.WebStore.Models.Helpers;
 
 namespace Omnicx.WebStore.Models.Commerce
 {
@@ -16,7 +17,6 @@ namespace Omnicx.WebStore.Models.Commerce
         private string _address1;
         private string _address2;
         private string _address3;
-        private string _companyName;
         private string _postCode;
         private string _city;
         public string Id { get; set; }
@@ -50,7 +50,7 @@ namespace Omnicx.WebStore.Models.Commerce
             set
             {
                 if (!string.IsNullOrEmpty(value))
-                    _lastName = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(value.ToLower());
+                    _lastName = value.ToSentenceCase();
             }
         }
 

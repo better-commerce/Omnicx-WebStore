@@ -1,0 +1,49 @@
+﻿@using Omnicx.WebStore.Models.Catalog
+@using Microsoft.Web.Mvc
+@using Omnicx.WebStore.Models.Enums
+@using Omnicx.WebStore.Models.Keys
+@using Omnicx.WebStore.Core.Controllers
+@using Omnicx.WebStore.Framework.Helpers
+@using Omnicx.WebStore.Models.Commerce
+@using Newtonsoft.Json
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<DynamicListsGroupModel>
+@{
+    ViewBag.Title = "Lookbook";
+    Layout = "~/Views/Shared/_LookbookLayout.cshtml";
+    var data = JsonConvert.SerializeObject(Model);
+}
+<div ng-init="gm.initLookbooks(@data);">
+    <div class="row breadcrumb-bar">
+        <div class="col-sm-12 col-xs-12">
+            <ul class="breadcrumb">
+                <li><a href="/">@LT("ProductListing.Breadcrumb.Home", "Home")</a></li>
+                <li>Lookbook</li>
+            </ul>
+        </div>
+    
+    </div>
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-4 col-xs-12margin-top-sm ">
+            <div class="col-sm-6 col-xs-6 margin-top-sm">
+                <select name="group" class="form-control" ng-model="gm.selectedGroup" ng-options="item for item in gm.model.Groups" ng-change="gm.fetchLookbookByGroup();">
+                    <option value="All">All</option>
+                </select>
+            </div>
+            <div class="col-sm-6 col-xs-6">
+                <a class="animate btn-primary width-full" ng-click="gm.selectedGroup = 'All';gm.fetchLookbookByGroup()">View All</a>
+            </div>
+        </div>
+    </div>
+    <div class="row margin-top-sm hover05">
+        <div class="col-sm-12 col-xs-12">
+                <div class="col-sm-3 col-xs-6 margin-bottom-lg" ng-repeat="lookbook in gm.model.DynamicLists track by $index">
+                    <a href="{{lookbook.Link}}">
+                        <figure>
+                            <img src="{{lookbook.MainImage}}" onerror="this.src = DEFAULT_IMAGE_URL" />
+                            <span ng-bind="lookbook.Name"></span>
+                        </figure>
+                    </a>
+                </div>
+        </div>
+    </div>
+</div>

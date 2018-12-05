@@ -31,12 +31,17 @@ namespace Omnicx.WebStore.Models.Commerce
         public string CustomInfo3 { get; set; }
         public string CustomInfo4 { get; set; }
         public string CustomInfo5 { get; set; }
-
+        public string CustomInfo1Formatted { get; set; }
+        public string CustomInfo2Formatted { get; set; }
+        public string CustomInfo3Formatted { get; set; }
+        public string CustomInfo4Formatted { get; set; }
+        public string CustomInfo5Formatted { get; set; }
         public Amount AdditionalCharge { get; set; }
 
         public int ItemType { get; set; }
         public bool DisplayInBasket { get; set; }
         public Amount CompanyDiscount { get; set; }
         public Amount ListPrice { get; set; }
+        public string ShortDescription { get; set; }
     }
 }

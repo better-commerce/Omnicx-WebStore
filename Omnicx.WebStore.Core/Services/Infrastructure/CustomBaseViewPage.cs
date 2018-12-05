@@ -4,6 +4,10 @@ using System.Globalization;
 using System.Web.Mvc;
 using Omnicx.WebStore.Framework.Helpers;
 using Omnicx.API.SDK.Api.Infra;
+using Omnicx.API.SDK.Api.Site;
+using Omnicx.WebStore.Models.Keys;
+using Omnicx.WebStore.Models.Site;
+using Omnicx.WebStore.Models;
 
 namespace Omnicx.WebStore.Core.Services.Infrastructure
 {
@@ -20,6 +24,38 @@ namespace Omnicx.WebStore.Core.Services.Infrastructure
             }
         }
 
+        public NavigationModel SiteNavigationModel
+        {
+            get
+            {
+                var _contentApi = DependencyResolver.Current.GetService<IContentApi>();
+
+                var nav = System.Web.HttpContext.Current.Items[Constants.HTTP_CONTEXT_ITEM_SITENAV];
+                if (nav == null)
+                {
+                    nav = _contentApi.GetMenuDetails();
+                }
+                return ((ResponseModel<NavigationModel>)nav).Result;
+
+            }
+        }
+        public CurrencySettingModel SiteCurrenciesModel
+        {
+            get
+            {
+                var _configApi = DependencyResolver.Current.GetService<IConfigApi>();
+                var result = _configApi.GetConfig();
+                var data = result?.Result;
+                var model = new CurrencySettingModel
+                {
+                    countries = data?.ShippingCountries,
+                    currencies = data?.Currencies,
+                    languages = data?.Languages
+                };
+                return model;
+
+            }
+        }
         private TextLocalizer _textLocalizer;
         private DateLocalizer _dateLocalizer;
 

@@ -34,6 +34,7 @@ namespace Omnicx.WebStore.Models.Commerce
         public DateTime Created { get; set; }
         public DateTime LastUpdated { get; set; }
         public bool IsQuote { get; set; }
+        public bool IsLocked { get; set; }
         public QuoteStatus QuoteStatus { get; set; }
         public string CustomInfo1 { get; set; }
         public string CustomInfo2 { get; set; }

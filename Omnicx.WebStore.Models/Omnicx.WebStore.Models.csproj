@@ -41,8 +41,8 @@
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -85,7 +85,6 @@
     <Compile Include="Catalog\CollectionModel.cs" />
     <Compile Include="Catalog\DynamicListModel.cs" />
     <Compile Include="Catalog\MicrositeModel.cs" />
-    <Compile Include="Catalog\PhysicalStoreModel.cs" />
     <Compile Include="Catalog\ProductDetailModel.cs" />
     <Compile Include="Catalog\ProductDetailModelPartialMedicine.cs" />
     <Compile Include="Catalog\ProductModel.cs" />
@@ -119,6 +118,7 @@
     <Compile Include="Commerce\ReturnLineModel.cs" />
     <Compile Include="Commerce\ReturnModel.cs" />
     <Compile Include="Commerce\ShippingModel.cs" />
+    <Compile Include="Commerce\ShippingPLan.cs" />
     <Compile Include="Commerce\UserActivityListModel.cs" />
     <Compile Include="Commerce\UserActivityModel.cs" />
     <Compile Include="Commerce\UserActivitySearchModel.cs" />
@@ -161,6 +161,7 @@
     <Compile Include="Enums\LogLevel.cs" />
     <Compile Include="Enums\MenuTypes.cs" />
     <Compile Include="Enums\OrderStatus.cs" />
+    <Compile Include="Enums\PageCategory.cs" />
     <Compile Include="Enums\PurchasingAsGiftOrMe.cs" />
     <Compile Include="Enums\RedirectType.cs" />
     <Compile Include="Enums\ResultEntryType.cs" />
@@ -175,6 +176,7 @@
     <Compile Include="Enums\WebhookEntityTypes.cs" />
     <Compile Include="Enums\WebhookEventTypes.cs" />
     <Compile Include="FeatureToggle\CustomFeatures.cs" />
+    <Compile Include="Helpers\StringExtensions.cs" />
     <Compile Include="Keys\Constant.cs" />
     <Compile Include="Catalog\Facet.cs" />
     <Compile Include="Helpers\JsonExtensions.cs" />
@@ -216,6 +218,7 @@
     <Compile Include="Site\SurveyModels.cs" />
     <Compile Include="Site\WidgetModel.cs" />
     <Compile Include="Site\ZoneModel.cs" />
+    <Compile Include="Store\StoreModel.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

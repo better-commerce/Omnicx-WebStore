@@ -14,6 +14,8 @@ using Omnicx.WebStore.Models.Enums;
 
 using Omnicx.WebStore.Models;
 using Omnicx.WebStore.Core.Helpers;
+using Omnicx.WebStore.Models.Store;
+using System.Collections.Generic;
 
 namespace Omnicx.WebStore.Core.Controllers
 {
@@ -28,10 +30,12 @@ namespace Omnicx.WebStore.Core.Controllers
         private readonly IAuthenticationService _authenticationService;
         private readonly ICustomerApi _customerRepository;
         private readonly IB2BApi _b2bRepository;
+        private readonly IBasketApi _basketApi;
         // private readonly IPaymentMethod _paymentMethod;
 
         public CheckoutController(ICustomerApi customerApi, IConfigApi configApi,
-            IPaymentApi paymentApi , ICheckoutApi checkoutApi , IOrderApi orderApi , IShippingApi shippingApi , IAuthenticationService authenticationService , ICustomerApi customerRepository, IB2BApi b2bRepository)
+            IPaymentApi paymentApi , ICheckoutApi checkoutApi , IOrderApi orderApi , IShippingApi shippingApi , 
+            IAuthenticationService authenticationService , ICustomerApi customerRepository, IB2BApi b2bRepository, IBasketApi basketApi)
         {
             _customerApi = customerApi;
             _configApi = configApi;
@@ -42,13 +46,14 @@ namespace Omnicx.WebStore.Core.Controllers
             _authenticationService = authenticationService;
             _customerRepository = customerRepository;
             _b2bRepository = b2bRepository;
+            _basketApi = basketApi;
         }
         // GET: Checkout
         public virtual ActionResult OnePageCheckout(string basketId)
         {
             var model = GetCheckoutData(basketId);
             if(model==null)
-                RedirectToAction("BasketNotFound", "Common");            
+                return   RedirectToAction("BasketNotFound", "Common");            
             return View(CustomViews.ONE_PAGE_CHECKOUT, model);
         }
 
@@ -123,7 +128,11 @@ namespace Omnicx.WebStore.Core.Controllers
             return model;
         }
         public ActionResult UpdateBasketDeliveryAddress(CheckoutModel checkout)
-        {
+        {           
+            if(checkout.SelectedShipping.Type == ShippingTypes.CollectPlus || checkout.SelectedShipping.Type == ShippingTypes.ClickAndCollect || checkout.SelectedShipping.Type == ShippingTypes.Shutl)
+            {
+                checkout.ShippingAddress = null;
+            }
             var response = _checkoutApi.UpdateBasketDeliveryAddress(Sanitizer.GetSafeHtmlFragment(checkout.BasketId), checkout);
             
             return JsonSuccess(new { response = response, BasketStage = BasketStage.ShippingAddressProvided.GetHashCode() }, JsonRequestBehavior.AllowGet);
@@ -180,7 +189,8 @@ namespace Omnicx.WebStore.Core.Controllers
                 PaymentId = order.Payment.Id,
                 UserEmail = checkout.Email,
                 OrderTotal = order.Payment.OrderAmount,
-                Order= order 
+                Order= order,
+                CreditCardType = checkout.CardType
             };
             if (!string.IsNullOrEmpty(checkout.SelectedPayment.CardInfo?.CardNo) && !string.IsNullOrEmpty(checkout.SelectedPayment.CardInfo.SecurityCode) && checkout.SelectedPayment.CardInfo.Amount>0)
             {
@@ -278,7 +288,16 @@ namespace Omnicx.WebStore.Core.Controllers
 
         public ActionResult GetClickAndCollectOptions(string basketId, string postCode)
         {
-            var stores = _shippingApi.GetClickAndCollectOptions(basketId, postCode);
+            var basket = _basketApi.GetBasketData(basketId);
+            var request = new ShippingPlanRequest {PostCode= postCode,DeliveryItems=new List<DeliveryItemLine>() };
+            int lineId = 1;
+            foreach(var item in basket.Result.LineItems)
+            {
+                var line = new DeliveryItemLine { LineId = lineId, StockCode = item.StockCode, Qty = item.Qty };
+                request.DeliveryItems.Add(line);
+                lineId++;
+            }
+            var stores = _shippingApi.GetShippingPlans(request);
             return JsonSuccess(stores.Result, JsonRequestBehavior.AllowGet);
         }
         public ActionResult GetNominatedDelivery(string startDate, ShippingModel shipMethod)
@@ -533,11 +552,30 @@ namespace Omnicx.WebStore.Core.Controllers
         }
 
         [Authorize]
-        public ActionResult RemoveWishList(string id)
+        public ActionResult RemoveWishList(string id,bool isSaveForLater=true)
         {
-            _customerRepository.RemoveWishList(_sessionContext.CurrentUser.UserId.ToString(), Sanitizer.GetSafeHtmlFragment(id), true);
-            var response = _customerRepository.GetWishlist(_sessionContext.CurrentUser.UserId.ToString(), true);
+            _customerRepository.RemoveWishList(_sessionContext.CurrentUser.UserId.ToString(), Sanitizer.GetSafeHtmlFragment(id), isSaveForLater);
+            var response = _customerRepository.GetWishlist(_sessionContext.CurrentUser.UserId.ToString(), isSaveForLater);
             return JsonSuccess(response.Result, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult UpdateUserToBasket(CheckoutModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return JsonValidationError();
+            }
+            var responseresult = new ResponseModel<Omnicx.WebStore.Models.Commerce.BasketModel>();
+            var response = _customerRepository.GetUserdetailsByUserName(Sanitizer.GetSafeHtmlFragment(model.Email));
+            var existingUser = response.Result;
+            if (existingUser.Count > 0)
+            {
+                var customerId = existingUser[0].UserId;
+                if (model.CustomerId == null)
+                {
+                    responseresult = _checkoutApi.UpdateUserToBasket(model.BasketId, customerId.ToString());
+                }
+            }
+            return JsonSuccess(responseresult, JsonRequestBehavior.AllowGet);
         }
     }
 }
