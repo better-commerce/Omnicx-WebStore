@@ -1,0 +1,94 @@
+﻿@{
+/*
+    Name: Return History
+    Purpose: Show all return request in list view
+    Structure: /Views/Account/ReturnHistory.cshtml
+    Contains (Partial Views Used):
+        a-/Views/Shared/_Layout.cshtml.cshtml   (For base Structure)
+        b-/Views/Account/_MobileSideNav.cshtml  (Navigatiopn For Mobile)
+
+    Contained In (Where we Use this View):
+        a-/Views/Shared/_HeaderLayout.cshtml        (Link in Top Header Bar)
+        b-/Views/Shared/_MobileHeaderLayout.cshtml  (Link in Mobile Header)
+        c-/Views/Account/ReturnRequest.cshtml       (Link for detail view)
+    */
+}
+@using Microsoft.Web.Mvc
+@using Omnicx.WebStore.Models.Enums
+@using Omnicx.WebStore.Core.Controllers
+@using Omnicx.WebStore.Framework.Helpers
+@using Omnicx.WebStore.Models.Helpers
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<List<Omnicx.WebStore.Models.Commerce.ReturnModel>>
+@{
+    ViewBag.Title = "Return History";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var userRole = SessionContext.CurrentUserRole;
+}
+<div class="container dataContainer m--top-60">
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="/">@LT("MyAccount.Links.Home", "Home")</a>
+                </li>
+                <li>@LT("MyAccount.Text.ReturnHistory", "Return History")</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-xs-12 visible-xs" id="exTab1">
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <h1 class="basket-h1">@LT("MyAccount.Links.OrderOnePlace", "Return History")</h1>
+                    <p class="text-muted basket-text">@LT("MyAccount.Text.FeelFree", "If you have any questions, please feel free to ")<a href="@Url.Action("Contact", "pages")">@LT("MyAccount.Text.ContactUs", "Contact Us"),</a> @LT("MyAccount.Text.Support", " our customer service center is working for you 24/7 .") </p>
+                </div>
+            </div>
+            @Html.Partial("~/Views/Account/_MobileSideNav.cshtml")
+        </div>
+        <div class="col-md-3 col-sm-4 col-xs-12 hidden-xs">
+            @Html.Partial("~/Views/Account/_SideNav.cshtml")
+        </div>
+
+        <div class="col-md-9 col-sm-8 col-xs-12">
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <h3 class="panel-h2">@LT("MyAccount.Text.Name", "Return History")</h3>
+                </div>
+            </div>
+            <div class="box no-padding col-sm-12 col-xs-12 no-border-bottom">
+                <div class="table-responsive">
+                    <div class="col-sm-12 no-padding">
+                        <div class="table-responsive max-history">
+                            <table class="table table-hover no-border table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>@LT("MyAccount.Text.Qty", "Order #")</th>
+                                        <th>@LT("MyAccount.Text.GrandTotal", "Status")</th>
+                                        <th>@LT("MyAccount.Text.Product", "Order Date")</th>
+                                        <th class="text-right">@LT("MyAccount.Text.Price", "Order Value")</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody id="cart">
+                                    @foreach (var item in @Model)
+                                    {
+                                        <tr>
+                                            <td><strong>@item.OrderNumber</strong></td>
+                                            <td><label class="label label-@item.StatusLabel padding-xs status-inline">@item.StatusLabel</label></td>
+                                            <td>@item.OrderDate</td>
+                                            <td align="right">@item.SubTotal.Formatted.WithTax</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

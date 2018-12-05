@@ -7,6 +7,10 @@ using FeatureToggle.Toggles;
 
 namespace Omnicx.WebStore.Models.FeatureToggle
 {
-    public class RecentlyViewed : SimpleFeatureToggle { }
-    public class MyActivity : SimpleFeatureToggle { }
+    public class RecentlyViewedFeature : SimpleFeatureToggle { }
+    public class MyActivityFeature : SimpleFeatureToggle { }
+
+    public class StoreStockLocatorFeature : SimpleFeatureToggle { }
+
+    public class SubscriptionFeature : SimpleFeatureToggle { }
 }

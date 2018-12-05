@@ -7,7 +7,6 @@ namespace Omnicx.WebStore.Models.B2B
         private string _firstName;
         private string _address1;
         private string _address2;
-        private string _address3;
         private string _companyName;
         private string _city;
         private string _postCode;

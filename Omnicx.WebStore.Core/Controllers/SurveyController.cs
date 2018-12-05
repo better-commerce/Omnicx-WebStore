@@ -66,12 +66,13 @@ namespace Omnicx.WebStore.Core.Controllers
             foreach (var prod in surveyResponse.Products)
             {
                 stockCodes = stockCodes + (string.IsNullOrEmpty( stockCodes)?  prod.Product.StockCode: " " + prod.Product.StockCode);
-                bulkAdd.Add( new BasketAddModel { StockCode = prod.Product.StockCode, Qty = prod.qty});
+                bulkAdd.Add( new BasketAddModel { StockCode = prod.Product.StockCode, Qty = prod.qty,ParentProductId= surveyResponse.Id.ToString() });
             }
             stockCodes = Constants.SURVEY_BUNDLE_PREFIX + " " + stockCodes;
             bulkAdd.Add(new BasketAddModel { StockCode =  stockCodes, Qty = 1,ItemType=ItemTypes.DynamicBundle.GetHashCode(),ProductId= surveyResponse.Id.ToString(), ProductName = stockCodes });
             var basketApi = DependencyResolver.Current.GetService<IBasketApi>();
             var basket = basketApi.BulkAddProduct(bulkAdd);
+            SiteUtils.SetBasketAction(basket?.Result.Id);
             return JsonSuccess(basket?.Result, JsonRequestBehavior.AllowGet);
         }
         public ActionResult SaveAnswerBulk(Guid surveyId ,List<SurveyProfileAnswerModel> answers)
@@ -109,7 +110,7 @@ namespace Omnicx.WebStore.Core.Controllers
                 var ques = survey.Questions.FirstOrDefault(x => x.RecordId == ans.QuestionId);
                 if (ques != null)
                 {
-                    var option = ques.InputOptions.FirstOrDefault(x => x.OptionValue.ToLower() == ans.SelectedAnswer.ToLower());
+                    var option = ques.InputOptions.FirstOrDefault(x => x.OptionValue.ToLower() == ans.SelectedAnswer.Split(',')[0].ToLower());
                     if (option != null)
                     {
                         if (option.LinkedStockCodes != null && option.LinkedStockCodes.Any())

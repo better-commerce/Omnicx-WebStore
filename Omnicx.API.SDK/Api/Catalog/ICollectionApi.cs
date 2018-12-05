@@ -3,9 +3,13 @@ using Omnicx.WebStore.Models.Catalog;
 using Omnicx.WebStore.Models;
 namespace Omnicx.API.SDK.Api.Catalog
 {
-   public interface ICollectionApi
-   {
-        ResponseModel<DynamicListModel>  GetCollectionBySlug(string slug);
-        ResponseModel< List<DynamicListCollection>> GetCollectionList();
-   }
+    public interface ICollectionApi
+    {
+        ResponseModel<DynamicListModel> GetCollectionBySlug(string slug);
+        ResponseModel<List<DynamicListCollection>> GetCollectionList();
+
+        ResponseModel<DynamicListsGroupModel> GetAllLookbooksBySlug(string slug);
+        ResponseModel<DynamicListsGroupModel> GetAllLookbooksByGroup(string groupName);
+
+    }
 }

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
+using System.Globalization;
+using Omnicx.WebStore.Models.Helpers;
 
 namespace Omnicx.WebStore.Models.Commerce
 {
@@ -46,7 +48,10 @@ namespace Omnicx.WebStore.Models.Commerce
             set
             {
                 if (!string.IsNullOrEmpty(value))
-                    _lastName = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(value.ToLower());
+                {
+                    _lastName = value.ToSentenceCase();
+                }
+                   
             }
         }
 
@@ -158,6 +163,7 @@ namespace Omnicx.WebStore.Models.Commerce
         public bool IsDefault { get; set; }
         public List<CountryModel> BillingCountries { get; set; }
         public string CompanyId { get; set; }
+        [System.Web.Mvc.AdditionalMetadata("capture-plus", "")]
         public string CompanyName
         {
             get

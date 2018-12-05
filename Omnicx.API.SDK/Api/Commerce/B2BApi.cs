@@ -36,19 +36,19 @@ namespace Omnicx.API.SDK.Api.Commerce
         {
             return CallApi<CompanyDetailModel>(string.Format(ApiUrls.CompanyDetail, userId), "");
         }
-        public ResponseModel<bool> CreateQuote(QuoteInfoModel model)
+        public ResponseModel<bool> SaveQuote(QuoteInfoModel model)
         {
-            var resp = CallApi<bool>(string.Format(ApiUrls.CreateQuote), JsonConvert.SerializeObject(model), Method.POST);
-            if (!String.IsNullOrEmpty(resp.Message))
-            {
-                System.Web.HttpCookie cookie_basket = HttpContext.Current.Request.Cookies[Constants.COOKIE_BASKETID];               
-                if (cookie_basket != null)
-                {
-                    cookie_basket.Expires = DateTime.Now.AddDays(Constants.COOKIE_DEVICEID_EXPIRES_DAYS);
-                    cookie_basket.Value = Guid.NewGuid().ToString();
-                    HttpContext.Current.Response.SetCookie(cookie_basket);
-                }
-            }
+            var resp = CallApi<bool>(string.Format(ApiUrls.SaveQuote), JsonConvert.SerializeObject(model), Method.POST);
+            //if (!String.IsNullOrEmpty(resp.Message))
+            //{
+            //    System.Web.HttpCookie cookie_basket = HttpContext.Current.Request.Cookies[Constants.COOKIE_BASKETID];
+            //    if (cookie_basket != null)
+            //    {
+            //        cookie_basket.Expires = DateTime.Now.AddDays(Constants.COOKIE_DEVICEID_EXPIRES_DAYS);
+            //        cookie_basket.Value = Guid.NewGuid().ToString();
+            //        HttpContext.Current.Response.SetCookie(cookie_basket);
+            //    }
+            //}
             return resp;
         }
         public ResponseModel<BasketModel> GetQuoteDetail(string quoteId)
@@ -89,6 +89,12 @@ namespace Omnicx.API.SDK.Api.Commerce
             var cookie_basketId = new System.Web.HttpCookie(Constants.COOKIE_BASKETID) { HttpOnly = true, Value = Guid.NewGuid().ToString(), Expires = DateTime.Now.AddDays(Constants.COOKIE_DEVICEID_EXPIRES_DAYS) };
             System.Web.HttpContext.Current.Response.Cookies.Set(cookie_basketId);
             return true;
+        }
+        public ResponseModel<List<CompanyNameModel>> GetCompanies()
+        {
+            var result = new ResponseModel<List<CompanyNameModel>>();
+            result = CallApi<List<CompanyNameModel>>(string.Format(ApiUrls.GetCompanies), "", Method.POST);
+            return result;
         }
     }
 }

@@ -1,0 +1,420 @@
+﻿@{
+/*
+    Name: Bakste
+    Purpose: Customer basket View with all the Information (Items, shipping method, promotion code panel, order billing summary)
+    Structure: /Views/Basket/Index.cshtml
+    Contains (Partial Views Used):
+        a-/Views/Shared/_Layout.cshtml.cshtml    (For base Structure)
+        b-/Views/Search/_ProductWidget.cshtml    (product Widget to show relative Product Structure)
+
+    Contained In (Where we Use this View):
+        a-/Views/Shared/_HeaderLayout.cshtml        (Link in Top Header Bar)
+        b-/Views/Shared/_MobileHeaderLayout.cshtml  (Link in Mobile Header)
+    */
+}
+@using Microsoft.Web.Mvc
+@using Omnicx.WebStore.Models.Enums
+@using Omnicx.WebStore.Models.Keys
+@using Omnicx.WebStore.Core.Controllers
+@using Omnicx.WebStore.Framework.Helpers
+@using Omnicx.WebStore.Models.Commerce
+@using Omnicx.WebStore.Models.FeatureToggle;
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<BasketModel>
+@{
+    ViewBag.Title = "Basket";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var checkoutUrl = Url.Action("OnePageCheckout", "Checkout");
+    if (ConfigKeys.OnePageCheckout == false)
+    {
+        checkoutUrl = Url.Action("StandardCheckout", "Checkout");
+    }
+    var recentlyViewed = new RecentlyViewedFeature();
+}
+@section bodyClass{class="noBg"}
+@section siteheader{
+    <noscript ng-init='gm.initBasket(@Html.JsonFor(Model))'></noscript>
+}
+<div class="row breadcrumb-bar">
+    <div class="container">
+        <div class="col-sm-12 col-xs-12 no-padding">
+            <h2 class="activeBreadcrumb">SHOPPING CART (<span ng-bind="gm.basketResponse.lineItems.length"></span>)</h2>
+        </div>
+        <div class="col-sm-12 col-xs-12 no-padding">
+            <ul class="breadcrumb">
+                <li><a href="/">@LT("ProductListing.Breadcrumb.Home", "Home")</a></li>
+                <li>@LT("Product.Breadcrumb.MyCart", "SHOPPING CART")</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<section class="container margin-top-sm productCar" ng-controller="productCtrl as pm" ng-cloak>
+    <div ng-if="gm.basketResponse.lineItems.length>0">
+        <div class="row" ng-cloak>
+            @{ /*End Alert information message */ }
+            <div class="col-sm-12 col-xs-12">
+                <span class="text-center">
+                    <span ng-cloak class="alert alert-info wishdiv" ng-show="pm.wishlistsaved">
+                        <strong>@LT("ProductDetail.Message.AddToWishlist", "Product added to wishlist")!</strong>
+                    </span>
+                    <span ng-cloak class="alert alert-danger wishdiv" ng-show="pm.wishlistexistserror">
+                        <strong>@LT("ProductDetail.Message.AlreadyAddedToWishlist", "Product already added in wishlist")!</strong>
+                    </span>
+                </span>
+            </div>
+            <div class="col-sm-12 col-xs-12" id="basket" ng-show="gm.basketResponse.lineItems.length>0">
+                <div class="col-sm-12 col-xs-12 no-padding margin-top-sm margin-bottom-lg">
+                    <div class="form-group">
+                        <label class="control control--checkbox ng-binding">
+                            @if (SessionContext.CurrentUser != null)
+                            {
+                                <input type="checkbox" ng-model="isChecked" name="basketToWishList" class="ng-valid ng-dirty ng-valid-parse ng-touched ng-empty" data-toggle="modal" data-target="#myModal">
+                            }
+                            else
+                            {
+                                <input type="checkbox" ng-model="isChecked" class="ng-valid ng-dirty ng-valid-parse ng-touched ng-empty" data-toggle="modal" data-target="#login-modal" data-placement="top" ng-click="isChecked=false;">
+                            }
+                            <label for="basketToWishList">@LT("MyAccount.Label.MoveInWishlist", "Move all in wishlist")</label>
+                            <div class="control__indicator"></div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-xs-12 no-padding no-margin whiteContainer">
+                    <form method="post">
+                        <div class="col-sm-12 col-xs-12 no-padding itemBorder" ng-repeat="items in gm.basketResponse.lineItems track by $index" ng-if="items.parentProductId == gm.emptyGuid" ng-init="items.oldQty = items.qty">
+                            <div class="no-border">
+                                <div class="col-xs-3 col-sm-2 no-padding-right">
+                                    @if (SessionContext.CurrentUser != null)
+                                    {
+                                        <a class="basket-wishlist-icon" data-toggle="tooltip" data-placement="top" ng-click="pm.addMultipleToWishlist(items,1)" title="Add to wishlist"></a>
+                                    }
+                                    else
+                                    {
+                                        <a class="basket-wishlist-icon" data-toggle="modal" data-target="#login-modal" data-placement="top" ng-click="pm.addToWishlist(items,1)" title="Add to wishlist"></a>
+                                    }
+                                    <a href="/{{items.slug}}">
+                                        <img ng-src="{{items.image}}" class="img-responsive" alt="" onerror="this.src = DEFAULT_IMAGE_URL">
+                                    </a>
+                                </div>
+                                <div class="col-xs-9 col-sm-10 margin-top-sm" ng-if="items.parentProductId == gm.emptyGuid">
+                                    <div class="col-xs-12 col-sm-12 no-padding margin-bottom-sm">
+                                        <a class="basket-item" ng-href="/{{items.slug}}" ng-bind="items.name"></a>                                        
+                                    </div>
+                                    <div class="col-sm-6 col-xs-8 no-padding">    
+                                        <select ng-model="items.qty" ng-options="qty for qty in gm.basketQtyDropdown" name="qty" class="form-control cart-text" ng-change="gm.updateBasketQty(items.productId, items.qty, items.oldQty, items.displayOrder);"></select>
+                                        <span class="disp-inline-b" ng-bind="items.price.formatted.withTax"></span>
+                                    </div>
+                                    <div class="col-xs-4 col-sm-6 no-padding text-right">                                        
+                                        <span class="basket-price-mob-strong" ng-bind="items.totalPrice.formatted.withTax"></span>
+                                    </div>
+                                    @*BUNDLE PRODUCTS*@
+                                    <div class="col-sm-12 col-xs-12 no-padding">
+                                        <strong class="text-orange" ng-show="items.displayInBasket && items.itemType ==@ItemTypes.Bundle.GetHashCode()">@LT("YourBag.Text.IncludeComponents", "Included Components:")</strong>
+                                        <div class="row component-row" ng-repeat="bundle in gm.basketResponse.lineItems track by $index" ng-if="bundle.parentProductId == items.productId && items.itemType ==@ItemTypes.Bundle.GetHashCode()" ng-show="items.displayInBasket">
+                                            <div class="col-sm-8 col-xs-8 no-padding">
+                                                <a class="small-cart-name" ng-href="/{{bundle.slug}}" ng-bind="bundle.name"></a>
+                                            </div>
+                                            <div class="col-sm-4 col-xs-4 no-padding text-right">
+                                                <strong>@LT("YourBag.Text.Qty", "Qty:") </strong><span ng-bind="bundle.qty"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-xs-12 no-padding">
+                                        <a href="#" title="Remove" class="delete-link" ng-click="gm.addToBasket( items.productId,0,items.displayOrder,gm.model)">@LT("YourBag.Text.Remove", "Remove")</a>
+                                    </div>
+                                </div>
+
+                                @*To Display Free Product*@
+                                <ul id="cartdropdown">
+                                    <li class="no-border" ng-repeat="freeitem in gm.basketResponse.lineItems track by $index" ng-if="freeitem.parentProductId == items.productId && items.itemType!=7">
+                                        <div class="clearfix">
+
+                                            <div class="col-sm-12 col-xs-12 no-padding">
+                                                <div class="col-sm-3 col-xs-3 no-padding">
+                                                    <span class="cart-img">
+                                                        <a ng-href="/{{freeitem.slug}}">
+                                                            <img ng-src="{{freeitem.image}}" onerror="this.src = DEFAULT_IMAGE_URL">
+                                                        </a>
+                                                    </span>
+                                                </div>
+                                                <div class="col-sm-9 col-xs-9 no-padding">
+                                                    <span class="cart-info">
+                                                        <a class="small-cart-name" ng-href="/{{freeitem.slug}}" ng-bind="freeitem.name"></a>
+                                                        <span class="pull-left text-right" ng-bind="{{freeitem.qty}}"></span>
+                                                        <span class="pull-left text-right"> x </span>
+                                                        <span class="pull-left text-right">
+                                                            <span ng-show="freeitem.price.raw.withTax==0">@LT("YourBag.Text.Free", "FREE")</span>
+                                                            <span ng-hide="freeitem.price.raw.withTax==0" ng-bind="freeitem.price.formatted.withTax"></span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-12 border-top whiteContainer text-right">
+                    <a href="@ViewBag.PrevPage" class="animate btn-bordered"><i class="fa fa-caret-left"></i>@LT("Continue.Label.ContinueShopping", "Continue Shopping")</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 col-xs-12">
+                    <div class="col-sm-12 col-xs-12 whiteContainer">
+                        <div class="summery-box no-border-bottom">
+                            <div class="box-header bg-white">
+                                <h4>@LT("Checkout.Label.CouponCode", "Coupon Code")</h4>
+                            </div>
+                            <p class="text-muted padding-sm label-span-desc no-padding-left">@LT("Checkout.Text.HaveCoupon", "If you have a coupon code, please enter it in the box below").</p>
+                            <form>
+                                <input type="text" class="form-control textBox-lg" ng-model="promoCode" placeholder="Enter Coupon Code" name="promo" />
+                                <button class="animate btn-bordered" type="button" ng-click="gm.applyPromoCode(gm.basketResponse.id,promoCode)"><i class="fa fa-gift"></i> Apply Code</button>
+                            </form>
+                            <div ng-cloak class="alert alert-danger promo" ng-show="gm.invalidpromo">
+                                <span>@LT("Checkout.Text.InValidPromoMessage", "PromoCode Invalid!")</span>
+                            </div>
+                            <div ng-cloak class="alert alert-success promovalid" ng-show="gm.validpromo">
+                                <span>@LT("Checkout.Text.ValidPromoMessage", "Successfully Applied")</span>
+                            </div>
+                            <div ng-cloak class="alert alert-danger promonull" ng-show="gm.promonull">
+                                <span>@LT("Checkout.Text.NullPromoMessage", "Please enter promo code!")</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-xs-12">
+                    <div class="col-sm-12 col-xs-12 whiteContainer">
+                        <div class="summery-box no-border-bottom">
+                            <div class="box-header bg-white">
+                                <h4>@LT("Checkout.Label.Shipping", "ESTIMATE SHIPPING")</h4>
+                            </div>
+                            <p class="text-muted padding-sm label-span-desc no-padding-left">&nbsp;</p>
+                            <div class="col-sm-12 col-xs-12 no-padding">
+                                <select id="deliverydrpdwn" class="no-margin" ng-model="selectedid" ng-change="gm.updateShipping(selectedid)">
+                                    <option ng-repeat="methods in gm.basketResponse.shippingMethods" ng-selected="methods.id == gm.basketResponse.shippingMethodId" ng-model="methods.id" id="{{methods.id}}" ng-value="methods.id" ng-bind="methods.displayName +' ' + '(' + methods.price.formatted.withTax + ')'"></option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-xs-12">
+                    <div class="col-sm-12 col-xs-12" ng-show="gm.basketResponse.lineItems.length>0">
+                        <div class="col-sm-12 col-xs-12 no-padding whiteContainer summeryBorder">
+                            <div class="summery-box" id="order-summary">
+                                <div class="box-header bg-white">
+                                    <h3>@LT("Checkout.Label.OrderSummary", "PRICE DETAILS")</h3>
+                                </div>
+                                <p class="text-muted padding-sm label-span-desc no-padding-left">@LT("Checkout.Text.ShippingInfo", "Shipping and additional costs are calculated based on the values you have entered").</p>
+                                <div class="table-responsive">
+                                    <table class="table no-margin no-border">
+                                        <tbody>
+                                            <tr>
+                                                <td>@LT("Checkout.Label.Subtotal", "Subtotal")</td>
+                                                <th class="text-right"><span ng-bind="gm.basketResponse.subTotal.formatted.withTax"></span></th>
+                                            </tr>
+                                            <tr>
+                                                <td>@LT("Checkout.Label.ShippingCharge", "Shipping and handling")</td>
+                                                <th class="text-right"><span ng-bind="gm.basketResponse.shippingCharge.formatted.withTax"></span></th>
+                                            </tr>
+                                            <tr>
+                                                <td>@LT("Checkout.Label.Discount", "Discount")</td>
+                                                <th class="text-right"><span ng-bind="gm.basketResponse.discount.formatted.withTax"></span></th>
+                                            </tr>
+                                            <tr ng-show="gm.basketResponse.promotionsApplied.length>0" id="PromoApplied2">
+                                                <td>@LT("YourBag.Text.PromotionsApplied", "Promotions Applied")</td>
+                                                <th class="text-right">
+                                                    <ul class="promo-ul">
+                                                        <li class="no-padding" ng-repeat="promotion in gm.basketResponse.promotionsApplied">
+                                                            <a href="" title="Remove" ng-click="gm.removePromoCode(gm.basketResponse.id,promotion.promoCode)"><span ng-bind="promotion.name"></span><i class="fa fa-remove"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </th>
+                                            </tr>
+                                            <tr class="total">
+                                                <td>@LT("Checkout.Label.AmountPayable", "Amount Payable")</td>
+                                                <th class="text-right"><span ng-bind="gm.basketResponse.grandTotal.formatted.withTax"></span></th>
+                                            </tr>
+                                            <tr>
+                                                <td class="sml-text" ng-cloak ng-bind="'@LT("YourBag.Text.IncludingVATof", "including VAT of ")' + gm.basketResponse.grandTotal.formatted.tax"></td>
+                                                <th>&nbsp;</th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-sm-12 col-xs-12 no-padding">
+                                    <a href="@checkoutUrl/{{gm.basketResponse.id}}" class="animate btn-orange width-full">@LT("YourBag.Links.PlaceOrder", "Place Order")<i class="fa fa-caret-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        @if (recentlyViewed.FeatureEnabled)
+        {
+            <div ng-controller="recentViewedProduct as rvp" ng-init="rvp.getRecentlyViewedProduct()">
+                @Html.Partial("~/Views/Basket/_RecentlyViewed.cshtml")
+            </div>
+
+        }
+        @if (!string.IsNullOrEmpty(Model.Id) && Model.Id != Guid.Empty.ToString())
+        {
+            <div class="row margin-top-sm" ng-init="pm.quickView=true;">
+                <div class="col-sm-12 col-xs-12 no-margin whiteContainer">
+                    <h3 class="heading-h3">You may also like these Products</h3>
+                </div>
+                <div class="col-sm-12 col-xs-12 popurlar_product whiteContainer no-padding gridView" ng-init="pm.getBasketRelatedProducts('@Model.Id');">
+                    <div ng-repeat="product in pm.relatedProducts track by $index" class="col-sm-5ths col-xs-5ths col-md-5ths col-lg-5ths">
+                        @Html.Partial("~/Views/Search/_ProductWidget.cshtml")
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    @{/*Alert modal for moving product to wishlist*/}
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" ng-click="isChecked=false;">&times;</button>
+                    <h4 class="modal-title">@LT("MyAccount.Basket.MovingToWishlist", "Moving all products in wishlist")</h4>
+
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-12 col-xs-12">
+                            <p>@LT("MyAccount.Basket.MovingToWishlist", "Moving all products in wishlist")</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="col-sm-12 col-xs-12 text-right">
+                        <button type="button" class="animate btn-primary" ng-click="pm.addMultipleToWishlist(gm.basketResponse.lineItems,0)" data-dismiss="modal">@LT("YourBag.Text.Ok", "Ok")</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @{/*End of moving product modal to wishlist*/}
+</section>
+<div class="row" ng-cloak id="noBasket" ng-if="gm.count===0 || gm.basketResponse == null">
+    <div class="col-sm-12 col-xs-12 text-center no-iten-view">
+        <i class="fa fa-shopping-bag"></i>
+        <h1>@LT("YourBag.Text.NoItem", "No item in Your Bag")</h1>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        var basketToWishlist = '@(Html.BuildUrlFromExpression<BasketController>(c => c.BasketToWishlist(null)))';
+        var basketRelatedProducts = '@(Html.BuildUrlFromExpression<BasketController>(c => c.GetBasketRelatedProducts(null)))';
+        var searchProductUrl = '@(Html.BuildUrlFromExpression<SearchController>(c => c.SearchProducts(null)))';
+         var addToWishlistUrl = '@(Html.BuildUrlFromExpression<AccountController>(c => c.AddProductToWishlist(null)))';
+        window.app.constant('productConfig', {
+            basketToWishlist: basketToWishlist,
+            basketRelatedProducts: basketRelatedProducts,
+            searchProductUrl: searchProductUrl,
+            addToWishlistUrl: addToWishlistUrl
+        });
+        window.app.constant('model', "");
+
+    (function () {
+        'use strict';
+        window.app.controller('recentViewedProduct', recentViewedProduct);
+        recentViewedProduct.$inject = ['$scope', '$timeout', '$http', 'productConfig'];
+
+        function recentViewedProduct($scope, $timeout, $http, productConfig) {
+            var rvp = this;
+            rvp.searchproductfilter = [];
+            rvp.sortedResult = [];
+            rvp.groupedResult = [];
+            rvp.productResponse = {};
+            rvp.getRecentlyViewedProduct = getRecentlyViewedProduct;
+            rvp.searchAddProduct = searchAddProduct;
+            rvp.searchProducts = searchProducts;
+
+            var recentProducts = $.cookie("_rvp");
+            if (recentProducts) {
+                recentProducts = recentProducts.split(",");
+                angular.forEach($scope.$parent.$parent.$parent.gm.basketResponse.lineItems, function (value) {
+                    angular.forEach(recentProducts, function (recordId, key) {
+                        if(recordId==value.productId.toLowerCase())
+                        {
+                            recentProducts.splice(key, 1);
+                        }
+                    });
+                });
+            }
+
+            function getRecentlyViewedProduct() {
+                if (recentProducts) {
+                    recentProducts = recentProducts.reverse();
+                    angular.forEach(recentProducts, function (pId) {
+                        rvp.searchproductfilter.push({ "key": "recordId", "value": pId.toLowerCase() });
+                    });
+                    rvp.searchAddProduct();
+                }
+            }
+
+            function searchAddProduct() {
+                rvp.searchfilter = { "filters": rvp.searchproductfilter };
+                rvp.searchProducts(rvp.searchfilter);
+            };
+
+            function searchProducts(searchFilter) {
+                $http.post(productConfig.searchProductUrl, searchFilter)
+                    .success(function (data) {
+                        rvp.productResponse.results = data.results;
+                        angular.forEach(recentProducts, function (recordID) {
+                            angular.forEach(rvp.productResponse.results, function (resp, key) {
+                                if(recordID==resp.recordId)
+                                {
+                                    rvp.sortedResult.push(resp);
+                                }
+                            });
+                        });
+                        if (rvp.sortedResult) {
+                            var from = 0;
+                            var to = 4;
+                            angular.forEach(rvp.sortedResult, function () {
+                                rvp.groupedResult.push(rvp.sortedResult.splice(from, to));
+                            });
+                        }
+                        if (typeof (data.groups) !== undefined && data.groups !== null) {
+                            rvp.productResponse.productGroupModel.groups = data.groups;
+                        }
+                        angular.forEach(rvp.productResponse.results, function (pro) {
+                            pro.bulkQty = 1;
+                        });
+                        rvp.productResponse.total = data.total;
+                        if (data.results.length == 0)
+                            $scope.noRecord = true;
+                        else
+                            $scope.noRecord = false;
+                        var filter = {};
+                        angular.forEach(rvp.productResponse.filters, function (value, i) {
+                            if (pm.selectedKey == value.key) {
+                                filter = value;
+                            }
+                        });
+                        rvp.productResponse.filters = data.filters;
+                    })
+                    .error(function (msg) {
+
+                    })
+                    .finally(function () {
+                    });
+            };
+
+        };
+    })();
+    </script>
+
+}

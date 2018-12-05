@@ -132,10 +132,14 @@ namespace Omnicx.WebStore.Core.Controllers
             return JsonSuccess(result.Result, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult CreateQuote(QuoteInfoModel quote)
+        public ActionResult SaveQuote(QuoteInfoModel quote)
         {
             if(_sessionContext.CurrentUser != null) { quote.CompanyId = Guid.Parse(_sessionContext.CurrentUser.CompanyId); }
-            var resp = _b2bRepository.CreateQuote(quote);
+            var resp = _b2bRepository.SaveQuote(quote);
+            if (!String.IsNullOrEmpty(resp.Message))
+            { 
+                SiteUtils.ResetBasketCookie();
+            }
             return JsonSuccess(resp, JsonRequestBehavior.AllowGet);
         }
 
@@ -172,6 +176,11 @@ namespace Omnicx.WebStore.Core.Controllers
         {
             _b2bRepository.RemoveQuoteBasket();
             return JsonSuccess(true, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetCompanies()
+        {
+            var result = _b2bRepository.GetCompanies();
+            return JsonSuccess(result, JsonRequestBehavior.DenyGet);
         }
     }
 }

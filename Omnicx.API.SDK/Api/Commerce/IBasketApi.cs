@@ -24,6 +24,7 @@ namespace Omnicx.API.SDK.Api.Commerce
         ResponseModel<List<ProductModel>> GetRelatedProducts(string id);
         ResponseModel<List<BasketModel>> GetAllUserBaskets(Guid id);
         ResponseModel<BasketModel> UpdateBasketInfo(string basketId,HeaderCustomInfo info);
-
+        Task<ResponseModel<BoolResponse>> UpdateBasketCampaign(Guid basketId, string campaignCode);
+        ResponseModel<BoolResponse> UpdatePoReference(Guid basketId, string poReferenceNumber);
     }
 }

@@ -1,0 +1,46 @@
+﻿@{
+/*
+    Name: FAQ Or Product Detail Accordion Panel
+    Purpose: Use in PDP Screen Accordion Details
+    Structure: /Views/Common/_FaqsView.cshtml
+    Contains (Partial Views Used):
+
+    Contained In (Where we Use this View):
+        a-/Views/Product/ProductDetail.cshtml
+    */
+}
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Catalog.ProductDetailModel>
+@{
+    var activeTab = @Model.FaqsCategory[0].Value;
+}
+<div class="panel panel-default">
+    <div class="panel-heading panelHeading bg-white">@LT("ProductDetail.Label.FAQs", "FAQs")</div>
+    <div class="panel-body no-padding no-border">
+        <div id="accordion" class="panel-group no-margin faqPanels">
+            @foreach (var items in @Model.FaqsCategory)
+            {
+                <div class="panel panel-default" ng-if="@items.Key!=0">
+                    <div class="panel-heading" role="tab">
+                        <h4 class="panel-title heading-h4">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#@items.Value.Replace(" ","")" aria-expanded="true" aria-controls="@items.Value.Replace(" ","")">@items.Value</a>
+                        </h4>
+                    </div>
+                    <div class="panel-collapse collapse in" id="@items.Value.Replace(" ","")">
+                        <div class="panel-body no-padding no-border">
+                            @foreach (var subfaqs in @Model.FaqsSubCategory)
+                            {
+                                if (subfaqs.CategoryId == items.Key)
+                                {
+                                    <div class="col-sm-12 col-xs-12">
+                                        <p class="faq-ques">@subfaqs.Question</p>
+                                        <p class="faq-ans"><span>@Html.Raw(@subfaqs.Answer)</span></p>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

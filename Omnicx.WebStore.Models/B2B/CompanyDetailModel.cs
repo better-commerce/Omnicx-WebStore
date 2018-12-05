@@ -59,4 +59,9 @@ namespace Omnicx.WebStore.Models.B2B
         //public string Mobile { get; set; }
         //public string PostCode { get; set; }
     }
+    public class CompanyNameModel
+    {
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+    }
 }

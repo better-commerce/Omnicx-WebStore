@@ -34,7 +34,7 @@ namespace Omnicx.WebStore.Models.Common
 
         public string ServiceType { get; set; }
         public int LengthMm { get; set; }
-
+        public decimal AdditionalServiceCost { get; set; }
     }
 
     public class HeaderCustomInfo
@@ -46,5 +46,6 @@ namespace Omnicx.WebStore.Models.Common
         public string CustomInfo4 { get; set; }
         public string CustomInfo5 { get; set; }
         public List<LineCustomInfo> LineInfo { get; set; }
+        public bool UserSelection { get; set; }
     }
 }

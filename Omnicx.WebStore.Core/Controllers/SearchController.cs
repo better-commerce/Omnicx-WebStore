@@ -42,8 +42,12 @@ namespace Omnicx.WebStore.Core.Controllers
                 var qryfilters = Request.QueryString[Constants.SEARCH_FILTER_QUERYSTRING];
                 foreach (var qfilter in qryfilters.Split(';'))
                 {
-                    var filter = new SearchFilter { Key = Constants.ATTRIBUTE_FILTER_PREFIX + qfilter.Split(':')[0], Value = qfilter.Split(':')[1] };
-                    searchCriteria.Filters.Add(filter);
+                    foreach(var val in qfilter.Split(':')[1].Split(','))
+                    {
+                        var filter = new SearchFilter { Key = Constants.ATTRIBUTE_FILTER_PREFIX + qfilter.Split(':')[0], Value = val };
+                        searchCriteria.Filters.Add(filter);
+                    }
+                  
                 }
             }
           
@@ -154,6 +158,15 @@ namespace Omnicx.WebStore.Core.Controllers
                         {
                             itm.PriceFilter = ((int)Convert.ToDecimal(itm.From));
                         }
+                    }
+                }
+                if (list.Products.Filters != null)
+                {
+                    foreach (var filter in list.Products.Filters)
+                    {
+                       
+                        filter.Items = filter.Items.GroupBy(x => x.Name).Select(x => x.FirstOrDefault()).ToList();
+                        filter.Items = filter.Items.OrderByDescending(x => x.IsSelected).ThenBy(x => x.DisplayOrder).ThenBy(x => x.Name).ToList();
                     }
                 }
                 SetDataLayerVariables(list, WebhookEventTypes.CollectionViewed);

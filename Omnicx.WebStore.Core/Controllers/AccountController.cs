@@ -221,7 +221,7 @@ namespace Omnicx.WebStore.Core.Controllers
             var existingUser = _customerRepository.GetExistingUser(Sanitizer.GetSafeHtmlFragment(register.Email));
             if (existingUser.Result != null)
             {
-                if (existingUser.Result.Count > 0 && existingUser.Result[0].UserSourceType != UserSourceTypes.Newsletter.GetHashCode().ToString())
+                if (existingUser.Result.Count > 0 && existingUser.Result[0].UserSourceType != UserSourceTypes.Newsletter.GetHashCode().ToString() && existingUser.Result[0].IsRegistered)
                 {
                     ModelState.AddModelError("Error", "Your email address is already registered with us.");
                     return JsonValidationError();
@@ -233,9 +233,10 @@ namespace Omnicx.WebStore.Core.Controllers
                     NotifyByEmail = register.NotifyByEmail,
                     NotifyByPost = register.NotifyByPost,
                     NotifyBySMS = register.NotifyBySMS,
-                    NewsLetterSubscribed = !register.NewsLetterSubscribed,
+                    NewsLetterSubscribed = register.NewsLetterSubscribed,
                     SourceProcess = register.SourceProcess,
-                    IsRegistered = true
+                    IsRegistered = true,
+                    CompanyId = register.Company == null ? null : Convert.ToString(register.Company.Id)
                 };
                 var result = _customerRepository.Register(user);
                 if (result.Result.IsValid)
@@ -295,6 +296,7 @@ namespace Omnicx.WebStore.Core.Controllers
                 City = Sanitizer.GetSafeHtmlFragment(model.City),
                 Country = Sanitizer.GetSafeHtmlFragment(model.Country),
                 CountryCode = Sanitizer.GetSafeHtmlFragment(model.CountryCode),
+                CompanyName = Sanitizer.GetSafeHtmlFragment(model.CompanyName),
                 CustomerId = Sanitizer.GetSafeHtmlFragment(model.CustomerId),
                 FirstName = Sanitizer.GetSafeHtmlFragment(model.FirstName),
                 LastName = Sanitizer.GetSafeHtmlFragment(model.LastName),
@@ -369,11 +371,11 @@ namespace Omnicx.WebStore.Core.Controllers
                 return JsonValidationError();
             }
 
-            if (_sessionContext.CurrentUser.Email != model.Email)
-            {
-                ModelState.AddModelError("Error", "You cannot save detail to this Email!");
-                return JsonValidationError();
-            }
+            //if (_sessionContext.CurrentUser.Email != model.Email)
+            //{
+            //    ModelState.AddModelError("Error", "You cannot save detail to this Email!");
+            //    return JsonValidationError();
+            //}
             
             var customerModel = new CustomerModel
             {
@@ -390,11 +392,12 @@ namespace Omnicx.WebStore.Core.Controllers
                 Telephone = Sanitizer.GetSafeHtmlFragment(model.Telephone),
                 Title = Sanitizer.GetSafeHtmlFragment(model.Title),
                 YearOfBirth = Sanitizer.GetSafeHtmlFragment(model.YearOfBirth),
-                NewsLetterSubscribed = !model.NewsLetterSubscribed,
+                NewsLetterSubscribed = model.NewsLetterSubscribed,
                 NotifyByEmail = model.NotifyByEmail,
                 NotifyByPost = model.NotifyByPost,
                 NotifyBySMS = model.NotifyBySMS,
-                SourceProcess = SourceProcessType.SITE_MYACCOUNT.ToString()
+                SourceProcess = SourceProcessType.SITE_MYACCOUNT.ToString(),
+                CompanyId = model.CompanyId
             };
             customerModel.DayOfBirth = "00";
             customerModel.MonthOfBirth = "00";
@@ -465,12 +468,16 @@ namespace Omnicx.WebStore.Core.Controllers
         }
 
         [HttpPost]
-        public ActionResult NewsletterSubscription(string email)
+        public ActionResult NewsletterSubscription(NewsletterModel newsletter)
         {
-            var customer = new CustomerModel();
-            customer.Email = Sanitizer.GetSafeHtmlFragment(email);
-            var response = _customerRepository.NewsletterSubscription(customer);
-            return JsonSuccess(response.Result, JsonRequestBehavior.AllowGet);
+            if(newsletter != null)
+            {
+                newsletter.Email = Sanitizer.GetSafeHtmlFragment(newsletter.Email);
+                var response = _customerRepository.NewsletterSubscription(newsletter);
+                return JsonSuccess(response.Result, JsonRequestBehavior.AllowGet);
+            }
+            return JsonSuccess(false, JsonRequestBehavior.AllowGet);
+           
         }
 
         public ActionResult UnSubscribeNewsletter(string id)
@@ -700,7 +707,7 @@ namespace Omnicx.WebStore.Core.Controllers
                                     Email = user.Email,
                                     FirstName = user.FirstName,
                                     LastName = user.LastName,
-                                    IsRegistered = false
+                                    IsRegistered = true
                                 };
 
                                 var result = _customerRepository.Register(customer);
@@ -742,7 +749,7 @@ namespace Omnicx.WebStore.Core.Controllers
                                     FirstName = user.FirstName,
                                     LastName = user.LastName,
                                     Gender = user.Gender,
-                                    IsRegistered = false
+                                    IsRegistered = true
                                 };
 
                                 var result = _customerRepository.Register(customer);
@@ -779,7 +786,7 @@ namespace Omnicx.WebStore.Core.Controllers
                                     Email = user.Email,
                                     FirstName = user.FirstName,
                                     LastName = user.LastName,
-                                    IsRegistered = false
+                                    IsRegistered = true 
                                 };
 
                                 var result = _customerRepository.Register(customer);

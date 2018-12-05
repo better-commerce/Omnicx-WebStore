@@ -13,6 +13,7 @@ namespace Omnicx.WebStore.Models.Commerce
         public Amount GrandTotal { get; set; }
         public Amount BalanceAmount { get; set; }
         public string CreatedBy { get; set; }
+        public bool CreatedByAdmin { get; set; }
         public Amount PaidAmount { get; set; }
         public Amount ShippingCharge { get; set; }
         public Amount SubTotal { get; set; }

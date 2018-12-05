@@ -46,7 +46,7 @@ namespace Omnicx.WebStore.Core.Helpers
                         }
                     }
                     filter.Items = filter.Items.GroupBy(x => x.Name).Select(x => x.FirstOrDefault()).ToList();
-                    filter.Items = filter.Items.OrderByDescending(x => x.IsSelected).ThenBy(x => x.Name).ToList();
+                    filter.Items = filter.Items.OrderByDescending(x => x.IsSelected).ThenBy(x => x.DisplayOrder).ThenBy(x => x.Name).ToList();
                 }
             }
             return result;

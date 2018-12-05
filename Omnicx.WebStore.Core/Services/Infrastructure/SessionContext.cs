@@ -229,6 +229,17 @@ namespace Omnicx.WebStore.Core.Services.Infrastructure
                 return (CurrentUser==null) ? CompanyUserRole.None : CurrentUser.CompanyUserRole ;
             }
         }
-        
+        public string CurrencyCode
+        {
+            get
+            {
+                if (_httpContext == null || _httpContext.Response == null) return "";
+                if (_httpContext.Request.Cookies[Constants.COOKIE_CURRENCY] != null)
+                    return _httpContext.Request.Cookies[Constants.COOKIE_CURRENCY].Value;
+                return CurrentSiteConfig.RegionalSettings.DefaultCurrencyCode;
+
+            }
+        }
+
     }
 }

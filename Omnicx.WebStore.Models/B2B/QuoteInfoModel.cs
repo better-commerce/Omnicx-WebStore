@@ -1,4 +1,5 @@
 ﻿using Omnicx.WebStore.Models.Commerce;
+using Omnicx.WebStore.Models.Enums;
 using System;
 
 namespace Omnicx.WebStore.Models.B2B
@@ -29,6 +30,9 @@ namespace Omnicx.WebStore.Models.B2B
         public AddressModel ShippingAddress { get; set; }
         public AddressModel BillingAddress { get; set; }
         public bool CreatedByAdmin { get; set; }
+        public long OrderNo { get; set; }
+        public Guid OrderId { get; set; }
+        public OrderStatus OrderStatus { get; set; }
     }
     public enum QuoteStatus
     {
@@ -40,4 +44,5 @@ namespace Omnicx.WebStore.Models.B2B
         Cancelled = 5,
         QuoteSent = 6
     }
+   
 }

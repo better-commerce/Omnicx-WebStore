@@ -36,21 +36,45 @@ namespace Omnicx.WebStore.Core.Controllers
         /// Renders the Basket View where the data is populated via an AJAX call given below
         /// </summary>
         /// <returns></returns>
-        public virtual ActionResult Index()
+        public virtual ActionResult Index(string basketId="")
         {
-            var basket = GetIndexBasketData();
+            var basket = GetIndexBasketData(basketId);
             return View(CustomViews.BASKET, basket??new BasketModel { });
         }
 
         protected BasketModel GetIndexBasketData(string basketId = "")
         {
             var basket = _basketApi.GetBasketData(basketId)?.Result;
+
+            if (!string.IsNullOrEmpty(basketId) && basket != null)
+            {
+                // capture the campaign
+                UpdateBasketCampaign(Guid.Parse(basketId));
+            }
             if (Request.UrlReferrer != null)
                 ViewBag.PrevPage = Request.UrlReferrer.ToString();
             else
                 ViewBag.PrevPage = SiteViewTypes.Home;
             SetDataLayerVariables(basket, WebhookEventTypes.BasketViewed);
             return basket;
+        }
+        protected bool UpdateBasketCampaign(Guid basketId)
+        {
+            if (!string.IsNullOrEmpty(Utils.GetUtm().Campaign))
+            {
+                var resp = _basketApi.UpdateBasketCampaign(basketId, Utils.GetUtm().Campaign)?.Result;
+                if (resp?.Result?.RecordId != null)
+                {
+                    var cookie_basketId = new System.Web.HttpCookie(Constants.COOKIE_BASKETID) { HttpOnly = true, Value = basketId.ToString(), Expires = DateTime.Now.AddDays(Constants.COOKIE_DEVICEID_EXPIRES_DAYS) };
+                    System.Web.HttpContext.Current.Response.Cookies.Add(cookie_basketId);
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            //return JsonSuccess(resp?.Result, JsonRequestBehavior.AllowGet);
         }
         //public ActionResult GetBasketData()
         //{
@@ -316,5 +340,16 @@ namespace Omnicx.WebStore.Core.Controllers
             response.Result.shippingMethods = shippingMethods.Result;
             return JsonSuccess(response.Result, JsonRequestBehavior.AllowGet);
         }       
+
+        [HttpPost]
+        public JsonResult UpdatePoReference(string basketId,string poReferenceNumber)
+        {
+            if (!string.IsNullOrEmpty(basketId) && !string.IsNullOrEmpty(poReferenceNumber))
+            {
+               var resp = _basketApi.UpdatePoReference(Guid.Parse(basketId), poReferenceNumber);
+                return JsonSuccess(resp, JsonRequestBehavior.AllowGet);
+            }
+            return JsonSuccess("", JsonRequestBehavior.AllowGet);
+        }
     }
 }

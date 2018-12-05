@@ -71,12 +71,17 @@ namespace Omnicx.WebStore.Core.Controllers
         private void SetDataLayerSessionVariables()
         {
                 var uId = _sessionContext.CurrentUser?.UserId;
+                var browserInfo = Utils.GetBrowserInfo();
+                var channel = "Web";
+                if (browserInfo != null)
+                   channel = browserInfo.IsMobileDevice ? "mobile-web" : "Web";
+
                 _headTagbuilder.AddDataLayer("VisitorId", uId.ToString());
                 _headTagbuilder.AddDataLayer("SessionId", _sessionContext.SessionId);
                 _headTagbuilder.AddDataLayer("AppId", ConfigKeys.OmnicxDomainId);
                 _headTagbuilder.AddDataLayer("OrgId", ConfigKeys.OmnicxOrgId);
                 _headTagbuilder.AddDataLayer("DomainId", ConfigKeys.OmnicxDomainId);
-                 _headTagbuilder.AddDataLayer("Server", Utils.GetMaskedServerIpAddress()); 
+                _headTagbuilder.AddDataLayer("Server", Utils.GetMaskedServerIpAddress()); 
                 _headTagbuilder.AddDataLayer("DeviceId", System.Web.HttpContext.Current.Request.Cookies[Constants.COOKIE_DEVICEID]?.Value);
                 _headTagbuilder.AddDataLayer("VisitorLoggedIn", (_sessionContext.CurrentUser?.UserId!=null));
                 _headTagbuilder.AddDataLayer("VisitorExistingCustomer", (_sessionContext.CurrentUser?.UserId != null));
@@ -88,8 +93,9 @@ namespace Omnicx.WebStore.Core.Controllers
                 _headTagbuilder.AddDataLayer("Currency", _sessionContext.CurrentSiteConfig?.RegionalSettings?.DefaultCurrencyCode);
                 _headTagbuilder.AddDataLayer("CurrencySymbol", _sessionContext.CurrentSiteConfig?.RegionalSettings?.DefaultCurrencySymbol);
                 _headTagbuilder.AddDataLayer("UserEmail", _sessionContext.CurrentUser?.Email);
-                _headTagbuilder.AddDataLayer("Channel", "Web");
+                _headTagbuilder.AddDataLayer("Channel", channel);
                 _headTagbuilder.AddDataLayer("IpAddress", _sessionContext.IpAddress);
+
         }
 
         protected void SetDataLayerVariables<T>(T obj, WebhookEventTypes activityType)  
@@ -103,8 +109,8 @@ namespace Omnicx.WebStore.Core.Controllers
                     case "ProductDetailModel":
                         var p = (ProductDetailModel)(object)obj;
                         if (p != null) { 
-                            var prod = new { id = p.Id, sku = p.Sku, name = p.Name,stockCode=p.StockCode};
-                            _headTagbuilder.AddDataLayer("EntityId", p.StockCode);
+                            var prod = new { id = p.RecordId, sku = p.Sku, name = p.Name,stockCode=p.StockCode,img=p.Image};
+                            _headTagbuilder.AddDataLayer("EntityId", p.RecordId);
                             _headTagbuilder.AddDataLayer("EntityName", p.Name);
                             _headTagbuilder.AddDataLayer("Entity", JsonConvert.SerializeObject(prod));
                         }
@@ -114,7 +120,7 @@ namespace Omnicx.WebStore.Core.Controllers
                         var b = (BasketModel)(object)obj;
                         if (b != null)
                         {
-                            var lines = (from l in b.LineItems select new { id=l.Id,stockCode = l.StockCode, name = l.Name, qty = l.Qty, price = l.Price?.Raw?.WithoutTax ,tax=l.Price?.Raw?.Tax , manufacturer = l.Manufacture }).ToList();
+                            var lines = (from l in b.LineItems select new { id=l.Id,productId=l.ProductId,basketId=b.Id,stockCode = l.StockCode, name = l.Name, qty = l.Qty, price = l.Price?.Raw?.WithoutTax ,tax=l.Price?.Raw?.Tax , manufacturer = l.Manufacture, img=l.Image }).ToList();
                             var name = string.Join(",",(from l in lines select l.name + " (" + l.qty.ToString() + ")" ).ToArray());
                             var bskt = new { id = b.Id, grandTotal = b.GrandTotal?.Raw?.WithoutTax, tax=b.GrandTotal?.Raw.Tax, shipCharge = b.ShippingCharge?.Raw?.WithoutTax,shipTax=b.ShippingCharge?.Raw.Tax,lineitems = lines, promoCode = b.PromotionsApplied };
                             _headTagbuilder.AddDataLayer("BasketTotal", b.GrandTotal?.Raw?.WithoutTax);
@@ -133,7 +139,7 @@ namespace Omnicx.WebStore.Core.Controllers
                         var ord = (OrderModel)(object)obj;
                         if (ord != null)
                         {
-                            var ordlines = (from o in ord.Items select new {id=o.Id, stockCode = o.StockCode, name = o.Name, qty = o.Qty, price = o.Price?.Raw.WithoutTax,tax=o.Price?.Raw?.Tax ,manufacturer=o.Manufacturer,categories=o.CategoryItems}).ToList();
+                            var ordlines = (from o in ord.Items select new {id=o.Id,productId=o.ProductId, stockCode = o.StockCode, name = o.Name, qty = o.Qty, price = o.Price?.Raw.WithoutTax,tax=o.Price?.Raw?.Tax ,manufacturer=o.Manufacturer,categories=o.CategoryItems, img = o.Image }).ToList();
                             var order = new { id = ord.Id, basketId = ord.BasketId, customerId = ord.CustomerId, OrderNo = ord.OrderNo, grandTotal = ord.GrandTotal?.Formatted, shipCharge = ord.ShippingCharge?.Formatted, subTotal = ord.SubTotal?.Formatted, discount = ord.Discount, lineitems = ordlines, promoCode = ord.Promotions, shippingMethod = ord.Shipping, shippingAddress = ord.ShippingAddress };
                             _headTagbuilder.AddDataLayer("BasketTotal", ord.GrandTotal?.Raw?.WithoutTax);
                             _headTagbuilder.AddDataLayer("Tax", ord.GrandTotal?.Raw?.Tax);
@@ -141,7 +147,7 @@ namespace Omnicx.WebStore.Core.Controllers
                             _headTagbuilder.AddDataLayer("BasketItemCount", ordlines.Sum(l => l.qty));
                             _headTagbuilder.AddDataLayer("PromoCodes", JsonConvert.SerializeObject(ord.Promotions));
                             _headTagbuilder.AddDataLayer("ShippingCost", ord.ShippingCharge?.Raw?.WithoutTax);
-                            _headTagbuilder.AddDataLayer("EntityId", ord.OrderNo);
+                            _headTagbuilder.AddDataLayer("EntityId", ord.Id);
                             _headTagbuilder.AddDataLayer("EntityName", ord.OrderNo);
                             _headTagbuilder.AddDataLayer("Entity", JsonConvert.SerializeObject(order));
 

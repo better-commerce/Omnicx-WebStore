@@ -1,0 +1,105 @@
+﻿@using Omnicx.WebStore.Models.Catalog
+@using Microsoft.Web.Mvc
+@using Omnicx.WebStore.Models.Enums
+@using Omnicx.WebStore.Models.Keys
+@using Omnicx.WebStore.Core.Controllers
+@using Omnicx.WebStore.Framework.Helpers
+@using Omnicx.WebStore.Models.Commerce
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<DynamicListModel>
+@{
+    ViewBag.Title = "LookBook Detail";
+    Layout = "~/Views/Shared/_LookbookLayout.cshtml";
+
+    var products = Newtonsoft.Json.JsonConvert.SerializeObject(Model.Products.Results.Select(i => i.StockCode).ToList());
+}
+<style>
+    body {
+        background: #fff !important;
+        background-color: #fff !important;
+    }
+</style>
+<div class="container">
+    <div class="row breadcrumb-bar">
+        <div class="col-sm-12 col-xs-12 no-padding">
+            <ul class="breadcrumb">
+                <li><a href="/">@LT("ProductListing.Breadcrumb.Home", "Home")</a></li>
+                <li><a href="@Url.Action("Index" , "Lookbook")">@LT("ProductListing.Breadcrumb.Lookbooks", "Lookbook")</a></li>
+                <li>@Model.Name</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row featured-content-holder">
+
+        <div class="col-md-4 col-sm-12">
+            @{
+                if (Model != null && Model.Products != null && Model.Products.Results != null)
+                {
+                    for (int i = 0, half = Model.Products.Results.Count / 2; i < half; i++)
+                    {
+                        <div class="featured-top-left">
+                            <div class="featured-product text-center animated zoomIn">
+                                <div class="image lazy-load"><a href=""><img class="img-responsive" src="@Model.Products.Results[i].Image" alt=""></a> </div>
+                                <div class="product-body">
+                                    <h3 class="product-title"><a href="">@Model.Products.Results[i].Name</a></h3>
+                                    <p class="product-amount">@Model.Products.Results[i].Price.Formatted.WithoutTax</p>
+                                    <button class="animate btn-success" ng-click="gm.addToBasket('@Model.Products.Results[i].RecordId', 1, 0);">Add To Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            }
+        </div>
+        <div class="col-md-4 col-sm-12">
+            <div class="collection-style-holder thumbnail">
+                <div class="featured-carousel-product owl-carousel owl-theme owl-loaded">
+                    <div class="owl-stage-outer">
+                        <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: 0s; width: 1104px;">
+                            <div class="owl-item active" style="width: 368px; margin-right: 0px;" ng-if="'@Model.MainImage' != null && '@Model.MainImage' != ''">
+                                <div class="item"> <img src="@Model.MainImage" alt=""></div>
+                            </div>
+                            <div class="owl-item" style="width: 368px; margin-right: 0px;" ng-if="'@Model.Image1' != null && '@Model.Image1' != ''">
+                                <div class="item"> <img src="@Model.Image1" alt=""></div>
+                            </div>
+                            <div class="owl-item" style="width: 368px; margin-right: 0px;" ng-if="'@Model.Image2' != null && '@Model.Image2' != ''">
+                                <div class="item"> <img src="@Model.Image2" alt=""></div>
+                            </div>
+                            <div class="owl-item" style="width: 368px; margin-right: 0px;" ng-if="'@Model.Image3' != null && '@Model.Image3' != ''">
+                                <div class="item"> <img src="@Model.Image3" alt=""></div>
+                            </div>
+                            <div class="owl-item" style="width: 368px; margin-right: 0px;" ng-if="'@Model.Image4' != null && '@Model.Image4' != ''">
+                                <div class="item"> <img src="@Model.Image4" alt=""></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-body text-center">
+                    <h2 class="exclusive-subtitle">@Model.GroupCode</h2>
+                    <h1 class="exclusive-title"><a href="">@Model.Name</a></h1>
+                    <p class="info ">@Model.Description</p>
+                    <button type="button" class="animate btn-success" ng-click="gm.addLookbookToCart(@products);">Buy Complete Look</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-12">
+            @{
+                if (Model != null && Model.Products != null && Model.Products.Results != null && Model.Products.Results.Count > 0)
+                {
+                    for (var x = Model.Products.Results.Count / 2; x < Model.Products.Results.Count; x++)
+                    {
+                        <div class="featured-bottom-left">
+                            <div class="featured-product text-center animated zoomIn" style="display: block;">
+                                <div class="image lazy-load"> <a href=""><img class="img-responsive" src="@Model.Products.Results[x].Image" alt=""></a> </div>
+                                <div class="product-body">
+                                    <h3 class="product-title"><a href="">@Model.Products.Results[x].Name</a></h3>
+                                    <p class="product-amount">@Model.Products.Results[x].Price.Formatted.WithoutTax</p>
+                                    <button class="animate btn-success" ng-click="gm.addToBasket('@Model.Products.Results[x].RecordId', 1, 0);">Add To Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            }
+        </div>
+    </div>
+</div>

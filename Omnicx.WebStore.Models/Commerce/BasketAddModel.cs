@@ -6,6 +6,7 @@
 
         public string BasketId { get; set; }
         public string ProductId { get; set; }
+        public string ParentProductId { get; set; }
         public string SubscriptionId { get; set; }
         public int Qty { get; set; }
         public int DisplayOrder { get; set; }

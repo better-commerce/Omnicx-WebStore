@@ -1,0 +1,15 @@
+﻿@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Catalog.ProductDetailModel>
+
+@{
+    var attributes = Model.Attributes.Where(x => x.DisplayInProductDetail == true).ToList();
+    if (attributes != null)
+    {
+        foreach (var items in attributes)
+        {
+            <p class="faq-ans">
+                <strong> @items.Display: </strong>
+                <span>@items.Value</span>
+            </p>
+        }
+    }
+}

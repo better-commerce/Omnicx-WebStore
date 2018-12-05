@@ -122,5 +122,16 @@ namespace Omnicx.API.SDK.Api.Commerce
             return basketId;
         }
 
+        public async Task<ResponseModel<BoolResponse>> UpdateBasketCampaign(Guid basketId, string campaignCode)
+        {
+
+            var task = await CallApiAsync<BoolResponse>(string.Format(ApiUrls.UpdateBasketCampaign, basketId, campaignCode), null, Method.POST);
+            return task;
+        }
+
+        public ResponseModel<BoolResponse> UpdatePoReference(Guid basketId, string poReferenceNumber)
+        {
+            return CallApi<BoolResponse>(string.Format(ApiUrls.UpdatePoReference, basketId, poReferenceNumber), null, Method.POST);
+        }
     }
 }

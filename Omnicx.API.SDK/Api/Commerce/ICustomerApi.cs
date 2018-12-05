@@ -10,7 +10,7 @@ namespace Omnicx.API.SDK.Api.Commerce
     public interface ICustomerApi
     {
         ResponseModel<CustomerModel>  Login(string userName, string password);
-        ResponseModel<bool>  NewsletterSubscription(CustomerModel customer);
+        ResponseModel<bool>  NewsletterSubscription(NewsletterModel newsletter);
         ResponseModel<T>  GetUserdetailsById<T>(string userId);
         ResponseModel<List<CustomerModel>>  GetUserdetailsByUserName(string username);
         ResponseModel<BoolResponse>  Register(CustomerModel model);

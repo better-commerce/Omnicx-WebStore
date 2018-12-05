@@ -45,9 +45,9 @@ namespace Omnicx.Plugin.Payment.Worldpay
             postForm.AppendLine("<input type=\"hidden\" name=\"amount\" value=\"" + processPaymentRequest.OrderTotal + "\" >");
             postForm.AppendLine("<input type=\"hidden\" name=\"currency\" value=\"" + processPaymentRequest.CurrencyCode + "\" >");
             postForm.AppendLine("<input type=\"hidden\" name=\"testMode\" value=\"" + GetTestMode() + "\" >");
-            postForm.AppendLine("<input type=\"hidden\" name=\"desc\" value=\"AKC Order\" >");
+            postForm.AppendLine("<input type=\"hidden\" name=\"desc\" value=\"\" >");
             postForm.AppendLine("<input type=\"hidden\" name=\"authMode\" value=\"" + TransactionType.A + "\" >");
-            postForm.AppendLine("<input type=\"hidden\" name=\"accId1\" value=\"AKCSYSTEMSLTM1\" >");
+            postForm.AppendLine("<input type=\"hidden\" name=\"accId1\" value=\"" + Settings.AccountCode + "\" >");
             postForm.AppendLine("<input type=\"hidden\" name=\"name\" value=\"" + processPaymentRequest.Order.BillingAddress.FirstName + " " + processPaymentRequest.Order.BillingAddress.LastName + "\" >");
             postForm.AppendLine("<input type=\"hidden\" name=\"email\" value=\"" + processPaymentRequest.UserEmail + "\" />");
             postForm.AppendLine("<input type=\"hidden\" name=\"address1\" value=\"" + processPaymentRequest.Order.BillingAddress.Address1 + "\" >");
@@ -58,6 +58,7 @@ namespace Omnicx.Plugin.Payment.Worldpay
             postForm.AppendLine("<input type=\"hidden\" name=\"country\" value=\"" + processPaymentRequest.Order.BillingAddress.CountryCode + "\" >");
             postForm.AppendLine("<input type=\"hidden\" name=\"town\" value=\"" + processPaymentRequest.Order.BillingAddress.City + "\" >");
             postForm.AppendLine("<input type=\"hidden\" name=\"signature\" value=\"" + Signature + "\" />");
+            postForm.AppendLine("<input type=\"hidden\" name=\"paymentType\" value=\"" + processPaymentRequest.CreditCardType + "\" />");
             postForm.AppendLine("<input type=\"hidden\" name=\"successURL\" value=\"" + Settings.NotificationUrl + "?transId=" + processPaymentRequest.OrderId + "&orderId=" + processPaymentRequest.OrderNo + "-" + processPaymentRequest.PaymentId + "\" >");
             postForm.AppendLine("<input type=\"hidden\" name=\"returnURL\" value=\"" + Settings.CancelUrl + processPaymentRequest.OrderId + "\" >");
             postForm.AppendLine("<input type=\"hidden\" name=\"MC_callback\" value=\"" + Settings.NotificationUrl + "?transId=" + processPaymentRequest.OrderId + "&orderId=" + processPaymentRequest.OrderNo + "-" + processPaymentRequest.PaymentId + "\" >");

@@ -1,0 +1,52 @@
+﻿@using Omnicx.WebStore.Models.Enums
+<div class="col-xs-12" ng-show="ck.model.checkout.selectedShipping.type == '@ShippingTypes.ClickAndCollect.ToString()'">
+    <form name="clickCollectForm" role="form" class="form-horizontal ng-dirty ng-valid ng-valid-required">
+        <div class="clickCollectContainer">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h5 class="margin-top-sm margin-bottom-sm checkout-h3"> Search For Your Nearest Store </h5>
+                </div>
+            </div>
+            <div class="input-group col-sm-6 col-xs-12 no-padding">
+                <input type="text" class="form-control" ng-model="ck.postCode" placeholder="Enter Post/Zip Code">
+                <span class="input-group-btn">
+                    <button class="btn btn-orange" type="submit" ng-click="ck.searchPhysicalStore(ck.postCode)"><i class="fa fa-search"></i> Search</button>
+                </span>
+            </div>
+        </div>
+    </form>
+    <input id="delivery" name="delivery" type="radio" value="{{method.id}}" class="ng-pristine ng-valid" ng-checked="method.id==ck.basket.shippingMethodId" ng-click="ck.selectedDelivery=method;ck.setShipping(method)">
+
+    <div class="col-sm-12 equalboxUserFull" ng-repeat="store in ck.stores" ng-show="$index<3 || ck.viewMoreStore==false">
+        <div class="col-sm-12 col-xs-12 checkout-method">
+            <div class="col-xs-12 col-sm-7 no-padding border-right-dsk">
+                <div class="control-group">
+                    <label class="control control--radio">
+                        <span class="label-span" ng-bind="store.name"><strong class="pull-right" ng-bind="store.distanceInMiles"> Miles</strong></span>
+                        <span class="label-span-desc-address" ng-bind="store.address1"></span>
+                        <span class="label-span-desc-address" ng-bind="store.address2"></span>
+                        <span class="label-span-desc-address" ng-bind="store.city"></span>
+                        <span class="label-span-desc-address" ng-bind="store.postCode"></span>
+                        <strong class="col-xs-12 col-sm-12 pull-left no-padding label-strong">Available to collect in: <span ng-bind="store.leadTimeMin"></span> <span ng-bind="store.leadTimeUnit"></span></strong>
+                        <strong class="col-xs-12 col-sm-12 pull-left no-padding label-strong"><span ng-bind="store.distanceFromPostCode"></span> Miles Away</strong>
+                        <input type="radio" name="clickandcollectstore" value="{{store}}" ng-click="store.phoneNumber=phoneNumber;store.selectedSlot=selectedSlot;ck.showSlots = $index;ck.setStoreAddress(store)" class="menu-item active" ng-bind="store.name">
+                        <div class="control__indicator"></div>
+                    </label>
+                </div>
+            </div>
+            @*<div class="col-xs-12 col-sm-5" ng-show="ck.showSlots == $index">
+                <strong class="label-strong">When would you like to collect your order?</strong>
+                <select name="slot" class="form-control" ng-init='selectedSlot = store.openingHours[0]' ng-model="selectedSlot" ng-options="x for x in store.openingHours" ng-click="store.phoneNumber=phoneNumber;store.selectedSlot=selectedSlot;ck.setStoreAddress(store)">
+                    <option value="" disabled>Today At</option>
+                </select>
+            </div>*@
+        </div>
+    </div>
+    <div class="col-md-12 text-center" ng-click="ck.viewMoreStore=false" ng-show="ck.viewMoreStore==true && ck.stores.length>3"><a href="">View More </a></div>
+    <div class="col-sm-12 col-xs-12 no-padding margin-top-sm">
+        <div class="col-sm-4 col-xs-12 no-padding">
+            <input type="text" class="form-control" ng-model="phoneNumber" placeholder="Enter Mobile Number" ng-show="ck.stores.length > 0">
+        </div>
+    </div>
+
+</div>

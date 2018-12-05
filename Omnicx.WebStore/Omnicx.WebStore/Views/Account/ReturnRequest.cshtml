@@ -1,0 +1,250 @@
+﻿@{
+/*
+    Name: Return Request
+    Purpose: Return Request Detail View
+    Structure: /Views/Account/ReturnRequest.cshtml
+    Contains (Partial Views Used):
+        a-/Views/Shared/_Layout.cshtml.cshtml   (For base Structure)
+        b-/Views/Account/_MobileSideNav.cshtml  (Navigatiopn For Mobile)
+
+    Contained In (Where we Use this View):
+        a-/Views/Shared/_HeaderLayout.cshtml        (Link in Top Header Bar)
+        b-/Views/Shared/_MobileHeaderLayout.cshtml  (Link in Mobile Header)
+        c-/Views/Account/ReturnHistory.cshtml       (Link for detail view)
+    */
+}
+@using Microsoft.Web.Mvc
+@using Omnicx.WebStore.Models.Enums
+@using Omnicx.WebStore.Core.Controllers
+@using Omnicx.WebStore.Framework.Helpers
+@using Omnicx.WebStore.Core.Helpers
+@using Omnicx.WebStore.Models.Helpers
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Commerce.ReturnModel>
+@{
+    ViewBag.Title = "Return Request";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var userRole = SessionContext.CurrentUserRole;
+
+}
+
+<section class="container dataContainer m--top-60" ng-controller="accountCtrl as am" ng-init="selectedQty=0">
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="/">@LT("MyAccount.Links.Home", "Home")</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("OrderHistory", "Account")">@LT("MyAccount.Links.MyOrders", "My orders")</a>
+                </li>
+                <li><a href="@Url.Action("OrderDetail", "Account", new {id=Model.Id })">@Model.OrderNumber</a></li>
+                <li>
+                    @LT("MyAccount.Text.Return Request", "Return Request")
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div ng-cloak class="alert alert-success" ng-show="am.success">
+                <span class="fa fa-check"></span>
+                @LT("Return.Message.ReturnRequestProcessed", "Your return request has been processed")
+            </div>
+            <div ng-cloak class="alert alert-danger" ng-show="am.readyToReturn">
+                <span class="fa fa-circle"></span>
+                @LT("Return.Message.SelectQty", "Please select quantity")
+            </div>
+        </div>
+        <div class="col-sm-12 col-xs-12">
+            <h1 class="basket-h1">@Model.OrderNumber</h1>
+            <p class="text-muted basket-text">@string.Format(LT("MyAccount.Text.OrderInformation", "Order {0} was placed on {1} and is currently {2}"), Model.OrderNumber, Model.OrderDate, "")</p>
+            <p class="text-muted basket-text">@LT("MyAccount.Text.FeelFree", "If you have any questions, please feel free to ")<a href="@Url.Action("Contact", "pages")">@LT("MyAccount.Text.ContactUs", "Contact Us"),</a> @LT("MyAccount.Text.Support", " our customer service center is working for you 24/7 .") </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 visible-xs" id="exTab1">
+           @Html.Partial("~/Views/Account/_MobileSideNav.cshtml")
+        </div>
+        <div class="col-md-3 col-sm-4 col-xs-12 hidden-xs">
+            @Html.Partial("~/Views/Account/_SideNav.cshtml")
+        </div>
+        <div class="col-md-9 col-sm-8 col-xs-12">
+            <div class="row">
+                <ul>
+                    <li>
+                        <h4><span>@LT("MyAccount.Text.OrderNumber", "Order Number")</span> @Model.OrderNumber</h4>
+                        <h5><span> @LT("MyAccount.Text.OrderDate", "Order Date")</span> @Model.OrderDate</h5>
+                        <h5><span>@LT("MyAccount.Text.OrderStatus", "Order Status")</span> @Model.StatusLabel</h5>
+                    </li>
+                </ul>
+            </div>
+            <h3 class="panel-h2">@LT("MyAccount.Text.ProductOrdered", "Product Ordered")</h3>
+            <div class="box no-padding col-sm-12 col-xs-12 no-border-bottom">
+                <div class="table-responsive">
+                    <div class="col-sm-12 no-padding">
+                        <div class="col-md-8 no-padding" id="customer-order">
+                            <div class="table-responsive">
+                                <table class="table no-margin-bottom basket-table">
+                                    <thead>
+                                        <tr>
+                                            <th>@LT("MyAccount.Text.Product", "Product")</th>
+                                            <th>@LT("MyAccount.Text.Qty", "Quantity")</th>
+                                            <th>@LT("MyAccount.Text.Price", "Unit price")</th>
+                                            <th class="col-lg-3">@LT("MyAccount.Text.AvailableReturn", "Qty Available to Return")</th>
+                                            <th>@LT("MyAccount.Text.RetrunQty", "Return Qty")</th>
+                                            <th>@LT("MyAccount.Text.LineTotal", "Line Total")</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="cart">
+                                        @foreach (var item in @Model.LineItems)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <a ng-href="/@item.Slug">@item.Name</a>
+                                                </td>
+                                                <td>@item.ShippedQty</td>
+                                                <td>@item.Price.Formatted.WithTax</td>
+                                                <td>@item.AvailableQty</td>
+                                                <td>
+                                                    <span ng-if="@item.AvailableQty<=0">@item.AvailableQty</span>
+                                                    <select ng-if="@item.AvailableQty>0" ng-model="selectedQty" ng-change="am.returnProduct('@item.ProductId',selectedQty)" class="form-control">
+                                                        <option value="{{$index}}" ng-repeat="item in am.setQuantity(@item.AvailableQty)" ng-bind="$index"></option>
+                                                    </select>
+                                                </td>
+                                                <td>@Model.CurrencySymbol@item.TotalPrice.Formatted.WithTax</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 no-padding-right">
+                            <div class="summery-border">
+                                <div class="summery-box" id="order-summary">
+                                    <div class="box-header">
+                                        <h3><i class="fa fa-shopping-basket"></i> @LT("Checkout.Label.OrderSummary", "Order Summary")</h3>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table no-margin-top">
+                                            <tbody>
+                                                <tr>
+                                                    <td>@LT("MyAccount.Text.OrderSubtotal", "OrderSubtotal")</td>
+                                                    <th class="text-right">@Model.SubTotal.Formatted.WithoutTax</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>@LT("Myaccount.Text.ShippingCharge", "Shipping and handling")</td>
+                                                    <th class="text-right">@Model.ShippingCharge.Formatted.WithTax</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>@LT("MyAccount.Text.Tax", "Tax")</td>
+                                                    <th class="text-right">@Model.GrandTotal.Formatted.Tax</th>
+                                                </tr>
+                                                <tr class="total">
+                                                    <td>@LT("MyAccount.Text.Amount", "Total")</td>
+                                                    <th class="text-right">@Model.GrandTotal.Formatted.WithTax</th>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.col-md-3 -->
+                        </div>
+                        @*<div class="col-sm-12 no-padding addresses margin-bottom-lg">
+                                <div class="col-sm-6 billing-box">
+                                    <h2 class="billing-h2">@LT("MyAccount.Text.BillingAdd", "Billing Address")</h2>
+                                    @*<p>
+                                        @Model.BillingAddress.FirstName @Model.BillingAddress.LastName
+                                        <br>@Model.BillingAddress.Address1
+                                        <br>@Model.BillingAddress.Address2
+                                        <br>@Model.BillingAddress.City
+                                        <br>@Model.BillingAddress.Country
+                                    </p>
+                                </div>
+                                <div class="col-sm-6 shipping-box">
+                                    <h2 class="billing-h2">@LT("MyAccount.Text.ShippingAddress", "Shipping Address")</h2>
+                                    @*<p>
+                                        @Model.ShippingAddress.FirstName @Model.ShippingAddress.LastName
+                                        <br>@Model.ShippingAddress.Address1
+                                        <br>@Model.ShippingAddress.Address2
+                                        <br>@Model.ShippingAddress.City
+                                        <br>@Model.ShippingAddress.Country
+                                    </p>
+                                </div>
+
+                            </div>*@
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xs-12 padding-sm">
+                    <form ng-submit="am.createReturn(am.model);">
+                        <div class="col-sm-12">
+                            <div ng-cloak class="alert alert-danger" ng-show="am.errorMessage">
+                                <div ng-show="reasonForReturnId">
+                                    <i class="fa fa-circle"></i><span> @LT("MyAccount.Text.ReasonForReturn", "Select reason for return")</span>
+                                </div>
+
+                                <div ng-show="requiredActionId">
+                                    <i class="fa fa-circle"></i><span> @LT("MyAccount.Text.RequiredAction", "Select required action")</span>
+                                </div>
+                                <div ng-show="comment">
+                                    <i class="fa fa-circle"></i><span> @LT("MyAccount.Text.Comment", "Enter comment")</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @LT("MyAccount.Text.ReasonForReturn", "Reason For Return")
+                            </div>
+                            <div class="form-group">
+                                <select ng-model="am.model.reasonForReturnId" class="form-control">
+                                    <option value="">Select</option>
+                                    <option value="Cusomer Right To Cancel">Cusomer Right To Cancel</option>
+                                    <option value="Damaged">Damaged</option>
+                                    <option value="Faulty Product">Faulty Product</option>
+                                    <option value="Incorrect Item Received">Incorrect Item Received</option>
+                                    <option value="Try It First Return">Try It First Return</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                @LT("MyAccount.Text.RequiredAction", "Required Action")
+                            </div>
+                            <div class="form-group">
+                                <select ng-model="am.model.requiredActionId" class="form-control">
+                                    <option value="">Select</option>
+                                    <option value="Refund">@LT("Return.Action.Refund", "Refund")</option>
+                                    <option value="Replacement">@LT("Return.Action.Replacement", "Replacement")</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                @LT("MyAccount.Text.Comment", "Comment")
+                            </div>
+                            <div class="form-group">
+                                <textarea ng-model="am.model.comment" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="col-sm-6">
+                                <button class="animate btn-primary" type="submit">@LT("MyAccount.Button.CreateReturn", "Create Return")  </button>
+                            </div>
+                            <div class="col-sm-6">
+                                <a class="animate btn-default" href="@Url.Action("orderhistory", "account")">@LT("MyAccount.Button.Cancel", "Cancel") </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts{
+    <script>
+        var createReturnUrl = '@(Html.BuildUrlFromExpression<AccountController>(c => c.CreateReturn(null)))';
+        window.app.constant('accountConfig', {
+            createReturnUrl: createReturnUrl
+        });
+        window.app.constant('model', @Html.JsonFor(Model));
+    </script>
+}
