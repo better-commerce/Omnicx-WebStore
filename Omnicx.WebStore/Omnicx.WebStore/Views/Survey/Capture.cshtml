@@ -14,101 +14,44 @@
 @using Omnicx.WebStore.Models.Site
 @using Omnicx.WebStore.Models.Keys
 @using Omnicx.WebStore.Framework.Helpers
+@using Newtonsoft.Json.Linq;
 @using Microsoft.Web.Mvc
 @using Omnicx.WebStore.Core.Controllers
 @{
     Layout = "~/Views/Shared/_LayoutCMS.cshtml";
 }
-<style>
-    .fa-star-o {
-        color: #FF7700;
-    }
-
-    .fa-star {
-        color: #FFDD00;
-        -webkit-text-stroke-width: 2px;
-        -webkit-text-stroke-color: #FF7700;
-    }
-</style>
-<div ng-controller="surveyCtrl as pm">
-    <h1 class="text-center survey-question">@Model.Name</h1>
-    <center id="survey-wizard" class="margin-bottom-lg" style="background:linear-gradient(to right, rgba(0, 0, 0, 0.47) 0%,rgba(0, 0, 0, 0.87) 100%), url('{{pm.model.imageBaseUrl}}{{pm.model.backgroundImage}}')">
-        <div class="row" ng-hide="pm.surveyCompleted">
-            @switch (Model.Output)
-            {
-                case SurveyOutputStyle.BuildABundle:
-                    @Html.Partial("_BuildABundle");
-                    break;
-                case SurveyOutputStyle.SearchProducts:
-                    @Html.Partial("_WizardStyle");
-                    break;
-                case SurveyOutputStyle.QualifyingQuestionnaire:
-                    @Html.Partial("_WizardStyle");
-                    break;
-            }
+<div class="container-lg dataContainerT" ng-controller="surveyCtrl as pm">  
+    <h1 class="text-center">@Model.Name</h1>
+    <div ng-show="pm.showSucess" id="surveyContainer"></div> 
+    <div ng-hide="pm.showSucess" class="row col-md-6 col-lg-6">
+        <div  class="form-group" >
+            <label>@LT("Survey.Text.PleaseEnterEmailToComplete", "Please enter email to complete survey")</label>
+             <input type="text" class="form-control" ng-model="pm.surveyEmail" />
         </div>
-
-        <div class="container margin-bottom-lg">
-            <div class="row wizard-container" ng-show="pm.surveyCompleted">
-                <h2 class="text-center text-white">@Model.ThankYouText</h2>
-                <div class="container">
-                    @{if (Model.Output == SurveyOutputStyle.SearchProducts)
-                        {
-                            <a class="animate btn-primary" ng-click="pm.showRelevantProducts()">
-                                <span>@LT("ProductSurvey.Label.Buyrelevantproducts", "Buy relevant products") <i class="fa fa-product-hunt" aria-hidden="true"></i></span>
-                            </a>
-
-                        }
-                        else
-                        {
-                            <div class="row">
-                                <div class="col-sm-5ths col-lg-5ths col-md-5ths col-xs-5ths wizard-bundle-products" ng-repeat="productBundle in pm.surveyResponse.products">
-                                    <div class="bundle-image-container">
-                                        <a ng-href="/{{productBundle.product.slug}}">
-                                            <img ng-src="{{productBundle.product.image==''?DEFAULT_IMAGE_URL:productBundle.product.image}}" alt="{{productBundle.product.name}}" class="img-responsive">
-                                            <span><span ng-bind="productBundle.product.name"></span></span>
-                                        </a>
-                                    </div>
-                                    <div class="col-sm-8 col-xs-7 wizard-price no-padding">
-                                        <h3 ng-show="gm.incVat">
-                                            <span ng-bind="(productBundle.product.price.formatted.withTax)"></span>
-                                            <span class="sml">@LT("ProductDetail.Label.INCVAT", "INC VAT")</span>
-                                        </h3>
-                                        <h3 ng-show="!gm.incVat">
-                                            <span ng-bind="(productBundle.product.price.formatted.withoutTax)"></span>
-                                            <span class="sml">@LT("ProductDetail.Label.EXVAT", "EX VAT")</span>
-                                        </h3>
-                                    </div>
-                                    <div class="bundle-qty wizard-qty">
-                                        <strong>@LT("ProductSurvey.Label.Qty", "Qty"): </strong><span ng-bind="productBundle.qty"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6 col-xs-12 no-padding">
-                                    <h3 class="text-left text-white">
-                                        @LT("ProductSurvey.Label.TotalPrice", "Total Price"):  <span ng-show="gm.incVat" ng-bind="pm.surveyResponse.price| number :2"></span>
-                                        <span ng-hide="gm.incVat" ng-bind="pm.surveyResponse.priceExcludingVat| number :2"></span>
-                                    </h3>
-                                </div>
-                                <div class="col-sm-6 col-xs-12 text-right">
-                                    <button type="button" class="animate btn-primary" ng-click="pm.addToBag()">
-                                        <span> @LT("ProductSurvey.Label.AddtoBag", "Add to Bag") <i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
-                                    </button>
-                                </div>
-                            </div>
-                        }
-                    }
-                </div>
-            </div>
-        </div>
-    </center>
+        <div class="row">
+            <button ng-click="pm.saveSurveyResponse()" class="btn btn-success pull-right">Submit</button>
+        </div>        
+    </div>    
 </div>
 
 
 @section scripts{
+     <script src="https://surveyjs.azureedge.net/1.0.66/survey.jquery.min.js"></script>
     <script>
-        var saveAnswer = '@(Html.BuildUrlFromExpression<SurveyController>(c => c.SaveAnswer("","")))';
+        Survey.Survey.cssType = "bootstrap";
+        var surveyJSON =  @Html.JsonFor(Model.QuestionJson);
+        
+        function sendDataToServer(survey) {                    
+            PubSub.publish('saveSurveyResponse', survey.data)       
+        }
+        var survey = new Survey.Model(surveyJSON);
+
+        $("#surveyContainer").Survey({
+            model: survey,
+            onComplete:sendDataToServer
+        });
+
+        var saveAnswer = '@(Html.BuildUrlFromExpression<SurveyController>(c => c.SaveAnswer("","","")))';
         var searchUrl = '@(Html.BuildUrlFromExpression<SearchController>(c => c.Search(null)))';
         var addToBagUrl = '@(Html.BuildUrlFromExpression<SurveyController>(c => c.AddToBag(null)))';
         var basketUrl = '@(Html.BuildUrlFromExpression<BasketController>(c => c.Index(null)))';

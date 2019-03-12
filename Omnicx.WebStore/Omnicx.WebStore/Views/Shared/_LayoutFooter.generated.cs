@@ -131,11 +131,13 @@ WriteLiteral(">\r\n                <p");
 
 WriteLiteral(" class=\"pull-left\"");
 
+WriteLiteral(" aria-hidden=\"true\"");
+
 WriteLiteral(">&copy;");
 
             
             #line 20 "..\..\Views\Shared\_LayoutFooter.cshtml"
-                                      Write(DateTime.Now.Year);
+                                                         Write(DateTime.Now.Year);
 
             
             #line default
@@ -144,7 +146,7 @@ WriteLiteral(" ");
 
             
             #line 20 "..\..\Views\Shared\_LayoutFooter.cshtml"
-                                                         Write(LT("Footer.Text.Omnicx", "OCX Store Powered by "));
+                                                                            Write(LT("Footer.Text.Omnicx", "OCX Store Powered by "));
 
             
             #line default
@@ -159,114 +161,121 @@ WriteLiteral(">OmniCX</a></p>\r\n                <p");
 
 WriteLiteral(" class=\"pull-right\"");
 
-WriteLiteral(">\r\n                    <img");
+WriteLiteral(" aria-hidden=\"true\"");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 998), Tuple.Create("\"", 1041)
-, Tuple.Create(Tuple.Create("", 1004), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/payment.png")
-, 1004), false)
+WriteLiteral(">\r\n                    <span");
+
+WriteLiteral(" class=\"label-0\"");
+
+WriteLiteral(">");
+
+            
+            #line 22 "..\..\Views\Shared\_LayoutFooter.cshtml"
+                                     Write(LT("Footer.Label.EnterValidEmail", "Payment"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</span>\r\n                    <img");
+
+WriteAttribute("src", Tuple.Create(" src=\"", 1133), Tuple.Create("\"", 1176)
+, Tuple.Create(Tuple.Create("", 1139), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/payment.png")
+, 1139), false)
 );
 
 WriteLiteral(" alt=\"payments accepted\"");
 
 WriteLiteral(">\r\n                </p>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n" +
-"");
+"\r\n    ");
 
-WriteLiteral("\r\n<div");
+WriteLiteral("\r\n                  ");
 
-WriteLiteral(" class=\"activityBubble\"");
-
-WriteLiteral(">\r\n    <a");
-
-WriteLiteral(" class=\"\"");
-
-WriteLiteral(" ng-click=\"gm.getRecommendations()\"");
-
-WriteLiteral("><img");
-
-WriteAttribute("src", Tuple.Create(" src=\"", 1282), Tuple.Create("\"", 1324)
-, Tuple.Create(Tuple.Create("", 1288), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/bubble.png")
-, 1288), false)
-);
-
-WriteLiteral(" /></a>\r\n</div>\r\n");
-
-            
-            #line 32 "..\..\Views\Shared\_LayoutFooter.cshtml"
-Write(Html.Partial("~/Views/Shared/_RecommendationBubble.cshtml"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n");
+WriteLiteral("\r\n                  ");
 
 WriteLiteral("\r\n");
 
-            
-            #line 34 "..\..\Views\Shared\_LayoutFooter.cshtml"
-Write(Html.GetGlobalSnipptes(SnippetPlacements.FooterAfter));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n");
-
-            
-            #line 35 "..\..\Views\Shared\_LayoutFooter.cshtml"
-Write(Html.Partial(CustomViews.QUICK_ORDER_PAD));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n");
+WriteLiteral("                  ");
 
             
             #line 36 "..\..\Views\Shared\_LayoutFooter.cshtml"
-Write(Html.Partial(CustomViews.BULK_ORDER_MESSAGE));
+             Write(Html.GetGlobalSnipptes(SnippetPlacements.FooterAfter));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n\r\n");
+WriteLiteral("\r\n");
+
+WriteLiteral("                  ");
+
+            
+            #line 37 "..\..\Views\Shared\_LayoutFooter.cshtml"
+             Write(Html.Partial(CustomViews.QUICK_ORDER_PAD));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n");
+
+WriteLiteral("                  ");
 
             
             #line 38 "..\..\Views\Shared\_LayoutFooter.cshtml"
-Write(Html.Partial("~/Views/Shared/_Login.cshtml", new LoginViewModel { Username = "", Password = "" }));
+             Write(Html.Partial(CustomViews.BULK_ORDER_MESSAGE));
 
             
             #line default
             #line hidden
 WriteLiteral("\r\n");
+
+WriteLiteral("                  ");
 
             
             #line 39 "..\..\Views\Shared\_LayoutFooter.cshtml"
-Write(Html.Partial("~/Views/Shared/_Register.cshtml", new UserModel { }));
+             Write(Html.Partial("~/Views/Shared/_Login.cshtml", new LoginViewModel { Username = "", Password = "" }));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n\r\n");
+WriteLiteral("\r\n");
+
+WriteLiteral("                  ");
+
+            
+            #line 40 "..\..\Views\Shared\_LayoutFooter.cshtml"
+             Write(Html.Partial("~/Views/Shared/_Register.cshtml", new UserModel { }));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n");
+
+WriteLiteral("                  ");
 
             
             #line 41 "..\..\Views\Shared\_LayoutFooter.cshtml"
-Write(Scripts.Render("~/bundles/jq-ang"));
+             Write(Scripts.Render("~/bundles/jq-ang"));
 
             
             #line default
             #line hidden
 WriteLiteral("\r\n");
+
+WriteLiteral("                  ");
 
             
             #line 42 "..\..\Views\Shared\_LayoutFooter.cshtml"
-Write(Scripts.Render("~/bundles/custom-libs"));
+             Write(Scripts.Render("~/bundles/custom-libs"));
 
             
             #line default
             #line hidden
 WriteLiteral("\r\n");
 
+WriteLiteral("                  ");
+
             
             #line 43 "..\..\Views\Shared\_LayoutFooter.cshtml"
-Write(Scripts.Render("~/bundles/app-js"));
+             Write(Scripts.Render("~/bundles/app-js"));
 
             
             #line default

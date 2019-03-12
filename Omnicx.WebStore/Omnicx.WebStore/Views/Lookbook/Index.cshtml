@@ -39,7 +39,7 @@
                 <div class="col-sm-3 col-xs-6 margin-bottom-lg" ng-repeat="lookbook in gm.model.DynamicLists track by $index">
                     <a href="{{lookbook.Link}}">
                         <figure>
-                            <img src="{{lookbook.MainImage}}" onerror="this.src = DEFAULT_IMAGE_URL" />
+                            <img ng-src="{{lookbook.MainImage}}" onerror="this.src = DEFAULT_IMAGE_URL" sizes="(min-width: 768px) 540px, 100vw" />
                             <span ng-bind="lookbook.Name"></span>
                         </figure>
                     </a>

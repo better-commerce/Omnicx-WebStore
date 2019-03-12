@@ -116,14 +116,14 @@ WriteLiteral(" class=\"image\"");
 
 WriteLiteral(">\r\n                <img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 1145), Tuple.Create("\"", 1163)
+WriteAttribute("src", Tuple.Create(" src=\"", 1129), Tuple.Create("\"", 1147)
             
             #line 31 "..\..\Views\Category\CategoryLanding.cshtml"
-, Tuple.Create(Tuple.Create("", 1151), Tuple.Create<System.Object, System.Int32>(Model.Image
+, Tuple.Create(Tuple.Create("", 1135), Tuple.Create<System.Object, System.Int32>(Model.Image
             
             #line default
             #line hidden
-, 1151), false)
+, 1135), false)
 );
 
 WriteLiteral(" alt=\"\"");
@@ -204,30 +204,30 @@ WriteLiteral(" class=\"colour inline-block\"");
 
 WriteLiteral(">\r\n                                            <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2139), Tuple.Create("\"", 2157)
-, Tuple.Create(Tuple.Create("", 2146), Tuple.Create("/", 2146), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 2123), Tuple.Create("\"", 2141)
+, Tuple.Create(Tuple.Create("", 2130), Tuple.Create("/", 2130), true)
             
             #line 49 "..\..\Views\Category\CategoryLanding.cshtml"
-, Tuple.Create(Tuple.Create("", 2147), Tuple.Create<System.Object, System.Int32>(link.Link
+, Tuple.Create(Tuple.Create("", 2131), Tuple.Create<System.Object, System.Int32>(link.Link
             
             #line default
             #line hidden
-, 2147), false)
+, 2131), false)
 );
 
 WriteLiteral("><span");
 
 WriteLiteral(" class=\"colour\"");
 
-WriteAttribute("style", Tuple.Create(" style=\"", 2179), Tuple.Create("\"", 2214)
-, Tuple.Create(Tuple.Create("", 2187), Tuple.Create("background-color:", 2187), true)
+WriteAttribute("style", Tuple.Create(" style=\"", 2163), Tuple.Create("\"", 2198)
+, Tuple.Create(Tuple.Create("", 2171), Tuple.Create("background-color:", 2171), true)
             
             #line 49 "..\..\Views\Category\CategoryLanding.cshtml"
-                               , Tuple.Create(Tuple.Create("", 2204), Tuple.Create<System.Object, System.Int32>(link.Name
+                               , Tuple.Create(Tuple.Create("", 2188), Tuple.Create<System.Object, System.Int32>(link.Name
             
             #line default
             #line hidden
-, 2204), false)
+, 2188), false)
 );
 
 WriteLiteral("></span></a>\r\n                                        </li>\r\n");
@@ -247,15 +247,15 @@ WriteLiteral("></span></a>\r\n                                        </li>\r\n"
 WriteLiteral("                                        <li>\r\n                                   " +
 "         <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2625), Tuple.Create("\"", 2643)
-, Tuple.Create(Tuple.Create("", 2632), Tuple.Create("/", 2632), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 2609), Tuple.Create("\"", 2627)
+, Tuple.Create(Tuple.Create("", 2616), Tuple.Create("/", 2616), true)
             
             #line 58 "..\..\Views\Category\CategoryLanding.cshtml"
-, Tuple.Create(Tuple.Create("", 2633), Tuple.Create<System.Object, System.Int32>(link.Link
+, Tuple.Create(Tuple.Create("", 2617), Tuple.Create<System.Object, System.Int32>(link.Link
             
             #line default
             #line hidden
-, 2633), false)
+, 2617), false)
 );
 
 WriteLiteral(">");
@@ -449,17 +449,17 @@ WriteLiteral(" data-slide-to=\"");
             #line hidden
 WriteLiteral("\"");
 
-WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 4137), Tuple.Create("\"", 4172)
-, Tuple.Create(Tuple.Create("", 4148), Tuple.Create("{active", 4148), true)
-, Tuple.Create(Tuple.Create(" ", 4155), Tuple.Create(":", 4156), true)
+WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 4121), Tuple.Create("\"", 4156)
+, Tuple.Create(Tuple.Create("", 4132), Tuple.Create("{active", 4132), true)
+, Tuple.Create(Tuple.Create(" ", 4139), Tuple.Create(":", 4140), true)
             
             #line 94 "..\..\Views\Category\CategoryLanding.cshtml"
-                                          , Tuple.Create(Tuple.Create(" ", 4157), Tuple.Create<System.Object, System.Int32>(img.index
+                                          , Tuple.Create(Tuple.Create(" ", 4141), Tuple.Create<System.Object, System.Int32>(img.index
             
             #line default
             #line hidden
-, 4158), false)
-, Tuple.Create(Tuple.Create("", 4168), Tuple.Create("==0}", 4168), true)
+, 4142), false)
+, Tuple.Create(Tuple.Create("", 4152), Tuple.Create("==0}", 4152), true)
 );
 
 WriteLiteral("></li>\r\n");
@@ -495,17 +495,17 @@ WriteLiteral("                                <div");
 
 WriteLiteral(" class=\"item\"");
 
-WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 4486), Tuple.Create("\"", 4521)
-, Tuple.Create(Tuple.Create("", 4497), Tuple.Create("{active", 4497), true)
-, Tuple.Create(Tuple.Create(" ", 4504), Tuple.Create(":", 4505), true)
+WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 4470), Tuple.Create("\"", 4505)
+, Tuple.Create(Tuple.Create("", 4481), Tuple.Create("{active", 4481), true)
+, Tuple.Create(Tuple.Create(" ", 4488), Tuple.Create(":", 4489), true)
             
             #line 101 "..\..\Views\Category\CategoryLanding.cshtml"
-, Tuple.Create(Tuple.Create(" ", 4506), Tuple.Create<System.Object, System.Int32>(img.index
+, Tuple.Create(Tuple.Create(" ", 4490), Tuple.Create<System.Object, System.Int32>(img.index
             
             #line default
             #line hidden
-, 4507), false)
-, Tuple.Create(Tuple.Create("", 4517), Tuple.Create("==0}", 4517), true)
+, 4491), false)
+, Tuple.Create(Tuple.Create("", 4501), Tuple.Create("==0}", 4501), true)
 );
 
 WriteLiteral(">\r\n");
@@ -526,44 +526,46 @@ WriteLiteral(">\r\n");
             #line hidden
 WriteLiteral("                                        <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 4708), Tuple.Create("\"", 4728)
+WriteAttribute("href", Tuple.Create(" href=\"", 4692), Tuple.Create("\"", 4712)
             
             #line 104 "..\..\Views\Category\CategoryLanding.cshtml"
-, Tuple.Create(Tuple.Create("", 4715), Tuple.Create<System.Object, System.Int32>(img.obj.Link
+, Tuple.Create(Tuple.Create("", 4699), Tuple.Create<System.Object, System.Int32>(img.obj.Link
             
             #line default
             #line hidden
-, 4715), false)
+, 4699), false)
 );
 
 WriteLiteral(">\r\n                                            <img");
 
-WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 4780), Tuple.Create("\"", 4801)
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 4764), Tuple.Create("\"", 4785)
             
             #line 105 "..\..\Views\Category\CategoryLanding.cshtml"
-, Tuple.Create(Tuple.Create("", 4789), Tuple.Create<System.Object, System.Int32>(img.obj.Url
+, Tuple.Create(Tuple.Create("", 4773), Tuple.Create<System.Object, System.Int32>(img.obj.Url
             
             #line default
             #line hidden
-, 4789), false)
+, 4773), false)
 );
 
-WriteAttribute("alt", Tuple.Create(" alt=\"", 4802), Tuple.Create("\"", 4836)
-, Tuple.Create(Tuple.Create("", 4808), Tuple.Create("Slide", 4808), true)
+WriteAttribute("alt", Tuple.Create(" alt=\"", 4786), Tuple.Create("\"", 4820)
+, Tuple.Create(Tuple.Create("", 4792), Tuple.Create("Slide", 4792), true)
             
             #line 105 "..\..\Views\Category\CategoryLanding.cshtml"
- , Tuple.Create(Tuple.Create(" ", 4813), Tuple.Create<System.Object, System.Int32>(img.index
+ , Tuple.Create(Tuple.Create(" ", 4797), Tuple.Create<System.Object, System.Int32>(img.index
             
             #line default
             #line hidden
-, 4814), false)
-, Tuple.Create(Tuple.Create(" ", 4824), Tuple.Create("of", 4825), true)
-, Tuple.Create(Tuple.Create(" ", 4827), Tuple.Create("Carousel", 4828), true)
+, 4798), false)
+, Tuple.Create(Tuple.Create(" ", 4808), Tuple.Create("of", 4809), true)
+, Tuple.Create(Tuple.Create(" ", 4811), Tuple.Create("Carousel", 4812), true)
 );
 
-WriteLiteral(" class=\"img-responsive image1\"");
+WriteLiteral(" class=\"img-responsive omni-img image1\"");
 
 WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
+
+WriteLiteral(" sizes=\"(min-width: 768px) 540px, 100vw\"");
 
 WriteLiteral(">\r\n                                            <div");
 
@@ -610,32 +612,34 @@ WriteLiteral("</p>\r\n                                            </div>\r\n    
             #line hidden
 WriteLiteral("                                        <img");
 
-WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 5500), Tuple.Create("\"", 5521)
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 5533), Tuple.Create("\"", 5554)
             
             #line 115 "..\..\Views\Category\CategoryLanding.cshtml"
-, Tuple.Create(Tuple.Create("", 5509), Tuple.Create<System.Object, System.Int32>(img.obj.Url
+, Tuple.Create(Tuple.Create("", 5542), Tuple.Create<System.Object, System.Int32>(img.obj.Url
             
             #line default
             #line hidden
-, 5509), false)
+, 5542), false)
 );
 
-WriteAttribute("alt", Tuple.Create(" alt=\"", 5522), Tuple.Create("\"", 5556)
-, Tuple.Create(Tuple.Create("", 5528), Tuple.Create("Slide", 5528), true)
+WriteAttribute("alt", Tuple.Create(" alt=\"", 5555), Tuple.Create("\"", 5589)
+, Tuple.Create(Tuple.Create("", 5561), Tuple.Create("Slide", 5561), true)
             
             #line 115 "..\..\Views\Category\CategoryLanding.cshtml"
-, Tuple.Create(Tuple.Create(" ", 5533), Tuple.Create<System.Object, System.Int32>(img.index
+, Tuple.Create(Tuple.Create(" ", 5566), Tuple.Create<System.Object, System.Int32>(img.index
             
             #line default
             #line hidden
-, 5534), false)
-, Tuple.Create(Tuple.Create(" ", 5544), Tuple.Create("of", 5545), true)
-, Tuple.Create(Tuple.Create(" ", 5547), Tuple.Create("Carousel", 5548), true)
+, 5567), false)
+, Tuple.Create(Tuple.Create(" ", 5577), Tuple.Create("of", 5578), true)
+, Tuple.Create(Tuple.Create(" ", 5580), Tuple.Create("Carousel", 5581), true)
 );
 
-WriteLiteral(" class=\"img-responsive image1\"");
+WriteLiteral(" class=\"img-responsive omni-img image1\"");
 
 WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
+
+WriteLiteral(" sizes=\"(min-width: 768px) 540px, 100vw\"");
 
 WriteLiteral(">\r\n");
 
@@ -688,14 +692,14 @@ WriteLiteral("</p>\r\n                                            <p>\r\n");
             #line hidden
 WriteLiteral("                                                    <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 6212), Tuple.Create("\"", 6232)
+WriteAttribute("href", Tuple.Create(" href=\"", 6294), Tuple.Create("\"", 6314)
             
             #line 123 "..\..\Views\Category\CategoryLanding.cshtml"
-, Tuple.Create(Tuple.Create("", 6219), Tuple.Create<System.Object, System.Int32>(img.obj.Link
+, Tuple.Create(Tuple.Create("", 6301), Tuple.Create<System.Object, System.Int32>(img.obj.Link
             
             #line default
             #line hidden
-, 6219), false)
+, 6301), false)
 );
 
 WriteLiteral(" class=\"shop-now\"");
@@ -821,34 +825,36 @@ WriteLiteral(" class=\"image\"");
 
 WriteLiteral(">\r\n                                <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 7542), Tuple.Create("\"", 7559)
-, Tuple.Create(Tuple.Create("", 7549), Tuple.Create("/", 7549), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 7624), Tuple.Create("\"", 7641)
+, Tuple.Create(Tuple.Create("", 7631), Tuple.Create("/", 7631), true)
             
             #line 152 "..\..\Views\Category\CategoryLanding.cshtml"
-, Tuple.Create(Tuple.Create("", 7550), Tuple.Create<System.Object, System.Int32>(cat.Link
+, Tuple.Create(Tuple.Create("", 7632), Tuple.Create<System.Object, System.Int32>(cat.Link
             
             #line default
             #line hidden
-, 7550), false)
+, 7632), false)
 );
 
 WriteLiteral(">\r\n                                    <img");
 
-WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 7603), Tuple.Create("\"", 7622)
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 7685), Tuple.Create("\"", 7704)
             
             #line 153 "..\..\Views\Category\CategoryLanding.cshtml"
-, Tuple.Create(Tuple.Create("", 7612), Tuple.Create<System.Object, System.Int32>(cat.Image
+, Tuple.Create(Tuple.Create("", 7694), Tuple.Create<System.Object, System.Int32>(cat.Image
             
             #line default
             #line hidden
-, 7612), false)
+, 7694), false)
 );
 
 WriteLiteral(" alt=\"\"");
 
-WriteLiteral(" class=\"img-responsive image1\"");
+WriteLiteral(" class=\"img-responsive omni-img image1\"");
 
 WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
+
+WriteLiteral(" sizes=\"(min-width: 768px) 540px, 100vw\"");
 
 WriteLiteral(">\r\n                                </a>  ");
 
@@ -862,15 +868,15 @@ WriteLiteral(" class=\"brand-h3\"");
 
 WriteLiteral("><a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 7904), Tuple.Create("\"", 7921)
-, Tuple.Create(Tuple.Create("", 7911), Tuple.Create("/", 7911), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 8035), Tuple.Create("\"", 8052)
+, Tuple.Create(Tuple.Create("", 8042), Tuple.Create("/", 8042), true)
             
             #line 157 "..\..\Views\Category\CategoryLanding.cshtml"
-, Tuple.Create(Tuple.Create("", 7912), Tuple.Create<System.Object, System.Int32>(cat.Link
+, Tuple.Create(Tuple.Create("", 8043), Tuple.Create<System.Object, System.Int32>(cat.Link
             
             #line default
             #line hidden
-, 7912), false)
+, 8043), false)
 );
 
 WriteLiteral(">");
@@ -989,21 +995,23 @@ WriteLiteral(" class=\"image\"");
 
 WriteLiteral(">\r\n                            <img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 8991), Tuple.Create("\"", 9009)
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 9122), Tuple.Create("\"", 9143)
             
             #line 184 "..\..\Views\Category\CategoryLanding.cshtml"
-, Tuple.Create(Tuple.Create("", 8997), Tuple.Create<System.Object, System.Int32>(Model.Image
+, Tuple.Create(Tuple.Create("", 9131), Tuple.Create<System.Object, System.Int32>(Model.Image
             
             #line default
             #line hidden
-, 8997), false)
+, 9131), false)
 );
 
 WriteLiteral(" alt=\"\"");
 
-WriteLiteral(" class=\"img-responsive image1\"");
+WriteLiteral(" class=\"img-responsive omni-img image1\"");
 
 WriteLiteral(" onerror=\"this.src=DEFAULT_IMAGE_URL\"");
+
+WriteLiteral(" sizes=\"(min-width: 768px) 540px, 100vw\"");
 
 WriteLiteral(">\r\n                        </div>\r\n");
 
@@ -1077,30 +1085,30 @@ WriteLiteral(" class=\"colour inline-block\"");
 WriteLiteral(">\r\n                                                    \r\n                        " +
 "                            <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 10204), Tuple.Create("\"", 10222)
-, Tuple.Create(Tuple.Create("", 10211), Tuple.Create("/", 10211), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 10387), Tuple.Create("\"", 10405)
+, Tuple.Create(Tuple.Create("", 10394), Tuple.Create("/", 10394), true)
             
             #line 202 "..\..\Views\Category\CategoryLanding.cshtml"
-, Tuple.Create(Tuple.Create("", 10212), Tuple.Create<System.Object, System.Int32>(link.Link
+, Tuple.Create(Tuple.Create("", 10395), Tuple.Create<System.Object, System.Int32>(link.Link
             
             #line default
             #line hidden
-, 10212), false)
+, 10395), false)
 );
 
 WriteLiteral(" ><span");
 
 WriteLiteral(" class=\"colour\"");
 
-WriteAttribute("style", Tuple.Create(" style=\"", 10245), Tuple.Create("\"", 10280)
-, Tuple.Create(Tuple.Create("", 10253), Tuple.Create("background-color:", 10253), true)
+WriteAttribute("style", Tuple.Create(" style=\"", 10428), Tuple.Create("\"", 10463)
+, Tuple.Create(Tuple.Create("", 10436), Tuple.Create("background-color:", 10436), true)
             
             #line 202 "..\..\Views\Category\CategoryLanding.cshtml"
-                                       , Tuple.Create(Tuple.Create("", 10270), Tuple.Create<System.Object, System.Int32>(link.Name
+                                       , Tuple.Create(Tuple.Create("", 10453), Tuple.Create<System.Object, System.Int32>(link.Name
             
             #line default
             #line hidden
-, 10270), false)
+, 10453), false)
 );
 
 WriteLiteral("></span></a>\r\n                                                 </li>\r\n");
@@ -1120,15 +1128,15 @@ WriteLiteral("></span></a>\r\n                                                 <
 WriteLiteral("                                                <li>\r\n                           " +
 "                         <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 10764), Tuple.Create("\"", 10782)
-, Tuple.Create(Tuple.Create("", 10771), Tuple.Create("/", 10771), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 10947), Tuple.Create("\"", 10965)
+, Tuple.Create(Tuple.Create("", 10954), Tuple.Create("/", 10954), true)
             
             #line 211 "..\..\Views\Category\CategoryLanding.cshtml"
-, Tuple.Create(Tuple.Create("", 10772), Tuple.Create<System.Object, System.Int32>(link.Link
+, Tuple.Create(Tuple.Create("", 10955), Tuple.Create<System.Object, System.Int32>(link.Link
             
             #line default
             #line hidden
-, 10772), false)
+, 10955), false)
 );
 
 WriteLiteral(">");

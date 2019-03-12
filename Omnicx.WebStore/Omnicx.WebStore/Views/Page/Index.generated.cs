@@ -104,6 +104,18 @@ Write(Html.Partial("~/Views/Page/_IndexJson.cshtml", Model));
             
             #line default
             #line hidden
+WriteLiteral("\r\n<bt-recommendation");
+
+WriteLiteral(" type=\"Home\"");
+
+WriteLiteral(" showmodel=\"true\"");
+
+WriteLiteral(" modelid=\"\"");
+
+WriteLiteral(" noofitems=\"10\"");
+
+WriteLiteral(" />\r\n");
+
         }
     }
 }

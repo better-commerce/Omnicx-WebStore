@@ -31,13 +31,13 @@ namespace ASP
     using Omnicx.WebStore;
     using Omnicx.WebStore.Core;
     
-    #line 11 "..\..\Views\Page\_IndexJson.cshtml"
+    #line 12 "..\..\Views\Page\_IndexJson.cshtml"
     using Omnicx.WebStore.Models.Enums;
     
     #line default
     #line hidden
     
-    #line 12 "..\..\Views\Page\_IndexJson.cshtml"
+    #line 13 "..\..\Views\Page\_IndexJson.cshtml"
     using Omnicx.WebStore.Models.Helpers;
     
     #line default
@@ -55,14 +55,15 @@ namespace ASP
             
             #line 1 "..\..\Views\Page\_IndexJson.cshtml"
   
-/*
-    Name: Json Home Page Customize UI
-    Purpose: WebStore Home page contain customize design with HTML Layout and json call
-    Structure: /Views/Page/_IndexJson.cshtml
-    Contains (Partial Views Used): NO Partial View Used
-    Contained In (Where we Use this View):
-        a-/Views/Page/Index.cshtml
-    */
+    /*
+        Name: Json Home Page Customize UI
+        Purpose: WebStore Home page contain customize design with HTML Layout and json call
+        Structure: /Views/Page/_IndexJson.cshtml
+        Contains (Partial Views Used): NO Partial View Used
+        Contained In (Where we Use this View):
+            a-/Views/Page/Index.cshtml
+        */
+    int DefaultItemsRow = 4;
 
             
             #line default
@@ -101,20 +102,24 @@ WriteLiteral(" ng-cloak>\r\n");
             #line hidden
 WriteLiteral("                        <div");
 
-WriteLiteral(" class=\"col-sm-12 col-xs-12\"");
+WriteLiteral(" class=\"row\"");
 
 WriteLiteral(">\r\n                            <div");
 
-WriteAttribute("id", Tuple.Create(" id=\"", 1136), Tuple.Create("\"", 1169)
-, Tuple.Create(Tuple.Create("", 1141), Tuple.Create("multiCarousal{{", 1141), true)
+WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding whiteContainer\"");
+
+WriteLiteral(">\r\n                                <div");
+
+WriteAttribute("id", Tuple.Create(" id=\"", 1273), Tuple.Create("\"", 1306)
+, Tuple.Create(Tuple.Create("", 1278), Tuple.Create("multiCarousal{{", 1278), true)
             
-            #line 29 "..\..\Views\Page\_IndexJson.cshtml"
-, Tuple.Create(Tuple.Create("", 1156), Tuple.Create<System.Object, System.Int32>(CarosalSno
+            #line 30 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create("", 1293), Tuple.Create<System.Object, System.Int32>(CarosalSno
             
             #line default
             #line hidden
-, 1156), false)
-, Tuple.Create(Tuple.Create("", 1167), Tuple.Create("}}", 1167), true)
+, 1293), false)
+, Tuple.Create(Tuple.Create("", 1304), Tuple.Create("}}", 1304), true)
 );
 
 WriteLiteral(" class=\"carousel slide\"");
@@ -126,8 +131,8 @@ WriteLiteral(" data-type=\"multi\"");
 WriteLiteral(" data-interval=\"");
 
             
-            #line 29 "..\..\Views\Page\_IndexJson.cshtml"
-                                                                                                                                           Write(component.SliderTime);
+            #line 30 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                                               Write(component.SliderTime);
 
             
             #line default
@@ -137,200 +142,213 @@ WriteLiteral("\"");
 WriteLiteral(" data-autoplay=\"");
 
             
-            #line 29 "..\..\Views\Page\_IndexJson.cshtml"
-                                                                                                                                                                                 Write(component.Autoplay);
+            #line 30 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                                                                                     Write(component.Autoplay);
 
             
             #line default
             #line hidden
 WriteLiteral("\"");
 
-WriteLiteral(">\r\n                                <div");
+WriteLiteral(">\r\n                                    <div");
 
-WriteLiteral(" class=\"carousel-inner\"");
+WriteLiteral(" class=\"carousel-inner multi-inner\"");
 
 WriteLiteral(">\r\n");
 
             
-            #line 31 "..\..\Views\Page\_IndexJson.cshtml"
-                                    
+            #line 32 "..\..\Views\Page\_IndexJson.cshtml"
+                                        
             
             #line default
             #line hidden
             
-            #line 31 "..\..\Views\Page\_IndexJson.cshtml"
-                                     foreach (var img in component.Images.Select((obj, index) => new { index, obj }))
-                            {
+            #line 32 "..\..\Views\Page\_IndexJson.cshtml"
+                                         foreach (var img in component.Images.Select((obj, index) => new { index, obj }))
+                                        {
 
             
             #line default
             #line hidden
-WriteLiteral("                                        <div");
+WriteLiteral("                                            <div");
 
 WriteLiteral(" class=\"item\"");
 
-WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 1578), Tuple.Create("\"", 1613)
-, Tuple.Create(Tuple.Create("", 1589), Tuple.Create("{active", 1589), true)
-, Tuple.Create(Tuple.Create(" ", 1596), Tuple.Create(":", 1597), true)
+WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 1751), Tuple.Create("\"", 1786)
+, Tuple.Create(Tuple.Create("", 1762), Tuple.Create("{active", 1762), true)
+, Tuple.Create(Tuple.Create(" ", 1769), Tuple.Create(":", 1770), true)
             
-            #line 33 "..\..\Views\Page\_IndexJson.cshtml"
-, Tuple.Create(Tuple.Create(" ", 1598), Tuple.Create<System.Object, System.Int32>(img.index
+            #line 34 "..\..\Views\Page\_IndexJson.cshtml"
+ , Tuple.Create(Tuple.Create(" ", 1771), Tuple.Create<System.Object, System.Int32>(img.index
             
             #line default
             #line hidden
-, 1599), false)
-, Tuple.Create(Tuple.Create("", 1609), Tuple.Create("==0}", 1609), true)
+, 1772), false)
+, Tuple.Create(Tuple.Create("", 1782), Tuple.Create("==0}", 1782), true)
 );
-
-WriteLiteral(">\r\n                                            <div");
-
-WriteLiteral(" class=\"carousel-col\"");
 
 WriteLiteral(">\r\n                                                <div");
 
+WriteAttribute("class", Tuple.Create(" class=\"", 1842), Tuple.Create("\"", 1889)
+, Tuple.Create(Tuple.Create("", 1850), Tuple.Create("carousel-col-", 1850), true)
+            
+            #line 35 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create("", 1863), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 1863), false)
+);
+
+WriteLiteral(">\r\n                                                    <div");
+
 WriteLiteral(" class=\"gallery-container\"");
 
-WriteLiteral(">\r\n                                                    <a");
+WriteLiteral(">\r\n                                                        <a");
 
 WriteLiteral(" class=\"lightbox\"");
 
-WriteAttribute("title", Tuple.Create(" title=\"", 1841), Tuple.Create("\"", 1863)
-            
-            #line 36 "..\..\Views\Page\_IndexJson.cshtml"
-, Tuple.Create(Tuple.Create("", 1849), Tuple.Create<System.Object, System.Int32>(img.obj.Title
-            
-            #line default
-            #line hidden
-, 1849), false)
-);
-
-WriteAttribute("description", Tuple.Create(" description=\"", 1864), Tuple.Create("\"", 1898)
-            
-            #line 36 "..\..\Views\Page\_IndexJson.cshtml"
-                            , Tuple.Create(Tuple.Create("", 1878), Tuple.Create<System.Object, System.Int32>(img.obj.Description
-            
-            #line default
-            #line hidden
-, 1878), false)
-);
-
-WriteAttribute("imgLink", Tuple.Create(" imgLink=\"", 1899), Tuple.Create("\"", 1922)
-            
-            #line 36 "..\..\Views\Page\_IndexJson.cshtml"
-                                                           , Tuple.Create(Tuple.Create("", 1909), Tuple.Create<System.Object, System.Int32>(img.obj.Link
-            
-            #line default
-            #line hidden
-, 1909), false)
-);
-
-WriteLiteral(">\r\n                                                        <img");
-
-WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 1986), Tuple.Create("\"", 2007)
+WriteAttribute("title", Tuple.Create(" title=\"", 2053), Tuple.Create("\"", 2075)
             
             #line 37 "..\..\Views\Page\_IndexJson.cshtml"
-, Tuple.Create(Tuple.Create("", 1995), Tuple.Create<System.Object, System.Int32>(img.obj.Url
+   , Tuple.Create(Tuple.Create("", 2061), Tuple.Create<System.Object, System.Int32>(img.obj.Title
             
             #line default
             #line hidden
-, 1995), false)
+, 2061), false)
 );
 
-WriteAttribute("alt", Tuple.Create(" alt=\"", 2008), Tuple.Create("\"", 2031)
+WriteAttribute("description", Tuple.Create(" description=\"", 2076), Tuple.Create("\"", 2110)
             
             #line 37 "..\..\Views\Page\_IndexJson.cshtml"
-        , Tuple.Create(Tuple.Create("", 2014), Tuple.Create<System.Object, System.Int32>(img.obj.SubTitle
+                                , Tuple.Create(Tuple.Create("", 2090), Tuple.Create<System.Object, System.Int32>(img.obj.Description
             
             #line default
             #line hidden
-, 2014), false)
+, 2090), false)
 );
 
-WriteAttribute("title", Tuple.Create(" title=\"", 2032), Tuple.Create("\"", 2054)
+WriteAttribute("imgLink", Tuple.Create(" imgLink=\"", 2111), Tuple.Create("\"", 2134)
             
             #line 37 "..\..\Views\Page\_IndexJson.cshtml"
-                                  , Tuple.Create(Tuple.Create("", 2040), Tuple.Create<System.Object, System.Int32>(img.obj.Title
+                                                               , Tuple.Create(Tuple.Create("", 2121), Tuple.Create<System.Object, System.Int32>(img.obj.Link
             
             #line default
             #line hidden
-, 2040), false)
+, 2121), false)
 );
 
-WriteLiteral(" class=\"img-responsive\"");
+WriteLiteral(">\r\n                                                            <img");
 
-WriteLiteral(" />\r\n                                                    </a>\r\n                  " +
-"                              </div>\r\n                                          " +
-"      <p");
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 2202), Tuple.Create("\"", 2223)
+            
+            #line 38 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create("", 2211), Tuple.Create<System.Object, System.Int32>(img.obj.Url
+            
+            #line default
+            #line hidden
+, 2211), false)
+);
+
+WriteLiteral(" alt=\"Banner Image\"");
+
+WriteAttribute("title", Tuple.Create(" title=\"", 2243), Tuple.Create("\"", 2265)
+            
+            #line 38 "..\..\Views\Page\_IndexJson.cshtml"
+                                 , Tuple.Create(Tuple.Create("", 2251), Tuple.Create<System.Object, System.Int32>(img.obj.Title
+            
+            #line default
+            #line hidden
+, 2251), false)
+);
+
+WriteLiteral(" class=\"img-responsive omni-img\"");
+
+WriteLiteral(" />\r\n                                                        </a>\r\n              " +
+"                                      </div>\r\n                                  " +
+"                  <p");
 
 WriteLiteral(" class=\"gallery-text\"");
+
+WriteLiteral(" aria-hidden=\"true\"");
 
 WriteLiteral(">");
 
             
-            #line 40 "..\..\Views\Page\_IndexJson.cshtml"
-                                                                   Write(img.obj.Description);
+            #line 41 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                          Write(img.obj.Description);
 
             
             #line default
             #line hidden
-WriteLiteral("</p>\r\n                                            </div>\r\n                       " +
-"                 </div>\r\n");
+WriteLiteral("</p>\r\n                                                </div>\r\n                   " +
+"                         </div>\r\n");
 
             
-            #line 43 "..\..\Views\Page\_IndexJson.cshtml"
-                                    }
+            #line 44 "..\..\Views\Page\_IndexJson.cshtml"
+                                        }
 
             
             #line default
             #line hidden
-WriteLiteral("                                </div>\r\n                                <a");
+WriteLiteral("                                    </div>\r\n                                    <" +
+"a");
 
 WriteLiteral(" class=\"left carousel-control\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2538), Tuple.Create("\"", 2574)
-, Tuple.Create(Tuple.Create("", 2545), Tuple.Create("#multiCarousal{{", 2545), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 2809), Tuple.Create("\"", 2845)
+, Tuple.Create(Tuple.Create("", 2816), Tuple.Create("#multiCarousal{{", 2816), true)
             
-            #line 45 "..\..\Views\Page\_IndexJson.cshtml"
-       , Tuple.Create(Tuple.Create("", 2561), Tuple.Create<System.Object, System.Int32>(CarosalSno
+            #line 46 "..\..\Views\Page\_IndexJson.cshtml"
+           , Tuple.Create(Tuple.Create("", 2832), Tuple.Create<System.Object, System.Int32>(CarosalSno
             
             #line default
             #line hidden
-, 2561), false)
-, Tuple.Create(Tuple.Create("", 2572), Tuple.Create("}}", 2572), true)
+, 2832), false)
+, Tuple.Create(Tuple.Create("", 2843), Tuple.Create("}}", 2843), true)
 );
 
 WriteLiteral(" data-slide=\"prev\"");
 
-WriteLiteral("><i");
+WriteLiteral("><span");
 
-WriteLiteral(" class=\"fa fa-angle-left\"");
+WriteLiteral(" class=\"label-0\"");
 
-WriteLiteral("></i></a>\r\n                                <a");
+WriteLiteral(">Prev</span><i");
+
+WriteLiteral(" class=\"fa fa-chevron-left\"");
+
+WriteLiteral("></i></a>\r\n                                    <a");
 
 WriteLiteral(" class=\"right carousel-control\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2697), Tuple.Create("\"", 2733)
-, Tuple.Create(Tuple.Create("", 2704), Tuple.Create("#multiCarousal{{", 2704), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 3007), Tuple.Create("\"", 3043)
+, Tuple.Create(Tuple.Create("", 3014), Tuple.Create("#multiCarousal{{", 3014), true)
             
-            #line 46 "..\..\Views\Page\_IndexJson.cshtml"
-        , Tuple.Create(Tuple.Create("", 2720), Tuple.Create<System.Object, System.Int32>(CarosalSno
+            #line 47 "..\..\Views\Page\_IndexJson.cshtml"
+            , Tuple.Create(Tuple.Create("", 3030), Tuple.Create<System.Object, System.Int32>(CarosalSno
             
             #line default
             #line hidden
-, 2720), false)
-, Tuple.Create(Tuple.Create("", 2731), Tuple.Create("}}", 2731), true)
+, 3030), false)
+, Tuple.Create(Tuple.Create("", 3041), Tuple.Create("}}", 3041), true)
 );
 
 WriteLiteral(" data-slide=\"next\"");
 
-WriteLiteral("><i");
+WriteLiteral("><span");
 
-WriteLiteral(" class=\"fa fa-angle-right\"");
+WriteLiteral(" class=\"label-0\"");
 
-WriteLiteral("></i></a>\r\n                            </div>\r\n                        </div>\r\n");
+WriteLiteral(">Next</span><i");
+
+WriteLiteral(" class=\"fa fa-chevron-right\"");
+
+WriteLiteral("></i></a>\r\n                                </div>\r\n                            </" +
+"div>\r\n                        </div>\r\n");
 
             
-            #line 49 "..\..\Views\Page\_IndexJson.cshtml"
+            #line 51 "..\..\Views\Page\_IndexJson.cshtml"
                     }
                     else if (component.DataType == "single")
                     {
@@ -348,7 +366,17 @@ WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding\"");
 
 WriteLiteral(">\r\n                                <div");
 
-WriteLiteral(" id=\"carousel-example\"");
+WriteAttribute("id", Tuple.Create(" id=\"", 3506), Tuple.Create("\"", 3542)
+, Tuple.Create(Tuple.Create("", 3511), Tuple.Create("carousel-example{{", 3511), true)
+            
+            #line 56 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create("", 3529), Tuple.Create<System.Object, System.Int32>(CarosalSno
+            
+            #line default
+            #line hidden
+, 3529), false)
+, Tuple.Create(Tuple.Create("", 3540), Tuple.Create("}}", 3540), true)
+);
 
 WriteLiteral(" class=\"carousel slide omnicomponent component-slider\"");
 
@@ -357,8 +385,8 @@ WriteLiteral(" data-ride=\"carousel\"");
 WriteLiteral(" data-interval=\"");
 
             
-            #line 54 "..\..\Views\Page\_IndexJson.cshtml"
-                                                                                                                                                Write(component.SliderTime);
+            #line 56 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                                                               Write(component.SliderTime);
 
             
             #line default
@@ -368,86 +396,28 @@ WriteLiteral("\"");
 WriteLiteral(" data-autoplay=\"");
 
             
-            #line 54 "..\..\Views\Page\_IndexJson.cshtml"
-                                                                                                                                                                                      Write(component.Autoplay);
+            #line 56 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                                                                                                     Write(component.Autoplay);
 
             
             #line default
             #line hidden
 WriteLiteral("\"");
 
-WriteLiteral(">\r\n                                    <ol");
-
-WriteLiteral(" class=\"carousel-indicators\"");
-
-WriteLiteral(">\r\n");
-
-            
-            #line 56 "..\..\Views\Page\_IndexJson.cshtml"
-                                        
-            
-            #line default
-            #line hidden
-            
-            #line 56 "..\..\Views\Page\_IndexJson.cshtml"
-                                         foreach (var img in component.Images.Select((index) => new { index }))
-                                        {
-
-            
-            #line default
-            #line hidden
-WriteLiteral("                                            <li");
-
-WriteLiteral(" data-target=\"#carousel-example\"");
-
-WriteLiteral(" data-slide-to=\"");
-
-            
-            #line 58 "..\..\Views\Page\_IndexJson.cshtml"
-                                                                                          Write(img.index);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\"");
-
-WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 3627), Tuple.Create("\"", 3662)
-, Tuple.Create(Tuple.Create("", 3638), Tuple.Create("{active", 3638), true)
-, Tuple.Create(Tuple.Create(" ", 3645), Tuple.Create(":", 3646), true)
-            
-            #line 58 "..\..\Views\Page\_IndexJson.cshtml"
-                                              , Tuple.Create(Tuple.Create(" ", 3647), Tuple.Create<System.Object, System.Int32>(img.index
-            
-            #line default
-            #line hidden
-, 3648), false)
-, Tuple.Create(Tuple.Create("", 3658), Tuple.Create("==0}", 3658), true)
-);
-
-WriteLiteral("></li>\r\n");
-
-            
-            #line 59 "..\..\Views\Page\_IndexJson.cshtml"
-                                        }
-
-            
-            #line default
-            #line hidden
-WriteLiteral("                                    </ol>\r\n                                    <d" +
-"iv");
+WriteLiteral(">\r\n                                    <div");
 
 WriteLiteral(" class=\"carousel-inner\"");
 
 WriteLiteral(">\r\n");
 
             
-            #line 62 "..\..\Views\Page\_IndexJson.cshtml"
+            #line 58 "..\..\Views\Page\_IndexJson.cshtml"
                                         
             
             #line default
             #line hidden
             
-            #line 62 "..\..\Views\Page\_IndexJson.cshtml"
+            #line 58 "..\..\Views\Page\_IndexJson.cshtml"
                                          foreach (var img in component.Images.Select((obj, index) => new { index, obj }))
                                         {
 
@@ -458,53 +428,70 @@ WriteLiteral("                                            <div");
 
 WriteLiteral(" class=\"item\"");
 
-WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 4050), Tuple.Create("\"", 4085)
-, Tuple.Create(Tuple.Create("", 4061), Tuple.Create("{active", 4061), true)
-, Tuple.Create(Tuple.Create(" ", 4068), Tuple.Create(":", 4069), true)
+WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 3988), Tuple.Create("\"", 4023)
+, Tuple.Create(Tuple.Create("", 3999), Tuple.Create("{active", 3999), true)
+, Tuple.Create(Tuple.Create(" ", 4006), Tuple.Create(":", 4007), true)
             
-            #line 64 "..\..\Views\Page\_IndexJson.cshtml"
- , Tuple.Create(Tuple.Create(" ", 4070), Tuple.Create<System.Object, System.Int32>(img.index
+            #line 60 "..\..\Views\Page\_IndexJson.cshtml"
+ , Tuple.Create(Tuple.Create(" ", 4008), Tuple.Create<System.Object, System.Int32>(img.index
             
             #line default
             #line hidden
-, 4071), false)
-, Tuple.Create(Tuple.Create("", 4081), Tuple.Create("==0}", 4081), true)
+, 4009), false)
+, Tuple.Create(Tuple.Create("", 4019), Tuple.Create("==0}", 4019), true)
 );
 
 WriteLiteral(">\r\n                                                <img");
 
-WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 4141), Tuple.Create("\"", 4162)
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 4079), Tuple.Create("\"", 4100)
             
-            #line 65 "..\..\Views\Page\_IndexJson.cshtml"
-, Tuple.Create(Tuple.Create("", 4150), Tuple.Create<System.Object, System.Int32>(img.obj.Url
+            #line 61 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create("", 4088), Tuple.Create<System.Object, System.Int32>(img.obj.Url
             
             #line default
             #line hidden
-, 4150), false)
+, 4088), false)
 );
 
-WriteLiteral(" class=\"img-responsive image1\"");
+WriteLiteral(" class=\"img-responsive omni-img image1\"");
+
+WriteLiteral(" alt=\"Default Image\"");
 
 WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/carousal-banner-women.jpg\'\"");
 
 WriteLiteral(">\r\n                                            </div>\r\n");
 
             
-            #line 67 "..\..\Views\Page\_IndexJson.cshtml"
+            #line 63 "..\..\Views\Page\_IndexJson.cshtml"
                                         }
 
             
             #line default
             #line hidden
-WriteLiteral("                                    </div><a");
+WriteLiteral("                                    </div>\r\n                                    <" +
+"a");
 
 WriteLiteral(" class=\"left carousel-control\"");
 
-WriteLiteral(" href=\"#carousel-example\"");
+WriteAttribute("href", Tuple.Create(" href=\"", 4444), Tuple.Create("\"", 4483)
+, Tuple.Create(Tuple.Create("", 4451), Tuple.Create("#carousel-example{{", 4451), true)
+            
+            #line 65 "..\..\Views\Page\_IndexJson.cshtml"
+              , Tuple.Create(Tuple.Create("", 4470), Tuple.Create<System.Object, System.Int32>(CarosalSno
+            
+            #line default
+            #line hidden
+, 4470), false)
+, Tuple.Create(Tuple.Create("", 4481), Tuple.Create("}}", 4481), true)
+);
 
 WriteLiteral(" data-slide=\"prev\"");
 
 WriteLiteral(">\r\n                                        <span");
+
+WriteLiteral(" class=\"label-0\"");
+
+WriteLiteral(">Prev</span><span");
 
 WriteLiteral(" class=\"fa fa-chevron-left\"");
 
@@ -513,11 +500,25 @@ WriteLiteral("></span>\r\n                                    </a>\r\n          
 
 WriteLiteral(" class=\"right carousel-control\"");
 
-WriteLiteral(" href=\"#carousel-example\"");
+WriteAttribute("href", Tuple.Create(" href=\"", 4731), Tuple.Create("\"", 4770)
+, Tuple.Create(Tuple.Create("", 4738), Tuple.Create("#carousel-example{{", 4738), true)
+            
+            #line 68 "..\..\Views\Page\_IndexJson.cshtml"
+               , Tuple.Create(Tuple.Create("", 4757), Tuple.Create<System.Object, System.Int32>(CarosalSno
+            
+            #line default
+            #line hidden
+, 4757), false)
+, Tuple.Create(Tuple.Create("", 4768), Tuple.Create("}}", 4768), true)
+);
 
 WriteLiteral(" data-slide=\"next\"");
 
 WriteLiteral(">\r\n                                        <span");
+
+WriteLiteral(" class=\"label-0\"");
+
+WriteLiteral(">Next</span><span");
 
 WriteLiteral(" class=\"fa fa-chevron-right\"");
 
@@ -526,7 +527,7 @@ WriteLiteral("></span>\r\n                                    </a>\r\n          
 "\n");
 
             
-            #line 78 "..\..\Views\Page\_IndexJson.cshtml"
+            #line 75 "..\..\Views\Page\_IndexJson.cshtml"
                     }
                     else
                     {
@@ -536,179 +537,153 @@ WriteLiteral("></span>\r\n                                    </a>\r\n          
             #line hidden
 WriteLiteral("                        <div");
 
-WriteLiteral(" class=\"row\"");
+WriteLiteral(" class=\"container-min\"");
 
 WriteLiteral(">\r\n                            <div");
 
-WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding\"");
-
-WriteLiteral(">\r\n                                <div");
-
-WriteLiteral(" id=\"carousel-example\"");
-
-WriteLiteral(" class=\"carousel slide omnicomponent component-slider\"");
-
-WriteLiteral(" data-ride=\"carousel\"");
-
-WriteLiteral(" data-interval=\"3000\"");
-
-WriteLiteral(">\r\n                                    <ol");
-
-WriteLiteral(" class=\"carousel-indicators\"");
+WriteLiteral(" class=\"row\"");
 
 WriteLiteral(">\r\n");
 
             
-            #line 85 "..\..\Views\Page\_IndexJson.cshtml"
-                                        
+            #line 80 "..\..\Views\Page\_IndexJson.cshtml"
+                                
             
             #line default
             #line hidden
             
-            #line 85 "..\..\Views\Page\_IndexJson.cshtml"
-                                         foreach (var img in component.Images.Select((index) => new { index }))
-                                        {
+            #line 80 "..\..\Views\Page\_IndexJson.cshtml"
+                                 foreach (var img in component.Images.Select((obj, index) => new { index, obj }))
+                                {
+                                    if (component.DataNumItemsRow == null)
+                                    {
+                                        component.DataNumItemsRow = DefaultItemsRow.ToString();
+                                    }
 
             
             #line default
             #line hidden
-WriteLiteral("                                            <li");
+WriteLiteral("                                    <div");
 
-WriteLiteral(" data-target=\"#carousel-example\"");
+WriteLiteral(" class=\"whiteContainer\"");
 
-WriteLiteral(" data-slide-to=\"");
-
+WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 5696), Tuple.Create("\"", 6059)
+, Tuple.Create(Tuple.Create("", 5707), Tuple.Create("{\'col-sm-12", 5707), true)
+, Tuple.Create(Tuple.Create(" ", 5718), Tuple.Create("col-xs-12\':", 5719), true)
             
-            #line 87 "..\..\Views\Page\_IndexJson.cshtml"
-                                                                                          Write(img.index);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\"");
-
-WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 5637), Tuple.Create("\"", 5672)
-, Tuple.Create(Tuple.Create("", 5648), Tuple.Create("{active", 5648), true)
-, Tuple.Create(Tuple.Create(" ", 5655), Tuple.Create(":", 5656), true)
-            
-            #line 87 "..\..\Views\Page\_IndexJson.cshtml"
-                                              , Tuple.Create(Tuple.Create(" ", 5657), Tuple.Create<System.Object, System.Int32>(img.index
+            #line 86 "..\..\Views\Page\_IndexJson.cshtml"
+                 , Tuple.Create(Tuple.Create(" ", 5730), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
             
             #line default
             #line hidden
-, 5658), false)
-, Tuple.Create(Tuple.Create("", 5668), Tuple.Create("==0}", 5668), true)
+, 5731), false)
+, Tuple.Create(Tuple.Create(" ", 5757), Tuple.Create("==", 5758), true)
+, Tuple.Create(Tuple.Create(" ", 5760), Tuple.Create("1,\'col-sm-6", 5761), true)
+, Tuple.Create(Tuple.Create(" ", 5772), Tuple.Create("col-xs-6\':", 5773), true)
+            
+            #line 86 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                      , Tuple.Create(Tuple.Create(" ", 5783), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 5784), false)
+, Tuple.Create(Tuple.Create(" ", 5810), Tuple.Create("==", 5811), true)
+, Tuple.Create(Tuple.Create(" ", 5813), Tuple.Create("2,\'col-sm-4", 5814), true)
+, Tuple.Create(Tuple.Create(" ", 5825), Tuple.Create("col-xs-6\':", 5826), true)
+            
+            #line 86 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                           , Tuple.Create(Tuple.Create(" ", 5836), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 5837), false)
+, Tuple.Create(Tuple.Create(" ", 5863), Tuple.Create("==", 5864), true)
+, Tuple.Create(Tuple.Create(" ", 5866), Tuple.Create("3,\'col-sm-3", 5867), true)
+, Tuple.Create(Tuple.Create(" ", 5878), Tuple.Create("col-xs-6\':", 5879), true)
+            
+            #line 86 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                                                                                , Tuple.Create(Tuple.Create(" ", 5889), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 5890), false)
+, Tuple.Create(Tuple.Create(" ", 5916), Tuple.Create("==", 5917), true)
+, Tuple.Create(Tuple.Create(" ", 5919), Tuple.Create("4,\'col-sm-5ths", 5920), true)
+, Tuple.Create(Tuple.Create(" ", 5934), Tuple.Create("col-md-5ths", 5935), true)
+, Tuple.Create(Tuple.Create(" ", 5946), Tuple.Create("col-xs-5ths", 5947), true)
+, Tuple.Create(Tuple.Create(" ", 5958), Tuple.Create("col-lg-5ths\':", 5959), true)
+            
+            #line 86 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                                                                                                                                                                   , Tuple.Create(Tuple.Create(" ", 5972), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 5973), false)
+, Tuple.Create(Tuple.Create(" ", 5999), Tuple.Create("==", 6000), true)
+, Tuple.Create(Tuple.Create(" ", 6002), Tuple.Create("5,", 6003), true)
+, Tuple.Create(Tuple.Create(" ", 6005), Tuple.Create("\'col-sm-2", 6006), true)
+, Tuple.Create(Tuple.Create(" ", 6015), Tuple.Create("col-xs-6\':", 6016), true)
+            
+            #line 86 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                                                                                                                                                                                                                         , Tuple.Create(Tuple.Create(" ", 6026), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 6027), false)
+, Tuple.Create(Tuple.Create(" ", 6053), Tuple.Create("==", 6054), true)
+, Tuple.Create(Tuple.Create(" ", 6056), Tuple.Create("6}", 6057), true)
 );
 
-WriteLiteral("></li>\r\n");
+WriteLiteral(">\r\n                                        <a");
 
+WriteAttribute("href", Tuple.Create(" href=\"", 6105), Tuple.Create("\"", 6125)
+            
+            #line 87 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create("", 6112), Tuple.Create<System.Object, System.Int32>(img.obj.Link
+            
+            #line default
+            #line hidden
+, 6112), false)
+);
+
+WriteLiteral(">\r\n                                            <img");
+
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 6177), Tuple.Create("\"", 6198)
             
             #line 88 "..\..\Views\Page\_IndexJson.cshtml"
-                                        }
-
+, Tuple.Create(Tuple.Create("", 6186), Tuple.Create<System.Object, System.Int32>(img.obj.Url
             
             #line default
             #line hidden
-WriteLiteral("                                    </ol>\r\n                                    <d" +
-"iv");
-
-WriteLiteral(" class=\"carousel-inner\"");
-
-WriteLiteral(">\r\n");
-
-            
-            #line 91 "..\..\Views\Page\_IndexJson.cshtml"
-                                        
-            
-            #line default
-            #line hidden
-            
-            #line 91 "..\..\Views\Page\_IndexJson.cshtml"
-                                         foreach (var img in component.Images.Select((obj, index) => new { index, obj }))
-                                        {
-
-            
-            #line default
-            #line hidden
-WriteLiteral("                                            <div");
-
-WriteLiteral(" class=\"item\"");
-
-WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 6060), Tuple.Create("\"", 6095)
-, Tuple.Create(Tuple.Create("", 6071), Tuple.Create("{active", 6071), true)
-, Tuple.Create(Tuple.Create(" ", 6078), Tuple.Create(":", 6079), true)
-            
-            #line 93 "..\..\Views\Page\_IndexJson.cshtml"
- , Tuple.Create(Tuple.Create(" ", 6080), Tuple.Create<System.Object, System.Int32>(img.index
-            
-            #line default
-            #line hidden
-, 6081), false)
-, Tuple.Create(Tuple.Create("", 6091), Tuple.Create("==0}", 6091), true)
+, 6186), false)
 );
 
-WriteLiteral(">\r\n                                                <img");
+WriteLiteral(" alt=\"Banner\"");
 
-WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 6151), Tuple.Create("\"", 6172)
+WriteLiteral(" class=\"img-responsive omni-img\"");
+
+WriteLiteral(" sizes=\"(min-width: 768px) 540px, 100vw\"");
+
+WriteLiteral(" />\r\n                                        </a>\r\n                              " +
+"      </div>\r\n");
+
+            
+            #line 91 "..\..\Views\Page\_IndexJson.cshtml"
+                                }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                            </div>\r\n                        </div>\r\n");
+
             
             #line 94 "..\..\Views\Page\_IndexJson.cshtml"
-, Tuple.Create(Tuple.Create("", 6160), Tuple.Create<System.Object, System.Int32>(img.obj.Url
-            
-            #line default
-            #line hidden
-, 6160), false)
-);
-
-WriteLiteral(" class=\"img-responsive image1\"");
-
-WriteLiteral(" onerror=\"this.src = \'/assets/theme/ocx/images/carousal-banner-women.jpg\'\"");
-
-WriteLiteral(">\r\n                                            </div>\r\n");
-
-            
-            #line 96 "..\..\Views\Page\_IndexJson.cshtml"
-                                        }
-
-            
-            #line default
-            #line hidden
-WriteLiteral("                                    </div><a");
-
-WriteLiteral(" class=\"left carousel-control\"");
-
-WriteLiteral(" href=\"#carousel-example\"");
-
-WriteLiteral(" data-slide=\"prev\"");
-
-WriteLiteral(">\r\n                                        <span");
-
-WriteLiteral(" class=\"fa fa-chevron-left\"");
-
-WriteLiteral("></span>\r\n                                    </a>\r\n                             " +
-"       <a");
-
-WriteLiteral(" class=\"right carousel-control\"");
-
-WriteLiteral(" href=\"#carousel-example\"");
-
-WriteLiteral(" data-slide=\"next\"");
-
-WriteLiteral(">\r\n                                        <span");
-
-WriteLiteral(" class=\"fa fa-chevron-right\"");
-
-WriteLiteral("></span>\r\n                                    </a>\r\n                             " +
-"   </div>\r\n\r\n                            </div>\r\n                        </div>\r" +
-"\n");
-
-            
-            #line 107 "..\..\Views\Page\_IndexJson.cshtml"
                     }
 
                     continue;
                 }
                 CarosalSno += 1;
-                if ((component.ComponentType == SiteViewComponentTypes.PageHeader || component.ComponentType == SiteViewComponentTypes.BlogHeader || component.ComponentType == SiteViewComponentTypes.Heading)  && component != null && component.Content != null)
+                if ((component.ComponentType == SiteViewComponentTypes.PageHeader || component.ComponentType == SiteViewComponentTypes.BlogHeader || component.ComponentType == SiteViewComponentTypes.Heading || component.ComponentType == SiteViewComponentTypes.HeadingParagraph || component.ComponentType == SiteViewComponentTypes.HeadingSubHeading || component.ComponentType == SiteViewComponentTypes.HeadingSubHeadingParagraph) && component != null && component.Content != null)
                 {
 
             
@@ -727,7 +702,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                            ");
 
             
-            #line 116 "..\..\Views\Page\_IndexJson.cshtml"
+            #line 103 "..\..\Views\Page\_IndexJson.cshtml"
                        Write(Html.Raw(component.Content));
 
             
@@ -736,7 +711,7 @@ WriteLiteral("                            ");
 WriteLiteral("\r\n                        </div>\r\n                    </div>\r\n");
 
             
-            #line 119 "..\..\Views\Page\_IndexJson.cshtml"
+            #line 106 "..\..\Views\Page\_IndexJson.cshtml"
                     continue;
                 }
                 //For Image
@@ -754,22 +729,41 @@ WriteLiteral(">\r\n                        <div");
 
 WriteLiteral(" class=\"col-sm-12 col-xs-12 whiteContainer\"");
 
-WriteLiteral(">\r\n                            <img");
+WriteLiteral(">\r\n                            <a");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 7965), Tuple.Create("\"", 7991)
+WriteAttribute("ng-href", Tuple.Create(" ng-href=\"", 7696), Tuple.Create("\"", 7721)
             
-            #line 126 "..\..\Views\Page\_IndexJson.cshtml"
-, Tuple.Create(Tuple.Create("", 7971), Tuple.Create<System.Object, System.Int32>(component.Image.Url
+            #line 113 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create("", 7706), Tuple.Create<System.Object, System.Int32>(component.Link
             
             #line default
             #line hidden
-, 7971), false)
+, 7706), false)
 );
 
-WriteLiteral(" />\r\n                        </div>\r\n                    </div>\r\n");
+WriteLiteral(">\r\n                                <img");
+
+WriteLiteral(" class=\"img-responsive omni-img\"");
+
+WriteLiteral(" alt=\"Omni Image\"");
+
+WriteAttribute("src", Tuple.Create(" src=\"", 7810), Tuple.Create("\"", 7836)
+            
+            #line 114 "..\..\Views\Page\_IndexJson.cshtml"
+           , Tuple.Create(Tuple.Create("", 7816), Tuple.Create<System.Object, System.Int32>(component.Image.Url
+            
+            #line default
+            #line hidden
+, 7816), false)
+);
+
+WriteLiteral(" sizes=\"(min-width: 768px) 540px, 100vw\"");
+
+WriteLiteral(" />\r\n                            </a>\r\n                        </div>\r\n          " +
+"          </div>\r\n");
 
             
-            #line 129 "..\..\Views\Page\_IndexJson.cshtml"
+            #line 118 "..\..\Views\Page\_IndexJson.cshtml"
                     continue;
                 }
                 //For Paragraph
@@ -800,7 +794,7 @@ WriteLiteral(" style=\"margin-bottom:30px!important;\"");
 WriteLiteral(">");
 
             
-            #line 137 "..\..\Views\Page\_IndexJson.cshtml"
+            #line 126 "..\..\Views\Page\_IndexJson.cshtml"
                                                                                         Write(Html.Raw(component.Content));
 
             
@@ -817,7 +811,7 @@ WriteLiteral(" class=\"text-black\"");
 WriteLiteral(">");
 
             
-            #line 138 "..\..\Views\Page\_IndexJson.cshtml"
+            #line 127 "..\..\Views\Page\_IndexJson.cshtml"
                                                                                                              Write(LT("ProductDetail.Label.View", "Read more"));
 
             
@@ -827,103 +821,40 @@ WriteLiteral("</span></a>\r\n                            </h3>\r\n              
 "                   </div>\r\n");
 
             
+            #line 131 "..\..\Views\Page\_IndexJson.cshtml"
+                    continue;
+                }
+
+                // ALL THE HTML TEMPLATE WITH IMAGES, VIDEO, HEADINGS AND TABS
+                if ((component.ComponentType == SiteViewComponentTypes.StaticHtml || component.ComponentType == SiteViewComponentTypes.ImageText || component.ComponentType == SiteViewComponentTypes.ImageTextList || component.ComponentType == SiteViewComponentTypes.VideoText || component.ComponentType == SiteViewComponentTypes.VideoTextList || component.ComponentType == SiteViewComponentTypes.HeadingSubHeadingWidgetList || component.ComponentType == SiteViewComponentTypes.TabWidgetList) && component != null && component.Content != null)
+                {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                    <div");
+
+WriteLiteral(" class=\"row\"");
+
+WriteLiteral(">\r\n                        <div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12 whiteContainer\"");
+
+WriteLiteral(">\r\n");
+
+WriteLiteral("                            ");
+
+            
+            #line 139 "..\..\Views\Page\_IndexJson.cshtml"
+                       Write(Html.Raw(component.Content));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n                        </div>\r\n                    </div>\r\n");
+
+            
             #line 142 "..\..\Views\Page\_IndexJson.cshtml"
-                    continue;
-                }
-                //For StaticHtml
-                if (component.ComponentType == SiteViewComponentTypes.StaticHtml && component != null && component.Content != null)
-                {
-
-            
-            #line default
-            #line hidden
-WriteLiteral("                    <div");
-
-WriteLiteral(" class=\"row\"");
-
-WriteLiteral(">\r\n                        <div");
-
-WriteLiteral(" class=\"col-sm-12 col-xs-12 whiteContainer\"");
-
-WriteLiteral(">\r\n");
-
-WriteLiteral("                            ");
-
-            
-            #line 149 "..\..\Views\Page\_IndexJson.cshtml"
-                       Write(Html.Raw(component.Content));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n                        </div>\r\n                    </div>\r\n");
-
-            
-            #line 152 "..\..\Views\Page\_IndexJson.cshtml"
-                    continue;
-                }
-                //For Image and Text
-                if (component.ComponentType == SiteViewComponentTypes.ImageText && component != null && component.Content != null)
-                {
-
-            
-            #line default
-            #line hidden
-WriteLiteral("                    <div");
-
-WriteLiteral(" class=\"row\"");
-
-WriteLiteral(">\r\n                        <div");
-
-WriteLiteral(" class=\"col-sm-12 col-xs-12 whiteContainer\"");
-
-WriteLiteral(">\r\n");
-
-WriteLiteral("                            ");
-
-            
-            #line 159 "..\..\Views\Page\_IndexJson.cshtml"
-                       Write(Html.Raw(component.Content));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n                        </div>\r\n                    </div>\r\n");
-
-            
-            #line 162 "..\..\Views\Page\_IndexJson.cshtml"
-                    continue;
-                }
-                //For Video And Text
-                if (component.ComponentType == SiteViewComponentTypes.VideoText && component != null && component.Content != null)
-                {
-
-            
-            #line default
-            #line hidden
-WriteLiteral("                    <div");
-
-WriteLiteral(" class=\"row\"");
-
-WriteLiteral(">\r\n                        <div");
-
-WriteLiteral(" class=\"col-sm-12 col-xs-12 whiteContainer\"");
-
-WriteLiteral(">\r\n");
-
-WriteLiteral("                            ");
-
-            
-            #line 169 "..\..\Views\Page\_IndexJson.cshtml"
-                       Write(Html.Raw(component.Content));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n                        </div>\r\n                    </div>\r\n");
-
-            
-            #line 172 "..\..\Views\Page\_IndexJson.cshtml"
                     continue;
                 }
                 //For JSSnippts
@@ -934,14 +865,14 @@ WriteLiteral("\r\n                        </div>\r\n                    </div>\r
             #line default
             #line hidden
             
-            #line 177 "..\..\Views\Page\_IndexJson.cshtml"
+            #line 147 "..\..\Views\Page\_IndexJson.cshtml"
                Write(Html.Raw(component.Content));
 
             
             #line default
             #line hidden
             
-            #line 177 "..\..\Views\Page\_IndexJson.cshtml"
+            #line 147 "..\..\Views\Page\_IndexJson.cshtml"
                                                 
                     continue;
                 }
@@ -959,18 +890,18 @@ WriteLiteral(" class=\"row\"");
 
 WriteLiteral(">\r\n                        <div");
 
-WriteLiteral(" class=\"col-sm-6 col-xs-12 whiteContainer\"");
+WriteLiteral(" class=\"col-sm-12 col-xs-12 whiteContainer\"");
 
 WriteLiteral(">\r\n                            <iframe");
 
-WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 11006), Tuple.Create("\"", 11033)
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 10444), Tuple.Create("\"", 10471)
             
-            #line 186 "..\..\Views\Page\_IndexJson.cshtml"
-, Tuple.Create(Tuple.Create("", 11015), Tuple.Create<System.Object, System.Int32>(component.Content
+            #line 156 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create("", 10453), Tuple.Create<System.Object, System.Int32>(component.Content
             
             #line default
             #line hidden
-, 11015), false)
+, 10453), false)
 );
 
 WriteLiteral(" frameborder=\"0\"");
@@ -979,45 +910,59 @@ WriteLiteral(" allow=\"autoplay; encrypted-media\"");
 
 WriteLiteral(" width=\"100%\"");
 
-WriteLiteral(" height=\"350\"");
+WriteLiteral(" height=\"580\"");
 
 WriteLiteral(" allowfullscreen></iframe>\r\n                        </div>\r\n                    <" +
 "/div>\r\n");
 
             
-            #line 189 "..\..\Views\Page\_IndexJson.cshtml"
+            #line 159 "..\..\Views\Page\_IndexJson.cshtml"
                     continue;
                 }
-
-
-                if (component != null && component.ComponentType == SiteViewComponentTypes.ProductList && component.Products != null)
-                {
-                    if (component.Products.Count > 0)
-                    {
+                
+            
+            #line default
+            #line hidden
+            
+            #line 161 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                                                                                                                                    
+                
+            
+            #line default
+            #line hidden
+            
+            #line 162 "..\..\Views\Page\_IndexJson.cshtml"
+                                  
+    if (component != null && component.ComponentType == SiteViewComponentTypes.ProductList && component.Products != null)
+    {
+        if (component.Products.Count > 0)
+        {
+            if (component.ProductListDisplayType == "slider")
+            {
 
             
             #line default
             #line hidden
-WriteLiteral("                        <div");
+WriteLiteral("                <div");
 
 WriteLiteral(" class=\"row\"");
 
-WriteLiteral(">\r\n                            <div");
+WriteLiteral(">\r\n                    <div");
 
 WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding whiteContainer\"");
 
-WriteLiteral(">\r\n                                <div");
+WriteLiteral(">\r\n                        <div");
 
-WriteAttribute("id", Tuple.Create(" id=\"", 11652), Tuple.Create("\"", 11687)
-, Tuple.Create(Tuple.Create("", 11657), Tuple.Create("Productcarousel{{", 11657), true)
+WriteAttribute("id", Tuple.Create(" id=\"", 11358), Tuple.Create("\"", 11393)
+, Tuple.Create(Tuple.Create("", 11363), Tuple.Create("Productcarousel{{", 11363), true)
             
-            #line 199 "..\..\Views\Page\_IndexJson.cshtml"
-, Tuple.Create(Tuple.Create("", 11674), Tuple.Create<System.Object, System.Int32>(ProductSno
+            #line 171 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create("", 11380), Tuple.Create<System.Object, System.Int32>(ProductSno
             
             #line default
             #line hidden
-, 11674), false)
-, Tuple.Create(Tuple.Create("", 11685), Tuple.Create("}}", 11685), true)
+, 11380), false)
+, Tuple.Create(Tuple.Create("", 11391), Tuple.Create("}}", 11391), true)
 );
 
 WriteLiteral(" class=\"carousel slide\"");
@@ -1028,22 +973,22 @@ WriteLiteral(" data-type=\"multi\"");
 
 WriteLiteral(" data-interval=\"10000\"");
 
-WriteLiteral(">\r\n                                    <div");
+WriteLiteral(">\r\n                            <div");
 
-WriteLiteral(" class=\"carousel-inner\"");
+WriteLiteral(" class=\"carousel-inner multi-inner-350\"");
 
 WriteLiteral(">\r\n");
 
             
-            #line 201 "..\..\Views\Page\_IndexJson.cshtml"
-                                        
+            #line 173 "..\..\Views\Page\_IndexJson.cshtml"
+                                
             
             #line default
             #line hidden
             
-            #line 201 "..\..\Views\Page\_IndexJson.cshtml"
-                                         foreach (var product in component.Products.ToList().Select((obj, index) => new { index, obj }))
-                                        {
+            #line 173 "..\..\Views\Page\_IndexJson.cshtml"
+                                 foreach (var product in component.Products.ToList().Select((obj, index) => new { index, obj }))
+                                            {
 
             
             #line default
@@ -1052,22 +997,31 @@ WriteLiteral("                                            <div");
 
 WriteLiteral(" class=\"item\"");
 
-WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 12083), Tuple.Create("\"", 12122)
-, Tuple.Create(Tuple.Create("", 12094), Tuple.Create("{active", 12094), true)
-, Tuple.Create(Tuple.Create(" ", 12101), Tuple.Create(":", 12102), true)
+WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 11793), Tuple.Create("\"", 11832)
+, Tuple.Create(Tuple.Create("", 11804), Tuple.Create("{active", 11804), true)
+, Tuple.Create(Tuple.Create(" ", 11811), Tuple.Create(":", 11812), true)
             
-            #line 203 "..\..\Views\Page\_IndexJson.cshtml"
-, Tuple.Create(Tuple.Create(" ", 12103), Tuple.Create<System.Object, System.Int32>(product.index
+            #line 175 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create(" ", 11813), Tuple.Create<System.Object, System.Int32>(product.index
             
             #line default
             #line hidden
-, 12104), false)
-, Tuple.Create(Tuple.Create("", 12118), Tuple.Create("==0}", 12118), true)
+, 11814), false)
+, Tuple.Create(Tuple.Create("", 11828), Tuple.Create("==0}", 11828), true)
 );
 
 WriteLiteral(">\r\n                                                <div");
 
-WriteLiteral(" class=\"carousel-col\"");
+WriteAttribute("class", Tuple.Create(" class=\"", 11888), Tuple.Create("\"", 11935)
+, Tuple.Create(Tuple.Create("", 11896), Tuple.Create("carousel-col-", 11896), true)
+            
+            #line 176 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create("", 11909), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 11909), false)
+);
 
 WriteLiteral(">\r\n                                                    <div");
 
@@ -1079,32 +1033,36 @@ WriteLiteral(" class=\"image-container gray\"");
 
 WriteLiteral(">\r\n                                                            <a");
 
-WriteAttribute("ng-href", Tuple.Create(" ng-href=\"", 12438), Tuple.Create("\"", 12466)
-, Tuple.Create(Tuple.Create("", 12448), Tuple.Create("/", 12448), true)
+WriteAttribute("ng-href", Tuple.Create(" ng-href=\"", 12175), Tuple.Create("\"", 12203)
+, Tuple.Create(Tuple.Create("", 12185), Tuple.Create("/", 12185), true)
             
-            #line 207 "..\..\Views\Page\_IndexJson.cshtml"
-, Tuple.Create(Tuple.Create("", 12449), Tuple.Create<System.Object, System.Int32>(product.obj.Slug
+            #line 179 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create("", 12186), Tuple.Create<System.Object, System.Int32>(product.obj.Slug
             
             #line default
             #line hidden
-, 12449), false)
+, 12186), false)
 );
 
 WriteLiteral(">\r\n                                                                <img");
 
-WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 12538), Tuple.Create("\"", 12565)
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 12275), Tuple.Create("\"", 12302)
             
-            #line 208 "..\..\Views\Page\_IndexJson.cshtml"
-, Tuple.Create(Tuple.Create("", 12547), Tuple.Create<System.Object, System.Int32>(product.obj.Image
+            #line 180 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create("", 12284), Tuple.Create<System.Object, System.Int32>(product.obj.Image
             
             #line default
             #line hidden
-, 12547), false)
+, 12284), false)
 );
 
 WriteLiteral(" alt=\"OCX Store\"");
 
+WriteLiteral(" class=\"omni-img\"");
+
 WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
+
+WriteLiteral(" sizes=\"(min-width: 768px) 540px, 100vw\"");
 
 WriteLiteral(" />\r\n                                                            </a>\r\n          " +
 "                                              </div>\r\n                          " +
@@ -1115,7 +1073,7 @@ WriteLiteral(" class=\"data-container\"");
 WriteLiteral(">\r\n                                                            <h3>");
 
             
-            #line 212 "..\..\Views\Page\_IndexJson.cshtml"
+            #line 184 "..\..\Views\Page\_IndexJson.cshtml"
                                                            Write(product.obj.Name);
 
             
@@ -1127,72 +1085,1576 @@ WriteLiteral(" class=\"price-box\"");
 
 WriteLiteral(">\r\n                                                                <p");
 
+WriteLiteral(" aria-hidden=\"true\"");
+
 WriteLiteral(" class=\"product-price hidden-xs\"");
 
 WriteLiteral(">\r\n                                                                    <span>");
 
             
-            #line 215 "..\..\Views\Page\_IndexJson.cshtml"
+            #line 187 "..\..\Views\Page\_IndexJson.cshtml"
                                                                      Write(product.obj.Price.Formatted.WithTax);
 
             
             #line default
             #line hidden
-WriteLiteral(@"</span>                                                                    
-                                                                </p>
-                                                            </div>
-                                                            <a");
+WriteLiteral("</span>\r\n                                                                </p>\r\n  " +
+"                                                          </div>\r\n");
 
-WriteLiteral(" class=\"animate btn-success width-full\"");
-
-WriteAttribute("ng-click", Tuple.Create(" ng-click=\"", 13542), Tuple.Create("\"", 13596)
-, Tuple.Create(Tuple.Create("", 13553), Tuple.Create("gm.addToBasket(\'", 13553), true)
             
-            #line 218 "..\..\Views\Page\_IndexJson.cshtml"
-                                               , Tuple.Create(Tuple.Create("", 13569), Tuple.Create<System.Object, System.Int32>(product.obj.RecordId
+            #line 190 "..\..\Views\Page\_IndexJson.cshtml"
+                                                            
             
             #line default
             #line hidden
-, 13569), false)
-, Tuple.Create(Tuple.Create("", 13590), Tuple.Create("\',1,0)", 13590), true)
+            
+            #line 190 "..\..\Views\Page\_IndexJson.cshtml"
+                                                             if (component.ProductEnableButton == "true")
+    {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                                                <a");
+
+WriteLiteral(" class=\"animate btn-success width-full\"");
+
+WriteAttribute("ng-click", Tuple.Create(" ng-click=\"", 13405), Tuple.Create("\"", 13459)
+, Tuple.Create(Tuple.Create("", 13416), Tuple.Create("gm.addToBasket(\'", 13416), true)
+            
+            #line 192 "..\..\Views\Page\_IndexJson.cshtml"
+                                                   , Tuple.Create(Tuple.Create("", 13432), Tuple.Create<System.Object, System.Int32>(product.obj.RecordId
+            
+            #line default
+            #line hidden
+, 13432), false)
+, Tuple.Create(Tuple.Create("", 13453), Tuple.Create("\',1,0)", 13453), true)
 );
 
 WriteLiteral("><span>");
 
             
-            #line 218 "..\..\Views\Page\_IndexJson.cshtml"
-                                                                                                                                                              Write(LT("ProductDetail.Label.AddToCart", "Add to Cart"));
+            #line 192 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                                                                  Write(LT("ProductDetail.Label.AddToCart", "Add to Cart"));
 
             
             #line default
             #line hidden
-WriteLiteral("</span></a>\r\n                                                        </div>\r\n    " +
-"                                                </div>\r\n                        " +
-"                        </div>\r\n                                            </di" +
-"v>\r\n");
+WriteLiteral("</span></a>\r\n");
 
             
-            #line 223 "..\..\Views\Page\_IndexJson.cshtml"
+            #line 193 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                                        </div>\r\n                 " +
+"                                   </div>\r\n                                     " +
+"           </div>\r\n                                            </div>\r\n");
+
+            
+            #line 198 "..\..\Views\Page\_IndexJson.cshtml"
+                                            }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                            </div>\r\n                            <a");
+
+WriteLiteral(" class=\"left carousel-control\"");
+
+WriteAttribute("href", Tuple.Create(" href=\"", 13973), Tuple.Create("\"", 14011)
+, Tuple.Create(Tuple.Create("", 13980), Tuple.Create("#Productcarousel{{", 13980), true)
+            
+            #line 200 "..\..\Views\Page\_IndexJson.cshtml"
+    , Tuple.Create(Tuple.Create("", 13998), Tuple.Create<System.Object, System.Int32>(ProductSno
+            
+            #line default
+            #line hidden
+, 13998), false)
+, Tuple.Create(Tuple.Create("", 14009), Tuple.Create("}}", 14009), true)
+);
+
+WriteLiteral(" data-slide=\"prev\"");
+
+WriteLiteral("><span");
+
+WriteLiteral(" class=\"label-0\"");
+
+WriteLiteral(">Next</span><i");
+
+WriteLiteral(" class=\"fa fa-chevron-left\"");
+
+WriteLiteral("></i></a>\r\n                            <a");
+
+WriteLiteral(" class=\"right carousel-control\"");
+
+WriteAttribute("href", Tuple.Create(" href=\"", 14165), Tuple.Create("\"", 14203)
+, Tuple.Create(Tuple.Create("", 14172), Tuple.Create("#Productcarousel{{", 14172), true)
+            
+            #line 201 "..\..\Views\Page\_IndexJson.cshtml"
+     , Tuple.Create(Tuple.Create("", 14190), Tuple.Create<System.Object, System.Int32>(ProductSno
+            
+            #line default
+            #line hidden
+, 14190), false)
+, Tuple.Create(Tuple.Create("", 14201), Tuple.Create("}}", 14201), true)
+);
+
+WriteLiteral(" data-slide=\"next\"");
+
+WriteLiteral("><span");
+
+WriteLiteral(" class=\"label-0\"");
+
+WriteLiteral(">Prev</span><i");
+
+WriteLiteral(" class=\"fa fa-chevron-right\"");
+
+WriteLiteral("></i></a>\r\n                        </div>\r\n                    </div>\r\n          " +
+"      </div>\r\n");
+
+            
+            #line 205 "..\..\Views\Page\_IndexJson.cshtml"
+            }
+            else if (component.ProductListDisplayType == "grid")
+            {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                <div");
+
+WriteLiteral(" class=\"row\"");
+
+WriteLiteral(">\r\n                    <div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12 gridView whiteContainer\"");
+
+WriteLiteral(">\r\n");
+
+            
+            #line 210 "..\..\Views\Page\_IndexJson.cshtml"
+                        
+            
+            #line default
+            #line hidden
+            
+            #line 210 "..\..\Views\Page\_IndexJson.cshtml"
+                         foreach (var product in component.Products.ToList().Select((obj, index) => new { index, obj }))
+                                    {
+                                        if (component.DataNumItemsRow == null)
+                                        {
+                                            component.DataNumItemsRow = DefaultItemsRow.ToString();
                                         }
 
             
             #line default
             #line hidden
-WriteLiteral("                                    </div>\r\n                                    <" +
-"a");
+WriteLiteral("                                    <div");
 
-WriteLiteral(" class=\"left carousel-control\"");
+WriteLiteral(" class=\"resultContainerRelated\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 14055), Tuple.Create("\"", 14093)
-, Tuple.Create(Tuple.Create("", 14062), Tuple.Create("#Productcarousel{{", 14062), true)
+WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 15090), Tuple.Create("\"", 15453)
+, Tuple.Create(Tuple.Create("", 15101), Tuple.Create("{\'col-sm-12", 15101), true)
+, Tuple.Create(Tuple.Create(" ", 15112), Tuple.Create("col-xs-12\':", 15113), true)
             
-            #line 225 "..\..\Views\Page\_IndexJson.cshtml"
-            , Tuple.Create(Tuple.Create("", 14080), Tuple.Create<System.Object, System.Int32>(ProductSno
+            #line 216 "..\..\Views\Page\_IndexJson.cshtml"
+                        , Tuple.Create(Tuple.Create(" ", 15124), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
             
             #line default
             #line hidden
-, 14080), false)
-, Tuple.Create(Tuple.Create("", 14091), Tuple.Create("}}", 14091), true)
+, 15125), false)
+, Tuple.Create(Tuple.Create(" ", 15151), Tuple.Create("==", 15152), true)
+, Tuple.Create(Tuple.Create(" ", 15154), Tuple.Create("1,\'col-sm-6", 15155), true)
+, Tuple.Create(Tuple.Create(" ", 15166), Tuple.Create("col-xs-6\':", 15167), true)
+            
+            #line 216 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                             , Tuple.Create(Tuple.Create(" ", 15177), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 15178), false)
+, Tuple.Create(Tuple.Create(" ", 15204), Tuple.Create("==", 15205), true)
+, Tuple.Create(Tuple.Create(" ", 15207), Tuple.Create("2,\'col-sm-4", 15208), true)
+, Tuple.Create(Tuple.Create(" ", 15219), Tuple.Create("col-xs-6\':", 15220), true)
+            
+            #line 216 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                                  , Tuple.Create(Tuple.Create(" ", 15230), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 15231), false)
+, Tuple.Create(Tuple.Create(" ", 15257), Tuple.Create("==", 15258), true)
+, Tuple.Create(Tuple.Create(" ", 15260), Tuple.Create("3,\'col-sm-3", 15261), true)
+, Tuple.Create(Tuple.Create(" ", 15272), Tuple.Create("col-xs-6\':", 15273), true)
+            
+            #line 216 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                                                                                       , Tuple.Create(Tuple.Create(" ", 15283), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 15284), false)
+, Tuple.Create(Tuple.Create(" ", 15310), Tuple.Create("==", 15311), true)
+, Tuple.Create(Tuple.Create(" ", 15313), Tuple.Create("4,\'col-sm-5ths", 15314), true)
+, Tuple.Create(Tuple.Create(" ", 15328), Tuple.Create("col-md-5ths", 15329), true)
+, Tuple.Create(Tuple.Create(" ", 15340), Tuple.Create("col-xs-5ths", 15341), true)
+, Tuple.Create(Tuple.Create(" ", 15352), Tuple.Create("col-lg-5ths\':", 15353), true)
+            
+            #line 216 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                                                                                                                                                                          , Tuple.Create(Tuple.Create(" ", 15366), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 15367), false)
+, Tuple.Create(Tuple.Create(" ", 15393), Tuple.Create("==", 15394), true)
+, Tuple.Create(Tuple.Create(" ", 15396), Tuple.Create("5,", 15397), true)
+, Tuple.Create(Tuple.Create(" ", 15399), Tuple.Create("\'col-sm-2", 15400), true)
+, Tuple.Create(Tuple.Create(" ", 15409), Tuple.Create("col-xs-6\':", 15410), true)
+            
+            #line 216 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                                                                                                                                                                                                                                , Tuple.Create(Tuple.Create(" ", 15420), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 15421), false)
+, Tuple.Create(Tuple.Create(" ", 15447), Tuple.Create("==", 15448), true)
+, Tuple.Create(Tuple.Create(" ", 15450), Tuple.Create("6}", 15451), true)
+);
+
+WriteLiteral(">\r\n                                        <div");
+
+WriteLiteral(" class=\"product-container-panel\"");
+
+WriteLiteral(" ng-init=\"product.bulkQty= 1\"");
+
+WriteLiteral(">\r\n                                            <div");
+
+WriteLiteral(" class=\"imagePanel\"");
+
+WriteLiteral(">\r\n                                                <a");
+
+WriteAttribute("ng-href", Tuple.Create(" ng-href=\"", 15685), Tuple.Create("\"", 15713)
+, Tuple.Create(Tuple.Create("", 15695), Tuple.Create("/", 15695), true)
+            
+            #line 219 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create("", 15696), Tuple.Create<System.Object, System.Int32>(product.obj.Slug
+            
+            #line default
+            #line hidden
+, 15696), false)
+);
+
+WriteLiteral(">\r\n                                                    <img");
+
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 15773), Tuple.Create("\"", 15800)
+            
+            #line 220 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create("", 15782), Tuple.Create<System.Object, System.Int32>(product.obj.Image
+            
+            #line default
+            #line hidden
+, 15782), false)
+);
+
+WriteLiteral(" alt=\"OCX Store\"");
+
+WriteLiteral(" class=\"omni-img\"");
+
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
+
+WriteLiteral(" sizes=\"(min-width: 768px) 540px, 100vw\"");
+
+WriteLiteral(" />\r\n                                                </a>\r\n                      " +
+"                      </div>\r\n                                            <div");
+
+WriteLiteral(" class=\"dataPanel\"");
+
+WriteLiteral(">\r\n                                                <div");
+
+WriteLiteral(" class=\"ribbon-info\"");
+
+WriteLiteral(">\r\n                                                    <a");
+
+WriteAttribute("ng-href", Tuple.Create(" ng-href=\"", 16222), Tuple.Create("\"", 16250)
+, Tuple.Create(Tuple.Create("", 16232), Tuple.Create("/", 16232), true)
+            
+            #line 225 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create("", 16233), Tuple.Create<System.Object, System.Int32>(product.obj.Slug
+            
+            #line default
+            #line hidden
+, 16233), false)
+);
+
+WriteLiteral(">\r\n                                                        <span>");
+
+            
+            #line 226 "..\..\Views\Page\_IndexJson.cshtml"
+                                                         Write(product.obj.Name);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</span>\r\n                                                    </a>\r\n              " +
+"                                  </div>\r\n");
+
+            
+            #line 229 "..\..\Views\Page\_IndexJson.cshtml"
+                                                
+            
+            #line default
+            #line hidden
+            
+            #line 229 "..\..\Views\Page\_IndexJson.cshtml"
+                                                 if (component.ProductEnableButton == "false")
+                                                    {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                                    <div");
+
+WriteLiteral(" class=\"price-info\"");
+
+WriteLiteral(">\r\n                                                        <div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding text-center\"");
+
+WriteLiteral(">\r\n                                                            <h3><span>");
+
+            
+            #line 233 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                 Write(product.obj.Price.Formatted.WithTax);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</span></h3>\r\n                                                        </div>\r\n   " +
+"                                                 </div>\r\n");
+
+            
+            #line 236 "..\..\Views\Page\_IndexJson.cshtml"
+                                                    }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                                ");
+
+            
+            #line 237 "..\..\Views\Page\_IndexJson.cshtml"
+                                                 if (component.ProductEnableButton == "true")
+    {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                                    <div");
+
+WriteLiteral(" class=\"price-info\"");
+
+WriteLiteral(">\r\n                                                        <div");
+
+WriteLiteral(" class=\"col-sm-8 col-xs-12 no-padding\"");
+
+WriteLiteral(">\r\n                                                            <h3><span>");
+
+            
+            #line 241 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                 Write(product.obj.Price.Formatted.WithTax);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</span></h3>\r\n                                                        </div>\r\n\r\n " +
+"                                                       <div");
+
+WriteLiteral(" class=\"col-sm-4 col-xs-4 no-padding quantity-info hidden-xs\"");
+
+WriteLiteral(">\r\n                                                            <input");
+
+WriteLiteral(" type=\"number\"");
+
+WriteLiteral(" class=\"form-control\"");
+
+WriteLiteral(" ng-model=\"product.bulkQty\"");
+
+WriteLiteral(" min=\"1\"");
+
+WriteLiteral(" placeholder=\"Qty\"");
+
+WriteLiteral(" ng-click=\"pm.onTextFocus($event)\"");
+
+WriteLiteral(" numbers-Only />\r\n                                                        </div>\r" +
+"\n                                                    </div>\r\n");
+
+WriteLiteral("                                                    <div");
+
+WriteLiteral(" class=\"button-info\"");
+
+WriteLiteral(">\r\n                                                        <div");
+
+WriteLiteral(" class=\"icon-info\"");
+
+WriteLiteral(">\r\n                                                            <input");
+
+WriteLiteral(" type=\"number\"");
+
+WriteLiteral(" class=\"form-control hidden-xs\"");
+
+WriteLiteral(" ng-model=\"product.bulkQty\"");
+
+WriteLiteral(" min=\"1\"");
+
+WriteLiteral(" placeholder=\"Qty\"");
+
+WriteLiteral(" ng-click=\"pm.onTextFocus($event)\"");
+
+WriteLiteral(" numbers-Only />\r\n                                                        </div>\r" +
+"\n                                                        <div");
+
+WriteLiteral(" class=\"action-info hidden-xs\"");
+
+WriteLiteral(">\r\n                                                            <a");
+
+WriteLiteral(" class=\"animate btn-success\"");
+
+WriteLiteral(" ng-click=\"gm.addToBasket(product.recordId,product.bulkQty,0)\"");
+
+WriteLiteral(" ng-if=\"!pm.isWhislist\"");
+
+WriteLiteral("><span>");
+
+            
+            #line 253 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                                                                                 Write(LT("ProductDetail.Label.AddToCart", "Add To Cart"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</span></a>\r\n");
+
+            
+            #line 254 "..\..\Views\Page\_IndexJson.cshtml"
+                                                            
+            
+            #line default
+            #line hidden
+            
+            #line 254 "..\..\Views\Page\_IndexJson.cshtml"
+                                                             if (SessionContext.CurrentUser != null)
+    {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                                                <a");
+
+WriteLiteral(" class=\"animate btn-success\"");
+
+WriteLiteral(" ng-click=\"gm.addToBasket(product.recordId,product.bulkQty,0)\"");
+
+WriteLiteral(" ng-if=\"pm.isWhislist\"");
+
+WriteLiteral("><span>");
+
+            
+            #line 256 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                                                                                    Write(LT("ProductDetail.Label.AddToCart", "Add To Cart"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</span></a>\r\n");
+
+            
+            #line 257 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                                        </div>\r\n                 " +
+"                                   </div>\r\n");
+
+            
+            #line 260 "..\..\Views\Page\_IndexJson.cshtml"
+                                                    }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                            </div>\r\n                             " +
+"           </div>\r\n                                    </div>\r\n");
+
+            
+            #line 264 "..\..\Views\Page\_IndexJson.cshtml"
+                                    }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                    </div>\r\n                </div>\r\n");
+
+            
+            #line 267 "..\..\Views\Page\_IndexJson.cshtml"
+            }
+            else if (component.ProductListDisplayType == "list")
+            {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                <div");
+
+WriteLiteral(" class=\"row\"");
+
+WriteLiteral(">\r\n                    <div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12 listView whiteContainer\"");
+
+WriteLiteral(">\r\n");
+
+            
+            #line 272 "..\..\Views\Page\_IndexJson.cshtml"
+                        
+            
+            #line default
+            #line hidden
+            
+            #line 272 "..\..\Views\Page\_IndexJson.cshtml"
+                         foreach (var product in component.Products.ToList().Select((obj, index) => new { index, obj }))
+                        {
+                            if (component.DataNumItemsRow == null)
+                            {
+                                component.DataNumItemsRow = DefaultItemsRow.ToString();
+                            }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                            <div");
+
+WriteLiteral(" class=\"resultContainerRelated\"");
+
+WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 20278), Tuple.Create("\"", 20641)
+, Tuple.Create(Tuple.Create("", 20289), Tuple.Create("{\'col-sm-12", 20289), true)
+, Tuple.Create(Tuple.Create(" ", 20300), Tuple.Create("col-xs-12\':", 20301), true)
+            
+            #line 278 "..\..\Views\Page\_IndexJson.cshtml"
+                , Tuple.Create(Tuple.Create(" ", 20312), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 20313), false)
+, Tuple.Create(Tuple.Create(" ", 20339), Tuple.Create("==", 20340), true)
+, Tuple.Create(Tuple.Create(" ", 20342), Tuple.Create("1,\'col-sm-6", 20343), true)
+, Tuple.Create(Tuple.Create(" ", 20354), Tuple.Create("col-xs-6\':", 20355), true)
+            
+            #line 278 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                     , Tuple.Create(Tuple.Create(" ", 20365), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 20366), false)
+, Tuple.Create(Tuple.Create(" ", 20392), Tuple.Create("==", 20393), true)
+, Tuple.Create(Tuple.Create(" ", 20395), Tuple.Create("2,\'col-sm-4", 20396), true)
+, Tuple.Create(Tuple.Create(" ", 20407), Tuple.Create("col-xs-6\':", 20408), true)
+            
+            #line 278 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                          , Tuple.Create(Tuple.Create(" ", 20418), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 20419), false)
+, Tuple.Create(Tuple.Create(" ", 20445), Tuple.Create("==", 20446), true)
+, Tuple.Create(Tuple.Create(" ", 20448), Tuple.Create("3,\'col-sm-3", 20449), true)
+, Tuple.Create(Tuple.Create(" ", 20460), Tuple.Create("col-xs-6\':", 20461), true)
+            
+            #line 278 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                                                                               , Tuple.Create(Tuple.Create(" ", 20471), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 20472), false)
+, Tuple.Create(Tuple.Create(" ", 20498), Tuple.Create("==", 20499), true)
+, Tuple.Create(Tuple.Create(" ", 20501), Tuple.Create("4,\'col-sm-5ths", 20502), true)
+, Tuple.Create(Tuple.Create(" ", 20516), Tuple.Create("col-md-5ths", 20517), true)
+, Tuple.Create(Tuple.Create(" ", 20528), Tuple.Create("col-xs-5ths", 20529), true)
+, Tuple.Create(Tuple.Create(" ", 20540), Tuple.Create("col-lg-5ths\':", 20541), true)
+            
+            #line 278 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                                                                                                                                                                  , Tuple.Create(Tuple.Create(" ", 20554), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 20555), false)
+, Tuple.Create(Tuple.Create(" ", 20581), Tuple.Create("==", 20582), true)
+, Tuple.Create(Tuple.Create(" ", 20584), Tuple.Create("5,", 20585), true)
+, Tuple.Create(Tuple.Create(" ", 20587), Tuple.Create("\'col-sm-2", 20588), true)
+, Tuple.Create(Tuple.Create(" ", 20597), Tuple.Create("col-xs-6\':", 20598), true)
+            
+            #line 278 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                                                                                                                                                                                                                        , Tuple.Create(Tuple.Create(" ", 20608), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 20609), false)
+, Tuple.Create(Tuple.Create(" ", 20635), Tuple.Create("==", 20636), true)
+, Tuple.Create(Tuple.Create(" ", 20638), Tuple.Create("6}", 20639), true)
+);
+
+WriteLiteral(">\r\n                                <div");
+
+WriteLiteral(" class=\"product-container-panel\"");
+
+WriteLiteral(" ng-init=\"product.bulkQty= 1\"");
+
+WriteLiteral(">\r\n                                    <div");
+
+WriteLiteral(" class=\"imagePanel\"");
+
+WriteLiteral(">\r\n                                        <a");
+
+WriteAttribute("ng-href", Tuple.Create(" ng-href=\"", 20849), Tuple.Create("\"", 20877)
+, Tuple.Create(Tuple.Create("", 20859), Tuple.Create("/", 20859), true)
+            
+            #line 281 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create("", 20860), Tuple.Create<System.Object, System.Int32>(product.obj.Slug
+            
+            #line default
+            #line hidden
+, 20860), false)
+);
+
+WriteLiteral(">\r\n                                            <img");
+
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 20929), Tuple.Create("\"", 20956)
+            
+            #line 282 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create("", 20938), Tuple.Create<System.Object, System.Int32>(product.obj.Image
+            
+            #line default
+            #line hidden
+, 20938), false)
+);
+
+WriteLiteral(" alt=\"OCX Store\"");
+
+WriteLiteral(" class=\"omni-img\"");
+
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
+
+WriteLiteral(" sizes=\"(min-width: 768px) 540px, 100vw\"");
+
+WriteLiteral(" />\r\n                                        </a>\r\n                              " +
+"      </div>\r\n                                    <div");
+
+WriteLiteral(" class=\"dataPanel\"");
+
+WriteLiteral(">\r\n                                        <div");
+
+WriteLiteral(" class=\"ribbon-info\"");
+
+WriteLiteral(">\r\n                                            <a");
+
+WriteAttribute("ng-href", Tuple.Create(" ng-href=\"", 21338), Tuple.Create("\"", 21366)
+, Tuple.Create(Tuple.Create("", 21348), Tuple.Create("/", 21348), true)
+            
+            #line 287 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create("", 21349), Tuple.Create<System.Object, System.Int32>(product.obj.Slug
+            
+            #line default
+            #line hidden
+, 21349), false)
+);
+
+WriteLiteral(">\r\n                                                <span>");
+
+            
+            #line 288 "..\..\Views\Page\_IndexJson.cshtml"
+                                                 Write(product.obj.Name);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</span>\r\n                                            </a>\r\n                      " +
+"                  </div>\r\n");
+
+            
+            #line 291 "..\..\Views\Page\_IndexJson.cshtml"
+                                        
+            
+            #line default
+            #line hidden
+            
+            #line 291 "..\..\Views\Page\_IndexJson.cshtml"
+                                         if (component.ProductEnableButton == "false")
+                                        {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                            <div");
+
+WriteLiteral(" class=\"price-info\"");
+
+WriteLiteral(">\r\n                                                <div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding text-center\"");
+
+WriteLiteral(">\r\n                                                    <h3><span>");
+
+            
+            #line 295 "..\..\Views\Page\_IndexJson.cshtml"
+                                                         Write(product.obj.Price.Formatted.WithTax);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</span></h3>\r\n                                                </div>\r\n           " +
+"                                 </div>\r\n");
+
+            
+            #line 298 "..\..\Views\Page\_IndexJson.cshtml"
+                                        }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                        ");
+
+            
+            #line 299 "..\..\Views\Page\_IndexJson.cshtml"
+                                         if (component.ProductEnableButton == "true")
+                                        {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                            <div");
+
+WriteLiteral(" class=\"price-info\"");
+
+WriteLiteral(">\r\n                                                <div");
+
+WriteLiteral(" class=\"col-sm-8 col-xs-12 no-padding\"");
+
+WriteLiteral(">\r\n                                                    <h3><span>");
+
+            
+            #line 303 "..\..\Views\Page\_IndexJson.cshtml"
+                                                         Write(product.obj.Price.Formatted.WithTax);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</span></h3>\r\n                                                </div>\r\n\r\n         " +
+"                                       <div");
+
+WriteLiteral(" class=\"col-sm-4 col-xs-4 no-padding quantity-info hidden-xs\"");
+
+WriteLiteral(">\r\n                                                    <input");
+
+WriteLiteral(" type=\"number\"");
+
+WriteLiteral(" class=\"form-control\"");
+
+WriteLiteral(" ng-model=\"product.bulkQty\"");
+
+WriteLiteral(" min=\"1\"");
+
+WriteLiteral(" placeholder=\"Qty\"");
+
+WriteLiteral(" ng-click=\"pm.onTextFocus($event)\"");
+
+WriteLiteral(" numbers-Only />\r\n                                                </div>\r\n       " +
+"                                     </div>\r\n");
+
+WriteLiteral("                                                        <div");
+
+WriteLiteral(" class=\"button-info\"");
+
+WriteLiteral(">\r\n                                                            <div");
+
+WriteLiteral(" class=\"icon-info\"");
+
+WriteLiteral(">\r\n                                                                <input");
+
+WriteLiteral(" type=\"number\"");
+
+WriteLiteral(" class=\"form-control hidden-xs\"");
+
+WriteLiteral(" ng-model=\"product.bulkQty\"");
+
+WriteLiteral(" min=\"1\"");
+
+WriteLiteral(" placeholder=\"Qty\"");
+
+WriteLiteral(" ng-click=\"pm.onTextFocus($event)\"");
+
+WriteLiteral(" numbers-Only />\r\n                                                            </d" +
+"iv>\r\n                                                            <div");
+
+WriteLiteral(" class=\"action-info hidden-xs\"");
+
+WriteLiteral(">\r\n                                                                <a");
+
+WriteLiteral(" class=\"animate btn-success\"");
+
+WriteLiteral(" ng-click=\"gm.addToBasket(product.recordId,product.bulkQty,0)\"");
+
+WriteLiteral(" ng-if=\"!pm.isWhislist\"");
+
+WriteLiteral("><span>");
+
+            
+            #line 315 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                                                                                     Write(LT("ProductDetail.Label.AddToCart", "Add To Cart"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</span></a>\r\n");
+
+            
+            #line 316 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                
+            
+            #line default
+            #line hidden
+            
+            #line 316 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                 if (SessionContext.CurrentUser != null)
+                                                                {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                                                    <a");
+
+WriteLiteral(" class=\"animate btn-success\"");
+
+WriteLiteral(" ng-click=\"gm.addToBasket(product.recordId,product.bulkQty,0)\"");
+
+WriteLiteral(" ng-if=\"pm.isWhislist\"");
+
+WriteLiteral("><span>");
+
+            
+            #line 318 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                                                                                        Write(LT("ProductDetail.Label.AddToCart", "Add To Cart"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</span></a>\r\n");
+
+            
+            #line 319 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                                            </div>\r\n             " +
+"                                           </div>\r\n");
+
+            
+            #line 322 "..\..\Views\Page\_IndexJson.cshtml"
+                                        }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                    </div>\r\n                                </div" +
+">\r\n                            </div>\r\n");
+
+            
+            #line 326 "..\..\Views\Page\_IndexJson.cshtml"
+                        }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                    </div>\r\n                </div>\r\n");
+
+            
+            #line 329 "..\..\Views\Page\_IndexJson.cshtml"
+            }
+
+        }
+    }
+    if (component.ComponentType == SiteViewComponentTypes.Recommendation)
+    {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("        <div");
+
+WriteLiteral(" class=\"row margin-top-sm\"");
+
+WriteLiteral(">\r\n            <div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12 no-margin whiteContainer\"");
+
+WriteLiteral(">\r\n                <h3");
+
+WriteLiteral(" class=\"heading-h3\"");
+
+WriteLiteral(">\r\n");
+
+            
+            #line 338 "..\..\Views\Page\_IndexJson.cshtml"
+                    
+            
+            #line default
+            #line hidden
+            
+            #line 338 "..\..\Views\Page\_IndexJson.cshtml"
+                     if (component.DataType == RecommendationTypes.Personalised.ToString())
+                    {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                       <span> ");
+
+            
+            #line 340 "..\..\Views\Page\_IndexJson.cshtml"
+                         Write(LT("Reccomend.Title.Personalised", "You may also like these Products"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</span>\r\n");
+
+            
+            #line 341 "..\..\Views\Page\_IndexJson.cshtml"
+                    }  
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                    ");
+
+            
+            #line 342 "..\..\Views\Page\_IndexJson.cshtml"
+                     if (component.DataType == RecommendationTypes.Popular.ToString())
+                    {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                        <span> ");
+
+            
+            #line 344 "..\..\Views\Page\_IndexJson.cshtml"
+                          Write(LT("Reccomend.Title.Popular", "Popular Products"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</span>\r\n");
+
+            
+            #line 345 "..\..\Views\Page\_IndexJson.cshtml"
+                    }   
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                    ");
+
+            
+            #line 346 "..\..\Views\Page\_IndexJson.cshtml"
+                     if (component.DataType == RecommendationTypes.Order.ToString())
+                    {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                        <span> ");
+
+            
+            #line 348 "..\..\Views\Page\_IndexJson.cshtml"
+                          Write(LT("Reccomend.Title.BasedOnOrder", "Based on your order"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</span>\r\n");
+
+            
+            #line 349 "..\..\Views\Page\_IndexJson.cshtml"
+                    }   
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                    ");
+
+            
+            #line 350 "..\..\Views\Page\_IndexJson.cshtml"
+                     if (component.DataType == RecommendationTypes.Basket.ToString())
+                    {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                        <span> ");
+
+            
+            #line 352 "..\..\Views\Page\_IndexJson.cshtml"
+                          Write(LT("Reccomend.Title.Basket", "Based on your basket"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</span>\r\n");
+
+            
+            #line 353 "..\..\Views\Page\_IndexJson.cshtml"
+                    }   
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                    ");
+
+            
+            #line 354 "..\..\Views\Page\_IndexJson.cshtml"
+                     if (component.DataType == RecommendationTypes.NewForYou.ToString())
+                    {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                        <span> ");
+
+            
+            #line 356 "..\..\Views\Page\_IndexJson.cshtml"
+                          Write(LT("Reccomend.Title.NewProducts", "New Products"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</span>\r\n");
+
+            
+            #line 357 "..\..\Views\Page\_IndexJson.cshtml"
+                    } 
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                    ");
+
+            
+            #line 358 "..\..\Views\Page\_IndexJson.cshtml"
+                     if (component.DataType == RecommendationTypes.Product.ToString())
+                    {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                        <span> ");
+
+            
+            #line 360 "..\..\Views\Page\_IndexJson.cshtml"
+                          Write(LT("Reccomend.Title.Product", "You may also like these Products"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</span>\r\n");
+
+            
+            #line 361 "..\..\Views\Page\_IndexJson.cshtml"
+                    } 
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                    ");
+
+            
+            #line 362 "..\..\Views\Page\_IndexJson.cshtml"
+                     if (component.DataType == RecommendationTypes.Promotion.ToString())
+                    {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                        <span> ");
+
+            
+            #line 364 "..\..\Views\Page\_IndexJson.cshtml"
+                          Write(LT("Reccomend.Title.Promotions", "Promotions"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</span>\r\n");
+
+            
+            #line 365 "..\..\Views\Page\_IndexJson.cshtml"
+                    }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                    ");
+
+            
+            #line 366 "..\..\Views\Page\_IndexJson.cshtml"
+                     if (component.DataType == RecommendationTypes.RecentView.ToString())
+                    {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                        <span> ");
+
+            
+            #line 368 "..\..\Views\Page\_IndexJson.cshtml"
+                          Write(LT("Reccomend.Title.RecentlyViewed", "Recently Viewed"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</span>\r\n");
+
+            
+            #line 369 "..\..\Views\Page\_IndexJson.cshtml"
+                    }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                    ");
+
+            
+            #line 370 "..\..\Views\Page\_IndexJson.cshtml"
+                     if (component.DataType == RecommendationTypes.Home.ToString())
+                    {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                        <span> ");
+
+            
+            #line 372 "..\..\Views\Page\_IndexJson.cshtml"
+                          Write(LT("Reccomend.Title.Home", "You may also like these"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</span>\r\n");
+
+            
+            #line 373 "..\..\Views\Page\_IndexJson.cshtml"
+                    }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                </h3>\r\n             </div>\r\n            <div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12 no-margin whiteContainer\"");
+
+WriteLiteral(">\r\n                <bt-recommendation");
+
+WriteAttribute("type", Tuple.Create(" type=\"", 27183), Tuple.Create("\"", 27209)
+            
+            #line 377 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create("", 27190), Tuple.Create<System.Object, System.Int32>(component.DataType
+            
+            #line default
+            #line hidden
+, 27190), false)
+);
+
+WriteLiteral(" showmodel=\"false\"");
+
+WriteLiteral(" noofitems=\"10\"");
+
+WriteLiteral(" />\r\n            </div>\r\n             \r\n        </div>\r\n");
+
+            
+            #line 381 "..\..\Views\Page\_IndexJson.cshtml"
+
+    }
+    
+            
+            #line default
+            #line hidden
+            
+            #line 383 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                                                                                                                        
+                
+            
+            #line default
+            #line hidden
+            
+            #line 384 "..\..\Views\Page\_IndexJson.cshtml"
+                                
+    if (component.ComponentType == SiteViewComponentTypes.BrandList && component != null && component.Brands != null)
+    {
+        if (component.BrandListDisplayType == "grid")
+        {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("            <div");
+
+WriteLiteral(" class=\"row\"");
+
+WriteLiteral(">\r\n                <div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12 whiteContainer\"");
+
+WriteLiteral(">\r\n                    <div");
+
+WriteLiteral(" class=\"row hover01\"");
+
+WriteLiteral(">\r\n");
+
+            
+            #line 392 "..\..\Views\Page\_IndexJson.cshtml"
+                        
+            
+            #line default
+            #line hidden
+            
+            #line 392 "..\..\Views\Page\_IndexJson.cshtml"
+                         foreach (var brands in component.Brands)
+                        {
+                            if (component.DataNumItemsRow == null)
+                            {
+                                component.DataNumItemsRow = DefaultItemsRow.ToString();
+                            }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                            <div");
+
+WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 28241), Tuple.Create("\"", 28604)
+, Tuple.Create(Tuple.Create("", 28252), Tuple.Create("{\'col-sm-12", 28252), true)
+, Tuple.Create(Tuple.Create(" ", 28263), Tuple.Create("col-xs-12\':", 28264), true)
+            
+            #line 398 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create(" ", 28275), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 28276), false)
+, Tuple.Create(Tuple.Create(" ", 28302), Tuple.Create("==", 28303), true)
+, Tuple.Create(Tuple.Create(" ", 28305), Tuple.Create("1,\'col-sm-6", 28306), true)
+, Tuple.Create(Tuple.Create(" ", 28317), Tuple.Create("col-xs-6\':", 28318), true)
+            
+            #line 398 "..\..\Views\Page\_IndexJson.cshtml"
+                                      , Tuple.Create(Tuple.Create(" ", 28328), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 28329), false)
+, Tuple.Create(Tuple.Create(" ", 28355), Tuple.Create("==", 28356), true)
+, Tuple.Create(Tuple.Create(" ", 28358), Tuple.Create("2,\'col-sm-4", 28359), true)
+, Tuple.Create(Tuple.Create(" ", 28370), Tuple.Create("col-xs-6\':", 28371), true)
+            
+            #line 398 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                           , Tuple.Create(Tuple.Create(" ", 28381), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 28382), false)
+, Tuple.Create(Tuple.Create(" ", 28408), Tuple.Create("==", 28409), true)
+, Tuple.Create(Tuple.Create(" ", 28411), Tuple.Create("3,\'col-sm-3", 28412), true)
+, Tuple.Create(Tuple.Create(" ", 28423), Tuple.Create("col-xs-6\':", 28424), true)
+            
+            #line 398 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                                                , Tuple.Create(Tuple.Create(" ", 28434), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 28435), false)
+, Tuple.Create(Tuple.Create(" ", 28461), Tuple.Create("==", 28462), true)
+, Tuple.Create(Tuple.Create(" ", 28464), Tuple.Create("4,\'col-sm-5ths", 28465), true)
+, Tuple.Create(Tuple.Create(" ", 28479), Tuple.Create("col-md-5ths", 28480), true)
+, Tuple.Create(Tuple.Create(" ", 28491), Tuple.Create("col-xs-5ths", 28492), true)
+, Tuple.Create(Tuple.Create(" ", 28503), Tuple.Create("col-lg-5ths\':", 28504), true)
+            
+            #line 398 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                                                                                                                                   , Tuple.Create(Tuple.Create(" ", 28517), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 28518), false)
+, Tuple.Create(Tuple.Create(" ", 28544), Tuple.Create("==", 28545), true)
+, Tuple.Create(Tuple.Create(" ", 28547), Tuple.Create("5,", 28548), true)
+, Tuple.Create(Tuple.Create(" ", 28550), Tuple.Create("\'col-sm-2", 28551), true)
+, Tuple.Create(Tuple.Create(" ", 28560), Tuple.Create("col-xs-6\':", 28561), true)
+            
+            #line 398 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                                                                                                                                                                                         , Tuple.Create(Tuple.Create(" ", 28571), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 28572), false)
+, Tuple.Create(Tuple.Create(" ", 28598), Tuple.Create("==", 28599), true)
+, Tuple.Create(Tuple.Create(" ", 28601), Tuple.Create("6}", 28602), true)
+);
+
+WriteLiteral(">\r\n                                <a");
+
+WriteAttribute("href", Tuple.Create(" href=\"", 28642), Tuple.Create("\"", 28661)
+            
+            #line 399 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create("", 28649), Tuple.Create<System.Object, System.Int32>(brands.Link
+            
+            #line default
+            #line hidden
+, 28649), false)
+);
+
+WriteLiteral(">\r\n                                    <figure>\r\n                                " +
+"        <img");
+
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 28755), Tuple.Create("\"", 28827)
+, Tuple.Create(Tuple.Create("", 28764), Tuple.Create("https://devocxblob.blob.core.windows.net/demostore/", 28764), true)
+            
+            #line 401 "..\..\Views\Page\_IndexJson.cshtml"
+                       , Tuple.Create(Tuple.Create("", 28815), Tuple.Create<System.Object, System.Int32>(brands.Logo
+            
+            #line default
+            #line hidden
+, 28815), false)
+);
+
+WriteLiteral(" class=\"omni-img\"");
+
+WriteLiteral(" alt=\"Banner3\"");
+
+WriteLiteral(" sizes=\"(min-width: 768px) 540px, 100vw\"");
+
+WriteAttribute("component-type", Tuple.Create(" component-type=\"", 28899), Tuple.Create("\"", 28940)
+            
+            #line 401 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                            , Tuple.Create(Tuple.Create("", 28916), Tuple.Create<System.Object, System.Int32>(component.ComponentType
+            
+            #line default
+            #line hidden
+, 28916), false)
+);
+
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
+
+WriteLiteral(">\r\n                                    </figure>\r\n                               " +
+"     <div");
+
+WriteLiteral(" class=\"infornation\"");
+
+WriteLiteral(">\r\n                                        <strong>");
+
+            
+            #line 404 "..\..\Views\Page\_IndexJson.cshtml"
+                                           Write(brands.ManufacturerName);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</strong>\r\n                                    </div>\r\n                          " +
+"      </a>\r\n                            </div>\r\n");
+
+            
+            #line 408 "..\..\Views\Page\_IndexJson.cshtml"
+
+                        }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                    </div>\r\n                </div>\r\n            </div>\r\n");
+
+            
+            #line 413 "..\..\Views\Page\_IndexJson.cshtml"
+        }
+        else if (component.BrandListDisplayType == "slider")
+        {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("            <div");
+
+WriteLiteral(" class=\"row hover01\"");
+
+WriteLiteral(">\r\n                <div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding whiteContainer\"");
+
+WriteLiteral(">\r\n                    <div");
+
+WriteAttribute("id", Tuple.Create(" id=\"", 29619), Tuple.Create("\"", 29652)
+, Tuple.Create(Tuple.Create("", 29624), Tuple.Create("Brandcarousel{{", 29624), true)
+            
+            #line 418 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create("", 29639), Tuple.Create<System.Object, System.Int32>(ProductSno
+            
+            #line default
+            #line hidden
+, 29639), false)
+, Tuple.Create(Tuple.Create("", 29650), Tuple.Create("}}", 29650), true)
+);
+
+WriteLiteral(" class=\"carousel slide\"");
+
+WriteLiteral(" data-ride=\"carousel\"");
+
+WriteLiteral(" data-type=\"multi\"");
+
+WriteLiteral(" data-interval=\"10000\"");
+
+WriteLiteral(">\r\n                        <div");
+
+WriteLiteral(" class=\"carousel-inner multi-inner-330\"");
+
+WriteLiteral(">\r\n");
+
+            
+            #line 420 "..\..\Views\Page\_IndexJson.cshtml"
+                            
+            
+            #line default
+            #line hidden
+            
+            #line 420 "..\..\Views\Page\_IndexJson.cshtml"
+                             foreach (var brands in component.Brands.ToList().Select((obj, index) => new { index, obj }))
+                            {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                <div");
+
+WriteLiteral(" class=\"item\"");
+
+WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 30013), Tuple.Create("\"", 30051)
+, Tuple.Create(Tuple.Create("", 30024), Tuple.Create("{active", 30024), true)
+, Tuple.Create(Tuple.Create(" ", 30031), Tuple.Create(":", 30032), true)
+            
+            #line 422 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create(" ", 30033), Tuple.Create<System.Object, System.Int32>(brands.index
+            
+            #line default
+            #line hidden
+, 30034), false)
+, Tuple.Create(Tuple.Create("", 30047), Tuple.Create("==0}", 30047), true)
+);
+
+WriteLiteral(">\r\n                                    <div");
+
+WriteAttribute("class", Tuple.Create(" class=\"", 30095), Tuple.Create("\"", 30142)
+, Tuple.Create(Tuple.Create("", 30103), Tuple.Create("carousel-col-", 30103), true)
+            
+            #line 423 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create("", 30116), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 30116), false)
+);
+
+WriteLiteral(">\r\n                                        <a");
+
+WriteAttribute("href", Tuple.Create(" href=\"", 30188), Tuple.Create("\"", 30211)
+            
+            #line 424 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create("", 30195), Tuple.Create<System.Object, System.Int32>(brands.obj.Link
+            
+            #line default
+            #line hidden
+, 30195), false)
+);
+
+WriteLiteral(">\r\n                                            <figure>\r\n                        " +
+"                        <img");
+
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 30321), Tuple.Create("\"", 30397)
+, Tuple.Create(Tuple.Create("", 30330), Tuple.Create("https://devocxblob.blob.core.windows.net/demostore/", 30330), true)
+            
+            #line 426 "..\..\Views\Page\_IndexJson.cshtml"
+                               , Tuple.Create(Tuple.Create("", 30381), Tuple.Create<System.Object, System.Int32>(brands.obj.Logo
+            
+            #line default
+            #line hidden
+, 30381), false)
+);
+
+WriteLiteral(" class=\"omni-img\"");
+
+WriteLiteral(" sizes=\"(min-width: 768px) 540px, 100vw\"");
+
+WriteLiteral(" alt=\"Banner3\"");
+
+WriteAttribute("component-type", Tuple.Create(" component-type=\"", 30469), Tuple.Create("\"", 30510)
+            
+            #line 426 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                                        , Tuple.Create(Tuple.Create("", 30486), Tuple.Create<System.Object, System.Int32>(component.ComponentType
+            
+            #line default
+            #line hidden
+, 30486), false)
+);
+
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
+
+WriteLiteral(">\r\n                                            </figure>\r\n                       " +
+"                     <div");
+
+WriteLiteral(" class=\"infornation\"");
+
+WriteLiteral(">\r\n                                                <strong>");
+
+            
+            #line 429 "..\..\Views\Page\_IndexJson.cshtml"
+                                                   Write(brands.obj.ManufacturerName);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</strong>\r\n                                            </div>\r\n                  " +
+"                      </a>\r\n                                    </div>\r\n        " +
+"                        </div>\r\n");
+
+            
+            #line 434 "..\..\Views\Page\_IndexJson.cshtml"
+                            }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                        </div>\r\n                        <a");
+
+WriteLiteral(" class=\"left carousel-control\"");
+
+WriteAttribute("href", Tuple.Create(" href=\"", 31075), Tuple.Create("\"", 31111)
+, Tuple.Create(Tuple.Create("", 31082), Tuple.Create("#Brandcarousel{{", 31082), true)
+            
+            #line 436 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create("", 31098), Tuple.Create<System.Object, System.Int32>(ProductSno
+            
+            #line default
+            #line hidden
+, 31098), false)
+, Tuple.Create(Tuple.Create("", 31109), Tuple.Create("}}", 31109), true)
 );
 
 WriteLiteral(" data-slide=\"prev\"");
@@ -1201,20 +2663,20 @@ WriteLiteral("><i");
 
 WriteLiteral(" class=\"fa fa-chevron-left\"");
 
-WriteLiteral("></i></a>\r\n                                    <a");
+WriteLiteral("></i></a>\r\n                        <a");
 
 WriteLiteral(" class=\"right carousel-control\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 14222), Tuple.Create("\"", 14260)
-, Tuple.Create(Tuple.Create("", 14229), Tuple.Create("#Productcarousel{{", 14229), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 31228), Tuple.Create("\"", 31264)
+, Tuple.Create(Tuple.Create("", 31235), Tuple.Create("#Brandcarousel{{", 31235), true)
             
-            #line 226 "..\..\Views\Page\_IndexJson.cshtml"
-             , Tuple.Create(Tuple.Create("", 14247), Tuple.Create<System.Object, System.Int32>(ProductSno
+            #line 437 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create("", 31251), Tuple.Create<System.Object, System.Int32>(ProductSno
             
             #line default
             #line hidden
-, 14247), false)
-, Tuple.Create(Tuple.Create("", 14258), Tuple.Create("}}", 14258), true)
+, 31251), false)
+, Tuple.Create(Tuple.Create("", 31262), Tuple.Create("}}", 31262), true)
 );
 
 WriteLiteral(" data-slide=\"next\"");
@@ -1223,378 +2685,954 @@ WriteLiteral("><i");
 
 WriteLiteral(" class=\"fa fa-chevron-right\"");
 
-WriteLiteral("></i></a>\r\n                                </div>\r\n                            </" +
-"div>\r\n                        </div>\r\n");
+WriteLiteral("></i></a>\r\n                    </div>\r\n                </div>\r\n            </div>" +
+"\r\n");
 
             
-            #line 230 "..\..\Views\Page\_IndexJson.cshtml"
-                    }
-                }
-                if (component.ComponentType == SiteViewComponentTypes.CategoryList && component != null && component.Categories != null)
-                {
+            #line 441 "..\..\Views\Page\_IndexJson.cshtml"
+        }
+        else if (component.BrandListDisplayType == "list")
+        {
 
             
             #line default
             #line hidden
-WriteLiteral("                    <div");
+WriteLiteral("            <div");
 
 WriteLiteral(" class=\"row\"");
 
-WriteLiteral(">\r\n                        <div");
+WriteLiteral(">\r\n                <div");
 
 WriteLiteral(" class=\"col-sm-12 col-xs-12 whiteContainer\"");
 
-WriteLiteral(">\r\n                            <div");
+WriteLiteral(">\r\n                    <div");
 
 WriteLiteral(" class=\"row hover01\"");
 
 WriteLiteral(">\r\n");
 
             
-            #line 237 "..\..\Views\Page\_IndexJson.cshtml"
-                                
+            #line 447 "..\..\Views\Page\_IndexJson.cshtml"
+                        
             
             #line default
             #line hidden
             
-            #line 237 "..\..\Views\Page\_IndexJson.cshtml"
-                                 foreach (var category in component.Categories)
-                                {
+            #line 447 "..\..\Views\Page\_IndexJson.cshtml"
+                         foreach (var brands in component.Brands)
+                        {
+                            if (component.DataNumItemsRow == null)
+                            {
+                                component.DataNumItemsRow = DefaultItemsRow.ToString();
+                            }
 
             
             #line default
             #line hidden
-WriteLiteral("                                    <div");
+WriteLiteral("                            <div");
 
-WriteLiteral(" class=\"col-sm-3 col-xs-6\"");
-
-WriteLiteral(">\r\n                                        <figure>\r\n                            " +
-"                <img");
-
-WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 15079), Tuple.Create("\"", 15103)
+WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 31968), Tuple.Create("\"", 32331)
+, Tuple.Create(Tuple.Create("", 31979), Tuple.Create("{\'col-sm-12", 31979), true)
+, Tuple.Create(Tuple.Create(" ", 31990), Tuple.Create("col-xs-12\':", 31991), true)
             
-            #line 241 "..\..\Views\Page\_IndexJson.cshtml"
-, Tuple.Create(Tuple.Create("", 15088), Tuple.Create<System.Object, System.Int32>(category.Image
+            #line 453 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create(" ", 32002), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
             
             #line default
             #line hidden
-, 15088), false)
+, 32003), false)
+, Tuple.Create(Tuple.Create(" ", 32029), Tuple.Create("==", 32030), true)
+, Tuple.Create(Tuple.Create(" ", 32032), Tuple.Create("1,\'col-sm-6", 32033), true)
+, Tuple.Create(Tuple.Create(" ", 32044), Tuple.Create("col-xs-6\':", 32045), true)
+            
+            #line 453 "..\..\Views\Page\_IndexJson.cshtml"
+                                      , Tuple.Create(Tuple.Create(" ", 32055), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 32056), false)
+, Tuple.Create(Tuple.Create(" ", 32082), Tuple.Create("==", 32083), true)
+, Tuple.Create(Tuple.Create(" ", 32085), Tuple.Create("2,\'col-sm-4", 32086), true)
+, Tuple.Create(Tuple.Create(" ", 32097), Tuple.Create("col-xs-6\':", 32098), true)
+            
+            #line 453 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                           , Tuple.Create(Tuple.Create(" ", 32108), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 32109), false)
+, Tuple.Create(Tuple.Create(" ", 32135), Tuple.Create("==", 32136), true)
+, Tuple.Create(Tuple.Create(" ", 32138), Tuple.Create("3,\'col-sm-3", 32139), true)
+, Tuple.Create(Tuple.Create(" ", 32150), Tuple.Create("col-xs-6\':", 32151), true)
+            
+            #line 453 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                                                , Tuple.Create(Tuple.Create(" ", 32161), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 32162), false)
+, Tuple.Create(Tuple.Create(" ", 32188), Tuple.Create("==", 32189), true)
+, Tuple.Create(Tuple.Create(" ", 32191), Tuple.Create("4,\'col-sm-5ths", 32192), true)
+, Tuple.Create(Tuple.Create(" ", 32206), Tuple.Create("col-md-5ths", 32207), true)
+, Tuple.Create(Tuple.Create(" ", 32218), Tuple.Create("col-xs-5ths", 32219), true)
+, Tuple.Create(Tuple.Create(" ", 32230), Tuple.Create("col-lg-5ths\':", 32231), true)
+            
+            #line 453 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                                                                                                                                   , Tuple.Create(Tuple.Create(" ", 32244), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 32245), false)
+, Tuple.Create(Tuple.Create(" ", 32271), Tuple.Create("==", 32272), true)
+, Tuple.Create(Tuple.Create(" ", 32274), Tuple.Create("5,", 32275), true)
+, Tuple.Create(Tuple.Create(" ", 32277), Tuple.Create("\'col-sm-2", 32278), true)
+, Tuple.Create(Tuple.Create(" ", 32287), Tuple.Create("col-xs-6\':", 32288), true)
+            
+            #line 453 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                                                                                                                                                                                         , Tuple.Create(Tuple.Create(" ", 32298), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 32299), false)
+, Tuple.Create(Tuple.Create(" ", 32325), Tuple.Create("==", 32326), true)
+, Tuple.Create(Tuple.Create(" ", 32328), Tuple.Create("6}", 32329), true)
 );
 
-WriteLiteral(" alt=\"Banner4\"");
+WriteLiteral(">\r\n                                <a");
 
-WriteAttribute("component-type", Tuple.Create(" component-type=\"", 15118), Tuple.Create("\"", 15159)
+WriteAttribute("href", Tuple.Create(" href=\"", 32369), Tuple.Create("\"", 32388)
             
-            #line 241 "..\..\Views\Page\_IndexJson.cshtml"
-                       , Tuple.Create(Tuple.Create("", 15135), Tuple.Create<System.Object, System.Int32>(component.ComponentType
+            #line 454 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create("", 32376), Tuple.Create<System.Object, System.Int32>(brands.Link
             
             #line default
             #line hidden
-, 15135), false)
+, 32376), false)
 );
 
-WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
+WriteLiteral(">\r\n                                    <figure>\r\n                                " +
+"        <img");
 
-WriteLiteral(" />\r\n                                        </figure>\r\n                         " +
-"               <div");
-
-WriteLiteral(" class=\"infornation\"");
-
-WriteLiteral(">\r\n                                            <strong>");
-
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 32482), Tuple.Create("\"", 32554)
+, Tuple.Create(Tuple.Create("", 32491), Tuple.Create("https://devocxblob.blob.core.windows.net/demostore/", 32491), true)
             
-            #line 244 "..\..\Views\Page\_IndexJson.cshtml"
-                                               Write(category.Name);
-
+            #line 456 "..\..\Views\Page\_IndexJson.cshtml"
+                       , Tuple.Create(Tuple.Create("", 32542), Tuple.Create<System.Object, System.Int32>(brands.Logo
             
             #line default
             #line hidden
-WriteLiteral("</strong>\r\n                                            <p>");
-
-            
-            #line 245 "..\..\Views\Page\_IndexJson.cshtml"
-                                          Write(category.Description);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</p>\r\n                                        </div>\r\n                           " +
-"         </div>\r\n");
-
-            
-            #line 248 "..\..\Views\Page\_IndexJson.cshtml"
-                                }
-
-            
-            #line default
-            #line hidden
-WriteLiteral("                            </div>\r\n                        </div>\r\n             " +
-"       </div>\r\n");
-
-            
-            #line 252 "..\..\Views\Page\_IndexJson.cshtml"
-                    continue;
-                }
-
-                if (component.ComponentType == SiteViewComponentTypes.BrandList && component != null && component.Brands != null)
-                {
-
-            
-            #line default
-            #line hidden
-WriteLiteral("                    <div");
-
-WriteLiteral(" class=\"row\"");
-
-WriteLiteral(">\r\n                        <div");
-
-WriteLiteral(" class=\"col-sm-12 col-xs-12 whiteContainer\"");
-
-WriteLiteral(">\r\n                            <div");
-
-WriteLiteral(" class=\"row hover01\"");
-
-WriteLiteral(">\r\n");
-
-            
-            #line 260 "..\..\Views\Page\_IndexJson.cshtml"
-                                
-            
-            #line default
-            #line hidden
-            
-            #line 260 "..\..\Views\Page\_IndexJson.cshtml"
-                                 foreach (var brands in component.Brands)
-                                {
-                                    var imgurl = @brands.ManufacturerName + ".jpg";
-                                    
-            
-            #line default
-            #line hidden
-WriteLiteral("<div");
-
-WriteLiteral(" class=\"col-sm-3 col-xs-6\"");
-
-WriteLiteral(">\r\n                                        <figure>\r\n\r\n                          " +
-"                  <img");
-
-WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 16430), Tuple.Create("\"", 16493)
-, Tuple.Create(Tuple.Create("", 16439), Tuple.Create("https://dev-ocxcdn.azureedge.net/ocx-ib/brands/", 16439), true)
-            
-            #line 266 "..\..\Views\Page\_IndexJson.cshtml"
-                       , Tuple.Create(Tuple.Create("", 16486), Tuple.Create<System.Object, System.Int32>(imgurl
-            
-            #line default
-            #line hidden
-, 16486), false)
+, 32542), false)
 );
+
+WriteLiteral(" class=\"omni-img\"");
 
 WriteLiteral(" alt=\"Banner3\"");
 
-WriteAttribute("component-type", Tuple.Create(" component-type=\"", 16508), Tuple.Create("\"", 16549)
+WriteLiteral(" sizes=\"(min-width: 768px) 540px, 100vw\"");
+
+WriteAttribute("component-type", Tuple.Create(" component-type=\"", 32626), Tuple.Create("\"", 32667)
             
-            #line 266 "..\..\Views\Page\_IndexJson.cshtml"
-                                                              , Tuple.Create(Tuple.Create("", 16525), Tuple.Create<System.Object, System.Int32>(component.ComponentType
+            #line 456 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                            , Tuple.Create(Tuple.Create("", 32643), Tuple.Create<System.Object, System.Int32>(component.ComponentType
             
             #line default
             #line hidden
-, 16525), false)
+, 32643), false)
 );
 
 WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
-WriteLiteral(">\r\n                                            ");
-
-WriteLiteral("\r\n                                        </figure>\r\n                            " +
-"            <div");
+WriteLiteral(">\r\n                                    </figure>\r\n                               " +
+"     <div");
 
 WriteLiteral(" class=\"infornation\"");
 
-WriteLiteral(">\r\n                                            <strong>");
+WriteLiteral(">\r\n                                        <strong>");
 
             
-            #line 270 "..\..\Views\Page\_IndexJson.cshtml"
-                                               Write(brands.ManufacturerName);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</strong>\r\n                                            <p>");
-
-            
-            #line 271 "..\..\Views\Page\_IndexJson.cshtml"
-                                          Write(brands.Description);
+            #line 459 "..\..\Views\Page\_IndexJson.cshtml"
+                                           Write(brands.ManufacturerName);
 
             
             #line default
             #line hidden
-WriteLiteral("</p>\r\n                                        </div>\r\n                           " +
-"         </div>\r\n");
+WriteLiteral("</strong>\r\n                                    </div>\r\n                          " +
+"      </a>\r\n                            </div>\r\n");
 
             
-            #line 274 "..\..\Views\Page\_IndexJson.cshtml"
-                                }
+            #line 463 "..\..\Views\Page\_IndexJson.cshtml"
 
-            
-            #line default
-            #line hidden
-WriteLiteral("                            </div>\r\n                        </div>\r\n             " +
-"       </div>\r\n");
-
-            
-            #line 278 "..\..\Views\Page\_IndexJson.cshtml"
-                    continue;
-                }
-                if (component != null && component.ComponentType == SiteViewComponentTypes.BlogList && component.Blogs != null)
-                {
+                        }
 
             
             #line default
             #line hidden
-WriteLiteral("                    <div");
+WriteLiteral("                    </div>\r\n                </div>\r\n            </div>\r\n");
+
+            
+            #line 468 "..\..\Views\Page\_IndexJson.cshtml"
+        }
+
+        continue;
+    }
+    
+            
+            #line default
+            #line hidden
+            
+            #line 472 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                                                                                                                        
+                
+            
+            #line default
+            #line hidden
+            
+            #line 473 "..\..\Views\Page\_IndexJson.cshtml"
+                                   
+    if (component.ComponentType == SiteViewComponentTypes.CategoryList && component != null && component.Categories != null)
+    {
+        if (component.CategoryListDisplayType == "grid")
+        {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("            <div");
 
 WriteLiteral(" class=\"row\"");
 
-WriteLiteral(">\r\n                        <div");
+WriteLiteral(">\r\n                <div");
 
 WriteLiteral(" class=\"col-sm-12 col-xs-12 whiteContainer\"");
 
-WriteLiteral(">\r\n                            <div");
+WriteLiteral(">\r\n                    <div");
+
+WriteLiteral(" class=\"row hover01\"");
+
+WriteLiteral(">\r\n");
+
+            
+            #line 481 "..\..\Views\Page\_IndexJson.cshtml"
+                        
+            
+            #line default
+            #line hidden
+            
+            #line 481 "..\..\Views\Page\_IndexJson.cshtml"
+                         foreach (var category in component.Categories)
+                        {
+                            if (component.DataNumItemsRow == null)
+                            {
+                                component.DataNumItemsRow = DefaultItemsRow.ToString();
+                            }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                            <div");
+
+WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 34113), Tuple.Create("\"", 34476)
+, Tuple.Create(Tuple.Create("", 34124), Tuple.Create("{\'col-sm-12", 34124), true)
+, Tuple.Create(Tuple.Create(" ", 34135), Tuple.Create("col-xs-12\':", 34136), true)
+            
+            #line 487 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create(" ", 34147), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 34148), false)
+, Tuple.Create(Tuple.Create(" ", 34174), Tuple.Create("==", 34175), true)
+, Tuple.Create(Tuple.Create(" ", 34177), Tuple.Create("1,\'col-sm-6", 34178), true)
+, Tuple.Create(Tuple.Create(" ", 34189), Tuple.Create("col-xs-6\':", 34190), true)
+            
+            #line 487 "..\..\Views\Page\_IndexJson.cshtml"
+                                      , Tuple.Create(Tuple.Create(" ", 34200), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 34201), false)
+, Tuple.Create(Tuple.Create(" ", 34227), Tuple.Create("==", 34228), true)
+, Tuple.Create(Tuple.Create(" ", 34230), Tuple.Create("2,\'col-sm-4", 34231), true)
+, Tuple.Create(Tuple.Create(" ", 34242), Tuple.Create("col-xs-6\':", 34243), true)
+            
+            #line 487 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                           , Tuple.Create(Tuple.Create(" ", 34253), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 34254), false)
+, Tuple.Create(Tuple.Create(" ", 34280), Tuple.Create("==", 34281), true)
+, Tuple.Create(Tuple.Create(" ", 34283), Tuple.Create("3,\'col-sm-3", 34284), true)
+, Tuple.Create(Tuple.Create(" ", 34295), Tuple.Create("col-xs-6\':", 34296), true)
+            
+            #line 487 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                                                , Tuple.Create(Tuple.Create(" ", 34306), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 34307), false)
+, Tuple.Create(Tuple.Create(" ", 34333), Tuple.Create("==", 34334), true)
+, Tuple.Create(Tuple.Create(" ", 34336), Tuple.Create("4,\'col-sm-5ths", 34337), true)
+, Tuple.Create(Tuple.Create(" ", 34351), Tuple.Create("col-md-5ths", 34352), true)
+, Tuple.Create(Tuple.Create(" ", 34363), Tuple.Create("col-xs-5ths", 34364), true)
+, Tuple.Create(Tuple.Create(" ", 34375), Tuple.Create("col-lg-5ths\':", 34376), true)
+            
+            #line 487 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                                                                                                                                   , Tuple.Create(Tuple.Create(" ", 34389), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 34390), false)
+, Tuple.Create(Tuple.Create(" ", 34416), Tuple.Create("==", 34417), true)
+, Tuple.Create(Tuple.Create(" ", 34419), Tuple.Create("5,", 34420), true)
+, Tuple.Create(Tuple.Create(" ", 34422), Tuple.Create("\'col-sm-2", 34423), true)
+, Tuple.Create(Tuple.Create(" ", 34432), Tuple.Create("col-xs-6\':", 34433), true)
+            
+            #line 487 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                                                                                                                                                                                         , Tuple.Create(Tuple.Create(" ", 34443), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 34444), false)
+, Tuple.Create(Tuple.Create(" ", 34470), Tuple.Create("==", 34471), true)
+, Tuple.Create(Tuple.Create(" ", 34473), Tuple.Create("6}", 34474), true)
+);
+
+WriteLiteral(">\r\n                                <figure>\r\n                                    " +
+"<img");
+
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 34562), Tuple.Create("\"", 34586)
+            
+            #line 489 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create("", 34571), Tuple.Create<System.Object, System.Int32>(category.Image
+            
+            #line default
+            #line hidden
+, 34571), false)
+);
+
+WriteLiteral(" alt=\"OCX Store Category\"");
+
+WriteLiteral(" class=\"omni-img\"");
+
+WriteAttribute("component-type", Tuple.Create(" component-type=\"", 34629), Tuple.Create("\"", 34670)
+            
+            #line 489 "..\..\Views\Page\_IndexJson.cshtml"
+                                           , Tuple.Create(Tuple.Create("", 34646), Tuple.Create<System.Object, System.Int32>(component.ComponentType
+            
+            #line default
+            #line hidden
+, 34646), false)
+);
+
+WriteLiteral(" sizes=\"(min-width: 768px) 540px, 100vw\"");
+
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
+
+WriteLiteral(" />\r\n                                </figure>\r\n                                <" +
+"div");
+
+WriteLiteral(" class=\"infornation\"");
+
+WriteLiteral(">\r\n                                    <strong");
+
+WriteLiteral(" aria-hidden=\"true\"");
+
+WriteLiteral(">");
+
+            
+            #line 492 "..\..\Views\Page\_IndexJson.cshtml"
+                                                          Write(category.Name);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</strong>\r\n                                    <p");
+
+WriteLiteral(" aria-hidden=\"true\"");
+
+WriteLiteral(">");
+
+            
+            #line 493 "..\..\Views\Page\_IndexJson.cshtml"
+                                                     Write(category.Description);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</p>\r\n                                </div>\r\n                            </div>\r" +
+"\n");
+
+            
+            #line 496 "..\..\Views\Page\_IndexJson.cshtml"
+                        }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                    </div>\r\n                </div>\r\n            </div>\r\n");
+
+            
+            #line 500 "..\..\Views\Page\_IndexJson.cshtml"
+        }
+        else if (component.CategoryListDisplayType == "slider")
+        {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("            <div");
+
+WriteLiteral(" class=\"row hover01\"");
+
+WriteLiteral(">\r\n                <div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding whiteContainer\"");
+
+WriteLiteral(">\r\n                    <div");
+
+WriteAttribute("id", Tuple.Create(" id=\"", 35432), Tuple.Create("\"", 35468)
+, Tuple.Create(Tuple.Create("", 35437), Tuple.Create("Categorycarousel{{", 35437), true)
+            
+            #line 505 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create("", 35455), Tuple.Create<System.Object, System.Int32>(ProductSno
+            
+            #line default
+            #line hidden
+, 35455), false)
+, Tuple.Create(Tuple.Create("", 35466), Tuple.Create("}}", 35466), true)
+);
+
+WriteLiteral(" class=\"carousel slide\"");
+
+WriteLiteral(" data-ride=\"carousel\"");
+
+WriteLiteral(" data-type=\"multi\"");
+
+WriteLiteral(" data-interval=\"10000\"");
+
+WriteLiteral(">\r\n                        <div");
+
+WriteLiteral(" class=\"carousel-inner multi-inner-330\"");
+
+WriteLiteral(">\r\n");
+
+            
+            #line 507 "..\..\Views\Page\_IndexJson.cshtml"
+                            
+            
+            #line default
+            #line hidden
+            
+            #line 507 "..\..\Views\Page\_IndexJson.cshtml"
+                             foreach (var category in component.Categories.ToList().Select((obj, index) => new { index, obj }))
+                            {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                <div");
+
+WriteLiteral(" class=\"item\"");
+
+WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 35835), Tuple.Create("\"", 35875)
+, Tuple.Create(Tuple.Create("", 35846), Tuple.Create("{active", 35846), true)
+, Tuple.Create(Tuple.Create(" ", 35853), Tuple.Create(":", 35854), true)
+            
+            #line 509 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create(" ", 35855), Tuple.Create<System.Object, System.Int32>(category.index
+            
+            #line default
+            #line hidden
+, 35856), false)
+, Tuple.Create(Tuple.Create("", 35871), Tuple.Create("==0}", 35871), true)
+);
+
+WriteLiteral(">\r\n                                    <div");
+
+WriteAttribute("class", Tuple.Create(" class=\"", 35919), Tuple.Create("\"", 35966)
+, Tuple.Create(Tuple.Create("", 35927), Tuple.Create("carousel-col-", 35927), true)
+            
+            #line 510 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create("", 35940), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 35940), false)
+);
+
+WriteLiteral(">\r\n                                        <a");
+
+WriteAttribute("href", Tuple.Create(" href=\"", 36012), Tuple.Create("\"", 36037)
+            
+            #line 511 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create("", 36019), Tuple.Create<System.Object, System.Int32>(category.obj.Link
+            
+            #line default
+            #line hidden
+, 36019), false)
+);
+
+WriteLiteral(">\r\n                                            <figure>\r\n                        " +
+"                        <img");
+
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 36147), Tuple.Create("\"", 36175)
+            
+            #line 513 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create("", 36156), Tuple.Create<System.Object, System.Int32>(category.obj.Image
+            
+            #line default
+            #line hidden
+, 36156), false)
+);
+
+WriteLiteral(" alt=\"OCX Store Category\"");
+
+WriteLiteral(" class=\"omni-img\"");
+
+WriteAttribute("component-type", Tuple.Create(" component-type=\"", 36218), Tuple.Create("\"", 36259)
+            
+            #line 513 "..\..\Views\Page\_IndexJson.cshtml"
+                                                           , Tuple.Create(Tuple.Create("", 36235), Tuple.Create<System.Object, System.Int32>(component.ComponentType
+            
+            #line default
+            #line hidden
+, 36235), false)
+);
+
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
+
+WriteLiteral(" sizes=\"(min-width: 768px) 540px, 100vw\"");
+
+WriteLiteral(" />\r\n                                            </figure>\r\n                     " +
+"                       <div");
+
+WriteLiteral(" class=\"infornation\"");
+
+WriteLiteral(">\r\n                                                <strong");
+
+WriteLiteral(" aria-hidden=\"true\"");
+
+WriteLiteral(">");
+
+            
+            #line 516 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                      Write(category.obj.Name);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</strong>\r\n                                                <p");
+
+WriteLiteral(" aria-hidden=\"true\"");
+
+WriteLiteral(">");
+
+            
+            #line 517 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                 Write(category.obj.Description);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</p>\r\n                                            </div>\r\n                       " +
+"                 </a>\r\n                                    </div>\r\n             " +
+"                   </div>\r\n");
+
+            
+            #line 522 "..\..\Views\Page\_IndexJson.cshtml"
+                            }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                        </div>\r\n                        <a");
+
+WriteLiteral(" class=\"left carousel-control\"");
+
+WriteAttribute("href", Tuple.Create(" href=\"", 36976), Tuple.Create("\"", 37015)
+, Tuple.Create(Tuple.Create("", 36983), Tuple.Create("#Categorycarousel{{", 36983), true)
+            
+            #line 524 "..\..\Views\Page\_IndexJson.cshtml"
+ , Tuple.Create(Tuple.Create("", 37002), Tuple.Create<System.Object, System.Int32>(ProductSno
+            
+            #line default
+            #line hidden
+, 37002), false)
+, Tuple.Create(Tuple.Create("", 37013), Tuple.Create("}}", 37013), true)
+);
+
+WriteLiteral(" data-slide=\"prev\"");
+
+WriteLiteral("><i");
+
+WriteLiteral(" class=\"fa fa-chevron-left\"");
+
+WriteLiteral("></i></a>\r\n                        <a");
+
+WriteLiteral(" class=\"right carousel-control\"");
+
+WriteAttribute("href", Tuple.Create(" href=\"", 37132), Tuple.Create("\"", 37171)
+, Tuple.Create(Tuple.Create("", 37139), Tuple.Create("#Categorycarousel{{", 37139), true)
+            
+            #line 525 "..\..\Views\Page\_IndexJson.cshtml"
+  , Tuple.Create(Tuple.Create("", 37158), Tuple.Create<System.Object, System.Int32>(ProductSno
+            
+            #line default
+            #line hidden
+, 37158), false)
+, Tuple.Create(Tuple.Create("", 37169), Tuple.Create("}}", 37169), true)
+);
+
+WriteLiteral(" data-slide=\"next\"");
+
+WriteLiteral("><i");
+
+WriteLiteral(" class=\"fa fa-chevron-right\"");
+
+WriteLiteral("></i></a>\r\n                    </div>\r\n                </div>\r\n            </div>" +
+"\r\n");
+
+            
+            #line 529 "..\..\Views\Page\_IndexJson.cshtml"
+        }
+        else if (component.CategoryListDisplayType == "list")
+        {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("            <div");
+
+WriteLiteral(" class=\"row\"");
+
+WriteLiteral(">\r\n                <div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12 whiteContainer\"");
+
+WriteLiteral(">\r\n                    <div");
+
+WriteLiteral(" class=\"row hover01\"");
+
+WriteLiteral(">\r\n");
+
+            
+            #line 535 "..\..\Views\Page\_IndexJson.cshtml"
+                        
+            
+            #line default
+            #line hidden
+            
+            #line 535 "..\..\Views\Page\_IndexJson.cshtml"
+                         foreach (var category in component.Categories)
+                        {
+                            if (component.DataNumItemsRow == null)
+                            {
+                                component.DataNumItemsRow = DefaultItemsRow.ToString();
+                            }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                            <div");
+
+WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 37884), Tuple.Create("\"", 38247)
+, Tuple.Create(Tuple.Create("", 37895), Tuple.Create("{\'col-sm-12", 37895), true)
+, Tuple.Create(Tuple.Create(" ", 37906), Tuple.Create("col-xs-12\':", 37907), true)
+            
+            #line 541 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create(" ", 37918), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 37919), false)
+, Tuple.Create(Tuple.Create(" ", 37945), Tuple.Create("==", 37946), true)
+, Tuple.Create(Tuple.Create(" ", 37948), Tuple.Create("1,\'col-sm-6", 37949), true)
+, Tuple.Create(Tuple.Create(" ", 37960), Tuple.Create("col-xs-6\':", 37961), true)
+            
+            #line 541 "..\..\Views\Page\_IndexJson.cshtml"
+                                      , Tuple.Create(Tuple.Create(" ", 37971), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 37972), false)
+, Tuple.Create(Tuple.Create(" ", 37998), Tuple.Create("==", 37999), true)
+, Tuple.Create(Tuple.Create(" ", 38001), Tuple.Create("2,\'col-sm-4", 38002), true)
+, Tuple.Create(Tuple.Create(" ", 38013), Tuple.Create("col-xs-6\':", 38014), true)
+            
+            #line 541 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                           , Tuple.Create(Tuple.Create(" ", 38024), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 38025), false)
+, Tuple.Create(Tuple.Create(" ", 38051), Tuple.Create("==", 38052), true)
+, Tuple.Create(Tuple.Create(" ", 38054), Tuple.Create("3,\'col-sm-3", 38055), true)
+, Tuple.Create(Tuple.Create(" ", 38066), Tuple.Create("col-xs-6\':", 38067), true)
+            
+            #line 541 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                                                , Tuple.Create(Tuple.Create(" ", 38077), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 38078), false)
+, Tuple.Create(Tuple.Create(" ", 38104), Tuple.Create("==", 38105), true)
+, Tuple.Create(Tuple.Create(" ", 38107), Tuple.Create("4,\'col-sm-5ths", 38108), true)
+, Tuple.Create(Tuple.Create(" ", 38122), Tuple.Create("col-md-5ths", 38123), true)
+, Tuple.Create(Tuple.Create(" ", 38134), Tuple.Create("col-xs-5ths", 38135), true)
+, Tuple.Create(Tuple.Create(" ", 38146), Tuple.Create("col-lg-5ths\':", 38147), true)
+            
+            #line 541 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                                                                                                                                   , Tuple.Create(Tuple.Create(" ", 38160), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 38161), false)
+, Tuple.Create(Tuple.Create(" ", 38187), Tuple.Create("==", 38188), true)
+, Tuple.Create(Tuple.Create(" ", 38190), Tuple.Create("5,", 38191), true)
+, Tuple.Create(Tuple.Create(" ", 38193), Tuple.Create("\'col-sm-2", 38194), true)
+, Tuple.Create(Tuple.Create(" ", 38203), Tuple.Create("col-xs-6\':", 38204), true)
+            
+            #line 541 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                                                                                                                                                                                                                                         , Tuple.Create(Tuple.Create(" ", 38214), Tuple.Create<System.Object, System.Int32>(component.DataNumItemsRow
+            
+            #line default
+            #line hidden
+, 38215), false)
+, Tuple.Create(Tuple.Create(" ", 38241), Tuple.Create("==", 38242), true)
+, Tuple.Create(Tuple.Create(" ", 38244), Tuple.Create("6}", 38245), true)
+);
+
+WriteLiteral(">\r\n                                <figure>\r\n                                    " +
+"<img");
+
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 38333), Tuple.Create("\"", 38357)
+            
+            #line 543 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create("", 38342), Tuple.Create<System.Object, System.Int32>(category.Image
+            
+            #line default
+            #line hidden
+, 38342), false)
+);
+
+WriteLiteral(" alt=\"OCX Store Category\"");
+
+WriteLiteral(" class=\"omni-img\"");
+
+WriteAttribute("component-type", Tuple.Create(" component-type=\"", 38400), Tuple.Create("\"", 38441)
+            
+            #line 543 "..\..\Views\Page\_IndexJson.cshtml"
+                                           , Tuple.Create(Tuple.Create("", 38417), Tuple.Create<System.Object, System.Int32>(component.ComponentType
+            
+            #line default
+            #line hidden
+, 38417), false)
+);
+
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
+
+WriteLiteral(" sizes=\"(min-width: 768px) 540px, 100vw\"");
+
+WriteLiteral(" />\r\n                                </figure>\r\n                                <" +
+"div");
+
+WriteLiteral(" class=\"infornation\"");
+
+WriteLiteral(">\r\n                                    <strong");
+
+WriteLiteral(" aria-hidden=\"true\"");
+
+WriteLiteral(">");
+
+            
+            #line 546 "..\..\Views\Page\_IndexJson.cshtml"
+                                                          Write(category.Name);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</strong>\r\n                                    <p");
+
+WriteLiteral(" aria-hidden=\"true\"");
+
+WriteLiteral(">");
+
+            
+            #line 547 "..\..\Views\Page\_IndexJson.cshtml"
+                                                     Write(category.Description);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</p>\r\n                                </div>\r\n                            </div>\r" +
+"\n");
+
+            
+            #line 550 "..\..\Views\Page\_IndexJson.cshtml"
+                        }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                    </div>\r\n                </div>\r\n            </div>\r\n");
+
+            
+            #line 554 "..\..\Views\Page\_IndexJson.cshtml"
+        }
+
+        continue;
+    }
+    if (component != null && component.ComponentType == SiteViewComponentTypes.BlogList && component.Blogs != null)
+    {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("        <div");
+
+WriteLiteral(" class=\"row\"");
+
+WriteLiteral(">\r\n            <div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12 whiteContainer\"");
+
+WriteLiteral(">\r\n                <div");
 
 WriteLiteral(" class=\"row hover03\"");
 
 WriteLiteral(">\r\n");
 
             
-            #line 285 "..\..\Views\Page\_IndexJson.cshtml"
-                                
+            #line 563 "..\..\Views\Page\_IndexJson.cshtml"
+                    
             
             #line default
             #line hidden
             
-            #line 285 "..\..\Views\Page\_IndexJson.cshtml"
-                                 foreach (var blog in component.Blogs.ToList().Select((obj, index) => new { index, obj }))
-                                {
+            #line 563 "..\..\Views\Page\_IndexJson.cshtml"
+                     foreach (var blog in component.Blogs.ToList().Select((obj, index) => new { index, obj }))
+                    {
 
             
             #line default
             #line hidden
-WriteLiteral("                                    <div");
+WriteLiteral("                        <div");
 
 WriteLiteral(" class=\"col-sm-3 col-xs-12 no-padding\"");
 
-WriteLiteral(">\r\n                                        <div");
+WriteLiteral(">\r\n                            <div");
 
 WriteLiteral(" class=\"col-sm-12 col-xs-12\"");
 
-WriteLiteral(">\r\n                                            <figure>\r\n                        " +
-"                        <img");
+WriteLiteral(">\r\n                                <figure>\r\n                                    " +
+"<img");
 
-WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 17966), Tuple.Create("\"", 17994)
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 39620), Tuple.Create("\"", 39648)
             
-            #line 290 "..\..\Views\Page\_IndexJson.cshtml"
-, Tuple.Create(Tuple.Create("", 17975), Tuple.Create<System.Object, System.Int32>(blog.obj.BlogImage
+            #line 568 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create("", 39629), Tuple.Create<System.Object, System.Int32>(blog.obj.BlogImage
             
             #line default
             #line hidden
-, 17975), false)
+, 39629), false)
 );
 
-WriteAttribute("alt", Tuple.Create(" alt=\"", 17995), Tuple.Create("\"", 18017)
-            
-            #line 290 "..\..\Views\Page\_IndexJson.cshtml"
-      , Tuple.Create(Tuple.Create("", 18001), Tuple.Create<System.Object, System.Int32>(blog.obj.Author
-            
-            #line default
-            #line hidden
-, 18001), false)
-);
+WriteLiteral(" alt=\"OCX Blog\"");
+
+WriteLiteral(" class=\"omni-img\"");
 
 WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
-WriteLiteral(" />\r\n                                            </figure>\r\n                     " +
-"                       <div");
+WriteLiteral(" sizes=\"(min-width: 768px) 540px, 100vw\"");
+
+WriteLiteral(" />\r\n                                </figure>\r\n                                <" +
+"div");
 
 WriteLiteral(" class=\"infornation-blog\"");
 
-WriteLiteral(">\r\n                                                <p");
+WriteLiteral(">\r\n                                    <p");
+
+WriteLiteral(" aria-hidden=\"true\"");
 
 WriteLiteral(" class=\"post-date\"");
 
 WriteLiteral(">");
 
             
-            #line 293 "..\..\Views\Page\_IndexJson.cshtml"
-                                                                Write(blog.obj.Created);
+            #line 571 "..\..\Views\Page\_IndexJson.cshtml"
+                                                                       Write(blog.obj.Created);
 
             
             #line default
             #line hidden
-WriteLiteral("</p>\r\n                                                <strong>");
+WriteLiteral("</p>\r\n                                    <strong>");
 
             
-            #line 294 "..\..\Views\Page\_IndexJson.cshtml"
-                                                   Write(blog.obj.Title);
+            #line 572 "..\..\Views\Page\_IndexJson.cshtml"
+                                       Write(blog.obj.Title);
 
             
             #line default
             #line hidden
-WriteLiteral("</strong>\r\n                                                <h2");
+WriteLiteral("</strong>\r\n                                    <h2");
 
 WriteLiteral(" class=\"text-left\"");
 
 WriteLiteral(">");
 
             
-            #line 295 "..\..\Views\Page\_IndexJson.cshtml"
-                                                                 Write(blog.obj.Author);
+            #line 573 "..\..\Views\Page\_IndexJson.cshtml"
+                                                     Write(blog.obj.Author);
 
             
             #line default
             #line hidden
-WriteLiteral("</h2>\r\n                                                <h4");
+WriteLiteral("</h2>\r\n                                    <h4");
 
 WriteLiteral(" class=\"text-left\"");
 
 WriteLiteral(">");
 
             
-            #line 296 "..\..\Views\Page\_IndexJson.cshtml"
-                                                                 Write(blog.obj.Category);
+            #line 574 "..\..\Views\Page\_IndexJson.cshtml"
+                                                     Write(blog.obj.Category);
 
             
             #line default
             #line hidden
-WriteLiteral("</h4>\r\n                                                <p><a");
+WriteLiteral("</h4>\r\n                                    <p");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 18608), Tuple.Create("\"", 18637)
+WriteLiteral(" aria-hidden=\"true\"");
+
+WriteLiteral("><a");
+
+WriteAttribute("href", Tuple.Create(" href=\"", 40265), Tuple.Create("\"", 40294)
             
-            #line 297 "..\..\Views\Page\_IndexJson.cshtml"
-, Tuple.Create(Tuple.Create("", 18615), Tuple.Create<System.Object, System.Int32>(blog.obj.CategorySlug
+            #line 575 "..\..\Views\Page\_IndexJson.cshtml"
+, Tuple.Create(Tuple.Create("", 40272), Tuple.Create<System.Object, System.Int32>(blog.obj.CategorySlug
             
             #line default
             #line hidden
-, 18615), false)
+, 40272), false)
 );
 
 WriteLiteral(" class=\"animate btn-bordered\"");
 
-WriteLiteral("><span>Read More</span></a></p>\r\n                                            </di" +
-"v>\r\n                                        </div>\r\n                            " +
-"        </div>\r\n");
+WriteLiteral("><span>Read More</span></a></p>\r\n                                </div>\r\n        " +
+"                    </div>\r\n                        </div>\r\n");
 
             
-            #line 301 "..\..\Views\Page\_IndexJson.cshtml"
-                                }
+            #line 579 "..\..\Views\Page\_IndexJson.cshtml"
+                    }
 
             
             #line default
             #line hidden
-WriteLiteral("                            </div>\r\n                        </div>\r\n             " +
-"       </div>\r\n");
+WriteLiteral("                </div>\r\n            </div>\r\n        </div>\r\n");
 
             
-            #line 305 "..\..\Views\Page\_IndexJson.cshtml"
+            #line 583 "..\..\Views\Page\_IndexJson.cshtml"
                 }
                 //Increment Carousal Dynamic ID
                 ProductSno += 1;
@@ -1604,7 +3642,7 @@ WriteLiteral("                            </div>\r\n                        </di
             
             #line default
             #line hidden
-WriteLiteral("\r\n</div>\r\n");
+WriteLiteral("\r\n    \r\n</div>\r\n");
 
         }
     }

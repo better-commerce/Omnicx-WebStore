@@ -94,13 +94,11 @@ WriteLiteral(">\r\n                <div");
 
 WriteLiteral(" class=\"modal-title\"");
 
-WriteLiteral(" id=\"myModalLabel\"");
-
 WriteLiteral(">");
 
             
             #line 11 "..\..\Views\Shared\_RecommendationBubble.cshtml"
-                                                      Write(LT("YourBag.Message.BulkOrderPad", "Your OmniCX Store"));
+                                    Write(LT("YourBag.Message.BulkOrderPad", "Your OmniCX Store"));
 
             
             #line default
@@ -151,6 +149,8 @@ WriteLiteral(">\r\n                            <img");
 WriteLiteral(" ng-src=\"https://devocxblob.blob.core.windows.net/demostore/products/77S520_48_BL" +
 "U.jpg\"");
 
+WriteLiteral(" alt=\"Recommended Banner\"");
+
 WriteLiteral(" />\r\n                            <strong>Recommended</strong>\r\n                  " +
 "      </span>\r\n                        <span");
 
@@ -161,8 +161,10 @@ WriteLiteral(">\r\n                            <img");
 WriteLiteral(" src=\"https://devocxblob.blob.core.windows.net/demostore/products/75B492XX_94_OCH" +
 "RE.jpg\"");
 
-WriteLiteral(" />\r\n                            <strong>Bags</strong>\r\n                        <" +
-"/span>\r\n                        <span");
+WriteLiteral("  alt=\"Recommended Banner\"");
+
+WriteLiteral("/>\r\n                            <strong>Bags</strong>\r\n                        </" +
+"span>\r\n                        <span");
 
 WriteLiteral(" class=\"tags active\"");
 
@@ -170,14 +172,7 @@ WriteLiteral(">\r\n                            <img");
 
 WriteLiteral(" src=\"https://devocxblob.blob.core.windows.net/demostore/products/73726.jpg\"");
 
-WriteLiteral(" />\r\n                            <strong>Perfumes</strong>\r\n                     " +
-"   </span>\r\n                        <span");
-
-WriteLiteral(" class=\"tags\"");
-
-WriteLiteral(">\r\n                            <img");
-
-WriteLiteral(" src=\"https://devocxblob.blob.core.windows.net/demostore/products/73726.jpg\"");
+WriteLiteral(" alt=\"Recommended Banner\"");
 
 WriteLiteral(" />\r\n                            <strong>Perfumes</strong>\r\n                     " +
 "   </span>\r\n                        <span");
@@ -187,6 +182,19 @@ WriteLiteral(" class=\"tags\"");
 WriteLiteral(">\r\n                            <img");
 
 WriteLiteral(" src=\"https://devocxblob.blob.core.windows.net/demostore/products/73726.jpg\"");
+
+WriteLiteral("  alt=\"Recommended Banner\"");
+
+WriteLiteral("/>\r\n                            <strong>Perfumes</strong>\r\n                      " +
+"  </span>\r\n                        <span");
+
+WriteLiteral(" class=\"tags\"");
+
+WriteLiteral(">\r\n                            <img");
+
+WriteLiteral(" src=\"https://devocxblob.blob.core.windows.net/demostore/products/73726.jpg\"");
+
+WriteLiteral(" alt=\"Recommended Banner\"");
 
 WriteLiteral(" />\r\n                            <strong>Perfumes</strong>\r\n                     " +
 "   </span>\r\n                    </div>\r\n                    <div");

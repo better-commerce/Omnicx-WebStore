@@ -18,9 +18,10 @@
                 <a href="#relatedProduct" aria-expanded="true" aria-controls="relatedProduct" class="accordion-title accordionTitle js-accordionTrigger is-collapsed is-expanded">@LT("ProductDetail.label.AlsoLike", "You may also like these products")</a>
             </dt>
             <dd class="accordion-content accordionItem-lg no-padding is-expanded animateIn" id="relatedProduct" aria-hidden="false">
-                <div class="col-sm-5ths col-xs-5ths col-lg-5ths col-md-5ths resultContainerRelated" ng-repeat="product in pm.model.relatedProductList track by $index">
+                <bt-recommendation type="Product" showmodel="false" itemid="@Model.RecordId" modelid="@SessionContext.CurrentSiteConfig.RecommendationSettings.ProductModelId" noofitems="5" />
+                @*<div class="col-sm-5ths col-xs-5ths col-lg-5ths col-md-5ths resultContainerRelated" ng-repeat="product in pm.model.relatedProductList track by $index">
                     @Html.Partial("~/Views/Search/_ProductWidget.cshtml")
-                </div>
+                </div>*@
 
             </dd>
         </dl>

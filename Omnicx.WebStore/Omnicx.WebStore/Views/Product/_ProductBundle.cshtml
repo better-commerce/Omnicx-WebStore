@@ -30,7 +30,7 @@
                 <div class="col-sm-3 col-xs-4" ng-repeat="productBundle in pm.model.componentProducts">
                     <div class="bundle-image-container">
                         <a ng-href="/{{productBundle.slug}}">
-                            <img ng-src="{{productBundle.images[0].url}}" class="img-responsive" onerror="this.src = DEFAULT_IMAGE_URL">
+                            <img ng-src="{{productBundle.images[0].url}}" class="img-responsive" onerror="this.src = DEFAULT_IMAGE_URL" sizes="(min-width: 768px) 540px, 100vw">
                         </a>
                     </div>
                     <div>

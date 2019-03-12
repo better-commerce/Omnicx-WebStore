@@ -6,6 +6,7 @@ using Omnicx.WebStore.Models.Keys;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -41,16 +42,16 @@ namespace Omnicx.WebStore
         /// <param name="initialCall"></param>
         public static void RegisterRoutes(RouteCollection routes, bool initialCall = true)
         {
-            if (!initialCall)
-            {
-                var cackekey = string.Format(CacheKeys.SiteViewAllSlug, ConfigKeys.OmnicxDomainId);
-                if (CacheManager.IsKeyExist(cackekey))
-                    return;
-            }
+            //if (!initialCall)
+            //{
+            //    var cackekey = string.Format(CacheKeys.SiteViewAllSlug, ConfigKeys.OmnicxDomainId);
+            //    if (CacheManager.IsKeyExist(cackekey))
+            //        return;
+            //}
             routes.Clear();
-            var siteViewApi = DependencyResolver.Current.GetService<ISiteViewApi>();
-            var slugs = siteViewApi.GetSiteViewAllSlug();
-            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            //var siteViewApi = DependencyResolver.Current.GetService<ISiteViewApi>();
+            //var slugs = siteViewApi.GetSiteViewAllSlug();
+            //routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.LowercaseUrls = true;
             //var slugCount = 1;
             //if (slugs?.Result != null)
@@ -63,6 +64,7 @@ namespace Omnicx.WebStore
             //}
             routes.MapRoute(name: "sitemap", url: "{slug}.xml", defaults: new { controller = "Page", action = "GetFeedLink", slug = UrlParameter.Optional });
             routes.MapRoute(name: "feed", url: "feed{s}/{slug}", defaults: new { controller = "Page", action = "GetFeedLink", slug = UrlParameter.Optional, s = UrlParameter.Optional });
+            routes.MapRoute(name: "robots", url: "robots.txt", defaults: new { controller = "Page", action = "GetFeedLink", slug = "robots.txt" });
 
             routes.MapRoute(name: "brands-all", url: "brands", defaults: new { controller = "Brand", action = "BrandList", id = UrlParameter.Optional });
             routes.MapRoute(name: "brand-detail", url: "brands/{name}", defaults: new { controller = "Brand", action = "BrandDetail", id = UrlParameter.Optional });
@@ -82,13 +84,22 @@ namespace Omnicx.WebStore
             routes.MapRoute(name: "blog-editor", url: "blog-editor/{slug}/{currentpage}", defaults: new { controller = "Blog", action = "GetAllBlogsByEditor", slug = UrlParameter.Optional, currentpage = UrlParameter.Optional });
             routes.MapRoute(name: "checkout", url: "std/{basketId}", defaults: new { controller = "Checkout", action = "StandardCheckout", basketId = UrlParameter.Optional });
             routes.MapRoute(name: "onepagecheckout", url: "opc/{basketId}", defaults: new { controller = "Checkout", action = "OnePageCheckout", basketId = UrlParameter.Optional });
+            //ROUTES FOR JD WIZARD CHECKOUT
+            routes.MapRoute(name: "wizardcheckout", url: "wzc/{basketId}", defaults: new { controller = "Checkout", action = "WizardCheckout", basketId = UrlParameter.Optional });
+            routes.MapRoute(name: "wizardcheckoutdelivery", url: "wzc/delivery/{basketId}", defaults: new { controller = "Checkout", action = "WizardCheckoutDelivery", basketId = UrlParameter.Optional });
+            routes.MapRoute(name: "wizardcheckoutbilling", url: "wzc/billing/{basketId}", defaults: new { controller = "Checkout", action = "WizardCheckoutBilling", basketId = UrlParameter.Optional });
+            //ROUTES FOR HC WIZARD CHECKOUT
+            routes.MapRoute(name: "hotelcheckout", url: "hc/{basketId}", defaults: new { controller = "Checkout", action = "HotelCheckout", basketId = UrlParameter.Optional });
+            routes.MapRoute(name: "hotelcheckoutdelivery", url: "hc/delivery/{basketId}", defaults: new { controller = "Checkout", action = "HotelCheckoutDelivery", basketId = UrlParameter.Optional });
+            routes.MapRoute(name: "hotelcheckoutbilling", url: "hc/billing/{basketId}", defaults: new { controller = "Checkout", action = "HotelCheckoutBilling", basketId = UrlParameter.Optional });
+                        
             routes.MapRoute(name: "quotePayment", url: "quote/{link}", defaults: new { controller = "B2B", action = "ValidateQuotePayment", link = UrlParameter.Optional });
             routes.MapRoute(name: "dynamic-list", url: "list/{slug}", defaults: new { controller = "Search", action = "DynamicListItems", slug = UrlParameter.Optional });
             routes.MapRoute(name: "lookbooks", url: "lookbook", defaults: new { controller = "lookbook", action = "index", slug = UrlParameter.Optional });
             routes.MapRoute(name: "lookbook", url: "lookbook/{slug}", defaults: new { controller = "lookbook", action = "LookbookDetail", slug = UrlParameter.Optional });
 
-
-            routes.MapRoute(name: "dynamic-page", url: "{slug}", defaults: new { controller = "Page", action = "DynamicPage", slug = UrlParameter.Optional });
+            routes.MapRoute(name: "dynamic-page-preview", url: "ocx-preview/{id}/{versionNo}/{langCulture}", defaults: new { controller = "Page", action = "PagePreview", slug = UrlParameter.Optional, id = UrlParameter.Optional, versionNo = UrlParameter.Optional, langCulture = UrlParameter.Optional });
+            //routes.MapRoute(name: "dynamic-page", url: "{slug}", defaults: new { controller = "Page", action = "DynamicPage", slug = UrlParameter.Optional });
             routes.MapRoute(name: "passwordrecovery", url: "passwordrecovery/{id}", defaults: new { controller = "Account", action = "PasswordRecovery", id = UrlParameter.Optional });
            
             //Payment Method post notification route handlers
@@ -99,12 +110,36 @@ namespace Omnicx.WebStore
             routes.MapRoute(name: "Paypalnotification", url: "checkout/Paypalnotification", defaults: new { controller = "Paypal", action = "Notification", id = UrlParameter.Optional });
 
             routes.MapRoute(name: "CODPaymentResponse", url: "checkout/PaymentResponse", defaults: new { controller = "COD", action = "PaymentResponse", id = UrlParameter.Optional });
+            var controllers = GetControllerNames();
+            foreach (var cntrl in controllers)
+            {
+                routes.MapRoute(name: cntrl + "default", url: cntrl + "/{action}/{id}", defaults: new { controller = cntrl, action = "index", id = UrlParameter.Optional });
+            }
 
+            routes.MapRoute(name: "dynamic-page-3", url: "{slug}/{slug1}/{slug2}/{slug3}/{slug4}", defaults: new { controller = "Page", action = "DynamicPage", slug = UrlParameter.Optional, slug1 = UrlParameter.Optional, slug2 = UrlParameter.Optional, slug3 = UrlParameter.Optional, slug4 = UrlParameter.Optional });
             routes.MapRoute(name: "Default", url: "{controller}/{action}/{id}", defaults: new { controller = "Page", action = "DynamicPage", id = UrlParameter.Optional });
             // routes.MapRoute(name: "Default1", url: "{*.*}", defaults: new { controller = "Page", action = "DynamicPage", id = UrlParameter.Optional });
 
 
 
+        }
+        private static List<Type> GetSubClasses<T>()
+        {
+            var types = Assembly.Load("Omnicx.Site.Core").GetExportedTypes();
+            var controllers = types.Where(
+               type => type.IsSubclassOf(typeof(T))).ToList();
+
+            controllers.AddRange(Assembly.GetCallingAssembly().GetTypes().Where(
+                type => type.IsSubclassOf(typeof(T))).ToList());
+            return controllers;
+        }
+
+        public static List<string> GetControllerNames()
+        {
+            List<string> controllerNames = new List<string>();
+            GetSubClasses<Controller>().ForEach(
+                type => controllerNames.Add(type.Name.Replace("Controller", "")));
+            return controllerNames;
         }
     }
 }

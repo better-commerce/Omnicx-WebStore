@@ -1,13 +1,14 @@
 ﻿@{
-/*
-    Name: Order Summery
-    Purpose: Contains Order item Lines, Promotion panel and Order Amount Information
-    Structure: /Views/Checkout/_OrderSummary.cshtml
-    Contains (Partial Views Used):
+    /*
+        Name: Order Summery
+        Purpose: Contains Order item Lines, Promotion panel and Order Amount Information
+        Structure: /Views/Checkout/_OrderSummary.cshtml
+        Contains (Partial Views Used):
 
-    Contained In (Where we Use this View):
-        a-/Views/Basket/OnePageCheckout.cshtml
-    */
+        Contained In (Where we Use this View):
+            a-/Views/Basket/OnePageCheckout.cshtml
+        */
+    var giftOrder = Convert.ToInt16(SessionContext.CurrentSiteConfig.BasketSettings.EnableIsGiftORMe);
 }
 @using Omnicx.WebStore.Models.Enums
 @inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
@@ -18,7 +19,7 @@
     <div class="box-header">
         <h3> @LT("Checkout.Label.PriceDetails", "Price Details")</h3>
     </div>    
-    <p class="text-muted padding-sm label-span-desc">@LT("Checkout.Text.ShippingInfo", "Shipping and additional costs are calculated based on the values you have entered").</p>
+    <p aria-hidden="true" class="text-muted padding-sm label-span-desc">@LT("Checkout.Text.ShippingInfo", "Shipping and additional costs are calculated based on the values you have entered").</p>
 
     <div class="table-responsive">
         <table class="table no-margin-top">
@@ -70,7 +71,7 @@
     <div class="box-header">
         <h4><i class="fa fa-ticket"></i> @LT("Checkout.Label.PromotionCode", "Coupon code")</h4>
     </div>
-    <p class="text-muted padding-sm label-span-desc">@LT("Checkout.Text.HaveCoupon", "If you have a coupon code, please enter it in the box below").</p>
+    <p class="text-muted padding-sm label-span-desc" aria-hidden="true">@LT("Checkout.Text.HaveCoupon", "If you have a coupon code, please enter it in the box below").</p>
     <form ng-submit="ck.applyPromoCode(ck.basket.id,promoCode)">
         <div class="input-group padding-sm">
             <input type="text" class="form-control" ng-model="promoCode" placeholder="Enter Coupon Code" />
@@ -90,7 +91,7 @@
         <span>@LT("Checkout.Text.NullPromoMessage", "Please enter promo code!")</span>
     </div>
 </div>
-<div class="summery-box">
+<div class="summery-box" ng-show="@giftOrder">
     <div class="box-header">
         <h4><i class="fa fa-gift"></i> @LT("Checkout.Label.GiftForMe", "Who are you purchasing for today?")</h4>
     </div>

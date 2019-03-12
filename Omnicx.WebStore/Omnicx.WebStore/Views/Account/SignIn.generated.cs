@@ -173,7 +173,7 @@ WriteLiteral(">\r\n                <section");
 
 WriteLiteral(" class=\"checkout-accordion\"");
 
-WriteAttribute("ng-init", Tuple.Create(" ng-init=\"", 1677), Tuple.Create("\"", 1777)
+WriteAttribute("ng-init", Tuple.Create(" ng-init=\"", 1677), Tuple.Create("\"", 1820)
 , Tuple.Create(Tuple.Create("", 1687), Tuple.Create("gm.loginAccount=\'", 1687), true)
             
             #line 44 "..\..\Views\Account\SignIn.cshtml"
@@ -190,7 +190,7 @@ WriteAttribute("ng-init", Tuple.Create(" ng-init=\"", 1677), Tuple.Create("\"", 
             #line default
             #line hidden
 , 1739), false)
-, Tuple.Create(Tuple.Create("", 1753), Tuple.Create("\';gm.getSocialSettings()", 1753), true)
+, Tuple.Create(Tuple.Create("", 1753), Tuple.Create("\';gm.getSocialSettings();gm.model.registerViewModel.notifyNone=true", 1753), true)
 );
 
 WriteLiteral(">\r\n");
@@ -555,30 +555,30 @@ WriteLiteral(">Login Here</a>\r\n                                </div>\r\n     
 
 WriteLiteral(" class=\"col-sm-12 col-xs-12 text-center no-padding checkout-button\"");
 
-WriteAttribute("ng-if", Tuple.Create(" ng-if=\"", 8127), Tuple.Create("\"", 8213)
-, Tuple.Create(Tuple.Create("", 8135), Tuple.Create("\'", 8135), true)
+WriteAttribute("ng-if", Tuple.Create(" ng-if=\"", 8170), Tuple.Create("\"", 8256)
+, Tuple.Create(Tuple.Create("", 8178), Tuple.Create("\'", 8178), true)
             
             #line 110 "..\..\Views\Account\SignIn.cshtml"
-                                , Tuple.Create(Tuple.Create("", 8136), Tuple.Create<System.Object, System.Int32>(ViewBag.isB2BEnable
+                                , Tuple.Create(Tuple.Create("", 8179), Tuple.Create<System.Object, System.Int32>(ViewBag.isB2BEnable
             
             #line default
             #line hidden
-, 8136), false)
-, Tuple.Create(Tuple.Create("", 8156), Tuple.Create("\'", 8156), true)
-, Tuple.Create(Tuple.Create(" ", 8157), Tuple.Create("==", 8158), true)
-, Tuple.Create(Tuple.Create(" ", 8160), Tuple.Create("\'True\'", 8161), true)
-, Tuple.Create(Tuple.Create(" ", 8167), Tuple.Create("&&", 8168), true)
-, Tuple.Create(Tuple.Create(" ", 8170), Tuple.Create("\'", 8171), true)
+, 8179), false)
+, Tuple.Create(Tuple.Create("", 8199), Tuple.Create("\'", 8199), true)
+, Tuple.Create(Tuple.Create(" ", 8200), Tuple.Create("==", 8201), true)
+, Tuple.Create(Tuple.Create(" ", 8203), Tuple.Create("\'True\'", 8204), true)
+, Tuple.Create(Tuple.Create(" ", 8210), Tuple.Create("&&", 8211), true)
+, Tuple.Create(Tuple.Create(" ", 8213), Tuple.Create("\'", 8214), true)
             
             #line 110 "..\..\Views\Account\SignIn.cshtml"
-                                                                    , Tuple.Create(Tuple.Create("", 8172), Tuple.Create<System.Object, System.Int32>(ViewBag.isRegistrationAllowed
+                                                                    , Tuple.Create(Tuple.Create("", 8215), Tuple.Create<System.Object, System.Int32>(ViewBag.isRegistrationAllowed
             
             #line default
             #line hidden
-, 8172), false)
-, Tuple.Create(Tuple.Create("", 8202), Tuple.Create("\'", 8202), true)
-, Tuple.Create(Tuple.Create(" ", 8203), Tuple.Create("==", 8204), true)
-, Tuple.Create(Tuple.Create(" ", 8206), Tuple.Create("\'True\'", 8207), true)
+, 8215), false)
+, Tuple.Create(Tuple.Create("", 8245), Tuple.Create("\'", 8245), true)
+, Tuple.Create(Tuple.Create(" ", 8246), Tuple.Create("==", 8247), true)
+, Tuple.Create(Tuple.Create(" ", 8249), Tuple.Create("\'True\'", 8250), true)
 );
 
 WriteLiteral(">\r\n                                    <button");
@@ -730,11 +730,13 @@ WriteLiteral("</h2>\r\n                                <p");
 
 WriteLiteral(" class=\"lead hidden-xs\"");
 
+WriteLiteral(" aria-hidden=\"true\"");
+
 WriteLiteral(">");
 
             
             #line 138 "..\..\Views\Account\SignIn.cshtml"
-                                                     Write(LT("MyAccount.Text.ExistingCustomer", "Already our customer?"));
+                                                                        Write(LT("MyAccount.Text.ExistingCustomer", "Already our customer?"));
 
             
             #line default
@@ -792,14 +794,14 @@ WriteLiteral(" class=\"col-sm-6 col-xs-6 no-padding\"");
 
 WriteLiteral(">\r\n                                    <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 11498), Tuple.Create("\"", 11545)
+WriteAttribute("href", Tuple.Create(" href=\"", 11560), Tuple.Create("\"", 11607)
             
             #line 152 "..\..\Views\Account\SignIn.cshtml"
-, Tuple.Create(Tuple.Create("", 11505), Tuple.Create<System.Object, System.Int32>(Url.Action("forgotpassword", "account")
+, Tuple.Create(Tuple.Create("", 11567), Tuple.Create<System.Object, System.Int32>(Url.Action("forgotpassword", "account")
             
             #line default
             #line hidden
-, 11505), false)
+, 11567), false)
 );
 
 WriteLiteral(" class=\"checkout-link\"");

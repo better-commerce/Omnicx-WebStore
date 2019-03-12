@@ -278,26 +278,55 @@ WriteLiteral("                                ");
             
             #line default
             #line hidden
-WriteLiteral("\r\n                            </div>\r\n                        </li>\r\n            " +
-"            ");
-
-WriteLiteral("\r\n");
+WriteLiteral("\r\n                            </div>\r\n                        </li>\r\n");
 
 WriteLiteral("                        ");
 
             
-            #line 89 "..\..\Views\Shared\_HeaderLayout.cshtml"
+            #line 85 "..\..\Views\Shared\_HeaderLayout.cshtml"
                    Write(Html.Action("HeaderLoginInfo", "Home", true));
 
             
             #line default
             #line hidden
-WriteLiteral("                        \r\n                    </ul>\r\n                </nav>\r\n    " +
-"        </div>\r\n            <div");
+WriteLiteral("      \r\n                        <li>\r\n                            <a");
+
+WriteLiteral(" class=\"userControls__accountLinks\"");
+
+WriteAttribute("href", Tuple.Create(" href=\"", 3506), Tuple.Create("\"", 3550)
+            
+            #line 87 "..\..\Views\Shared\_HeaderLayout.cshtml"
+, Tuple.Create(Tuple.Create("", 3513), Tuple.Create<System.Object, System.Int32>(Url.Action("StoreLocator", "Common")
+            
+            #line default
+            #line hidden
+, 3513), false)
+);
+
+WriteLiteral("><i");
+
+WriteLiteral(" class=\"sprite sprite-browsers-store\"");
+
+WriteLiteral("></i><span");
+
+WriteLiteral(" class=\"label-0\"");
+
+WriteLiteral(">Login</span></a>\r\n                        </li>\r\n                    </ul>\r\n    " +
+"            </nav>\r\n            </div>\r\n            <div");
 
 WriteLiteral(" class=\"header-toggle\"");
 
-WriteLiteral(" ng-init=\"gm.getAllcurrencyandCountries()\"");
+WriteAttribute("ng-init", Tuple.Create(" ng-init=\"", 3776), Tuple.Create("\"", 3859)
+, Tuple.Create(Tuple.Create("", 3786), Tuple.Create("gm.getAllcurrencyandCountries();langCulture=\'", 3786), true)
+            
+            #line 92 "..\..\Views\Shared\_HeaderLayout.cshtml"
+             , Tuple.Create(Tuple.Create("", 3831), Tuple.Create<System.Object, System.Int32>(SessionContext.LangCulture
+            
+            #line default
+            #line hidden
+, 3831), false)
+, Tuple.Create(Tuple.Create("", 3858), Tuple.Create("\'", 3858), true)
+);
 
 WriteLiteral(">\r\n                <ul>\r\n                    <li");
 
@@ -307,54 +336,7 @@ WriteLiteral(">\r\n                        <a");
 
 WriteLiteral(" href=\"#\"");
 
-WriteLiteral(" class=\"dropdown-toggle\"");
-
-WriteLiteral(" data-toggle=\"dropdown\"");
-
-WriteLiteral("><i");
-
-WriteLiteral(" class=\"fa fa-chevron-down\"");
-
-WriteLiteral("></i><i");
-
-WriteAttribute("class", Tuple.Create(" class=\"", 4000), Tuple.Create("\"", 4079)
-, Tuple.Create(Tuple.Create("", 4008), Tuple.Create("fa", 4008), true)
-, Tuple.Create(Tuple.Create(" ", 4010), Tuple.Create("fa-", 4011), true)
-            
-            #line 96 "..\..\Views\Shared\_HeaderLayout.cshtml"
-                                                     , Tuple.Create(Tuple.Create("", 4014), Tuple.Create<System.Object, System.Int32>(SessionContext.CurrentSiteConfig.RegionalSettings.DefaultCountry
-            
-            #line default
-            #line hidden
-, 4014), false)
-);
-
-WriteLiteral("></i></a>\r\n                        <ul");
-
-WriteLiteral(" class=\"dropdown-menu\"");
-
-WriteLiteral(">\r\n                            <li");
-
-WriteLiteral(" ng-repeat=\"country in gm.countries\"");
-
-WriteLiteral("><a");
-
-WriteLiteral(" href=\"#\"");
-
-WriteLiteral("><i");
-
-WriteLiteral(" class=\"fa fa-{{country.twoLetterIsoCode}}\"");
-
-WriteLiteral("></i></a></li>\r\n                        </ul>\r\n                    </li>\r\n       " +
-"         </ul>\r\n                <ul>\r\n                    <li");
-
-WriteLiteral(" class=\"dropdown\"");
-
-WriteLiteral(">\r\n                        <a");
-
-WriteLiteral(" href=\"#\"");
-
-WriteLiteral(" class=\"dropdown-toggle\"");
+WriteLiteral(" class=\"dropdown-toggle text-white\"");
 
 WriteLiteral(" data-toggle=\"dropdown\"");
 
@@ -365,8 +347,8 @@ WriteLiteral(" class=\"fa fa-chevron-down\"");
 WriteLiteral("></i>");
 
             
-            #line 104 "..\..\Views\Shared\_HeaderLayout.cshtml"
-                                                                                                                Write(SessionContext.CurrencyCode);
+            #line 95 "..\..\Views\Shared\_HeaderLayout.cshtml"
+                                                                                                                           Write(SessionContext.CurrencyCode);
 
             
             #line default
@@ -385,16 +367,73 @@ WriteLiteral(" class=\"#\"");
 
 WriteLiteral(" ng-click=\"gm.currencySettings(currency.currencyCode)\"");
 
-WriteLiteral("><em>{{currency.currencySymbol}}</em>{{currency.currencyCode}} </a>\r\n            " +
-"                </li>\r\n                        </ul>\r\n                    </li>\r" +
-"\n                </ul>\r\n                ");
+WriteLiteral("><strong");
+
+WriteLiteral(" ng-bind=\"currency.currencySymbol\"");
+
+WriteLiteral("></strong>&nbsp;<span");
+
+WriteLiteral(" ng-bind=\"currency.currencyCode\"");
+
+WriteLiteral("></span> </a>\r\n                            </li>\r\n                        </ul>\r\n" +
+"                    </li>\r\n                </ul>\r\n                <ul>\r\n        " +
+"            <li");
+
+WriteLiteral(" class=\"dropdown\"");
+
+WriteLiteral(">\r\n                        <a");
+
+WriteLiteral(" href=\"#\"");
+
+WriteLiteral(" class=\"dropdown-toggle text-white\"");
+
+WriteLiteral(" data-toggle=\"dropdown\"");
+
+WriteLiteral("><i");
+
+WriteLiteral(" class=\"fa fa-chevron-down\"");
+
+WriteLiteral("></i><img");
+
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 4735), Tuple.Create("\"", 4789)
+, Tuple.Create(Tuple.Create("", 4744), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/{{langCulture}}.png")
+, 4744), false)
+);
+
+WriteLiteral(" alt=\"Country\"");
+
+WriteLiteral(" /></a>\r\n                        <ul");
+
+WriteLiteral(" class=\"dropdown-menu\"");
+
+WriteLiteral(">\r\n                            <li");
+
+WriteLiteral(" ng-repeat=\"language in gm.langCulture\"");
+
+WriteLiteral(">\r\n                                <a");
+
+WriteLiteral(" class=\"#\"");
+
+WriteLiteral(" ng-click=\"gm.languageSettings(language.languageCulture)\"");
+
+WriteLiteral("><img");
+
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 5044), Tuple.Create("\"", 5111)
+, Tuple.Create(Tuple.Create("", 5053), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/{{language.languageCulture}}.png")
+, 5053), false)
+);
+
+WriteLiteral(" alt=\"Country\"");
+
+WriteLiteral(" /></a>\r\n                            </li>\r\n                        </ul>\r\n      " +
+"              </li>\r\n                </ul>    \r\n                ");
 
 WriteLiteral("\r\n            </div>\r\n        </div>\r\n    </div>\r\n");
 
 WriteLiteral("    ");
 
             
-            #line 117 "..\..\Views\Shared\_HeaderLayout.cshtml"
+            #line 118 "..\..\Views\Shared\_HeaderLayout.cshtml"
 Write(Html.GetGlobalSnipptes(SnippetPlacements.HeaderMenuBefore));
 
             
@@ -405,7 +444,7 @@ WriteLiteral("\r\n");
 WriteLiteral("    ");
 
             
-            #line 118 "..\..\Views\Shared\_HeaderLayout.cshtml"
+            #line 119 "..\..\Views\Shared\_HeaderLayout.cshtml"
 Write(Html.Action("GetNav", "Home"));
 
             
@@ -416,7 +455,7 @@ WriteLiteral("\r\n");
 WriteLiteral("    ");
 
             
-            #line 119 "..\..\Views\Shared\_HeaderLayout.cshtml"
+            #line 120 "..\..\Views\Shared\_HeaderLayout.cshtml"
 Write(Html.GetGlobalSnipptes(SnippetPlacements.HeaderMenuAfter));
 
             

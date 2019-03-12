@@ -1,0 +1,77 @@
+﻿@{
+/*
+    Name: Order Summery
+    Purpose: Contains Order item Lines, Promotion panel and Order Amount Information
+    Structure: /Views/Checkout/_OrderSummary.cshtml
+    Contains (Partial Views Used):
+
+    Contained In (Where we Use this View):
+        a-/Views/Basket/OnePageCheckout.cshtml
+    */
+}
+@using Omnicx.WebStore.Models.Enums
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
+<ul id="checkout-summery">
+    <li class="col-sm-12 col-xs-12 no-padding itemBorder clearfix" ng-repeat="items in ck.basket.lineItems track by $index" ng-if='items.parentProductId == ck.emptyGuid'>
+        <div ng-if="items.parentProductId == ck.emptyGuid">
+            <div class="col-sm-12 col-xs-12 no-padding">
+                <div class="col-sm-2 col-xs-3 no-padding">
+                    <span class="cart-img">
+                        <a ng-href="/{{items.slug}}">
+                            <img ix-src="{{items.image}}" class="omni-img" onerror="this.src = DEFAULT_IMAGE_URL" sizes="(min-width: 768px) 540px, 100vw">
+                        </a>
+                    </span>
+                </div>
+                <div class="col-sm-10 col-xs-9 no-padding">
+                    <span class="trash-cart">
+                        <a href="" class="remove" title="Remove" ng-click="ck.addToBasket(items.productId,0,items.displayOrder)"><i class="fa fa-trash-o"></i></a>
+                    </span>
+                    <span class="cart-info">
+                        <a class="basket-item" ng-href="/{{items.slug}}" ng-bind="items.name"></a>
+                    </span>
+                    <span class="cart-info">
+                        <span ng-bind="items.qty"></span>&nbsp;&times;&nbsp;<span class="disp-inline-b" ng-bind="items.price.formatted.withTax"></span> 
+                        <span class="text-right pull-right label-span-price"><strong ng-bind="items.totalPrice.formatted.withTax"></strong></span>
+                    </span>                    
+                    @*BUNDLE PRODUCTS*@
+                    <div class="row margin-top-sm">
+                        <div class="col-sm-12 col-xs-12">
+                            <strong class="text-orange" ng-show="items.displayInBasket && items.itemType ==@ItemTypes.Bundle.GetHashCode()">@LT("YourBag.Text.IncludeComponents", "Included Components:")</strong>
+                            <div class="row component-row" ng-repeat="bundle in ck.basket.lineItems" ng-if="bundle.parentProductId == items.productId" ng-show="items.displayInBasket">
+                                <div class="col-sm-8 col-xs-8 no-padding">
+                                    <a class="small-cart-name" ng-href="/{{bundle.slug}}" ng-bind="bundle.name"></a>
+                                </div>
+                                <div class="col-sm-4 col-xs-4 no-padding text-right">
+                                    <strong>@LT("YourBag.Text.Qty", "Qty:") </strong><span ng-bind="bundle.qty"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        @*To Display Free Product*@
+        <div ng-if="items.parentProductId != ck.emptyGuid" ng-show="items.displayInBasket">
+            <div class="col-sm-12 col-xs-12 no-padding">
+                <div class="col-sm-3 col-xs-3 no-padding">
+                    <span class="cart-img">
+                        <a ng-href="/{{items.slug}}">
+                            <img ix-src="{{items.image}}" onerror="this.src = DEFAULT_IMAGE_URL" sizes="(min-width: 768px) 540px, 100vw">
+                        </a>
+                    </span>
+                </div>
+                <div class="col-sm-9 col-xs-9 no-padding">
+                    <span class="cart-info">
+                        <a class="small-cart-name" ng-href="/{{items.slug}}" ng-bind="items.name"></a>
+                    </span>
+                    <span class="cart-info">
+                        <span class="text-right pull-right text-right label-span-price"><strong>@LT("YourBag.Text.Free", "FREE")</strong></span>
+                        <span class="text-right pull-right text-right label-span-price"><strong> &times; </strong></span>
+                        <span class="text-right pull-right text-right label-span-price"><strong>{{items.qty}}</strong></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>

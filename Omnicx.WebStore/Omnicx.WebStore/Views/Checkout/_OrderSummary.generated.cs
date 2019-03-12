@@ -31,7 +31,7 @@ namespace ASP
     using Omnicx.WebStore;
     using Omnicx.WebStore.Core;
     
-    #line 12 "..\..\Views\Checkout\_OrderSummary.cshtml"
+    #line 13 "..\..\Views\Checkout\_OrderSummary.cshtml"
     using Omnicx.WebStore.Models.Enums;
     
     #line default
@@ -49,15 +49,16 @@ namespace ASP
             
             #line 1 "..\..\Views\Checkout\_OrderSummary.cshtml"
   
-/*
-    Name: Order Summery
-    Purpose: Contains Order item Lines, Promotion panel and Order Amount Information
-    Structure: /Views/Checkout/_OrderSummary.cshtml
-    Contains (Partial Views Used):
+    /*
+        Name: Order Summery
+        Purpose: Contains Order item Lines, Promotion panel and Order Amount Information
+        Structure: /Views/Checkout/_OrderSummary.cshtml
+        Contains (Partial Views Used):
 
-    Contained In (Where we Use this View):
-        a-/Views/Basket/OnePageCheckout.cshtml
-    */
+        Contained In (Where we Use this View):
+            a-/Views/Basket/OnePageCheckout.cshtml
+        */
+    var giftOrder = Convert.ToInt16(SessionContext.CurrentSiteConfig.BasketSettings.EnableIsGiftORMe);
 
             
             #line default
@@ -79,7 +80,7 @@ WriteLiteral(" ng-show=\"ck.wishlisterror\"");
 WriteLiteral(">\r\n        User <strong>");
 
             
-            #line 16 "..\..\Views\Checkout\_OrderSummary.cshtml"
+            #line 17 "..\..\Views\Checkout\_OrderSummary.cshtml"
                 Write(LT("ProductDetail.Message.LoginRequired", "Login Required"));
 
             
@@ -92,7 +93,7 @@ WriteLiteral(" class=\"box-header\"");
 WriteLiteral(">\r\n        <h3> ");
 
             
-            #line 19 "..\..\Views\Checkout\_OrderSummary.cshtml"
+            #line 20 "..\..\Views\Checkout\_OrderSummary.cshtml"
         Write(LT("Checkout.Label.PriceDetails", "Price Details"));
 
             
@@ -100,13 +101,15 @@ WriteLiteral(">\r\n        <h3> ");
             #line hidden
 WriteLiteral("</h3>\r\n    </div>    \r\n    <p");
 
+WriteLiteral(" aria-hidden=\"true\"");
+
 WriteLiteral(" class=\"text-muted padding-sm label-span-desc\"");
 
 WriteLiteral(">");
 
             
-            #line 21 "..\..\Views\Checkout\_OrderSummary.cshtml"
-                                                Write(LT("Checkout.Text.ShippingInfo", "Shipping and additional costs are calculated based on the values you have entered"));
+            #line 22 "..\..\Views\Checkout\_OrderSummary.cshtml"
+                                                                   Write(LT("Checkout.Text.ShippingInfo", "Shipping and additional costs are calculated based on the values you have entered"));
 
             
             #line default
@@ -122,7 +125,7 @@ WriteLiteral(" class=\"table no-margin-top\"");
 WriteLiteral(">\r\n            <tbody>\r\n                <tr>\r\n                    <td>");
 
             
-            #line 27 "..\..\Views\Checkout\_OrderSummary.cshtml"
+            #line 28 "..\..\Views\Checkout\_OrderSummary.cshtml"
                    Write(LT("Checkout.Label.Subtotal", "Subtotal"));
 
             
@@ -137,7 +140,7 @@ WriteLiteral(" class=\"text-right\"");
 WriteLiteral("></th>\r\n                </tr>\r\n                <tr>\r\n                    <td>");
 
             
-            #line 31 "..\..\Views\Checkout\_OrderSummary.cshtml"
+            #line 32 "..\..\Views\Checkout\_OrderSummary.cshtml"
                    Write(LT("Checkout.Label.ShippingCharge", "Shipping and handling"));
 
             
@@ -154,7 +157,7 @@ WriteLiteral("></th>\r\n                </tr>\r\n                ");
 WriteLiteral("\r\n                <tr>\r\n                    <td>");
 
             
-            #line 39 "..\..\Views\Checkout\_OrderSummary.cshtml"
+            #line 40 "..\..\Views\Checkout\_OrderSummary.cshtml"
                    Write(LT("Checkout.Label.Discount", "Discount"));
 
             
@@ -212,7 +215,7 @@ WriteLiteral(" class=\"total\"");
 WriteLiteral(">\r\n                    <td>");
 
             
-            #line 53 "..\..\Views\Checkout\_OrderSummary.cshtml"
+            #line 54 "..\..\Views\Checkout\_OrderSummary.cshtml"
                    Write(LT("Checkout.Label.OrderTotal", "Amount Payable"));
 
             
@@ -232,16 +235,16 @@ WriteLiteral(" class=\"sml-text\"");
 
 WriteLiteral(" ng-cloak");
 
-WriteAttribute("ng-bind", Tuple.Create(" ng-bind=\"", 2940), Tuple.Create("\"", 3041)
-, Tuple.Create(Tuple.Create("", 2950), Tuple.Create("\'", 2950), true)
+WriteAttribute("ng-bind", Tuple.Create(" ng-bind=\"", 3095), Tuple.Create("\"", 3196)
+, Tuple.Create(Tuple.Create("", 3105), Tuple.Create("\'", 3105), true)
             
-            #line 57 "..\..\Views\Checkout\_OrderSummary.cshtml"
-, Tuple.Create(Tuple.Create("", 2951), Tuple.Create<System.Object, System.Int32>(LT("YourBag.Text.IncludingVATof", "including VAT of")
+            #line 58 "..\..\Views\Checkout\_OrderSummary.cshtml"
+, Tuple.Create(Tuple.Create("", 3106), Tuple.Create<System.Object, System.Int32>(LT("YourBag.Text.IncludingVATof", "including VAT of")
             
             #line default
             #line hidden
-, 2951), false)
-, Tuple.Create(Tuple.Create("", 3005), Tuple.Create("\'+ck.basket.grandTotal.formatted.tax", 3005), true)
+, 3106), false)
+, Tuple.Create(Tuple.Create("", 3160), Tuple.Create("\'+ck.basket.grandTotal.formatted.tax", 3160), true)
 );
 
 WriteLiteral("></td                    \r\n                </tr>\r\n                <tr");
@@ -253,7 +256,7 @@ WriteLiteral(" ng-show=\"ck.showRemainingAmount\"");
 WriteLiteral(">\r\n                    <td>");
 
             
-            #line 60 "..\..\Views\Checkout\_OrderSummary.cshtml"
+            #line 61 "..\..\Views\Checkout\_OrderSummary.cshtml"
                    Write(LT("Checkout.Label.RemainingAmount", "Remaining Amount"));
 
             
@@ -283,7 +286,7 @@ WriteLiteral(" class=\"fa fa-ticket\"");
 WriteLiteral("></i> ");
 
             
-            #line 71 "..\..\Views\Checkout\_OrderSummary.cshtml"
+            #line 72 "..\..\Views\Checkout\_OrderSummary.cshtml"
                                     Write(LT("Checkout.Label.PromotionCode", "Coupon code"));
 
             
@@ -293,11 +296,13 @@ WriteLiteral("</h4>\r\n    </div>\r\n    <p");
 
 WriteLiteral(" class=\"text-muted padding-sm label-span-desc\"");
 
+WriteLiteral(" aria-hidden=\"true\"");
+
 WriteLiteral(">");
 
             
-            #line 73 "..\..\Views\Checkout\_OrderSummary.cshtml"
-                                                Write(LT("Checkout.Text.HaveCoupon", "If you have a coupon code, please enter it in the box below"));
+            #line 74 "..\..\Views\Checkout\_OrderSummary.cshtml"
+                                                                   Write(LT("Checkout.Text.HaveCoupon", "If you have a coupon code, please enter it in the box below"));
 
             
             #line default
@@ -344,7 +349,7 @@ WriteLiteral(" ng-show=\"ck.invalidpromo\"");
 WriteLiteral(">\r\n        <span>");
 
             
-            #line 84 "..\..\Views\Checkout\_OrderSummary.cshtml"
+            #line 85 "..\..\Views\Checkout\_OrderSummary.cshtml"
          Write(LT("Checkout.Text.InValidPromoMessage", "PromoCode Invalid!"));
 
             
@@ -359,7 +364,7 @@ WriteLiteral(" ng-show=\"ck.validpromo\"");
 WriteLiteral(">\r\n        <span>");
 
             
-            #line 87 "..\..\Views\Checkout\_OrderSummary.cshtml"
+            #line 88 "..\..\Views\Checkout\_OrderSummary.cshtml"
          Write(LT("Checkout.Text.ValidPromoMessage", "Successfully Applied"));
 
             
@@ -374,7 +379,7 @@ WriteLiteral(" ng-show=\"ck.promonull\"");
 WriteLiteral(">\r\n        <span>");
 
             
-            #line 90 "..\..\Views\Checkout\_OrderSummary.cshtml"
+            #line 91 "..\..\Views\Checkout\_OrderSummary.cshtml"
          Write(LT("Checkout.Text.NullPromoMessage", "Please enter promo code!"));
 
             
@@ -383,6 +388,16 @@ WriteLiteral(">\r\n        <span>");
 WriteLiteral("</span>\r\n    </div>\r\n</div>\r\n<div");
 
 WriteLiteral(" class=\"summery-box\"");
+
+WriteAttribute("ng-show", Tuple.Create(" ng-show=\"", 5077), Tuple.Create("\"", 5097)
+            
+            #line 94 "..\..\Views\Checkout\_OrderSummary.cshtml"
+, Tuple.Create(Tuple.Create("", 5087), Tuple.Create<System.Object, System.Int32>(giftOrder
+            
+            #line default
+            #line hidden
+, 5087), false)
+);
 
 WriteLiteral(">\r\n    <div");
 
@@ -395,7 +410,7 @@ WriteLiteral(" class=\"fa fa-gift\"");
 WriteLiteral("></i> ");
 
             
-            #line 95 "..\..\Views\Checkout\_OrderSummary.cshtml"
+            #line 96 "..\..\Views\Checkout\_OrderSummary.cshtml"
                                   Write(LT("Checkout.Label.GiftForMe", "Who are you purchasing for today?"));
 
             
@@ -426,7 +441,7 @@ WriteLiteral(" for=\"NewsLetterSubscribe\"");
 WriteLiteral(">");
 
             
-            #line 100 "..\..\Views\Checkout\_OrderSummary.cshtml"
+            #line 101 "..\..\Views\Checkout\_OrderSummary.cshtml"
                                         Write(LT("Checkout.Label.PurchasingForMe", "This order is just for me."));
 
             
@@ -461,7 +476,7 @@ WriteLiteral(" for=\"NewsLetterSubscribe\"");
 WriteLiteral(">");
 
             
-            #line 107 "..\..\Views\Checkout\_OrderSummary.cshtml"
+            #line 108 "..\..\Views\Checkout\_OrderSummary.cshtml"
                                         Write(LT("Checkout.Label.PurchasingForGift", "This order contains a gift."));
 
             

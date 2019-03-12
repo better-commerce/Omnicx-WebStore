@@ -121,18 +121,18 @@ WriteLiteral("</h5>\r\n            </div>\r\n        </div>\r\n        <div");
 
 WriteLiteral(" class=\"row\"");
 
-WriteAttribute("ng-show", Tuple.Create(" ng-show=\"", 938), Tuple.Create("\"", 1023)
-, Tuple.Create(Tuple.Create("", 948), Tuple.Create("ck.model.checkout.selectedShipping.type", 948), true)
-, Tuple.Create(Tuple.Create(" ", 987), Tuple.Create("==", 988), true)
-, Tuple.Create(Tuple.Create(" ", 990), Tuple.Create("\'", 991), true)
+WriteAttribute("ng-show", Tuple.Create(" ng-show=\"", 938), Tuple.Create("\"", 1047)
+, Tuple.Create(Tuple.Create("", 948), Tuple.Create("ck.model.checkout.selectedShipping.shippingCostMethod", 948), true)
+, Tuple.Create(Tuple.Create(" ", 1001), Tuple.Create("==", 1002), true)
+, Tuple.Create(Tuple.Create(" ", 1004), Tuple.Create("\'", 1005), true)
             
             #line 25 "..\..\Views\Checkout\_BillingAddress.cshtml"
-, Tuple.Create(Tuple.Create("", 992), Tuple.Create<System.Object, System.Int32>(ShippingTypes.Flat.ToString()
+            , Tuple.Create(Tuple.Create("", 1006), Tuple.Create<System.Object, System.Int32>(ShippingCostMethods.FlatRate.ToString()
             
             #line default
             #line hidden
-, 992), false)
-, Tuple.Create(Tuple.Create("", 1022), Tuple.Create("\'", 1022), true)
+, 1006), false)
+, Tuple.Create(Tuple.Create("", 1046), Tuple.Create("\'", 1046), true)
 );
 
 WriteLiteral(">\r\n            <div");
@@ -169,15 +169,15 @@ WriteLiteral(" ");
             #line hidden
 WriteLiteral("\r\n                        <input");
 
-WriteAttribute("id", Tuple.Create(" id=\"", 1344), Tuple.Create("\"", 1377)
-, Tuple.Create(Tuple.Create("", 1349), Tuple.Create("billing", 1349), true)
+WriteAttribute("id", Tuple.Create(" id=\"", 1368), Tuple.Create("\"", 1401)
+, Tuple.Create(Tuple.Create("", 1373), Tuple.Create("billing", 1373), true)
             
             #line 30 "..\..\Views\Checkout\_BillingAddress.cshtml"
-, Tuple.Create(Tuple.Create("", 1356), Tuple.Create<System.Object, System.Int32>(ViewData["prefix"]
+, Tuple.Create(Tuple.Create("", 1380), Tuple.Create<System.Object, System.Int32>(ViewData["prefix"]
             
             #line default
             #line hidden
-, 1356), false)
+, 1380), false)
 );
 
 WriteLiteral(" name=\"billing\"");
@@ -213,7 +213,7 @@ WriteLiteral(" class=\"row\"");
 
 WriteLiteral(">\r\n                <div");
 
-WriteLiteral(" class=\"col-sm-2\"");
+WriteLiteral(" class=\"col-sm-6 col-md-2 col-lg-2\"");
 
 WriteLiteral(">\r\n                    <div");
 

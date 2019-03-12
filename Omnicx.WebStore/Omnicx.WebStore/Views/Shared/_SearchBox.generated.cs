@@ -61,16 +61,14 @@ WriteLiteral("\r\n");
 
 WriteLiteral("<bt-auto-complete");
 
-WriteLiteral(" id=\"ex1\"");
-
-WriteAttribute("placeholder", Tuple.Create(" placeholder=\"", 499), Tuple.Create("\"", 563)
+WriteAttribute("placeholder", Tuple.Create(" placeholder=\"", 466), Tuple.Create("\"", 530)
             
             #line 14 "..\..\Views\Shared\_SearchBox.cshtml"
-, Tuple.Create(Tuple.Create("", 513), Tuple.Create<System.Object, System.Int32>(LT("SearchBox.Text.Search", "I'm looking for.. ")
+, Tuple.Create(Tuple.Create("", 480), Tuple.Create<System.Object, System.Int32>(LT("SearchBox.Text.Search", "I'm looking for.. ")
             
             #line default
             #line hidden
-, 513), false)
+, 480), false)
 );
 
 WriteLiteral(" pause=\"1\"");
@@ -93,26 +91,26 @@ WriteLiteral("\r\n                  inputclass=\"form-control siteSearch__input\
 
 WriteLiteral(" matchclass=\"autocomplete-highlight\"");
 
-WriteAttribute("url", Tuple.Create("\r\n                  url=\"", 870), Tuple.Create("\"", 971)
-, Tuple.Create(Tuple.Create("", 895), Tuple.Create("//", 895), true)
+WriteAttribute("url", Tuple.Create("\r\n                  url=\"", 837), Tuple.Create("\"", 938)
+, Tuple.Create(Tuple.Create("", 862), Tuple.Create("//", 862), true)
             
             #line 19 "..\..\Views\Shared\_SearchBox.cshtml"
-, Tuple.Create(Tuple.Create("", 897), Tuple.Create<System.Object, System.Int32>(Request.ServerVariables["HTTP_HOST"]
+, Tuple.Create(Tuple.Create("", 864), Tuple.Create<System.Object, System.Int32>(Request.ServerVariables["HTTP_HOST"]
             
             #line default
             #line hidden
-, 897), false)
-, Tuple.Create(Tuple.Create("", 934), Tuple.Create("/search/SearchAutoComplete/?freeText=", 934), true)
+, 864), false)
+, Tuple.Create(Tuple.Create("", 901), Tuple.Create("/search/SearchAutoComplete/?freeText=", 901), true)
 );
 
-WriteAttribute("returnkeyios", Tuple.Create("\r\n                  returnkeyios=\"", 972), Tuple.Create("\"", 1044)
+WriteAttribute("returnkeyios", Tuple.Create("\r\n                  returnkeyios=\"", 939), Tuple.Create("\"", 1011)
             
             #line 20 "..\..\Views\Shared\_SearchBox.cshtml"
-, Tuple.Create(Tuple.Create("", 1006), Tuple.Create<System.Object, System.Int32>(LT("SearchBox.Text.Search", "Search")
+, Tuple.Create(Tuple.Create("", 973), Tuple.Create<System.Object, System.Int32>(LT("SearchBox.Text.Search", "Search")
             
             #line default
             #line hidden
-, 1006), false)
+, 973), false)
 );
 
 WriteLiteral(" />\r\n");

@@ -20,7 +20,7 @@
 @using Omnicx.WebStore.Models
 @inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
 
-<html ng-app="btApp" ng-controller="globalCtrl as gm" id="sidebarFix">
+<html lang="en" ng-app="btApp" ng-controller="globalCtrl as gm" id="sidebarFix">
 
 @Html.Partial("~/Views/Shared/_LayoutHeadTag.cshtml")
 <body>
@@ -56,7 +56,7 @@
     </header>
     <div class="dvloader">
         <span class="global-loader">
-            <img src="~/assets/theme/ocx/images/loader.svg" />
+            <img src="~/assets/theme/ocx/images/loader.svg" alt="Loader"/>
         </span>
     </div>
     @Html.Partial("~/Views/Shared/_LayoutFooterAccount.cshtml")
@@ -70,7 +70,7 @@
         var signIn = '@(Html.BuildUrlFromExpression<AccountController>(c => c.SignIn(null)))';
         var register = '@(Html.BuildUrlFromExpression<AccountController>(c => c.Registration(null)))';
         var getShippingMethods = '@(Html.BuildUrlFromExpression<BasketController>(c => c.GetShippingMethods("")))';
-        var updateShipping = '@(Html.BuildUrlFromExpression<BasketController>(c => c.UpdateShipping(null,null,null)))';
+        var updateShipping = '@(Html.BuildUrlFromExpression<BasketController>(c => c.UpdateShipping(null,null,null,null)))';
         var applyPromoCode = '@(Html.BuildUrlFromExpression<BasketController>(c => c.ApplyPromoCode(null,null)))';
         var currencySettingUrl = '@(Html.BuildUrlFromExpression<HomeController>(c => c.UpdateCurrencySetting(null)))';
         var paymentMethodsUrl = '@(Html.BuildUrlFromExpression<CheckoutController>(c => c.GetPaymentMethods()))';
@@ -80,7 +80,9 @@
         var bulkAddproduct = '@(Html.BuildUrlFromExpression<BasketController>(c=> c.BulkAddProduct(null)))';
         var companyRegisterUrl = '@(Html.BuildUrlFromExpression<B2BController>(c => c.CreateRequest(null)))';
         var getBillingCountriesUrl = '@(Html.BuildUrlFromExpression<AccountController>(c => c.GetBillingCountries()))';
-          var newsletter = '@(Html.BuildUrlFromExpression<AccountController>(c => c.NewsletterSubscription(null)))';
+        var newsletter = '@(Html.BuildUrlFromExpression<AccountController>(c => c.NewsletterSubscription(null)))';
+        var getAllcurrencySetting = '@(Html.BuildUrlFromExpression<HomeController>(c => c.CurrencySettings()))';
+        var languageSettingUrl = '@(Html.BuildUrlFromExpression<HomeController>(c => c.UpdateLanCultureSetting(null)))';
         window.app.constant('globalConfig', {
             setContactForm: setContactForm,
             getBasketUrl: getBasketUrl,
@@ -98,7 +100,9 @@
             bulkAddproduct: bulkAddproduct,
             companyRegisterUrl: companyRegisterUrl,
             getBillingCountriesUrl: getBillingCountriesUrl,
-            newsletter: newsletter
+            newsletter: newsletter,
+            getAllcurrencySetting: getAllcurrencySetting,
+            languageSettingUrl: languageSettingUrl
         });
     </script>
 </body>

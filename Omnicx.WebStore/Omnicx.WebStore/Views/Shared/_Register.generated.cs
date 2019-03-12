@@ -108,13 +108,11 @@ WriteLiteral(">\r\n                <div");
 
 WriteLiteral(" class=\"modal-title\"");
 
-WriteLiteral(" id=\"Login\"");
-
-WriteLiteral(">");
+WriteLiteral(" >");
 
             
             #line 23 "..\..\Views\Shared\_Register.cshtml"
-                                               Write(LT("Header.Text.UserLogin", "User Registration"));
+                                     Write(LT("Header.Text.UserLogin", "User Registration"));
 
             
             #line default
@@ -170,21 +168,7 @@ WriteLiteral("></i>&nbsp;<span");
 WriteLiteral(" ng-bind=\"err\"");
 
 WriteLiteral("></span>\r\n                            </div>\r\n                        </div>\r\n   " +
-"                 </div>                                        \r\n               " +
-"     <p");
-
-WriteLiteral(" class=\"login-text\"");
-
-WriteLiteral(">");
-
-            
-            #line 35 "..\..\Views\Shared\_Register.cshtml"
-                                     Write(LT("MyAccount.Text.RegisterBenifits", ""));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</p>                    \r\n                    <div");
+"                 </div>\r\n                    <div");
 
 WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding form-group margin-bottom-sm checkoutForm\"");
 
@@ -193,7 +177,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                        ");
 
             
-            #line 37 "..\..\Views\Shared\_Register.cshtml"
+            #line 36 "..\..\Views\Shared\_Register.cshtml"
                    Write(userForm.FormGroupFor(x => x.RegisterViewModel.Email));
 
             
@@ -208,7 +192,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                        ");
 
             
-            #line 40 "..\..\Views\Shared\_Register.cshtml"
+            #line 39 "..\..\Views\Shared\_Register.cshtml"
                    Write(userForm.FormGroupFor(x => x.RegisterViewModel.Password));
 
             
@@ -223,7 +207,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                        ");
 
             
-            #line 43 "..\..\Views\Shared\_Register.cshtml"
+            #line 42 "..\..\Views\Shared\_Register.cshtml"
                    Write(userForm.FormGroupFor(x => x.RegisterViewModel.ConfirmPassword));
 
             
@@ -246,7 +230,7 @@ WriteLiteral(" class=\"fa fa-user\"");
 WriteLiteral("></i>");
 
             
-            #line 46 "..\..\Views\Shared\_Register.cshtml"
+            #line 45 "..\..\Views\Shared\_Register.cshtml"
                                                                                                           Write(LT("Global.Buttons.Register", "Register"));
 
             
@@ -256,30 +240,30 @@ WriteLiteral("</button>\r\n                    </div>\r\n                    <di
 
 WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding checkout-button\"");
 
-WriteAttribute("ng-if", Tuple.Create(" ng-if=\"", 2954), Tuple.Create("\"", 3040)
-, Tuple.Create(Tuple.Create("", 2962), Tuple.Create("\'", 2962), true)
+WriteAttribute("ng-if", Tuple.Create(" ng-if=\"", 2794), Tuple.Create("\"", 2880)
+, Tuple.Create(Tuple.Create("", 2802), Tuple.Create("\'", 2802), true)
             
-            #line 48 "..\..\Views\Shared\_Register.cshtml"
-        , Tuple.Create(Tuple.Create("", 2963), Tuple.Create<System.Object, System.Int32>(ViewBag.isB2BEnable
-            
-            #line default
-            #line hidden
-, 2963), false)
-, Tuple.Create(Tuple.Create("", 2983), Tuple.Create("\'", 2983), true)
-, Tuple.Create(Tuple.Create(" ", 2984), Tuple.Create("==", 2985), true)
-, Tuple.Create(Tuple.Create(" ", 2987), Tuple.Create("\'True\'", 2988), true)
-, Tuple.Create(Tuple.Create(" ", 2994), Tuple.Create("&&", 2995), true)
-, Tuple.Create(Tuple.Create(" ", 2997), Tuple.Create("\'", 2998), true)
-            
-            #line 48 "..\..\Views\Shared\_Register.cshtml"
-                                            , Tuple.Create(Tuple.Create("", 2999), Tuple.Create<System.Object, System.Int32>(ViewBag.isRegistrationAllowed
+            #line 47 "..\..\Views\Shared\_Register.cshtml"
+        , Tuple.Create(Tuple.Create("", 2803), Tuple.Create<System.Object, System.Int32>(ViewBag.isB2BEnable
             
             #line default
             #line hidden
-, 2999), false)
-, Tuple.Create(Tuple.Create("", 3029), Tuple.Create("\'", 3029), true)
-, Tuple.Create(Tuple.Create(" ", 3030), Tuple.Create("==", 3031), true)
-, Tuple.Create(Tuple.Create(" ", 3033), Tuple.Create("\'True\'", 3034), true)
+, 2803), false)
+, Tuple.Create(Tuple.Create("", 2823), Tuple.Create("\'", 2823), true)
+, Tuple.Create(Tuple.Create(" ", 2824), Tuple.Create("==", 2825), true)
+, Tuple.Create(Tuple.Create(" ", 2827), Tuple.Create("\'True\'", 2828), true)
+, Tuple.Create(Tuple.Create(" ", 2834), Tuple.Create("&&", 2835), true)
+, Tuple.Create(Tuple.Create(" ", 2837), Tuple.Create("\'", 2838), true)
+            
+            #line 47 "..\..\Views\Shared\_Register.cshtml"
+                                            , Tuple.Create(Tuple.Create("", 2839), Tuple.Create<System.Object, System.Int32>(ViewBag.isRegistrationAllowed
+            
+            #line default
+            #line hidden
+, 2839), false)
+, Tuple.Create(Tuple.Create("", 2869), Tuple.Create("\'", 2869), true)
+, Tuple.Create(Tuple.Create(" ", 2870), Tuple.Create("==", 2871), true)
+, Tuple.Create(Tuple.Create(" ", 2873), Tuple.Create("\'True\'", 2874), true)
 );
 
 WriteLiteral(">\r\n                        <button");
@@ -297,7 +281,7 @@ WriteLiteral(" class=\"fa fa-user\"");
 WriteLiteral("></i>");
 
             
-            #line 49 "..\..\Views\Shared\_Register.cshtml"
+            #line 48 "..\..\Views\Shared\_Register.cshtml"
                                                                                                                                           Write(LT("Global.Buttons.CompanyAccountRequest", "Request for Company Account"));
 
             
@@ -308,11 +292,13 @@ WriteLiteral("</button>\r\n                    </div>                   \r\n    
 
 WriteLiteral(" class=\"text-center text-muted\"");
 
+WriteLiteral(" aria-hidden=\"true\"");
+
 WriteLiteral(">");
 
             
-            #line 52 "..\..\Views\Shared\_Register.cshtml"
-                                             Write(LT("Footer.Text.NoAccount", "Already Register?"));
+            #line 51 "..\..\Views\Shared\_Register.cshtml"
+                                                                Write(LT("Footer.Text.NoAccount", "Already Register?"));
 
             
             #line default
@@ -320,6 +306,8 @@ WriteLiteral(">");
 WriteLiteral("</p>\r\n                <p");
 
 WriteLiteral(" class=\"text-center text-muted\"");
+
+WriteLiteral(" aria-hidden=\"true\"");
 
 WriteLiteral("><a");
 
@@ -340,8 +328,8 @@ WriteLiteral(" class=\"text-black\"");
 WriteLiteral("><strong>");
 
             
-            #line 53 "..\..\Views\Shared\_Register.cshtml"
-                                                                                                                                                                                                  Write(LT("Footer.Text.RegisterNow", "Login now"));
+            #line 52 "..\..\Views\Shared\_Register.cshtml"
+                                                                                                                                                                                                                     Write(LT("Footer.Text.RegisterNow", "Login now"));
 
             
             #line default

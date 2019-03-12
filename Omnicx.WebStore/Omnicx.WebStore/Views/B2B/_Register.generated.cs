@@ -124,8 +124,6 @@ WriteLiteral(">&times;</span></button>\r\n                <h4");
 
 WriteLiteral(" class=\"modal-title text-modal\"");
 
-WriteLiteral(" id=\"myModalLabel\"");
-
 WriteLiteral(">Company Account Request</h4>\r\n            </div>\r\n            <div");
 
 WriteLiteral(" class=\"modal-body\"");

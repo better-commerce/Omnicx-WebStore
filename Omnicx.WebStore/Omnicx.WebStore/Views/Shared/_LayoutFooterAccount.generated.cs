@@ -104,11 +104,13 @@ WriteLiteral(">\r\n                <p");
 
 WriteLiteral(" class=\"pull-left\"");
 
+WriteLiteral(" aria-hidden=\"true\"");
+
 WriteLiteral(">&copy;2017-18. ");
 
             
             #line 16 "..\..\Views\Shared\_LayoutFooterAccount.cshtml"
-                                               Write(LT("Footer.Text.Omnicx", "OCX Store Powered by "));
+                                                                  Write(LT("Footer.Text.Omnicx", "OCX Store Powered by "));
 
             
             #line default
@@ -123,11 +125,13 @@ WriteLiteral(">OmniCX</a></p>\r\n                <p");
 
 WriteLiteral(" class=\"pull-right\"");
 
+WriteLiteral(" aria-hidden=\"true\"");
+
 WriteLiteral(">\r\n                    <img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 823), Tuple.Create("\"", 866)
-, Tuple.Create(Tuple.Create("", 829), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/payment.png")
-, 829), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 861), Tuple.Create("\"", 904)
+, Tuple.Create(Tuple.Create("", 867), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/payment.png")
+, 867), false)
 );
 
 WriteLiteral(" alt=\"payments accepted\"");

@@ -108,13 +108,11 @@ WriteLiteral(">\r\n                <div");
 
 WriteLiteral(" class=\"modal-title\"");
 
-WriteLiteral(" id=\"Login\"");
-
-WriteLiteral(">");
+WriteLiteral(" >");
 
             
             #line 23 "..\..\Views\Shared\_Login.cshtml"
-                                               Write(LT("Header.Text.UserLogin", "User Login"));
+                                     Write(LT("Header.Text.UserLogin", "User Login"));
 
             
             #line default
@@ -193,6 +191,8 @@ WriteLiteral("\r\n                    </div>\r\n                    <p");
 
 WriteLiteral(" class=\"text-center\"");
 
+WriteLiteral(" aria-hidden=\"true\"");
+
 WriteLiteral(">\r\n                        <button");
 
 WriteLiteral(" type=\"submit\"");
@@ -218,14 +218,14 @@ WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding text-center\"");
 
 WriteLiteral(">\r\n                        <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1954), Tuple.Create("\"", 2001)
+WriteAttribute("href", Tuple.Create(" href=\"", 1963), Tuple.Create("\"", 2010)
             
             #line 41 "..\..\Views\Shared\_Login.cshtml"
-, Tuple.Create(Tuple.Create("", 1961), Tuple.Create<System.Object, System.Int32>(Url.Action("forgotpassword", "account")
+, Tuple.Create(Tuple.Create("", 1970), Tuple.Create<System.Object, System.Int32>(Url.Action("forgotpassword", "account")
             
             #line default
             #line hidden
-, 1961), false)
+, 1970), false)
 );
 
 WriteLiteral(" class=\"text-center\"");
@@ -235,11 +235,13 @@ WriteLiteral(">Forgot Password</a>\r\n                    </div>\r\n            
 
 WriteLiteral(" class=\"text-center text-muted\"");
 
+WriteLiteral(" aria-hidden=\"true\"");
+
 WriteLiteral(">");
 
             
             #line 44 "..\..\Views\Shared\_Login.cshtml"
-                                             Write(LT("Footer.Text.NoAccount", "Not registered yet?"));
+                                                                Write(LT("Footer.Text.NoAccount", "Not registered yet?"));
 
             
             #line default
@@ -247,6 +249,8 @@ WriteLiteral(">");
 WriteLiteral("</p>\r\n                <p");
 
 WriteLiteral(" class=\"text-center text-muted\"");
+
+WriteLiteral(" aria-hidden=\"true\"");
 
 WriteLiteral("><a");
 
@@ -269,7 +273,7 @@ WriteLiteral("><strong>");
 
             
             #line 45 "..\..\Views\Shared\_Login.cshtml"
-                                                                                                                                                                                                                                                                Write(LT("Footer.Text.RegisterNow", "Register now"));
+                                                                                                                                                                                                                                                                                   Write(LT("Footer.Text.RegisterNow", "Register now"));
 
             
             #line default
@@ -278,7 +282,7 @@ WriteLiteral("</strong></a>!");
 
             
             #line 45 "..\..\Views\Shared\_Login.cshtml"
-                                                                                                                                                                                                                                                                                                                            Write(LT("MyAccount.Text.EasyRegister", " It is easy and done in 1 minute and gives you access to special discounts and much more"));
+                                                                                                                                                                                                                                                                                                                                               Write(LT("MyAccount.Text.EasyRegister", " It is easy and done in 1 minute and gives you access to special discounts and much more"));
 
             
             #line default
@@ -286,6 +290,8 @@ WriteLiteral("</strong></a>!");
 WriteLiteral("!</p>\r\n            </div>\r\n            <div");
 
 WriteLiteral(" class=\"modal-footer\"");
+
+WriteLiteral(" aria-hidden=\"true\"");
 
 WriteLiteral("></div>\r\n        </div>\r\n    </div>\r\n</div>");
 

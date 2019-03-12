@@ -97,18 +97,18 @@ WriteLiteral(" name=\"shippingForm\"");
 
 WriteLiteral(" role=\"form\"");
 
-WriteAttribute("ng-show", Tuple.Create(" ng-show=\"", 729), Tuple.Create("\"", 814)
-, Tuple.Create(Tuple.Create("", 739), Tuple.Create("ck.model.checkout.selectedShipping.type", 739), true)
-, Tuple.Create(Tuple.Create(" ", 778), Tuple.Create("==", 779), true)
-, Tuple.Create(Tuple.Create(" ", 781), Tuple.Create("\'", 782), true)
+WriteAttribute("ng-show", Tuple.Create(" ng-show=\"", 729), Tuple.Create("\"", 838)
+, Tuple.Create(Tuple.Create("", 739), Tuple.Create("ck.model.checkout.selectedShipping.shippingCostMethod", 739), true)
+, Tuple.Create(Tuple.Create(" ", 792), Tuple.Create("==", 793), true)
+, Tuple.Create(Tuple.Create(" ", 795), Tuple.Create("\'", 796), true)
             
             #line 21 "..\..\Views\Checkout\_ShippingAddress.cshtml"
-            , Tuple.Create(Tuple.Create("", 783), Tuple.Create<System.Object, System.Int32>(ShippingTypes.Flat.ToString()
+                          , Tuple.Create(Tuple.Create("", 797), Tuple.Create<System.Object, System.Int32>(ShippingCostMethods.FlatRate.ToString()
             
             #line default
             #line hidden
-, 783), false)
-, Tuple.Create(Tuple.Create("", 813), Tuple.Create("\'", 813), true)
+, 797), false)
+, Tuple.Create(Tuple.Create("", 837), Tuple.Create("\'", 837), true)
 );
 
 WriteLiteral(" novalidate>\r\n    ");
@@ -146,7 +146,7 @@ WriteLiteral(" class=\"row\"");
 
 WriteLiteral(">\r\n            <div");
 
-WriteLiteral(" class=\"col-sm-2\"");
+WriteLiteral(" class=\"col-sm-6 col-md-2 col-lg-2\"");
 
 WriteLiteral(">\r\n                <div");
 

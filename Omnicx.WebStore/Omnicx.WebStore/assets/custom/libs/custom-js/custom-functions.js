@@ -22,19 +22,22 @@ function closeCutting() {
     $("#tubeCuttingPanel").fadeOut("slow");
 }
 // Function written for multi item carousal slider for home page
-$('.multi-item-carousel .item').each(function () {
-    var next = $(this).next();
-    if (!next.length) {
-        next = $(this).siblings(':first');
-    }
-    next.children(':first-child').clone().appendTo($(this));
 
-    if (next.next().length > 0) {
-        next.next().children(':first-child').clone().appendTo($(this));
-    } else {
-        $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
-    }
-});
+//$('.carousel .item').each(function () {
+//    var next = $(this).next();
+//    if (!next.length) {
+//        next = $(this).siblings(':first');
+//    }
+//    next.children(':first-child').clone().appendTo($(this));
+
+//    if (next.next().length > 0) {
+//        next.next().children(':first-child').clone().appendTo($(this));
+//    }
+//    else {
+//        $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
+//    }
+//});
+
 
 $('.carousel[data-type="multi"] .item').each(function () {
     var next = $(this).next();
@@ -42,8 +45,9 @@ $('.carousel[data-type="multi"] .item').each(function () {
         next = $(this).siblings(':first');
     }
     next.children(':first-child').clone().appendTo($(this));
-
-    for (var i = 0; i < 4; i++) {
+    //carouselImage variable is declared for defining the number of carousel Images shown in one go 
+    var carouselImage = 3;
+    for (var i = 0; i < carouselImage; i++) {
         next = next.next();
         if (!next.length) {
             next = $(this).siblings(':first');
@@ -52,24 +56,6 @@ $('.carousel[data-type="multi"] .item').each(function () {
         next.children(':first-child').clone().appendTo($(this));
     }
 });
-
-//$('.carousel[data-type="multi"] .item').each(function () {
-//    var next = $(this).next();
-//    if (!next.length) {
-//        next = $(this).siblings(':first');
-//    }
-//    next.children(':first-child').clone().appendTo($(this));
-//    //carouselImage variable is declared for defining the number of carousel Images shown in one go 
-//    var carouselImage = 3;
-//    for (var i = 0; i < carouselImage; i++) {
-//        next = next.next();
-//        if (!next.length) {
-//            next = $(this).siblings(':first');
-//        }
-
-//        next.children(':first-child').clone().appendTo($(this));
-//    }
-//});
 
 
 // Function Written For Mobile accordion

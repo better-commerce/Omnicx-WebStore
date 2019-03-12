@@ -202,7 +202,11 @@ WriteLiteral(" ng-click=\"ck.address=add;ck.addId=add.id\"");
 
 WriteLiteral(" ng-class=\"{\'active\' : ck.address.id == add.id}\"");
 
-WriteLiteral(">\r\n                            <p><span");
+WriteLiteral(">\r\n                            <p");
+
+WriteLiteral(" aria-hidden=\"true\"");
+
+WriteLiteral("><span");
 
 WriteLiteral(" class=\"pull-left margin-right-md\"");
 
@@ -222,7 +226,11 @@ WriteLiteral("></i>&nbsp;<strong");
 
 WriteLiteral(" ng-bind=\"add.phoneNo\"");
 
-WriteLiteral("></strong></p>\r\n                            <p><span");
+WriteLiteral("></strong></p>\r\n                            <p");
+
+WriteLiteral(" aria-hidden=\"true\"");
+
+WriteLiteral("><span");
 
 WriteLiteral(" ng-bind=\"add.companyName\"");
 

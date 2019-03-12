@@ -10,7 +10,7 @@
       replace: true,
       template: '<div class="magnify-container" data-ng-style="getContainerStyle()">' +
                   '<div class="magnify-glass" data-ng-style="getGlassStyle()"></div>' +
-                  '<img class="magnify-image" data-ng-src="{{ imageSrc }}"/>' +
+                  '<img class="magnify-image" alt="Product" data-ng-src="{{ imageSrc }}"/>' +
                 '</div>',
       scope: {
         imageSrc: '@',

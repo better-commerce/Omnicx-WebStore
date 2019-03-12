@@ -18,7 +18,7 @@
     var addressForm = Html.Angular().ModelFor("ck.model.checkout.shippingAddress");
     var userRole = SessionContext.CurrentUserRole;
 }
-<form name="shippingForm" role="form" ng-show="ck.model.checkout.selectedShipping.type == '@ShippingTypes.Flat.ToString()'" novalidate>
+<form name="shippingForm" role="form" ng-show="ck.model.checkout.selectedShipping.shippingCostMethod == '@ShippingCostMethods.FlatRate.ToString()'" novalidate>
     @*<div class="col-sm-12 col-xs-12 margin-bottom-sm" ng-repeat="add in ck.userAddresses">
         <div class="col-sm-1 col-xs-2">
             <label class="control control--radio margin-bottom-lg" ng-click="ck.address=add">
@@ -38,7 +38,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-2">
+            <div class="col-sm-6 col-md-2 col-lg-2">
                 <div class="form-group">
                     <div class="form-group" ng-class="vm.getValidationClass()" form-group-validation="Title">
                         <label for="Title" class="control-label ng-scope">@LT("MyAccount.Text.Title", "Title")</label>

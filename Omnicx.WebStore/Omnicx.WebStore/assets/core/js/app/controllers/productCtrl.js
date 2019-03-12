@@ -31,6 +31,7 @@
         pm.temp = 0;
         pm.addToWishlist = addToWishlist;
         pm.wishlistexistserror = false;
+        pm.maximumWishlisterror = false;
         pm.WishlistFilter = { id: '' };
         pm.wishlistsaved = false;
         pm.wishlisterror = false;
@@ -444,6 +445,7 @@
                         }
 
                     }
+                    window.setTimeout(function () { imgix.init({ force: true }); }, 1000);
                     //PubSub.publish("search", prodDetail);
 
 
@@ -463,7 +465,8 @@
                     pm.wishlistsaved = true;
                 }
                 else {
-                    pm.wishlistexistserror = true;
+                    pm.maximumWishlisterror = true;
+                    //pm.wishlistexistserror = false;
                     pm.wishlisterror = false;
                 }
                 $timeout(function () {
@@ -690,18 +693,25 @@
             }
             $http.post(productConfig.basketToWishlist, pm.modelList).success(function (resp) {
                 if (resp) {
+                    $(".wishdiv").fadeIn();
                     pm.wishlistsaved = true;
                 }
-                else {
-                    pm.wishlistexistserror = true;
-                }
+                else {                  
+                    pm.maximumWishlisterror = true;
+                }               
                 $("html, body").animate({ scrollTop: 0 }, "slow");
                 $timeout(function () { window.location.reload(); }, 3000);
             })
                 .error(function (msg) {
+                    $(".wishdiv").fadeIn();
+                    pm.wishlisterror = true;
+                    $timeout(function () {
+                        $(".wishdiv").fadeOut();
+                    }, 2000);
                 })
                 .finally(function () {
                     pm.getToWishlist(pm.productResponse.results);
+                    pm.checkForWishlist();
                 });
         };
         function checkForWishlist() {

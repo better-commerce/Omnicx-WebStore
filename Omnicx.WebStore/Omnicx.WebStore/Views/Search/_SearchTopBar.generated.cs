@@ -60,7 +60,7 @@ WriteLiteral("\r\n");
 
 WriteLiteral("\r\n<div");
 
-WriteLiteral(" class=\"row visible-xs visible-sm\"");
+WriteLiteral(" class=\"row visible-xs\"");
 
 WriteLiteral(" ng-cloak>\r\n    <div");
 
@@ -188,7 +188,7 @@ WriteLiteral("></i> Filter</a>\r\n    </div>\r\n</div>\r\n\r\n");
 
 WriteLiteral("\r\n<div");
 
-WriteLiteral(" class=\"row hidden-xs hidden-sm\"");
+WriteLiteral(" class=\"row hidden-xs\"");
 
 WriteLiteral(" ng-cloak>\r\n    <div");
 
@@ -340,7 +340,7 @@ WriteLiteral(" class=\"fa fa-list\"");
 
 WriteLiteral("></i></a>\r\n            </div>\r\n        </div>\r\n    </div>    \r\n</div>\r\n<div");
 
-WriteLiteral(" class=\"row hidden-xs hidden-sm\"");
+WriteLiteral(" class=\"row hidden-xs\"");
 
 WriteLiteral(" ng-if=\"pm.sortByList.length>0\"");
 

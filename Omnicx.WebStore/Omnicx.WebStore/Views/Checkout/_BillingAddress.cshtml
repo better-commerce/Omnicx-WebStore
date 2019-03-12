@@ -22,7 +22,7 @@
                 <h5 class="margin-top-sm margin-bottom-sm checkout-h5">@LT("Checkout.Label.BillingAddress", "Billing Address")</h5>
             </div>
         </div>
-        <div class="row" ng-show="ck.model.checkout.selectedShipping.type == '@ShippingTypes.Flat.ToString()'">
+        <div class="row" ng-show="ck.model.checkout.selectedShipping.shippingCostMethod == '@ShippingCostMethods.FlatRate.ToString()'">
             <div class="col-sm-12">
                 <div class="form-group">
                     <label class="control control--checkbox ng-binding">
@@ -36,7 +36,7 @@
         <div ng-show="!ck.sameAsBillAddress">
             <div class="or-spacer"><div class="mask"></div></div>
             <div class="row">
-                <div class="col-sm-2">
+                <div class="col-sm-6 col-md-2 col-lg-2">
                     <div class="form-group">
                         <div class="form-group" ng-class="vm.getValidationClass()" form-group-validation="Title">
                             <label for="Title" class="control-label ng-scope">@LT("MyAccount.Text.Title", "Title")</label>

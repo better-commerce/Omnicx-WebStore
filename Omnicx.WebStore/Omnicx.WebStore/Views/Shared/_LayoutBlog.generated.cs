@@ -89,6 +89,8 @@ WriteLiteral(" ng-app=\"btApp\"");
 
 WriteLiteral(" ng-controller=\"globalCtrl as gm\"");
 
+WriteLiteral(" lang=\"en\"");
+
 WriteLiteral(">\r\n");
 
             
@@ -174,12 +176,14 @@ WriteLiteral(" class=\"global-loader\"");
 
 WriteLiteral(">\r\n            <img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 1572), Tuple.Create("\"", 1614)
-, Tuple.Create(Tuple.Create("", 1578), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/loader.svg")
-, 1578), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 1582), Tuple.Create("\"", 1624)
+, Tuple.Create(Tuple.Create("", 1588), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/loader.svg")
+, 1588), false)
 );
 
-WriteLiteral(" />\r\n        </span>\r\n    </div>\r\n");
+WriteLiteral(" alt=\"Loader\"");
+
+WriteLiteral("/>\r\n        </span>\r\n    </div>\r\n");
 
 DefineSection("scripts", () => {
 
@@ -258,7 +262,7 @@ WriteLiteral("\';\r\n        var updateShipping = \'");
 
             
             #line 57 "..\..\Views\Shared\_LayoutBlog.cshtml"
-                          Write(Html.BuildUrlFromExpression<BasketController>(c => c.UpdateShipping(null,null,null)));
+                          Write(Html.BuildUrlFromExpression<BasketController>(c => c.UpdateShipping(null,null,null,null)));
 
             
             #line default
@@ -290,8 +294,16 @@ WriteLiteral("\';\r\n        var paymentMethodsUrl = \'");
             
             #line default
             #line hidden
-WriteLiteral(@"';
+WriteLiteral("\';\r\n          var languageSettingUrl = \'");
 
+            
+            #line 61 "..\..\Views\Shared\_LayoutBlog.cshtml"
+                                Write(Html.BuildUrlFromExpression<HomeController>(c => c.UpdateLanCultureSetting(null)));
+
+            
+            #line default
+            #line hidden
+WriteLiteral(@"';
         window.app.constant('globalConfig', {
             setContactForm: setContactForm,
             getBasketUrl: getBasketUrl,
@@ -302,7 +314,8 @@ WriteLiteral(@"';
             updateShipping: updateShipping,
             applyPromoCode: applyPromoCode,
             currencySettingUrl: currencySettingUrl,
-            paymentMethodsUrl: paymentMethodsUrl
+            paymentMethodsUrl: paymentMethodsUrl,
+            languageSettingUrl: languageSettingUrl
         });
     </script>
 </body>

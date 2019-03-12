@@ -112,13 +112,11 @@ WriteLiteral(">\r\n                <div");
 
 WriteLiteral(" class=\"modal-title\"");
 
-WriteLiteral(" id=\"Login\"");
-
-WriteLiteral(">");
+WriteLiteral(" >");
 
             
             #line 22 "..\..\Views\Checkout\_BasketView.cshtml"
-                                               Write(LT("Checkout.Label.PreviousBaskets", "Previous Baskets"));
+                                     Write(LT("Checkout.Label.PreviousBaskets", "Previous Baskets"));
 
             
             #line default
@@ -154,11 +152,13 @@ WriteLiteral("><p");
 
 WriteLiteral(" class=\"well alert-warning padding-xs\"");
 
+WriteLiteral(" aria-hidden=\"true\"");
+
 WriteLiteral(">");
 
             
             #line 26 "..\..\Views\Checkout\_BasketView.cshtml"
-                                                                                                   Write(LT("Checkout.Label.AppliedPromoRemove", "Merging in existing basket removes pre-applied promocode. You may reapply a valid promocode again"));
+                                                                                                                      Write(LT("Checkout.Label.AppliedPromoRemove", "Merging in existing basket removes pre-applied promocode. You may reapply a valid promocode again"));
 
             
             #line default
@@ -212,6 +212,8 @@ WriteLiteral(" ng-src=\"{{item.image}}\"");
 
 WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
+WriteLiteral(" sizes=\"(min-width: 768px) 540px, 100vw\"");
+
 WriteLiteral(">\r\n                                        </a>\r\n                                " +
 "    </span>\r\n                                </div>\r\n                           " +
 "     <div");
@@ -258,18 +260,18 @@ WriteLiteral(">\r\n                                        <strong");
 
 WriteLiteral(" class=\"text-orange small-cart-name\"");
 
-WriteAttribute("ng-show", Tuple.Create(" ng-show=\"", 3062), Tuple.Create("\"", 3144)
-, Tuple.Create(Tuple.Create("", 3072), Tuple.Create("item.displayInBasket", 3072), true)
-, Tuple.Create(Tuple.Create(" ", 3092), Tuple.Create("&&", 3093), true)
-, Tuple.Create(Tuple.Create(" ", 3095), Tuple.Create("items.itemType", 3096), true)
-, Tuple.Create(Tuple.Create(" ", 3110), Tuple.Create("==", 3111), true)
+WriteAttribute("ng-show", Tuple.Create(" ng-show=\"", 3111), Tuple.Create("\"", 3193)
+, Tuple.Create(Tuple.Create("", 3121), Tuple.Create("item.displayInBasket", 3121), true)
+, Tuple.Create(Tuple.Create(" ", 3141), Tuple.Create("&&", 3142), true)
+, Tuple.Create(Tuple.Create(" ", 3144), Tuple.Create("items.itemType", 3145), true)
+, Tuple.Create(Tuple.Create(" ", 3159), Tuple.Create("==", 3160), true)
             
             #line 48 "..\..\Views\Checkout\_BasketView.cshtml"
-                                                      , Tuple.Create(Tuple.Create("", 3113), Tuple.Create<System.Object, System.Int32>(ItemTypes.Bundle.GetHashCode()
+                                                      , Tuple.Create(Tuple.Create("", 3162), Tuple.Create<System.Object, System.Int32>(ItemTypes.Bundle.GetHashCode()
             
             #line default
             #line hidden
-, 3113), false)
+, 3162), false)
 );
 
 WriteLiteral(">");

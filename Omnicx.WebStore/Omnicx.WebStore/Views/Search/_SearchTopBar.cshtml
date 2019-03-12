@@ -11,7 +11,7 @@
 }
 @inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
 @*MOBILE VIEW OF TOP BAR*@
-<div class="row visible-xs visible-sm" ng-cloak>
+<div class="row visible-xs" ng-cloak>
     <div class="col-sm-12 col-xs-6">
         <form class="form-inline">
             <div class="form-group no-margin-bottom">
@@ -41,7 +41,7 @@
 </div>
 
 @*DESKTOP VIEW OF TOPBAR*@
-<div class="row hidden-xs hidden-sm" ng-cloak>
+<div class="row hidden-xs" ng-cloak>
     <div class="col-sm-9 col-xs-12">
         <form class="form-inline">
             <div class="form-group no-margin-bottom">                
@@ -71,7 +71,7 @@
         </div>
     </div>    
 </div>
-<div class="row hidden-xs hidden-sm" ng-if="pm.sortByList.length>0" ng-cloak>
+<div class="row hidden-xs" ng-if="pm.sortByList.length>0" ng-cloak>
     <div class="col-sm-12 col-xs-12 text-left border-bottom">
         <strong class="facet-text">@LT("ProductListing.Label.SortBy", "Sort By") </strong>
         <span ng-repeat="item in pm.sortByList track by $index">

@@ -36,7 +36,7 @@
             ' <div class="input-group">'+
                    '<input title="{{returnkeyios}}" name="txtAutoSearch' + searchid + '"  maxlength="60"  autocomplete="false"  ng-keyup="$event.keyCode == 13 && headerSearch()"  ng-model="searchStr" type="search" placeholder="{{placeholder}}" class="form-control search-textbox search-textbox-mobile" onmouseup="this.select();" ng-focus="resetHideResults()" ng-blur="hideResults()" autofocus>' +
                    '<span class="input-group-btn">'+
-                    '<button type="button" class="btn btn-search top-search-button" ng-click="headerSearch()"><i class="fa fa-search"></i></button>' +
+                    '<button type="button" class="btn btn-search top-search-button" ng-click="headerSearch()"><i class="fa fa-search"></i><span class="label-0">Country</span></button>' +
                     '</span>'+
               '</div>' +             
                             '<div id="{{id}}_dropdown" class="autocomplete-dropdown" ng-if="showDropdown">' +
@@ -176,23 +176,23 @@
                         } else {
                             $scope.results = [];
                         }
-                        PubSub.publish("search", str, responseData);
+                        //PubSub.publish("search", str, responseData);
                     };
-                    PubSub.subscribe('search', function (searchKey, eventData) {
-                        if (eventData != null && dataLayer && omnilytics) {
-                            var data = dataLayer[0];
-                            var entity = { 'FreeText': searchKey, 'ResultCount': eventData.length };
-                            data["Entity"] = JSON.stringify(entity);
-                            data["EntityId"] = searchKey;
-                            data["EntityName"] = searchKey;
-                            data["EntityType"] = "Search";
-                            data["EventType"] = "Search";
-                            data["Action"] = "search";
-                            dataLayer[0] = data;
-                            omnilytics.emit('Search', null);
+                    //PubSub.subscribe('search', function (searchKey, eventData) {
+                    //    if (eventData != null && dataLayer && omnilytics) {
+                    //        var data = dataLayer[0];
+                    //        var entity = { 'FreeText': searchKey, 'ResultCount': eventData.length };
+                    //        data["Entity"] = JSON.stringify(entity);
+                    //        data["EntityId"] = searchKey;
+                    //        data["EntityName"] = searchKey;
+                    //        data["EntityType"] = "Search";
+                    //        data["EventType"] = "Search";
+                    //        data["Action"] = "search";
+                    //        dataLayer[0] = data;
+                    //        omnilytics.emit('Search', null);
 
-                        }
-                    });
+                    //    }
+                    //});
                     $scope.searchTimerComplete = function (str) {
                         if (str.length >= $scope.minLength) {
                             if ($scope.localData) {

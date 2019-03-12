@@ -152,15 +152,43 @@ WriteAttribute("content", Tuple.Create(" content=\"", 845), Tuple.Create("\"", 8
 
 WriteLiteral(">\r\n    <meta");
 
+WriteLiteral(" property=\"og:title\"");
+
+WriteLiteral(" content=\"OCS Store\"");
+
+WriteLiteral(" />\r\n    <meta");
+
+WriteLiteral(" property=\"og:type\"");
+
+WriteLiteral(" content=\"Web\"");
+
+WriteLiteral(" />\r\n    <meta");
+
+WriteLiteral(" property=\"og:url\"");
+
+WriteLiteral(" content=\"http://store.omnicxdemo.com/\"");
+
+WriteLiteral(" />\r\n    <meta");
+
+WriteLiteral(" property=\"og:image\"");
+
+WriteAttribute("content", Tuple.Create(" content=\"", 1082), Tuple.Create("\"", 1144)
+, Tuple.Create(Tuple.Create("", 1092), Tuple.Create("/assets/theme/", 1092), true)
+            
+            #line 31 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
+, Tuple.Create(Tuple.Create("", 1106), Tuple.Create<System.Object, System.Int32>(StoreTheme
+            
+            #line default
+            #line hidden
+, 1106), false)
+, Tuple.Create(Tuple.Create("", 1117), Tuple.Create("/images/favicon/favicon.ico", 1117), true)
+);
+
+WriteLiteral(" />\r\n    <meta");
+
 WriteLiteral(" charset=\"UTF-8\"");
 
-WriteLiteral(">\r\n    <meta");
-
-WriteLiteral(" http-equiv=\"x-ua-compatible\"");
-
-WriteLiteral(" content=\"IE=edge\"");
-
-WriteLiteral(">\r\n    <meta");
+WriteLiteral(">    \r\n    <meta");
 
 WriteLiteral(" name=\"apple-mobile-web-app-capable\"");
 
@@ -170,8 +198,8 @@ WriteLiteral(" />\r\n    <meta");
 
 WriteLiteral(" name=\"viewport\"");
 
-WriteLiteral(" content=\"width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=n" +
-"o\"");
+WriteLiteral(" content=\"width=device-width, initial-scale=1, maximum-scale=1.0, minimum-scale=1" +
+"\"");
 
 WriteLiteral(">\r\n    <link");
 
@@ -179,16 +207,16 @@ WriteLiteral(" rel=\"apple-touch-icon\"");
 
 WriteLiteral(" sizes=\"57x57\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1189), Tuple.Create("\"", 1257)
-, Tuple.Create(Tuple.Create("", 1196), Tuple.Create("/assets/theme/", 1196), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 1402), Tuple.Create("\"", 1470)
+, Tuple.Create(Tuple.Create("", 1409), Tuple.Create("/assets/theme/", 1409), true)
             
-            #line 32 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
-, Tuple.Create(Tuple.Create("", 1210), Tuple.Create<System.Object, System.Int32>(StoreTheme
+            #line 35 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
+, Tuple.Create(Tuple.Create("", 1423), Tuple.Create<System.Object, System.Int32>(StoreTheme
             
             #line default
             #line hidden
-, 1210), false)
-, Tuple.Create(Tuple.Create("", 1221), Tuple.Create("/images/favicon/apple-icon-57x57.png", 1221), true)
+, 1423), false)
+, Tuple.Create(Tuple.Create("", 1434), Tuple.Create("/images/favicon/apple-icon-57x57.png", 1434), true)
 );
 
 WriteLiteral(">\r\n    <link");
@@ -197,16 +225,16 @@ WriteLiteral(" rel=\"apple-touch-icon\"");
 
 WriteLiteral(" sizes=\"60x60\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1307), Tuple.Create("\"", 1375)
-, Tuple.Create(Tuple.Create("", 1314), Tuple.Create("/assets/theme/", 1314), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 1520), Tuple.Create("\"", 1588)
+, Tuple.Create(Tuple.Create("", 1527), Tuple.Create("/assets/theme/", 1527), true)
             
-            #line 33 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
-, Tuple.Create(Tuple.Create("", 1328), Tuple.Create<System.Object, System.Int32>(StoreTheme
+            #line 36 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
+, Tuple.Create(Tuple.Create("", 1541), Tuple.Create<System.Object, System.Int32>(StoreTheme
             
             #line default
             #line hidden
-, 1328), false)
-, Tuple.Create(Tuple.Create("", 1339), Tuple.Create("/images/favicon/apple-icon-60x60.png", 1339), true)
+, 1541), false)
+, Tuple.Create(Tuple.Create("", 1552), Tuple.Create("/images/favicon/apple-icon-60x60.png", 1552), true)
 );
 
 WriteLiteral(">\r\n    <link");
@@ -215,16 +243,16 @@ WriteLiteral(" rel=\"apple-touch-icon\"");
 
 WriteLiteral(" sizes=\"72x72\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1425), Tuple.Create("\"", 1493)
-, Tuple.Create(Tuple.Create("", 1432), Tuple.Create("/assets/theme/", 1432), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 1638), Tuple.Create("\"", 1706)
+, Tuple.Create(Tuple.Create("", 1645), Tuple.Create("/assets/theme/", 1645), true)
             
-            #line 34 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
-, Tuple.Create(Tuple.Create("", 1446), Tuple.Create<System.Object, System.Int32>(StoreTheme
+            #line 37 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
+, Tuple.Create(Tuple.Create("", 1659), Tuple.Create<System.Object, System.Int32>(StoreTheme
             
             #line default
             #line hidden
-, 1446), false)
-, Tuple.Create(Tuple.Create("", 1457), Tuple.Create("/images/favicon/apple-icon-72x72.png", 1457), true)
+, 1659), false)
+, Tuple.Create(Tuple.Create("", 1670), Tuple.Create("/images/favicon/apple-icon-72x72.png", 1670), true)
 );
 
 WriteLiteral(">\r\n    <link");
@@ -233,16 +261,16 @@ WriteLiteral(" rel=\"apple-touch-icon\"");
 
 WriteLiteral(" sizes=\"76x76\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1543), Tuple.Create("\"", 1611)
-, Tuple.Create(Tuple.Create("", 1550), Tuple.Create("/assets/theme/", 1550), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 1756), Tuple.Create("\"", 1824)
+, Tuple.Create(Tuple.Create("", 1763), Tuple.Create("/assets/theme/", 1763), true)
             
-            #line 35 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
-, Tuple.Create(Tuple.Create("", 1564), Tuple.Create<System.Object, System.Int32>(StoreTheme
+            #line 38 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
+, Tuple.Create(Tuple.Create("", 1777), Tuple.Create<System.Object, System.Int32>(StoreTheme
             
             #line default
             #line hidden
-, 1564), false)
-, Tuple.Create(Tuple.Create("", 1575), Tuple.Create("/images/favicon/apple-icon-76x76.png", 1575), true)
+, 1777), false)
+, Tuple.Create(Tuple.Create("", 1788), Tuple.Create("/images/favicon/apple-icon-76x76.png", 1788), true)
 );
 
 WriteLiteral(">\r\n    <link");
@@ -251,16 +279,16 @@ WriteLiteral(" rel=\"apple-touch-icon\"");
 
 WriteLiteral(" sizes=\"114x114\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1663), Tuple.Create("\"", 1733)
-, Tuple.Create(Tuple.Create("", 1670), Tuple.Create("/assets/theme/", 1670), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 1876), Tuple.Create("\"", 1946)
+, Tuple.Create(Tuple.Create("", 1883), Tuple.Create("/assets/theme/", 1883), true)
             
-            #line 36 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
-, Tuple.Create(Tuple.Create("", 1684), Tuple.Create<System.Object, System.Int32>(StoreTheme
+            #line 39 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
+, Tuple.Create(Tuple.Create("", 1897), Tuple.Create<System.Object, System.Int32>(StoreTheme
             
             #line default
             #line hidden
-, 1684), false)
-, Tuple.Create(Tuple.Create("", 1695), Tuple.Create("/images/favicon/apple-icon-114x114.png", 1695), true)
+, 1897), false)
+, Tuple.Create(Tuple.Create("", 1908), Tuple.Create("/images/favicon/apple-icon-114x114.png", 1908), true)
 );
 
 WriteLiteral(">\r\n    <link");
@@ -269,16 +297,16 @@ WriteLiteral(" rel=\"apple-touch-icon\"");
 
 WriteLiteral(" sizes=\"120x120\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1785), Tuple.Create("\"", 1855)
-, Tuple.Create(Tuple.Create("", 1792), Tuple.Create("/assets/theme/", 1792), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 1998), Tuple.Create("\"", 2068)
+, Tuple.Create(Tuple.Create("", 2005), Tuple.Create("/assets/theme/", 2005), true)
             
-            #line 37 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
-, Tuple.Create(Tuple.Create("", 1806), Tuple.Create<System.Object, System.Int32>(StoreTheme
+            #line 40 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
+, Tuple.Create(Tuple.Create("", 2019), Tuple.Create<System.Object, System.Int32>(StoreTheme
             
             #line default
             #line hidden
-, 1806), false)
-, Tuple.Create(Tuple.Create("", 1817), Tuple.Create("/images/favicon/apple-icon-120x120.png", 1817), true)
+, 2019), false)
+, Tuple.Create(Tuple.Create("", 2030), Tuple.Create("/images/favicon/apple-icon-120x120.png", 2030), true)
 );
 
 WriteLiteral(">\r\n    <link");
@@ -287,16 +315,16 @@ WriteLiteral(" rel=\"apple-touch-icon\"");
 
 WriteLiteral(" sizes=\"144x144\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1907), Tuple.Create("\"", 1977)
-, Tuple.Create(Tuple.Create("", 1914), Tuple.Create("/assets/theme/", 1914), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 2120), Tuple.Create("\"", 2190)
+, Tuple.Create(Tuple.Create("", 2127), Tuple.Create("/assets/theme/", 2127), true)
             
-            #line 38 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
-, Tuple.Create(Tuple.Create("", 1928), Tuple.Create<System.Object, System.Int32>(StoreTheme
+            #line 41 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
+, Tuple.Create(Tuple.Create("", 2141), Tuple.Create<System.Object, System.Int32>(StoreTheme
             
             #line default
             #line hidden
-, 1928), false)
-, Tuple.Create(Tuple.Create("", 1939), Tuple.Create("/images/favicon/apple-icon-144x144.png", 1939), true)
+, 2141), false)
+, Tuple.Create(Tuple.Create("", 2152), Tuple.Create("/images/favicon/apple-icon-144x144.png", 2152), true)
 );
 
 WriteLiteral(">\r\n    <link");
@@ -305,16 +333,16 @@ WriteLiteral(" rel=\"apple-touch-icon\"");
 
 WriteLiteral(" sizes=\"152x152\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2029), Tuple.Create("\"", 2099)
-, Tuple.Create(Tuple.Create("", 2036), Tuple.Create("/assets/theme/", 2036), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 2242), Tuple.Create("\"", 2312)
+, Tuple.Create(Tuple.Create("", 2249), Tuple.Create("/assets/theme/", 2249), true)
             
-            #line 39 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
-, Tuple.Create(Tuple.Create("", 2050), Tuple.Create<System.Object, System.Int32>(StoreTheme
+            #line 42 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
+, Tuple.Create(Tuple.Create("", 2263), Tuple.Create<System.Object, System.Int32>(StoreTheme
             
             #line default
             #line hidden
-, 2050), false)
-, Tuple.Create(Tuple.Create("", 2061), Tuple.Create("/images/favicon/apple-icon-152x152.png", 2061), true)
+, 2263), false)
+, Tuple.Create(Tuple.Create("", 2274), Tuple.Create("/images/favicon/apple-icon-152x152.png", 2274), true)
 );
 
 WriteLiteral(">\r\n    <link");
@@ -323,16 +351,16 @@ WriteLiteral(" rel=\"apple-touch-icon\"");
 
 WriteLiteral(" sizes=\"180x180\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2151), Tuple.Create("\"", 2221)
-, Tuple.Create(Tuple.Create("", 2158), Tuple.Create("/assets/theme/", 2158), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 2364), Tuple.Create("\"", 2434)
+, Tuple.Create(Tuple.Create("", 2371), Tuple.Create("/assets/theme/", 2371), true)
             
-            #line 40 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
-, Tuple.Create(Tuple.Create("", 2172), Tuple.Create<System.Object, System.Int32>(StoreTheme
+            #line 43 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
+, Tuple.Create(Tuple.Create("", 2385), Tuple.Create<System.Object, System.Int32>(StoreTheme
             
             #line default
             #line hidden
-, 2172), false)
-, Tuple.Create(Tuple.Create("", 2183), Tuple.Create("/images/favicon/apple-icon-180x180.png", 2183), true)
+, 2385), false)
+, Tuple.Create(Tuple.Create("", 2396), Tuple.Create("/images/favicon/apple-icon-180x180.png", 2396), true)
 );
 
 WriteLiteral(">\r\n    <link");
@@ -343,16 +371,16 @@ WriteLiteral(" type=\"image/png\"");
 
 WriteLiteral(" sizes=\"192x192\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2278), Tuple.Create("\"", 2350)
-, Tuple.Create(Tuple.Create("", 2285), Tuple.Create("/assets/theme/", 2285), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 2491), Tuple.Create("\"", 2563)
+, Tuple.Create(Tuple.Create("", 2498), Tuple.Create("/assets/theme/", 2498), true)
             
-            #line 41 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
-, Tuple.Create(Tuple.Create("", 2299), Tuple.Create<System.Object, System.Int32>(StoreTheme
+            #line 44 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
+, Tuple.Create(Tuple.Create("", 2512), Tuple.Create<System.Object, System.Int32>(StoreTheme
             
             #line default
             #line hidden
-, 2299), false)
-, Tuple.Create(Tuple.Create("", 2310), Tuple.Create("/images/favicon/android-icon-192x192.png", 2310), true)
+, 2512), false)
+, Tuple.Create(Tuple.Create("", 2523), Tuple.Create("/images/favicon/android-icon-192x192.png", 2523), true)
 );
 
 WriteLiteral(">\r\n    <link");
@@ -363,16 +391,16 @@ WriteLiteral(" type=\"image/png\"");
 
 WriteLiteral(" sizes=\"32x32\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2405), Tuple.Create("\"", 2470)
-, Tuple.Create(Tuple.Create("", 2412), Tuple.Create("/assets/theme/", 2412), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 2618), Tuple.Create("\"", 2683)
+, Tuple.Create(Tuple.Create("", 2625), Tuple.Create("/assets/theme/", 2625), true)
             
-            #line 42 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
-, Tuple.Create(Tuple.Create("", 2426), Tuple.Create<System.Object, System.Int32>(StoreTheme
+            #line 45 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
+, Tuple.Create(Tuple.Create("", 2639), Tuple.Create<System.Object, System.Int32>(StoreTheme
             
             #line default
             #line hidden
-, 2426), false)
-, Tuple.Create(Tuple.Create("", 2437), Tuple.Create("/images/favicon/favicon-32x32.png", 2437), true)
+, 2639), false)
+, Tuple.Create(Tuple.Create("", 2650), Tuple.Create("/images/favicon/favicon-32x32.png", 2650), true)
 );
 
 WriteLiteral(">\r\n    <link");
@@ -383,16 +411,16 @@ WriteLiteral(" type=\"image/png\"");
 
 WriteLiteral(" sizes=\"96x96\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2525), Tuple.Create("\"", 2590)
-, Tuple.Create(Tuple.Create("", 2532), Tuple.Create("/assets/theme/", 2532), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 2738), Tuple.Create("\"", 2803)
+, Tuple.Create(Tuple.Create("", 2745), Tuple.Create("/assets/theme/", 2745), true)
             
-            #line 43 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
-, Tuple.Create(Tuple.Create("", 2546), Tuple.Create<System.Object, System.Int32>(StoreTheme
+            #line 46 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
+, Tuple.Create(Tuple.Create("", 2759), Tuple.Create<System.Object, System.Int32>(StoreTheme
             
             #line default
             #line hidden
-, 2546), false)
-, Tuple.Create(Tuple.Create("", 2557), Tuple.Create("/images/favicon/favicon-96x96.png", 2557), true)
+, 2759), false)
+, Tuple.Create(Tuple.Create("", 2770), Tuple.Create("/images/favicon/favicon-96x96.png", 2770), true)
 );
 
 WriteLiteral(">\r\n    <link");
@@ -403,32 +431,32 @@ WriteLiteral(" type=\"image/png\"");
 
 WriteLiteral(" sizes=\"16x16\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2645), Tuple.Create("\"", 2710)
-, Tuple.Create(Tuple.Create("", 2652), Tuple.Create("/assets/theme/", 2652), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 2858), Tuple.Create("\"", 2923)
+, Tuple.Create(Tuple.Create("", 2865), Tuple.Create("/assets/theme/", 2865), true)
             
-            #line 44 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
-, Tuple.Create(Tuple.Create("", 2666), Tuple.Create<System.Object, System.Int32>(StoreTheme
+            #line 47 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
+, Tuple.Create(Tuple.Create("", 2879), Tuple.Create<System.Object, System.Int32>(StoreTheme
             
             #line default
             #line hidden
-, 2666), false)
-, Tuple.Create(Tuple.Create("", 2677), Tuple.Create("/images/favicon/favicon-16x16.png", 2677), true)
+, 2879), false)
+, Tuple.Create(Tuple.Create("", 2890), Tuple.Create("/images/favicon/favicon-16x16.png", 2890), true)
 );
 
-WriteLiteral(">\r\n\r\n    <link");
+WriteLiteral(">\r\n    <link");
 
 WriteLiteral(" rel=\"shortcut icon\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2745), Tuple.Create("\"", 2804)
-, Tuple.Create(Tuple.Create("", 2752), Tuple.Create("/assets/theme/", 2752), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 2956), Tuple.Create("\"", 3015)
+, Tuple.Create(Tuple.Create("", 2963), Tuple.Create("/assets/theme/", 2963), true)
             
-            #line 46 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
-, Tuple.Create(Tuple.Create("", 2766), Tuple.Create<System.Object, System.Int32>(StoreTheme
+            #line 48 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
+, Tuple.Create(Tuple.Create("", 2977), Tuple.Create<System.Object, System.Int32>(StoreTheme
             
             #line default
             #line hidden
-, 2766), false)
-, Tuple.Create(Tuple.Create("", 2777), Tuple.Create("/images/favicon/favicon.ico", 2777), true)
+, 2977), false)
+, Tuple.Create(Tuple.Create("", 2988), Tuple.Create("/images/favicon/favicon.ico", 2988), true)
 );
 
 WriteLiteral(">\r\n    <meta");
@@ -441,16 +469,16 @@ WriteLiteral(">\r\n    <meta");
 
 WriteLiteral(" name=\"msapplication-TileImage\"");
 
-WriteAttribute("content", Tuple.Create(" content=\"", 2909), Tuple.Create("\"", 2979)
-, Tuple.Create(Tuple.Create("", 2919), Tuple.Create("/assets/theme/", 2919), true)
+WriteAttribute("content", Tuple.Create(" content=\"", 3120), Tuple.Create("\"", 3190)
+, Tuple.Create(Tuple.Create("", 3130), Tuple.Create("/assets/theme/", 3130), true)
             
-            #line 48 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
-, Tuple.Create(Tuple.Create("", 2933), Tuple.Create<System.Object, System.Int32>(StoreTheme
+            #line 50 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
+, Tuple.Create(Tuple.Create("", 3144), Tuple.Create<System.Object, System.Int32>(StoreTheme
             
             #line default
             #line hidden
-, 2933), false)
-, Tuple.Create(Tuple.Create("", 2944), Tuple.Create("/images/favicon/ms-icon-144x144.png", 2944), true)
+, 3144), false)
+, Tuple.Create(Tuple.Create("", 3155), Tuple.Create("/images/favicon/ms-icon-144x144.png", 3155), true)
 );
 
 WriteLiteral(">\r\n    <meta");
@@ -459,43 +487,35 @@ WriteLiteral(" name=\"theme-color\"");
 
 WriteLiteral(" content=\"#ffffff\"");
 
-WriteLiteral(">\r\n\r\n");
+WriteLiteral(">\r\n");
 
 WriteLiteral("    ");
 
             
-            #line 51 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
+            #line 52 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
 Write(Html.CanonicalUrl());
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n    <link");
-
-WriteLiteral(" href=\"//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css\"");
-
-WriteLiteral(" rel=\"stylesheet\"");
-
-WriteLiteral(" type=\"text/css\"");
-
-WriteLiteral(" />\r\n");
+WriteLiteral("    \r\n");
 
 WriteLiteral("    ");
 
             
             #line 53 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
-Write(Styles.Render("~/bundles/style-css"));
+Write(Styles.RenderFormat(@"<link href="" {0}"" async rel=""stylesheet""></link>", "~/bundles/style-css"));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n\r\n    <!-- Responsivity for older IE -->\r\n    <!--[if lt IE 9]>\r\n        <scrip" +
-"t src=\"~/assets/js/js-lib/respond.min.js\"></script>\r\n    <![endif]-->\r\n");
+WriteLiteral("\r\n    <!-- Responsivity for older IE -->\r\n    <!--[if lt IE 9]>\r\n        <script " +
+"src=\"~/assets/js/js-lib/respond.min.js\"></script>\r\n    <![endif]-->\r\n");
 
 WriteLiteral("    ");
 
             
-            #line 59 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
+            #line 58 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
 Write(Html.Action("DynamicHeadTag", "Home", true));
 
             
@@ -504,13 +524,13 @@ Write(Html.Action("DynamicHeadTag", "Home", true));
 WriteLiteral("\r\n");
 
             
-            #line 60 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
+            #line 59 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
     
             
             #line default
             #line hidden
             
-            #line 60 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
+            #line 59 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
      if (@Html.GetOmnilyticId().ToString() != "")
     {
 
@@ -519,13 +539,16 @@ WriteLiteral("\r\n");
             #line hidden
 WriteLiteral("        <!--Start Omnilytics -->\r\n");
 
-WriteLiteral("        <script>\r\n            (function(i, s, o, g, r, a, m){\r\n                a " +
-"= s.createElement(o);m = s.getElementsByTagName(o)[0];a.async = 1;a.src = g;m.pa" +
-"rentNode.insertBefore(a, m);\r\n                a.onload = function () { i[r].init" +
-"(\'");
+WriteLiteral("        <script defer");
+
+WriteLiteral(" type=\"text/javascript\"");
+
+WriteLiteral(">\r\n            (function(i, s, o, g, r, a, m){\r\n                a = s.createEleme" +
+"nt(o);m = s.getElementsByTagName(o)[0];a.async = 1;a.src = g;m.parentNode.insert" +
+"Before(a, m);\r\n                a.onload = function () { i[r].init(\'");
 
             
-            #line 66 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
+            #line 65 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
                                                Write(Html.GetOmnilyticId());
 
             
@@ -534,7 +557,7 @@ WriteLiteral("        <script>\r\n            (function(i, s, o, g, r, a, m){\r\
 WriteLiteral("\', \'dataLayer\');};\r\n            })(window, document, \'script\', \"");
 
             
-            #line 67 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
+            #line 66 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
                                        Write(Html.GetOmnilyticUrl());
 
             
@@ -545,7 +568,7 @@ WriteLiteral("\", \'omnilytics\');\r\n        </script>\r\n");
 WriteLiteral("        <!-- End Omnilytics -->\r\n");
 
             
-            #line 70 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
+            #line 69 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
     }
 
             
@@ -554,7 +577,7 @@ WriteLiteral("        <!-- End Omnilytics -->\r\n");
 WriteLiteral("    ");
 
             
-            #line 71 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
+            #line 70 "..\..\Views\Shared\_LayoutHeadTag.cshtml"
 Write(Html.GetGlobalSnipptes(SnippetPlacements.Head));
 
             

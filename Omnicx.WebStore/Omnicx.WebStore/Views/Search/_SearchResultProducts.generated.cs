@@ -168,27 +168,61 @@ WriteLiteral("!</strong>\r\n    </div>\r\n    <div ng-cloak");
 
 WriteLiteral(" class=\"alert alert-danger wishdiv alert-pos\"");
 
+WriteLiteral(" ng-show=\"pm.maximumWishlisterror\"");
+
+WriteLiteral(">\r\n        <strong>");
+
+            
+            #line 40 "..\..\Views\Search\_SearchResultProducts.cshtml"
+           Write(LT("ProductDetail.Message.AddedMaximumWishlistItems", " You have reached the maximum limit"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("!</strong>\r\n    </div>\r\n    <div ng-cloak");
+
+WriteLiteral(" class=\"alert alert-danger wishdiv alert-pos\"");
+
 WriteLiteral(" ng-show=\"pm.wishlisterror\"");
 
 WriteLiteral(">\r\n        User <strong>");
 
             
-            #line 40 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 43 "..\..\Views\Search\_SearchResultProducts.cshtml"
                 Write(LT("ProductDetail.Message.LoginRequired", "Login Required"));
 
             
             #line default
             #line hidden
-WriteLiteral("</strong>\r\n    </div>\r\n");
+WriteLiteral("</strong>\r\n    </div>\r\n    <span ng-cloak");
+
+WriteLiteral(" class=\"alert alert-danger wishdiv alert-pos\"");
+
+WriteLiteral(" ng-show=\"gm.maximumBasketItemError\"");
+
+WriteLiteral(">\r\n        <strong>");
 
             
-            #line 42 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 46 "..\..\Views\Search\_SearchResultProducts.cshtml"
+           Write(LT("ProductDetail.Message.AddedMaximumBasketItems", "You Reached Maximum Add To Bag Limit "));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("<span");
+
+WriteLiteral(" ng-bind=\"gm.maximumAddToBasketLimit\"");
+
+WriteLiteral("></span></strong>\r\n    </span>\r\n");
+
+            
+            #line 48 "..\..\Views\Search\_SearchResultProducts.cshtml"
     
             
             #line default
             #line hidden
             
-            #line 42 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 48 "..\..\Views\Search\_SearchResultProducts.cshtml"
        /*  End WishList Validations */ 
             
             #line default
@@ -196,13 +230,13 @@ WriteLiteral("</strong>\r\n    </div>\r\n");
 WriteLiteral("\r\n\r\n");
 
             
-            #line 44 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 50 "..\..\Views\Search\_SearchResultProducts.cshtml"
     
             
             #line default
             #line hidden
             
-            #line 44 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 50 "..\..\Views\Search\_SearchResultProducts.cshtml"
        /* Start products container */ 
             
             #line default
@@ -220,7 +254,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("            ");
 
             
-            #line 47 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 53 "..\..\Views\Search\_SearchResultProducts.cshtml"
        Write(Html.Partial("~/Views/Search/_SearchFacetsMobile.cshtml"));
 
             
@@ -228,18 +262,18 @@ WriteLiteral("            ");
             #line hidden
 WriteLiteral("\r\n        </div>\r\n        <div");
 
-WriteLiteral(" class=\"col-sm-2 no-padding hidden-xs\"");
+WriteLiteral(" class=\"col-sm-3 col-md-3 col-lg-2 no-padding hidden-xs\"");
 
 WriteLiteral(">\r\n");
 
             
-            #line 50 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 56 "..\..\Views\Search\_SearchResultProducts.cshtml"
             
             
             #line default
             #line hidden
             
-            #line 50 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 56 "..\..\Views\Search\_SearchResultProducts.cshtml"
               
                 /* Start left filter grid */
                 var listClass = "col-sm-12 col-xs-12 d--no-padding";
@@ -250,16 +284,16 @@ WriteLiteral(">\r\n");
 WriteLiteral("\r\n");
 
             
-            #line 54 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 60 "..\..\Views\Search\_SearchResultProducts.cshtml"
             
             
             #line default
             #line hidden
             
-            #line 54 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 60 "..\..\Views\Search\_SearchResultProducts.cshtml"
              if (Model.Results != null && Model.Results.Count != 0 && Model.SearchCriteria.AllowFacet)
             {
-                listClass = "col-sm-10 col-xs-12 d--no-padding-right";
+                listClass = "col-sm-9 col-md-9 col-lg-10 col-xs-12 d--no-padding-right";
 
             
             #line default
@@ -273,7 +307,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                    ");
 
             
-            #line 58 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 64 "..\..\Views\Search\_SearchResultProducts.cshtml"
                Write(Html.Partial("~/Views/Search/_SearchFacets.cshtml"));
 
             
@@ -282,7 +316,7 @@ WriteLiteral("                    ");
 WriteLiteral("\r\n                </div>\r\n");
 
             
-            #line 60 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 66 "..\..\Views\Search\_SearchResultProducts.cshtml"
             }
 
             
@@ -291,37 +325,37 @@ WriteLiteral("\r\n                </div>\r\n");
 WriteLiteral("            ");
 
             
-            #line 61 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 67 "..\..\Views\Search\_SearchResultProducts.cshtml"
                /* End left filter grid */ 
             
             #line default
             #line hidden
 WriteLiteral("\r\n        </div>\r\n        <div");
 
-WriteAttribute("class", Tuple.Create(" class=\"", 2778), Tuple.Create("\"", 2796)
+WriteAttribute("class", Tuple.Create(" class=\"", 3331), Tuple.Create("\"", 3349)
             
-            #line 63 "..\..\Views\Search\_SearchResultProducts.cshtml"
-, Tuple.Create(Tuple.Create("", 2786), Tuple.Create<System.Object, System.Int32>(listClass
+            #line 69 "..\..\Views\Search\_SearchResultProducts.cshtml"
+, Tuple.Create(Tuple.Create("", 3339), Tuple.Create<System.Object, System.Int32>(listClass
             
             #line default
             #line hidden
-, 2786), false)
+, 3339), false)
 );
 
 WriteLiteral(">\r\n            <div");
 
 WriteLiteral(" class=\"col-sm-12 col-xs-12 dataContainer sm\"");
 
-WriteLiteral(">\r\n                \r\n");
+WriteLiteral(">\r\n\r\n");
 
             
-            #line 66 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 72 "..\..\Views\Search\_SearchResultProducts.cshtml"
                 
             
             #line default
             #line hidden
             
-            #line 66 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 72 "..\..\Views\Search\_SearchResultProducts.cshtml"
                   
                     if (Model.Images != null && Model.Images.Any())
                     {
@@ -345,20 +379,20 @@ WriteLiteral(" list-type=\"\"");
 
 WriteLiteral(" data-ride=\"carousel\"");
 
-WriteLiteral(">                                \r\n                                <div");
+WriteLiteral(">\r\n                                <div");
 
 WriteLiteral(" class=\"carousel-inner\"");
 
 WriteLiteral(">\r\n");
 
             
-            #line 72 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 78 "..\..\Views\Search\_SearchResultProducts.cshtml"
                                     
             
             #line default
             #line hidden
             
-            #line 72 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 78 "..\..\Views\Search\_SearchResultProducts.cshtml"
                                      foreach (var img in Model.Images.Select((obj, index) => new { index, obj }))
                                     {
 
@@ -369,29 +403,29 @@ WriteLiteral("                                        <div");
 
 WriteLiteral(" class=\"item\"");
 
-WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 3559), Tuple.Create("\"", 3594)
-, Tuple.Create(Tuple.Create("", 3570), Tuple.Create("{active", 3570), true)
-, Tuple.Create(Tuple.Create(" ", 3577), Tuple.Create(":", 3578), true)
+WriteAttribute("ng-class", Tuple.Create(" ng-class=\"", 4064), Tuple.Create("\"", 4099)
+, Tuple.Create(Tuple.Create("", 4075), Tuple.Create("{active", 4075), true)
+, Tuple.Create(Tuple.Create(" ", 4082), Tuple.Create(":", 4083), true)
             
-            #line 74 "..\..\Views\Search\_SearchResultProducts.cshtml"
-, Tuple.Create(Tuple.Create(" ", 3579), Tuple.Create<System.Object, System.Int32>(img.index
+            #line 80 "..\..\Views\Search\_SearchResultProducts.cshtml"
+, Tuple.Create(Tuple.Create(" ", 4084), Tuple.Create<System.Object, System.Int32>(img.index
             
             #line default
             #line hidden
-, 3580), false)
-, Tuple.Create(Tuple.Create("", 3590), Tuple.Create("==0}", 3590), true)
+, 4085), false)
+, Tuple.Create(Tuple.Create("", 4095), Tuple.Create("==0}", 4095), true)
 );
 
 WriteLiteral(">\r\n");
 
             
-            #line 75 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 81 "..\..\Views\Search\_SearchResultProducts.cshtml"
                                             
             
             #line default
             #line hidden
             
-            #line 75 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 81 "..\..\Views\Search\_SearchResultProducts.cshtml"
                                              if (img.obj.LinkType == LinkType.Href.GetHashCode().ToString())
                                             {
 
@@ -400,39 +434,39 @@ WriteLiteral(">\r\n");
             #line hidden
 WriteLiteral("                                                <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 3805), Tuple.Create("\"", 3825)
+WriteAttribute("href", Tuple.Create(" href=\"", 4310), Tuple.Create("\"", 4330)
             
-            #line 77 "..\..\Views\Search\_SearchResultProducts.cshtml"
-, Tuple.Create(Tuple.Create("", 3812), Tuple.Create<System.Object, System.Int32>(img.obj.Link
+            #line 83 "..\..\Views\Search\_SearchResultProducts.cshtml"
+, Tuple.Create(Tuple.Create("", 4317), Tuple.Create<System.Object, System.Int32>(img.obj.Link
             
             #line default
             #line hidden
-, 3812), false)
+, 4317), false)
 );
 
 WriteLiteral(">\r\n                                                    <img");
 
-WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 3885), Tuple.Create("\"", 3906)
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 4390), Tuple.Create("\"", 4411)
             
-            #line 78 "..\..\Views\Search\_SearchResultProducts.cshtml"
-, Tuple.Create(Tuple.Create("", 3894), Tuple.Create<System.Object, System.Int32>(img.obj.Url
+            #line 84 "..\..\Views\Search\_SearchResultProducts.cshtml"
+, Tuple.Create(Tuple.Create("", 4399), Tuple.Create<System.Object, System.Int32>(img.obj.Url
             
             #line default
             #line hidden
-, 3894), false)
+, 4399), false)
 );
 
-WriteAttribute("alt", Tuple.Create(" alt=\"", 3907), Tuple.Create("\"", 3941)
-, Tuple.Create(Tuple.Create("", 3913), Tuple.Create("Slide", 3913), true)
+WriteAttribute("alt", Tuple.Create(" alt=\"", 4412), Tuple.Create("\"", 4446)
+, Tuple.Create(Tuple.Create("", 4418), Tuple.Create("Slide", 4418), true)
             
-            #line 78 "..\..\Views\Search\_SearchResultProducts.cshtml"
-         , Tuple.Create(Tuple.Create(" ", 3918), Tuple.Create<System.Object, System.Int32>(img.index
+            #line 84 "..\..\Views\Search\_SearchResultProducts.cshtml"
+         , Tuple.Create(Tuple.Create(" ", 4423), Tuple.Create<System.Object, System.Int32>(img.index
             
             #line default
             #line hidden
-, 3919), false)
-, Tuple.Create(Tuple.Create(" ", 3929), Tuple.Create("of", 3930), true)
-, Tuple.Create(Tuple.Create(" ", 3932), Tuple.Create("Carousel", 3933), true)
+, 4424), false)
+, Tuple.Create(Tuple.Create(" ", 4434), Tuple.Create("of", 4435), true)
+, Tuple.Create(Tuple.Create(" ", 4437), Tuple.Create("Carousel", 4438), true)
 );
 
 WriteLiteral(" class=\"img-responsive image1\"");
@@ -446,7 +480,7 @@ WriteLiteral(" class=\"component-static-html img-topData hidden-xs\"");
 WriteLiteral(">\r\n                                                        <h2>");
 
             
-            #line 80 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 86 "..\..\Views\Search\_SearchResultProducts.cshtml"
                                                        Write(img.obj.Title);
 
             
@@ -455,17 +489,21 @@ WriteLiteral(">\r\n                                                        <h2>"
 WriteLiteral("</h2>\r\n                                                        <h3>");
 
             
-            #line 81 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 87 "..\..\Views\Search\_SearchResultProducts.cshtml"
                                                        Write(img.obj.SubTitle);
 
             
             #line default
             #line hidden
-WriteLiteral("</h3>\r\n                                                        <p>");
+WriteLiteral("</h3>\r\n                                                        <p");
+
+WriteLiteral(" aria-hidden=\"true\"");
+
+WriteLiteral(">");
 
             
-            #line 82 "..\..\Views\Search\_SearchResultProducts.cshtml"
-                                                      Write(img.obj.Description);
+            #line 88 "..\..\Views\Search\_SearchResultProducts.cshtml"
+                                                                         Write(img.obj.Description);
 
             
             #line default
@@ -474,7 +512,7 @@ WriteLiteral("</p>\r\n                                                    </div>
 "                                 </a>\r\n");
 
             
-            #line 85 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 91 "..\..\Views\Search\_SearchResultProducts.cshtml"
                                             }
                                             else
                                             {
@@ -484,27 +522,27 @@ WriteLiteral("</p>\r\n                                                    </div>
             #line hidden
 WriteLiteral("                                                <img");
 
-WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 4685), Tuple.Create("\"", 4706)
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 5209), Tuple.Create("\"", 5230)
             
-            #line 88 "..\..\Views\Search\_SearchResultProducts.cshtml"
-, Tuple.Create(Tuple.Create("", 4694), Tuple.Create<System.Object, System.Int32>(img.obj.Url
+            #line 94 "..\..\Views\Search\_SearchResultProducts.cshtml"
+, Tuple.Create(Tuple.Create("", 5218), Tuple.Create<System.Object, System.Int32>(img.obj.Url
             
             #line default
             #line hidden
-, 4694), false)
+, 5218), false)
 );
 
-WriteAttribute("alt", Tuple.Create(" alt=\"", 4707), Tuple.Create("\"", 4741)
-, Tuple.Create(Tuple.Create("", 4713), Tuple.Create("Slide", 4713), true)
+WriteAttribute("alt", Tuple.Create(" alt=\"", 5231), Tuple.Create("\"", 5265)
+, Tuple.Create(Tuple.Create("", 5237), Tuple.Create("Slide", 5237), true)
             
-            #line 88 "..\..\Views\Search\_SearchResultProducts.cshtml"
-     , Tuple.Create(Tuple.Create(" ", 4718), Tuple.Create<System.Object, System.Int32>(img.index
+            #line 94 "..\..\Views\Search\_SearchResultProducts.cshtml"
+     , Tuple.Create(Tuple.Create(" ", 5242), Tuple.Create<System.Object, System.Int32>(img.index
             
             #line default
             #line hidden
-, 4719), false)
-, Tuple.Create(Tuple.Create(" ", 4729), Tuple.Create("of", 4730), true)
-, Tuple.Create(Tuple.Create(" ", 4732), Tuple.Create("Carousel", 4733), true)
+, 5243), false)
+, Tuple.Create(Tuple.Create(" ", 5253), Tuple.Create("of", 5254), true)
+, Tuple.Create(Tuple.Create(" ", 5256), Tuple.Create("Carousel", 5257), true)
 );
 
 WriteLiteral(" class=\"img-responsive image1\"");
@@ -520,7 +558,7 @@ WriteLiteral(" class=\"component-static-html img-topData hidden-xs\"");
 WriteLiteral(">\r\n                                                    <h2>");
 
             
-            #line 90 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 96 "..\..\Views\Search\_SearchResultProducts.cshtml"
                                                    Write(img.obj.Title);
 
             
@@ -529,7 +567,7 @@ WriteLiteral(">\r\n                                                    <h2>");
 WriteLiteral("</h2>\r\n                                                    <h3>");
 
             
-            #line 91 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 97 "..\..\Views\Search\_SearchResultProducts.cshtml"
                                                    Write(img.obj.SubTitle);
 
             
@@ -538,7 +576,7 @@ WriteLiteral("</h2>\r\n                                                    <h3>"
 WriteLiteral("</h3>\r\n                                                    <p>");
 
             
-            #line 92 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 98 "..\..\Views\Search\_SearchResultProducts.cshtml"
                                                   Write(img.obj.Description);
 
             
@@ -547,13 +585,13 @@ WriteLiteral("</h3>\r\n                                                    <p>")
 WriteLiteral("</p>\r\n                                                    <p>\r\n");
 
             
-            #line 94 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 100 "..\..\Views\Search\_SearchResultProducts.cshtml"
                                                         
             
             #line default
             #line hidden
             
-            #line 94 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 100 "..\..\Views\Search\_SearchResultProducts.cshtml"
                                                          if (img.obj.LinkType == LinkType.Button.GetHashCode().ToString())
                                                         {
 
@@ -562,14 +600,14 @@ WriteLiteral("</p>\r\n                                                    <p>\r\
             #line hidden
 WriteLiteral("                                                            <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 5461), Tuple.Create("\"", 5481)
+WriteAttribute("href", Tuple.Create(" href=\"", 5985), Tuple.Create("\"", 6005)
             
-            #line 96 "..\..\Views\Search\_SearchResultProducts.cshtml"
-, Tuple.Create(Tuple.Create("", 5468), Tuple.Create<System.Object, System.Int32>(img.obj.Link
+            #line 102 "..\..\Views\Search\_SearchResultProducts.cshtml"
+, Tuple.Create(Tuple.Create("", 5992), Tuple.Create<System.Object, System.Int32>(img.obj.Link
             
             #line default
             #line hidden
-, 5468), false)
+, 5992), false)
 );
 
 WriteLiteral(" class=\"shop-now\"");
@@ -577,7 +615,7 @@ WriteLiteral(" class=\"shop-now\"");
 WriteLiteral("> ");
 
             
-            #line 96 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 102 "..\..\Views\Search\_SearchResultProducts.cshtml"
                                                                                                  Write(img.obj.ButtonText);
 
             
@@ -586,7 +624,7 @@ WriteLiteral("> ");
 WriteLiteral(" </a>\r\n");
 
             
-            #line 97 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 103 "..\..\Views\Search\_SearchResultProducts.cshtml"
                                                         }
 
             
@@ -596,7 +634,7 @@ WriteLiteral("                                                    </p>\r\n      
 "                         </div>\r\n");
 
             
-            #line 100 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 106 "..\..\Views\Search\_SearchResultProducts.cshtml"
                                             }
 
             
@@ -605,7 +643,7 @@ WriteLiteral("                                                    </p>\r\n      
 WriteLiteral("\r\n                                        </div>\r\n");
 
             
-            #line 103 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 109 "..\..\Views\Search\_SearchResultProducts.cshtml"
                                     }
 
             
@@ -640,7 +678,7 @@ WriteLiteral("></span>\r\n                                </a>\r\n              
 ">\r\n                        </div>\r\n");
 
             
-            #line 112 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 118 "..\..\Views\Search\_SearchResultProducts.cshtml"
                     }
                 
             
@@ -649,13 +687,13 @@ WriteLiteral("></span>\r\n                                </a>\r\n              
 WriteLiteral("\r\n");
 
             
-            #line 114 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 120 "..\..\Views\Search\_SearchResultProducts.cshtml"
                 
             
             #line default
             #line hidden
             
-            #line 114 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 120 "..\..\Views\Search\_SearchResultProducts.cshtml"
                    /* Start Product sorting and pagination partial view */ 
             
             #line default
@@ -665,7 +703,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                ");
 
             
-            #line 115 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 121 "..\..\Views\Search\_SearchResultProducts.cshtml"
            Write(Html.Partial("~/Views/Search/_SearchTopBar.cshtml"));
 
             
@@ -674,13 +712,13 @@ WriteLiteral("                ");
 WriteLiteral("\r\n");
 
             
-            #line 116 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 122 "..\..\Views\Search\_SearchResultProducts.cshtml"
                 
             
             #line default
             #line hidden
             
-            #line 116 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 122 "..\..\Views\Search\_SearchResultProducts.cshtml"
                    /* End Product sorting and pagination partial view */ 
             
             #line default
@@ -698,7 +736,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                    ");
 
             
-            #line 120 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 126 "..\..\Views\Search\_SearchResultProducts.cshtml"
                Write(Html.Partial("~/Views/Search/_NoResults.cshtml"));
 
             
@@ -761,13 +799,13 @@ WriteLiteral(" ng-bind=\"grp.groupName\"");
 WriteLiteral("></a>\r\n                                    </h4>\r\n");
 
             
-            #line 130 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 136 "..\..\Views\Search\_SearchResultProducts.cshtml"
                                     
             
             #line default
             #line hidden
             
-            #line 130 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 136 "..\..\Views\Search\_SearchResultProducts.cshtml"
                                      if (Model.ProductGroupModel != null)
                                     {
 
@@ -783,7 +821,7 @@ WriteLiteral(" ng-hide=\"grp.groupName==\'\'\"");
 WriteLiteral(">");
 
             
-            #line 132 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 138 "..\..\Views\Search\_SearchResultProducts.cshtml"
                                                                                                                           Write(Html.Raw(Model.ProductGroupModel.GroupSeparator));
 
             
@@ -792,7 +830,7 @@ WriteLiteral(">");
 WriteLiteral("</div>\r\n");
 
             
-            #line 133 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 139 "..\..\Views\Search\_SearchResultProducts.cshtml"
                                     }
 
             
@@ -825,7 +863,7 @@ WriteLiteral(" ng-cloak>\r\n");
 WriteLiteral("                                            ");
 
             
-            #line 139 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 145 "..\..\Views\Search\_SearchResultProducts.cshtml"
                                        Write(Html.Partial("~/Views/Search/_ProductWidget.cshtml"));
 
             
@@ -837,13 +875,13 @@ WriteLiteral("\r\n                                        </div>\r\n            
 "     </div>\r\n");
 
             
-            #line 147 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 153 "..\..\Views\Search\_SearchResultProducts.cshtml"
                 
             
             #line default
             #line hidden
             
-            #line 147 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 153 "..\..\Views\Search\_SearchResultProducts.cshtml"
                    /*End product listing row*/ 
             
             #line default
@@ -851,13 +889,13 @@ WriteLiteral("\r\n                                        </div>\r\n            
 WriteLiteral("\r\n\r\n");
 
             
-            #line 149 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 155 "..\..\Views\Search\_SearchResultProducts.cshtml"
                 
             
             #line default
             #line hidden
             
-            #line 149 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 155 "..\..\Views\Search\_SearchResultProducts.cshtml"
                    /* Start Product sorting and pagination partial view */ 
             
             #line default
@@ -865,13 +903,13 @@ WriteLiteral("\r\n\r\n");
 WriteLiteral("\r\n");
 
             
-            #line 150 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 156 "..\..\Views\Search\_SearchResultProducts.cshtml"
                 
             
             #line default
             #line hidden
             
-            #line 150 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 156 "..\..\Views\Search\_SearchResultProducts.cshtml"
                  if (Model.Results != null && Model.Results.Count != 0)
                 {
 
@@ -888,7 +926,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                        ");
 
             
-            #line 153 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 159 "..\..\Views\Search\_SearchResultProducts.cshtml"
                    Write(Html.Partial("~/Views/Search/_SearchBottomBar.cshtml"));
 
             
@@ -897,7 +935,7 @@ WriteLiteral("                        ");
 WriteLiteral("\r\n                    </div>\r\n");
 
             
-            #line 155 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 161 "..\..\Views\Search\_SearchResultProducts.cshtml"
                 }
 
             
@@ -906,7 +944,7 @@ WriteLiteral("\r\n                    </div>\r\n");
 WriteLiteral("                ");
 
             
-            #line 156 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 162 "..\..\Views\Search\_SearchResultProducts.cshtml"
                    /* End Product sorting and pagination partial view */ 
             
             #line default
@@ -914,13 +952,13 @@ WriteLiteral("                ");
 WriteLiteral("\r\n            </div>\r\n        </div>\r\n    </div>\r\n");
 
             
-            #line 160 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 166 "..\..\Views\Search\_SearchResultProducts.cshtml"
     
             
             #line default
             #line hidden
             
-            #line 160 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 166 "..\..\Views\Search\_SearchResultProducts.cshtml"
        /* End products container */ 
             
             #line default
@@ -928,13 +966,13 @@ WriteLiteral("\r\n            </div>\r\n        </div>\r\n    </div>\r\n");
 WriteLiteral("\r\n\r\n");
 
             
-            #line 162 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 168 "..\..\Views\Search\_SearchResultProducts.cshtml"
     
             
             #line default
             #line hidden
             
-            #line 162 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 168 "..\..\Views\Search\_SearchResultProducts.cshtml"
        /*Start Product quick view detail popup*/ 
             
             #line default
@@ -944,7 +982,7 @@ WriteLiteral("\r\n");
 WriteLiteral("    ");
 
             
-            #line 163 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 169 "..\..\Views\Search\_SearchResultProducts.cshtml"
 Write(Html.Partial("~/Views/Product/_QuickViewModal.cshtml", new ProductDetailModel { }));
 
             
@@ -953,13 +991,13 @@ Write(Html.Partial("~/Views/Product/_QuickViewModal.cshtml", new ProductDetailMo
 WriteLiteral("\r\n");
 
             
-            #line 164 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 170 "..\..\Views\Search\_SearchResultProducts.cshtml"
     
             
             #line default
             #line hidden
             
-            #line 164 "..\..\Views\Search\_SearchResultProducts.cshtml"
+            #line 170 "..\..\Views\Search\_SearchResultProducts.cshtml"
        /*End detail popup*/ 
             
             #line default

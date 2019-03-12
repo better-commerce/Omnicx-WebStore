@@ -1,24 +1,38 @@
 ﻿@{
-/*
-    Name: Order Summery
-    Purpose: Contains Order item Lines, Promotion panel and Order Amount Information
-    Structure: /Views/Checkout/_OrderSummary.cshtml
-    Contains (Partial Views Used):
+    /*
+        Name: Order Summery
+        Purpose: Contains Order item Lines, Promotion panel and Order Amount Information
+        Structure: /Views/Checkout/_OrderSummary.cshtml
+        Contains (Partial Views Used):
 
-    Contained In (Where we Use this View):
-        a-/Views/Basket/OnePageCheckout.cshtml
-    */
+        Contained In (Where we Use this View):
+            a-/Views/Basket/OnePageCheckout.cshtml
+        */
+    var dates = Enumerable.Range(1, 31).Select(i => new SelectListItem
+    {
+        Text = i.ToString()
+    }).ToList();
+    var months = Enumerable.Range(1, 12).
+                    Select(i => new SelectListItem
+                    {
+                        Text = System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat.GetMonthName(i)
+                    }).ToList();
+    var days = Enumerable.Range(0, 7).
+                Select(i => new SelectListItem
+                {
+                    Text = System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat.GetDayName((DayOfWeek)Enum.Parse(typeof(DayOfWeek), i.ToString()))
+                }).ToList();
 }
 @using Omnicx.WebStore.Models.Enums
 @inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
-<ul id="checkout-summery">
-    <li class="col-sm-12 col-xs-12 no-padding itemBorder clearfix" ng-repeat="items in ck.basket.lineItems track by $index" ng-if='items.parentProductId == ck.emptyGuid'>
+<ul id="checkout-summery" ng-controller="subscriptionCtrl as sm ">
+    <li class="col-sm-12 col-xs-12 no-padding itemBorder clearfix" ng-repeat="items in ck.basket.lineItems track by $index" ng-if='items.parentProductId == ck.emptyGuid && !items.isSubscription'>
         <div ng-if="items.parentProductId == ck.emptyGuid">
             <div class="col-sm-12 col-xs-12 no-padding">
                 <div class="col-sm-2 col-xs-3 no-padding">
                     <span class="cart-img">
                         <a ng-href="/{{items.slug}}">
-                            <img ng-src="{{items.image}}" onerror="this.src = DEFAULT_IMAGE_URL">
+                            <img ng-src="{{items.image}}" class="omni-img" onerror="this.src = DEFAULT_IMAGE_URL" sizes="(min-width: 768px) 540px, 100vw">
                         </a>
                     </span>
                 </div>
@@ -30,7 +44,7 @@
                         <a class="basket-item" ng-href="/{{items.slug}}" ng-bind="items.name"></a>
                     </span>
                     <span class="cart-info">
-                        <span ng-bind="items.qty"></span>&nbsp;&times;&nbsp;<span class="disp-inline-b" ng-bind="items.price.formatted.withTax"></span> 
+                        <span ng-bind="items.qty"></span>&nbsp;&times;&nbsp;<span class="disp-inline-b" ng-bind="items.price.formatted.withTax"></span>
                         <span class="text-right pull-right label-span-price"><strong ng-bind="items.totalPrice.formatted.withTax"></strong></span>
                     </span>
                     <span class="cart-info margin-top-sm">
@@ -67,7 +81,7 @@
                 <div class="col-sm-3 col-xs-3 no-padding">
                     <span class="cart-img">
                         <a ng-href="/{{items.slug}}">
-                            <img ng-src="{{items.image}}" onerror="this.src = DEFAULT_IMAGE_URL">
+                            <img ng-src="{{items.image}}" onerror="this.src = DEFAULT_IMAGE_URL" sizes="(min-width: 768px) 540px, 100vw">
                         </a>
                     </span>
                 </div>
@@ -81,6 +95,57 @@
                         <span class="text-right pull-right text-right label-span-price"><strong>{{items.qty}}</strong></span>
                     </span>
                 </div>
+            </div>
+        </div>
+    </li>
+    @*Subscription Items *@
+    <li class="col-lg-12 col-sm-12 col-xs-12 no-padding itemBorder clearfix" ng-repeat="items in ck.basket.lineItems track by $index" ng-if='items.isSubscription' ng-init="sm.initSubscriptionPlan(items.productId,ck.basket.containsSubscription);">
+        <div ng-if="ck.basket.containsSubscription" ng-init="ck.initBasketSubscriptionInfo(items)">
+            <div class="col-sm-12 col-xs-12 no-padding">
+                <div class="col-sm-2 col-xs-3 no-padding">
+                    <span class="cart-img">
+                        <a ng-href="/{{items.slug}}">
+                            <img ng-src="{{items.image}}" class="omni-img" onerror="this.src = DEFAULT_IMAGE_URL" sizes="(min-width: 768px) 540px, 100vw">
+                        </a>
+                        <label ng-show="items.isSubscription" class="label label-primary label-subscription">Subscription</label>
+                    </span>
+                </div>
+                <div class="col-sm-10 col-xs-9 no-padding">
+                    <span class="trash-cart">
+                        <a href="" class="remove" title="Remove" ng-click="ck.addToBasket(items.productId,0,items.displayOrder)"><i class="fa fa-trash-o"></i></a>
+                    </span>
+                    <span class="cart-info">
+                        <a class="basket-item" ng-href="/{{items.slug}}" ng-bind="items.name"></a>
+                    </span>
+                </div>
+            </div>
+        </div>
+        
+    </li>
+    <li class="col-sm-12 col-xs-12 no-padding itemBorder clearfix" ng-show="sm.dynamicBundleSubscriptionPlan">
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8" ng-init="ck.getBasketSubcriptionSettings()">
+                @* To Display Subscription customizable Information*@
+                
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-6">
+                            <div class="panel panel-info">
+                                <div class="panel-heading padding-sm"></div>
+                                <div class="panel-body padding-xs">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-xs-12">
+                                            <p class="para-sm"><strong>Term:</strong> <span ng-bind="ck.userSubscriptionSettings.selectedTerm"></span> </p>
+                                            <p class="para-sm"><strong>Payment:</strong> <span ng-bind="ck.userSubscriptionSettings.paymentType"></span></p>
+                                            <p class="para-sm"><strong>Order Trigger:</strong> <span ng-bind="ck.userSubscriptionSettings.trigger"></span></p>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                @{ /*Displaying all the subscription items */}
             </div>
         </div>
     </li>
@@ -113,6 +178,7 @@
                     </span>
                 </div>
             </div>
+           
         </li>
     </ul>
 }
@@ -126,7 +192,7 @@
         {
             <p class="checkout-user">@LT("Checkout.Label.OrderConfirmation", "Order confirmation email will be sent to ") <strong>@SessionContext.CurrentUser.Email</strong></p>
         }
-        
+
     </div>
     <div class="col-sm-5 col-xs-12 text-right">
         <button type="submit" class="animate btn-orange btn-lg m-button-full" ng-click="ck.model.storeAddress.phoneNumber=phoneNumber;ck.continueToPayment_2(shippingForm);" ng-show="!ck.isClickAndCollect" ng-disabled="ck.basket.lineItems==null || ck.basket.lineItems.length<1">

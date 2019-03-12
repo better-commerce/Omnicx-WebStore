@@ -1,0 +1,31 @@
+﻿ <div class="col-sm-12 col-xs-12 gridView">
+     <div ng-repeat="prod in recommendProducts" class="col-md-5ths col-sm-5ths col-xs-5ths col-lg-5ths resultContainerRelated ng-scope">
+         <div class="product-container-panel">
+             <div class="imagePanel">
+                 <a ng-href="/{{prod.slug}}">
+                     <span class="tooltiptext ng-binding"></span>
+                     <img ng-src="{{prod.image}}" alt="" class="image1 img-responsive">
+                 </a>
+             </div>
+             <div class="dataPanel">
+                 <div class="ribbon-info">
+                     <a ng-href="/{{prod.slug}}">
+                         <span class="ng-binding" ng-bind="prod.name"></span>
+                     </a>
+                 </div>
+                 <div>
+                     <span><strong>SKU: </strong><span class="ng-binding" ng-bind="prod.sku"></span></span>
+                 </div>
+                 <div class="price-info">
+                     <div class="col-sm-8 col-xs-12 no-padding">
+                         <h3>
+                             <span class="ng-binding" ng-bind="prod.price.formatted.withTax"></span>
+                             <span class="sml ng-binding" ng-bind="prod.price.formatted.withTax"></span>
+                         </h3>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
+ 

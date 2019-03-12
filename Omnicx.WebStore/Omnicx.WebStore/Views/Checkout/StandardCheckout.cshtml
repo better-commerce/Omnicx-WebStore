@@ -224,6 +224,7 @@
         var addProductToWishlist = '@(Html.BuildUrlFromExpression<CheckoutController>(c => c.AddProductToWishlist("")))';
         var removeWishList = '@(Html.BuildUrlFromExpression<CheckoutController>(c => c.RemoveWishList("",true)))';
         var validateLoginPassword = '@(Html.BuildUrlFromExpression<AccountController>(c => c.SignIn(null)))';
+        var savedBaskets = '@(Html.BuildUrlFromExpression<BasketController>(c => c.GetSavedBaskets()))';
         window.app.constant('checkoutConfig',{
             signIn : signIn,
             converToOrder : converToOrder,
@@ -238,7 +239,8 @@
             validateGuestPassword : validateGuestPassword,
             addProductToWishlist : addProductToWishlist,
             removeWishList : removeWishList,
-            validateLoginPassword : validateLoginPassword
+            validateLoginPassword: validateLoginPassword,
+            savedBaskets: savedBaskets,
         });
         window.app.constant('model', @Html.JsonFor(Model));
     </script>

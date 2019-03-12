@@ -36,9 +36,15 @@
     <div ng-cloak class="alert alert-danger wishdiv alert-pos" ng-show="pm.wishlistexistserror">
         <strong>@LT("ProductDetail.Message.AlreadyAddedToWishlist", "Product already added in wishlist")!</strong>
     </div>
+    <div ng-cloak class="alert alert-danger wishdiv alert-pos" ng-show="pm.maximumWishlisterror">
+        <strong>@LT("ProductDetail.Message.AddedMaximumWishlistItems", " You have reached the maximum limit")!</strong>
+    </div>
     <div ng-cloak class="alert alert-danger wishdiv alert-pos" ng-show="pm.wishlisterror">
         User <strong>@LT("ProductDetail.Message.LoginRequired", "Login Required")</strong>
     </div>
+    <span ng-cloak class="alert alert-danger wishdiv alert-pos" ng-show="gm.maximumBasketItemError">
+        <strong>@LT("ProductDetail.Message.AddedMaximumBasketItems", "You Reached Maximum Add To Bag Limit ")<span ng-bind="gm.maximumAddToBasketLimit"></span></strong>
+    </span>
     @{ /*  End WishList Validations */ }
 
     @{ /* Start products container */ }
@@ -46,14 +52,14 @@
         <div class="col-sm-12 col-xs-12 visible-xs">
             @Html.Partial("~/Views/Search/_SearchFacetsMobile.cshtml")
         </div>
-        <div class="col-sm-2 no-padding hidden-xs">
+        <div class="col-sm-3 col-md-3 col-lg-2 no-padding hidden-xs">
             @{
                 /* Start left filter grid */
                 var listClass = "col-sm-12 col-xs-12 d--no-padding";
             }
             @if (Model.Results != null && Model.Results.Count != 0 && Model.SearchCriteria.AllowFacet)
             {
-                listClass = "col-sm-10 col-xs-12 d--no-padding-right";
+                listClass = "col-sm-9 col-md-9 col-lg-10 col-xs-12 d--no-padding-right";
                 <div class="col-sm-12 filterContainer sm">
                     @Html.Partial("~/Views/Search/_SearchFacets.cshtml")
                 </div>
@@ -62,12 +68,12 @@
         </div>
         <div class="@listClass">
             <div class="col-sm-12 col-xs-12 dataContainer sm">
-                
+
                 @{
                     if (Model.Images != null && Model.Images.Any())
                     {
                         <div class="col-sm-12 col-xs-12 clearfix margin-bottom-lg no-padding">
-                            <div id="carousel-example-generic" class="carousel slide omnicomponent component-slider" list-id="" list-type="" data-ride="carousel">                                
+                            <div id="carousel-example-generic" class="carousel slide omnicomponent component-slider" list-id="" list-type="" data-ride="carousel">
                                 <div class="carousel-inner">
                                     @foreach (var img in Model.Images.Select((obj, index) => new { index, obj }))
                                     {
@@ -79,7 +85,7 @@
                                                     <div class="component-static-html img-topData hidden-xs">
                                                         <h2>@img.obj.Title</h2>
                                                         <h3>@img.obj.SubTitle</h3>
-                                                        <p>@img.obj.Description</p>
+                                                        <p aria-hidden="true">@img.obj.Description</p>
                                                     </div>
                                                 </a>
                                             }

@@ -31,8 +31,8 @@
                     <div class="col-sm-12 col-xs-12 addressBar no-padding" ng-repeat="add in ck.userAddresses track by $index" ng-if="ck.addressText!='delivery' || add.countryCode==ck.model.checkout.shippingAddress.countryCode">
                         <input id="address{{$index}}" name="address" type="radio" class="expand-toggle">
                         <label for="address{{$index}}" class="addressBook" ng-click="ck.address=add;ck.addId=add.id" ng-class="{'active' : ck.address.id == add.id}">
-                            <p><span class="pull-left margin-right-md"><strong ng-bind="add.firstName"></strong>&nbsp;<strong ng-bind="add.lastName"></strong></span>&nbsp;&nbsp;<i class="fa fa-phone"></i>&nbsp;<strong ng-bind="add.phoneNo"></strong></p>
-                            <p><span ng-bind="add.companyName"></span> &nbsp;<span ng-bind="add.address1"></span>,<span ng-bind="add.city"></span>,&nbsp;<span ng-bind="add.postCode"></span>,&nbsp;<span ng-bind="add.country"></span></p>
+                            <p aria-hidden="true"><span class="pull-left margin-right-md"><strong ng-bind="add.firstName"></strong>&nbsp;<strong ng-bind="add.lastName"></strong></span>&nbsp;&nbsp;<i class="fa fa-phone"></i>&nbsp;<strong ng-bind="add.phoneNo"></strong></p>
+                            <p aria-hidden="true"><span ng-bind="add.companyName"></span> &nbsp;<span ng-bind="add.address1"></span>,<span ng-bind="add.city"></span>,&nbsp;<span ng-bind="add.postCode"></span>,&nbsp;<span ng-bind="add.country"></span></p>
                         </label>
                     </div>
                 </div>                

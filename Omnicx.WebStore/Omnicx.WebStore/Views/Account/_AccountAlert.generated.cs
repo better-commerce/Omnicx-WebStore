@@ -105,9 +105,7 @@ WriteLiteral(" ng-bind=\"err\"");
 
 WriteLiteral("></span>\r\n        </div>\r\n    </div>\r\n    <div");
 
-WriteLiteral(" id=\"divErrMsg\"");
-
-WriteLiteral(" class=\"alert alert-danger hide\"");
+WriteLiteral(" class=\"alert alert-danger hide divErrMsg\"");
 
 WriteLiteral(">\r\n        <div>\r\n            <i");
 

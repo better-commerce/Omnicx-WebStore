@@ -17,27 +17,27 @@
     <div id="copyright">
         <div class="container footer-copyright-border">
             <div class="col-md-12 no-padding">
-                <p class="pull-left">&copy;@DateTime.Now.Year @LT("Footer.Text.Omnicx", "OCX Store Powered by ")<a href="https://www.omnicx.com/" class="external">OmniCX</a></p>
-                <p class="pull-right">
+                <p class="pull-left" aria-hidden="true">&copy;@DateTime.Now.Year @LT("Footer.Text.Omnicx", "OCX Store Powered by ")<a href="https://www.omnicx.com/" class="external">OmniCX</a></p>
+                <p class="pull-right" aria-hidden="true">
+                    <span class="label-0">@LT("Footer.Label.EnterValidEmail", "Payment")</span>
                     <img src="~/assets/theme/ocx/images/payment.png" alt="payments accepted">
                 </p>
             </div>
         </div>
     </div>
 </div>
-@*Partial View For Recommendation Bubble Modal*@
-<div class="activityBubble">
-    <a class="" ng-click="gm.getRecommendations()"><img src="~/assets/theme/ocx/images/bubble.png" /></a>
+
+    @*Partial View For Recommendation Bubble Modal*@
+                  @*<div class="activityBubble">
+    <a class="" ng-click="gm.getRecommendations()"><span class="label-0">@LT("Footer.Label.EnterValidEmail", "Bubble")</span><i class="sprite sprite-browsers-bubble"></i></a>
 </div>
-@Html.Partial("~/Views/Shared/_RecommendationBubble.cshtml")
-@*END*@
-@Html.GetGlobalSnipptes(SnippetPlacements.FooterAfter)
-@Html.Partial(CustomViews.QUICK_ORDER_PAD)
-@Html.Partial(CustomViews.BULK_ORDER_MESSAGE)
-
-@Html.Partial("~/Views/Shared/_Login.cshtml", new LoginViewModel { Username = "", Password = "" })
-@Html.Partial("~/Views/Shared/_Register.cshtml", new UserModel { })
-
-@Scripts.Render("~/bundles/jq-ang")
-@Scripts.Render("~/bundles/custom-libs")
-@Scripts.Render("~/bundles/app-js")
+@Html.Partial("~/Views/Shared/_RecommendationBubble.cshtml")*@
+                  @*END*@
+                  @Html.GetGlobalSnipptes(SnippetPlacements.FooterAfter)
+                  @Html.Partial(CustomViews.QUICK_ORDER_PAD)
+                  @Html.Partial(CustomViews.BULK_ORDER_MESSAGE)
+                  @Html.Partial("~/Views/Shared/_Login.cshtml", new LoginViewModel { Username = "", Password = "" })
+                  @Html.Partial("~/Views/Shared/_Register.cshtml", new UserModel { })
+                  @Scripts.Render("~/bundles/jq-ang")
+                  @Scripts.Render("~/bundles/custom-libs")
+                  @Scripts.Render("~/bundles/app-js")

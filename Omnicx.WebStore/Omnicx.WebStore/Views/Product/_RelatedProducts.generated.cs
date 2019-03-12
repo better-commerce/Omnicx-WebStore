@@ -97,24 +97,37 @@ WriteLiteral(" id=\"relatedProduct\"");
 
 WriteLiteral(" aria-hidden=\"false\"");
 
-WriteLiteral(">\r\n                <div");
+WriteLiteral(">\r\n                <bt-recommendation");
 
-WriteLiteral(" class=\"col-sm-5ths col-xs-5ths col-lg-5ths col-md-5ths resultContainerRelated\"");
+WriteLiteral(" type=\"Product\"");
 
-WriteLiteral(" ng-repeat=\"product in pm.model.relatedProductList track by $index\"");
+WriteLiteral(" showmodel=\"false\"");
 
-WriteLiteral(">\r\n");
-
-WriteLiteral("                    ");
-
+WriteAttribute("itemid", Tuple.Create(" itemid=\"", 1049), Tuple.Create("\"", 1073)
             
-            #line 22 "..\..\Views\Product\_RelatedProducts.cshtml"
-               Write(Html.Partial("~/Views/Search/_ProductWidget.cshtml"));
-
+            #line 21 "..\..\Views\Product\_RelatedProducts.cshtml"
+, Tuple.Create(Tuple.Create("", 1058), Tuple.Create<System.Object, System.Int32>(Model.RecordId
             
             #line default
             #line hidden
-WriteLiteral("\r\n                </div>\r\n\r\n            </dd>\r\n        </dl>\r\n    </div>\r\n</div>");
+, 1058), false)
+);
+
+WriteAttribute("modelid", Tuple.Create(" modelid=\"", 1074), Tuple.Create("\"", 1155)
+            
+            #line 21 "..\..\Views\Product\_RelatedProducts.cshtml"
+                      , Tuple.Create(Tuple.Create("", 1084), Tuple.Create<System.Object, System.Int32>(SessionContext.CurrentSiteConfig.RecommendationSettings.ProductModelId
+            
+            #line default
+            #line hidden
+, 1084), false)
+);
+
+WriteLiteral(" noofitems=\"5\"");
+
+WriteLiteral(" />\r\n                ");
+
+WriteLiteral("\r\n\r\n            </dd>\r\n        </dl>\r\n    </div>\r\n</div>");
 
         }
     }

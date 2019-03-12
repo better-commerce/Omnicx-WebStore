@@ -15,7 +15,7 @@
     <div class="imagePanel">
         <a ng-href="/{{product.slug}}">
             <span class="tooltiptext" ng-bind="product.title"></span>
-            <img ng-src="{{product.image==''?DEFAULT_IMAGE_URL:product.images[0].url}}" alt=""  class="image1" onerror="this.src = DEFAULT_IMAGE_URL">
+            <img ng-src="{{product.image==''?DEFAULT_IMAGE_URL:product.images[0].url}}" alt=""  class="image1 omni-img" onerror="this.src = DEFAULT_IMAGE_URL" sizes="(min-width: 768px) 540px, 100vw">
         </a>
     </div>
     <div class="dataPanel">

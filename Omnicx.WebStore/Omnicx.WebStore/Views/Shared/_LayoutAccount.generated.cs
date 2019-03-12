@@ -83,6 +83,8 @@ WriteLiteral("\r\n<!DOCTYPE html>\r\n");
 
 WriteLiteral("<html");
 
+WriteLiteral(" lang=\"en\"");
+
 WriteLiteral(" ng-app=\"btApp\"");
 
 WriteLiteral(" ng-controller=\"globalCtrl as gm\"");
@@ -188,9 +190,9 @@ WriteLiteral(" href=\"/\"");
 
 WriteLiteral(">\r\n                            <img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 1575), Tuple.Create("\"", 1621)
-, Tuple.Create(Tuple.Create("", 1581), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/logo-small.png")
-, 1581), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 1585), Tuple.Create("\"", 1631)
+, Tuple.Create(Tuple.Create("", 1591), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/logo-small.png")
+, 1591), false)
 );
 
 WriteLiteral(" alt=\"OCX Store logo\"");
@@ -270,12 +272,14 @@ WriteLiteral(" class=\"global-loader\"");
 
 WriteLiteral(">\r\n            <img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2516), Tuple.Create("\"", 2558)
-, Tuple.Create(Tuple.Create("", 2522), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/loader.svg")
-, 2522), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 2526), Tuple.Create("\"", 2568)
+, Tuple.Create(Tuple.Create("", 2532), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/loader.svg")
+, 2532), false)
 );
 
-WriteLiteral(" />\r\n        </span>\r\n    </div>\r\n");
+WriteLiteral(" alt=\"Loader\"");
+
+WriteLiteral("/>\r\n        </span>\r\n    </div>\r\n");
 
 WriteLiteral("    ");
 
@@ -365,7 +369,7 @@ WriteLiteral("\';\r\n        var updateShipping = \'");
 
             
             #line 73 "..\..\Views\Shared\_LayoutAccount.cshtml"
-                          Write(Html.BuildUrlFromExpression<BasketController>(c => c.UpdateShipping(null,null,null)));
+                          Write(Html.BuildUrlFromExpression<BasketController>(c => c.UpdateShipping(null,null,null,null)));
 
             
             #line default
@@ -451,11 +455,29 @@ WriteLiteral("\';\r\n        var getBillingCountriesUrl = \'");
             
             #line default
             #line hidden
-WriteLiteral("\';\r\n          var newsletter = \'");
+WriteLiteral("\';\r\n        var newsletter = \'");
 
             
             #line 83 "..\..\Views\Shared\_LayoutAccount.cshtml"
-                        Write(Html.BuildUrlFromExpression<AccountController>(c => c.NewsletterSubscription(null)));
+                      Write(Html.BuildUrlFromExpression<AccountController>(c => c.NewsletterSubscription(null)));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\';\r\n        var getAllcurrencySetting = \'");
+
+            
+            #line 84 "..\..\Views\Shared\_LayoutAccount.cshtml"
+                                 Write(Html.BuildUrlFromExpression<HomeController>(c => c.CurrencySettings()));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\';\r\n        var languageSettingUrl = \'");
+
+            
+            #line 85 "..\..\Views\Shared\_LayoutAccount.cshtml"
+                              Write(Html.BuildUrlFromExpression<HomeController>(c => c.UpdateLanCultureSetting(null)));
 
             
             #line default
@@ -478,7 +500,9 @@ WriteLiteral(@"';
             bulkAddproduct: bulkAddproduct,
             companyRegisterUrl: companyRegisterUrl,
             getBillingCountriesUrl: getBillingCountriesUrl,
-            newsletter: newsletter
+            newsletter: newsletter,
+            getAllcurrencySetting: getAllcurrencySetting,
+            languageSettingUrl: languageSettingUrl
         });
     </script>
 </body>

@@ -1,0 +1,105 @@
+﻿@{
+/*
+    Name: Standard Checkout (Steps)
+    Purpose: Standard Checkout for steps to process
+    Structure: /Views/Checkout/StandardCheckout.cshtml
+    Contains (Partial Views Used):
+        a-/Views/Shared/_OpcLayout.cshtml                   (For Base Structure)
+        b-/Views/Checkout/_CheckoutDeliveryAddress.cshtml   (Select Delivery Address)
+        c-/Views/Checkout/_CheckoutDeliveryMethod.cshtml    (Select Delivery Method)
+        d-/Views/Checkout/_CheckoutPaymentMethod.cshtml     (Select Payment Method)
+        e-/Views/Checkout/_CheckoutOrderReview.cshtml       (Complete Overview of order with all selected items)
+        f-/Views/Checkout/_GuestRegistration.cshtml         (Guest Checkout or Registration)
+
+    Contained In (Where we Use this View):
+        a-/Views/Basket/Index.cshtml
+    */
+}
+@using Microsoft.Web.Mvc
+@using Omnicx.WebStore.Models.Common
+@using Omnicx.WebStore.Framework.Helpers
+@using Omnicx.WebStore.Core.Controllers
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<CheckoutViewModel>
+@{
+    ViewBag.Title = @LT("Checkout.Title.Checkout", "Checkout");
+    var checkoutForm = Html.Angular().ModelFor("ck.model");
+    Layout = "~/Views/Shared/_OpcLayout.cshtml";
+}
+@section bodyClass {class="bg-white"}
+@{
+    <div class="row m--gray--panel" ng-controller="checkoutCtrl as ck" ng-cloak>
+        @if (Model.Checkout != null && Model.Checkout.Basket.GrandTotal.Raw.WithTax > 0)
+        {
+            <div class="row">
+                <div class="col-sm-12 col-xs-12 m--fixed--steps">
+                    <div class="container no-padding">
+                        <div class="m--step">
+                            <div class="number">@LT("MyAccount.Text.Number", "1")</div>
+                            <div class="step--name">@LT("MyAccount.Text.Name", "Login")</div>
+                        </div>
+                        <div class="m--step">
+                            <div class="number">@LT("MyAccount.Text.Number", "2")</div>
+                            <div class="step--name">@LT("MyAccount.Text.Name", "Delivery")</div>
+                        </div>
+                        <div class="m--step active">
+                            <div class="number">@LT("MyAccount.Text.Number", "3")</div>
+                            <div class="step--name">@LT("MyAccount.Text.Name", "Billing")</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8 col-xs-12 m--checkout-top" ng-init="ck.initMethod();ck.oldBasketPopup();">
+                    <div class="col-sm-12 col-xs-12">
+                        <h4 class="wzc--h4">@LT("MyAccount.Text.Login", "Billing & Review")</h4>
+                    </div>
+                    <div class="col-sm-12 col-xs-12">
+                       @Html.Partial("~/Views/Checkout/_WizardSummary.cshtml")
+                    </div>
+                    <div class="col-sm-12 col-xs-12">
+                        @Html.Partial("~/Views/Checkout/_PaymentMethod.cshtml")
+                    </div>
+                </div>
+                <div class="col-sm-4 col-xs-12 hidden-xs" style="margin-top:56px;">
+                    <div class="whiteContainer summeryBorder no-padding">
+                        @Html.Partial("~/Views/Checkout/_WizardOrderSummary.cshtml")
+                    </div>
+                </div>
+            </div>
+            @Html.Partial("~/Views/Checkout/_AddressView.cshtml")
+        }
+    </div>
+}
+@section scripts{
+    <script>
+        var signIn = '@(Html.BuildUrlFromExpression<AccountController>(c => c.SignIn(null)))';
+        var converToOrder = '@(Html.BuildUrlFromExpression<CheckoutController>(c => c.ConvertToOrder(null)))';
+        var custGridUrl = '@(Html.BuildUrlFromExpression<AccountController>(c => c.GetCustomerAddress()))';
+        var deleteAddressUrl = '@(Html.BuildUrlFromExpression<AccountController>(c => c.DeleteAddress(null)))';
+        var register = '@(Html.BuildUrlFromExpression<AccountController>(c => c.Registration(null)))';
+        var addToBasket = '@(Html.BuildUrlFromExpression<BasketController>(c => c.AddtoBasket(null)))';
+        var removePromoCode = '@(Html.BuildUrlFromExpression<BasketController>(c => c.RemovePromoCode("","")))';
+        var searchPhysicalStore = '@(Html.BuildUrlFromExpression<CheckoutController>(c => c.GetClickAndCollectOptions(null, null)))';
+        var nominatedDelivery = '@(Html.BuildUrlFromExpression<CheckoutController>(c => c.GetNominatedDelivery(null,null)))';
+        var guestCheckout = '@(Html.BuildUrlFromExpression<CheckoutController>(c => c.GuestCheckout(null)))';
+        var validateGuestPassword = '@(Html.BuildUrlFromExpression<CheckoutController>(c => c.ValidateGuestPassword(null)))';
+        var addProductToWishlist = '@(Html.BuildUrlFromExpression<CheckoutController>(c => c.AddProductToWishlist("")))';
+        var removeWishList = '@(Html.BuildUrlFromExpression<CheckoutController>(c => c.RemoveWishList("",true)))';
+        var validateLoginPassword = '@(Html.BuildUrlFromExpression<AccountController>(c => c.SignIn(null)))';
+        window.app.constant('checkoutConfig',{
+            signIn : signIn,
+            converToOrder : converToOrder,
+            custGridUrl: custGridUrl,
+            deleteAddressUrl :deleteAddressUrl,
+            register : register,
+            addToBasket: addToBasket,
+            removePromoCode : removePromoCode,
+            searchPhysicalStore : searchPhysicalStore,
+            nominatedDelivery : nominatedDelivery,
+            guestCheckout : guestCheckout,
+            validateGuestPassword : validateGuestPassword,
+            addProductToWishlist : addProductToWishlist,
+            removeWishList : removeWishList,
+            validateLoginPassword : validateLoginPassword
+        });
+        window.app.constant('model', @Html.JsonFor(Model));
+    </script>
+}

@@ -29,15 +29,21 @@ namespace ASP
     using System.Web.WebPages;
     using DevTrends.MvcDonutCaching;
     
-    #line 17 "..\..\Views\Survey\Capture.cshtml"
+    #line 18 "..\..\Views\Survey\Capture.cshtml"
     using Microsoft.Web.Mvc;
+    
+    #line default
+    #line hidden
+    
+    #line 17 "..\..\Views\Survey\Capture.cshtml"
+    using Newtonsoft.Json.Linq;
     
     #line default
     #line hidden
     using Omnicx.WebStore;
     using Omnicx.WebStore.Core;
     
-    #line 18 "..\..\Views\Survey\Capture.cshtml"
+    #line 19 "..\..\Views\Survey\Capture.cshtml"
     using Omnicx.WebStore.Core.Controllers;
     
     #line default
@@ -90,371 +96,110 @@ namespace ASP
 WriteLiteral("\r\n");
 
             
-            #line 19 "..\..\Views\Survey\Capture.cshtml"
+            #line 20 "..\..\Views\Survey\Capture.cshtml"
   
     Layout = "~/Views/Shared/_LayoutCMS.cshtml";
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n<style>\r\n    .fa-star-o {\r\n        color: #FF7700;\r\n    }\r\n\r\n    .fa-star {\r\n  " +
-"      color: #FFDD00;\r\n        -webkit-text-stroke-width: 2px;\r\n        -webkit-" +
-"text-stroke-color: #FF7700;\r\n    }\r\n</style>\r\n<div");
+WriteLiteral("\r\n<div");
+
+WriteLiteral(" class=\"container-lg dataContainerT\"");
 
 WriteLiteral(" ng-controller=\"surveyCtrl as pm\"");
 
-WriteLiteral(">\r\n    <h1");
+WriteLiteral(">  \r\n    <h1");
 
-WriteLiteral(" class=\"text-center survey-question\"");
+WriteLiteral(" class=\"text-center\"");
 
 WriteLiteral(">");
 
             
-            #line 34 "..\..\Views\Survey\Capture.cshtml"
-                                       Write(Model.Name);
+            #line 24 "..\..\Views\Survey\Capture.cshtml"
+                       Write(Model.Name);
 
             
             #line default
             #line hidden
-WriteLiteral("</h1>\r\n    <center");
+WriteLiteral("</h1>\r\n    <div");
 
-WriteLiteral(" id=\"survey-wizard\"");
+WriteLiteral(" ng-show=\"pm.showSucess\"");
 
-WriteLiteral(" class=\"margin-bottom-lg\"");
+WriteLiteral(" id=\"surveyContainer\"");
 
-WriteLiteral(" style=\"background:linear-gradient(to right, rgba(0, 0, 0, 0.47) 0%,rgba(0, 0, 0," +
-" 0.87) 100%), url(\'{{pm.model.imageBaseUrl}}{{pm.model.backgroundImage}}\')\"");
+WriteLiteral("></div> \r\n    <div");
+
+WriteLiteral(" ng-hide=\"pm.showSucess\"");
+
+WriteLiteral(" class=\"row col-md-6 col-lg-6\"");
 
 WriteLiteral(">\r\n        <div");
 
-WriteLiteral(" class=\"row\"");
+WriteLiteral("  class=\"form-group\"");
 
-WriteLiteral(" ng-hide=\"pm.surveyCompleted\"");
-
-WriteLiteral(">\r\n");
+WriteLiteral(" >\r\n            <label>");
 
             
-            #line 37 "..\..\Views\Survey\Capture.cshtml"
-            
-            
-            #line default
-            #line hidden
-            
-            #line 37 "..\..\Views\Survey\Capture.cshtml"
-             switch (Model.Output)
-            {
-                case SurveyOutputStyle.BuildABundle:
-                    
-            
-            #line default
-            #line hidden
-            
-            #line 40 "..\..\Views\Survey\Capture.cshtml"
-               Write(Html.Partial("_BuildABundle"));
+            #line 28 "..\..\Views\Survey\Capture.cshtml"
+              Write(LT("Survey.Text.PleaseEnterEmailToComplete", "Please enter email to complete survey"));
 
             
             #line default
             #line hidden
-            
-            #line 40 "..\..\Views\Survey\Capture.cshtml"
-                                                  ;
-                    break;
-                case SurveyOutputStyle.SearchProducts:
-                    
-            
-            #line default
-            #line hidden
-            
-            #line 43 "..\..\Views\Survey\Capture.cshtml"
-               Write(Html.Partial("_WizardStyle"));
+WriteLiteral("</label>\r\n             <input");
 
-            
-            #line default
-            #line hidden
-            
-            #line 43 "..\..\Views\Survey\Capture.cshtml"
-                                                 ;
-                    break;
-                case SurveyOutputStyle.QualifyingQuestionnaire:
-                    
-            
-            #line default
-            #line hidden
-            
-            #line 46 "..\..\Views\Survey\Capture.cshtml"
-               Write(Html.Partial("_WizardStyle"));
+WriteLiteral(" type=\"text\"");
 
-            
-            #line default
-            #line hidden
-            
-            #line 46 "..\..\Views\Survey\Capture.cshtml"
-                                                 ;
-                    break;
-            }
+WriteLiteral(" class=\"form-control\"");
 
-            
-            #line default
-            #line hidden
-WriteLiteral("        </div>\r\n\r\n        <div");
+WriteLiteral(" ng-model=\"pm.surveyEmail\"");
 
-WriteLiteral(" class=\"container margin-bottom-lg\"");
-
-WriteLiteral(">\r\n            <div");
-
-WriteLiteral(" class=\"row wizard-container\"");
-
-WriteLiteral(" ng-show=\"pm.surveyCompleted\"");
-
-WriteLiteral(">\r\n                <h2");
-
-WriteLiteral(" class=\"text-center text-white\"");
-
-WriteLiteral(">");
-
-            
-            #line 53 "..\..\Views\Survey\Capture.cshtml"
-                                              Write(Model.ThankYouText);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</h2>\r\n                <div");
-
-WriteLiteral(" class=\"container\"");
-
-WriteLiteral(">\r\n");
-
-            
-            #line 55 "..\..\Views\Survey\Capture.cshtml"
-                    
-            
-            #line default
-            #line hidden
-            
-            #line 55 "..\..\Views\Survey\Capture.cshtml"
-                      if (Model.Output == SurveyOutputStyle.SearchProducts)
-                        {
-
-            
-            #line default
-            #line hidden
-WriteLiteral("                            <a");
-
-WriteLiteral(" class=\"animate btn-primary\"");
-
-WriteLiteral(" ng-click=\"pm.showRelevantProducts()\"");
-
-WriteLiteral(">\r\n                                <span>");
-
-            
-            #line 58 "..\..\Views\Survey\Capture.cshtml"
-                                 Write(LT("ProductSurvey.Label.Buyrelevantproducts", "Buy relevant products"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral(" <i");
-
-WriteLiteral(" class=\"fa fa-product-hunt\"");
-
-WriteLiteral(" aria-hidden=\"true\"");
-
-WriteLiteral("></i></span>\r\n                            </a>\r\n");
-
-            
-            #line 60 "..\..\Views\Survey\Capture.cshtml"
-
-                        }
-                        else
-                        {
-
-            
-            #line default
-            #line hidden
-WriteLiteral("                            <div");
+WriteLiteral(" />\r\n        </div>\r\n        <div");
 
 WriteLiteral(" class=\"row\"");
 
-WriteLiteral(">\r\n                                <div");
+WriteLiteral(">\r\n            <button");
 
-WriteLiteral(" class=\"col-sm-5ths col-lg-5ths col-md-5ths col-xs-5ths wizard-bundle-products\"");
+WriteLiteral(" ng-click=\"pm.saveSurveyResponse()\"");
 
-WriteLiteral(" ng-repeat=\"productBundle in pm.surveyResponse.products\"");
+WriteLiteral(" class=\"btn btn-success pull-right\"");
 
-WriteLiteral(">\r\n                                    <div");
-
-WriteLiteral(" class=\"bundle-image-container\"");
-
-WriteLiteral(">\r\n                                        <a");
-
-WriteLiteral(" ng-href=\"/{{productBundle.product.slug}}\"");
-
-WriteLiteral(">\r\n                                            <img");
-
-WriteLiteral(" ng-src=\"{{productBundle.product.image==\'\'?DEFAULT_IMAGE_URL:productBundle.produc" +
-"t.image}}\"");
-
-WriteLiteral(" alt=\"{{productBundle.product.name}}\"");
-
-WriteLiteral(" class=\"img-responsive\"");
-
-WriteLiteral(">\r\n                                            <span><span");
-
-WriteLiteral(" ng-bind=\"productBundle.product.name\"");
-
-WriteLiteral("></span></span>\r\n                                        </a>\r\n                  " +
-"                  </div>\r\n                                    <div");
-
-WriteLiteral(" class=\"col-sm-8 col-xs-7 wizard-price no-padding\"");
-
-WriteLiteral(">\r\n                                        <h3");
-
-WriteLiteral(" ng-show=\"gm.incVat\"");
-
-WriteLiteral(">\r\n                                            <span");
-
-WriteLiteral(" ng-bind=\"(productBundle.product.price.formatted.withTax)\"");
-
-WriteLiteral("></span>\r\n                                            <span");
-
-WriteLiteral(" class=\"sml\"");
-
-WriteLiteral(">");
-
-            
-            #line 75 "..\..\Views\Survey\Capture.cshtml"
-                                                         Write(LT("ProductDetail.Label.INCVAT", "INC VAT"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</span>\r\n                                        </h3>\r\n                         " +
-"               <h3");
-
-WriteLiteral(" ng-show=\"!gm.incVat\"");
-
-WriteLiteral(">\r\n                                            <span");
-
-WriteLiteral(" ng-bind=\"(productBundle.product.price.formatted.withoutTax)\"");
-
-WriteLiteral("></span>\r\n                                            <span");
-
-WriteLiteral(" class=\"sml\"");
-
-WriteLiteral(">");
-
-            
-            #line 79 "..\..\Views\Survey\Capture.cshtml"
-                                                         Write(LT("ProductDetail.Label.EXVAT", "EX VAT"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</span>\r\n                                        </h3>\r\n                         " +
-"           </div>\r\n                                    <div");
-
-WriteLiteral(" class=\"bundle-qty wizard-qty\"");
-
-WriteLiteral(">\r\n                                        <strong>");
-
-            
-            #line 83 "..\..\Views\Survey\Capture.cshtml"
-                                           Write(LT("ProductSurvey.Label.Qty", "Qty"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral(": </strong><span");
-
-WriteLiteral(" ng-bind=\"productBundle.qty\"");
-
-WriteLiteral("></span>\r\n                                    </div>\r\n                           " +
-"     </div>\r\n                            </div>\r\n");
-
-WriteLiteral("                            <div");
-
-WriteLiteral(" class=\"row\"");
-
-WriteLiteral(">\r\n                                <div");
-
-WriteLiteral(" class=\"col-sm-6 col-xs-12 no-padding\"");
-
-WriteLiteral(">\r\n                                    <h3");
-
-WriteLiteral(" class=\"text-left text-white\"");
-
-WriteLiteral(">\r\n");
-
-WriteLiteral("                                        ");
-
-            
-            #line 90 "..\..\Views\Survey\Capture.cshtml"
-                                   Write(LT("ProductSurvey.Label.TotalPrice", "Total Price"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral(":  <span");
-
-WriteLiteral(" ng-show=\"gm.incVat\"");
-
-WriteLiteral(" ng-bind=\"pm.surveyResponse.price| number :2\"");
-
-WriteLiteral("></span>\r\n                                        <span");
-
-WriteLiteral(" ng-hide=\"gm.incVat\"");
-
-WriteLiteral(" ng-bind=\"pm.surveyResponse.priceExcludingVat| number :2\"");
-
-WriteLiteral("></span>\r\n                                    </h3>\r\n                            " +
-"    </div>\r\n                                <div");
-
-WriteLiteral(" class=\"col-sm-6 col-xs-12 text-right\"");
-
-WriteLiteral(">\r\n                                    <button");
-
-WriteLiteral(" type=\"button\"");
-
-WriteLiteral(" class=\"animate btn-primary\"");
-
-WriteLiteral(" ng-click=\"pm.addToBag()\"");
-
-WriteLiteral(">\r\n                                        <span> ");
-
-            
-            #line 96 "..\..\Views\Survey\Capture.cshtml"
-                                          Write(LT("ProductSurvey.Label.AddtoBag", "Add to Bag"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral(" <i");
-
-WriteLiteral(" class=\"fa fa-shopping-cart\"");
-
-WriteLiteral(" aria-hidden=\"true\"");
-
-WriteLiteral("></i></span>\r\n                                    </button>\r\n                    " +
-"            </div>\r\n                            </div>\r\n");
-
-            
-            #line 100 "..\..\Views\Survey\Capture.cshtml"
-                        }
-                    
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </center>\r\n</di" +
-"v>\r\n\r\n\r\n");
+WriteLiteral(">Submit</button>\r\n        </div>        \r\n    </div>    \r\n</div>\r\n\r\n\r\n");
 
 DefineSection("scripts", () => {
 
-WriteLiteral("\r\n    <script>\r\n        var saveAnswer = \'");
+WriteLiteral("\r\n     <script");
+
+WriteLiteral(" src=\"https://surveyjs.azureedge.net/1.0.66/survey.jquery.min.js\"");
+
+WriteLiteral("></script>\r\n    <script>\r\n        Survey.Survey.cssType = \"bootstrap\";\r\n        v" +
+"ar surveyJSON =  ");
 
             
-            #line 111 "..\..\Views\Survey\Capture.cshtml"
-                      Write(Html.BuildUrlFromExpression<SurveyController>(c => c.SaveAnswer("","")));
+            #line 42 "..\..\Views\Survey\Capture.cshtml"
+                     Write(Html.JsonFor(Model.QuestionJson));
+
+            
+            #line default
+            #line hidden
+WriteLiteral(@";
+        
+        function sendDataToServer(survey) {                    
+            PubSub.publish('saveSurveyResponse', survey.data)       
+        }
+        var survey = new Survey.Model(surveyJSON);
+
+        $(""#surveyContainer"").Survey({
+            model: survey,
+            onComplete:sendDataToServer
+        });
+
+        var saveAnswer = '");
+
+            
+            #line 54 "..\..\Views\Survey\Capture.cshtml"
+                      Write(Html.BuildUrlFromExpression<SurveyController>(c => c.SaveAnswer("","","")));
 
             
             #line default
@@ -462,7 +207,7 @@ WriteLiteral("\r\n    <script>\r\n        var saveAnswer = \'");
 WriteLiteral("\';\r\n        var searchUrl = \'");
 
             
-            #line 112 "..\..\Views\Survey\Capture.cshtml"
+            #line 55 "..\..\Views\Survey\Capture.cshtml"
                      Write(Html.BuildUrlFromExpression<SearchController>(c => c.Search(null)));
 
             
@@ -471,7 +216,7 @@ WriteLiteral("\';\r\n        var searchUrl = \'");
 WriteLiteral("\';\r\n        var addToBagUrl = \'");
 
             
-            #line 113 "..\..\Views\Survey\Capture.cshtml"
+            #line 56 "..\..\Views\Survey\Capture.cshtml"
                        Write(Html.BuildUrlFromExpression<SurveyController>(c => c.AddToBag(null)));
 
             
@@ -480,7 +225,7 @@ WriteLiteral("\';\r\n        var addToBagUrl = \'");
 WriteLiteral("\';\r\n        var basketUrl = \'");
 
             
-            #line 114 "..\..\Views\Survey\Capture.cshtml"
+            #line 57 "..\..\Views\Survey\Capture.cshtml"
                      Write(Html.BuildUrlFromExpression<BasketController>(c => c.Index(null)));
 
             
@@ -489,7 +234,7 @@ WriteLiteral("\';\r\n        var basketUrl = \'");
 WriteLiteral("\';\r\n        var searchFilterQryString = \'");
 
             
-            #line 115 "..\..\Views\Survey\Capture.cshtml"
+            #line 58 "..\..\Views\Survey\Capture.cshtml"
                                 Write(Constants.SEARCH_FILTER_QUERYSTRING);
 
             
@@ -498,7 +243,7 @@ WriteLiteral("\';\r\n        var searchFilterQryString = \'");
 WriteLiteral("\';\r\n        var surveyQryString = \'");
 
             
-            #line 116 "..\..\Views\Survey\Capture.cshtml"
+            #line 59 "..\..\Views\Survey\Capture.cshtml"
                           Write(Constants.SEARCH_SURVEY_QUERYSTRING);
 
             
@@ -516,7 +261,7 @@ WriteLiteral(@"';
         window.app.constant('model', ");
 
             
-            #line 125 "..\..\Views\Survey\Capture.cshtml"
+            #line 68 "..\..\Views\Survey\Capture.cshtml"
                                 Write(Html.JsonFor(Model));
 
             

@@ -20,7 +20,7 @@
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">
-                <div class="modal-title" id="Login">@LT("Header.Text.UserLogin", "User Login")</div>
+                <div class="modal-title" >@LT("Header.Text.UserLogin", "User Login")</div>
                 <button type="button" ng-click="gm.formReset(loginForm);gm.model.username=null;gm.model.password =null" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">
@@ -34,17 +34,17 @@
                     <div class="form-group">
                         @loginForm.FormGroupFor(x => x.Password)
                     </div>
-                    <p class="text-center">
+                    <p class="text-center" aria-hidden="true">
                         <button type="submit" class="animate btn-primary"><i class="fa fa-sign-in"></i>@LT("Global.Buttons.Login", "Login")</button>
                     </p>
                     <div class="col-sm-12 col-xs-12 no-padding text-center">
                         <a href="@Url.Action("forgotpassword", "account")" class="text-center">Forgot Password</a>
                     </div>
                 </form>
-                <p class="text-center text-muted">@LT("Footer.Text.NoAccount", "Not registered yet?")</p>
-                <p class="text-center text-muted"><a href="#" data-toggle="modal" data-target="#register-modal" data-dismiss="modal" aria-hidden="true" ng-click="gm.formReset(loginForm);gm.model.username=null;gm.model.password =null" class="text-black"><strong>@LT("Footer.Text.RegisterNow", "Register now")</strong></a>!@LT("MyAccount.Text.EasyRegister", " It is easy and done in 1 minute and gives you access to special discounts and much more")!</p>
+                <p class="text-center text-muted" aria-hidden="true">@LT("Footer.Text.NoAccount", "Not registered yet?")</p>
+                <p class="text-center text-muted" aria-hidden="true"><a href="#" data-toggle="modal" data-target="#register-modal" data-dismiss="modal" aria-hidden="true" ng-click="gm.formReset(loginForm);gm.model.username=null;gm.model.password =null" class="text-black"><strong>@LT("Footer.Text.RegisterNow", "Register now")</strong></a>!@LT("MyAccount.Text.EasyRegister", " It is easy and done in 1 minute and gives you access to special discounts and much more")!</p>
             </div>
-            <div class="modal-footer"></div>
+            <div class="modal-footer" aria-hidden="true"></div>
         </div>
     </div>
 </div>

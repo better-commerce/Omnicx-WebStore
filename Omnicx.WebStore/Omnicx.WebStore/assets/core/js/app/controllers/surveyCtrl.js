@@ -1,4 +1,6 @@
-﻿(function () {
+﻿
+
+(function () {
     'use strict';
     window.app.controller('surveyCtrl', surveyCtrl);
     surveyCtrl.$inject = ['$scope', '$timeout', 'model', 'surveyConfig', '$http', '$q'];
@@ -9,19 +11,42 @@
 
         //public properties.
         pm.currentStep = 0;
-        pm.currentQuesId = pm.model.questions[0].recordId;
+        pm.currentQuesId = '';// pm.model.questions[0].recordId;
         pm.canGoPrev = false;
         pm.canGoNext = true;
         pm.surveyCompleted = false;
-
+        pm.showSucess = true;
         //public methods
         pm.moveNext = moveNext;
         pm.movePrev = movePrev;
         pm.submitSurvey = submitSurvey;
         pm.showRelevantProducts = showRelevantProducts;
+        pm.saveSurveyResponse = saveSurveyResponse;
         pm.addToBag = addToBag;
         pm.answers = [];
-        pm.surveyResponse = {};
+        pm.surveyResponse = {};       
+        PubSub.subscribe('saveSurveyResponse', function (eventData) {
+            console.log(eventData);
+            $http.post(surveyConfig.saveAnswerUrl, { surveyId: pm.model.recordId, answer: JSON.stringify(eventData), email: pm.surveyEmail}).then(function (resp) {
+                if (!resp.data) {
+                    pm.surveyResponse = eventData;
+                    pm.showSucess = false;                   
+                } else {
+                    pm.showSucess = true;               
+                }
+
+            }, function (error) { })
+        });
+        function saveSurveyResponse() {
+            $http.post(surveyConfig.saveAnswerUrl, { surveyId: pm.model.recordId, answer: JSON.stringify(pm.surveyResponse), email: pm.surveyEmail }).then(function (resp) {
+                if (!resp.data) {      
+                    pm.showSucess = false;              
+                } else {
+                    pm.showSucess = true;                  
+                }
+
+            }, function (error) { })
+        }
         function submitSurvey() {
             //this is where we submit the whole survey using AJAX call.
             pm.surveyCompleted = true;

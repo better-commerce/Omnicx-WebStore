@@ -12,7 +12,7 @@
 @inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Site.NavigationModel>
 @using Omnicx.WebStore.Models.Enums
 @using Omnicx.WebStore.Core.Helpers;
-<section class="siteNav" id="akc-container-fluid">
+<section class="siteNav">
     <div class="container">
         <div class="row">
             <nav class="menu">
@@ -32,7 +32,7 @@
                                     {
 
                                 <li>
-                                    <a class="menu__item" data-show-menu-option="@items.Caption" href="/@items.Hyperlink">
+                                    <a class="menu__item" data-show-menu-option="@items.Caption" href="#">
                                         @items.Caption
                                         @if (items.NavBlocks != null && items.NavBlocks.Count > 0)
                                                 {
@@ -47,7 +47,7 @@
                                     {
 
                                 <li>
-                                    <a class="menu__item" data-show-menu-option="@items.Caption" value="@items.Caption" href="/@items.Hyperlink">
+                                    <a class="menu__item" data-show-menu-option="@items.Caption" value="@items.Caption" href="@items.Hyperlink">
                                         @items.Caption
                                         @if (items.NavBlocks != null && items.NavBlocks.Count > 0)
                                                 {
@@ -96,9 +96,9 @@
                                         }
                                         else
                                         {
-                                        <label class="megaNav__header mobileMenuBack visible-xs" href="#"><span class="icon icon-arrow-left"></span> @child1.BoxTitle</label>
-                                        <label class="megaNav__header visible-xs" href="#">@child1.BoxTitle<span class="visible-xs icon icon-arrow-right"></span></label>
-                                        <label class="megaNav__header" href="#">@child1.BoxTitle<span class="visible-xs icon icon-arrow-right"></span></label>
+                                        <span class="megaNav__header mobileMenuBack visible-xs" href="#"><span class="icon icon-arrow-left"></span> @child1.BoxTitle</span>
+                                        <span class="megaNav__header visible-xs" href="#">@child1.BoxTitle<span class="visible-xs icon icon-arrow-right"></span></span>
+                                        <span class="megaNav__header" href="#">@child1.BoxTitle<span class="visible-xs icon icon-arrow-right"></span></span>
                                         }
 
                                     <ul class="megaNav__list menuOption__mobContainer__list">

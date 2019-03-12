@@ -101,13 +101,11 @@ WriteLiteral(">&times;</span></button>\r\n                <h4");
 
 WriteLiteral(" class=\"modal-title text-bold\"");
 
-WriteLiteral(" id=\"myModalLabel\"");
-
 WriteLiteral(">");
 
             
             #line 20 "..\..\Views\Basket\_QuickOrderPad.cshtml"
-                                                               Write(LT("YourBag.Message.BulkOrderPad", "Bulk Order Pad"));
+                                             Write(LT("YourBag.Message.BulkOrderPad", "Bulk Order Pad"));
 
             
             #line default
@@ -201,15 +199,36 @@ WriteLiteral(" class=\"table table-striped table-hover\"");
 
 WriteLiteral(" ng-hide=\"gm.format1==false\"");
 
-WriteLiteral(@">
-                            <thead>
-                                <tr>
-                                    <th>S.no</th>
-                                    <th>StockCode</th>
-                                    <th>Quantity</th>
-                                </tr>
-                            </thead>
-                            <tbody");
+WriteLiteral(">\r\n                            <thead>\r\n                                <tr>\r\n   " +
+"                                 <th>");
+
+            
+            #line 43 "..\..\Views\Basket\_QuickOrderPad.cshtml"
+                                   Write(LT("YourBag.Message.S.no", "S.no"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</th>\r\n                                    <th>");
+
+            
+            #line 44 "..\..\Views\Basket\_QuickOrderPad.cshtml"
+                                   Write(LT("YourBag.Message.StockCode", "StockCode"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</th>\r\n                                    <th>");
+
+            
+            #line 45 "..\..\Views\Basket\_QuickOrderPad.cshtml"
+                                   Write(LT("YourBag.Message.Quantity", "Quantity"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</th>\r\n                                </tr>\r\n                            </thead" +
+">\r\n                            <tbody");
 
 WriteLiteral(" ng-init=\"gm.number = 5\"");
 
@@ -221,17 +240,42 @@ WriteLiteral(">\r\n                                    <td");
 
 WriteLiteral(" ng-bind=\"$index + 1\"");
 
-WriteLiteral("></td>\r\n                                    <td><input");
+WriteLiteral("></td>\r\n                                    <td><label");
+
+WriteLiteral(" for=\"stockCode{{$index}}\"");
+
+WriteLiteral(" class=\"label-0\"");
+
+WriteLiteral(">");
+
+            
+            #line 51 "..\..\Views\Basket\_QuickOrderPad.cshtml"
+                                                                                    Write(LT("YourBag.Message.stockCode", "StockCode"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</label><input");
 
 WriteLiteral(" type=\"text\"");
 
 WriteLiteral(" name=\"stockCode\"");
 
+WriteLiteral(" id=\"stockCode{{$index}}\"");
+
 WriteLiteral(" ng-model=\"gm.quick.stockCode[$index]\"");
 
-WriteLiteral(" /></td>\r\n                                    <td><input");
+WriteLiteral(" /></td>\r\n                                    <td><label");
+
+WriteLiteral(" for=\"qty{{$index}}\"");
+
+WriteLiteral(" class=\"label-0\"");
+
+WriteLiteral(">qty</label><input");
 
 WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" id=\"qty{{$index}}\"");
 
 WriteLiteral(" ng-model=\"gm.quick.qty[$index]\"");
 
@@ -260,9 +304,20 @@ WriteLiteral(">LINE BY LINE</button>                     \r\n                   
 
 WriteLiteral(" class=\"col-sm-12 col-xs-12 padding-top-sm\"");
 
-WriteLiteral(">\r\n                        <p>Copy and paste your file in following format: <b>ST" +
-"OCKCODE[comma]Quantity</b></p>\r\n                    </div>\r\n                    " +
-"<div");
+WriteLiteral(">\r\n                        <p");
+
+WriteLiteral(" aria-hidden=\"true\"");
+
+WriteLiteral("><b>");
+
+            
+            #line 63 "..\..\Views\Basket\_QuickOrderPad.cshtml"
+                                            Write(LT("YourBag.Message.Message", "Copy and paste your file in following format: STOCKCODE[comma]Quantity"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</b></p>\r\n                    </div>\r\n                    <div");
 
 WriteLiteral(" class=\"col-sm-10 col-xs-12\"");
 
@@ -270,11 +325,28 @@ WriteLiteral(">\r\n                        <div");
 
 WriteLiteral(" class=\"form-group\"");
 
-WriteLiteral(">\r\n                            <textarea");
+WriteLiteral(">\r\n                            <label");
+
+WriteLiteral(" class=\"label-0\"");
+
+WriteLiteral(" for=\"excelData{{gm.excelData}}\"");
+
+WriteLiteral(">");
+
+            
+            #line 67 "..\..\Views\Basket\_QuickOrderPad.cshtml"
+                                                                              Write(LT("YourBag.Message.excelData", "excelData"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</label>\r\n                            <textarea");
 
 WriteLiteral(" name=\"excel_data\"");
 
 WriteLiteral(" class=\"form-control\"");
+
+WriteLiteral(" id=\"excelData{{gm.excelData}}\"");
 
 WriteLiteral(" ng-model=\"gm.excelData\"");
 

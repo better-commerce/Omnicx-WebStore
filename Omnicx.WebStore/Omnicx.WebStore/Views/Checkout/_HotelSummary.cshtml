@@ -1,0 +1,73 @@
+﻿@{
+/*
+    Name: Order Summery
+    Purpose: Contains Order item Lines, Promotion panel and Order Amount Information
+    Structure: /Views/Checkout/_OrderSummary.cshtml
+    Contains (Partial Views Used):
+
+    Contained In (Where we Use this View):
+        a-/Views/Basket/OnePageCheckout.cshtml
+    */
+}
+@using Omnicx.WebStore.Models.Enums
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
+<div class="row">
+    <div class="col-sm-12 col-xs-12 wzc--heading--pannel">
+        <h4 class="wzc--h5">Delivery Address <a class="btn btn-default btn-sm pull-right" style="margin-top:-8px;">Change</a></h4>
+    </div>
+    <div class="col-sm-12 col-xs-12 wzc--address--border">
+        <div class="col-xs-1 col-sm-1 no-padding">
+            <label class="control control--checkbox">                                
+                <input id="address" name="address" type="checkbox" class="ng-pristine ng-valid" checked="checked">
+                <div class="control__indicator"></div>
+            </label>
+        </div>
+        <div class="col-xs-11 col-sm-11 no-padding">
+            <address class="wzc--address">
+                <strong>amit kumar</strong><br />295B Chiswick High Road, London,<br />W4 4HH, United Kingdom<br />(excluding Channel Islands)
+            </address>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12 col-xs-12 wzc--heading--pannel">
+        <h4 class="wzc--h5">Delivery Method<a class="btn btn-default btn-sm pull-right" style="margin-top:-8px;">Change</a></h4>
+    </div>
+    <div class="col-sm-12 col-xs-12 wzc--address--border">
+        <div class="col-xs-1 col-sm-1 no-padding">
+            <label class="control control--checkbox">
+                <input id="address" name="address" type="checkbox" class="ng-pristine ng-valid" checked="checked">
+                <div class="control__indicator"></div>
+            </label>
+        </div>
+        <div class="col-xs-8 col-sm-8 no-padding">
+            <address class="wzc--address">
+                <strong>Standard Delivery</strong><br />Delivered within 3-5 working days
+            </address>
+        </div>
+        <div class="col-xs-3 col-sm-3 no-padding">
+            <p class="wzc--p pull-right">$3.99</p>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12 col-xs-12 wzc--heading--pannel">
+        <h4 class="wzc--h5">Select Billing Address</h4>
+    </div>
+    <div class="col-sm-12 col-xs-12 wzc--address--border">
+        <div class="col-xs-1 col-sm-1 no-padding">
+            <label class="control control--checkbox">
+                <input id="address" name="address" type="checkbox" class="ng-pristine ng-valid" checked="checked">
+                <div class="control__indicator"></div>
+            </label>
+        </div>
+        <div class="col-xs-11 col-sm-11 no-padding">
+            <address class="wzc--address">
+                <strong>amit kumar</strong><br />295B Chiswick High Road, London,<br />W4 4HH, United Kingdom<br />(excluding Channel Islands)
+            </address>
+        </div>
+        <div class="col-sm-12 col-xs-12 margin-top-sm no-padding">
+            <a class="animate btn-bordered btn-xs" data-toggle="modal" data-target="#userAddress-modal" ng-click="ck.addressText='delivery';" href=""><i class="fa fa-plus"></i> Create new address</a>
+        </div>
+    </div>   
+</div>

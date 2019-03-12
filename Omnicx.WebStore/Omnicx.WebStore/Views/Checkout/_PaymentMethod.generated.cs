@@ -966,7 +966,7 @@ WriteLiteral(" type=\"radio\"");
 
 WriteLiteral(">\r\n        <label");
 
-WriteLiteral(" class=\"animate btn-default\"");
+WriteLiteral(" class=\"animate btn-default btn-lg width-full\"");
 
 WriteLiteral(" for=\"addressPanel\"");
 
@@ -978,7 +978,7 @@ WriteLiteral("></i> ");
 
             
             #line 190 "..\..\Views\Checkout\_PaymentMethod.cshtml"
-                                                                                          Write(LT("Checkout.Text.Back", "Back"));
+                                                                                                            Write(LT("Checkout.Text.Back", "Back"));
 
             
             #line default

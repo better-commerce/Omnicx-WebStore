@@ -88,8 +88,12 @@ WriteLiteral(" class=\"dl-trigger\"");
 
 WriteLiteral(" id=\"openMenu\"");
 
-WriteLiteral("><span></span><span></span><span></span><span></span><span></span><span></span></" +
-"button>\r\n\r\n");
+WriteLiteral("><span");
+
+WriteLiteral(" class=\"label-0\"");
+
+WriteLiteral(">Menu</span><span></span><span></span><span></span><span></span><span></span></bu" +
+"tton>\r\n\r\n");
 
             
             #line 22 "..\..\Views\Shared\_MobileMenu.cshtml"
@@ -109,120 +113,115 @@ WriteLiteral("                        <ul");
 
 WriteLiteral(" class=\"dl-menu\"");
 
-WriteLiteral(">\r\n                            <div");
+WriteLiteral(">\r\n                            <li>\r\n                                <div");
 
 WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding\"");
 
-WriteLiteral(">\r\n                                <div");
+WriteLiteral(">\r\n                                    <div");
 
 WriteLiteral(" class=\"col-xs-3 menuAccount no-padding\"");
 
-WriteLiteral(">\r\n                                    <a");
+WriteLiteral(">\r\n                                        <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1014), Tuple.Create("\"", 1053)
+WriteAttribute("href", Tuple.Create(" href=\"", 1080), Tuple.Create("\"", 1119)
             
-            #line 27 "..\..\Views\Shared\_MobileMenu.cshtml"
-, Tuple.Create(Tuple.Create("", 1021), Tuple.Create<System.Object, System.Int32>(Url.Action("SignIn", "Account")
+            #line 28 "..\..\Views\Shared\_MobileMenu.cshtml"
+, Tuple.Create(Tuple.Create("", 1087), Tuple.Create<System.Object, System.Int32>(Url.Action("SignIn", "Account")
             
             #line default
             #line hidden
-, 1021), false)
+, 1087), false)
 );
 
-WriteLiteral(">\r\n                                        <img");
+WriteLiteral(">\r\n                                            <i");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 1101), Tuple.Create("\"", 1149)
-, Tuple.Create(Tuple.Create("", 1107), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/customer-ico.png")
-, 1107), false)
-);
+WriteLiteral(" class=\"sprite sprite-browsers-customer\"");
 
-WriteLiteral(" /><br />\r\n                                        <span>My Account</span>\r\n     " +
-"                               </a>\r\n                                </div>\r\n   " +
-"                             <div");
+WriteLiteral("></i>                                           \r\n                               " +
+"             <span>My Account</span>\r\n                                        </" +
+"a>\r\n                                    </div>\r\n                                " +
+"    <div");
 
 WriteLiteral(" class=\"col-xs-3 menuAccount no-padding\"");
 
-WriteLiteral(">\r\n                                    <a");
+WriteLiteral(">\r\n                                        <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1425), Tuple.Create("\"", 1466)
+WriteAttribute("href", Tuple.Create(" href=\"", 1543), Tuple.Create("\"", 1584)
             
-            #line 33 "..\..\Views\Shared\_MobileMenu.cshtml"
-, Tuple.Create(Tuple.Create("", 1432), Tuple.Create<System.Object, System.Int32>(Url.Action("Wishlist", "Account")
+            #line 34 "..\..\Views\Shared\_MobileMenu.cshtml"
+, Tuple.Create(Tuple.Create("", 1550), Tuple.Create<System.Object, System.Int32>(Url.Action("Wishlist", "Account")
             
             #line default
             #line hidden
-, 1432), false)
+, 1550), false)
 );
 
-WriteLiteral(">\r\n                                        <img");
+WriteLiteral(">\r\n                                            <i");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 1514), Tuple.Create("\"", 1562)
-, Tuple.Create(Tuple.Create("", 1520), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/wishlist-ico.png")
-, 1520), false)
-);
+WriteLiteral(" class=\"sprite sprite-browsers-wishlist\"");
 
-WriteLiteral(" /><br />\r\n                                        <span>Wishlist</span>\r\n       " +
-"                             </a>\r\n                                </div>\r\n     " +
-"                           <div");
+WriteLiteral("></i>                                            \r\n                              " +
+"              <span>Wishlist</span>\r\n                                        </a" +
+">\r\n                                    </div>\r\n                                 " +
+"   <div");
 
 WriteLiteral(" class=\"col-xs-3 menuAccount no-padding\"");
 
-WriteLiteral(">\r\n                                    <a");
+WriteLiteral(">\r\n                                        <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1836), Tuple.Create("\"", 1881)
+WriteAttribute("href", Tuple.Create(" href=\"", 2007), Tuple.Create("\"", 2052)
             
-            #line 39 "..\..\Views\Shared\_MobileMenu.cshtml"
-, Tuple.Create(Tuple.Create("", 1843), Tuple.Create<System.Object, System.Int32>(Url.Action("OrderHistory", "Account")
+            #line 40 "..\..\Views\Shared\_MobileMenu.cshtml"
+, Tuple.Create(Tuple.Create("", 2014), Tuple.Create<System.Object, System.Int32>(Url.Action("OrderHistory", "Account")
             
             #line default
             #line hidden
-, 1843), false)
+, 2014), false)
 );
 
-WriteLiteral(">\r\n                                        <img");
+WriteLiteral(">\r\n                                            <i");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 1929), Tuple.Create("\"", 1974)
-, Tuple.Create(Tuple.Create("", 1935), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/order-ico.png")
-, 1935), false)
-);
+WriteLiteral(" class=\"sprite sprite-browsers-order\"");
 
-WriteLiteral(" /><br />\r\n                                        <span>My Orders</span>\r\n      " +
-"                              </a>\r\n                                </div>\r\n    " +
-"                            <div");
+WriteLiteral("></i>                                            \r\n                              " +
+"              <span>My Orders</span>\r\n                                        </" +
+"a>\r\n                                    </div>\r\n                                " +
+"    <div");
 
 WriteLiteral(" class=\"col-xs-3 menuAccount no-padding\"");
 
-WriteLiteral(">\r\n                                    <a");
+WriteLiteral(">\r\n                                        <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2249), Tuple.Create("\"", 2288)
+WriteAttribute("href", Tuple.Create(" href=\"", 2473), Tuple.Create("\"", 2512)
             
-            #line 45 "..\..\Views\Shared\_MobileMenu.cshtml"
-, Tuple.Create(Tuple.Create("", 2256), Tuple.Create<System.Object, System.Int32>(Url.Action("Logout", "Account")
+            #line 46 "..\..\Views\Shared\_MobileMenu.cshtml"
+, Tuple.Create(Tuple.Create("", 2480), Tuple.Create<System.Object, System.Int32>(Url.Action("Logout", "Account")
             
             #line default
             #line hidden
-, 2256), false)
+, 2480), false)
 );
 
-WriteLiteral(">\r\n                                        <img");
+WriteLiteral(">\r\n                                            <i");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2336), Tuple.Create("\"", 2382)
-, Tuple.Create(Tuple.Create("", 2342), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/logout-ico.png")
-, 2342), false)
-);
+WriteLiteral(" class=\"sprite sprite-browsers-logout\"");
 
-WriteLiteral(" /><br />\r\n                                        <span>Logout</span>\r\n         " +
-"                           </a>\r\n                                </div>\r\n       " +
-"                     </div>\r\n");
+WriteLiteral(@"></i>                                            
+                                            <span>Logout</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+");
 
             
-            #line 51 "..\..\Views\Shared\_MobileMenu.cshtml"
+            #line 53 "..\..\Views\Shared\_MobileMenu.cshtml"
                             
             
             #line default
             #line hidden
             
-            #line 51 "..\..\Views\Shared\_MobileMenu.cshtml"
+            #line 53 "..\..\Views\Shared\_MobileMenu.cshtml"
                              foreach (var items in @Model.Header.OrderBy(o => o.DisplayOrder))
                             {
 
@@ -231,21 +230,21 @@ WriteLiteral(" /><br />\r\n                                        <span>Logout<
             #line hidden
 WriteLiteral("                                <li>\r\n                                    <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2776), Tuple.Create("\"", 2800)
-, Tuple.Create(Tuple.Create("", 2783), Tuple.Create("/", 2783), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 3084), Tuple.Create("\"", 3108)
+, Tuple.Create(Tuple.Create("", 3091), Tuple.Create("/", 3091), true)
             
-            #line 54 "..\..\Views\Shared\_MobileMenu.cshtml"
-, Tuple.Create(Tuple.Create("", 2784), Tuple.Create<System.Object, System.Int32>(items.Hyperlink
+            #line 56 "..\..\Views\Shared\_MobileMenu.cshtml"
+, Tuple.Create(Tuple.Create("", 3092), Tuple.Create<System.Object, System.Int32>(items.Hyperlink
             
             #line default
             #line hidden
-, 2784), false)
+, 3092), false)
 );
 
 WriteLiteral(">");
 
             
-            #line 54 "..\..\Views\Shared\_MobileMenu.cshtml"
+            #line 56 "..\..\Views\Shared\_MobileMenu.cshtml"
                                                            Write(items.Caption);
 
             
@@ -254,13 +253,13 @@ WriteLiteral(">");
 WriteLiteral("</a>\r\n\r\n");
 
             
-            #line 56 "..\..\Views\Shared\_MobileMenu.cshtml"
+            #line 58 "..\..\Views\Shared\_MobileMenu.cshtml"
                                     
             
             #line default
             #line hidden
             
-            #line 56 "..\..\Views\Shared\_MobileMenu.cshtml"
+            #line 58 "..\..\Views\Shared\_MobileMenu.cshtml"
                                       
                                         if (items.NavBlocks != null && items.NavBlocks.Count > 0)
                                         {
@@ -276,13 +275,13 @@ WriteLiteral(" class=\"dl-submenu\"");
 WriteLiteral(">\r\n");
 
             
-            #line 61 "..\..\Views\Shared\_MobileMenu.cshtml"
+            #line 63 "..\..\Views\Shared\_MobileMenu.cshtml"
                                                 
             
             #line default
             #line hidden
             
-            #line 61 "..\..\Views\Shared\_MobileMenu.cshtml"
+            #line 63 "..\..\Views\Shared\_MobileMenu.cshtml"
                                                  foreach (var child1 in @items.NavBlocks.OrderBy(o => o.DisplayOrder))
                                                 {
 
@@ -297,7 +296,7 @@ WriteLiteral(" href=\"#\"");
 WriteLiteral(">");
 
             
-            #line 64 "..\..\Views\Shared\_MobileMenu.cshtml"
+            #line 66 "..\..\Views\Shared\_MobileMenu.cshtml"
                                                                Write(child1.BoxTitle);
 
             
@@ -310,13 +309,13 @@ WriteLiteral(" class=\"dl-submenu\"");
 WriteLiteral(">\r\n");
 
             
-            #line 66 "..\..\Views\Shared\_MobileMenu.cshtml"
+            #line 68 "..\..\Views\Shared\_MobileMenu.cshtml"
                                                             
             
             #line default
             #line hidden
             
-            #line 66 "..\..\Views\Shared\_MobileMenu.cshtml"
+            #line 68 "..\..\Views\Shared\_MobileMenu.cshtml"
                                                              foreach (var child2 in @child1.NavItems)
                                                             {
 
@@ -326,21 +325,21 @@ WriteLiteral(">\r\n");
 WriteLiteral("                                                                <li>\r\n           " +
 "                                                         <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 3783), Tuple.Create("\"", 3807)
-, Tuple.Create(Tuple.Create("", 3790), Tuple.Create("/", 3790), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 4091), Tuple.Create("\"", 4115)
+, Tuple.Create(Tuple.Create("", 4098), Tuple.Create("/", 4098), true)
             
-            #line 69 "..\..\Views\Shared\_MobileMenu.cshtml"
-, Tuple.Create(Tuple.Create("", 3791), Tuple.Create<System.Object, System.Int32>(child2.ItemLink
+            #line 71 "..\..\Views\Shared\_MobileMenu.cshtml"
+, Tuple.Create(Tuple.Create("", 4099), Tuple.Create<System.Object, System.Int32>(child2.ItemLink
             
             #line default
             #line hidden
-, 3791), false)
+, 4099), false)
 );
 
 WriteLiteral("> ");
 
             
-            #line 69 "..\..\Views\Shared\_MobileMenu.cshtml"
+            #line 71 "..\..\Views\Shared\_MobileMenu.cshtml"
                                                                                             Write(child2.Caption);
 
             
@@ -349,39 +348,67 @@ WriteLiteral("> ");
 WriteLiteral(" </a>\r\n                                                                </li>\r\n");
 
             
-            #line 71 "..\..\Views\Shared\_MobileMenu.cshtml"
+            #line 73 "..\..\Views\Shared\_MobileMenu.cshtml"
                                                             }
 
             
             #line default
             #line hidden
-WriteLiteral("                                                            <span");
+WriteLiteral("                                                            <li>\r\n               " +
+"                                                 <span");
 
 WriteLiteral(" class=\"megamenu-img\"");
 
 WriteLiteral(">");
 
             
-            #line 72 "..\..\Views\Shared\_MobileMenu.cshtml"
-                                                                                  Write(Html.Raw(child1.ContentBody));
+            #line 75 "..\..\Views\Shared\_MobileMenu.cshtml"
+                                                                                      Write(Html.Raw(child1.ContentBody));
 
             
             #line default
             #line hidden
-WriteLiteral("</span>\r\n                                                        </ul>\r\n         " +
-"                                           </li>\r\n");
+WriteLiteral(@"</span>
+                                                            </li>                                                            
+                                                        </ul>
+                                                    </li>
+");
 
             
-            #line 75 "..\..\Views\Shared\_MobileMenu.cshtml"
+            #line 79 "..\..\Views\Shared\_MobileMenu.cshtml"
                                                 }
 
             
             #line default
             #line hidden
-WriteLiteral("                                            </ul>\r\n");
+WriteLiteral("                                                <li>\r\n                           " +
+"                         <a");
+
+WriteAttribute("href", Tuple.Create(" href=\"", 4877), Tuple.Create("\"", 4901)
+, Tuple.Create(Tuple.Create("", 4884), Tuple.Create("/", 4884), true)
+            
+            #line 81 "..\..\Views\Shared\_MobileMenu.cshtml"
+, Tuple.Create(Tuple.Create("", 4885), Tuple.Create<System.Object, System.Int32>(items.Hyperlink
+            
+            #line default
+            #line hidden
+, 4885), false)
+);
+
+WriteLiteral(">");
 
             
-            #line 77 "..\..\Views\Shared\_MobileMenu.cshtml"
+            #line 81 "..\..\Views\Shared\_MobileMenu.cshtml"
+                                                                           Write(items.Caption);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</a>\r\n                                                </li>\r\n                    " +
+"                        </ul>\r\n");
+
+            
+            #line 84 "..\..\Views\Shared\_MobileMenu.cshtml"
                                         }
                                     
             
@@ -390,7 +417,7 @@ WriteLiteral("                                            </ul>\r\n");
 WriteLiteral("\r\n                                </li>\r\n");
 
             
-            #line 80 "..\..\Views\Shared\_MobileMenu.cshtml"
+            #line 87 "..\..\Views\Shared\_MobileMenu.cshtml"
                                         }
 
             
@@ -398,20 +425,20 @@ WriteLiteral("\r\n                                </li>\r\n");
             #line hidden
 WriteLiteral("                            <li>\r\n                                <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 4547), Tuple.Create("\"", 4587)
+WriteAttribute("href", Tuple.Create(" href=\"", 5261), Tuple.Create("\"", 5301)
             
-            #line 82 "..\..\Views\Shared\_MobileMenu.cshtml"
-, Tuple.Create(Tuple.Create("", 4554), Tuple.Create<System.Object, System.Int32>(Url.Action("BrandList", "Brand")
+            #line 89 "..\..\Views\Shared\_MobileMenu.cshtml"
+, Tuple.Create(Tuple.Create("", 5268), Tuple.Create<System.Object, System.Int32>(Url.Action("BrandList", "Brand")
             
             #line default
             #line hidden
-, 4554), false)
+, 5268), false)
 );
 
 WriteLiteral(">");
 
             
-            #line 82 "..\..\Views\Shared\_MobileMenu.cshtml"
+            #line 89 "..\..\Views\Shared\_MobileMenu.cshtml"
                                                                        Write(LT("Header.Nav.Brands", "Brands"));
 
             
@@ -420,14 +447,14 @@ WriteLiteral(">");
 WriteLiteral("</a>\r\n                            </li>\r\n                            <li>\r\n      " +
 "                          <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 4732), Tuple.Create("\"", 4767)
+WriteAttribute("href", Tuple.Create(" href=\"", 5446), Tuple.Create("\"", 5481)
             
-            #line 85 "..\..\Views\Shared\_MobileMenu.cshtml"
-, Tuple.Create(Tuple.Create("", 4739), Tuple.Create<System.Object, System.Int32>(Url.Action("blogs", "blog")
+            #line 92 "..\..\Views\Shared\_MobileMenu.cshtml"
+, Tuple.Create(Tuple.Create("", 5453), Tuple.Create<System.Object, System.Int32>(Url.Action("blogs", "blog")
             
             #line default
             #line hidden
-, 4739), false)
+, 5453), false)
 );
 
 WriteLiteral(" class=\"link1\"");
@@ -435,7 +462,7 @@ WriteLiteral(" class=\"link1\"");
 WriteLiteral(">");
 
             
-            #line 85 "..\..\Views\Shared\_MobileMenu.cshtml"
+            #line 92 "..\..\Views\Shared\_MobileMenu.cshtml"
                                                                                 Write(LT("Header.Nav.Blogs", "Blogs"));
 
             
@@ -444,7 +471,7 @@ WriteLiteral(">");
 WriteLiteral("</a>\r\n\r\n                            </li>\r\n                        </ul>\r\n");
 
             
-            #line 89 "..\..\Views\Shared\_MobileMenu.cshtml"
+            #line 96 "..\..\Views\Shared\_MobileMenu.cshtml"
                                         }
                 
             
@@ -453,7 +480,7 @@ WriteLiteral("</a>\r\n\r\n                            </li>\r\n                 
 WriteLiteral("\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n");
 
             
-            #line 96 "..\..\Views\Shared\_MobileMenu.cshtml"
+            #line 103 "..\..\Views\Shared\_MobileMenu.cshtml"
   /*End Mobile MEga Menu*/
             
             #line default

@@ -1176,6 +1176,15 @@ WriteLiteral("\';\r\n        var validateLoginPassword = \'");
             
             #line default
             #line hidden
+WriteLiteral("\';\r\n        var savedBaskets = \'");
+
+            
+            #line 227 "..\..\Views\Checkout\StandardCheckout.cshtml"
+                        Write(Html.BuildUrlFromExpression<BasketController>(c => c.GetSavedBaskets()));
+
+            
+            #line default
+            #line hidden
 WriteLiteral(@"';
         window.app.constant('checkoutConfig',{
             signIn : signIn,
@@ -1191,12 +1200,13 @@ WriteLiteral(@"';
             validateGuestPassword : validateGuestPassword,
             addProductToWishlist : addProductToWishlist,
             removeWishList : removeWishList,
-            validateLoginPassword : validateLoginPassword
+            validateLoginPassword: validateLoginPassword,
+            savedBaskets: savedBaskets,
         });
         window.app.constant('model', ");
 
             
-            #line 243 "..\..\Views\Checkout\StandardCheckout.cshtml"
+            #line 245 "..\..\Views\Checkout\StandardCheckout.cshtml"
                                 Write(Html.JsonFor(Model));
 
             

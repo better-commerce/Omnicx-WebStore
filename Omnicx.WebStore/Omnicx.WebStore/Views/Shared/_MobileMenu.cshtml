@@ -17,37 +17,39 @@
     <div class="main clearfix">
         <div class="column">
             <div id="dl-menu" class="dl-menuwrapper">
-                <button class="dl-trigger" id="openMenu"><span></span><span></span><span></span><span></span><span></span><span></span></button>
+                <button class="dl-trigger" id="openMenu"><span class="label-0">Menu</span><span></span><span></span><span></span><span></span><span></span></button>
 
                 @{ if (Model != null)
                     {
                         <ul class="dl-menu">
-                            <div class="col-sm-12 col-xs-12 no-padding">
-                                <div class="col-xs-3 menuAccount no-padding">
-                                    <a href="@Url.Action("SignIn", "Account")">
-                                        <img src="~/assets/theme/ocx/images/customer-ico.png" /><br />
-                                        <span>My Account</span>
-                                    </a>
+                            <li>
+                                <div class="col-sm-12 col-xs-12 no-padding">
+                                    <div class="col-xs-3 menuAccount no-padding">
+                                        <a href="@Url.Action("SignIn", "Account")">
+                                            <i class="sprite sprite-browsers-customer"></i>                                           
+                                            <span>My Account</span>
+                                        </a>
+                                    </div>
+                                    <div class="col-xs-3 menuAccount no-padding">
+                                        <a href="@Url.Action("Wishlist", "Account")">
+                                            <i class="sprite sprite-browsers-wishlist"></i>                                            
+                                            <span>Wishlist</span>
+                                        </a>
+                                    </div>
+                                    <div class="col-xs-3 menuAccount no-padding">
+                                        <a href="@Url.Action("OrderHistory", "Account")">
+                                            <i class="sprite sprite-browsers-order"></i>                                            
+                                            <span>My Orders</span>
+                                        </a>
+                                    </div>
+                                    <div class="col-xs-3 menuAccount no-padding">
+                                        <a href="@Url.Action("Logout", "Account")">
+                                            <i class="sprite sprite-browsers-logout"></i>                                            
+                                            <span>Logout</span>
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="col-xs-3 menuAccount no-padding">
-                                    <a href="@Url.Action("Wishlist", "Account")">
-                                        <img src="~/assets/theme/ocx/images/wishlist-ico.png" /><br />
-                                        <span>Wishlist</span>
-                                    </a>
-                                </div>
-                                <div class="col-xs-3 menuAccount no-padding">
-                                    <a href="@Url.Action("OrderHistory", "Account")">
-                                        <img src="~/assets/theme/ocx/images/order-ico.png" /><br />
-                                        <span>My Orders</span>
-                                    </a>
-                                </div>
-                                <div class="col-xs-3 menuAccount no-padding">
-                                    <a href="@Url.Action("Logout", "Account")">
-                                        <img src="~/assets/theme/ocx/images/logout-ico.png" /><br />
-                                        <span>Logout</span>
-                                    </a>
-                                </div>
-                            </div>
+                            </li>
                             @foreach (var items in @Model.Header.OrderBy(o => o.DisplayOrder))
                             {
                                 <li>
@@ -69,10 +71,15 @@
                                                                     <a href="/@child2.ItemLink"> @child2.Caption </a>
                                                                 </li>
                                                             }
-                                                            <span class="megamenu-img">@Html.Raw(child1.ContentBody)</span>
+                                                            <li>
+                                                                <span class="megamenu-img">@Html.Raw(child1.ContentBody)</span>
+                                                            </li>                                                            
                                                         </ul>
                                                     </li>
                                                 }
+                                                <li>
+                                                    <a href="/@items.Hyperlink">@items.Caption</a>
+                                                </li>
                                             </ul>
                                         }
                                     }

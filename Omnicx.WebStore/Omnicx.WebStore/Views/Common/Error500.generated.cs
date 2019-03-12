@@ -95,13 +95,17 @@ WriteLiteral(">Internal Server Error</h3>\r\n            <p");
 WriteLiteral(" class=\"error-desc\"");
 
 WriteLiteral(">Ooops! It seems like something went wrong inside the system. We\'re on it !</p>\r\n" +
-"            <p><a");
+"            <p");
+
+WriteLiteral(" aria-hidden=\"true\"");
+
+WriteLiteral("><a");
 
 WriteLiteral(" class=\"animate btn-bordered\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 765), Tuple.Create("\"", 774)
-, Tuple.Create(Tuple.Create("", 772), Tuple.Create<System.Object, System.Int32>(Href("~/")
-, 772), false)
+WriteAttribute("href", Tuple.Create(" href=\"", 784), Tuple.Create("\"", 793)
+, Tuple.Create(Tuple.Create("", 791), Tuple.Create<System.Object, System.Int32>(Href("~/")
+, 791), false)
 );
 
 WriteLiteral(" role=\"button\"");

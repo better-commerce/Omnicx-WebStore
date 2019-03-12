@@ -34,19 +34,19 @@
             <div class="row mobileHeaderBorder">
                 @*SEARCH*@
                 <div class="col-xs-6 no-padding">
-                    <a href="" data-toggle="modal" data-target="#globalSearch-xs" class="headerAction"><img src="~/assets/theme/ocx/images/search-ico.png" /></a>
+                    <a href="" data-toggle="modal" data-target="#globalSearch-xs" class="headerAction"><i class="sprite sprite-browsers-search"></i><span class="label-0">Search</span></a>
                 </div>               
                 @*BASKET*@
                 <div class="col-xs-6 no-padding mobile-menu-box right-header">
                     <ul>
                         <li class="shopping-cart cartopen {{gm.activeClass}}" id="shoppingCart">
-                            <a href="" ng-click="gm.isShow=!gm.isShow;gm.showBasket(gm.isShow);" title="Cart" class="headerAction text-center">
-                                <img src="~/assets/theme/ocx/images/shoppingbag-ico.png" />
+                            <a href="" ng-click="gm.isShow=!gm.isShow;gm.showBasket(gm.isShow);" title="Cart" class="headerAction text-center">                                
+                                <i class="sprite sprite-browsers-shoppingbag"></i>
                                 <span class="metaLinks__basket__indicator" ng-bind="gm.count"></span>
                             </a>
                             <ul id="mobileBasket" class="submenu-mainmenu cart-group-1" ng-show="gm.basketResponse.lineItems.length>0">
                                 <li ng-show="gm.basketResponse.lineItems.length>0">
-                                    <ul id="cartdropdown">
+                                    <ul class="cartdropdown">
                                         <li class="single-cart-item clearfix" ng-repeat="items in gm.basketResponse.lineItems track by $index" ng-if="items.parentProductId == gm.emptyGuid">
                                             <div class="col-sm-12 col-xs-12 no-padding" ng-if="items.parentProductId == gm.emptyGuid">
                                                 <div class="col-sm-3 col-xs-3 no-padding">
@@ -108,13 +108,13 @@
                                     </ul>
                                 </li>
                                 <li ng-show="gm.basketResponse.lineItems.length>0">
-                                    <select id="deliverydrpdwn" ng-model="selectedid" ng-change="gm.updateShipping(selectedid)">
+                                    <select class="deliverydrpdwn" title="delivery" aria-label="delivery" ng-model="selectedid" ng-change="gm.updateShipping(selectedid)">
                                         <option ng-repeat="methods in gm.basketResponse.shippingMethods track by $index" ng-selected="methods.id == gm.basketResponse.shippingMethodId" ng-model="methods.id" id="{{methods.id}}" ng-value="methods.id" ng-bind="methods.displayName +' ' + '(' + methods.price.formatted.withTax + ')'"></option>
                                     </select>
                                 </li>
                                 <li class="total-amount sub_total_price" ng-show="gm.basketResponse.lineItems.length>0">                                                                       
                                     <div class="sub-total-cart amount shopping-cart__total total col-lg-12 no-padding">
-                                        <p class="basket-price">
+                                        <p class="basket-price" aria-hidden="true">
                                             @LT("YourBag.Text.GrandTotal", "Order Total"): <span class="money" data-currency-usd="$48.00" data-currency-eur="&amp;euro;45.42" data-currency="EUR" ng-bind="gm.basketResponse.grandTotal.formatted.withTax"></span>
                                         </p>
                                     </div>
@@ -128,7 +128,7 @@
                                     </div>
                                 </li>
                                 <li ng-hide="gm.basketResponse.lineItems.length > 0">
-                                    <p class="no-item">Your Bag is empty.</p>
+                                    <p aria-hidden="true" class="no-item">@LT("Checkout.Title.YourBagisempty", "Your Bag is empty.")</p>
                                 </li>
                             </ul>
                         </li>
@@ -143,7 +143,7 @@
         <div class="modal-content">
             <div class="modal-header text-center">
                 <a class="text-center" href="/">
-                    <h3 class="heading-h3 text-center">Search</h3>
+                    <h1 class="heading-h3 text-center">@LT("Checkout.Title.Search", "Search")</h1>
                 </a>
                 <button type="button" class="close search-close-btn" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">@LT("Checkout.Button.Close", "Close")</span></button>
             </div>

@@ -55,7 +55,7 @@ namespace ASP
     Structure: /Views/Basket/_BulkOrderMessage.cshtml
     Contains (Partial Views Used):
     Contained In (Where we Use this View):
-        a-/Views/Shared/_HeaderBasketView.cshtml 
+        a-/Views/Shared/_HeaderBasketView.cshtml
     */
 
             
@@ -234,6 +234,8 @@ WriteLiteral("</h4>\r\n                            <h5>");
             #line hidden
 WriteLiteral("</h5>\r\n                            <p");
 
+WriteLiteral(" aria-hidden=\"true\"");
+
 WriteLiteral(" class=\"padding-left20\"");
 
 WriteLiteral("><strong>Item # <span");
@@ -252,11 +254,7 @@ WriteLiteral(" id=\"basket\"");
 WriteLiteral(" ng-show=\"gm.basketResponse.lineItems.length>0 && !gm.stockUnavailable && !gm.bas" +
 "ketMessage \"");
 
-WriteLiteral(">\r\n                        <form");
-
-WriteLiteral(" method=\"post\"");
-
-WriteLiteral(">\r\n                            <div");
+WriteLiteral(">\r\n                        <div");
 
 WriteLiteral(" class=\"col-sm-12 col-xs-12  no-padding itemBorder\"");
 
@@ -264,19 +262,19 @@ WriteLiteral(" ng-repeat=\"items in gm.basketResponse.lineItems\"");
 
 WriteLiteral(" ng-if=\"items.parentProductId == gm.emptyGuid\"");
 
-WriteLiteral(">\r\n                                <div");
+WriteLiteral(">\r\n                            <div");
 
 WriteLiteral(" class=\"no-border\"");
 
-WriteLiteral(">\r\n                                    <div");
+WriteLiteral(">\r\n                                <div");
 
 WriteLiteral(" class=\"col-xs-3 col-sm-1 no-padding-left\"");
 
-WriteLiteral(">\r\n                                        <a");
+WriteLiteral(">\r\n                                    <a");
 
 WriteLiteral(" href=\"/{{items.slug}}\"");
 
-WriteLiteral(">\r\n                                            <img");
+WriteLiteral(">\r\n                                        <img");
 
 WriteLiteral(" ng-src=\"{{items.image}}\"");
 
@@ -286,18 +284,18 @@ WriteLiteral(" alt=\"\"");
 
 WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
-WriteLiteral(">\r\n                                        </a>\r\n                                " +
-"    </div>\r\n                                    <div");
+WriteLiteral(">\r\n                                    </a>\r\n                                </di" +
+"v>\r\n                                <div");
 
 WriteLiteral(" class=\"col-xs-9 col-sm-11 no-padding\"");
 
 WriteLiteral(" ng-if=\"items.parentProductId == gm.emptyGuid\"");
 
-WriteLiteral(">\r\n                                        <div");
+WriteLiteral(">\r\n                                    <div");
 
 WriteLiteral(" class=\"col-xs-11 col-sm-11 no-padding\"");
 
-WriteLiteral(">\r\n                                            <a");
+WriteLiteral(">\r\n                                        <a");
 
 WriteLiteral(" class=\"basket-item\"");
 
@@ -305,18 +303,18 @@ WriteLiteral(" ng-href=\"/{{items.slug}}\"");
 
 WriteLiteral(" ng-bind=\"items.name\"");
 
-WriteLiteral("></a>\r\n                                            <span");
+WriteLiteral("></a>\r\n                                        <span");
 
 WriteLiteral(" class=\"basket-price-mob\"");
 
 WriteLiteral(" ng-bind=\"items.price.formatted.withTax\"");
 
-WriteLiteral("></span>\r\n                                        </div>\r\n                       " +
-"                 <div");
+WriteLiteral("></span>\r\n                                    </div>\r\n                           " +
+"         <div");
 
 WriteLiteral(" class=\"col-xs-1 col-sm-1 no-padding text-right\"");
 
-WriteLiteral(">\r\n                                            <a");
+WriteLiteral(">\r\n                                        <a");
 
 WriteLiteral(" href=\"#\"");
 
@@ -330,24 +328,24 @@ WriteLiteral(" class=\"fa fa-trash-o\"");
 
 WriteLiteral(" ng-click=\"gm.addToBasket( items.productId,0,items.displayOrder,gm.model)\"");
 
-WriteLiteral("></i></a>\r\n                                        </div>\r\n                      " +
-"                  <div");
+WriteLiteral("></i></a>\r\n                                    </div>\r\n                          " +
+"          <div");
 
 WriteLiteral(" class=\"col-xs-12 col-sm-12 no-padding priceBorder\"");
 
-WriteLiteral(">\r\n                                            <div");
+WriteLiteral(">\r\n                                        <div");
 
 WriteLiteral(" class=\"col-xs-6 col-sm-6 no-padding\"");
 
-WriteLiteral(">\r\n                                                <div");
+WriteLiteral(">\r\n                                            <div");
 
 WriteLiteral(" class=\"qty qty-changer\"");
 
-WriteLiteral(">\r\n                                                    <fieldset");
+WriteLiteral(">\r\n                                                <fieldset");
 
 WriteLiteral(" class=\"qtychanger\"");
 
-WriteLiteral(">\r\n                                                        <button");
+WriteLiteral(">\r\n                                                    <button");
 
 WriteLiteral(" class=\"btn-qty\"");
 
@@ -361,7 +359,7 @@ WriteLiteral(" class=\"fa fa-minus\"");
 
 WriteLiteral(" title=\"Remove\"");
 
-WriteLiteral("></i></button>\r\n                                                        <input");
+WriteLiteral("></i></button>\r\n                                                    <input");
 
 WriteLiteral(" type=\"text\"");
 
@@ -384,7 +382,7 @@ WriteLiteral(" name=\"qty\"");
 
 WriteLiteral(" ");
 
-WriteLiteral(">\r\n                                                        <button");
+WriteLiteral(">\r\n                                                    <button");
 
 WriteLiteral(" class=\"btn-qty\"");
 
@@ -396,55 +394,55 @@ WriteLiteral(" class=\"fa fa-plus\"");
 
 WriteLiteral(" title=\"Add\"");
 
-WriteLiteral("></i></button>\r\n                                                    </fieldset>\r\n" +
-"                                                </div>\r\n                        " +
-"                    </div>\r\n                                            <div");
+WriteLiteral("></i></button>\r\n                                                </fieldset>\r\n    " +
+"                                        </div>\r\n                                " +
+"        </div>\r\n                                        <div");
 
 WriteLiteral(" class=\"col-xs-6 col-sm-6 no-padding text-right\"");
 
-WriteLiteral(">\r\n                                                <span");
+WriteLiteral(">\r\n                                            <span");
 
 WriteLiteral(" class=\"basket-price-mob-strong\"");
 
 WriteLiteral(" ng-bind=\"items.totalPrice.formatted.withTax\"");
 
-WriteLiteral("></span>\r\n                                            </div>\r\n                   " +
-"                     </div>\r\n                                        <div");
+WriteLiteral("></span>\r\n                                        </div>\r\n                       " +
+"             </div>\r\n                                    <div");
 
 WriteLiteral(" class=\"row\"");
 
-WriteLiteral(">\r\n                                            <div");
+WriteLiteral(">\r\n                                        <div");
 
 WriteLiteral(" class=\"col-sm-12 col-xs-12 padding-sm\"");
 
-WriteLiteral(">\r\n                                                <strong");
+WriteLiteral(">\r\n                                            <strong");
 
 WriteLiteral(" class=\"text-orange\"");
 
-WriteAttribute("ng-show", Tuple.Create(" ng-show=\"", 6289), Tuple.Create("\"", 6372)
-, Tuple.Create(Tuple.Create("", 6299), Tuple.Create("items.displayInBasket", 6299), true)
-, Tuple.Create(Tuple.Create(" ", 6320), Tuple.Create("&&", 6321), true)
-, Tuple.Create(Tuple.Create(" ", 6323), Tuple.Create("items.itemType", 6324), true)
-, Tuple.Create(Tuple.Create(" ", 6338), Tuple.Create("==", 6339), true)
+WriteAttribute("ng-show", Tuple.Create(" ng-show=\"", 6117), Tuple.Create("\"", 6200)
+, Tuple.Create(Tuple.Create("", 6127), Tuple.Create("items.displayInBasket", 6127), true)
+, Tuple.Create(Tuple.Create(" ", 6148), Tuple.Create("&&", 6149), true)
+, Tuple.Create(Tuple.Create(" ", 6151), Tuple.Create("items.itemType", 6152), true)
+, Tuple.Create(Tuple.Create(" ", 6166), Tuple.Create("==", 6167), true)
             
-            #line 83 "..\..\Views\Basket\_BulkOrderMessage.cshtml"
-                                               , Tuple.Create(Tuple.Create("", 6341), Tuple.Create<System.Object, System.Int32>(ItemTypes.Bundle.GetHashCode()
+            #line 82 "..\..\Views\Basket\_BulkOrderMessage.cshtml"
+                                           , Tuple.Create(Tuple.Create("", 6169), Tuple.Create<System.Object, System.Int32>(ItemTypes.Bundle.GetHashCode()
             
             #line default
             #line hidden
-, 6341), false)
+, 6169), false)
 );
 
 WriteLiteral(">");
 
             
-            #line 83 "..\..\Views\Basket\_BulkOrderMessage.cshtml"
-                                                                                                                                                           Write(LT("YourBag.Text.IncludeComponents", "Included Components:"));
+            #line 82 "..\..\Views\Basket\_BulkOrderMessage.cshtml"
+                                                                                                                                                       Write(LT("YourBag.Text.IncludeComponents", "Included Components:"));
 
             
             #line default
             #line hidden
-WriteLiteral("</strong>\r\n                                                <div");
+WriteLiteral("</strong>\r\n                                            <div");
 
 WriteLiteral(" class=\"row component-row\"");
 
@@ -454,11 +452,11 @@ WriteLiteral(" ng-if=\"bundle.parentProductId == items.productId\"");
 
 WriteLiteral(" ng-show=\"items.displayInBasket\"");
 
-WriteLiteral(">\r\n                                                    <div");
+WriteLiteral(">\r\n                                                <div");
 
 WriteLiteral(" class=\"col-sm-9 col-xs-9 no-padding\"");
 
-WriteLiteral(">\r\n                                                        <a");
+WriteLiteral(">\r\n                                                    <a");
 
 WriteLiteral(" class=\"small-cart-name\"");
 
@@ -466,16 +464,16 @@ WriteLiteral(" ng-href=\"/{{bundle.slug}}\"");
 
 WriteLiteral(" ng-bind=\"bundle.name\"");
 
-WriteLiteral("></a>\r\n                                                    </div>\r\n              " +
-"                                      <div");
+WriteLiteral("></a>\r\n                                                </div>\r\n                  " +
+"                              <div");
 
 WriteLiteral(" class=\"col-sm-3 col-xs-3 no-padding text-right\"");
 
-WriteLiteral(">\r\n                                                        <strong>");
+WriteLiteral(">\r\n                                                    <strong>");
 
             
-            #line 89 "..\..\Views\Basket\_BulkOrderMessage.cshtml"
-                                                           Write(LT("YourBag.Text.Qty", "Qty:"));
+            #line 88 "..\..\Views\Basket\_BulkOrderMessage.cshtml"
+                                                       Write(LT("YourBag.Text.Qty", "Qty:"));
 
             
             #line default
@@ -485,18 +483,17 @@ WriteLiteral(" </strong><span");
 WriteLiteral(" ng-bind=\"bundle.qty\"");
 
 WriteLiteral(@"></span>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    ");
-
-WriteLiteral("\r\n                                    ");
-
-WriteLiteral("\r\n                                </div>\r\n                            </div>\r\n   " +
-"                     </form>\r\n                    </div>\r\n                </div>" +
-"\r\n            </div>\r\n            <div");
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div");
 
 WriteLiteral(" class=\"modal-footer\"");
 
@@ -506,13 +503,15 @@ WriteLiteral(" class=\"col-sm-6 margin-top-md\"");
 
 WriteLiteral(">\r\n                    <p");
 
+WriteLiteral(" aria-hidden=\"true\"");
+
 WriteLiteral(" class=\"pull-left\"");
 
 WriteLiteral("><strong>");
 
             
-            #line 128 "..\..\Views\Basket\_BulkOrderMessage.cshtml"
-                                            Write(LT("YourBag.Text.YourHave", "You currently have "));
+            #line 101 "..\..\Views\Basket\_BulkOrderMessage.cshtml"
+                                                               Write(LT("YourBag.Text.YourHave", "You currently have "));
 
             
             #line default
@@ -524,8 +523,8 @@ WriteLiteral(" ng-bind=\"gm.basketResponse.lineItems.length\"");
 WriteLiteral("></span>");
 
             
-            #line 128 "..\..\Views\Basket\_BulkOrderMessage.cshtml"
-                                                                                                                                                         Write(LT("YourBag.Text.YourBag", " Items in Your Bag"));
+            #line 101 "..\..\Views\Basket\_BulkOrderMessage.cshtml"
+                                                                                                                                                                            Write(LT("YourBag.Text.YourBag", " Items in Your Bag"));
 
             
             #line default
@@ -545,7 +544,7 @@ WriteLiteral(" data-dismiss=\"modal\"");
 WriteLiteral(">");
 
             
-            #line 131 "..\..\Views\Basket\_BulkOrderMessage.cshtml"
+            #line 104 "..\..\Views\Basket\_BulkOrderMessage.cshtml"
                                                                             Write(LT("Header.Link.Shopping", "Continue Shopping"));
 
             
@@ -557,14 +556,14 @@ WriteLiteral(" class=\"fa fa-caret-right\"");
 
 WriteLiteral("></i></a>\r\n                    <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 10380), Tuple.Create("\"", 10417)
+WriteAttribute("href", Tuple.Create(" href=\"", 7986), Tuple.Create("\"", 8023)
             
-            #line 132 "..\..\Views\Basket\_BulkOrderMessage.cshtml"
-, Tuple.Create(Tuple.Create("", 10387), Tuple.Create<System.Object, System.Int32>(Url.Action("Index", "Basket")
+            #line 105 "..\..\Views\Basket\_BulkOrderMessage.cshtml"
+, Tuple.Create(Tuple.Create("", 7993), Tuple.Create<System.Object, System.Int32>(Url.Action("Index", "Basket")
             
             #line default
             #line hidden
-, 10387), false)
+, 7993), false)
 );
 
 WriteLiteral(" class=\"animate btn-primary\"");
@@ -572,7 +571,7 @@ WriteLiteral(" class=\"animate btn-primary\"");
 WriteLiteral(">");
 
             
-            #line 132 "..\..\Views\Basket\_BulkOrderMessage.cshtml"
+            #line 105 "..\..\Views\Basket\_BulkOrderMessage.cshtml"
                                                                                     Write(LT("Header.Link.ViewCart", "View Cart"));
 
             

@@ -86,7 +86,15 @@ namespace ASP
             #line hidden
 WriteLiteral("\r\n<!DOCTYPE html>\r\n");
 
-WriteLiteral("<html");
+            
+            #line 22 "..\..\Views\Shared\_Layout.cshtml"
+  
+    var addToBagLimit = SessionContext.CurrentSiteConfig.BasketSettings.MaximumBasketItems;
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n<html");
 
 WriteLiteral(" ng-app=\"btApp\"");
 
@@ -94,10 +102,26 @@ WriteLiteral(" ng-controller=\"globalCtrl as gm\"");
 
 WriteLiteral(" id=\"sidebarFix\"");
 
+WriteLiteral(" lang=\"en\"");
+
+WriteAttribute("ng-init", Tuple.Create(" ng-init=\"", 819), Tuple.Create("\"", 874)
+, Tuple.Create(Tuple.Create("", 829), Tuple.Create("gm.maximumAddToBasketLimit", 829), true)
+, Tuple.Create(Tuple.Create(" ", 855), Tuple.Create("=", 856), true)
+, Tuple.Create(Tuple.Create(" ", 857), Tuple.Create("\'", 858), true)
+            
+            #line 25 "..\..\Views\Shared\_Layout.cshtml"
+                                        , Tuple.Create(Tuple.Create("", 859), Tuple.Create<System.Object, System.Int32>(addToBagLimit
+            
+            #line default
+            #line hidden
+, 859), false)
+, Tuple.Create(Tuple.Create("", 873), Tuple.Create("\'", 873), true)
+);
+
 WriteLiteral(">\r\n\r\n");
 
             
-            #line 25 "..\..\Views\Shared\_Layout.cshtml"
+            #line 27 "..\..\Views\Shared\_Layout.cshtml"
 Write(Html.Partial("~/Views/Shared/_LayoutHeadTag.cshtml"));
 
             
@@ -106,7 +130,7 @@ Write(Html.Partial("~/Views/Shared/_LayoutHeadTag.cshtml"));
 WriteLiteral("\r\n<body ");
 
             
-            #line 26 "..\..\Views\Shared\_Layout.cshtml"
+            #line 28 "..\..\Views\Shared\_Layout.cshtml"
  Write(RenderSection("bodyClass", required: false));
 
             
@@ -117,7 +141,7 @@ WriteLiteral(">  \r\n");
 WriteLiteral("    ");
 
             
-            #line 27 "..\..\Views\Shared\_Layout.cshtml"
+            #line 29 "..\..\Views\Shared\_Layout.cshtml"
 Write(Html.GetGlobalSnipptes(SnippetPlacements.BodyStartHtmlTagAfter));
 
             
@@ -128,7 +152,7 @@ WriteLiteral("\r\n");
 WriteLiteral("    ");
 
             
-            #line 28 "..\..\Views\Shared\_Layout.cshtml"
+            #line 30 "..\..\Views\Shared\_Layout.cshtml"
 Write(RenderSection("siteheader", required: false));
 
             
@@ -143,7 +167,7 @@ WriteLiteral(">\r\n\r\n");
 WriteLiteral("        ");
 
             
-            #line 31 "..\..\Views\Shared\_Layout.cshtml"
+            #line 33 "..\..\Views\Shared\_Layout.cshtml"
    Write(Html.Partial("~/Views/Shared/_LayoutHeader.cshtml"));
 
             
@@ -158,7 +182,7 @@ WriteLiteral("></div>\r\n        <div>\r\n");
 WriteLiteral("            ");
 
             
-            #line 34 "..\..\Views\Shared\_Layout.cshtml"
+            #line 36 "..\..\Views\Shared\_Layout.cshtml"
        Write(Html.Partial("~/Views/Shared/_Alerts.cshtml"));
 
             
@@ -183,7 +207,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                    ");
 
             
-            #line 40 "..\..\Views\Shared\_Layout.cshtml"
+            #line 42 "..\..\Views\Shared\_Layout.cshtml"
                Write(RenderBody());
 
             
@@ -194,7 +218,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                    ");
 
             
-            #line 41 "..\..\Views\Shared\_Layout.cshtml"
+            #line 43 "..\..\Views\Shared\_Layout.cshtml"
                Write(Html.GetGlobalSnipptes(SnippetPlacements.PageContainerAfter));
 
             
@@ -203,13 +227,13 @@ WriteLiteral("                    ");
 WriteLiteral("\r\n                </div>\r\n            </div>\r\n        </div>\r\n");
 
             
-            #line 45 "..\..\Views\Shared\_Layout.cshtml"
+            #line 47 "..\..\Views\Shared\_Layout.cshtml"
         
             
             #line default
             #line hidden
             
-            #line 45 "..\..\Views\Shared\_Layout.cshtml"
+            #line 47 "..\..\Views\Shared\_Layout.cshtml"
           /*Search popup for Mobile View*/
             
             #line default
@@ -246,9 +270,9 @@ WriteLiteral(" href=\"/\"");
 
 WriteLiteral(">\r\n                            <img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 1863), Tuple.Create("\"", 1909)
-, Tuple.Create(Tuple.Create("", 1869), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/logo-small.png")
-, 1869), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 2027), Tuple.Create("\"", 2073)
+, Tuple.Create(Tuple.Create("", 2033), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/logo-small.png")
+, 2033), false)
 );
 
 WriteLiteral(" alt=\"OCX Store logo\"");
@@ -262,7 +286,7 @@ WriteLiteral(" class=\"sr-only\"");
 WriteLiteral(">");
 
             
-            #line 51 "..\..\Views\Shared\_Layout.cshtml"
+            #line 53 "..\..\Views\Shared\_Layout.cshtml"
                                                                                                                                                                     Write(LT("Header.Text.GoHome", "OCX Store - go to homepage"));
 
             
@@ -287,7 +311,7 @@ WriteLiteral(" class=\"sr-only\"");
 WriteLiteral(">");
 
             
-            #line 53 "..\..\Views\Shared\_Layout.cshtml"
+            #line 55 "..\..\Views\Shared\_Layout.cshtml"
                                                                                                                                                     Write(LT("Checkout.Button.Close", "Close"));
 
             
@@ -306,7 +330,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                            ");
 
             
-            #line 57 "..\..\Views\Shared\_Layout.cshtml"
+            #line 59 "..\..\Views\Shared\_Layout.cshtml"
                        Write(Html.Partial("~/Views/Shared/_SearchBox.cshtml"));
 
             
@@ -323,7 +347,7 @@ WriteLiteral("></div>\r\n                </div>\r\n            </div>\r\n       
 WriteLiteral("    ");
 
             
-            #line 65 "..\..\Views\Shared\_Layout.cshtml"
+            #line 67 "..\..\Views\Shared\_Layout.cshtml"
 Write(Html.Partial("~/Views/Shared/_LayoutFooter.cshtml"));
 
             
@@ -332,13 +356,13 @@ Write(Html.Partial("~/Views/Shared/_LayoutFooter.cshtml"));
 WriteLiteral("               \r\n");
 
             
-            #line 66 "..\..\Views\Shared\_Layout.cshtml"
+            #line 68 "..\..\Views\Shared\_Layout.cshtml"
     
             
             #line default
             #line hidden
             
-            #line 66 "..\..\Views\Shared\_Layout.cshtml"
+            #line 68 "..\..\Views\Shared\_Layout.cshtml"
       
         var pcaAccessCode = "";
         if (SessionContext.CurrentSiteConfig != null && SessionContext.CurrentSiteConfig.GeoLocators != null)
@@ -356,7 +380,7 @@ WriteLiteral("               \r\n");
 WriteLiteral("        <script>\r\n            var pcaAccessCode = \"");
 
             
-            #line 77 "..\..\Views\Shared\_Layout.cshtml"
+            #line 79 "..\..\Views\Shared\_Layout.cshtml"
                             Write(pcaAccessCode);
 
             
@@ -365,7 +389,7 @@ WriteLiteral("        <script>\r\n            var pcaAccessCode = \"");
 WriteLiteral("\";\r\n        </script>\r\n");
 
             
-            #line 79 "..\..\Views\Shared\_Layout.cshtml"
+            #line 81 "..\..\Views\Shared\_Layout.cshtml"
     
             
             #line default
@@ -380,17 +404,19 @@ WriteLiteral(" class=\"global-loader\"");
 
 WriteLiteral(">\r\n            <img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 3413), Tuple.Create("\"", 3455)
-, Tuple.Create(Tuple.Create("", 3419), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/loader.svg")
-, 3419), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 3577), Tuple.Create("\"", 3619)
+, Tuple.Create(Tuple.Create("", 3583), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/loader.svg")
+, 3583), false)
 );
+
+WriteLiteral(" alt=\"Loader\"");
 
 WriteLiteral(" />\r\n        </span>\r\n    </div>\r\n    \r\n");
 
 DefineSection("scripts", () => {
 
             
-            #line 86 "..\..\Views\Shared\_Layout.cshtml"
+            #line 88 "..\..\Views\Shared\_Layout.cshtml"
     
             
             #line default
@@ -400,16 +426,20 @@ DefineSection("scripts", () => {
 WriteLiteral("    ");
 
             
-            #line 87 "..\..\Views\Shared\_Layout.cshtml"
+            #line 89 "..\..\Views\Shared\_Layout.cshtml"
 Write(RenderSection("scripts", required: false));
 
             
             #line default
             #line hidden
-WriteLiteral("    \r\n    <script>\r\n        var setContactForm = \'");
+WriteLiteral("    \r\n    <script defer");
+
+WriteLiteral(" type=\"text/javascript\"");
+
+WriteLiteral(">\r\n        var setContactForm = \'");
 
             
-            #line 89 "..\..\Views\Shared\_Layout.cshtml"
+            #line 91 "..\..\Views\Shared\_Layout.cshtml"
                           Write(Html.BuildUrlFromExpression<CommonController>(c => c.ContactForm(null)));
 
             
@@ -418,7 +448,7 @@ WriteLiteral("    \r\n    <script>\r\n        var setContactForm = \'");
 WriteLiteral("\';\r\n        var getBasketUrl = \'");
 
             
-            #line 90 "..\..\Views\Shared\_Layout.cshtml"
+            #line 92 "..\..\Views\Shared\_Layout.cshtml"
                         Write(Html.BuildUrlFromExpression<BasketController>(c => c.GetBasketData()));
 
             
@@ -427,7 +457,7 @@ WriteLiteral("\';\r\n        var getBasketUrl = \'");
 WriteLiteral("\';\r\n        var addToBasket = \'");
 
             
-            #line 91 "..\..\Views\Shared\_Layout.cshtml"
+            #line 93 "..\..\Views\Shared\_Layout.cshtml"
                        Write(Html.BuildUrlFromExpression<BasketController>(c => c.AddtoBasket(null)));
 
             
@@ -436,7 +466,7 @@ WriteLiteral("\';\r\n        var addToBasket = \'");
 WriteLiteral("\';\r\n        var signIn = \'");
 
             
-            #line 92 "..\..\Views\Shared\_Layout.cshtml"
+            #line 94 "..\..\Views\Shared\_Layout.cshtml"
                   Write(Html.BuildUrlFromExpression<AccountController>(c => c.SignIn(null)));
 
             
@@ -445,7 +475,7 @@ WriteLiteral("\';\r\n        var signIn = \'");
 WriteLiteral("\';\r\n        var register = \'");
 
             
-            #line 93 "..\..\Views\Shared\_Layout.cshtml"
+            #line 95 "..\..\Views\Shared\_Layout.cshtml"
                     Write(Html.BuildUrlFromExpression<AccountController>(c => c.Registration(null)));
 
             
@@ -454,7 +484,7 @@ WriteLiteral("\';\r\n        var register = \'");
 WriteLiteral("\';\r\n        var getShippingMethods = \'");
 
             
-            #line 94 "..\..\Views\Shared\_Layout.cshtml"
+            #line 96 "..\..\Views\Shared\_Layout.cshtml"
                               Write(Html.BuildUrlFromExpression<BasketController>(c => c.GetShippingMethods("")));
 
             
@@ -463,8 +493,8 @@ WriteLiteral("\';\r\n        var getShippingMethods = \'");
 WriteLiteral("\';\r\n        var updateShipping = \'");
 
             
-            #line 95 "..\..\Views\Shared\_Layout.cshtml"
-                          Write(Html.BuildUrlFromExpression<BasketController>(c => c.UpdateShipping(null,null,null)));
+            #line 97 "..\..\Views\Shared\_Layout.cshtml"
+                          Write(Html.BuildUrlFromExpression<BasketController>(c => c.UpdateShipping(null,null,null,null)));
 
             
             #line default
@@ -472,7 +502,7 @@ WriteLiteral("\';\r\n        var updateShipping = \'");
 WriteLiteral("\';\r\n        var applyPromoCode = \'");
 
             
-            #line 96 "..\..\Views\Shared\_Layout.cshtml"
+            #line 98 "..\..\Views\Shared\_Layout.cshtml"
                           Write(Html.BuildUrlFromExpression<BasketController>(c => c.ApplyPromoCode(null,null)));
 
             
@@ -481,7 +511,7 @@ WriteLiteral("\';\r\n        var applyPromoCode = \'");
 WriteLiteral("\';\r\n        var currencySettingUrl = \'");
 
             
-            #line 97 "..\..\Views\Shared\_Layout.cshtml"
+            #line 99 "..\..\Views\Shared\_Layout.cshtml"
                               Write(Html.BuildUrlFromExpression<HomeController>(c => c.UpdateCurrencySetting(null)));
 
             
@@ -490,7 +520,7 @@ WriteLiteral("\';\r\n        var currencySettingUrl = \'");
 WriteLiteral("\';\r\n        var paymentMethodsUrl = \'");
 
             
-            #line 98 "..\..\Views\Shared\_Layout.cshtml"
+            #line 100 "..\..\Views\Shared\_Layout.cshtml"
                              Write(Html.BuildUrlFromExpression<CheckoutController>(c => c.GetPaymentMethods()));
 
             
@@ -499,7 +529,7 @@ WriteLiteral("\';\r\n        var paymentMethodsUrl = \'");
 WriteLiteral("\';\r\n        var newsLetterSubscription = \'");
 
             
-            #line 99 "..\..\Views\Shared\_Layout.cshtml"
+            #line 101 "..\..\Views\Shared\_Layout.cshtml"
                                   Write(Html.BuildUrlFromExpression<AccountController>(c => c.NewsletterSubscription(null)));
 
             
@@ -508,7 +538,7 @@ WriteLiteral("\';\r\n        var newsLetterSubscription = \'");
 WriteLiteral("\';\r\n        var removePromoCode = \'");
 
             
-            #line 100 "..\..\Views\Shared\_Layout.cshtml"
+            #line 102 "..\..\Views\Shared\_Layout.cshtml"
                            Write(Html.BuildUrlFromExpression<BasketController>(c => c.RemovePromoCode("","")));
 
             
@@ -517,7 +547,7 @@ WriteLiteral("\';\r\n        var removePromoCode = \'");
 WriteLiteral("\';\r\n        var forgotPassword = \'");
 
             
-            #line 101 "..\..\Views\Shared\_Layout.cshtml"
+            #line 103 "..\..\Views\Shared\_Layout.cshtml"
                           Write(Html.BuildUrlFromExpression<AccountController>(c => c.ForgotPassword(null)));
 
             
@@ -526,7 +556,7 @@ WriteLiteral("\';\r\n        var forgotPassword = \'");
 WriteLiteral("\';\r\n        var bulkAddproduct = \'");
 
             
-            #line 102 "..\..\Views\Shared\_Layout.cshtml"
+            #line 104 "..\..\Views\Shared\_Layout.cshtml"
                           Write(Html.BuildUrlFromExpression<BasketController>(c=> c.BulkAddProduct(null)));
 
             
@@ -535,7 +565,7 @@ WriteLiteral("\';\r\n        var bulkAddproduct = \'");
 WriteLiteral("\';\r\n        var companyRegisterUrl = \'");
 
             
-            #line 103 "..\..\Views\Shared\_Layout.cshtml"
+            #line 105 "..\..\Views\Shared\_Layout.cshtml"
                               Write(Html.BuildUrlFromExpression<B2BController>(c => c.CreateRequest(null)));
 
             
@@ -544,17 +574,17 @@ WriteLiteral("\';\r\n        var companyRegisterUrl = \'");
 WriteLiteral("\';\r\n        var getDefaultCountryUrl = \'");
 
             
-            #line 104 "..\..\Views\Shared\_Layout.cshtml"
+            #line 106 "..\..\Views\Shared\_Layout.cshtml"
                                 Write(Html.BuildUrlFromExpression<AccountController>(c => c.GetDefaultCountry()));
 
             
             #line default
             #line hidden
-WriteLiteral("\';\r\n          var removeWishList = \'");
+WriteLiteral("\';\r\n        var removeProductFromWishlist = \'");
 
             
-            #line 105 "..\..\Views\Shared\_Layout.cshtml"
-                            Write(Html.BuildUrlFromExpression<CheckoutController>(c => c.RemoveWishList("",false)));
+            #line 107 "..\..\Views\Shared\_Layout.cshtml"
+                                     Write(Html.BuildUrlFromExpression<CheckoutController>(c => c.RemoveWishList("",false)));
 
             
             #line default
@@ -562,8 +592,17 @@ WriteLiteral("\';\r\n          var removeWishList = \'");
 WriteLiteral("\';\r\n        var getAllcurrencySetting = \'");
 
             
-            #line 106 "..\..\Views\Shared\_Layout.cshtml"
+            #line 108 "..\..\Views\Shared\_Layout.cshtml"
                                  Write(Html.BuildUrlFromExpression<HomeController>(c => c.CurrencySettings()));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\';\r\n        var languageSettingUrl = \'");
+
+            
+            #line 109 "..\..\Views\Shared\_Layout.cshtml"
+                              Write(Html.BuildUrlFromExpression<HomeController>(c => c.UpdateLanCultureSetting(null)));
 
             
             #line default
@@ -587,8 +626,9 @@ WriteLiteral(@"';
             companyRegisterUrl: companyRegisterUrl,
             pcaAccessCode: pcaAccessCode,
             getDefaultCountryUrl: getDefaultCountryUrl,
-            removeWishList: removeWishList,
-            getAllcurrencySetting: getAllcurrencySetting
+            removeProductFromWishlist: removeProductFromWishlist,
+            getAllcurrencySetting: getAllcurrencySetting,
+            languageSettingUrl: languageSettingUrl
         });
     </script>
 ");
@@ -596,7 +636,7 @@ WriteLiteral(@"';
 WriteLiteral("    ");
 
             
-            #line 129 "..\..\Views\Shared\_Layout.cshtml"
+            #line 133 "..\..\Views\Shared\_Layout.cshtml"
 Write(Html.GetGlobalSnipptes(SnippetPlacements.BodyEndHtmlTagBefore));
 
             

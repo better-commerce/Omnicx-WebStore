@@ -56,6 +56,8 @@ WriteLiteral("            <p");
 
 WriteLiteral(" class=\"faq-ans\"");
 
+WriteLiteral(" aria-hidden=\"true\"");
+
 WriteLiteral(">\r\n                <strong> ");
 
             

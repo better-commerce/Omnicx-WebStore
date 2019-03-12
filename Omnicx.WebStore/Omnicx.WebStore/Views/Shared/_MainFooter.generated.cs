@@ -242,21 +242,22 @@ WriteLiteral("                                                <ul");
 
 WriteLiteral(" class=\"footer-menu\"");
 
-WriteLiteral(">\r\n");
+WriteLiteral(">\r\n                                                    <li>\r\n");
 
-WriteLiteral("                                                    ");
+WriteLiteral("                                                        ");
 
             
-            #line 84 "..\..\Views\Shared\_MainFooter.cshtml"
-                                               Write(Html.Raw(child1.ContentBody));
+            #line 85 "..\..\Views\Shared\_MainFooter.cshtml"
+                                                   Write(Html.Raw(child1.ContentBody));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n                                                </ul>\r\n");
+WriteLiteral("\r\n                                                    </li>\r\n                    " +
+"                            </ul>\r\n");
 
             
-            #line 86 "..\..\Views\Shared\_MainFooter.cshtml"
+            #line 88 "..\..\Views\Shared\_MainFooter.cshtml"
                                             }
 
             
@@ -269,7 +270,7 @@ WriteLiteral(" class=\"hidden-md hidden-lg hidden-sm\"");
 WriteLiteral(">\r\n                                        </div>\r\n");
 
             
-            #line 89 "..\..\Views\Shared\_MainFooter.cshtml"
+            #line 91 "..\..\Views\Shared\_MainFooter.cshtml"
                                     }
                                 }
 
@@ -279,7 +280,7 @@ WriteLiteral(">\r\n                                        </div>\r\n");
 WriteLiteral("                            </div>\r\n");
 
             
-            #line 92 "..\..\Views\Shared\_MainFooter.cshtml"
+            #line 94 "..\..\Views\Shared\_MainFooter.cshtml"
                         }
                     }
                 }
@@ -290,13 +291,13 @@ WriteLiteral("                            </div>\r\n");
 WriteLiteral("\r\n");
 
             
-            #line 96 "..\..\Views\Shared\_MainFooter.cshtml"
+            #line 98 "..\..\Views\Shared\_MainFooter.cshtml"
             
             
             #line default
             #line hidden
             
-            #line 96 "..\..\Views\Shared\_MainFooter.cshtml"
+            #line 98 "..\..\Views\Shared\_MainFooter.cshtml"
               /*Start Footer email subscription form*/
             
             #line default
@@ -316,7 +317,7 @@ WriteLiteral(" class=\"white newsletter-h3\"");
 WriteLiteral(">");
 
             
-            #line 99 "..\..\Views\Shared\_MainFooter.cshtml"
+            #line 101 "..\..\Views\Shared\_MainFooter.cshtml"
                                                Write(LT("Footer.Label.NewLetterSignUp", "Sign up to our newsletter"));
 
             
@@ -326,11 +327,13 @@ WriteLiteral("</h4>\r\n                    <p");
 
 WriteLiteral(" class=\"white newsletter-p\"");
 
+WriteLiteral(" aria-hidden=\"true\"");
+
 WriteLiteral(">");
 
             
-            #line 100 "..\..\Views\Shared\_MainFooter.cshtml"
-                                             Write(LT("Footer.Label.LatestRange", "For the latest ranges, VIP offers and inspiration"));
+            #line 102 "..\..\Views\Shared\_MainFooter.cshtml"
+                                                                Write(LT("Footer.Label.LatestRange", "For the latest ranges, VIP offers and inspiration"));
 
             
             #line default
@@ -347,11 +350,19 @@ WriteLiteral(">\r\n                        <form");
 
 WriteLiteral(" ng-submit=\"gm.newsLetterSubscription(gm.customerEmail)\"");
 
-WriteLiteral(">\r\n                            <input");
+WriteLiteral(">\r\n                            <label");
+
+WriteLiteral(" for=\"searchFooter\"");
+
+WriteLiteral(" class=\"label-0\"");
+
+WriteLiteral(">Search</label>\r\n                            <input");
 
 WriteLiteral(" type=\"text\"");
 
 WriteLiteral(" ng-model=\"gm.customerEmail\"");
+
+WriteLiteral(" id=\"searchFooter\"");
 
 WriteLiteral(" name=\"search\"");
 
@@ -374,7 +385,7 @@ WriteLiteral(" class=\"blog-search-btn\"");
 WriteLiteral(">");
 
             
-            #line 107 "..\..\Views\Shared\_MainFooter.cshtml"
+            #line 110 "..\..\Views\Shared\_MainFooter.cshtml"
                                                        Write(LT("Footer.Button.SignUp", "Sign Up"));
 
             
@@ -393,9 +404,24 @@ WriteLiteral(" class=\"col-sm-12 no-padding\"");
 
 WriteLiteral(">\r\n                            <p");
 
+WriteLiteral(" aria-hidden=\"true\"");
+
 WriteLiteral(" class=\"text-center\"");
 
-WriteLiteral(">\r\n                                <div ng-cloak");
+WriteLiteral(">\r\n                                <span");
+
+WriteLiteral(" class=\"label-0\"");
+
+WriteLiteral(">");
+
+            
+            #line 118 "..\..\Views\Shared\_MainFooter.cshtml"
+                                                 Write(LT("Footer.Label.EnterValidEmail", "Alert"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</span>\r\n                                <div ng-cloak");
 
 WriteLiteral(" class=\"alert alert-danger newsletteralert\"");
 
@@ -406,7 +432,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                                    ");
 
             
-            #line 116 "..\..\Views\Shared\_MainFooter.cshtml"
+            #line 120 "..\..\Views\Shared\_MainFooter.cshtml"
                                Write(LT("Footer.Label.EnterValidEmail", "Enter a valid email address."));
 
             
@@ -424,7 +450,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                                    ");
 
             
-            #line 119 "..\..\Views\Shared\_MainFooter.cshtml"
+            #line 123 "..\..\Views\Shared\_MainFooter.cshtml"
                                Write(LT("Footer.Label.SubscribeSuccess", "Subscribed successfully."));
 
             
@@ -442,7 +468,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                                    ");
 
             
-            #line 122 "..\..\Views\Shared\_MainFooter.cshtml"
+            #line 126 "..\..\Views\Shared\_MainFooter.cshtml"
                                Write(LT("Footer.Label.AlreadySubscribed", "It seems this email is already registered with us. You can use a different email to subscribe for the newsletter."));
 
             
@@ -453,13 +479,13 @@ WriteLiteral("\r\n                                </div>\r\n                    
 "           </div>\r\n");
 
             
-            #line 129 "..\..\Views\Shared\_MainFooter.cshtml"
+            #line 133 "..\..\Views\Shared\_MainFooter.cshtml"
             
             
             #line default
             #line hidden
             
-            #line 129 "..\..\Views\Shared\_MainFooter.cshtml"
+            #line 133 "..\..\Views\Shared\_MainFooter.cshtml"
               /*End Footer email subscription form*/
             
             #line default

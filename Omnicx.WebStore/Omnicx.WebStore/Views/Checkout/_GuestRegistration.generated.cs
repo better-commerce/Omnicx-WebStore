@@ -118,9 +118,7 @@ WriteLiteral(">&times;</button>\r\n                <h4");
 
 WriteLiteral(" class=\"modal-title\"");
 
-WriteLiteral(" id=\"Login\"");
-
-WriteLiteral(">Guest Checkout Options</h4>\r\n            </div>\r\n            <div");
+WriteLiteral(" >Guest Checkout Options</h4>\r\n            </div>\r\n            <div");
 
 WriteLiteral(" class=\"modal-body\"");
 
@@ -266,14 +264,14 @@ WriteLiteral(">");
             #line hidden
 WriteLiteral("<a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2917), Tuple.Create("\"", 2955)
+WriteAttribute("href", Tuple.Create(" href=\"", 2907), Tuple.Create("\"", 2945)
             
             #line 47 "..\..\Views\Checkout\_GuestRegistration.cshtml"
-                                                        , Tuple.Create(Tuple.Create("", 2924), Tuple.Create<System.Object, System.Int32>(Url.Action("Contact", "pages")
+                                                        , Tuple.Create(Tuple.Create("", 2914), Tuple.Create<System.Object, System.Int32>(Url.Action("Contact", "pages")
             
             #line default
             #line hidden
-, 2924), false)
+, 2914), false)
 );
 
 WriteLiteral(">");

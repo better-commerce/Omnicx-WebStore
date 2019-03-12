@@ -85,6 +85,9 @@
             <li ng-class="{'active-ac' :'@ViewBag.Title'=='Change Password'}">
                 <a href="@Url.Action("PasswordChange" , "account")" class="color-black"><i class="fa fa-key"></i>@LT("Global.Buttons.PasswordChange", "Change Password")</a>
             </li>
+            <li ng-class="{'active-ac' :'@ViewBag.Title'== 'Personality Quiz' }">
+                <a href="@Url.Action("surveyresponse", "account")" class="color-black"><i class="fa fa-user"></i>@LT("MyAccount.Text.PersonalityQuiz", "Personality Quiz")</a>
+            </li>
             <li>
                 <a href="@Url.Action("logout", "account")" class="color-black"><i class="fa fa-sign-out"></i>@LT("Global.Buttons.Logout", "LogOut")</a>
             </li>

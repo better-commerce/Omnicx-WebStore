@@ -101,9 +101,11 @@ WriteLiteral(" ng-src=\"{{product.image==\'\'?DEFAULT_IMAGE_URL:product.images[0
 
 WriteLiteral(" alt=\"\"");
 
-WriteLiteral("  class=\"image1\"");
+WriteLiteral("  class=\"image1 omni-img\"");
 
 WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
+
+WriteLiteral(" sizes=\"(min-width: 768px) 540px, 100vw\"");
 
 WriteLiteral(">\r\n        </a>\r\n    </div>\r\n    <div");
 

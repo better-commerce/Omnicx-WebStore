@@ -1,13 +1,13 @@
 ﻿@{
-/*
-    Name: Order Confirmation
-    Purpose: Show Order Overview after complete the order
-    Structure: /Views/Checkout/OrderConfirmation.cshtml
-    Contains (Partial Views Used):
-        a-/Views/Shared/_OpcLayout.cshtml                   (For Base Structure)
+    /*
+        Name: Order Confirmation
+        Purpose: Show Order Overview after complete the order
+        Structure: /Views/Checkout/OrderConfirmation.cshtml
+        Contains (Partial Views Used):
+            a-/Views/Shared/_OpcLayout.cshtml                   (For Base Structure)
 
-    Contained In (Where we Use this View):
-    */
+        Contained In (Where we Use this View):
+        */
 }
 @inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Commerce.OrderModel>
 @{
@@ -19,75 +19,154 @@
     <p class="bg-success col-lg-12 confirmation-msg margin-top-md">@LT("OrderConfirmation.Label.Order", "Order") <strong>@Model.OrderNo</strong> @LT("OrderConfirmation.Label.SuccessfullyPlaced", "has been successfully placed and will be with you shortly.")</p>
     <div class="col-md-8 col-sm-12 col-xs-12 whiteContainer" id="customer-order">
         <div class="table-responsive">
-            <table class="table no-margin-bottom basket-table">
-                <thead>
-                    <tr>
-                        <th colspan="2">@LT("MyAccount.Text.Product", "Product")</th>
-                        <th class="text-right">@LT("MyAccount.Text.Qty", "Qty")</th>
-                        <th class="text-right">@LT("MyAccount.Text.Price", "Unit Price")</th>
-                        <th class="text-right">@LT("MyAccount.Text.Discount", "Discount")</th>
-                        <th class="text-right">@LT("MyAccount.Text.GrandTotal", "Grand Total")</th>
-                    </tr>
-                </thead>
-                <tbody id="cart">
-                    @foreach (var item in @Model.Items)
-                    {
-                        var FinalAmount = item.TotalPrice.Raw.WithTax - item.DiscountAmt.Raw.WithTax;
+            @if (Model.Items.Any(x => x.IsSubscription == false))
+            {
+                <table class="table no-margin-bottom basket-table">
+                    <thead>
                         <tr>
-                            <td>
-                                <a ng-href="/@item.Slug">
-                                    <img src="@item.Image" alt="OCX" onerror="this.src = DEFAULT_IMAGE_URL">
-                                </a>
-                            </td>
-                            <td>
-                                <a class="basket-item" ng-href="/@item.Slug">@item.Name</a>
-                            </td>
-                            <td align="right">@item.Qty</td>
-                            <td align="right">@item.Price.Formatted.WithTax</td>
-                            <td align="right">@item.DiscountAmt.Formatted.WithTax</td>
-                            <td align="right">@item.TotalPrice.Formatted.WithoutTax</td>
+                            <th colspan="2">@LT("MyAccount.Text.Product", "Product")</th>
+                            <th class="text-right">@LT("MyAccount.Text.Qty", "Qty")</th>
+                            <th class="text-right">@LT("MyAccount.Text.Price", "Unit Price")</th>
+                            <th class="text-right">@LT("MyAccount.Text.Discount", "Discount")</th>
+                            <th class="text-right">@LT("MyAccount.Text.GrandTotal", "Grand Total")</th>
                         </tr>
-                    }
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody id="cart">
+                        @foreach (var item in @Model.Items)
+                        {
+                            var FinalAmount = item.TotalPrice.Raw.WithTax - item.DiscountAmt.Raw.WithTax;
+                            if (item != null && !item.IsSubscription)
+                            {
+                                <tr>
+                                    <td>
+                                        <a ng-href="/@item.Slug">
+                                            <img ng-src="@item.Image" alt="OCX" class="omni-img" onerror="this.src = DEFAULT_IMAGE_URL" sizes="(min-width: 768px) 540px, 100vw">
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a class="basket-item" ng-href="/@item.Slug">@item.Name</a>
+                                    </td>
+                                    <td align="right">@item.Qty</td>
+                                    <td align="right">@item.Price.Formatted.WithTax</td>
+                                    <td align="right">@item.DiscountAmt.Formatted.WithTax</td>
+                                    <td align="right">@item.TotalPrice.Formatted.WithoutTax</td>
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+                </table>
+            }
+            @if (Model.HasSubscription)
+            {
+                <table class="table no-margin-bottom basket-table">
+                    <thead>
+                        <tr>
+                            <th colspan="2">@LT("MyAccount.Text.Product", "Product")</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cart">
+                        @foreach (var item in @Model.Items)
+                        {
+                            var FinalAmount = item.TotalPrice.Raw.WithTax - item.DiscountAmt.Raw.WithTax;
+                            if (item.IsSubscription)
+                            {
+                                <tr>
+                                    <td>
+                                        <a ng-href="/@item.Slug">
+                                            <img ng-src="@item.Image" alt="OCX" class="omni-img" onerror="this.src = DEFAULT_IMAGE_URL" sizes="(min-width: 768px) 540px, 100vw">
+                                        </a>
+                                        <span class="label label-primary label-subscription">Subscription</span>
+                                    </td>
+                                    <td>
+                                        <a class="basket-item" ng-href="/@item.Slug">@item.Name</a>
+                                    </td>
+
+
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+                </table>
+            }
         </div>
     </div>
-    <div class="col-md-4 col-sm-12 col-xs-12 pull-left">
-        <div class="whiteContainer no-padding">
-            <div class="summery-box" id="order-summary">
-                <div class="box-header">
-                    <h3><i class="fa fa-shopping-basket"></i> @LT("Checkout.Label.OrderSummary", "Order Summary")</h3>
-                </div>
-                <div class="table-responsive">
-                    <table class="table no-margin-top">
-                        <tbody>
-                            <tr>
-                                <td>@LT("MyAccount.Text.OrderSubtotal", "OrderSubtotal")</td>
-                                <th class="text-right">@Model.SubTotal.Formatted.WithoutTax</th>
-                            </tr>
-                            <tr>
-                                <td>@LT("Myaccount.Text.ShippingCharge", "Shipping and handling")</td>
-                                <th class="text-right">@Model.ShippingCharge.Formatted.WithoutTax</th>
-                            </tr>
-                            <tr>
-                                <td>@LT("MyAccount.Text.Discount", "Discount")</td>
-                                <th class="text-right"> @Model.Discount.Formatted.WithTax</th>
-                            </tr>
-                            <tr>
-                                <td>@LT("MyAccount.Text.Tax", "Tax")</td>
-                                <th class="text-right">@Model.GrandTotal.Formatted.Tax</th>
-                            </tr>
-                            <tr class="total">
-                                <td>@LT("MyAccount.Text.Amount", "Total")</td>
-                                <th class="text-right">@Model.GrandTotal.Formatted.WithTax</th>
-                            </tr>
-                        </tbody>
-                    </table>
+    @if (Model.Items.Any(x => x.IsSubscription == false))
+    {
+        <div class="col-md-4 col-sm-12 col-xs-12 pull-left">
+            <div class="whiteContainer no-padding">
+                <div class="summery-box" id="order-summary">
+                    <div class="box-header">
+                        <h3><i class="fa fa-shopping-basket"></i> @LT("Checkout.Label.OrderSummary", "Order Summary")</h3>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table no-margin-top">
+                            <tbody>
+                                <tr>
+                                    <td>@LT("MyAccount.Text.OrderSubtotal", "OrderSubtotal")</td>
+                                    <th class="text-right">@Model.SubTotal.Formatted.WithoutTax</th>
+                                </tr>
+                                <tr>
+                                    <td>@LT("Myaccount.Text.ShippingCharge", "Shipping and handling")</td>
+                                    <th class="text-right">@Model.ShippingCharge.Formatted.WithoutTax</th>
+                                </tr>
+                                <tr>
+                                    <td>@LT("MyAccount.Text.Discount", "Discount")</td>
+                                    <th class="text-right"> @Model.Discount.Formatted.WithTax</th>
+                                </tr>
+                                <tr>
+                                    <td>@LT("MyAccount.Text.Tax", "Tax")</td>
+                                    <th class="text-right">@Model.GrandTotal.Formatted.Tax</th>
+                                </tr>
+                                <tr class="total">
+                                    <td>@LT("MyAccount.Text.Amount", "Total")</td>
+                                    <th class="text-right">@Model.GrandTotal.Formatted.WithTax</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
                 </div>
             </div>
         </div>
-    </div>
+    }
+    else if (Model.HasSubscription && Model.Items.All(x=>x.IsSubscription==true))
+    {
+        <div class="col-md-4 col-sm-12 col-xs-12 pull-left">
+            <div class="whiteContainer no-padding">
+                <div class="summery-box" id="order-summary">
+                    <div class="box-header">
+                        <h3><i class="fa fa-shopping-basket"></i> @LT("Checkout.Label.OrderSummary", "Subscription Summary")</h3>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table no-margin-top">
+                            <tbody>
+                                <tr>
+                                    <td>@LT("Myaccount.Text.ShippingCharge", "Shipping and handling")</td>
+                                    <th class="text-right">@Model.ShippingCharge.Formatted.WithoutTax</th>
+                                </tr>
+                                <tr>
+                                    <td>@LT("MyAccount.Text.Tax", "Tax")</td>
+                                    <th class="text-right">@Model.GrandTotal.Formatted.Tax</th>
+                                </tr>
+                                <tr class="total">
+                                    <td>@LT("MyAccount.Text.Amount", "Total")</td>
+                                    <th class="text-right">@Model.GrandTotal.Formatted.WithTax</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    }
 </div>
+   
 <div class="row addresses whiteContainer">
     <div class="col-sm-6 billing-box">
         <h2 class="billing-h2">@LT("MyAccount.Text.BillingAdd", "Billing Address")</h2>

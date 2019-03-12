@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
     /* Initialize the main module */
-    var Xapp = angular.module('btApp', ['bw.paging', 'btAutoComplete', 'rzModule', 'CapturePlus']);
+    var Xapp = angular.module('btApp', ['bw.paging', 'btAutoComplete', 'rzModule', 'CapturePlus','btRecommendation']);
 
     window.app = Xapp;
     Xapp.constant('BASE_URL', window.location.origin);

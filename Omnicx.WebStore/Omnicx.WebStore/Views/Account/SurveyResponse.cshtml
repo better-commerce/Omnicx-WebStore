@@ -1,0 +1,84 @@
+﻿@using Microsoft.Web.Mvc
+@using Omnicx.WebStore.Core.Controllers
+@using Omnicx.WebStore.Framework.Helpers
+@inherits  Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage< List <Omnicx.WebStore.Models.Site.SurveyAnswerModel>>
+@{
+    ViewBag.Title = @LT("MyAccount.Text.PersonalityQuiz", "Personality Quiz");
+}
+    
+<section class="container dataContainer m--top-60" ng-controller="accountCtrl as am">
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="/">@LT("MyAccount.Links.Home", "Home")</a>
+                </li>
+                <li>@LT("MyAccount.Text.PersonalityQuiz", "Personality Quiz")</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 visible-xs" id="exTab1">
+            @Html.Partial("~/Views/Account/_MobileSideNav.cshtml")
+        </div>
+        <div class="col-md-3 col-sm-4 col-xs-12 hidden-xs">
+            @Html.Partial("~/Views/Account/_SideNav.cshtml")
+        </div>
+        <div class="col-md-9 col-sm-8 col-xs-12" id="customer-Quiz">
+            <table class="table table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>@LT("MyAccount.Text.Name", "Name")</th>                       
+                        <th class="text-right"></th>
+                    </tr>
+                    <tr ng-repeat="survey in am.model">
+                        <td ng-bind="survey.surveyName"></td>
+                        <td>
+                            <a href="" ng-click="am.showSurveyResponse(survey)" title="View Answers"><i class="fa fa-eye color-black"></i></a>
+                        </td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+ </div>
+    <div class="modal fade in" id="showeSurvey" role="dialog" aria-labelledby="showeSurvey" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 class="modal-title" ng-bind="am.survey.surveyName"></h3>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-12 col-xs-12 table-responsive form-group">                          
+                            <table class="table table-hover table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th ng-repeat="(key, value) in am.surveyAns[0] track by $index">{{key}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="(key, value) in am.surveyAns  track by $index">
+                                        <td ng-repeat="(key, value) in value  track by $index">
+                                            {{value}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div> 
+                <div class="modal-footer" aria-hidden="true"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+    <script>       
+        window.app.constant('accountConfig', {
+           
+        });
+        window.app.constant('model', @Html.JsonFor(Model));
+    </script>
+}

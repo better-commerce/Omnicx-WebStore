@@ -130,6 +130,8 @@ WriteLiteral(" class=\"img-responsive\"");
 
 WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
+WriteLiteral(" sizes=\"(min-width: 768px) 540px, 100vw\"");
+
 WriteLiteral(">\r\n                        </a>\r\n                    </div>\r\n                    " +
 "<div>\r\n                        <a");
 

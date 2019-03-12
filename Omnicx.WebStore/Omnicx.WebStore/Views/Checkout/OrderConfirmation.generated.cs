@@ -43,15 +43,15 @@ namespace ASP
             
             #line 1 "..\..\Views\Checkout\OrderConfirmation.cshtml"
   
-/*
-    Name: Order Confirmation
-    Purpose: Show Order Overview after complete the order
-    Structure: /Views/Checkout/OrderConfirmation.cshtml
-    Contains (Partial Views Used):
-        a-/Views/Shared/_OpcLayout.cshtml                   (For Base Structure)
+    /*
+        Name: Order Confirmation
+        Purpose: Show Order Overview after complete the order
+        Structure: /Views/Checkout/OrderConfirmation.cshtml
+        Contains (Partial Views Used):
+            a-/Views/Shared/_OpcLayout.cshtml                   (For Base Structure)
 
-    Contained In (Where we Use this View):
-    */
+        Contained In (Where we Use this View):
+        */
 
             
             #line default
@@ -125,51 +125,41 @@ WriteLiteral(">\r\n        <div");
 
 WriteLiteral(" class=\"table-responsive\"");
 
-WriteLiteral(">\r\n            <table");
+WriteLiteral(">\r\n");
+
+            
+            #line 22 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+            
+            
+            #line default
+            #line hidden
+            
+            #line 22 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+             if (Model.Items.Any(x => x.IsSubscription == false))
+            {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                <table");
 
 WriteLiteral(" class=\"table no-margin-bottom basket-table\"");
 
-WriteLiteral(">\r\n                <thead>\r\n                    <tr>\r\n                        <th" +
-"");
+WriteLiteral(">\r\n                    <thead>\r\n                        <tr>\r\n                   " +
+"         <th");
 
 WriteLiteral(" colspan=\"2\"");
 
 WriteLiteral(">");
 
             
-            #line 25 "..\..\Views\Checkout\OrderConfirmation.cshtml"
-                                   Write(LT("MyAccount.Text.Product", "Product"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</th>\r\n                        <th");
-
-WriteLiteral(" class=\"text-right\"");
-
-WriteLiteral(">");
-
-            
-            #line 26 "..\..\Views\Checkout\OrderConfirmation.cshtml"
-                                          Write(LT("MyAccount.Text.Qty", "Qty"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</th>\r\n                        <th");
-
-WriteLiteral(" class=\"text-right\"");
-
-WriteLiteral(">");
-
-            
             #line 27 "..\..\Views\Checkout\OrderConfirmation.cshtml"
-                                          Write(LT("MyAccount.Text.Price", "Unit Price"));
+                                       Write(LT("MyAccount.Text.Product", "Product"));
 
             
             #line default
             #line hidden
-WriteLiteral("</th>\r\n                        <th");
+WriteLiteral("</th>\r\n                            <th");
 
 WriteLiteral(" class=\"text-right\"");
 
@@ -177,12 +167,12 @@ WriteLiteral(">");
 
             
             #line 28 "..\..\Views\Checkout\OrderConfirmation.cshtml"
-                                          Write(LT("MyAccount.Text.Discount", "Discount"));
+                                              Write(LT("MyAccount.Text.Qty", "Qty"));
 
             
             #line default
             #line hidden
-WriteLiteral("</th>\r\n                        <th");
+WriteLiteral("</th>\r\n                            <th");
 
 WriteLiteral(" class=\"text-right\"");
 
@@ -190,72 +180,68 @@ WriteLiteral(">");
 
             
             #line 29 "..\..\Views\Checkout\OrderConfirmation.cshtml"
-                                          Write(LT("MyAccount.Text.GrandTotal", "Grand Total"));
+                                              Write(LT("MyAccount.Text.Price", "Unit Price"));
 
             
             #line default
             #line hidden
-WriteLiteral("</th>\r\n                    </tr>\r\n                </thead>\r\n                <tbod" +
-"y");
+WriteLiteral("</th>\r\n                            <th");
+
+WriteLiteral(" class=\"text-right\"");
+
+WriteLiteral(">");
+
+            
+            #line 30 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+                                              Write(LT("MyAccount.Text.Discount", "Discount"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</th>\r\n                            <th");
+
+WriteLiteral(" class=\"text-right\"");
+
+WriteLiteral(">");
+
+            
+            #line 31 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+                                              Write(LT("MyAccount.Text.GrandTotal", "Grand Total"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</th>\r\n                        </tr>\r\n                    </thead>\r\n             " +
+"       <tbody");
 
 WriteLiteral(" id=\"cart\"");
 
 WriteLiteral(">\r\n");
 
             
-            #line 33 "..\..\Views\Checkout\OrderConfirmation.cshtml"
-                    
+            #line 35 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+                        
             
             #line default
             #line hidden
             
-            #line 33 "..\..\Views\Checkout\OrderConfirmation.cshtml"
-                     foreach (var item in @Model.Items)
-                    {
-                        var FinalAmount = item.TotalPrice.Raw.WithTax - item.DiscountAmt.Raw.WithTax;
+            #line 35 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+                         foreach (var item in @Model.Items)
+                        {
+                            var FinalAmount = item.TotalPrice.Raw.WithTax - item.DiscountAmt.Raw.WithTax;
+                            if (item != null && !item.IsSubscription)
+                            {
 
             
             #line default
             #line hidden
-WriteLiteral("                        <tr>\r\n                            <td>\r\n                 " +
-"               <a");
-
-WriteAttribute("ng-href", Tuple.Create(" ng-href=\"", 2040), Tuple.Create("\"", 2061)
-, Tuple.Create(Tuple.Create("", 2050), Tuple.Create("/", 2050), true)
-            
-            #line 38 "..\..\Views\Checkout\OrderConfirmation.cshtml"
-, Tuple.Create(Tuple.Create("", 2051), Tuple.Create<System.Object, System.Int32>(item.Slug
-            
-            #line default
-            #line hidden
-, 2051), false)
-);
-
-WriteLiteral(">\r\n                                    <img");
-
-WriteAttribute("src", Tuple.Create(" src=\"", 2105), Tuple.Create("\"", 2122)
-            
-            #line 39 "..\..\Views\Checkout\OrderConfirmation.cshtml"
-, Tuple.Create(Tuple.Create("", 2111), Tuple.Create<System.Object, System.Int32>(item.Image
-            
-            #line default
-            #line hidden
-, 2111), false)
-);
-
-WriteLiteral(" alt=\"OCX\"");
-
-WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
-
-WriteLiteral(">\r\n                                </a>\r\n                            </td>\r\n     " +
-"                       <td>\r\n                                <a");
-
-WriteLiteral(" class=\"basket-item\"");
+WriteLiteral("                                <tr>\r\n                                    <td>\r\n " +
+"                                       <a");
 
 WriteAttribute("ng-href", Tuple.Create(" ng-href=\"", 2336), Tuple.Create("\"", 2357)
 , Tuple.Create(Tuple.Create("", 2346), Tuple.Create("/", 2346), true)
             
-            #line 43 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+            #line 42 "..\..\Views\Checkout\OrderConfirmation.cshtml"
 , Tuple.Create(Tuple.Create("", 2347), Tuple.Create<System.Object, System.Int32>(item.Slug
             
             #line default
@@ -263,237 +249,572 @@ WriteAttribute("ng-href", Tuple.Create(" ng-href=\"", 2336), Tuple.Create("\"", 
 , 2347), false)
 );
 
-WriteLiteral(">");
+WriteLiteral(">\r\n                                            <img");
 
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 2409), Tuple.Create("\"", 2429)
             
             #line 43 "..\..\Views\Checkout\OrderConfirmation.cshtml"
-                                                                        Write(item.Name);
-
+, Tuple.Create(Tuple.Create("", 2418), Tuple.Create<System.Object, System.Int32>(item.Image
             
             #line default
             #line hidden
-WriteLiteral("</a>\r\n                            </td>\r\n                            <td");
+, 2418), false)
+);
 
-WriteLiteral(" align=\"right\"");
+WriteLiteral(" alt=\"OCX\"");
 
-WriteLiteral(">");
+WriteLiteral(" class=\"omni-img\"");
 
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
+
+WriteLiteral(" sizes=\"(min-width: 768px) 540px, 100vw\"");
+
+WriteLiteral(">\r\n                                        </a>\r\n                                " +
+"    </td>\r\n                                    <td>\r\n                           " +
+"             <a");
+
+WriteLiteral(" class=\"basket-item\"");
+
+WriteAttribute("ng-href", Tuple.Create(" ng-href=\"", 2732), Tuple.Create("\"", 2753)
+, Tuple.Create(Tuple.Create("", 2742), Tuple.Create("/", 2742), true)
             
-            #line 45 "..\..\Views\Checkout\OrderConfirmation.cshtml"
-                                         Write(item.Qty);
-
+            #line 47 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+, Tuple.Create(Tuple.Create("", 2743), Tuple.Create<System.Object, System.Int32>(item.Slug
             
             #line default
             #line hidden
-WriteLiteral("</td>\r\n                            <td");
-
-WriteLiteral(" align=\"right\"");
-
-WriteLiteral(">");
-
-            
-            #line 46 "..\..\Views\Checkout\OrderConfirmation.cshtml"
-                                         Write(item.Price.Formatted.WithTax);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</td>\r\n                            <td");
-
-WriteLiteral(" align=\"right\"");
+, 2743), false)
+);
 
 WriteLiteral(">");
 
             
             #line 47 "..\..\Views\Checkout\OrderConfirmation.cshtml"
-                                         Write(item.DiscountAmt.Formatted.WithTax);
+                                                                                Write(item.Name);
 
             
             #line default
             #line hidden
-WriteLiteral("</td>\r\n                            <td");
+WriteLiteral("</a>\r\n                                    </td>\r\n                                " +
+"    <td");
 
 WriteLiteral(" align=\"right\"");
 
 WriteLiteral(">");
 
             
-            #line 48 "..\..\Views\Checkout\OrderConfirmation.cshtml"
-                                         Write(item.TotalPrice.Formatted.WithoutTax);
+            #line 49 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+                                                 Write(item.Qty);
 
             
             #line default
             #line hidden
-WriteLiteral("</td>\r\n                        </tr>\r\n");
+WriteLiteral("</td>\r\n                                    <td");
+
+WriteLiteral(" align=\"right\"");
+
+WriteLiteral(">");
 
             
             #line 50 "..\..\Views\Checkout\OrderConfirmation.cshtml"
-                    }
+                                                 Write(item.Price.Formatted.WithTax);
 
             
             #line default
             #line hidden
-WriteLiteral("                </tbody>\r\n            </table>\r\n        </div>\r\n    </div>\r\n    <" +
-"div");
+WriteLiteral("</td>\r\n                                    <td");
+
+WriteLiteral(" align=\"right\"");
+
+WriteLiteral(">");
+
+            
+            #line 51 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+                                                 Write(item.DiscountAmt.Formatted.WithTax);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</td>\r\n                                    <td");
+
+WriteLiteral(" align=\"right\"");
+
+WriteLiteral(">");
+
+            
+            #line 52 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+                                                 Write(item.TotalPrice.Formatted.WithoutTax);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</td>\r\n                                </tr>\r\n");
+
+            
+            #line 54 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+                            }
+                        }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n                    </tbody>\r\n                </table>\r\n");
+
+            
+            #line 59 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+            }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("            ");
+
+            
+            #line 60 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+             if (Model.HasSubscription)
+            {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                <table");
+
+WriteLiteral(" class=\"table no-margin-bottom basket-table\"");
+
+WriteLiteral(">\r\n                    <thead>\r\n                        <tr>\r\n                   " +
+"         <th");
+
+WriteLiteral(" colspan=\"2\"");
+
+WriteLiteral(">");
+
+            
+            #line 65 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+                                       Write(LT("MyAccount.Text.Product", "Product"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</th>\r\n                        </tr>\r\n                    </thead>\r\n             " +
+"       <tbody");
+
+WriteLiteral(" id=\"cart\"");
+
+WriteLiteral(">\r\n");
+
+            
+            #line 69 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+                        
+            
+            #line default
+            #line hidden
+            
+            #line 69 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+                         foreach (var item in @Model.Items)
+                        {
+                            var FinalAmount = item.TotalPrice.Raw.WithTax - item.DiscountAmt.Raw.WithTax;
+                            if (item.IsSubscription)
+                            {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                <tr>\r\n                                    <td>\r\n " +
+"                                       <a");
+
+WriteAttribute("ng-href", Tuple.Create(" ng-href=\"", 4115), Tuple.Create("\"", 4136)
+, Tuple.Create(Tuple.Create("", 4125), Tuple.Create("/", 4125), true)
+            
+            #line 76 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+, Tuple.Create(Tuple.Create("", 4126), Tuple.Create<System.Object, System.Int32>(item.Slug
+            
+            #line default
+            #line hidden
+, 4126), false)
+);
+
+WriteLiteral(">\r\n                                            <img");
+
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 4188), Tuple.Create("\"", 4208)
+            
+            #line 77 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+, Tuple.Create(Tuple.Create("", 4197), Tuple.Create<System.Object, System.Int32>(item.Image
+            
+            #line default
+            #line hidden
+, 4197), false)
+);
+
+WriteLiteral(" alt=\"OCX\"");
+
+WriteLiteral(" class=\"omni-img\"");
+
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
+
+WriteLiteral(" sizes=\"(min-width: 768px) 540px, 100vw\"");
+
+WriteLiteral(">\r\n                                        </a>\r\n                                " +
+"        <span");
+
+WriteLiteral(" class=\"label label-primary label-subscription\"");
+
+WriteLiteral(">Subscription</span>\r\n                                    </td>\r\n                " +
+"                    <td>\r\n                                        <a");
+
+WriteLiteral(" class=\"basket-item\"");
+
+WriteAttribute("ng-href", Tuple.Create(" ng-href=\"", 4625), Tuple.Create("\"", 4646)
+, Tuple.Create(Tuple.Create("", 4635), Tuple.Create("/", 4635), true)
+            
+            #line 82 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+, Tuple.Create(Tuple.Create("", 4636), Tuple.Create<System.Object, System.Int32>(item.Slug
+            
+            #line default
+            #line hidden
+, 4636), false)
+);
+
+WriteLiteral(">");
+
+            
+            #line 82 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+                                                                                Write(item.Name);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</a>\r\n                                    </td>\r\n\r\n\r\n                            " +
+"    </tr>\r\n");
+
+            
+            #line 87 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+                            }
+                        }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n                    </tbody>\r\n                </table>\r\n");
+
+            
+            #line 92 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+            }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("        </div>\r\n    </div>\r\n");
+
+            
+            #line 95 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+    
+            
+            #line default
+            #line hidden
+            
+            #line 95 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+     if (Model.Items.Any(x => x.IsSubscription == false))
+    {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("        <div");
 
 WriteLiteral(" class=\"col-md-4 col-sm-12 col-xs-12 pull-left\"");
 
-WriteLiteral(">\r\n        <div");
+WriteLiteral(">\r\n            <div");
 
 WriteLiteral(" class=\"whiteContainer no-padding\"");
 
-WriteLiteral(">\r\n            <div");
+WriteLiteral(">\r\n                <div");
 
 WriteLiteral(" class=\"summery-box\"");
 
 WriteLiteral(" id=\"order-summary\"");
 
-WriteLiteral(">\r\n                <div");
+WriteLiteral(">\r\n                    <div");
 
 WriteLiteral(" class=\"box-header\"");
 
-WriteLiteral(">\r\n                    <h3><i");
+WriteLiteral(">\r\n                        <h3><i");
 
 WriteLiteral(" class=\"fa fa-shopping-basket\"");
 
 WriteLiteral("></i> ");
 
             
-            #line 59 "..\..\Views\Checkout\OrderConfirmation.cshtml"
-                                                         Write(LT("Checkout.Label.OrderSummary", "Order Summary"));
+            #line 101 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+                                                             Write(LT("Checkout.Label.OrderSummary", "Order Summary"));
 
             
             #line default
             #line hidden
-WriteLiteral("</h3>\r\n                </div>\r\n                <div");
+WriteLiteral("</h3>\r\n                    </div>\r\n\r\n                    <div");
 
 WriteLiteral(" class=\"table-responsive\"");
 
-WriteLiteral(">\r\n                    <table");
+WriteLiteral(">\r\n                        <table");
 
 WriteLiteral(" class=\"table no-margin-top\"");
 
-WriteLiteral(">\r\n                        <tbody>\r\n                            <tr>\r\n           " +
-"                     <td>");
+WriteLiteral(">\r\n                            <tbody>\r\n                                <tr>\r\n   " +
+"                                 <td>");
 
             
-            #line 65 "..\..\Views\Checkout\OrderConfirmation.cshtml"
-                               Write(LT("MyAccount.Text.OrderSubtotal", "OrderSubtotal"));
+            #line 108 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+                                   Write(LT("MyAccount.Text.OrderSubtotal", "OrderSubtotal"));
 
             
             #line default
             #line hidden
-WriteLiteral("</td>\r\n                                <th");
+WriteLiteral("</td>\r\n                                    <th");
 
 WriteLiteral(" class=\"text-right\"");
 
 WriteLiteral(">");
 
             
-            #line 66 "..\..\Views\Checkout\OrderConfirmation.cshtml"
-                                                  Write(Model.SubTotal.Formatted.WithoutTax);
+            #line 109 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+                                                      Write(Model.SubTotal.Formatted.WithoutTax);
 
             
             #line default
             #line hidden
-WriteLiteral("</th>\r\n                            </tr>\r\n                            <tr>\r\n     " +
-"                           <td>");
+WriteLiteral("</th>\r\n                                </tr>\r\n                                <tr" +
+">\r\n                                    <td>");
 
             
-            #line 69 "..\..\Views\Checkout\OrderConfirmation.cshtml"
-                               Write(LT("Myaccount.Text.ShippingCharge", "Shipping and handling"));
+            #line 112 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+                                   Write(LT("Myaccount.Text.ShippingCharge", "Shipping and handling"));
 
             
             #line default
             #line hidden
-WriteLiteral("</td>\r\n                                <th");
+WriteLiteral("</td>\r\n                                    <th");
 
 WriteLiteral(" class=\"text-right\"");
 
 WriteLiteral(">");
 
             
-            #line 70 "..\..\Views\Checkout\OrderConfirmation.cshtml"
-                                                  Write(Model.ShippingCharge.Formatted.WithoutTax);
+            #line 113 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+                                                      Write(Model.ShippingCharge.Formatted.WithoutTax);
 
             
             #line default
             #line hidden
-WriteLiteral("</th>\r\n                            </tr>\r\n                            <tr>\r\n     " +
-"                           <td>");
+WriteLiteral("</th>\r\n                                </tr>\r\n                                <tr" +
+">\r\n                                    <td>");
 
             
-            #line 73 "..\..\Views\Checkout\OrderConfirmation.cshtml"
-                               Write(LT("MyAccount.Text.Discount", "Discount"));
+            #line 116 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+                                   Write(LT("MyAccount.Text.Discount", "Discount"));
 
             
             #line default
             #line hidden
-WriteLiteral("</td>\r\n                                <th");
+WriteLiteral("</td>\r\n                                    <th");
 
 WriteLiteral(" class=\"text-right\"");
 
 WriteLiteral("> ");
 
             
-            #line 74 "..\..\Views\Checkout\OrderConfirmation.cshtml"
-                                                   Write(Model.Discount.Formatted.WithTax);
+            #line 117 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+                                                       Write(Model.Discount.Formatted.WithTax);
 
             
             #line default
             #line hidden
-WriteLiteral("</th>\r\n                            </tr>\r\n                            <tr>\r\n     " +
-"                           <td>");
+WriteLiteral("</th>\r\n                                </tr>\r\n                                <tr" +
+">\r\n                                    <td>");
 
             
-            #line 77 "..\..\Views\Checkout\OrderConfirmation.cshtml"
-                               Write(LT("MyAccount.Text.Tax", "Tax"));
+            #line 120 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+                                   Write(LT("MyAccount.Text.Tax", "Tax"));
 
             
             #line default
             #line hidden
-WriteLiteral("</td>\r\n                                <th");
+WriteLiteral("</td>\r\n                                    <th");
 
 WriteLiteral(" class=\"text-right\"");
 
 WriteLiteral(">");
 
             
-            #line 78 "..\..\Views\Checkout\OrderConfirmation.cshtml"
-                                                  Write(Model.GrandTotal.Formatted.Tax);
+            #line 121 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+                                                      Write(Model.GrandTotal.Formatted.Tax);
 
             
             #line default
             #line hidden
-WriteLiteral("</th>\r\n                            </tr>\r\n                            <tr");
+WriteLiteral("</th>\r\n                                </tr>\r\n                                <tr" +
+"");
 
 WriteLiteral(" class=\"total\"");
 
-WriteLiteral(">\r\n                                <td>");
+WriteLiteral(">\r\n                                    <td>");
 
             
-            #line 81 "..\..\Views\Checkout\OrderConfirmation.cshtml"
-                               Write(LT("MyAccount.Text.Amount", "Total"));
+            #line 124 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+                                   Write(LT("MyAccount.Text.Amount", "Total"));
 
             
             #line default
             #line hidden
-WriteLiteral("</td>\r\n                                <th");
+WriteLiteral("</td>\r\n                                    <th");
 
 WriteLiteral(" class=\"text-right\"");
 
 WriteLiteral(">");
 
             
-            #line 82 "..\..\Views\Checkout\OrderConfirmation.cshtml"
-                                                  Write(Model.GrandTotal.Formatted.WithTax);
+            #line 125 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+                                                      Write(Model.GrandTotal.Formatted.WithTax);
 
             
             #line default
             #line hidden
-WriteLiteral("</th>\r\n                            </tr>\r\n                        </tbody>\r\n     " +
-"               </table>\r\n                </div>\r\n            </div>\r\n        </d" +
-"iv>\r\n    </div>\r\n</div>\r\n<div");
+WriteLiteral("</th>\r\n                                </tr>\r\n                            </tbody" +
+">\r\n                        </table>\r\n                    </div>\r\n\r\n             " +
+"   </div>\r\n            </div>\r\n        </div>\r\n");
+
+            
+            #line 134 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+    }
+    else if (Model.HasSubscription && Model.Items.All(x=>x.IsSubscription==true))
+    {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("        <div");
+
+WriteLiteral(" class=\"col-md-4 col-sm-12 col-xs-12 pull-left\"");
+
+WriteLiteral(">\r\n            <div");
+
+WriteLiteral(" class=\"whiteContainer no-padding\"");
+
+WriteLiteral(">\r\n                <div");
+
+WriteLiteral(" class=\"summery-box\"");
+
+WriteLiteral(" id=\"order-summary\"");
+
+WriteLiteral(">\r\n                    <div");
+
+WriteLiteral(" class=\"box-header\"");
+
+WriteLiteral(">\r\n                        <h3><i");
+
+WriteLiteral(" class=\"fa fa-shopping-basket\"");
+
+WriteLiteral("></i> ");
+
+            
+            #line 141 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+                                                             Write(LT("Checkout.Label.OrderSummary", "Subscription Summary"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</h3>\r\n                    </div>\r\n\r\n                    <div");
+
+WriteLiteral(" class=\"table-responsive\"");
+
+WriteLiteral(">\r\n                        <table");
+
+WriteLiteral(" class=\"table no-margin-top\"");
+
+WriteLiteral(">\r\n                            <tbody>\r\n                                <tr>\r\n   " +
+"                                 <td>");
+
+            
+            #line 148 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+                                   Write(LT("Myaccount.Text.ShippingCharge", "Shipping and handling"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</td>\r\n                                    <th");
+
+WriteLiteral(" class=\"text-right\"");
+
+WriteLiteral(">");
+
+            
+            #line 149 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+                                                      Write(Model.ShippingCharge.Formatted.WithoutTax);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</th>\r\n                                </tr>\r\n                                <tr" +
+">\r\n                                    <td>");
+
+            
+            #line 152 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+                                   Write(LT("MyAccount.Text.Tax", "Tax"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</td>\r\n                                    <th");
+
+WriteLiteral(" class=\"text-right\"");
+
+WriteLiteral(">");
+
+            
+            #line 153 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+                                                      Write(Model.GrandTotal.Formatted.Tax);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</th>\r\n                                </tr>\r\n                                <tr" +
+"");
+
+WriteLiteral(" class=\"total\"");
+
+WriteLiteral(">\r\n                                    <td>");
+
+            
+            #line 156 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+                                   Write(LT("MyAccount.Text.Amount", "Total"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</td>\r\n                                    <th");
+
+WriteLiteral(" class=\"text-right\"");
+
+WriteLiteral(">");
+
+            
+            #line 157 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+                                                      Write(Model.GrandTotal.Formatted.WithTax);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</th>\r\n                                </tr>\r\n                            </tbody" +
+">\r\n                        </table>\r\n                    </div>\r\n\r\n             " +
+"   </div>\r\n            </div>\r\n        </div>\r\n");
+
+            
+            #line 166 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+
+    }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</div>\r\n   \r\n<div");
 
 WriteLiteral(" class=\"row addresses whiteContainer\"");
 
@@ -508,7 +829,7 @@ WriteLiteral(" class=\"billing-h2\"");
 WriteLiteral(">");
 
             
-            #line 93 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+            #line 172 "..\..\Views\Checkout\OrderConfirmation.cshtml"
                           Write(LT("MyAccount.Text.BillingAdd", "Billing Address"));
 
             
@@ -517,7 +838,7 @@ WriteLiteral(">");
 WriteLiteral("</h2>\r\n        <p><strong>");
 
             
-            #line 94 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+            #line 173 "..\..\Views\Checkout\OrderConfirmation.cshtml"
               Write(LT("MyAccount.Text.Product", "Name:"));
 
             
@@ -526,7 +847,7 @@ WriteLiteral("</h2>\r\n        <p><strong>");
 WriteLiteral(" </strong>");
 
             
-            #line 94 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+            #line 173 "..\..\Views\Checkout\OrderConfirmation.cshtml"
                                                               Write(Model.BillingAddress.FirstName);
 
             
@@ -535,7 +856,7 @@ WriteLiteral(" </strong>");
 WriteLiteral(" ");
 
             
-            #line 94 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+            #line 173 "..\..\Views\Checkout\OrderConfirmation.cshtml"
                                                                                               Write(Model.BillingAddress.LastName);
 
             
@@ -544,7 +865,7 @@ WriteLiteral(" ");
 WriteLiteral("</p>\r\n        <p><strong>");
 
             
-            #line 95 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+            #line 174 "..\..\Views\Checkout\OrderConfirmation.cshtml"
               Write(LT("MyAccount.Text.Product", "Address:"));
 
             
@@ -553,7 +874,7 @@ WriteLiteral("</p>\r\n        <p><strong>");
 WriteLiteral(" </strong>");
 
             
-            #line 95 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+            #line 174 "..\..\Views\Checkout\OrderConfirmation.cshtml"
                                                                  Write(Model.BillingAddress.Address1);
 
             
@@ -562,7 +883,7 @@ WriteLiteral(" </strong>");
 WriteLiteral(" <br />");
 
             
-            #line 95 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+            #line 174 "..\..\Views\Checkout\OrderConfirmation.cshtml"
                                                                                                       Write(Model.BillingAddress.Address2);
 
             
@@ -571,7 +892,7 @@ WriteLiteral(" <br />");
 WriteLiteral("</p>\r\n        <p><strong>");
 
             
-            #line 96 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+            #line 175 "..\..\Views\Checkout\OrderConfirmation.cshtml"
               Write(LT("MyAccount.Text.Product", "City:"));
 
             
@@ -580,7 +901,7 @@ WriteLiteral("</p>\r\n        <p><strong>");
 WriteLiteral(" </strong>");
 
             
-            #line 96 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+            #line 175 "..\..\Views\Checkout\OrderConfirmation.cshtml"
                                                               Write(Model.BillingAddress.City);
 
             
@@ -591,7 +912,7 @@ WriteLiteral("</p>\r\n        ");
 WriteLiteral("\r\n        <p><strong>");
 
             
-            #line 98 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+            #line 177 "..\..\Views\Checkout\OrderConfirmation.cshtml"
               Write(LT("MyAccount.Text.Product", "Post Code:"));
 
             
@@ -600,7 +921,7 @@ WriteLiteral("\r\n        <p><strong>");
 WriteLiteral(" </strong>");
 
             
-            #line 98 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+            #line 177 "..\..\Views\Checkout\OrderConfirmation.cshtml"
                                                                    Write(Model.BillingAddress.PostCode);
 
             
@@ -609,7 +930,7 @@ WriteLiteral(" </strong>");
 WriteLiteral("</p>\r\n        <p><strong>");
 
             
-            #line 99 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+            #line 178 "..\..\Views\Checkout\OrderConfirmation.cshtml"
               Write(LT("MyAccount.Text.Product", "Phone No:"));
 
             
@@ -618,7 +939,7 @@ WriteLiteral("</p>\r\n        <p><strong>");
 WriteLiteral(" </strong>");
 
             
-            #line 99 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+            #line 178 "..\..\Views\Checkout\OrderConfirmation.cshtml"
                                                                   Write(Model.BillingAddress.PhoneNo);
 
             
@@ -635,7 +956,7 @@ WriteLiteral(" class=\"billing-h2\"");
 WriteLiteral(">");
 
             
-            #line 102 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+            #line 181 "..\..\Views\Checkout\OrderConfirmation.cshtml"
                           Write(LT("MyAccount.Text.ShippingAddress", "Shipping Address"));
 
             
@@ -644,7 +965,7 @@ WriteLiteral(">");
 WriteLiteral("</h2>\r\n        <p><strong>");
 
             
-            #line 103 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+            #line 182 "..\..\Views\Checkout\OrderConfirmation.cshtml"
               Write(LT("MyAccount.Text.Product", "Name:"));
 
             
@@ -653,7 +974,7 @@ WriteLiteral("</h2>\r\n        <p><strong>");
 WriteLiteral(" </strong>");
 
             
-            #line 103 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+            #line 182 "..\..\Views\Checkout\OrderConfirmation.cshtml"
                                                               Write(Model.ShippingAddress.FirstName);
 
             
@@ -662,7 +983,7 @@ WriteLiteral(" </strong>");
 WriteLiteral(" ");
 
             
-            #line 103 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+            #line 182 "..\..\Views\Checkout\OrderConfirmation.cshtml"
                                                                                                Write(Model.ShippingAddress.LastName);
 
             
@@ -671,7 +992,7 @@ WriteLiteral(" ");
 WriteLiteral("</p>\r\n        <p><strong>");
 
             
-            #line 104 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+            #line 183 "..\..\Views\Checkout\OrderConfirmation.cshtml"
               Write(LT("MyAccount.Text.Product", "Address:"));
 
             
@@ -680,7 +1001,7 @@ WriteLiteral("</p>\r\n        <p><strong>");
 WriteLiteral(" </strong>");
 
             
-            #line 104 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+            #line 183 "..\..\Views\Checkout\OrderConfirmation.cshtml"
                                                                  Write(Model.ShippingAddress.Address1);
 
             
@@ -689,7 +1010,7 @@ WriteLiteral(" </strong>");
 WriteLiteral(" <br />");
 
             
-            #line 104 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+            #line 183 "..\..\Views\Checkout\OrderConfirmation.cshtml"
                                                                                                        Write(Model.ShippingAddress.Address2);
 
             
@@ -698,7 +1019,7 @@ WriteLiteral(" <br />");
 WriteLiteral("</p>\r\n        <p><strong>");
 
             
-            #line 105 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+            #line 184 "..\..\Views\Checkout\OrderConfirmation.cshtml"
               Write(LT("MyAccount.Text.Product", "City:"));
 
             
@@ -707,7 +1028,7 @@ WriteLiteral("</p>\r\n        <p><strong>");
 WriteLiteral(" </strong>");
 
             
-            #line 105 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+            #line 184 "..\..\Views\Checkout\OrderConfirmation.cshtml"
                                                               Write(Model.ShippingAddress.City);
 
             
@@ -718,7 +1039,7 @@ WriteLiteral("</p>\r\n        ");
 WriteLiteral("\r\n        <p><strong>");
 
             
-            #line 107 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+            #line 186 "..\..\Views\Checkout\OrderConfirmation.cshtml"
               Write(LT("MyAccount.Text.Product", "Post Code:"));
 
             
@@ -727,7 +1048,7 @@ WriteLiteral("\r\n        <p><strong>");
 WriteLiteral(" </strong>");
 
             
-            #line 107 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+            #line 186 "..\..\Views\Checkout\OrderConfirmation.cshtml"
                                                                    Write(Model.ShippingAddress.PostCode);
 
             
@@ -736,7 +1057,7 @@ WriteLiteral(" </strong>");
 WriteLiteral("</p>\r\n        <p><strong>");
 
             
-            #line 108 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+            #line 187 "..\..\Views\Checkout\OrderConfirmation.cshtml"
               Write(LT("MyAccount.Text.Product", "Phone No:"));
 
             
@@ -745,7 +1066,7 @@ WriteLiteral("</p>\r\n        <p><strong>");
 WriteLiteral(" </strong>");
 
             
-            #line 108 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+            #line 187 "..\..\Views\Checkout\OrderConfirmation.cshtml"
                                                                   Write(Model.ShippingAddress.PhoneNo);
 
             
@@ -772,7 +1093,7 @@ WriteLiteral(" class=\"fa fa-caret-left\"");
 WriteLiteral("></i>");
 
             
-            #line 113 "..\..\Views\Checkout\OrderConfirmation.cshtml"
+            #line 192 "..\..\Views\Checkout\OrderConfirmation.cshtml"
                                                                            Write(LT("DiscoveryClub.Label.ContinueShopping", "Continue Shopping"));
 
             

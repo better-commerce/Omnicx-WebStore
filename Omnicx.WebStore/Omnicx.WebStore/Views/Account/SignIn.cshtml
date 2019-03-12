@@ -41,7 +41,7 @@
         <div class="checkoutStepLogin">
 
             <div class="col-sm-12 col-xs-12 no-padding">
-                <section class="checkout-accordion" ng-init="gm.loginAccount='@Model.isLogin';gm.createAccount=!'@Model.isLogin';gm.getSocialSettings()">
+                <section class="checkout-accordion" ng-init="gm.loginAccount='@Model.isLogin';gm.createAccount=!'@Model.isLogin';gm.getSocialSettings();gm.model.registerViewModel.notifyNone=true">
                     @{/*Registration Form*/}
                     <div>
                         <input id="ac-2" name="accordion-1" type="radio" class="hidden-lg hidden-sm hidden-md" />
@@ -135,7 +135,7 @@
                                     </div>
                                 </div>
                                 <h2 class="checkout-h2 hidden-xs">@LT("Checkout.Text.Login", "Login")</h2>
-                                <p class="lead hidden-xs">@LT("MyAccount.Text.ExistingCustomer", "Already our customer?")</p>
+                                <p class="lead hidden-xs" aria-hidden="true">@LT("MyAccount.Text.ExistingCustomer", "Already our customer?")</p>
 
                                 <div class="col-sm-12 col-xs-12 no-padding form-group margin-bottom-sm checkoutForm">
                                     @userForm.FormGroupFor(x => x.LoginViewModel.Username)

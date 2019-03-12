@@ -128,8 +128,6 @@ WriteLiteral(">\r\n                    <div");
 
 WriteLiteral(" class=\"panel-heading\"");
 
-WriteLiteral(" role=\"tab\"");
-
 WriteLiteral(">\r\n                        <h4");
 
 WriteLiteral(" class=\"panel-title heading-h4\"");
@@ -142,27 +140,27 @@ WriteLiteral(" data-toggle=\"collapse\"");
 
 WriteLiteral(" data-parent=\"#accordion\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1092), Tuple.Create("\"", 1128)
-, Tuple.Create(Tuple.Create("", 1099), Tuple.Create("#", 1099), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 1081), Tuple.Create("\"", 1117)
+, Tuple.Create(Tuple.Create("", 1088), Tuple.Create("#", 1088), true)
             
             #line 25 "..\..\Views\Common\_FaqsView.cshtml"
-                    , Tuple.Create(Tuple.Create("", 1100), Tuple.Create<System.Object, System.Int32>(items.Value.Replace(" ","")
+                    , Tuple.Create(Tuple.Create("", 1089), Tuple.Create<System.Object, System.Int32>(items.Value.Replace(" ","")
             
             #line default
             #line hidden
-, 1100), false)
+, 1089), false)
 );
 
 WriteLiteral(" aria-expanded=\"true\"");
 
-WriteAttribute("aria-controls", Tuple.Create(" aria-controls=\"", 1150), Tuple.Create("\"", 1194)
+WriteAttribute("aria-controls", Tuple.Create(" aria-controls=\"", 1139), Tuple.Create("\"", 1183)
             
             #line 25 "..\..\Views\Common\_FaqsView.cshtml"
-                                                                                      , Tuple.Create(Tuple.Create("", 1166), Tuple.Create<System.Object, System.Int32>(items.Value.Replace(" ","")
+                                                                                      , Tuple.Create(Tuple.Create("", 1155), Tuple.Create<System.Object, System.Int32>(items.Value.Replace(" ","")
             
             #line default
             #line hidden
-, 1166), false)
+, 1155), false)
 );
 
 WriteLiteral(">");
@@ -179,14 +177,14 @@ WriteLiteral("</a>\r\n                        </h4>\r\n                    </div
 
 WriteLiteral(" class=\"panel-collapse collapse in\"");
 
-WriteAttribute("id", Tuple.Create(" id=\"", 1332), Tuple.Create("\"", 1365)
+WriteAttribute("id", Tuple.Create(" id=\"", 1321), Tuple.Create("\"", 1354)
             
             #line 28 "..\..\Views\Common\_FaqsView.cshtml"
-, Tuple.Create(Tuple.Create("", 1337), Tuple.Create<System.Object, System.Int32>(items.Value.Replace(" ","")
+, Tuple.Create(Tuple.Create("", 1326), Tuple.Create<System.Object, System.Int32>(items.Value.Replace(" ","")
             
             #line default
             #line hidden
-, 1337), false)
+, 1326), false)
 );
 
 WriteLiteral(">\r\n                        <div");

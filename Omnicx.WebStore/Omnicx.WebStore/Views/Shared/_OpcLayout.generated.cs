@@ -112,18 +112,16 @@ Write(Html.Partial("~/Views/Shared/_LayoutHeadTag.cshtml"));
             
             #line default
             #line hidden
-WriteLiteral("\r\n<body>\r\n");
-
-WriteLiteral("    ");
+WriteLiteral("\r\n<body ");
 
             
-            #line 28 "..\..\Views\Shared\_OpcLayout.cshtml"
-Write(Html.GetGlobalSnipptes(SnippetPlacements.BodyStartHtmlTagAfter));
+            #line 27 "..\..\Views\Shared\_OpcLayout.cshtml"
+ Write(RenderSection("bodyClass", required: false));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n    <div");
+WriteLiteral(">    \r\n    <div");
 
 WriteLiteral(" class=\"navbar yamm border-bottom-page\"");
 
@@ -155,17 +153,17 @@ WriteLiteral(" href=\"/\"");
 
 WriteLiteral(">\r\n                            <img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 1286), Tuple.Create("\"", 1334)
-, Tuple.Create(Tuple.Create("", 1292), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/")
-, 1292), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 1265), Tuple.Create("\"", 1313)
+, Tuple.Create(Tuple.Create("", 1271), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/")
+, 1271), false)
             
-            #line 35 "..\..\Views\Shared\_OpcLayout.cshtml"
-, Tuple.Create(Tuple.Create("", 1307), Tuple.Create<System.Object, System.Int32>(StoreTheme
+            #line 34 "..\..\Views\Shared\_OpcLayout.cshtml"
+, Tuple.Create(Tuple.Create("", 1286), Tuple.Create<System.Object, System.Int32>(StoreTheme
             
             #line default
             #line hidden
-, 1307), false)
-, Tuple.Create(Tuple.Create("", 1318), Tuple.Create("/images/logo.png", 1318), true)
+, 1286), false)
+, Tuple.Create(Tuple.Create("", 1297), Tuple.Create("/images/logo.png", 1297), true)
 );
 
 WriteLiteral(" alt=\"OCX Store logo\"");
@@ -174,17 +172,17 @@ WriteLiteral(" class=\"hidden-xs hidden-sm img-responsive logo-width logo-width 
 
 WriteLiteral(">\r\n                            <img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 1464), Tuple.Create("\"", 1519)
-, Tuple.Create(Tuple.Create("", 1470), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/")
-, 1470), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 1443), Tuple.Create("\"", 1498)
+, Tuple.Create(Tuple.Create("", 1449), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/")
+, 1449), false)
             
-            #line 36 "..\..\Views\Shared\_OpcLayout.cshtml"
-, Tuple.Create(Tuple.Create("", 1485), Tuple.Create<System.Object, System.Int32>(StoreTheme
+            #line 35 "..\..\Views\Shared\_OpcLayout.cshtml"
+, Tuple.Create(Tuple.Create("", 1464), Tuple.Create<System.Object, System.Int32>(StoreTheme
             
             #line default
             #line hidden
-, 1485), false)
-, Tuple.Create(Tuple.Create("", 1496), Tuple.Create("/images/logo-footer.png", 1496), true)
+, 1464), false)
+, Tuple.Create(Tuple.Create("", 1475), Tuple.Create("/images/logo-footer.png", 1475), true)
 );
 
 WriteLiteral(" alt=\"OCX Store logo\"");
@@ -198,7 +196,7 @@ WriteLiteral(" class=\"sr-only\"");
 WriteLiteral(">");
 
             
-            #line 36 "..\..\Views\Shared\_OpcLayout.cshtml"
+            #line 35 "..\..\Views\Shared\_OpcLayout.cshtml"
                                                                                                                                                                                        Write(LT("Header.Text.GoHome", "OCX Store - go to homepage"));
 
             
@@ -224,19 +222,8 @@ WriteLiteral(">\r\n");
 WriteLiteral("                ");
 
             
-            #line 46 "..\..\Views\Shared\_OpcLayout.cshtml"
+            #line 45 "..\..\Views\Shared\_OpcLayout.cshtml"
            Write(RenderBody());
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n");
-
-WriteLiteral("                ");
-
-            
-            #line 47 "..\..\Views\Shared\_OpcLayout.cshtml"
-           Write(Html.GetGlobalSnipptes(SnippetPlacements.PageContainerAfter));
 
             
             #line default
@@ -244,13 +231,13 @@ WriteLiteral("                ");
 WriteLiteral("\r\n            </div>\r\n        </div>\r\n    </div>\r\n");
 
             
-            #line 51 "..\..\Views\Shared\_OpcLayout.cshtml"
+            #line 49 "..\..\Views\Shared\_OpcLayout.cshtml"
     
             
             #line default
             #line hidden
             
-            #line 51 "..\..\Views\Shared\_OpcLayout.cshtml"
+            #line 49 "..\..\Views\Shared\_OpcLayout.cshtml"
       
         var pcaAccessCode = "";
         if (SessionContext.CurrentSiteConfig != null && SessionContext.CurrentSiteConfig.GeoLocators != null)
@@ -269,15 +256,15 @@ WriteLiteral(" rel=\"stylesheet\"");
 
 WriteLiteral(" type=\"text/css\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2551), Tuple.Create("\"", 2639)
-, Tuple.Create(Tuple.Create("", 2558), Tuple.Create("//services.postcodeanywhere.co.uk/css/captureplus-2.30.min.css?key=", 2558), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 2451), Tuple.Create("\"", 2539)
+, Tuple.Create(Tuple.Create("", 2458), Tuple.Create("//services.postcodeanywhere.co.uk/css/captureplus-2.30.min.css?key=", 2458), true)
             
-            #line 59 "..\..\Views\Shared\_OpcLayout.cshtml"
-                                                , Tuple.Create(Tuple.Create("", 2625), Tuple.Create<System.Object, System.Int32>(pcaAccessCode
+            #line 57 "..\..\Views\Shared\_OpcLayout.cshtml"
+                                                , Tuple.Create(Tuple.Create("", 2525), Tuple.Create<System.Object, System.Int32>(pcaAccessCode
             
             #line default
             #line hidden
-, 2625), false)
+, 2525), false)
 );
 
 WriteLiteral(" />\r\n");
@@ -286,21 +273,21 @@ WriteLiteral("                <script");
 
 WriteLiteral(" type=\"text/javascript\"");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2691), Tuple.Create("\"", 2776)
-, Tuple.Create(Tuple.Create("", 2697), Tuple.Create("//services.postcodeanywhere.co.uk/js/captureplus-2.30.min.js?key=", 2697), true)
+WriteAttribute("src", Tuple.Create(" src=\"", 2591), Tuple.Create("\"", 2676)
+, Tuple.Create(Tuple.Create("", 2597), Tuple.Create("//services.postcodeanywhere.co.uk/js/captureplus-2.30.min.js?key=", 2597), true)
             
-            #line 60 "..\..\Views\Shared\_OpcLayout.cshtml"
-                                     , Tuple.Create(Tuple.Create("", 2762), Tuple.Create<System.Object, System.Int32>(pcaAccessCode
+            #line 58 "..\..\Views\Shared\_OpcLayout.cshtml"
+                                     , Tuple.Create(Tuple.Create("", 2662), Tuple.Create<System.Object, System.Int32>(pcaAccessCode
             
             #line default
             #line hidden
-, 2762), false)
+, 2662), false)
 );
 
 WriteLiteral("></script>\r\n");
 
             
-            #line 61 "..\..\Views\Shared\_OpcLayout.cshtml"
+            #line 59 "..\..\Views\Shared\_OpcLayout.cshtml"
             }
         }
 
@@ -310,7 +297,7 @@ WriteLiteral("></script>\r\n");
 WriteLiteral("        <script>\r\n            var pcaAccessCode = \"");
 
             
-            #line 64 "..\..\Views\Shared\_OpcLayout.cshtml"
+            #line 62 "..\..\Views\Shared\_OpcLayout.cshtml"
                             Write(pcaAccessCode);
 
             
@@ -319,7 +306,7 @@ WriteLiteral("        <script>\r\n            var pcaAccessCode = \"");
 WriteLiteral("\";\r\n        </script>\r\n");
 
             
-            #line 66 "..\..\Views\Shared\_OpcLayout.cshtml"
+            #line 64 "..\..\Views\Shared\_OpcLayout.cshtml"
     
             
             #line default
@@ -329,7 +316,7 @@ WriteLiteral("\r\n");
 WriteLiteral("    ");
 
             
-            #line 67 "..\..\Views\Shared\_OpcLayout.cshtml"
+            #line 65 "..\..\Views\Shared\_OpcLayout.cshtml"
 Write(Html.Partial("~/Views/Shared/_OpcLayoutFooter.cshtml"));
 
             
@@ -340,7 +327,7 @@ WriteLiteral("\r\n\r\n");
 DefineSection("scripts", () => {
 
             
-            #line 69 "..\..\Views\Shared\_OpcLayout.cshtml"
+            #line 67 "..\..\Views\Shared\_OpcLayout.cshtml"
     
             
             #line default
@@ -350,7 +337,7 @@ DefineSection("scripts", () => {
 WriteLiteral("    ");
 
             
-            #line 70 "..\..\Views\Shared\_OpcLayout.cshtml"
+            #line 68 "..\..\Views\Shared\_OpcLayout.cshtml"
 Write(RenderSection("scripts", required: false));
 
             
@@ -359,7 +346,7 @@ Write(RenderSection("scripts", required: false));
 WriteLiteral("\r\n    <script>\r\n\r\n        var setContactForm = \'");
 
             
-            #line 73 "..\..\Views\Shared\_OpcLayout.cshtml"
+            #line 71 "..\..\Views\Shared\_OpcLayout.cshtml"
                           Write(Html.BuildUrlFromExpression<CommonController>(c => c.ContactForm(null)));
 
             
@@ -368,7 +355,7 @@ WriteLiteral("\r\n    <script>\r\n\r\n        var setContactForm = \'");
 WriteLiteral("\';\r\n        var getBasketUrl = \'");
 
             
-            #line 74 "..\..\Views\Shared\_OpcLayout.cshtml"
+            #line 72 "..\..\Views\Shared\_OpcLayout.cshtml"
                         Write(Html.BuildUrlFromExpression<BasketController>(c => c.GetBasketData()));
 
             
@@ -377,7 +364,7 @@ WriteLiteral("\';\r\n        var getBasketUrl = \'");
 WriteLiteral("\';\r\n        var addToBasket = \'");
 
             
-            #line 75 "..\..\Views\Shared\_OpcLayout.cshtml"
+            #line 73 "..\..\Views\Shared\_OpcLayout.cshtml"
                        Write(Html.BuildUrlFromExpression<BasketController>(c => c.AddtoBasket(null)));
 
             
@@ -386,7 +373,7 @@ WriteLiteral("\';\r\n        var addToBasket = \'");
 WriteLiteral("\';\r\n        var signIn = \'");
 
             
-            #line 76 "..\..\Views\Shared\_OpcLayout.cshtml"
+            #line 74 "..\..\Views\Shared\_OpcLayout.cshtml"
                   Write(Html.BuildUrlFromExpression<AccountController>(c => c.SignIn(null)));
 
             
@@ -395,7 +382,7 @@ WriteLiteral("\';\r\n        var signIn = \'");
 WriteLiteral("\';\r\n        var register = \'");
 
             
-            #line 77 "..\..\Views\Shared\_OpcLayout.cshtml"
+            #line 75 "..\..\Views\Shared\_OpcLayout.cshtml"
                     Write(Html.BuildUrlFromExpression<AccountController>(c => c.Registration(null)));
 
             
@@ -404,7 +391,7 @@ WriteLiteral("\';\r\n        var register = \'");
 WriteLiteral("\';\r\n        var getShippingMethods = \'");
 
             
-            #line 78 "..\..\Views\Shared\_OpcLayout.cshtml"
+            #line 76 "..\..\Views\Shared\_OpcLayout.cshtml"
                               Write(Html.BuildUrlFromExpression<BasketController>(c => c.GetShippingMethods("")));
 
             
@@ -413,8 +400,8 @@ WriteLiteral("\';\r\n        var getShippingMethods = \'");
 WriteLiteral("\';\r\n        var updateShipping = \'");
 
             
-            #line 79 "..\..\Views\Shared\_OpcLayout.cshtml"
-                          Write(Html.BuildUrlFromExpression<BasketController>(c => c.UpdateShipping(null,null,null)));
+            #line 77 "..\..\Views\Shared\_OpcLayout.cshtml"
+                          Write(Html.BuildUrlFromExpression<BasketController>(c => c.UpdateShipping(null,null,null,null)));
 
             
             #line default
@@ -422,7 +409,7 @@ WriteLiteral("\';\r\n        var updateShipping = \'");
 WriteLiteral("\';\r\n        var applyPromoCode = \'");
 
             
-            #line 80 "..\..\Views\Shared\_OpcLayout.cshtml"
+            #line 78 "..\..\Views\Shared\_OpcLayout.cshtml"
                           Write(Html.BuildUrlFromExpression<BasketController>(c => c.ApplyPromoCode(null,null)));
 
             
@@ -431,7 +418,7 @@ WriteLiteral("\';\r\n        var applyPromoCode = \'");
 WriteLiteral("\';\r\n        var currencySettingUrl = \'");
 
             
-            #line 81 "..\..\Views\Shared\_OpcLayout.cshtml"
+            #line 79 "..\..\Views\Shared\_OpcLayout.cshtml"
                               Write(Html.BuildUrlFromExpression<HomeController>(c => c.UpdateCurrencySetting(null)));
 
             
@@ -440,7 +427,7 @@ WriteLiteral("\';\r\n        var currencySettingUrl = \'");
 WriteLiteral("\';\r\n        var paymentMethodsUrl = \'");
 
             
-            #line 82 "..\..\Views\Shared\_OpcLayout.cshtml"
+            #line 80 "..\..\Views\Shared\_OpcLayout.cshtml"
                              Write(Html.BuildUrlFromExpression<CheckoutController>(c => c.GetPaymentMethods()));
 
             
@@ -449,7 +436,7 @@ WriteLiteral("\';\r\n        var paymentMethodsUrl = \'");
 WriteLiteral("\';\r\n        var newsLetterSubscription = \'");
 
             
-            #line 83 "..\..\Views\Shared\_OpcLayout.cshtml"
+            #line 81 "..\..\Views\Shared\_OpcLayout.cshtml"
                                   Write(Html.BuildUrlFromExpression<AccountController>(c => c.NewsletterSubscription(null)));
 
             
@@ -458,23 +445,41 @@ WriteLiteral("\';\r\n        var newsLetterSubscription = \'");
 WriteLiteral("\';\r\n        var bulkAddproduct = \'");
 
             
-            #line 84 "..\..\Views\Shared\_OpcLayout.cshtml"
+            #line 82 "..\..\Views\Shared\_OpcLayout.cshtml"
                           Write(Html.BuildUrlFromExpression<BasketController>(c=> c.BulkAddProduct(null)));
 
             
             #line default
             #line hidden
-WriteLiteral("\';\r\n\r\n        var baseUrl = (\'https:\' == document.location.protocol ? \'https://\' " +
-": \'http://\') + \'");
+WriteLiteral("\';\r\n        var getAllcurrencySetting = \'");
 
             
-            #line 86 "..\..\Views\Shared\_OpcLayout.cshtml"
+            #line 83 "..\..\Views\Shared\_OpcLayout.cshtml"
+                                 Write(Html.BuildUrlFromExpression<HomeController>(c => c.CurrencySettings()));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\';\r\n        var baseUrl = (\'https:\' == document.location.protocol ? \'https://\' : " +
+"\'http://\') + \'");
+
+            
+            #line 84 "..\..\Views\Shared\_OpcLayout.cshtml"
                                                                                       Write(Request.ServerVariables["HTTP_HOST"]);
 
             
             #line default
             #line hidden
-WriteLiteral(@"/';
+WriteLiteral("/\';\r\n        var languageSettingUrl = \'");
+
+            
+            #line 85 "..\..\Views\Shared\_OpcLayout.cshtml"
+                              Write(Html.BuildUrlFromExpression<HomeController>(c => c.UpdateLanCultureSetting(null)));
+
+            
+            #line default
+            #line hidden
+WriteLiteral(@"';
         window.app.constant('globalConfig', {
             setContactForm: setContactForm,
             getBasketUrl: getBasketUrl,
@@ -489,7 +494,9 @@ WriteLiteral(@"/';
             newsLetterSubscription: newsLetterSubscription,
             baseUrl: baseUrl,
             bulkAddproduct: bulkAddproduct,
-            pcaAccessCode: pcaAccessCode
+            pcaAccessCode: pcaAccessCode,
+            getAllcurrencySetting: getAllcurrencySetting,
+            languageSettingUrl: languageSettingUrl
         });
     </script>
 ");
@@ -497,7 +504,7 @@ WriteLiteral(@"/';
 WriteLiteral("    ");
 
             
-            #line 104 "..\..\Views\Shared\_OpcLayout.cshtml"
+            #line 105 "..\..\Views\Shared\_OpcLayout.cshtml"
 Write(Html.GetGlobalSnipptes(SnippetPlacements.BodyEndHtmlTagBefore));
 
             

@@ -80,9 +80,7 @@ WriteLiteral(" class=\"alertDynamicBlock\"");
 
 WriteLiteral(">\r\n                <div");
 
-WriteLiteral(" id=\"divErrMsg\"");
-
-WriteLiteral(" class=\"alert alert-danger hide\"");
+WriteLiteral(" class=\"divErrMsg alert alert-danger hide\"");
 
 WriteLiteral(">\r\n                    <div>\r\n                        <i");
 

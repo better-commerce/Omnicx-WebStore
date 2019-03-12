@@ -28,6 +28,7 @@
         am.getMyActivity = getMyActivity;
         am.deleteMyActivity = deleteMyActivity;
         am.orderConfirmation = orderConfirmation;
+        am.showSurveyResponse = showSurveyResponse;
         am.reOrder = reOrder;
         am.basketUrl = "/basket/index";
         am.defaultAddress = [];
@@ -69,7 +70,13 @@
                 }, 2000);
             }
         }
-
+        function showSurveyResponse(survey) {
+            am.survey = survey;
+            am.surveyAns = [];
+            am.surveyAns.push(JSON.parse(survey.answers));
+            console.log(am.surveyAns);
+            $('#showeSurvey').modal();
+        }
         function changeDefaultAddress(defaultAddress) {
             $http.post(accountConfig.changeDefaultAddressUrl, defaultAddress)
                .success(function (data) {

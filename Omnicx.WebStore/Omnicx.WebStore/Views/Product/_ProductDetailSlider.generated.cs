@@ -96,9 +96,7 @@ WriteLiteral(">&times;</span></button>\r\n                <h4");
 
 WriteLiteral(" class=\"modal-title text-bold\"");
 
-WriteLiteral(" id=\"myModalLabel\"");
-
-WriteLiteral(" ng-bind=\"pm.model.name\"");
+WriteLiteral("  ng-bind=\"pm.model.name\"");
 
 WriteLiteral("></h4>\r\n            </div>\r\n            <div");
 
@@ -121,6 +119,8 @@ WriteLiteral(" ng-src=\"{{pm.model.image}}\"");
 WriteLiteral(" class=\"img-responsive\"");
 
 WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
+
+WriteLiteral(" sizes=\"(min-width: 768px) 540px, 100vw\"");
 
 WriteLiteral(" ng-cloak>\r\n                    </div>\r\n                    <div");
 
@@ -167,6 +167,8 @@ WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 WriteLiteral(" ng-click=\"pm.model.image=img.url\"");
 
 WriteLiteral(" class=\"img-responsive\"");
+
+WriteLiteral(" sizes=\"(min-width: 768px) 540px, 100vw\"");
 
 WriteLiteral(@" />
                                                 </a>

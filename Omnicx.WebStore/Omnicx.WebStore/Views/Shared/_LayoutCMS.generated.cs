@@ -95,6 +95,8 @@ WriteLiteral(" ng-controller=\"globalCtrl as gm\"");
 
 WriteLiteral(" id=\"sidebarFix\"");
 
+WriteLiteral(" lang=\"en\"");
+
 WriteLiteral(">\r\n\r\n");
 
             
@@ -223,9 +225,9 @@ WriteLiteral(" href=\"/\"");
 
 WriteLiteral(">\r\n                            <img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 1763), Tuple.Create("\"", 1809)
-, Tuple.Create(Tuple.Create("", 1769), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/logo-small.png")
-, 1769), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 1773), Tuple.Create("\"", 1819)
+, Tuple.Create(Tuple.Create("", 1779), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/logo-small.png")
+, 1779), false)
 );
 
 WriteLiteral(" alt=\"OCX Store logo\"");
@@ -307,12 +309,14 @@ WriteLiteral(" class=\"global-loader\"");
 
 WriteLiteral(">\r\n            <img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2724), Tuple.Create("\"", 2766)
-, Tuple.Create(Tuple.Create("", 2730), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/loader.svg")
-, 2730), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 2734), Tuple.Create("\"", 2776)
+, Tuple.Create(Tuple.Create("", 2740), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/loader.svg")
+, 2740), false)
 );
 
-WriteLiteral(" />\r\n        </span>\r\n    </div>\r\n");
+WriteLiteral(" alt=\"Loader\"");
+
+WriteLiteral("/>\r\n        </span>\r\n    </div>\r\n");
 
 WriteLiteral("    ");
 
@@ -353,7 +357,11 @@ WriteLiteral("    ");
             
             #line default
             #line hidden
-WriteLiteral("        <script>\r\n            var pcaAccessCode = \"");
+WriteLiteral("        <script defer");
+
+WriteLiteral(" type=\"text/javascript\"");
+
+WriteLiteral(">\r\n            var pcaAccessCode = \"");
 
             
             #line 78 "..\..\Views\Shared\_LayoutCMS.cshtml"
@@ -381,7 +389,11 @@ Write(RenderSection("scripts", required: false));
             
             #line default
             #line hidden
-WriteLiteral("\r\n    \r\n    <script>\r\n\r\n        var setContactForm = \'");
+WriteLiteral("\r\n    \r\n    <script defer");
+
+WriteLiteral(" type=\"text/javascript\"");
+
+WriteLiteral(">\r\n\r\n        var setContactForm = \'");
 
             
             #line 86 "..\..\Views\Shared\_LayoutCMS.cshtml"
@@ -439,7 +451,7 @@ WriteLiteral("\';\r\n        var updateShipping = \'");
 
             
             #line 92 "..\..\Views\Shared\_LayoutCMS.cshtml"
-                          Write(Html.BuildUrlFromExpression<BasketController>(c => c.UpdateShipping(null,null,null)));
+                          Write(Html.BuildUrlFromExpression<BasketController>(c => c.UpdateShipping(null,null,null,null)));
 
             
             #line default
@@ -525,6 +537,24 @@ WriteLiteral("\';\r\n        var getAllcurrencySetting = \'");
             
             #line default
             #line hidden
+WriteLiteral("\';\r\n        var languageSettingUrl = \'");
+
+            
+            #line 102 "..\..\Views\Shared\_LayoutCMS.cshtml"
+                              Write(Html.BuildUrlFromExpression<HomeController>(c => c.UpdateLanCultureSetting(null)));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\';\r\n          var removeProductFromWishlist = \'");
+
+            
+            #line 103 "..\..\Views\Shared\_LayoutCMS.cshtml"
+                                       Write(Html.BuildUrlFromExpression<CheckoutController>(c => c.RemoveWishList("",false)));
+
+            
+            #line default
+            #line hidden
 WriteLiteral(@"';
         window.app.constant('globalConfig', {
             setContactForm: setContactForm,
@@ -543,7 +573,9 @@ WriteLiteral(@"';
             bulkAddproduct: bulkAddproduct,
             pcaAccessCode: pcaAccessCode,
             getDefaultCountryUrl: getDefaultCountryUrl,
-            getAllcurrencySetting: getAllcurrencySetting
+            getAllcurrencySetting: getAllcurrencySetting,
+            languageSettingUrl: languageSettingUrl,
+            removeProductFromWishlist: removeProductFromWishlist
         });
     </script>
 ");
@@ -551,7 +583,7 @@ WriteLiteral(@"';
 WriteLiteral("    ");
 
             
-            #line 122 "..\..\Views\Shared\_LayoutCMS.cshtml"
+            #line 126 "..\..\Views\Shared\_LayoutCMS.cshtml"
 Write(Html.GetGlobalSnipptes(SnippetPlacements.BodyEndHtmlTagBefore));
 
             

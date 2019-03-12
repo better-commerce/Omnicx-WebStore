@@ -146,13 +146,11 @@ WriteLiteral(">\r\n                    <div");
 
 WriteLiteral(" class=\"modal-title\"");
 
-WriteLiteral(" id=\"Login\"");
-
-WriteLiteral(">");
+WriteLiteral(" >");
 
             
             #line 27 "..\..\Views\Shared\_CurrencyView.cshtml"
-                                                   Write(LT("Global.Text.CurrencySetting", "Currency Settings"));
+                                         Write(LT("Global.Text.CurrencySetting", "Currency Settings"));
 
             
             #line default
@@ -173,16 +171,16 @@ WriteLiteral(" class=\"modal-body\"");
 
 WriteLiteral(">\r\n                    <form");
 
-WriteAttribute("ng-submit", Tuple.Create(" ng-submit=\"", 1494), Tuple.Create("\"", 1593)
-, Tuple.Create(Tuple.Create("", 1506), Tuple.Create("gm.currencySettings(currency,language,country,", 1506), true)
+WriteAttribute("ng-submit", Tuple.Create(" ng-submit=\"", 1484), Tuple.Create("\"", 1583)
+, Tuple.Create(Tuple.Create("", 1496), Tuple.Create("gm.currencySettings(currency,language,country,", 1496), true)
             
             #line 31 "..\..\Views\Shared\_CurrencyView.cshtml"
-   , Tuple.Create(Tuple.Create("", 1552), Tuple.Create<System.Object, System.Int32>(JsonExtensions.ToJson(Model.currencies)
+   , Tuple.Create(Tuple.Create("", 1542), Tuple.Create<System.Object, System.Int32>(JsonExtensions.ToJson(Model.currencies)
             
             #line default
             #line hidden
-, 1552), false)
-, Tuple.Create(Tuple.Create("", 1592), Tuple.Create(")", 1592), true)
+, 1542), false)
+, Tuple.Create(Tuple.Create("", 1582), Tuple.Create(")", 1582), true)
 );
 
 WriteLiteral(" method=\"post\"");
@@ -247,16 +245,16 @@ WriteLiteral("                                        <li>\r\n                  
 
 WriteLiteral(" class=\"currencyList\"");
 
-WriteAttribute("ng-click", Tuple.Create(" ng-click=\"", 2556), Tuple.Create("\"", 2608)
-, Tuple.Create(Tuple.Create("", 2567), Tuple.Create("gm.currencySettings(\'", 2567), true)
+WriteAttribute("ng-click", Tuple.Create(" ng-click=\"", 2546), Tuple.Create("\"", 2598)
+, Tuple.Create(Tuple.Create("", 2557), Tuple.Create("gm.currencySettings(\'", 2557), true)
             
             #line 47 "..\..\Views\Shared\_CurrencyView.cshtml"
-                   , Tuple.Create(Tuple.Create("", 2588), Tuple.Create<System.Object, System.Int32>(item.CurrencyCode
+                   , Tuple.Create(Tuple.Create("", 2578), Tuple.Create<System.Object, System.Int32>(item.CurrencyCode
             
             #line default
             #line hidden
-, 2588), false)
-, Tuple.Create(Tuple.Create("", 2606), Tuple.Create("\')", 2606), true)
+, 2578), false)
+, Tuple.Create(Tuple.Create("", 2596), Tuple.Create("\')", 2596), true)
 );
 
 WriteLiteral("><em>");
@@ -323,13 +321,11 @@ WriteLiteral(">\r\n                    <div");
 
 WriteLiteral(" class=\"modal-title\"");
 
-WriteLiteral(" id=\"Login\"");
-
-WriteLiteral(">");
+WriteLiteral(" >");
 
             
             #line 68 "..\..\Views\Shared\_CurrencyView.cshtml"
-                                                   Write(LT("Global.Text.CurrencySetting", "Global Sites Settings"));
+                                         Write(LT("Global.Text.CurrencySetting", "Global Sites Settings"));
 
             
             #line default
@@ -350,16 +346,16 @@ WriteLiteral(" class=\"modal-body\"");
 
 WriteLiteral(">\r\n                    <form");
 
-WriteAttribute("ng-submit", Tuple.Create(" ng-submit=\"", 3931), Tuple.Create("\"", 4030)
-, Tuple.Create(Tuple.Create("", 3943), Tuple.Create("gm.currencySettings(currency,language,country,", 3943), true)
+WriteAttribute("ng-submit", Tuple.Create(" ng-submit=\"", 3911), Tuple.Create("\"", 4010)
+, Tuple.Create(Tuple.Create("", 3923), Tuple.Create("gm.currencySettings(currency,language,country,", 3923), true)
             
             #line 72 "..\..\Views\Shared\_CurrencyView.cshtml"
-   , Tuple.Create(Tuple.Create("", 3989), Tuple.Create<System.Object, System.Int32>(JsonExtensions.ToJson(Model.currencies)
+   , Tuple.Create(Tuple.Create("", 3969), Tuple.Create<System.Object, System.Int32>(JsonExtensions.ToJson(Model.currencies)
             
             #line default
             #line hidden
-, 3989), false)
-, Tuple.Create(Tuple.Create("", 4029), Tuple.Create(")", 4029), true)
+, 3969), false)
+, Tuple.Create(Tuple.Create("", 4009), Tuple.Create(")", 4009), true)
 );
 
 WriteLiteral(" method=\"post\"");
@@ -386,16 +382,16 @@ WriteLiteral(" class=\"currencyList\"");
 
 WriteLiteral("><i");
 
-WriteAttribute("class", Tuple.Create(" class=\"", 4390), Tuple.Create("\"", 4412)
-, Tuple.Create(Tuple.Create("", 4398), Tuple.Create("fa", 4398), true)
-, Tuple.Create(Tuple.Create(" ", 4400), Tuple.Create("fa-", 4401), true)
+WriteAttribute("class", Tuple.Create(" class=\"", 4370), Tuple.Create("\"", 4392)
+, Tuple.Create(Tuple.Create("", 4378), Tuple.Create("fa", 4378), true)
+, Tuple.Create(Tuple.Create(" ", 4380), Tuple.Create("fa-", 4381), true)
             
             #line 77 "..\..\Views\Shared\_CurrencyView.cshtml"
-, Tuple.Create(Tuple.Create("", 4404), Tuple.Create<System.Object, System.Int32>(country
+, Tuple.Create(Tuple.Create("", 4384), Tuple.Create<System.Object, System.Int32>(country
             
             #line default
             #line hidden
-, 4404), false)
+, 4384), false)
 );
 
 WriteLiteral("></i><em>");
@@ -438,38 +434,38 @@ WriteLiteral("                                        <li>\r\n                  
 
 WriteLiteral(" class=\"currencyList\"");
 
-WriteAttribute("ng-click", Tuple.Create(" ng-click=\"", 5011), Tuple.Create("\"", 5055)
-, Tuple.Create(Tuple.Create("", 5022), Tuple.Create("\'", 5022), true)
+WriteAttribute("ng-click", Tuple.Create(" ng-click=\"", 4991), Tuple.Create("\"", 5035)
+, Tuple.Create(Tuple.Create("", 5002), Tuple.Create("\'", 5002), true)
             
             #line 88 "..\..\Views\Shared\_CurrencyView.cshtml"
-, Tuple.Create(Tuple.Create("", 5023), Tuple.Create<System.Object, System.Int32>(language.LanguageCode
+, Tuple.Create(Tuple.Create("", 5003), Tuple.Create<System.Object, System.Int32>(language.LanguageCode
             
             #line default
             #line hidden
-, 5023), false)
-, Tuple.Create(Tuple.Create("", 5045), Tuple.Create("\'==\'", 5045), true)
+, 5003), false)
+, Tuple.Create(Tuple.Create("", 5025), Tuple.Create("\'==\'", 5025), true)
             
             #line 88 "..\..\Views\Shared\_CurrencyView.cshtml"
-                         , Tuple.Create(Tuple.Create("", 5049), Tuple.Create<System.Object, System.Int32>(lang
+                         , Tuple.Create(Tuple.Create("", 5029), Tuple.Create<System.Object, System.Int32>(lang
             
             #line default
             #line hidden
-, 5049), false)
-, Tuple.Create(Tuple.Create("", 5054), Tuple.Create("\'", 5054), true)
+, 5029), false)
+, Tuple.Create(Tuple.Create("", 5034), Tuple.Create("\'", 5034), true)
 );
 
 WriteLiteral("><i");
 
-WriteAttribute("class", Tuple.Create(" class=\"", 5059), Tuple.Create("\"", 5095)
-, Tuple.Create(Tuple.Create("", 5067), Tuple.Create("fa", 5067), true)
-, Tuple.Create(Tuple.Create(" ", 5069), Tuple.Create("fa-", 5070), true)
+WriteAttribute("class", Tuple.Create(" class=\"", 5039), Tuple.Create("\"", 5075)
+, Tuple.Create(Tuple.Create("", 5047), Tuple.Create("fa", 5047), true)
+, Tuple.Create(Tuple.Create(" ", 5049), Tuple.Create("fa-", 5050), true)
             
             #line 88 "..\..\Views\Shared\_CurrencyView.cshtml"
-                                                 , Tuple.Create(Tuple.Create("", 5073), Tuple.Create<System.Object, System.Int32>(language.LanguageCode
+                                                 , Tuple.Create(Tuple.Create("", 5053), Tuple.Create<System.Object, System.Int32>(language.LanguageCode
             
             #line default
             #line hidden
-, 5073), false)
+, 5053), false)
 );
 
 WriteLiteral("></i><em>");

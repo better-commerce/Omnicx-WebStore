@@ -54,11 +54,7 @@ namespace ASP
             
             #line default
             #line hidden
-WriteLiteral("    <li");
-
-WriteLiteral(" class=\"margin-top-md\"");
-
-WriteLiteral(">\r\n\r\n");
+WriteLiteral("    <li>\r\n\r\n");
 
             
             #line 8 "..\..\Views\Shared\_HeaderLoginInfo.cshtml"
@@ -68,45 +64,47 @@ WriteLiteral(">\r\n\r\n");
             #line hidden
             
             #line 8 "..\..\Views\Shared\_HeaderLoginInfo.cshtml"
-         if (SessionContext.CurrentUser.FirstName != null)
-        {
+         if (!string.IsNullOrWhiteSpace(SessionContext.CurrentUser.FirstName))
+        {            
 
             
             #line default
             #line hidden
-WriteLiteral("            <span");
-
-WriteLiteral(" class=\"userControls__linkSeperator\"");
-
-WriteLiteral(">Hi! </span>\r\n");
-
 WriteLiteral("            <a");
 
 WriteLiteral(" class=\"userControls__accountLinks\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 389), Tuple.Create("\"", 431)
+WriteAttribute("href", Tuple.Create(" href=\"", 332), Tuple.Create("\"", 374)
             
-            #line 11 "..\..\Views\Shared\_HeaderLoginInfo.cshtml"
-, Tuple.Create(Tuple.Create("", 396), Tuple.Create<System.Object, System.Int32>(Url.Action("MyAccount", "Account")
+            #line 10 "..\..\Views\Shared\_HeaderLoginInfo.cshtml"
+, Tuple.Create(Tuple.Create("", 339), Tuple.Create<System.Object, System.Int32>(Url.Action("MyAccount", "Account")
             
             #line default
             #line hidden
-, 396), false)
+, 339), false)
 );
+
+WriteLiteral("><i");
+
+WriteLiteral(" class=\"sprite sprite-browsers-customerSession\"");
+
+WriteLiteral("></i><span");
+
+WriteLiteral(" class=\"label-0\"");
 
 WriteLiteral(">");
 
             
-            #line 11 "..\..\Views\Shared\_HeaderLoginInfo.cshtml"
-                                                                                        Write(SessionContext.CurrentUser.FirstName);
+            #line 10 "..\..\Views\Shared\_HeaderLoginInfo.cshtml"
+                                                                                                                                                                    Write(SessionContext.CurrentUser.FirstName);
 
             
             #line default
             #line hidden
-WriteLiteral("</a>\r\n");
+WriteLiteral("</span></a>\r\n");
 
             
-            #line 12 "..\..\Views\Shared\_HeaderLoginInfo.cshtml"
+            #line 11 "..\..\Views\Shared\_HeaderLoginInfo.cshtml"
         }
         else
         {
@@ -118,65 +116,48 @@ WriteLiteral("            <a");
 
 WriteLiteral(" class=\"userControls__accountLinks\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 561), Tuple.Create("\"", 603)
+WriteAttribute("href", Tuple.Create(" href=\"", 587), Tuple.Create("\"", 629)
             
-            #line 15 "..\..\Views\Shared\_HeaderLoginInfo.cshtml"
-, Tuple.Create(Tuple.Create("", 568), Tuple.Create<System.Object, System.Int32>(Url.Action("MyAccount", "Account")
+            #line 14 "..\..\Views\Shared\_HeaderLoginInfo.cshtml"
+, Tuple.Create(Tuple.Create("", 594), Tuple.Create<System.Object, System.Int32>(Url.Action("MyAccount", "Account")
             
             #line default
             #line hidden
-, 568), false)
+, 594), false)
 );
+
+WriteLiteral("><i");
+
+WriteLiteral(" class=\"sprite sprite-browsers-customerSession\"");
+
+WriteLiteral("></i><span");
+
+WriteLiteral(" class=\"label-0\"");
 
 WriteLiteral(">");
 
             
-            #line 15 "..\..\Views\Shared\_HeaderLoginInfo.cshtml"
-                                                                                        Write(LT("MyAccount.Text.Name", "My Account"));
+            #line 14 "..\..\Views\Shared\_HeaderLoginInfo.cshtml"
+                                                                                                                                                                    Write(LT("MyAccount.Text.Name", "My Account"));
 
             
             #line default
             #line hidden
-WriteLiteral("</a>\r\n");
+WriteLiteral("</span></a>\r\n");
 
             
-            #line 16 "..\..\Views\Shared\_HeaderLoginInfo.cshtml"
+            #line 15 "..\..\Views\Shared\_HeaderLoginInfo.cshtml"
         }
 
             
             #line default
             #line hidden
-WriteLiteral("        <span");
+WriteLiteral("        ");
 
-WriteLiteral(" class=\"userControls__linkSeperator\"");
-
-WriteLiteral(">/</span>\r\n        <a");
-
-WriteLiteral(" class=\"userControls__accountLinks\"");
-
-WriteAttribute("href", Tuple.Create(" href=\"", 767), Tuple.Create("\"", 806)
-            
-            #line 18 "..\..\Views\Shared\_HeaderLoginInfo.cshtml"
-, Tuple.Create(Tuple.Create("", 774), Tuple.Create<System.Object, System.Int32>(Url.Action("Logout", "Account")
-            
-            #line default
-            #line hidden
-, 774), false)
-);
-
-WriteLiteral(">");
+WriteLiteral("\r\n    </li>\r\n");
 
             
-            #line 18 "..\..\Views\Shared\_HeaderLoginInfo.cshtml"
-                                                                                 Write(LT("Global.Buttons.Logout", "Logout"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</a>\r\n    </li>\r\n");
-
-            
-            #line 20 "..\..\Views\Shared\_HeaderLoginInfo.cshtml"
+            #line 19 "..\..\Views\Shared\_HeaderLoginInfo.cshtml"
 }
 else
 {
@@ -184,50 +165,32 @@ else
             
             #line default
             #line hidden
-WriteLiteral("    <li");
-
-WriteLiteral(" class=\"margin-top-md\"");
-
-WriteLiteral(">\r\n        <span");
-
-WriteLiteral(" class=\"userControls__linkSeperator\"");
-
-WriteLiteral("></span>\r\n        <a");
+WriteLiteral("    <li>\r\n        <a");
 
 WriteLiteral(" class=\"userControls__accountLinks\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1011), Tuple.Create("\"", 1050)
+WriteAttribute("href", Tuple.Create(" href=\"", 1043), Tuple.Create("\"", 1082)
+            
+            #line 23 "..\..\Views\Shared\_HeaderLoginInfo.cshtml"
+, Tuple.Create(Tuple.Create("", 1050), Tuple.Create<System.Object, System.Int32>(Url.Action("SignIn", "Account")
+            
+            #line default
+            #line hidden
+, 1050), false)
+);
+
+WriteLiteral("><i");
+
+WriteLiteral(" class=\"sprite sprite-browsers-customer iconFilter\"");
+
+WriteLiteral("></i><span");
+
+WriteLiteral(" class=\"label-0\"");
+
+WriteLiteral(">Login</span></a>\r\n    </li>\r\n");
+
             
             #line 25 "..\..\Views\Shared\_HeaderLoginInfo.cshtml"
-, Tuple.Create(Tuple.Create("", 1018), Tuple.Create<System.Object, System.Int32>(Url.Action("SignIn", "Account")
-            
-            #line default
-            #line hidden
-, 1018), false)
-);
-
-WriteLiteral(">Login</a>\r\n        <span");
-
-WriteLiteral(" class=\"userControls__linkSeperator\"");
-
-WriteLiteral(">or</span>\r\n        <a");
-
-WriteLiteral(" class=\"userControls__accountLinks\"");
-
-WriteAttribute("href", Tuple.Create(" href=\"", 1169), Tuple.Create("\"", 1208)
-            
-            #line 27 "..\..\Views\Shared\_HeaderLoginInfo.cshtml"
-, Tuple.Create(Tuple.Create("", 1176), Tuple.Create<System.Object, System.Int32>(Url.Action("SignUp", "Account")
-            
-            #line default
-            #line hidden
-, 1176), false)
-);
-
-WriteLiteral(">Signup</a>\r\n    </li>\r\n");
-
-            
-            #line 29 "..\..\Views\Shared\_HeaderLoginInfo.cshtml"
 }
 
             

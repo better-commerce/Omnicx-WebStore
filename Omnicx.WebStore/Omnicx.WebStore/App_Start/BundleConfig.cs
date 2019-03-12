@@ -46,6 +46,7 @@ namespace Omnicx.WebStore
                 .Include("~/assets/custom/libs/megamenu/redesign.min.js")
                 .Include("~/assets/custom/libs/megamenu/custom.js")
                 .Include("~/assets/custom/libs/pubsub/pubsub.min.js")
+                .Include("~/assets/core/js-lib/imgix.min.js")
                 );
 
             //LOOKBOOK JS BUNDLE
@@ -62,7 +63,7 @@ namespace Omnicx.WebStore
             //css bundle
             bundles.Add(new StyleBundle("~/bundles/style-css", string.Format(cdnUrl, "bundles/style-css"))
                 .Include("~/assets/core/css/bootstrap.min.css")
-                .Include("~/assets/core/css/font-awesome.css")
+                .Include("~/assets/core/css/font-awesome.min.css")
                 .Include("~/assets/theme/" + StoreTheme + "/css/style.default.css", "~/assets/theme/" + StoreTheme + "/css/main.min.css", "~/assets/theme/" + StoreTheme + "/css/mobile.media.css")
                 .Include("~/assets/custom/libs/owl-carousal/owl.carousel.css", "~/assets/custom/libs/owl-carousal/owl.theme.css", "~/assets/core/css/e-zoom.css")
                .Include("~/assets/custom/libs/rzslider/rzslider.min.css")

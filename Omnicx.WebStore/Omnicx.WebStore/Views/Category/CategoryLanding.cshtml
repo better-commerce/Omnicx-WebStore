@@ -102,7 +102,7 @@
                                     @if (img.obj.LinkType == LinkType.Href.GetHashCode().ToString())
                                     {
                                         <a href="@img.obj.Link">
-                                            <img ng-src="@img.obj.Url" alt="Slide @img.index of Carousel" class="img-responsive image1" onerror="this.src = DEFAULT_IMAGE_URL">
+                                            <img ng-src="@img.obj.Url" alt="Slide @img.index of Carousel" class="img-responsive omni-img image1" onerror="this.src = DEFAULT_IMAGE_URL" sizes="(min-width: 768px) 540px, 100vw">
                                             <div class="component-static-html img-topData hidden-xs">
                                                 <h2>@img.obj.Title</h2>
                                                 <h3>@img.obj.SubTitle</h3>
@@ -112,7 +112,7 @@
                                     }
                                     else
                                     {
-                                        <img ng-src="@img.obj.Url" alt="Slide @img.index of Carousel" class="img-responsive image1" onerror="this.src = DEFAULT_IMAGE_URL">
+                                        <img ng-src="@img.obj.Url" alt="Slide @img.index of Carousel" class="img-responsive omni-img image1" onerror="this.src = DEFAULT_IMAGE_URL" sizes="(min-width: 768px) 540px, 100vw">
                                         <div class="component-static-html img-topData hidden-xs">
                                             <h2>@img.obj.Title</h2>
                                             <h3>@img.obj.SubTitle</h3>
@@ -150,7 +150,7 @@
                         <div class="categoryLanding">
                             <div class="image">
                                 <a href="/@cat.Link">
-                                    <img ng-src="@cat.Image" alt="" class="img-responsive image1" onerror="this.src = DEFAULT_IMAGE_URL">
+                                    <img ng-src="@cat.Image" alt="" class="img-responsive omni-img image1" onerror="this.src = DEFAULT_IMAGE_URL" sizes="(min-width: 768px) 540px, 100vw">
                                 </a>  @*@cat.Image*@
                             </div>
                             <div class="category-name">
@@ -181,7 +181,7 @@
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                     <div class="col-xs-12 no-padding margin-top-md">
                         <div class="image">
-                            <img src="@Model.Image" alt="" class="img-responsive image1" onerror="this.src=DEFAULT_IMAGE_URL">
+                            <img ng-src="@Model.Image" alt="" class="img-responsive omni-img image1" onerror="this.src=DEFAULT_IMAGE_URL" sizes="(min-width: 768px) 540px, 100vw">
                         </div>
                         @if (Model != null && Model.LinkGroups != null)
                         {

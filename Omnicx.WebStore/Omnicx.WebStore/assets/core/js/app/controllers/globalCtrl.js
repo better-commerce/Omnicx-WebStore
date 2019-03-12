@@ -43,7 +43,7 @@
         $scope.global_login = false;
         gm.basketData = null;
         gm.isPasswordPolicyMeet = isPasswordPolicyMeet;
-
+        gm.SubscriptionCartEnabled = false;
         //methods
         gm.userLogin = userLogin;
         gm.registration = registration;
@@ -92,19 +92,25 @@
         gm.cancelChangePostCode = cancelChangePostCode;
         gm.serializedData = serializedData;
         gm.formReset = formReset;
-        gm.removeProductToWishlist = removeProductToWishlist;
+        gm.removeProductFromWishlist = removeProductFromWishlist;
         gm.initLookbooks = initLookbooks;
         gm.addLookbookToCart = addLookbookToCart;
         gm.fetchLookbookByGroup = fetchLookbookByGroup;
         gm.updateBasketQty = updateBasketQty;
         gm.getRecommendations = getRecommendations;
         gm.activeClass = '';
+        gm.getAllcurrencyandCountries = getAllcurrencyandCountries;
+        gm.currencies = [];
+        gm.countries = [];
+        gm.languageSettings = languageSettings;
+        gm.isSubscriptionCart = isSubscriptionCart;
+        gm.updateBasketSubscriptionInfo = updateBasketSubscriptionInfo;
 
         /*******below code is for recomendation**********/
         gm.recomendations = {};
 
         // data used to generate qty dropdown in basket 
-        gm.basketQtyDropdown = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        gm.basketQtyDropdown = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
         gm.guid = guid;
 
@@ -216,6 +222,7 @@
                     $('.promovalid').show(0).delay(2000).hide(0);
                     var dataResult = gm.serializedData(data.result.basket);
                     gm.basketResponse = dataResult;
+                    reCalculateLineitemsAndQty();
                 })
                     .error(function (msg) {
                         if (msg.errorMessage != "false") {
@@ -265,26 +272,69 @@
                 //}
             }
         }
+        function initAddToBagQty() {
+            if (gm.maximumAddToBasketLimit > 0) {
+                gm.basketQtyDropdown = [];
+                for (i = 1; i <= gm.maximumAddToBasketLimit; i++) {
+                    gm.basketQtyDropdown.push(i);
+                }
+            }
+        }
+        function isSubscriptionCart() {
+            if (gm.basketResponse.containsSubscription) {
+                gm.SubscriptionCartEnabled = true;
+                angular.forEach(gm.basketResponse.lineItems, function (line) {
+                    if (!line.isSubscription) {
+                        gm.SubscriptionCartEnabled = false;
+                    }
+                });
+            }
+        };
+        function reCalculateLineitemsAndQty() {
+            if (gm.basketResponse != null && gm.basketResponse != undefined) {
 
+                angular.forEach(gm.basketResponse.lineItems, function (line) {
+                    var json = eval('(' + line.attributesJson + ')');
+                    line.slug = json.Slug;
+                    if (isJSON(line.customInfo2)) {
+                        line.customInfo2 = JSON.parse(line.customInfo2);
+                        line.parentProductId = line.customInfo2.ParentProductId;
+                    }
+                    if (line.subscriptionJSON != null && line.subscriptionJSON != undefined && typeof (line.subscriptionJSON) != 'object' && line.subscriptionJSON != '') {
+                        line.subscriptionPlan = JSON.parse(line.subscriptionJSON);
+                    }
+                    line.updatedqty = line.qty;
+                });
+                gm.count = gm.basketResponse.lineItemCount;
+
+                if (gm.basketResponse.deliveryPlans != undefined) {
+
+                    angular.forEach(gm.basketResponse.deliveryPlans, function (dp) {
+
+                        angular.forEach(dp.lineItems, function (line) {
+                            var json = eval('(' + line.attributesJson + ')');
+                            line.slug = json.Slug;
+                            if (isJSON(line.customInfo2)) {
+                                line.customInfo2 = JSON.parse(line.customInfo2);
+                                line.parentProductId = line.customInfo2.ParentProductId;
+                            }
+                            line.updatedqty = line.qty;
+                        });
+
+                    });
+                }
+            }
+        };
         function initBasket(basket) {
             if (basket == null || basket == undefined) {
                 if (gm.basketResponse == null || gm.basketResponse == undefined) {
                     $http.post(globalConfig.getBasketUrl)
                         .success(function (data) {
                             gm.basketResponse = data;
+                            initAddToBagQty();
                             gm.postCode = $.cookie(BULKORDER_CONSTANTS.POSTCODE);
-                            if (gm.basketResponse != null && gm.basketResponse != undefined) {
-                                angular.forEach(gm.basketResponse.lineItems, function (line) {
-                                    var json = eval('(' + line.attributesJson + ')');
-                                    line.slug = json.Slug;
-                                    if (isJSON(line.customInfo2)) {
-                                        line.customInfo2 = JSON.parse(line.customInfo2);
-                                        line.parentProductId = line.customInfo2.ParentProductId;
-                                    }
-                                });
-                                gm.count = gm.basketResponse.lineItemCount;
-                            }
-
+                            reCalculateLineitemsAndQty();
+                            gm.isSubscriptionCart();
                         })
                         .error(function (msg) {
                             // vm.errorMessage = msg.errorMessages;
@@ -303,7 +353,9 @@
                             line.customInfo2 = JSON.parse(line.customInfo2);
                             line.parentProductId = line.customInfo2.ParentProductId;
                         }
+                        line.updatedqty = line.qty;
                     });
+                    initAddToBagQty();
                     gm.count = gm.basketResponse.lineItemCount;
                     gm.postCode = $.cookie(BULKORDER_CONSTANTS.POSTCODE);
                 }
@@ -319,7 +371,7 @@
             model = { 'stockCode': data, 'qty': qty }
             addProductsInBasket(model);
         }
-
+        gm.maximumBasketItemError = false;
         function addToBasket(recordId, qty, displayOrder) {
             //-- checks if basket already have 12 items-------
             //if (vm.basketResponse.lineItems.length >= 12) {
@@ -348,14 +400,34 @@
                     });
                 }
             }
+            initAddToBagQty();
+            if (gm.maximumAddToBasketLimit < qty && qty > 0) {
+                $(".wishdiv").fadeIn();
+                gm.maximumBasketItemError = true;
+                window.setTimeout(function () {
+                    $(".wishdiv").fadeOut();
+                    gm.maximumBasketItemError = false;
+                }, 3000);
+                return;
+            }
             var prod = { "basketId": basketId, "productId": recordId, "qty": qty, "displayOrder": gm.displayOrder, "itemType": itemType };
             var eventData = { product: prodInBasket, basket: { id: null, lines: [], totalCost: null, totalItems: null, tax: null } };
             $http.post(globalConfig.addToBasket, prod)
                 .success(function (data) {
+                    if (data !=null && data == false) {
+                        $(".wishdiv").fadeIn();
+                                gm.maximumBasketItemError = true;
+                                window.setTimeout(function () {
+                                    $(".wishdiv").fadeOut();
+                                    gm.maximumBasketItemError = false;
+                                }, 3000);
+                                return;                    
+                    }
                     //vm.success = true;
                     if (data.messageCode == 'C002')
                         gm.errorMessage = data.message;
                     gm.basketResponse = data.result;
+                    reCalculateLineitemsAndQty();
                     var count = 0;
                     if (gm.basketResponse != null) {
                         if (gm.basketResponse.lineItems != null) {
@@ -369,6 +441,7 @@
                                 if (line.parentProductId == gm.emptyGuid) {
                                     count = count + line.qty;
                                 }
+                                line.updatedqty = line.qty;
                                 var json = eval('(' + line.attributesJson + ')');
                                 line.slug = json.Slug;
                                 if (line.productId.toLowerCase() == prod.productId.toLowerCase()) {
@@ -384,6 +457,7 @@
                             });
                         }
                         gm.count = gm.basketResponse.lineItemCount;
+                        window.setTimeout(function () { imgix.init({ force: true }); }, 1000);
                     }
                     window.setTimeout(function () {
                         gm.errorMessage = null;
@@ -400,6 +474,7 @@
                         $('.cartopen').addClass('active');
                         $timeout(function () { $(".cartopen").removeClass("active"); }, 3000);
                     }
+                    gm.removeProductFromWishlist(recordId);
                     PubSub.publish("addToCart", eventData);
 
                 })
@@ -410,11 +485,12 @@
                     // vm.saving = false;
                     //$("html, body").animate({ scrollTop: 0 }, "slow");
                 });    
-           // gm.removeProductToWishlist(recordId);
+           
         };
-        function removeProductToWishlist(recordId) {
-            $http.post(globalConfig.removeWishList, { id: recordId })              
+        function removeProductFromWishlist(recordId) {
+            $http.post(globalConfig.removeProductFromWishlist, { id: recordId })              
                 .success(function (data) {
+                    if(data != false)
                     PubSub.publish("wishListData", data);
                   //window.location.reload();
                 })
@@ -456,13 +532,20 @@
         };
 
         function updateShipping(id) {
-            $http.post(globalConfig.updateShipping, { id: gm.basketResponse.id, shippingId: id, nominatedDelivery: null })
+            var requestSource = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1);
+            $http.post(globalConfig.updateShipping, { id: gm.basketResponse.id, shippingId: id, nominatedDelivery: null, requestSource: requestSource.toLowerCase() })
                 .success(function (data) {
                     var dataResult = gm.serializedData(data.basket);
                     gm.basketResponse = dataResult;
+                    reCalculateLineitemsAndQty();
                     angular.forEach(data.basket.shippingMethods, function (obj, key) {
                         if (obj.id == id) {
                             gm.basketResponse.isPriceOnRequest = obj.isPriceOnRequest;
+                        }
+                    });
+                    angular.forEach(data.basket.lineItems, function (line) {
+                        if (line.parentProductId == gm.emptyGuid) {
+                            line.updatedqty = line.qty;
                         }
                     });
                 })
@@ -480,6 +563,7 @@
                 .success(function (data) {
                     var dataResult = gm.serializedData(data.result.basket);
                     gm.basketResponse = dataResult;
+                    reCalculateLineitemsAndQty();
                 })
                 .error(function (msg) {
                 })
@@ -741,6 +825,11 @@
                     if (data) {
                         $.cookie('IsUserLoggedIn', true, { path: '/' });
                         window.location.href = "/MyAccount";
+                        if (!gm.model.registerViewModel.notifyNone) {
+                            var newsletterModel = { Email: gm.model.registerViewModel.email, notifyEmail: gm.model.registerViewModel.notifyByEmail, notifySMS: gm.model.registerViewModel.notifyBySMS, notifyPost: gm.model.registerViewModel.notifyByPost, notifyNone: gm.model.registerViewModel.notifyNone };
+                            $http.post(globalConfig.newsletter, newsletterModel).then(function (success) { }, function (error) { });
+                        }
+                       
                     }
                 })
                 .error(function (msg) {
@@ -749,8 +838,7 @@
                 .finally(function () {
                     $timeout(function () { $(".alertBlock").fadeOut(); }, 3000);
                 });
-            var newsletterModel = { Email: gm.model.registerViewModel.email, notifyEmail: gm.model.registerViewModel.notifyByEmail, notifySMS: gm.model.registerViewModel.notifyBySMS, notifyPost: gm.model.registerViewModel.notifyByPost };
-            $http.post(globalConfig.newsletter, newsletterModel).then(function (success) { }, function (error) { });
+           
         }
 
         function login(model) {
@@ -917,7 +1005,7 @@
                 $('.newsletteralert').show(0).delay(2000).hide(0);
             }
             if (gm.emailinvalid == false) {
-                $http.post(globalConfig.newsLetterSubscription, { email: email })
+                $http.post(globalConfig.newsLetterSubscription, { email: email, notifyNone: true })
                     .success(function (data) {
                         gm.customerEmail = '';
                         if (data == true) {
@@ -1147,6 +1235,7 @@
                     if (data) {
                         gm.currencies = data.currencies;
                         gm.countries = data.countries;
+                        gm.langCulture = data.languages;
                     }
                 })
                 .error(function (msg) {
@@ -1155,5 +1244,47 @@
                 });
         };
 
+        function languageSettings(langculture) {
+            var data = { language: langculture };
+            $http.post(globalConfig.languageSettingUrl, data)
+                .success(function () {
+                    window.location.reload();
+                })
+                .error(function (msg) {
+                })
+                .finally(function () {
+                });
+        };
+        function updateBasketSubscriptionInfo(subscriptionModel) {
+            if (subscriptionModel != null) {
+                var userSetting = null;
+                angular.forEach(gm.basketResponse.lineItems, function (lineItem) {
+                    if (lineItem.isSubscription) {
+                        //when trigger is Fixed
+                        if (subscriptionModel.selectedTerm.id != null && subscriptionModel.selectedPricing != null) {
+                            userSetting = {
+                                productId: lineItem.productId,
+                                subscriptionUserSettings: {
+                                    subscriptionPlanId: subscriptionModel.selectedTerm.subscriptionPlanId,
+                                    subscriptionTermId: subscriptionModel.selectedTerm.id,
+                                    userPricingType: subscriptionModel.selectedPricing.type,
+                                    subscriptionJson: JSON.stringify(subscriptionModel)
+                                }
+                            };
+                        }
+                        if (userSetting != null) {
+                            $http.post("/basket/UpdateBasketSubscriptionInfo", {
+                                basketId: gm.basketResponse.id,
+                                model: userSetting
+                            }).then(function (success) {
+                                gm.initBasket(success.data.result);
+                            }, function (error) {
+                            });
+                        }
+                    }
+
+                });
+            }
+        };
     };
 })();

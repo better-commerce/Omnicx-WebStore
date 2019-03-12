@@ -31,7 +31,7 @@ namespace ASP
     using Omnicx.WebStore;
     using Omnicx.WebStore.Core;
     
-    #line 12 "..\..\Views\Checkout\_ProductSummary.cshtml"
+    #line 26 "..\..\Views\Checkout\_ProductSummary.cshtml"
     using Omnicx.WebStore.Models.Enums;
     
     #line default
@@ -49,15 +49,29 @@ namespace ASP
             
             #line 1 "..\..\Views\Checkout\_ProductSummary.cshtml"
   
-/*
-    Name: Order Summery
-    Purpose: Contains Order item Lines, Promotion panel and Order Amount Information
-    Structure: /Views/Checkout/_OrderSummary.cshtml
-    Contains (Partial Views Used):
+    /*
+        Name: Order Summery
+        Purpose: Contains Order item Lines, Promotion panel and Order Amount Information
+        Structure: /Views/Checkout/_OrderSummary.cshtml
+        Contains (Partial Views Used):
 
-    Contained In (Where we Use this View):
-        a-/Views/Basket/OnePageCheckout.cshtml
-    */
+        Contained In (Where we Use this View):
+            a-/Views/Basket/OnePageCheckout.cshtml
+        */
+    var dates = Enumerable.Range(1, 31).Select(i => new SelectListItem
+    {
+        Text = i.ToString()
+    }).ToList();
+    var months = Enumerable.Range(1, 12).
+                    Select(i => new SelectListItem
+                    {
+                        Text = System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat.GetMonthName(i)
+                    }).ToList();
+    var days = Enumerable.Range(0, 7).
+                Select(i => new SelectListItem
+                {
+                    Text = System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat.GetDayName((DayOfWeek)Enum.Parse(typeof(DayOfWeek), i.ToString()))
+                }).ToList();
 
             
             #line default
@@ -68,13 +82,15 @@ WriteLiteral("<ul");
 
 WriteLiteral(" id=\"checkout-summery\"");
 
+WriteLiteral(" ng-controller=\"subscriptionCtrl as sm \"");
+
 WriteLiteral(">\r\n    <li");
 
 WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding itemBorder clearfix\"");
 
 WriteLiteral(" ng-repeat=\"items in ck.basket.lineItems track by $index\"");
 
-WriteLiteral(" ng-if=\'items.parentProductId == ck.emptyGuid\'");
+WriteLiteral(" ng-if=\'items.parentProductId == ck.emptyGuid && !items.isSubscription\'");
 
 WriteLiteral(">\r\n        <div");
 
@@ -100,7 +116,11 @@ WriteLiteral(">\r\n                            <img");
 
 WriteLiteral(" ng-src=\"{{items.image}}\"");
 
+WriteLiteral(" class=\"omni-img\"");
+
 WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
+
+WriteLiteral(" sizes=\"(min-width: 768px) 540px, 100vw\"");
 
 WriteLiteral(">\r\n                        </a>\r\n                    </span>\r\n                </d" +
 "iv>\r\n                <div");
@@ -151,7 +171,7 @@ WriteLiteral(" class=\"disp-inline-b\"");
 
 WriteLiteral(" ng-bind=\"items.price.formatted.withTax\"");
 
-WriteLiteral("></span> \r\n                        <span");
+WriteLiteral("></span>\r\n                        <span");
 
 WriteLiteral(" class=\"text-right pull-right label-span-price\"");
 
@@ -166,13 +186,13 @@ WriteLiteral(" class=\"cart-info margin-top-sm\"");
 WriteLiteral(">\r\n");
 
             
-            #line 37 "..\..\Views\Checkout\_ProductSummary.cshtml"
+            #line 51 "..\..\Views\Checkout\_ProductSummary.cshtml"
                         
             
             #line default
             #line hidden
             
-            #line 37 "..\..\Views\Checkout\_ProductSummary.cshtml"
+            #line 51 "..\..\Views\Checkout\_ProductSummary.cshtml"
                          if (SessionContext.CurrentUser != null)
                         {
 
@@ -194,7 +214,7 @@ WriteLiteral(" class=\"fa fa-save no-margin-left\"");
 WriteLiteral("></i> ");
 
             
-            #line 39 "..\..\Views\Checkout\_ProductSummary.cshtml"
+            #line 53 "..\..\Views\Checkout\_ProductSummary.cshtml"
                                                                                                                                                       Write(LT("YourBag.Text.Saveforlater", "Save for later"));
 
             
@@ -203,7 +223,7 @@ WriteLiteral("></i> ");
 WriteLiteral("</a>\r\n");
 
             
-            #line 40 "..\..\Views\Checkout\_ProductSummary.cshtml"
+            #line 54 "..\..\Views\Checkout\_ProductSummary.cshtml"
                         }
                         else
                         {
@@ -226,7 +246,7 @@ WriteLiteral(" class=\"fa fa-save no-margin-left\"");
 WriteLiteral("></i> ");
 
             
-            #line 43 "..\..\Views\Checkout\_ProductSummary.cshtml"
+            #line 57 "..\..\Views\Checkout\_ProductSummary.cshtml"
                                                                                                                                              Write(LT("YourBag.Text.Saveforlater", "Save for later"));
 
             
@@ -235,7 +255,7 @@ WriteLiteral("></i> ");
 WriteLiteral("</a>\r\n");
 
             
-            #line 44 "..\..\Views\Checkout\_ProductSummary.cshtml"
+            #line 58 "..\..\Views\Checkout\_ProductSummary.cshtml"
                         }
 
             
@@ -255,24 +275,24 @@ WriteLiteral(">\r\n                            <strong");
 
 WriteLiteral(" class=\"text-orange\"");
 
-WriteAttribute("ng-show", Tuple.Create(" ng-show=\"", 2862), Tuple.Create("\"", 2945)
-, Tuple.Create(Tuple.Create("", 2872), Tuple.Create("items.displayInBasket", 2872), true)
-, Tuple.Create(Tuple.Create(" ", 2893), Tuple.Create("&&", 2894), true)
-, Tuple.Create(Tuple.Create(" ", 2896), Tuple.Create("items.itemType", 2897), true)
-, Tuple.Create(Tuple.Create(" ", 2911), Tuple.Create("==", 2912), true)
+WriteAttribute("ng-show", Tuple.Create(" ng-show=\"", 3703), Tuple.Create("\"", 3786)
+, Tuple.Create(Tuple.Create("", 3713), Tuple.Create("items.displayInBasket", 3713), true)
+, Tuple.Create(Tuple.Create(" ", 3734), Tuple.Create("&&", 3735), true)
+, Tuple.Create(Tuple.Create(" ", 3737), Tuple.Create("items.itemType", 3738), true)
+, Tuple.Create(Tuple.Create(" ", 3752), Tuple.Create("==", 3753), true)
             
-            #line 49 "..\..\Views\Checkout\_ProductSummary.cshtml"
-                           , Tuple.Create(Tuple.Create("", 2914), Tuple.Create<System.Object, System.Int32>(ItemTypes.Bundle.GetHashCode()
+            #line 63 "..\..\Views\Checkout\_ProductSummary.cshtml"
+                           , Tuple.Create(Tuple.Create("", 3755), Tuple.Create<System.Object, System.Int32>(ItemTypes.Bundle.GetHashCode()
             
             #line default
             #line hidden
-, 2914), false)
+, 3755), false)
 );
 
 WriteLiteral(">");
 
             
-            #line 49 "..\..\Views\Checkout\_ProductSummary.cshtml"
+            #line 63 "..\..\Views\Checkout\_ProductSummary.cshtml"
                                                                                                                                        Write(LT("YourBag.Text.IncludeComponents", "Included Components:"));
 
             
@@ -308,7 +328,7 @@ WriteLiteral(" class=\"col-sm-4 col-xs-4 no-padding text-right\"");
 WriteLiteral(">\r\n                                    <strong>");
 
             
-            #line 55 "..\..\Views\Checkout\_ProductSummary.cshtml"
+            #line 69 "..\..\Views\Checkout\_ProductSummary.cshtml"
                                        Write(LT("YourBag.Text.Qty", "Qty:"));
 
             
@@ -350,6 +370,8 @@ WriteLiteral(" ng-src=\"{{items.image}}\"");
 
 WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
+WriteLiteral(" sizes=\"(min-width: 768px) 540px, 100vw\"");
+
 WriteLiteral(">\r\n                        </a>\r\n                    </span>\r\n                </d" +
 "iv>\r\n                <div");
 
@@ -378,7 +400,7 @@ WriteLiteral(" class=\"text-right pull-right text-right label-span-price\"");
 WriteLiteral("><strong>");
 
             
-            #line 79 "..\..\Views\Checkout\_ProductSummary.cshtml"
+            #line 93 "..\..\Views\Checkout\_ProductSummary.cshtml"
                                                                                            Write(LT("YourBag.Text.Free", "FREE"));
 
             
@@ -393,10 +415,190 @@ WriteLiteral("><strong> &times; </strong></span>\r\n                        <spa
 WriteLiteral(" class=\"text-right pull-right text-right label-span-price\"");
 
 WriteLiteral("><strong>{{items.qty}}</strong></span>\r\n                    </span>\r\n            " +
-"    </div>\r\n            </div>\r\n        </div>\r\n    </li>\r\n</ul>\r\n");
+"    </div>\r\n            </div>\r\n        </div>\r\n    </li>\r\n    ");
+
+WriteLiteral("\r\n    <li");
+
+WriteLiteral(" class=\"col-lg-12 col-sm-12 col-xs-12 no-padding itemBorder clearfix\"");
+
+WriteLiteral(" ng-repeat=\"items in ck.basket.lineItems track by $index\"");
+
+WriteLiteral(" ng-if=\'items.isSubscription\'");
+
+WriteLiteral(" ng-init=\"sm.initSubscriptionPlan(items.productId,ck.basket.containsSubscription)" +
+";\"");
+
+WriteLiteral(">\r\n        <div");
+
+WriteLiteral(" ng-if=\"ck.basket.containsSubscription\"");
+
+WriteLiteral(" ng-init=\"ck.initBasketSubscriptionInfo(items)\"");
+
+WriteLiteral(">\r\n            <div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding\"");
+
+WriteLiteral(">\r\n                <div");
+
+WriteLiteral(" class=\"col-sm-2 col-xs-3 no-padding\"");
+
+WriteLiteral(">\r\n                    <span");
+
+WriteLiteral(" class=\"cart-img\"");
+
+WriteLiteral(">\r\n                        <a");
+
+WriteLiteral(" ng-href=\"/{{items.slug}}\"");
+
+WriteLiteral(">\r\n                            <img");
+
+WriteLiteral(" ng-src=\"{{items.image}}\"");
+
+WriteLiteral(" class=\"omni-img\"");
+
+WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
+
+WriteLiteral(" sizes=\"(min-width: 768px) 540px, 100vw\"");
+
+WriteLiteral(">\r\n                        </a>\r\n                        <label");
+
+WriteLiteral(" ng-show=\"items.isSubscription\"");
+
+WriteLiteral(" class=\"label label-primary label-subscription\"");
+
+WriteLiteral(">Subscription</label>\r\n                    </span>\r\n                </div>\r\n     " +
+"           <div");
+
+WriteLiteral(" class=\"col-sm-10 col-xs-9 no-padding\"");
+
+WriteLiteral(">\r\n                    <span");
+
+WriteLiteral(" class=\"trash-cart\"");
+
+WriteLiteral(">\r\n                        <a");
+
+WriteLiteral(" href=\"\"");
+
+WriteLiteral(" class=\"remove\"");
+
+WriteLiteral(" title=\"Remove\"");
+
+WriteLiteral(" ng-click=\"ck.addToBasket(items.productId,0,items.displayOrder)\"");
+
+WriteLiteral("><i");
+
+WriteLiteral(" class=\"fa fa-trash-o\"");
+
+WriteLiteral("></i></a>\r\n                    </span>\r\n                    <span");
+
+WriteLiteral(" class=\"cart-info\"");
+
+WriteLiteral(">\r\n                        <a");
+
+WriteLiteral(" class=\"basket-item\"");
+
+WriteLiteral(" ng-href=\"/{{items.slug}}\"");
+
+WriteLiteral(" ng-bind=\"items.name\"");
+
+WriteLiteral("></a>\r\n                    </span>\r\n                </div>\r\n            </div>\r\n " +
+"       </div>\r\n        \r\n    </li>\r\n    <li");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12 no-padding itemBorder clearfix\"");
+
+WriteLiteral(" ng-show=\"sm.dynamicBundleSubscriptionPlan\"");
+
+WriteLiteral(">\r\n        <div");
+
+WriteLiteral(" class=\"row\"");
+
+WriteLiteral(">\r\n            <div");
+
+WriteLiteral(" class=\"col-lg-8 col-md-8 col-sm-8\"");
+
+WriteLiteral(" ng-init=\"ck.getBasketSubcriptionSettings()\"");
+
+WriteLiteral(">\r\n                ");
+
+WriteLiteral("\r\n                \r\n                    <div");
+
+WriteLiteral(" class=\"row\"");
+
+WriteLiteral(">\r\n                        <div");
+
+WriteLiteral(" class=\"col-lg-12 col-md-12 col-sm-6\"");
+
+WriteLiteral(">\r\n                            <div");
+
+WriteLiteral(" class=\"panel panel-info\"");
+
+WriteLiteral(">\r\n                                <div");
+
+WriteLiteral(" class=\"panel-heading padding-sm\"");
+
+WriteLiteral("></div>\r\n                                <div");
+
+WriteLiteral(" class=\"panel-body padding-xs\"");
+
+WriteLiteral(">\r\n                                    <div");
+
+WriteLiteral(" class=\"row\"");
+
+WriteLiteral(">\r\n                                        <div");
+
+WriteLiteral(" class=\"col-sm-12 col-xs-12\"");
+
+WriteLiteral(">\r\n                                            <p");
+
+WriteLiteral(" class=\"para-sm\"");
+
+WriteLiteral("><strong>Term:</strong> <span");
+
+WriteLiteral(" ng-bind=\"ck.userSubscriptionSettings.selectedTerm\"");
+
+WriteLiteral("></span> </p>\r\n                                            <p");
+
+WriteLiteral(" class=\"para-sm\"");
+
+WriteLiteral("><strong>Payment:</strong> <span");
+
+WriteLiteral(" ng-bind=\"ck.userSubscriptionSettings.paymentType\"");
+
+WriteLiteral("></span></p>\r\n                                            <p");
+
+WriteLiteral(" class=\"para-sm\"");
+
+WriteLiteral("><strong>Order Trigger:</strong> <span");
+
+WriteLiteral(" ng-bind=\"ck.userSubscriptionSettings.trigger\"");
+
+WriteLiteral(@"></span></p>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+");
 
             
-            #line 88 "..\..\Views\Checkout\_ProductSummary.cshtml"
+            #line 148 "..\..\Views\Checkout\_ProductSummary.cshtml"
+                
+            
+            #line default
+            #line hidden
+            
+            #line 148 "..\..\Views\Checkout\_ProductSummary.cshtml"
+                   /*Displaying all the subscription items */
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n            </div>\r\n        </div>\r\n    </li>\r\n</ul>\r\n");
+
+            
+            #line 153 "..\..\Views\Checkout\_ProductSummary.cshtml"
  if (SessionContext.CurrentUser != null)
 {
 
@@ -416,7 +618,7 @@ WriteLiteral(" class=\"fa fa-save\"");
 WriteLiteral("></i> ");
 
             
-            #line 91 "..\..\Views\Checkout\_ProductSummary.cshtml"
+            #line 156 "..\..\Views\Checkout\_ProductSummary.cshtml"
                                   Write(LT("Checkout.Label.OrderSummary", "Saved for Later"));
 
             
@@ -521,10 +723,10 @@ WriteLiteral("><i");
 WriteLiteral(" class=\"fa fa-shopping-cart no-margin-left\"");
 
 WriteLiteral("></i> Add to Cart</a>\r\n                    </span>\r\n                </div>\r\n     " +
-"       </div>\r\n        </li>\r\n    </ul>\r\n");
+"       </div>\r\n           \r\n        </li>\r\n    </ul>\r\n");
 
             
-            #line 118 "..\..\Views\Checkout\_ProductSummary.cshtml"
+            #line 184 "..\..\Views\Checkout\_ProductSummary.cshtml"
 }
 
             
@@ -541,13 +743,13 @@ WriteLiteral(" class=\"col-sm-7 col-xs-12 text-left\"");
 WriteLiteral(">\r\n");
 
             
-            #line 121 "..\..\Views\Checkout\_ProductSummary.cshtml"
+            #line 187 "..\..\Views\Checkout\_ProductSummary.cshtml"
         
             
             #line default
             #line hidden
             
-            #line 121 "..\..\Views\Checkout\_ProductSummary.cshtml"
+            #line 187 "..\..\Views\Checkout\_ProductSummary.cshtml"
          if (SessionContext.CurrentUser == null)
         {
 
@@ -561,7 +763,7 @@ WriteLiteral(" class=\"checkout-user\"");
 WriteLiteral(">");
 
             
-            #line 123 "..\..\Views\Checkout\_ProductSummary.cshtml"
+            #line 189 "..\..\Views\Checkout\_ProductSummary.cshtml"
                                 Write(LT("Checkout.Label.OrderConfirmation", "Order confirmation email will be sent to "));
 
             
@@ -574,7 +776,7 @@ WriteLiteral(" ng-bind=\"ck.GuestEmail\"");
 WriteLiteral("></strong></p>\r\n");
 
             
-            #line 124 "..\..\Views\Checkout\_ProductSummary.cshtml"
+            #line 190 "..\..\Views\Checkout\_ProductSummary.cshtml"
         }
         else
         {
@@ -589,7 +791,7 @@ WriteLiteral(" class=\"checkout-user\"");
 WriteLiteral(">");
 
             
-            #line 127 "..\..\Views\Checkout\_ProductSummary.cshtml"
+            #line 193 "..\..\Views\Checkout\_ProductSummary.cshtml"
                                 Write(LT("Checkout.Label.OrderConfirmation", "Order confirmation email will be sent to "));
 
             
@@ -598,7 +800,7 @@ WriteLiteral(">");
 WriteLiteral(" <strong>");
 
             
-            #line 127 "..\..\Views\Checkout\_ProductSummary.cshtml"
+            #line 193 "..\..\Views\Checkout\_ProductSummary.cshtml"
                                                                                                                              Write(SessionContext.CurrentUser.Email);
 
             
@@ -607,13 +809,13 @@ WriteLiteral(" <strong>");
 WriteLiteral("</strong></p>\r\n");
 
             
-            #line 128 "..\..\Views\Checkout\_ProductSummary.cshtml"
+            #line 194 "..\..\Views\Checkout\_ProductSummary.cshtml"
         }
 
             
             #line default
             #line hidden
-WriteLiteral("        \r\n    </div>\r\n    <div");
+WriteLiteral("\r\n    </div>\r\n    <div");
 
 WriteLiteral(" class=\"col-sm-5 col-xs-12 text-right\"");
 
@@ -635,7 +837,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("            ");
 
             
-            #line 133 "..\..\Views\Checkout\_ProductSummary.cshtml"
+            #line 199 "..\..\Views\Checkout\_ProductSummary.cshtml"
        Write(LT("Checkout.Label.PaymentMethod", "CONTINUE"));
 
             
@@ -662,7 +864,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("            ");
 
             
-            #line 136 "..\..\Views\Checkout\_ProductSummary.cshtml"
+            #line 202 "..\..\Views\Checkout\_ProductSummary.cshtml"
        Write(LT("Checkout.Label.PaymentMethod", "CONTINUE"));
 
             

@@ -30,7 +30,7 @@ namespace Omnicx.WebStore
                 return base.GetVaryByCustomString(context, arg);
             var sessionContext = DependencyResolver.Current.GetService<ISessionContext>();
             var user = sessionContext.CurrentUser;
-            return string.Format("{0}@{1}@{2}@{3}@{4}@{5}", sessionContext.CurrencyCode, sessionContext.CurrentSiteConfig.RegionalSettings.DefaultLanguageCode, context.Request?.Browser?.IsMobileDevice, context.Request?.Browser?.Crawler, user?.UserId ?? Guid.Empty, user?.CompanyId ?? string.Empty);
+            return string.Format("{0}@{1}@{2}@{3}@{4}@{5}", sessionContext.CurrencyCode, !string.IsNullOrWhiteSpace(sessionContext.LangCulture) ? sessionContext.LangCulture : sessionContext.CurrentSiteConfig?.RegionalSettings?.DefaultLanguageCulture, context.Request?.Browser?.IsMobileDevice, context.Request?.Browser?.Crawler, user?.UserId ?? Guid.Empty, user?.CompanyId ?? string.Empty);
         }
     }
 }

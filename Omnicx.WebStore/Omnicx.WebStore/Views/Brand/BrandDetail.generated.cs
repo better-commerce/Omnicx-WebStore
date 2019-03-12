@@ -186,14 +186,14 @@ WriteLiteral(">");
             #line hidden
 WriteLiteral("</a>\r\n            </li>\r\n            <li> <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1880), Tuple.Create("\"", 1920)
+WriteAttribute("href", Tuple.Create(" href=\"", 1840), Tuple.Create("\"", 1880)
             
             #line 50 "..\..\Views\Brand\BrandDetail.cshtml"
-, Tuple.Create(Tuple.Create("", 1887), Tuple.Create<System.Object, System.Int32>(Url.Action("BrandList", "Brand")
+, Tuple.Create(Tuple.Create("", 1847), Tuple.Create<System.Object, System.Int32>(Url.Action("BrandList", "Brand")
             
             #line default
             #line hidden
-, 1887), false)
+, 1847), false)
 );
 
 WriteLiteral(">");
@@ -290,38 +290,38 @@ WriteLiteral(">\r\n                <ul>\r\n");
             #line hidden
 WriteLiteral("                        <li");
 
-WriteAttribute("id", Tuple.Create(" id=\"", 2662), Tuple.Create("\"", 2680)
+WriteAttribute("id", Tuple.Create(" id=\"", 2622), Tuple.Create("\"", 2640)
             
             #line 65 "..\..\Views\Brand\BrandDetail.cshtml"
-, Tuple.Create(Tuple.Create("", 2667), Tuple.Create<System.Object, System.Int32>(subbrands.Id
+, Tuple.Create(Tuple.Create("", 2627), Tuple.Create<System.Object, System.Int32>(subbrands.Id
             
             #line default
             #line hidden
-, 2667), false)
+, 2627), false)
 );
 
 WriteLiteral("><a");
 
 WriteLiteral(" href=\"javascript:;\"");
 
-WriteAttribute("ng-click", Tuple.Create(" ng-click=\"", 2704), Tuple.Create("\"", 2767)
-, Tuple.Create(Tuple.Create("", 2715), Tuple.Create("pm.fetchSubBrandProductList(", 2715), true)
+WriteAttribute("ng-click", Tuple.Create(" ng-click=\"", 2664), Tuple.Create("\"", 2727)
+, Tuple.Create(Tuple.Create("", 2675), Tuple.Create("pm.fetchSubBrandProductList(", 2675), true)
             
             #line 65 "..\..\Views\Brand\BrandDetail.cshtml"
-                            , Tuple.Create(Tuple.Create("", 2743), Tuple.Create<System.Object, System.Int32>(subbrands.Id
+                            , Tuple.Create(Tuple.Create("", 2703), Tuple.Create<System.Object, System.Int32>(subbrands.Id
             
             #line default
             #line hidden
-, 2743), false)
-, Tuple.Create(Tuple.Create("", 2756), Tuple.Create(",", 2756), true)
+, 2703), false)
+, Tuple.Create(Tuple.Create("", 2716), Tuple.Create(",", 2716), true)
             
             #line 65 "..\..\Views\Brand\BrandDetail.cshtml"
-                                          , Tuple.Create(Tuple.Create("", 2757), Tuple.Create<System.Object, System.Int32>(Model.Id
+                                          , Tuple.Create(Tuple.Create("", 2717), Tuple.Create<System.Object, System.Int32>(Model.Id
             
             #line default
             #line hidden
-, 2757), false)
-, Tuple.Create(Tuple.Create("", 2766), Tuple.Create(")", 2766), true)
+, 2717), false)
+, Tuple.Create(Tuple.Create("", 2726), Tuple.Create(")", 2726), true)
 );
 
 WriteLiteral(">");
@@ -522,32 +522,34 @@ WriteLiteral(" class=\"item active\"");
 
 WriteLiteral(">\r\n                                    <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 4576), Tuple.Create("\"", 4604)
+WriteAttribute("href", Tuple.Create(" href=\"", 4536), Tuple.Create("\"", 4564)
             
             #line 98 "..\..\Views\Brand\BrandDetail.cshtml"
-, Tuple.Create(Tuple.Create("", 4583), Tuple.Create<System.Object, System.Int32>(Model
+, Tuple.Create(Tuple.Create("", 4543), Tuple.Create<System.Object, System.Int32>(Model
             
             #line default
             #line hidden
-, 4583), false)
-, Tuple.Create(Tuple.Create("", 4589), Tuple.Create("..CarouselLink1", 4589), true)
+, 4543), false)
+, Tuple.Create(Tuple.Create("", 4549), Tuple.Create("..CarouselLink1", 4549), true)
 );
 
 WriteLiteral("><img");
 
-WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 4610), Tuple.Create("\"", 4640)
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 4570), Tuple.Create("\"", 4600)
             
             #line 98 "..\..\Views\Brand\BrandDetail.cshtml"
- , Tuple.Create(Tuple.Create("", 4619), Tuple.Create<System.Object, System.Int32>(Model.CarouselImage1
+ , Tuple.Create(Tuple.Create("", 4579), Tuple.Create<System.Object, System.Int32>(Model.CarouselImage1
             
             #line default
             #line hidden
-, 4619), false)
+, 4579), false)
 );
 
 WriteLiteral(" alt=\"Slide 1 of carousel\"");
 
 WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
+
+WriteLiteral(" sizes=\"(min-width: 768px) 540px, 100vw\"");
 
 WriteLiteral("></a>\r\n                                </div>\r\n");
 
@@ -600,6 +602,8 @@ WriteLiteral(" alt=\"Slide 1 of carousel\"");
 
 WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
+WriteLiteral(" sizes=\"(min-width: 768px) 540px, 100vw\"");
+
 WriteLiteral("></a>\r\n                                </div>\r\n");
 
             
@@ -625,31 +629,33 @@ WriteLiteral(" class=\"item\"");
 
 WriteLiteral(">\r\n                                    <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 5363), Tuple.Create("\"", 5390)
+WriteAttribute("href", Tuple.Create(" href=\"", 5403), Tuple.Create("\"", 5430)
             
             #line 110 "..\..\Views\Brand\BrandDetail.cshtml"
-, Tuple.Create(Tuple.Create("", 5370), Tuple.Create<System.Object, System.Int32>(Model.CarouselLink3
+, Tuple.Create(Tuple.Create("", 5410), Tuple.Create<System.Object, System.Int32>(Model.CarouselLink3
             
             #line default
             #line hidden
-, 5370), false)
+, 5410), false)
 );
 
 WriteLiteral("><img");
 
-WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 5396), Tuple.Create("\"", 5426)
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 5436), Tuple.Create("\"", 5466)
             
             #line 110 "..\..\Views\Brand\BrandDetail.cshtml"
-, Tuple.Create(Tuple.Create("", 5405), Tuple.Create<System.Object, System.Int32>(Model.CarouselImage3
+, Tuple.Create(Tuple.Create("", 5445), Tuple.Create<System.Object, System.Int32>(Model.CarouselImage3
             
             #line default
             #line hidden
-, 5405), false)
+, 5445), false)
 );
 
 WriteLiteral(" alt=\"Slide 1 of carousel\"");
 
 WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
+
+WriteLiteral(" sizes=\"(min-width: 768px) 540px, 100vw\"");
 
 WriteLiteral("></a>\r\n                                </div>\r\n");
 
@@ -803,38 +809,38 @@ WriteLiteral(">\r\n                            <ul>\r\n");
             #line hidden
 WriteLiteral("                                    <li");
 
-WriteAttribute("id", Tuple.Create(" id=\"", 7742), Tuple.Create("\"", 7760)
+WriteAttribute("id", Tuple.Create(" id=\"", 7822), Tuple.Create("\"", 7840)
             
             #line 151 "..\..\Views\Brand\BrandDetail.cshtml"
-, Tuple.Create(Tuple.Create("", 7747), Tuple.Create<System.Object, System.Int32>(subbrands.Id
+, Tuple.Create(Tuple.Create("", 7827), Tuple.Create<System.Object, System.Int32>(subbrands.Id
             
             #line default
             #line hidden
-, 7747), false)
+, 7827), false)
 );
 
 WriteLiteral("><a");
 
 WriteLiteral(" href=\"javascript:;\"");
 
-WriteAttribute("ng-click", Tuple.Create(" ng-click=\"", 7784), Tuple.Create("\"", 7847)
-, Tuple.Create(Tuple.Create("", 7795), Tuple.Create("pm.fetchSubBrandProductList(", 7795), true)
+WriteAttribute("ng-click", Tuple.Create(" ng-click=\"", 7864), Tuple.Create("\"", 7927)
+, Tuple.Create(Tuple.Create("", 7875), Tuple.Create("pm.fetchSubBrandProductList(", 7875), true)
             
             #line 151 "..\..\Views\Brand\BrandDetail.cshtml"
-                                        , Tuple.Create(Tuple.Create("", 7823), Tuple.Create<System.Object, System.Int32>(subbrands.Id
+                                        , Tuple.Create(Tuple.Create("", 7903), Tuple.Create<System.Object, System.Int32>(subbrands.Id
             
             #line default
             #line hidden
-, 7823), false)
-, Tuple.Create(Tuple.Create("", 7836), Tuple.Create(",", 7836), true)
+, 7903), false)
+, Tuple.Create(Tuple.Create("", 7916), Tuple.Create(",", 7916), true)
             
             #line 151 "..\..\Views\Brand\BrandDetail.cshtml"
-                                                      , Tuple.Create(Tuple.Create("", 7837), Tuple.Create<System.Object, System.Int32>(Model.Id
+                                                      , Tuple.Create(Tuple.Create("", 7917), Tuple.Create<System.Object, System.Int32>(Model.Id
             
             #line default
             #line hidden
-, 7837), false)
-, Tuple.Create(Tuple.Create("", 7846), Tuple.Create(")", 7846), true)
+, 7917), false)
+, Tuple.Create(Tuple.Create("", 7926), Tuple.Create(")", 7926), true)
 );
 
 WriteLiteral(">");
@@ -900,26 +906,26 @@ WriteLiteral(" class=\"col-sm-4 col-xs-6\"");
 
 WriteLiteral(">\r\n                                <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 8364), Tuple.Create("\"", 8389)
+WriteAttribute("href", Tuple.Create(" href=\"", 8444), Tuple.Create("\"", 8469)
             
             #line 164 "..\..\Views\Brand\BrandDetail.cshtml"
-, Tuple.Create(Tuple.Create("", 8371), Tuple.Create<System.Object, System.Int32>(Model.WidgetLink1
+, Tuple.Create(Tuple.Create("", 8451), Tuple.Create<System.Object, System.Int32>(Model.WidgetLink1
             
             #line default
             #line hidden
-, 8371), false)
+, 8451), false)
 );
 
 WriteLiteral(">  <img");
 
-WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 8397), Tuple.Create("\"", 8425)
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 8477), Tuple.Create("\"", 8505)
             
             #line 164 "..\..\Views\Brand\BrandDetail.cshtml"
-, Tuple.Create(Tuple.Create("", 8406), Tuple.Create<System.Object, System.Int32>(Model.WidgetImage1
+, Tuple.Create(Tuple.Create("", 8486), Tuple.Create<System.Object, System.Int32>(Model.WidgetImage1
             
             #line default
             #line hidden
-, 8406), false)
+, 8486), false)
 );
 
 WriteLiteral(" class=\"img-responsive \"");
@@ -928,7 +934,9 @@ WriteLiteral(" alt=\"Brand Category\"");
 
 WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
-WriteLiteral(" /> </a>\r\n                            </div>\r\n");
+WriteLiteral("  sizes=\"(min-width: 768px) 540px, 100vw\"");
+
+WriteLiteral("/> </a>\r\n                            </div>\r\n");
 
             
             #line 166 "..\..\Views\Brand\BrandDetail.cshtml"
@@ -953,26 +961,26 @@ WriteLiteral(" class=\"col-sm-4 col-xs-6\"");
 
 WriteLiteral(">\r\n                                <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 8764), Tuple.Create("\"", 8789)
+WriteAttribute("href", Tuple.Create(" href=\"", 8884), Tuple.Create("\"", 8909)
             
             #line 170 "..\..\Views\Brand\BrandDetail.cshtml"
-, Tuple.Create(Tuple.Create("", 8771), Tuple.Create<System.Object, System.Int32>(Model.WidgetLink2
+, Tuple.Create(Tuple.Create("", 8891), Tuple.Create<System.Object, System.Int32>(Model.WidgetLink2
             
             #line default
             #line hidden
-, 8771), false)
+, 8891), false)
 );
 
 WriteLiteral("> <img");
 
-WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 8796), Tuple.Create("\"", 8824)
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 8916), Tuple.Create("\"", 8944)
             
             #line 170 "..\..\Views\Brand\BrandDetail.cshtml"
-, Tuple.Create(Tuple.Create("", 8805), Tuple.Create<System.Object, System.Int32>(Model.WidgetImage2
+, Tuple.Create(Tuple.Create("", 8925), Tuple.Create<System.Object, System.Int32>(Model.WidgetImage2
             
             #line default
             #line hidden
-, 8805), false)
+, 8925), false)
 );
 
 WriteLiteral(" class=\"img-responsive \"");
@@ -981,7 +989,9 @@ WriteLiteral(" alt=\"Brand Category\"");
 
 WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
-WriteLiteral(" />  </a>\r\n                            </div>\r\n");
+WriteLiteral("  sizes=\"(min-width: 768px) 540px, 100vw\"");
+
+WriteLiteral("/>  </a>\r\n                            </div>\r\n");
 
             
             #line 172 "..\..\Views\Brand\BrandDetail.cshtml"
@@ -1006,26 +1016,26 @@ WriteLiteral(" class=\"col-sm-4 col-xs-6\"");
 
 WriteLiteral(">\r\n                                <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 9164), Tuple.Create("\"", 9189)
+WriteAttribute("href", Tuple.Create(" href=\"", 9324), Tuple.Create("\"", 9349)
             
             #line 176 "..\..\Views\Brand\BrandDetail.cshtml"
-, Tuple.Create(Tuple.Create("", 9171), Tuple.Create<System.Object, System.Int32>(Model.WidgetLink3
+, Tuple.Create(Tuple.Create("", 9331), Tuple.Create<System.Object, System.Int32>(Model.WidgetLink3
             
             #line default
             #line hidden
-, 9171), false)
+, 9331), false)
 );
 
 WriteLiteral(">  <img");
 
-WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 9197), Tuple.Create("\"", 9225)
+WriteAttribute("ng-src", Tuple.Create(" ng-src=\"", 9357), Tuple.Create("\"", 9385)
             
             #line 176 "..\..\Views\Brand\BrandDetail.cshtml"
-, Tuple.Create(Tuple.Create("", 9206), Tuple.Create<System.Object, System.Int32>(Model.WidgetImage3
+, Tuple.Create(Tuple.Create("", 9366), Tuple.Create<System.Object, System.Int32>(Model.WidgetImage3
             
             #line default
             #line hidden
-, 9206), false)
+, 9366), false)
 );
 
 WriteLiteral(" class=\"img-responsive \"");
@@ -1034,7 +1044,9 @@ WriteLiteral(" alt=\"Brand Category\"");
 
 WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
 
-WriteLiteral(" /> </a>\r\n                            </div>\r\n");
+WriteLiteral("  sizes=\"(min-width: 768px) 540px, 100vw\"");
+
+WriteLiteral("/> </a>\r\n                            </div>\r\n");
 
             
             #line 178 "..\..\Views\Brand\BrandDetail.cshtml"
@@ -1107,15 +1119,15 @@ WriteLiteral(" width=\'320\'");
 
 WriteLiteral(" height=\'300\'");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 10357), Tuple.Create("\"", 10407)
-, Tuple.Create(Tuple.Create("", 10363), Tuple.Create("https://www.youtube.com/embed/", 10363), true)
+WriteAttribute("src", Tuple.Create(" src=\"", 10557), Tuple.Create("\"", 10607)
+, Tuple.Create(Tuple.Create("", 10563), Tuple.Create("https://www.youtube.com/embed/", 10563), true)
             
             #line 199 "..\..\Views\Brand\BrandDetail.cshtml"
-           , Tuple.Create(Tuple.Create("", 10393), Tuple.Create<System.Object, System.Int32>(Model.VideoId
+           , Tuple.Create(Tuple.Create("", 10593), Tuple.Create<System.Object, System.Int32>(Model.VideoId
             
             #line default
             #line hidden
-, 10393), false)
+, 10593), false)
 );
 
 WriteLiteral(" frameborder=\"0\"");

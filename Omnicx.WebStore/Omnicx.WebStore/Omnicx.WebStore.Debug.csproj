@@ -247,6 +247,9 @@
     <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Rest.ClientRuntime.2.3.18\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
@@ -271,9 +274,6 @@
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
-    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RestSharp.105.2.3\lib\net452\RestSharp.dll</HintPath>
-    </Reference>
     <Reference Include="StackExchange.Redis, Version=1.2.6.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\StackExchange.Redis.1.2.6\lib\net45\StackExchange.Redis.dll</HintPath>
     </Reference>
@@ -284,10 +284,13 @@
     </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Spatial, Version=5.8.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Spatial.5.8.3\lib\net40\System.Spatial.dll</HintPath>
@@ -476,6 +479,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Index.cshtml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Basket\ShipmentBasket.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShipmentBasket.cshtml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Basket\_BulkOrderMessage.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -566,6 +574,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CategoryProducts.cshtml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Checkout\HotelCheckout.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HotelCheckout.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\HotelCheckoutBilling.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HotelCheckoutBilling.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\HotelCheckoutDelivery.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HotelCheckoutDelivery.cshtml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Checkout\OnePageCheckout.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -585,6 +608,21 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>StandardCheckout.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\WizardCheckout.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WizardCheckout.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\WizardCheckoutBilling.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WizardCheckoutBilling.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\WizardCheckoutDelivery.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WizardCheckoutDelivery.cshtml</DependentUpon>
     </Compile>
     <Compile Include="Views\Checkout\_AddressView.generated.cs">
       <AutoGen>True</AutoGen>
@@ -641,6 +679,36 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>_GuestRegistration.cshtml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Checkout\_HotelBillingAddress.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_HotelBillingAddress.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_HotelDeliveryMethod.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_HotelDeliveryMethod.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_HotelOrderSummary.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_HotelOrderSummary.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_HotelProductSummary.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_HotelProductSummary.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_HotelShippingAddress.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_HotelShippingAddress.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_HotelSummary.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_HotelSummary.cshtml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Checkout\_OrderSummary.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -661,6 +729,41 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>_ShippingAddress.cshtml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Checkout\_Store.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Store.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_WizardBillingAddress.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_WizardBillingAddress.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_WizardDeliveryMethod.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_WizardDeliveryMethod.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_WizardOrderSummary.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_WizardOrderSummary.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_WizardProductSummary.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_WizardProductSummary.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_WizardShippingAddress.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_WizardShippingAddress.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_WizardSummary.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_WizardSummary.cshtml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Common\BasketNotFound.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -680,6 +783,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PageNotFound.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Common\StoreLocator.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StoreLocator.cshtml</DependentUpon>
     </Compile>
     <Compile Include="Views\Common\_FaqsView.generated.cs">
       <AutoGen>True</AutoGen>
@@ -856,6 +964,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>_LayoutAccount.cshtml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Shared\_LayoutBlank.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_LayoutBlank.cshtml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Shared\_LayoutBlog.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -906,11 +1019,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>_MainFooter.mobile.cshtml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Shared\_MainMenu.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>_MainMenu.cshtml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Shared\_MobileHeaderLayout.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -956,6 +1064,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>_BreadCrumb.cshtml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Survey\AppCapture.generated.cs">
+      <DependentUpon>AppCapture.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Views\Survey\Capture.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -989,18 +1102,37 @@
     <Content Include="assets\cms-templates\app-tools-templates\category\category-slider-1.html" />
     <Content Include="assets\cms-templates\app-tools-templates\category\category-slider-2.html" />
     <Content Include="assets\cms-templates\app-tools-templates\componentAppTools.js" />
-    <Content Include="assets\cms-templates\app-tools-templates\content\heading.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\content\image-with-text-list-1.html" />
     <Content Include="assets\cms-templates\app-tools-templates\content\image-with-text-1.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\content\image-with-text-list-2.html" />
     <Content Include="assets\cms-templates\app-tools-templates\content\image-with-text-2.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\content\image-with-text-list-3.html" />
     <Content Include="assets\cms-templates\app-tools-templates\content\image-with-text-3.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\content\image-with-text-4.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\content\video-with-text-list-1.html" />
     <Content Include="assets\cms-templates\app-tools-templates\content\video-with-text-1.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\content\video-with-text-list-2.html" />
     <Content Include="assets\cms-templates\app-tools-templates\content\video-with-text-2.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\content\video-with-text-list-3.html" />
     <Content Include="assets\cms-templates\app-tools-templates\content\video-with-text-3.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\headings\heading-paragraph-right.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\headings\heading-paragraph-left.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\headings\heading-subheading-para-center.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\headings\heading-subheading-para-left.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\headings\heading-subheading-left.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\headings\heading-subheading-para-right.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\headings\heading-subheading-right.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\headings\heading-subheading.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\headings\heading-paragraph-center.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\headings\heading-left.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\headings\heading-right.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\headings\heading.html" />
     <Content Include="assets\cms-templates\app-tools-templates\image\image-list-1.html" />
     <Content Include="assets\cms-templates\app-tools-templates\image\image-list-2.html" />
     <Content Include="assets\cms-templates\app-tools-templates\image\image-list-3.html" />
     <Content Include="assets\cms-templates\app-tools-templates\image\image-list-4.html" />
     <Content Include="assets\cms-templates\app-tools-templates\image\image.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\map\map.html" />
     <Content Include="assets\cms-templates\app-tools-templates\product\product-list.html" />
     <Content Include="assets\cms-templates\app-tools-templates\product\product-slider-1.html" />
     <Content Include="assets\cms-templates\app-tools-templates\product\product-slider-2.html" />
@@ -1008,7 +1140,6 @@
     <Content Include="assets\cms-templates\app-tools-templates\slider\carousal-slider.html" />
     <Content Include="assets\cms-templates\app-tools-templates\video\video-2-panels.html" />
     <Content Include="assets\cms-templates\app-tools-templates\video\video-full.html" />
-    <Content Include="assets\cms-templates\app-tools-templates\welcome\heading.html" />
     <Content Include="assets\cms-templates\final-js\cms-templates.js" />
     <Content Include="assets\cms-templates\final-js\componentAppTools.js" />
     <Content Include="assets\cms-templates\final-js\pageTemplates.js" />
@@ -1048,7 +1179,12 @@
     <Content Include="assets\core\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="assets\core\fonts\icomoon.dev.svg" />
     <Content Include="assets\core\fonts\icomoon.svg" />
+    <Content Include="assets\core\js-lib\imgix.min.js" />
+    <Content Include="assets\core\js\app\controllers\storeCtrl.js" />
+    <Content Include="assets\core\js\app\directives\btRecommendation.js" />
     <Content Include="assets\core\js\app\directives\numbersOnly.js" />
+    <Content Include="assets\core\js\app\directives\templates\recommendation.html" />
+    <Content Include="assets\core\js\app\directives\templates\recommendproducts.html" />
     <Content Include="assets\core\js\app\service\Recommendation.js" />
     <Content Include="assets\core\xml\PasswordPolicy.xml" />
     <Content Include="assets\custom\libs\custom-js\custom-functions.js" />
@@ -1100,6 +1236,15 @@
     <Content Include="assets\core\js\app\utilities\ScriptLoadingService.js" />
     <Content Include="assets\custom\libs\owl-carousal\animate.min.css" />
     <Content Include="assets\custom\libs\owl-carousal\owl.carousel.css" />
+    <Content Include="assets\theme\ocx\css\mobile.media.css" />
+    <Content Include="assets\theme\ocx\images\bubble.png" />
+    <Content Include="assets\theme\ocx\images\customer-ico.png" />
+    <Content Include="assets\theme\ocx\images\customerSession-ico.png" />
+    <Content Include="assets\theme\ocx\images\favicon-96x96.png" />
+    <Content Include="assets\theme\ocx\images\icons-sprite.png" />
+    <Content Include="assets\theme\ocx\images\logout-ico.png" />
+    <Content Include="assets\theme\ocx\images\order-ico.png" />
+    <Content Include="assets\theme\ocx\images\Pay By card.png" />
     <Content Include="assets\theme\ocx\images\products\1.jpg" />
     <Content Include="assets\theme\ocx\images\products\13.jpg" />
     <Content Include="assets\theme\ocx\images\products\14.jpg" />
@@ -1176,19 +1321,23 @@
     <Content Include="assets\theme\ocx\images\payment.png" />
     <Content Include="assets\theme\ocx\images\quick-view.png" />
     <Content Include="assets\theme\ocx\images\quickview-icon.png" />
+    <Content Include="assets\theme\ocx\images\search-ico.png" />
     <Content Include="assets\theme\ocx\images\shopping-bag-full.png" />
     <Content Include="assets\theme\ocx\images\shopping-bag.png" />
+    <Content Include="assets\theme\ocx\images\shoppingbag-ico.png" />
     <Content Include="assets\theme\ocx\images\unchecked.png" />
+    <Content Include="assets\theme\ocx\images\wishlist-ico.png" />
     <Content Include="assets\theme\ocx\images\wishlist-icon.png" />
     <Content Include="assets\theme\ocx\images\wishlist-view.png" />
-    <Content Include="assets\theme\ocx\js\app\controllers\globalCtrl.js" />
     <Content Include="bundles\fonts\fontawesome-webfont.svg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -1713,7 +1862,10 @@
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>LookbookDetail.generated.cs</LastGenOutput>
     </Content>
-    <Content Include="Views\Checkout\_Store.cshtml" />
+    <Content Include="Views\Checkout\_Store.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_Store.generated.cs</LastGenOutput>
+    </Content>
     <Content Include="Views\Shared\_OpcLayoutFooter.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>_OpcLayoutFooter.generated.cs</LastGenOutput>
@@ -1722,17 +1874,109 @@
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>_RecommendationBubble.generated.cs</LastGenOutput>
     </Content>
+    <Content Include="Views\Basket\ShipmentBasket.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ShipmentBasket.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Common\StoreLocator.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>StoreLocator.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\SurveyResponse.cshtml" />
+    <Content Include="Views\Survey\AppCapture.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>AppCapture.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\_LayoutBlank.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_LayoutBlank.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\HotelCheckout.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>HotelCheckout.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\HotelCheckoutBilling.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>HotelCheckoutBilling.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\HotelCheckoutDelivery.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>HotelCheckoutDelivery.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\WizardCheckout.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>WizardCheckout.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\WizardCheckoutBilling.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>WizardCheckoutBilling.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\WizardCheckoutDelivery.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>WizardCheckoutDelivery.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_HotelBillingAddress.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_HotelBillingAddress.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_HotelDeliveryMethod.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_HotelDeliveryMethod.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_HotelOrderSummary.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_HotelOrderSummary.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_HotelProductSummary.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_HotelProductSummary.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_HotelShippingAddress.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_HotelShippingAddress.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_HotelSummary.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_HotelSummary.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_WizardBillingAddress.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_WizardBillingAddress.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_WizardDeliveryMethod.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_WizardDeliveryMethod.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_WizardOrderSummary.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_WizardOrderSummary.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_WizardProductSummary.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_WizardProductSummary.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_WizardShippingAddress.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_WizardShippingAddress.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_WizardSummary.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_WizardSummary.generated.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Omnicx.API.SDK\Omnicx.API.SDK.csproj">
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\WebstoreCore\Omnicx.API.SDK\Omnicx.API.SDK.csproj">
       <Project>{267b329b-0a25-4136-af47-668c45f0f0cf}</Project>
       <Name>Omnicx.API.SDK</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Omnicx.WebStore.Core\Omnicx.WebStore.Core.csproj">
+    <ProjectReference Include="..\..\..\WebstoreCore\Omnicx.WebStore.Core\Omnicx.WebStore.Core.csproj">
       <Project>{634877c1-92fb-4b43-b59f-e8438a3f7424}</Project>
       <Name>Omnicx.WebStore.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Omnicx.WebStore.Models\Omnicx.WebStore.Models.csproj">
+    <ProjectReference Include="..\..\..\WebstoreCore\Omnicx.WebStore.Models\Omnicx.WebStore.Models.csproj">
       <Project>{404d2b03-f5cf-4e2e-b05e-0ec7311916a7}</Project>
       <Name>Omnicx.WebStore.Models</Name>
     </ProjectReference>

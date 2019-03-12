@@ -196,9 +196,11 @@ WriteLiteral(" href=\"{{lookbook.Link}}\"");
 
 WriteLiteral(">\r\n                        <figure>\r\n                            <img");
 
-WriteLiteral(" src=\"{{lookbook.MainImage}}\"");
+WriteLiteral(" ng-src=\"{{lookbook.MainImage}}\"");
 
 WriteLiteral(" onerror=\"this.src = DEFAULT_IMAGE_URL\"");
+
+WriteLiteral(" sizes=\"(min-width: 768px) 540px, 100vw\"");
 
 WriteLiteral(" />\r\n                            <span");
 

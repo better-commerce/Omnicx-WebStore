@@ -140,14 +140,15 @@ WriteLiteral(" data-target=\"#globalSearch-xs\"");
 
 WriteLiteral(" class=\"headerAction\"");
 
-WriteLiteral("><img");
+WriteLiteral("><i");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 1157), Tuple.Create("\"", 1203)
-, Tuple.Create(Tuple.Create("", 1163), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/search-ico.png")
-, 1163), false)
-);
+WriteLiteral(" class=\"sprite sprite-browsers-search\"");
 
-WriteLiteral(" /></a>\r\n                </div>               \r\n                ");
+WriteLiteral("></i><span");
+
+WriteLiteral(" class=\"label-0\"");
+
+WriteLiteral(">Search</span></a>\r\n                </div>               \r\n                ");
 
 WriteLiteral("\r\n                <div");
 
@@ -169,14 +170,11 @@ WriteLiteral(" title=\"Cart\"");
 
 WriteLiteral(" class=\"headerAction text-center\"");
 
-WriteLiteral(">\r\n                                <img");
+WriteLiteral(">                                \r\n                                <i");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 1665), Tuple.Create("\"", 1716)
-, Tuple.Create(Tuple.Create("", 1671), Tuple.Create<System.Object, System.Int32>(Href("~/assets/theme/ocx/images/shoppingbag-ico.png")
-, 1671), false)
-);
+WriteLiteral(" class=\"sprite sprite-browsers-shoppingbag\"");
 
-WriteLiteral(" />\r\n                                <span");
+WriteLiteral("></i>\r\n                                <span");
 
 WriteLiteral(" class=\"metaLinks__basket__indicator\"");
 
@@ -196,7 +194,7 @@ WriteLiteral(" ng-show=\"gm.basketResponse.lineItems.length>0\"");
 
 WriteLiteral(">\r\n                                    <ul");
 
-WriteLiteral(" id=\"cartdropdown\"");
+WriteLiteral(" class=\"cartdropdown\"");
 
 WriteLiteral(">\r\n                                        <li");
 
@@ -298,18 +296,18 @@ WriteLiteral(">\r\n                                                            <
 
 WriteLiteral(" class=\"text-orange\"");
 
-WriteAttribute("ng-show", Tuple.Create(" ng-show=\"", 4673), Tuple.Create("\"", 4756)
-, Tuple.Create(Tuple.Create("", 4683), Tuple.Create("items.displayInBasket", 4683), true)
-, Tuple.Create(Tuple.Create(" ", 4704), Tuple.Create("&&", 4705), true)
-, Tuple.Create(Tuple.Create(" ", 4707), Tuple.Create("items.itemType", 4708), true)
-, Tuple.Create(Tuple.Create(" ", 4722), Tuple.Create("==", 4723), true)
+WriteAttribute("ng-show", Tuple.Create(" ng-show=\"", 4725), Tuple.Create("\"", 4808)
+, Tuple.Create(Tuple.Create("", 4735), Tuple.Create("items.displayInBasket", 4735), true)
+, Tuple.Create(Tuple.Create(" ", 4756), Tuple.Create("&&", 4757), true)
+, Tuple.Create(Tuple.Create(" ", 4759), Tuple.Create("items.itemType", 4760), true)
+, Tuple.Create(Tuple.Create(" ", 4774), Tuple.Create("==", 4775), true)
             
             #line 72 "..\..\Views\Shared\_MobileHeaderLayout.cshtml"
-                                                           , Tuple.Create(Tuple.Create("", 4725), Tuple.Create<System.Object, System.Int32>(ItemTypes.Bundle.GetHashCode()
+                                                           , Tuple.Create(Tuple.Create("", 4777), Tuple.Create<System.Object, System.Int32>(ItemTypes.Bundle.GetHashCode()
             
             #line default
             #line hidden
-, 4725), false)
+, 4777), false)
 );
 
 WriteLiteral(">");
@@ -470,7 +468,11 @@ WriteLiteral(" ng-show=\"gm.basketResponse.lineItems.length>0\"");
 
 WriteLiteral(">\r\n                                    <select");
 
-WriteLiteral(" id=\"deliverydrpdwn\"");
+WriteLiteral(" class=\"deliverydrpdwn\"");
+
+WriteLiteral(" title=\"delivery\"");
+
+WriteLiteral(" aria-label=\"delivery\"");
 
 WriteLiteral(" ng-model=\"selectedid\"");
 
@@ -507,6 +509,8 @@ WriteLiteral(">\r\n                                        <p");
 
 WriteLiteral(" class=\"basket-price\"");
 
+WriteLiteral(" aria-hidden=\"true\"");
+
 WriteLiteral(">\r\n");
 
 WriteLiteral("                                            ");
@@ -541,14 +545,14 @@ WriteLiteral(" class=\"col-sm-6 col-xs-6 no-padding-left\"");
 
 WriteLiteral(">\r\n                                            <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 9790), Tuple.Create("\"", 9827)
+WriteAttribute("href", Tuple.Create(" href=\"", 9903), Tuple.Create("\"", 9940)
             
             #line 123 "..\..\Views\Shared\_MobileHeaderLayout.cshtml"
-, Tuple.Create(Tuple.Create("", 9797), Tuple.Create<System.Object, System.Int32>(Url.Action("Index", "Basket")
+, Tuple.Create(Tuple.Create("", 9910), Tuple.Create<System.Object, System.Int32>(Url.Action("Index", "Basket")
             
             #line default
             #line hidden
-, 9797), false)
+, 9910), false)
 );
 
 WriteLiteral(" class=\"animate btn-bordered\"");
@@ -573,15 +577,15 @@ WriteLiteral(" class=\"col-sm-6 col-xs-6\"");
 
 WriteLiteral(">\r\n                                            <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 10105), Tuple.Create("\"", 10150)
+WriteAttribute("href", Tuple.Create(" href=\"", 10218), Tuple.Create("\"", 10263)
             
             #line 126 "..\..\Views\Shared\_MobileHeaderLayout.cshtml"
-, Tuple.Create(Tuple.Create("", 10112), Tuple.Create<System.Object, System.Int32>(checkoutUrl
+, Tuple.Create(Tuple.Create("", 10225), Tuple.Create<System.Object, System.Int32>(checkoutUrl
             
             #line default
             #line hidden
-, 10112), false)
-, Tuple.Create(Tuple.Create("", 10124), Tuple.Create("//{{gm.basketResponse.id}}", 10124), true)
+, 10225), false)
+, Tuple.Create(Tuple.Create("", 10237), Tuple.Create("//{{gm.basketResponse.id}}", 10237), true)
 );
 
 WriteLiteral(" class=\"animate btn-orange\"");
@@ -607,12 +611,22 @@ WriteLiteral(" ng-hide=\"gm.basketResponse.lineItems.length > 0\"");
 
 WriteLiteral(">\r\n                                    <p");
 
+WriteLiteral(" aria-hidden=\"true\"");
+
 WriteLiteral(" class=\"no-item\"");
 
-WriteLiteral(">Your Bag is empty.</p>\r\n                                </li>\r\n                 " +
-"           </ul>\r\n                        </li>\r\n                    </ul>\r\n    " +
-"            </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n<div" +
-"");
+WriteLiteral(">");
+
+            
+            #line 131 "..\..\Views\Shared\_MobileHeaderLayout.cshtml"
+                                                                     Write(LT("Checkout.Title.YourBagisempty", "Your Bag is empty."));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</p>\r\n                                </li>\r\n                            </ul>\r\n " +
+"                       </li>\r\n                    </ul>\r\n                </div>\r" +
+"\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n<div");
 
 WriteLiteral(" class=\"modal fade in\"");
 
@@ -642,11 +656,20 @@ WriteLiteral(" class=\"text-center\"");
 
 WriteLiteral(" href=\"/\"");
 
-WriteLiteral(">\r\n                    <h3");
+WriteLiteral(">\r\n                    <h1");
 
 WriteLiteral(" class=\"heading-h3 text-center\"");
 
-WriteLiteral(">Search</h3>\r\n                </a>\r\n                <button");
+WriteLiteral(">");
+
+            
+            #line 146 "..\..\Views\Shared\_MobileHeaderLayout.cshtml"
+                                                  Write(LT("Checkout.Title.Search", "Search"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</h1>\r\n                </a>\r\n                <button");
 
 WriteLiteral(" type=\"button\"");
 

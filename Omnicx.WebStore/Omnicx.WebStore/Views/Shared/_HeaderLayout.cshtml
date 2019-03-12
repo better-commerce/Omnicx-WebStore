@@ -82,33 +82,34 @@
                                 @Html.Action("HeaderBasket", "Basket", true)
                             </div>
                         </li>
-                        @*@if (isB2b.GetValueOrDefault() && showBulkOrderPad.GetValueOrDefault())
-                        {
-                            @Html.Partial(CustomViews.HEADER_BULKORDER_VIEW)
-                        }*@
-                        @Html.Action("HeaderLoginInfo", "Home", true)                        
+                        @Html.Action("HeaderLoginInfo", "Home", true)      
+                        <li>
+                            <a class="userControls__accountLinks" href="@Url.Action("StoreLocator", "Common")"><i class="sprite sprite-browsers-store"></i><span class="label-0">Login</span></a>
+                        </li>
                     </ul>
                 </nav>
             </div>
-            <div class="header-toggle" ng-init="gm.getAllcurrencyandCountries()">
+            <div class="header-toggle" ng-init="gm.getAllcurrencyandCountries();langCulture='@SessionContext.LangCulture'">
                 <ul>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-chevron-down"></i><i class="fa fa-@SessionContext.CurrentSiteConfig.RegionalSettings.DefaultCountry"></i></a>
-                        <ul class="dropdown-menu">
-                            <li ng-repeat="country in gm.countries"><a href="#"><i class="fa fa-{{country.twoLetterIsoCode}}"></i></a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-chevron-down"></i>@SessionContext.CurrencyCode</a>
+                        <a href="#" class="dropdown-toggle text-white" data-toggle="dropdown"><i class="fa fa-chevron-down"></i>@SessionContext.CurrencyCode</a>
                         <ul class="dropdown-menu">
                             <li ng-repeat="currency in gm.currencies">
-                                <a class="#" ng-click="gm.currencySettings(currency.currencyCode)"><em>{{currency.currencySymbol}}</em>{{currency.currencyCode}} </a>
+                                <a class="#" ng-click="gm.currencySettings(currency.currencyCode)"><strong ng-bind="currency.currencySymbol"></strong>&nbsp;<span ng-bind="currency.currencyCode"></span> </a>
                             </li>
                         </ul>
                     </li>
                 </ul>
+                <ul>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle text-white" data-toggle="dropdown"><i class="fa fa-chevron-down"></i><img ng-src="~/assets/theme/ocx/images/{{langCulture}}.png" alt="Country" /></a>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="language in gm.langCulture">
+                                <a class="#" ng-click="gm.languageSettings(language.languageCulture)"><img ng-src="~/assets/theme/ocx/images/{{language.languageCulture}}.png" alt="Country" /></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>    
                 @*<a data-toggle="modal" data-target="#country-modal"><i class="fa fa-chevron-down"></i><i class="fa fa-@SessionContext.CurrentSiteConfig.RegionalSettings.DefaultCountry"></i></a>
                 <button data-toggle="modal" data-target="#currency-modal"><i class="fa fa-chevron-down"></i>@SessionContext.CurrencyCode</button>*@
             </div>

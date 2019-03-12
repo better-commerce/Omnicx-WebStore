@@ -1,11 +1,14 @@
 ﻿(function () {
     'use strict';
+    
     // ADD CONSTANT FOR THEME DEFAULT IMAGE
     window.DEFAULT_IMAGE_URL = '/assets/theme/ocx/images/noimagefound.jpg';
     window.app.controller('checkoutCtrl', checkoutCtrl);
-    checkoutCtrl.$inject = ['$scope', 'checkoutConfig', 'globalConfig', '$http', 'model', '$timeout', 'loader', 'CapturePlus'];
-
-    function checkoutCtrl($scope, checkoutConfig, globalConfig, $http, model, $timeout, CapturePlus) {
+    
+    checkoutCtrl.$inject = ['$scope', 'checkoutConfig', 'globalConfig', '$http', 'model', '$timeout', 'loader', 'CapturePlus', 'SUBSCRIPTION_ENUMS'];
+    
+    
+    function checkoutCtrl($scope, checkoutConfig, globalConfig, $http, model, $timeout, loader,CapturePlus, SUBSCRIPTION_ENUMS) {
         var ck = this;
         ck.model = model;
         ck.sameAsBillAddress = true;
@@ -75,6 +78,8 @@
         ck.orderResp = '';
         ck.basketerror = null;
         ck.continueToSummery = continueToSummery;
+        ck.getCurrentBasketData = getCurrentBasketData;
+        ck.getBasketSubcriptionSettings = getBasketSubcriptionSettings;
         //***********TEMPORARY METHOD FOR POWDER COATING **********************
         ck.reCalculateServiceCharge = reCalculateServiceCharge;
         ck.serializedData = serializedData;
@@ -289,7 +294,8 @@
                     });
                 }
                 else {
-                    $http.post(globalConfig.updateShipping, { id: ck.basket.id, shippingId: shipMethod.id, nominatedDelivery: null })
+                    var requestSource = window.location.pathname.substr(window.location.pathname.indexOf('/') + 1, window.location.pathname.lastIndexOf('/') - 1);
+                    $http.post(globalConfig.updateShipping, { id: ck.basket.id, shippingId: shipMethod.id, nominatedDelivery: null, requestSource: requestSource.toLowerCase() })
                         .success(function (data) {
                             var dataResult = ck.serializedData(data.basket);
                             ck.basket = dataResult;
@@ -505,7 +511,7 @@
                             var index = data.findIndex(d => d.isDefault === true);
                             if (index >= 0) {
                                 ck.model.checkout.shippingAddress = data[index];
-                              //  ck.model.checkout.shippingAddress.postCode = ck.postCode;
+                                //  ck.model.checkout.shippingAddress.postCode = ck.postCode;
                                 if (ck.sameAsBillAddress)
                                     ck.model.checkout.billingAddress = ck.model.checkout.shippingAddress;
                             }
@@ -594,7 +600,7 @@
                 }
             }
             //this code selects shipping method from user clicked events or select by default first method
-            if (ck.model.checkout.selectedShipping.countryCode == ck.model.checkout.shippingAddress.countryCode) {             
+            if (ck.model.checkout.selectedShipping.countryCode == ck.model.checkout.shippingAddress.countryCode) {
                 ck.setShipping(ck.model.checkout.selectedShipping);
             } else {
                 ck.getSelectedEvent = true;
@@ -657,12 +663,12 @@
                         return;
                     }
                 }
-                
+
                 if (shippingForm.$invalid) {
                     return
                 }
             }
-           
+
             if (ck.sameAsBillAddress == false && billingForm != null && billingForm.$invalid) {
                 billingForm.$setSubmitted();
                 return;
@@ -717,7 +723,7 @@
                 $("#addressPanel").removeAttr('checked');
                 $("#productSummery").removeAttr('checked');
                 $("#paymentPanel").removeAttr('disabled');
-                $("html, body").animate({ scrollTop: 0 }, "slow");              
+                $("html, body").animate({ scrollTop: 0 }, "slow");
             }
             else {
                 $("#paymentPanel").prop('disabled', true);
@@ -903,7 +909,7 @@
                         }
                         ck.stores[i].openingHours = timeSlots;
                     }
-                    
+
                 }
             })
                 .error(function (msg) {
@@ -1091,6 +1097,7 @@
 
         function initMethod() {
             ck.custAddressGrid();
+            ck.getCurrentBasketData();
             $("#userLogin").prop('checked', true);
             $("#paymentPanel").prop('checked', false);
             $("#addressPanel").prop('checked', false);
@@ -1228,5 +1235,51 @@
             }
             return data;
         }
+        function getCurrentBasketData() {
+            $http.post(globalConfig.getBasketUrl).then(function (success) {
+                if (success.data) {
+                    ck.basket.lineItems = success.data.lineItems;
+                }
+                else if (success.data == null) {
+                    ck.basket.lineItems = [];
+                }
+            }, function (error) { });
+        }
+        function getBasketSubcriptionSettings() {
+            ck.userSubscriptionSettings = {};
+            angular.forEach(ck.basket.lineItems, function (items) {
+                if (items.subscriptionUserSettings != null && items.subscriptionUserSettings.subscriptionJson != "") {
+                    var subscriptionPlan = JSON.parse(items.subscriptionUserSettings.subscriptionJson);
+                    var index = subscriptionPlan.Terms.findIndex(x => x.Id == items.subscriptionUserSettings.subscriptionTermId);
+                    ck.userSubscriptionSettings.selectedTerm = subscriptionPlan.Terms[index].SubscriptionTerm.Duration + " " + subscriptionPlan.Terms[index].SubscriptionTerm.IntervalType;
+                    ck.userSubscriptionSettings.paymentType = items.subscriptionUserSettings.userPricingType;
+                    //getting price according to subscription payment type
+                    if (ck.userSubscriptionSettings.paymentType == SUBSCRIPTION_ENUMS.UserPricingType.OneTime) {
+                        ck.userSubscriptionSettings.subscriptionPrice = subscriptionPlan.RecurringFee.CurrencySymbol + subscriptionPlan.OneTimeFee.Raw.WithTax;
+                    }
+                    else if (ck.userSubscriptionSettings.paymentType == SUBSCRIPTION_ENUMS.UserPricingType.Recurring) {
+                        ck.userSubscriptionSettings.subscriptionPrice = subscriptionPlan.RecurringFee.CurrencySymbol + subscriptionPlan.RecurringFee.Raw.WithTax;
+                    }
+                    //adding currency 
+
+                    //handling in case order trigger type is fixed
+                    if (subscriptionPlan.OrderTriggerType == SUBSCRIPTION_ENUMS.SubscriptionOrderTriggerType.FixedDay) {
+                        if (subscriptionPlan.OrderTriggerDayOfMonth) {
+                            ck.userSubscriptionSettings.trigger = subscriptionPlan.OrderTriggerDayOfMonth + "Day of the Month";
+                        }
+                    }
+                    else if (subscriptionPlan.OrderTriggerType == SUBSCRIPTION_ENUMS.SubscriptionOrderTriggerType.Rolling) {
+                        if (subscriptionPlan.OrderTriggerDayOfMonth) {
+                            ck.userSubscriptionSettings.trigger = subscriptionPlan.OrderTriggerDayOfMonth + "Day of the Month";
+                        }
+                    }
+                    else {
+                        //handling in case of user defined
+                    }
+                }
+            });
+        }
+
     };
+
 }());

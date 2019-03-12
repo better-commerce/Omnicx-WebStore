@@ -20,7 +20,7 @@
             @foreach (var items in @Model.FaqsCategory)
             {
                 <div class="panel panel-default" ng-if="@items.Key!=0">
-                    <div class="panel-heading" role="tab">
+                    <div class="panel-heading">
                         <h4 class="panel-title heading-h4">
                             <a role="button" data-toggle="collapse" data-parent="#accordion" href="#@items.Value.Replace(" ","")" aria-expanded="true" aria-controls="@items.Value.Replace(" ","")">@items.Value</a>
                         </h4>

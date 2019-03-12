@@ -37,7 +37,7 @@
             @if (Model.Checkout != null && Model.Checkout.Basket.GrandTotal.Raw.WithTax > 0)
             {
                 <div class="row" ng-if="ck.basket.lineItems.length>0">
-                    <div class="col-sm-8 col-xs-12">
+                    <div class="col-sm-7 col-md-8 col-lg-8 col-xs-12">
                         @*LOGIN *@
                         <div class="row" ng-init="ck.initMethod();ck.oldBasketPopup();">
                             <div class="col-sm-12 col-xs-12 no-padding whiteContainer">
@@ -47,7 +47,7 @@
                                         <div class="panel-heading primary-panel"><i class="fa fa-user"></i> @LT("Checkout.Label.Login", "LOGIN")</div>
                                         <div class="panel-body no-padding">
                                             <div class="row">
-                                                <div class="col-sm-6 col-xs-12">
+                                                <div class="col-sm-12 col-md-6 col-lg-6 col-xs-12">
                                                     <form role="form" name="guestForm" class="padding-lt" novalidate ng-submit="ck.ContinueAsGuest(guestForm)">
                                                         <h5>@LT("Checkout.Text.enterdetail", "GUEST")</h5>
                                                         <div ng-cloak class="alert alert-danger" ng-show="ck.guestError">
@@ -68,28 +68,28 @@
                                                                 <p class="checkout-text">@LT("Checkout.Label.NeedEmailAddress", "Yes, please send me money-off discounts & promotions via")<p>
                                                             </div>
                                                             <div class="form-group">
-                                                                <div class="col-sm-3 col-xs-6 no-padding-left">
+                                                                <div class="col-sm-6 col-xs-6 col-md-6 col-lg-3 no-padding-left">
                                                                     <label class="control control--checkbox ">
                                                                         <input type="checkbox" ng-click="ck.model.checkout.notifyNone = false" class="ng-pristine ng-valid ng-untouched ng-empty" ng-model="ck.model.checkout.notifyEmail">
                                                                         <label for="NewsLetterSubscribe">Email</label>
                                                                         <div class="control__indicator"></div>
                                                                     </label>
                                                                 </div>
-                                                                <div class="col-sm-3 col-xs-6 no-padding-left">
+                                                                <div class="col-sm-6 col-xs-6 col-md-6 col-lg-3 no-padding-left">
                                                                     <label class="control control--checkbox ">
                                                                         <input type="checkbox" ng-click="ck.model.checkout.notifyNone = false" class="ng-pristine ng-valid ng-untouched ng-empty" ng-model="ck.model.checkout.notifySMS">
                                                                         <label for="NewsLetterSubscribe">SMS</label>
                                                                         <div class="control__indicator"></div>
                                                                     </label>
                                                                 </div>
-                                                                <div class="col-sm-3 col-xs-6 no-padding-left">
+                                                                <div class="col-sm-6 col-xs-6 col-md-6 col-lg-3 no-padding-left">
                                                                     <label class="control control--checkbox ">
                                                                         <input type="checkbox" ng-click="ck.model.checkout.notifyNone = false" class="ng-pristine ng-valid ng-untouched ng-empty" ng-model="ck.model.checkout.notifyPost">
                                                                         <label for="NewsLetterSubscribe">Post</label>
                                                                         <div class="control__indicator"></div>
                                                                     </label>
                                                                 </div>
-                                                                <div class="col-sm-3 col-xs-6 no-padding-left">
+                                                                <div class="col-sm-6 col-xs-6 col-md-6 col-lg-3 no-padding-left">
                                                                     <label class="control control--checkbox ">
                                                                         <input type="checkbox" ng-click="ck.model.checkout.notifyEmail = ck.model.checkout.notifySMS = ck.model.checkout.notifyPost = false" class="ng-pristine ng-valid ng-untouched ng-empty" ng-model="ck.model.checkout.notifyNone">
                                                                         <label for="NewsLetterSubscribe">NoThanks</label>
@@ -109,7 +109,7 @@
                                                         </div>
                                                     </form>
                                                 </div>
-                                                <div class="col-sm-6 col-xs-12">
+                                                <div class="col-sm-12 col-md-6 col-lg-6 col-xs-12">
                                                     <form role="form" ng-submit="ck.login(ck.model.login)" method="post" ng-show="ck.alreadyRegistered" novalidate class="padding-sm">
                                                         <div ng-cloak class="alert alert-danger" ng-show="ck.errorMessage != null">
                                                             <div ng-repeat="err in ck.errorMessage track by $index">
@@ -291,7 +291,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-4 col-xs-12 m--no-padding">
+                    <div class="col-sm-5 col-md-4 col-lg-4 col-xs-12 m--no-padding">
                         <div class="whiteContainer summeryBorder no-padding">
                             @Html.Partial("~/Views/Checkout/_OrderSummary.cshtml")
                         </div>
@@ -311,7 +311,9 @@
             <div class="row" ng-hide="ck.basket.lineItems.length>0">
                 <div class="col-sm-12 col-xs-12 text-center no-iten-view">
                     <i class="fa fa-shopping-bag"></i>
-                    <h1>@LT("YourBag.Text.NoItem", "Basket No Longer Available")</h1>
+                    <h3 class="error-h4">@LT("YourBag.Text.NoItem", "Basket Not Found")</h3>
+                    <p class="message-desc">@LT("YourBag.Text.Basket", "The Basket you are looking for has already been") <strong>@LT("YourBag.Text.Basket", "Closed / Converted")</strong> @LT("YourBag.Text.Or", "or") <strong>@LT("YourBag.Text.exist", "does not exist")</strong>.</p>
+                    <p><a href="/" class="animate btn-bordered"><i class="fa fa-caret-left"></i>@LT("YourBag.Text.ContinueShopping", "Continue Shopping")</a></p>
                 </div>
             </div> 
         </div>
@@ -361,8 +363,8 @@
             savedBaskets: savedBaskets,
             register: register,
             klarna: 'Klarna',
-            shipClickAndCollect:'@ShippingTypes.ClickAndCollect.ToString()',
-            shipflat: '@ShippingTypes.Flat.ToString()',
+            @*shipClickAndCollect:'@ShippingTypes.ClickAndCollect.ToString()',*@
+            shipflat: '@ShippingCostMethods.FlatRate.ToString()',
             newsletter: newsletter
         });
         window.app.constant('model', @Html.JsonFor(Model));

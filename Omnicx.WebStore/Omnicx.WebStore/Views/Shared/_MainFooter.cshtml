@@ -81,7 +81,9 @@ Contained In (Where we Use this View) :
                                                 <h4 class="footer-h4">@child1.BoxTitle</h4>
                                                 <div class="akc-footer-line" style="display:none"></div>
                                                 <ul class="footer-menu">
-                                                    @Html.Raw(child1.ContentBody)
+                                                    <li>
+                                                        @Html.Raw(child1.ContentBody)
+                                                    </li>
                                                 </ul>
                                             }
                                             <hr class="hidden-md hidden-lg hidden-sm">
@@ -97,12 +99,13 @@ Contained In (Where we Use this View) :
             <div class="col-md-6 col-sm-12 col-xs-12 no-padding-right pull-right">
                 <div class="col-sm-6 col-md-6 no-padding">
                     <h4 class="white newsletter-h3">@LT("Footer.Label.NewLetterSignUp", "Sign up to our newsletter")</h4>
-                    <p class="white newsletter-p">@LT("Footer.Label.LatestRange", "For the latest ranges, VIP offers and inspiration")</p>
+                    <p class="white newsletter-p" aria-hidden="true">@LT("Footer.Label.LatestRange", "For the latest ranges, VIP offers and inspiration")</p>
                 </div>
                 <div class="col-sm-6 col-md-6 no-padding-right">
                     <div class="form-inline text-right margin-top-2 border-xs">
                         <form ng-submit="gm.newsLetterSubscription(gm.customerEmail)">
-                            <input type="text" ng-model="gm.customerEmail" name="search" class="form-control bottom-textbox" placeholder="Enter your email">
+                            <label for="searchFooter" class="label-0">Search</label>
+                            <input type="text" ng-model="gm.customerEmail" id="searchFooter" name="search" class="form-control bottom-textbox" placeholder="Enter your email">
                             <input type="hidden" name="currentPage" value="1">
                             <button class="blog-search-btn">@LT("Footer.Button.SignUp", "Sign Up")</button>
                         </form>
@@ -111,7 +114,8 @@ Contained In (Where we Use this View) :
                     @*<div ng-if="gm.errorMessage!=null">@Html.Partial("_Alerts")</div>*@
                     <div class="row">
                         <div class="col-sm-12 no-padding">
-                            <p class="text-center">
+                            <p aria-hidden="true" class="text-center">
+                                <span class="label-0">@LT("Footer.Label.EnterValidEmail", "Alert")</span>
                                 <div ng-cloak class="alert alert-danger newsletteralert" ng-show="gm.emailinvalid">
                                     @LT("Footer.Label.EnterValidEmail", "Enter a valid email address.")
                                 </div>

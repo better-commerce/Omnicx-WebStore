@@ -1,0 +1,72 @@
+﻿@{
+/*
+    Name: Order Summery
+    Purpose: Contains Order item Lines, Promotion panel and Order Amount Information
+    Structure: /Views/Checkout/_OrderSummary.cshtml
+    Contains (Partial Views Used):
+
+    Contained In (Where we Use this View):
+        a-/Views/Basket/OnePageCheckout.cshtml
+    */
+}
+@using Omnicx.WebStore.Models.Enums
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
+<div class="summery-box" id="order-summary">
+    <div class="col-sm-12 col-xs-12 border-top">
+        <h4 class="wzc--h4"> @LT("Checkout.Label.OrderSummery", "Order Summery")</h4>
+    </div>
+    <div class="col-sm-12 col-xs-12">
+        @Html.Partial("~/Views/Checkout/_WizardSubscriptionProductSummary.cshtml")
+    </div>
+    <div class="col-sm-12 col-xs-12">
+        @Html.Partial("~/Views/Checkout/_WizardProductSummary.cshtml")
+    </div>
+    <div class="col-sm-12 col-xs-12 border-top">
+        <h4 class="wzc--h4"> @LT("Checkout.Label.PaymentSummery", "Payment Summery")</h4>
+    </div>    
+    <p aria-hidden="true" class="text-muted padding-sm label-span-desc">@LT("Checkout.Text.ShippingInfo", "Shipping and additional costs are calculated based on the values you have entered").</p>
+    <div class="table-responsive">
+        <table class="table no-margin-top">
+            <tbody>
+                <tr>
+                    <td>@LT("Checkout.Label.Subtotal", "Subtotal")</td>
+                    <th ng-bind="ck.basket.subTotal.formatted.withTax" class="text-right"></th>
+                </tr>
+                <tr>
+                    <td>@LT("Checkout.Label.ShippingCharge", "Shipping and handling")</td>
+                    <th ng-bind="ck.basket.shippingCharge.formatted.withTax" class="text-right"></th>
+                </tr>
+                @*<tr>
+                        <td>@LT("Checkout.Label.Tax", "Tax")</td>
+                        <th ng-bind="ck.basket.subTotal.formatted.tax" class="text-right"></th>
+                    </tr>*@
+                <tr>
+                    <td>@LT("Checkout.Label.Discount", "Discount")</td>
+                    <th ng-bind="ck.basket.discount.formatted.withTax" class="text-right"></th>
+                </tr>
+                <tr ng-show="ck.basket.promotionsApplied.length>0" id="promoApplied4">
+                    <td>Promotions Applied:</td>
+                    <th class="text-right">
+                        <ul class="promo-ul">
+                            <li class="no-padding" ng-repeat="promotion in ck.basket.promotionsApplied">
+                                <a href="" class="" title="Remove" ng-click="ck.removePromoCode(ck.basket.id,promotion.promoCode)"><span ng-bind="promotion.name"></span> <i class="fa fa-remove"></i></a>
+                            </li>
+                        </ul>
+                    </th>
+                </tr>
+                <tr class="total">
+                    <td>@LT("Checkout.Label.OrderTotal", "Amount Payable")</td>
+                    <th ng-bind="ck.basket.grandTotal.formatted.withTax" class="text-right"></th>
+                </tr>
+                <tr>
+                    <td colspan="2" class="sml-text" ng-cloak ng-bind="'@LT("YourBag.Text.IncludingVATof", "including VAT of")'+ck.basket.grandTotal.formatted.tax"></td                    
+                </tr>
+                <tr class="total" ng-show="ck.showRemainingAmount">
+                    <td>@LT("Checkout.Label.RemainingAmount", "Remaining Amount")</td>
+                    <th ng-bind="ck.model.checkout.balanceAmount.formatted.withTax" class="text-right"> </th>
+                    @*ng-hide="ck.basket.grandTotal.formatted.withTax==ck.model.checkout.balanceAmount.formatted.withTax"*@
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

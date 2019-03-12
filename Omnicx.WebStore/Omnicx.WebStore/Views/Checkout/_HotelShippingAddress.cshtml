@@ -1,0 +1,92 @@
+﻿@{
+/*
+    Name: Shipping Address
+    Purpose: Shipping Address Form
+    Structure: /Views/Checkout/_ShippingAddress.cshtml
+    Contains (Partial Views Used):
+
+    Contained In (Where we Use this View):
+        a-/Views/Checkout/OnePageCheckout.cshtml
+    */
+}
+@using Omnicx.WebStore.Models.Enums
+@using Omnicx.WebStore.Core.Helpers;
+@using Omnicx.WebStore.Framework.Helpers
+@using Omnicx.WebStore.Models.Helpers
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Commerce.AddressModel>
+@{
+    var addressForm = Html.Angular().ModelFor("ck.model.checkout.shippingAddress");
+    var userRole = SessionContext.CurrentUserRole;
+}
+<form name="shippingForm" role="form" ng-show="ck.model.checkout.selectedShipping.type == '@ShippingMethodTypes.Pickup.ToString()'" novalidate>
+    <div class="content" ng-hide="ck.hideShippingAddress">
+        <div class="row">
+            <div class="col-sm-12 col-xs-12 wzc--heading--pannel border-bottom">
+                <h5 class="wzc--h5">@LT("Checkout.Label.DeliveryAddress", "Delivery Address")</h5>
+            </div>
+        </div>
+        <div class="row wzc--address--border">
+            <div class="row margin-top-md">
+                <div class="col-sm-6 col-md-4 col-lg-4">
+                    <div class="form-group">
+                        <div class="form-group" ng-class="vm.getValidationClass()" form-group-validation="Title">
+                            <label for="Title" class="control-label ng-scope">@LT("MyAccount.Text.Title", "Title")</label>
+                            <select name="Title" tabindex="1" class="form-control" data-label="Title" ng-model="ck.model.checkout.shippingAddress.title" @*required*@>
+                                <option ng-selected="ck.model.checkout.shippingAddress.title == null" value="">@LT("MyAccount.Text.Title", "Title")</option>
+                                <option value="Miss">Miss</option>
+                                <option value="Mr">Mr</option>
+                                <option value="Mrs">Mrs</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        @addressForm.FormGroupFor(x => x.FirstName)
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        @addressForm.FormGroupFor(x => x.LastName)
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        @addressForm.FormGroupFor(x => x.Address1)
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        @addressForm.FormGroupFor(x => x.Address2)
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-md-3">
+                    <div class="form-group">
+                        @addressForm.FormGroupFor(x => x.City)
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <div class="form-group">
+                        @addressForm.FormGroupFor(x => x.PostCode)
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <div class="form-group">
+                        @addressForm.FormGroupFor(x => x.State)
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        @addressForm.FormGroupFor(x => x.PhoneNo)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -352,10 +352,10 @@ function authorizeAPISuccess(result) {
 }
 
 function showErrorMessage(error) {    
-    $("#divErrMsg").find("span").html(error);
-    $("#divErrMsg").removeClass('hide');
+    $(".divErrMsg").find("span").html(error);
+    $(".divErrMsg").removeClass('hide');
     $("html, body").animate({ scrollTop: 0 }, "slow");
-    setTimeout(function () { $(".alertDynamicBlock").fadeOut(); $("#divErrMsg").addClass('hide'); }, 10000);
+    setTimeout(function () { $(".alertDynamicBlock").fadeOut(); $(".divErrMsg").addClass('hide'); }, 10000);
     $(".dvloader").attr("style", "display:none");
 }
 function resetForm() {

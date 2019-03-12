@@ -19,11 +19,11 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <div class="modal-title" id="Login">@LT("Checkout.Label.PreviousBaskets", "Previous Baskets")</div>
+                <div class="modal-title" >@LT("Checkout.Label.PreviousBaskets", "Previous Baskets")</div>
                 <button type="button" data-dismiss="modal" aria-hidden="true" class="animate-sm btn-bordered pos-abs-skip">Skip & @LT("Checkout.Label.Continue", "Continue")</button> 
             </div>
             <div class="modal-body max-80">
-                <div class="col-sm-12 col-xs-12 margin-top-sm"><p class="well alert-warning padding-xs">@LT("Checkout.Label.AppliedPromoRemove", "Merging in existing basket removes pre-applied promocode. You may reapply a valid promocode again")</p></div>
+                <div class="col-sm-12 col-xs-12 margin-top-sm"><p class="well alert-warning padding-xs" aria-hidden="true">@LT("Checkout.Label.AppliedPromoRemove", "Merging in existing basket removes pre-applied promocode. You may reapply a valid promocode again")</p></div>
                 <ul id="prevBasket" ng-repeat="basket in ck.baskets" ng-if="ck.basket.id != basket.id">
                     <li>
                         <h4 class="basket-h4">@LT("Checkout.Label.Basket", "Basket")&nbsp;{{$index+1}}</h4>
@@ -34,7 +34,7 @@
                                 <div class="col-sm-2 col-xs-3 no-padding">
                                     <span class="cart-img">
                                         <a ng-href="/{{item.slug}}">
-                                            <img ng-src="{{item.image}}" onerror="this.src = DEFAULT_IMAGE_URL">
+                                            <img ng-src="{{item.image}}" onerror="this.src = DEFAULT_IMAGE_URL" sizes="(min-width: 768px) 540px, 100vw">
                                         </a>
                                     </span>
                                 </div>

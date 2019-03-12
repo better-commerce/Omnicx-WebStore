@@ -86,13 +86,15 @@ WriteLiteral(">");
             #line hidden
 WriteLiteral("</h4>\r\n        <p");
 
+WriteLiteral(" aria-hidden=\"true\"");
+
 WriteLiteral(" class=\"white newsletter-p\"");
 
 WriteLiteral(">");
 
             
             #line 16 "..\..\Views\Shared\_MainFooter.mobile.cshtml"
-                                 Write(LT("Footer.Label.LatestRange", "For the latest ranges, VIP offers and inspiration"));
+                                                    Write(LT("Footer.Label.LatestRange", "For the latest ranges, VIP offers and inspiration"));
 
             
             #line default
@@ -109,13 +111,21 @@ WriteLiteral(">\r\n            <form");
 
 WriteLiteral(" ng-submit=\"gm.newsLetterSubscription(gm.customerEmail)\"");
 
-WriteLiteral(">\r\n                <input");
+WriteLiteral(">\r\n                <label");
+
+WriteLiteral(" for=\"searchFooterM\"");
+
+WriteLiteral(" class=\"label-0\"");
+
+WriteLiteral(">Search</label>\r\n                <input");
 
 WriteLiteral(" type=\"text\"");
 
 WriteLiteral(" ng-model=\"gm.customerEmail\"");
 
 WriteLiteral(" name=\"search\"");
+
+WriteLiteral(" id=\"searchFooterM\"");
 
 WriteLiteral(" class=\"form-control bottom-textbox\"");
 
@@ -136,13 +146,13 @@ WriteLiteral(" class=\"blog-search-btn\"");
 WriteLiteral(">");
 
             
-            #line 23 "..\..\Views\Shared\_MainFooter.mobile.cshtml"
+            #line 24 "..\..\Views\Shared\_MainFooter.mobile.cshtml"
                                            Write(LT("Footer.Button.SignUp", "Sign Up"));
 
             
             #line default
             #line hidden
-WriteLiteral("</button>\r\n            </form>\r\n        </div>\r\n\r\n        ");
+WriteLiteral("</button>\r\n            </form>\r\n        </div>\r\n        ");
 
 WriteLiteral("\r\n        <div");
 
@@ -156,7 +166,22 @@ WriteLiteral(">\r\n                <p");
 
 WriteLiteral(" class=\"text-center\"");
 
-WriteLiteral(">\r\n                    <div ng-cloak");
+WriteLiteral(" aria-hidden=\"true\"");
+
+WriteLiteral(">\r\n                    <span");
+
+WriteLiteral(" class=\"label-0\"");
+
+WriteLiteral(">");
+
+            
+            #line 31 "..\..\Views\Shared\_MainFooter.mobile.cshtml"
+                                     Write(LT("Footer.Label.EnterValidEmail", "Alert"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</span>\r\n                    <div ng-cloak");
 
 WriteLiteral(" class=\"alert alert-danger newsletteralert\"");
 
@@ -167,7 +192,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                        ");
 
             
-            #line 32 "..\..\Views\Shared\_MainFooter.mobile.cshtml"
+            #line 33 "..\..\Views\Shared\_MainFooter.mobile.cshtml"
                    Write(LT("Footer.Label.EnterValidEmail", "Enter a valid email address."));
 
             
@@ -184,7 +209,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                        ");
 
             
-            #line 35 "..\..\Views\Shared\_MainFooter.mobile.cshtml"
+            #line 36 "..\..\Views\Shared\_MainFooter.mobile.cshtml"
                    Write(LT("Footer.Label.SubscribeSuccess", "Subscribed successfully."));
 
             
@@ -201,7 +226,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                        ");
 
             
-            #line 38 "..\..\Views\Shared\_MainFooter.mobile.cshtml"
+            #line 39 "..\..\Views\Shared\_MainFooter.mobile.cshtml"
                    Write(LT("Footer.Label.AlreadySubscribed", "It seems this email is already registered with us. You can use a different email to subscribe for the newsletter."));
 
             
@@ -211,25 +236,25 @@ WriteLiteral("\r\n                    </div>\r\n                </p>\r\n        
 "/div>\r\n    </div>\r\n</div>\r\n");
 
             
-            #line 45 "..\..\Views\Shared\_MainFooter.mobile.cshtml"
+            #line 46 "..\..\Views\Shared\_MainFooter.mobile.cshtml"
   /*End Footer email subscription form*/
             
             #line default
             #line hidden
-WriteLiteral("\r\n\r\n<div");
+WriteLiteral("\r\n<div");
 
 WriteLiteral(" class=\"accordion-footer\"");
 
-WriteLiteral(">\r\n\r\n");
+WriteLiteral(">\r\n");
 
             
-            #line 49 "..\..\Views\Shared\_MainFooter.mobile.cshtml"
+            #line 48 "..\..\Views\Shared\_MainFooter.mobile.cshtml"
     
             
             #line default
             #line hidden
             
-            #line 49 "..\..\Views\Shared\_MainFooter.mobile.cshtml"
+            #line 48 "..\..\Views\Shared\_MainFooter.mobile.cshtml"
      if (Model != null && Model.Footer != null)
     {
         foreach (var items in @Model.Footer.OrderBy(o => o.DisplayOrder))
@@ -245,44 +270,44 @@ WriteLiteral(" class=\"col-sm-12 no-padding\"");
 WriteLiteral(">\r\n");
 
             
-            #line 54 "..\..\Views\Shared\_MainFooter.mobile.cshtml"
+            #line 53 "..\..\Views\Shared\_MainFooter.mobile.cshtml"
                 
             
             #line default
             #line hidden
             
-            #line 54 "..\..\Views\Shared\_MainFooter.mobile.cshtml"
+            #line 53 "..\..\Views\Shared\_MainFooter.mobile.cshtml"
                  if (@items.NavBlocks != null)
+                {
+                    foreach (var child1 in @items.NavBlocks.OrderBy(o => o.DisplayOrder))
                     {
-                        foreach (var child1 in @items.NavBlocks.OrderBy(o => o.DisplayOrder))
-                        {
 
             
             #line default
             #line hidden
-WriteLiteral("                        <dt>\r\n                            <a");
+WriteLiteral("                        <dt><a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2910), Tuple.Create("\"", 2951)
-, Tuple.Create(Tuple.Create("", 2917), Tuple.Create("#", 2917), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 3089), Tuple.Create("\"", 3130)
+, Tuple.Create(Tuple.Create("", 3096), Tuple.Create("#", 3096), true)
             
-            #line 59 "..\..\Views\Shared\_MainFooter.mobile.cshtml"
-, Tuple.Create(Tuple.Create("", 2918), Tuple.Create<System.Object, System.Int32>(child1.BoxTitle.Replace(" ", "")
+            #line 57 "..\..\Views\Shared\_MainFooter.mobile.cshtml"
+, Tuple.Create(Tuple.Create("", 3097), Tuple.Create<System.Object, System.Int32>(child1.BoxTitle.Replace(" ", "")
             
             #line default
             #line hidden
-, 2918), false)
+, 3097), false)
 );
 
 WriteLiteral(" aria-expanded=\"false\"");
 
-WriteAttribute("aria-controls", Tuple.Create(" aria-controls=\"", 2974), Tuple.Create("\"", 3023)
+WriteAttribute("aria-controls", Tuple.Create(" aria-controls=\"", 3153), Tuple.Create("\"", 3202)
             
-            #line 59 "..\..\Views\Shared\_MainFooter.mobile.cshtml"
-                              , Tuple.Create(Tuple.Create("", 2990), Tuple.Create<System.Object, System.Int32>(child1.BoxTitle.Replace(" ", "")
+            #line 57 "..\..\Views\Shared\_MainFooter.mobile.cshtml"
+                              , Tuple.Create(Tuple.Create("", 3169), Tuple.Create<System.Object, System.Int32>(child1.BoxTitle.Replace(" ", "")
             
             #line default
             #line hidden
-, 2990), false)
+, 3169), false)
 );
 
 WriteLiteral(" class=\"accordion-footer-title accordion-footerTitle js-accordionTrigger\"");
@@ -290,26 +315,26 @@ WriteLiteral(" class=\"accordion-footer-title accordion-footerTitle js-accordion
 WriteLiteral(">");
 
             
-            #line 59 "..\..\Views\Shared\_MainFooter.mobile.cshtml"
+            #line 57 "..\..\Views\Shared\_MainFooter.mobile.cshtml"
                                                                                                                                                                                                                      Write(child1.BoxTitle);
 
             
             #line default
             #line hidden
-WriteLiteral("</a>\r\n                        </dt>\r\n");
+WriteLiteral("</a></dt>\r\n");
 
 WriteLiteral("                        <dd");
 
 WriteLiteral(" class=\"accordion-footer-content accordion-footerItem-lg is-collapsed\"");
 
-WriteAttribute("id", Tuple.Create(" id=\"", 3248), Tuple.Create("\"", 3286)
+WriteAttribute("id", Tuple.Create(" id=\"", 3401), Tuple.Create("\"", 3439)
             
-            #line 61 "..\..\Views\Shared\_MainFooter.mobile.cshtml"
-                      , Tuple.Create(Tuple.Create("", 3253), Tuple.Create<System.Object, System.Int32>(child1.BoxTitle.Replace(" ", "")
+            #line 58 "..\..\Views\Shared\_MainFooter.mobile.cshtml"
+                      , Tuple.Create(Tuple.Create("", 3406), Tuple.Create<System.Object, System.Int32>(child1.BoxTitle.Replace(" ", "")
             
             #line default
             #line hidden
-, 3253), false)
+, 3406), false)
 );
 
 WriteLiteral(" aria-hidden=\"true\"");
@@ -318,21 +343,19 @@ WriteLiteral(">\r\n                            <ul");
 
 WriteLiteral(" class=\"footer-menu\"");
 
-WriteLiteral(">\r\n");
-
-WriteLiteral("                                ");
+WriteLiteral(">");
 
             
-            #line 63 "..\..\Views\Shared\_MainFooter.mobile.cshtml"
-                           Write(Html.Raw(child1.ContentBody));
+            #line 59 "..\..\Views\Shared\_MainFooter.mobile.cshtml"
+                                               Write(Html.Raw(child1.ContentBody));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n                            </ul>\r\n                        </dd>\r\n");
+WriteLiteral("</ul>\r\n                        </dd>\r\n");
 
             
-            #line 66 "..\..\Views\Shared\_MainFooter.mobile.cshtml"
+            #line 61 "..\..\Views\Shared\_MainFooter.mobile.cshtml"
                     }
                 }
 
@@ -342,14 +365,14 @@ WriteLiteral("\r\n                            </ul>\r\n                        <
 WriteLiteral("            </dl>\r\n");
 
             
-            #line 69 "..\..\Views\Shared\_MainFooter.mobile.cshtml"
+            #line 64 "..\..\Views\Shared\_MainFooter.mobile.cshtml"
         }
     }
 
             
             #line default
             #line hidden
-WriteLiteral("</div>\r\n");
+WriteLiteral("</div>");
 
         }
     }

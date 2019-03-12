@@ -19,8 +19,10 @@
 @using Omnicx.API.SDK.Helpers
 @using Omnicx.WebStore.Models.Enums;
 @inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
-
-<html ng-app="btApp" ng-controller="globalCtrl as gm" id="sidebarFix">
+@{
+    var addToBagLimit = SessionContext.CurrentSiteConfig.BasketSettings.MaximumBasketItems;
+}
+<html ng-app="btApp" ng-controller="globalCtrl as gm" id="sidebarFix" lang="en" ng-init="gm.maximumAddToBasketLimit = '@addToBagLimit'">
 
 @Html.Partial("~/Views/Shared/_LayoutHeadTag.cshtml")
 <body @RenderSection("bodyClass", required: false)>  
@@ -79,20 +81,20 @@
     }
     <div class="dvloader">
         <span class="global-loader">
-            <img src="~/assets/theme/ocx/images/loader.svg" />
+            <img src="~/assets/theme/ocx/images/loader.svg" alt="Loader" />
         </span>
     </div>
     
     @section scripts{}
     @RenderSection("scripts", required: false)    
-    <script>
+    <script defer type="text/javascript">
         var setContactForm = '@(Html.BuildUrlFromExpression<CommonController>(c => c.ContactForm(null)))';
         var getBasketUrl = '@(Html.BuildUrlFromExpression<BasketController>(c => c.GetBasketData()))';
         var addToBasket = '@(Html.BuildUrlFromExpression<BasketController>(c => c.AddtoBasket(null)))';
         var signIn = '@(Html.BuildUrlFromExpression<AccountController>(c => c.SignIn(null)))';
         var register = '@(Html.BuildUrlFromExpression<AccountController>(c => c.Registration(null)))';
         var getShippingMethods = '@(Html.BuildUrlFromExpression<BasketController>(c => c.GetShippingMethods("")))';
-        var updateShipping = '@(Html.BuildUrlFromExpression<BasketController>(c => c.UpdateShipping(null,null,null)))';
+        var updateShipping = '@(Html.BuildUrlFromExpression<BasketController>(c => c.UpdateShipping(null,null,null,null)))';
         var applyPromoCode = '@(Html.BuildUrlFromExpression<BasketController>(c => c.ApplyPromoCode(null,null)))';
         var currencySettingUrl = '@(Html.BuildUrlFromExpression<HomeController>(c => c.UpdateCurrencySetting(null)))';
         var paymentMethodsUrl = '@(Html.BuildUrlFromExpression<CheckoutController>(c => c.GetPaymentMethods()))';
@@ -102,8 +104,9 @@
         var bulkAddproduct = '@(Html.BuildUrlFromExpression<BasketController>(c=> c.BulkAddProduct(null)))';
         var companyRegisterUrl = '@(Html.BuildUrlFromExpression<B2BController>(c => c.CreateRequest(null)))';
         var getDefaultCountryUrl = '@(Html.BuildUrlFromExpression<AccountController>(c => c.GetDefaultCountry()))';
-          var removeWishList = '@(Html.BuildUrlFromExpression<CheckoutController>(c => c.RemoveWishList("",false)))';
+        var removeProductFromWishlist = '@(Html.BuildUrlFromExpression<CheckoutController>(c => c.RemoveWishList("",false)))';
         var getAllcurrencySetting = '@(Html.BuildUrlFromExpression<HomeController>(c => c.CurrencySettings()))';
+        var languageSettingUrl = '@(Html.BuildUrlFromExpression<HomeController>(c => c.UpdateLanCultureSetting(null)))';
         window.app.constant('globalConfig', {
             setContactForm: setContactForm,
             getBasketUrl: getBasketUrl,
@@ -122,8 +125,9 @@
             companyRegisterUrl: companyRegisterUrl,
             pcaAccessCode: pcaAccessCode,
             getDefaultCountryUrl: getDefaultCountryUrl,
-            removeWishList: removeWishList,
-            getAllcurrencySetting: getAllcurrencySetting
+            removeProductFromWishlist: removeProductFromWishlist,
+            getAllcurrencySetting: getAllcurrencySetting,
+            languageSettingUrl: languageSettingUrl
         });
     </script>
     @Html.GetGlobalSnipptes(SnippetPlacements.BodyEndHtmlTagBefore)

@@ -174,7 +174,7 @@ WriteLiteral(" ng-if=\"ck.basket.lineItems.length>0\"");
 
 WriteLiteral(">\r\n                    <div");
 
-WriteLiteral(" class=\"col-sm-8 col-xs-12\"");
+WriteLiteral(" class=\"col-sm-7 col-md-8 col-lg-8 col-xs-12\"");
 
 WriteLiteral(">\r\n                        ");
 
@@ -239,7 +239,7 @@ WriteLiteral(" class=\"row\"");
 
 WriteLiteral(">\r\n                                                <div");
 
-WriteLiteral(" class=\"col-sm-6 col-xs-12\"");
+WriteLiteral(" class=\"col-sm-12 col-md-6 col-lg-6 col-xs-12\"");
 
 WriteLiteral(">\r\n                                                    <form");
 
@@ -366,7 +366,7 @@ WriteLiteral(" class=\"form-group\"");
 
 WriteLiteral(">\r\n                                                                <div");
 
-WriteLiteral(" class=\"col-sm-3 col-xs-6 no-padding-left\"");
+WriteLiteral(" class=\"col-sm-6 col-xs-6 col-md-6 col-lg-3 no-padding-left\"");
 
 WriteLiteral(">\r\n                                                                    <label");
 
@@ -397,7 +397,7 @@ WriteLiteral("></div>\r\n                                                       
 "bel>\r\n                                                                </div>\r\n  " +
 "                                                              <div");
 
-WriteLiteral(" class=\"col-sm-3 col-xs-6 no-padding-left\"");
+WriteLiteral(" class=\"col-sm-6 col-xs-6 col-md-6 col-lg-3 no-padding-left\"");
 
 WriteLiteral(">\r\n                                                                    <label");
 
@@ -428,7 +428,7 @@ WriteLiteral("></div>\r\n                                                       
 "bel>\r\n                                                                </div>\r\n  " +
 "                                                              <div");
 
-WriteLiteral(" class=\"col-sm-3 col-xs-6 no-padding-left\"");
+WriteLiteral(" class=\"col-sm-6 col-xs-6 col-md-6 col-lg-3 no-padding-left\"");
 
 WriteLiteral(">\r\n                                                                    <label");
 
@@ -459,7 +459,7 @@ WriteLiteral("></div>\r\n                                                       
 "bel>\r\n                                                                </div>\r\n  " +
 "                                                              <div");
 
-WriteLiteral(" class=\"col-sm-3 col-xs-6 no-padding-left\"");
+WriteLiteral(" class=\"col-sm-6 col-xs-6 col-md-6 col-lg-3 no-padding-left\"");
 
 WriteLiteral(">\r\n                                                                    <label");
 
@@ -567,7 +567,7 @@ WriteLiteral("></i></button>\r\n                                                
 "                            </div>\r\n                                            " +
 "    <div");
 
-WriteLiteral(" class=\"col-sm-6 col-xs-12\"");
+WriteLiteral(" class=\"col-sm-12 col-md-6 col-lg-6 col-xs-12\"");
 
 WriteLiteral(">\r\n                                                    <form");
 
@@ -1580,7 +1580,7 @@ WriteLiteral("\r\n                                    </article>\r\n            
 " </div>\r\n                            </div>\r\n                        </div>\r\n   " +
 "                 </div>\r\n                    <div");
 
-WriteLiteral(" class=\"col-sm-4 col-xs-12 m--no-padding\"");
+WriteLiteral(" class=\"col-sm-5 col-md-4 col-lg-4 col-xs-12 m--no-padding\"");
 
 WriteLiteral(">\r\n                        <div");
 
@@ -1683,19 +1683,82 @@ WriteLiteral(">\r\n                    <i");
 
 WriteLiteral(" class=\"fa fa-shopping-bag\"");
 
-WriteLiteral("></i>\r\n                    <h1>");
+WriteLiteral("></i>\r\n                    <h3");
+
+WriteLiteral(" class=\"error-h4\"");
+
+WriteLiteral(">");
 
             
             #line 314 "..\..\Views\Checkout\OnePageCheckout.cshtml"
-                   Write(LT("YourBag.Text.NoItem", "Basket No Longer Available"));
+                                    Write(LT("YourBag.Text.NoItem", "Basket Not Found"));
 
             
             #line default
             #line hidden
-WriteLiteral("</h1>\r\n                </div>\r\n            </div> \r\n        </div>\r\n");
+WriteLiteral("</h3>\r\n                    <p");
+
+WriteLiteral(" class=\"message-desc\"");
+
+WriteLiteral(">");
 
             
-            #line 318 "..\..\Views\Checkout\OnePageCheckout.cshtml"
+            #line 315 "..\..\Views\Checkout\OnePageCheckout.cshtml"
+                                       Write(LT("YourBag.Text.Basket", "The Basket you are looking for has already been"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral(" <strong>");
+
+            
+            #line 315 "..\..\Views\Checkout\OnePageCheckout.cshtml"
+                                                                                                                             Write(LT("YourBag.Text.Basket", "Closed / Converted"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</strong> ");
+
+            
+            #line 315 "..\..\Views\Checkout\OnePageCheckout.cshtml"
+                                                                                                                                                                                       Write(LT("YourBag.Text.Or", "or"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral(" <strong>");
+
+            
+            #line 315 "..\..\Views\Checkout\OnePageCheckout.cshtml"
+                                                                                                                                                                                                                            Write(LT("YourBag.Text.exist", "does not exist"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</strong>.</p>\r\n                    <p><a");
+
+WriteLiteral(" href=\"/\"");
+
+WriteLiteral(" class=\"animate btn-bordered\"");
+
+WriteLiteral("><i");
+
+WriteLiteral(" class=\"fa fa-caret-left\"");
+
+WriteLiteral("></i>");
+
+            
+            #line 316 "..\..\Views\Checkout\OnePageCheckout.cshtml"
+                                                                                           Write(LT("YourBag.Text.ContinueShopping", "Continue Shopping"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</a></p>\r\n                </div>\r\n            </div> \r\n        </div>\r\n");
+
+            
+            #line 320 "..\..\Views\Checkout\OnePageCheckout.cshtml"
     
             
             #line default
@@ -1705,7 +1768,7 @@ WriteLiteral("\r\n\r\n\r\n");
 DefineSection("scripts", () => {
 
             
-            #line 321 "..\..\Views\Checkout\OnePageCheckout.cshtml"
+            #line 323 "..\..\Views\Checkout\OnePageCheckout.cshtml"
     
             
             #line default
@@ -1713,7 +1776,7 @@ DefineSection("scripts", () => {
 WriteLiteral("\r\n        <script>\r\n        var signIn = \'");
 
             
-            #line 323 "..\..\Views\Checkout\OnePageCheckout.cshtml"
+            #line 325 "..\..\Views\Checkout\OnePageCheckout.cshtml"
                   Write(Html.BuildUrlFromExpression<AccountController>(c => c.SignIn(null)));
 
             
@@ -1722,7 +1785,7 @@ WriteLiteral("\r\n        <script>\r\n        var signIn = \'");
 WriteLiteral("\';\r\n        var converToOrder = \'");
 
             
-            #line 324 "..\..\Views\Checkout\OnePageCheckout.cshtml"
+            #line 326 "..\..\Views\Checkout\OnePageCheckout.cshtml"
                          Write(Html.BuildUrlFromExpression<CheckoutController>(c => c.ConvertToOrder(null)));
 
             
@@ -1731,7 +1794,7 @@ WriteLiteral("\';\r\n        var converToOrder = \'");
 WriteLiteral("\';\r\n        var custGridUrl = \'");
 
             
-            #line 325 "..\..\Views\Checkout\OnePageCheckout.cshtml"
+            #line 327 "..\..\Views\Checkout\OnePageCheckout.cshtml"
                        Write(Html.BuildUrlFromExpression<AccountController>(c => c.GetCustomerAddress()));
 
             
@@ -1740,7 +1803,7 @@ WriteLiteral("\';\r\n        var custGridUrl = \'");
 WriteLiteral("\';\r\n        var addToBasket = \'");
 
             
-            #line 326 "..\..\Views\Checkout\OnePageCheckout.cshtml"
+            #line 328 "..\..\Views\Checkout\OnePageCheckout.cshtml"
                        Write(Html.BuildUrlFromExpression<BasketController>(c => c.AddtoBasket(null)));
 
             
@@ -1749,7 +1812,7 @@ WriteLiteral("\';\r\n        var addToBasket = \'");
 WriteLiteral("\';\r\n        var applyPromoCode = \'");
 
             
-            #line 327 "..\..\Views\Checkout\OnePageCheckout.cshtml"
+            #line 329 "..\..\Views\Checkout\OnePageCheckout.cshtml"
                           Write(Html.BuildUrlFromExpression<BasketController>(c => c.ApplyPromoCode(null,null)));
 
             
@@ -1758,7 +1821,7 @@ WriteLiteral("\';\r\n        var applyPromoCode = \'");
 WriteLiteral("\';\r\n        var removePromoCode = \'");
 
             
-            #line 328 "..\..\Views\Checkout\OnePageCheckout.cshtml"
+            #line 330 "..\..\Views\Checkout\OnePageCheckout.cshtml"
                            Write(Html.BuildUrlFromExpression<BasketController>(c => c.RemovePromoCode("","")));
 
             
@@ -1767,7 +1830,7 @@ WriteLiteral("\';\r\n        var removePromoCode = \'");
 WriteLiteral("\';\r\n        var searchPhysicalStore = \'");
 
             
-            #line 329 "..\..\Views\Checkout\OnePageCheckout.cshtml"
+            #line 331 "..\..\Views\Checkout\OnePageCheckout.cshtml"
                                Write(Html.BuildUrlFromExpression<CheckoutController>(c => c.GetClickAndCollectOptions(null, null)));
 
             
@@ -1776,7 +1839,7 @@ WriteLiteral("\';\r\n        var searchPhysicalStore = \'");
 WriteLiteral("\';\r\n        var nominatedDelivery = \'");
 
             
-            #line 330 "..\..\Views\Checkout\OnePageCheckout.cshtml"
+            #line 332 "..\..\Views\Checkout\OnePageCheckout.cshtml"
                              Write(Html.BuildUrlFromExpression<CheckoutController>(c => c.GetNominatedDelivery(null,null)));
 
             
@@ -1785,7 +1848,7 @@ WriteLiteral("\';\r\n        var nominatedDelivery = \'");
 WriteLiteral("\';\r\n        var guestCheckout = \'");
 
             
-            #line 331 "..\..\Views\Checkout\OnePageCheckout.cshtml"
+            #line 333 "..\..\Views\Checkout\OnePageCheckout.cshtml"
                          Write(Html.BuildUrlFromExpression<CheckoutController>(c => c.GuestCheckout(null)));
 
             
@@ -1794,7 +1857,7 @@ WriteLiteral("\';\r\n        var guestCheckout = \'");
 WriteLiteral("\';\r\n        var logout = \'");
 
             
-            #line 332 "..\..\Views\Checkout\OnePageCheckout.cshtml"
+            #line 334 "..\..\Views\Checkout\OnePageCheckout.cshtml"
                   Write(Html.BuildUrlFromExpression<CheckoutController>(c => c.Logout()));
 
             
@@ -1803,7 +1866,7 @@ WriteLiteral("\';\r\n        var logout = \'");
 WriteLiteral("\';\r\n        var validateGuestPassword = \'");
 
             
-            #line 333 "..\..\Views\Checkout\OnePageCheckout.cshtml"
+            #line 335 "..\..\Views\Checkout\OnePageCheckout.cshtml"
                                  Write(Html.BuildUrlFromExpression<CheckoutController>(c => c.ValidateGuestPassword(null)));
 
             
@@ -1812,7 +1875,7 @@ WriteLiteral("\';\r\n        var validateGuestPassword = \'");
 WriteLiteral("\';\r\n        var getWishlistProducts = \'");
 
             
-            #line 334 "..\..\Views\Checkout\OnePageCheckout.cshtml"
+            #line 336 "..\..\Views\Checkout\OnePageCheckout.cshtml"
                                Write(Html.BuildUrlFromExpression<CheckoutController>(c => c.GetWishlistProducts()));
 
             
@@ -1821,7 +1884,7 @@ WriteLiteral("\';\r\n        var getWishlistProducts = \'");
 WriteLiteral("\';\r\n        var addProductToWishlist = \'");
 
             
-            #line 335 "..\..\Views\Checkout\OnePageCheckout.cshtml"
+            #line 337 "..\..\Views\Checkout\OnePageCheckout.cshtml"
                                 Write(Html.BuildUrlFromExpression<CheckoutController>(c => c.AddProductToWishlist("")));
 
             
@@ -1830,7 +1893,7 @@ WriteLiteral("\';\r\n        var addProductToWishlist = \'");
 WriteLiteral("\';\r\n        var removeWishList = \'");
 
             
-            #line 336 "..\..\Views\Checkout\OnePageCheckout.cshtml"
+            #line 338 "..\..\Views\Checkout\OnePageCheckout.cshtml"
                           Write(Html.BuildUrlFromExpression<CheckoutController>(c => c.RemoveWishList("",true)));
 
             
@@ -1839,7 +1902,7 @@ WriteLiteral("\';\r\n        var removeWishList = \'");
 WriteLiteral("\';\r\n        var validateLoginPassword = \'");
 
             
-            #line 337 "..\..\Views\Checkout\OnePageCheckout.cshtml"
+            #line 339 "..\..\Views\Checkout\OnePageCheckout.cshtml"
                                  Write(Html.BuildUrlFromExpression<AccountController>(c => c.SignIn(null)));
 
             
@@ -1848,7 +1911,7 @@ WriteLiteral("\';\r\n        var validateLoginPassword = \'");
 WriteLiteral("\';\r\n        var addPersistentBasket = \'");
 
             
-            #line 338 "..\..\Views\Checkout\OnePageCheckout.cshtml"
+            #line 340 "..\..\Views\Checkout\OnePageCheckout.cshtml"
                                Write(Html.BuildUrlFromExpression<CommonController>(c => c.AddPersistentBasket(new Guid(), new Guid())));
 
             
@@ -1857,7 +1920,7 @@ WriteLiteral("\';\r\n        var addPersistentBasket = \'");
 WriteLiteral("\';\r\n        var UpdateBasketDeliveryAddress = \'");
 
             
-            #line 339 "..\..\Views\Checkout\OnePageCheckout.cshtml"
+            #line 341 "..\..\Views\Checkout\OnePageCheckout.cshtml"
                                        Write(Html.BuildUrlFromExpression<CheckoutController>(c => c.UpdateBasketDeliveryAddress(null)));
 
             
@@ -1866,7 +1929,7 @@ WriteLiteral("\';\r\n        var UpdateBasketDeliveryAddress = \'");
 WriteLiteral("\';\r\n        var savedBaskets = \'");
 
             
-            #line 340 "..\..\Views\Checkout\OnePageCheckout.cshtml"
+            #line 342 "..\..\Views\Checkout\OnePageCheckout.cshtml"
                         Write(Html.BuildUrlFromExpression<BasketController>(c => c.GetSavedBaskets()));
 
             
@@ -1875,7 +1938,7 @@ WriteLiteral("\';\r\n        var savedBaskets = \'");
 WriteLiteral("\';\r\n        var register = \'");
 
             
-            #line 341 "..\..\Views\Checkout\OnePageCheckout.cshtml"
+            #line 343 "..\..\Views\Checkout\OnePageCheckout.cshtml"
                     Write(Html.BuildUrlFromExpression<AccountController>(c => c.Registration(null)));
 
             
@@ -1884,7 +1947,7 @@ WriteLiteral("\';\r\n        var register = \'");
 WriteLiteral("\';\r\n        var newsletter = \'");
 
             
-            #line 342 "..\..\Views\Checkout\OnePageCheckout.cshtml"
+            #line 344 "..\..\Views\Checkout\OnePageCheckout.cshtml"
                       Write(Html.BuildUrlFromExpression<AccountController>(c => c.NewsletterSubscription(null)));
 
             
@@ -1912,20 +1975,13 @@ WriteLiteral(@"';
             savedBaskets: savedBaskets,
             register: register,
             klarna: 'Klarna',
-            shipClickAndCollect:'");
+            ");
+
+WriteLiteral("\r\n            shipflat: \'");
 
             
-            #line 364 "..\..\Views\Checkout\OnePageCheckout.cshtml"
-                            Write(ShippingTypes.ClickAndCollect.ToString());
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\',\r\n            shipflat: \'");
-
-            
-            #line 365 "..\..\Views\Checkout\OnePageCheckout.cshtml"
-                  Write(ShippingTypes.Flat.ToString());
+            #line 367 "..\..\Views\Checkout\OnePageCheckout.cshtml"
+                  Write(ShippingCostMethods.FlatRate.ToString());
 
             
             #line default
@@ -1934,7 +1990,7 @@ WriteLiteral("\',\r\n            newsletter: newsletter\r\n        });\r\n      
 "\'model\', ");
 
             
-            #line 368 "..\..\Views\Checkout\OnePageCheckout.cshtml"
+            #line 370 "..\..\Views\Checkout\OnePageCheckout.cshtml"
                                 Write(Html.JsonFor(Model));
 
             
