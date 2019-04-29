@@ -97,32 +97,23 @@ namespace Omnicx.WebStore.Core.Helpers
 
             return sbPasswordRegx.ToString();
         }
-        /// <summary>
-        /// Remove unnessary call to basket api on all page if no basket available
-        /// </summary>
-        /// <returns></returns>
-        public static bool HasBasketAction()
-        {
-            if (System.Web.HttpContext.Current.Session[Constants.SESSION_HAS_BASKET_ACTION] != null) return bool.Parse(System.Web.HttpContext.Current.Session[Constants.SESSION_HAS_BASKET_ACTION].ToString());
-            return true;
-        }
-        /// <summary>
-        /// Set basket action
-        /// </summary>
-        /// <param name="basketId"></param>
-        public static void SetBasketAction(string basketId="",bool resetAction=false)
-        {
-            if (resetAction)
-                System.Web.HttpContext.Current.Session[Constants.SESSION_HAS_BASKET_ACTION] = null;
-            else
-                System.Web.HttpContext.Current.Session[Constants.SESSION_HAS_BASKET_ACTION] = !(string.IsNullOrEmpty(basketId) || basketId == Guid.Empty.ToString());
-        }
-        public static void ResetBasketCookie()
+        public static void ResetBasketCookieAndSession()
         {
             var cookie_basketId = new System.Web.HttpCookie(Constants.COOKIE_BASKETID) { HttpOnly = true, Value = Guid.NewGuid().ToString(), Expires = DateTime.Now.AddDays(Constants.COOKIE_DEVICEID_EXPIRES_DAYS) };
             System.Web.HttpContext.Current.Response.Cookies.Set(cookie_basketId);
+            if(System.Web.HttpContext.Current.Session != null)
+            {
+                System.Web.HttpContext.Current.Session[Constants.SESSION_BASKET] = null;
+            }
         }
-
+        public static string[] GetWordPagination()
+        {
+            string[] words = {
+            "A","B","C","D","E","F","G","H","I","J","K","L","M","N",
+            "O","P","Q","R","S","T","U","V","W","X","Y","Z"
+            };
+            return words;
+        }
         #region Encode and Decode string 
         public static string GenerateEncodedString(string encodeString)
         {

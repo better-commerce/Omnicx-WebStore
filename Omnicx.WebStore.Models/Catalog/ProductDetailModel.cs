@@ -39,6 +39,9 @@ namespace Omnicx.WebStore.Models.Catalog
         public string UomValue { get; set; }
 
         public string AttributeSet { get; set; }
+        public bool SubscriptionEnabled { get; set; }
+        public SubscriptionPlanType SubscriptionPlanType { get; set; }
+
         #endregion
 
         public VariantModel Variant { get; set; }
@@ -58,6 +61,7 @@ namespace Omnicx.WebStore.Models.Catalog
         public IList<ProductModel> RelatedProductList { get; set; }
 
         public string Image { get; set; }
+        public string VideoId { get; set; }
         public int CurrentStock { get; set; }
         public List<FaqsCategoryModel> FaqsCategory { get; set; }
         public List<FaqsSubCategoryModel> FaqsSubCategory { get; set; }

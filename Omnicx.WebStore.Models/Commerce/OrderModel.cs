@@ -12,6 +12,7 @@ namespace Omnicx.WebStore.Models.Commerce
         public string OrderStatus { get; set; }
         public Amount GrandTotal { get; set; }
         public Amount BalanceAmount { get; set; }
+        public decimal TaxPercent { get; set; }
         public string CreatedBy { get; set; }
         public bool CreatedByAdmin { get; set; }
         public Amount PaidAmount { get; set; }
@@ -29,7 +30,7 @@ namespace Omnicx.WebStore.Models.Commerce
         /// <summary>
         /// System name for the selected shipping method
         /// </summary>
-        public string Shipping { get; set; }
+        public ShippingModel Shipping { get; set; }
         /// <summary>
         /// System name for the selected payment gateway
         /// </summary>
@@ -48,6 +49,12 @@ namespace Omnicx.WebStore.Models.Commerce
 
         public Amount AdditionalCharge { get; set; }
         public Amount CompanyDiscount { get; set; }
-
+        public string TrackingNo { get; set; }
+        public string TrackingLink { get; set; }
+        //Subscription Fields
+        public bool HasSubscription { get; set; }
+        public bool IsSeedOrder { get; set; }
+        public Guid SeedOrderId { get; set; }
+        public Amount SubscriptionTotal { get; set; }
     }
 }

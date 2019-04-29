@@ -19,5 +19,6 @@ namespace Omnicx.API.SDK.Api.Infra
         string IpAddress { get; }
         CompanyUserRole CurrentUserRole { get; }
         string CurrencyCode { get; }
+        string LangCulture { get; }
     }
 }

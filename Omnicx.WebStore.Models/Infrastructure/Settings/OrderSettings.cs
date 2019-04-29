@@ -37,6 +37,9 @@ namespace Omnicx.WebStore.Models.Infrastructure.Settings
         /// </summary>
         public int NumberOfDaysReturnRequestAvailable { get; set; }
 
-        
+        /// <summary>
+        /// Gets or sets a if partial delivey is enabled as a part of split order
+        /// </summary>
+        public bool EnabledPartialDelivery { get; set; }
     }
 }

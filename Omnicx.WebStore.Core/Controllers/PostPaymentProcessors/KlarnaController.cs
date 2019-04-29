@@ -38,7 +38,7 @@ namespace Omnicx.Site.Core.Controllers.PostPaymentProcessors
             if(Request.Params["status"] == "true")
             {
                 response = new BoolResponse { IsValid = true, RecordId = Request.Params["recordId"] };
-                SiteUtils.ResetBasketCookie();
+                SiteUtils.ResetBasketCookieAndSession();
                 return View(CustomViews.PAYMENT_RESPONSE, response);
             }
             return View(CustomViews.PAYMENT_RESPONSE, response);

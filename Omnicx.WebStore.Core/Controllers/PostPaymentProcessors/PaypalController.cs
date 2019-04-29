@@ -9,10 +9,11 @@ using System.Linq;
 using System.Web.Mvc;
 using Omnicx.WebStore.Models.Keys;
 using Omnicx.WebStore.Core.Helpers;
+using Omnicx.WebStore.Models.Enums;
 
 namespace Omnicx.WebStore.Core.Controllers.PostPaymentProcessors
 {
-    public class PaypalController : Controller
+    public class PaypalController : BaseController
     {
         private readonly ICheckoutApi _checkoutApi;
         private readonly IOrderApi _orderApi;
@@ -49,21 +50,30 @@ namespace Omnicx.WebStore.Core.Controllers.PostPaymentProcessors
 
                 };
                 var paymentResponse = setting.PostProcessPayment(paymentRequest);
-                if (paymentResponse.Success == true) paymentResponse.Payment.IsValid = true;
-                _checkoutApi.UpdatePayment(refOrderId, paymentResponse.Payment);
-                response.RecordId = order.Id;
-                response.IsValid = paymentResponse.Success;
-
-                if (!response.IsValid)
+                if (paymentResponse.Success == true)
                 {
-                    response.RecordId = Request.Params["bid"];
-                    if (paymentResponse.Errors.Any())
-                        response.Message = paymentResponse.Errors[0];
+                    payment = paymentResponse.Payment;
+                    payment.IsValid = true;
+                    payment.Status = PaymentStatus.Authorized.GetHashCode();
+                    if (setting.EnableImmediateCapture)
+                    {
+                        payment.PaidAmount = payment.OrderAmount;
+                        payment.Status = PaymentStatus.Paid.GetHashCode();
+                    }
+                    _checkoutApi.UpdatePayment(order.Id, payment);
+                    SiteUtils.ResetBasketCookieAndSession();
+                    response = new BoolResponse { IsValid = true, RecordId = order.Id };
+                    return View(CustomViews.PAYMENT_RESPONSE, response);
                 }
-                else
-                {
-                    SiteUtils.ResetBasketCookie();
-                }
+               
+                
+               // payment.IsValid = false;            
+                //payment.Status = PaymentStatus.Authorized.GetHashCode();
+               // _checkoutApi.UpdatePayment(order.Id, payment);
+                //SiteUtils.ResetBasketCookieAndSession();
+               // response = new BoolResponse { IsValid = false, RecordId = order.Id };
+               // return View(CustomViews.PAYMENT_RESPONSE, response);               
+              
             }
 
             return View(CustomViews.PAYMENT_RESPONSE, response);

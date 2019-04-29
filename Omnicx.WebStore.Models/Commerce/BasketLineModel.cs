@@ -1,5 +1,8 @@
-﻿using Omnicx.WebStore.Models.Common;
-
+﻿using Newtonsoft.Json;
+using Omnicx.WebStore.Models.Commerce.Subscription;
+using Omnicx.WebStore.Models.Common;
+using Omnicx.WebStore.Models.Enums;
+using System;
 using System.Collections.Generic;
 
 namespace Omnicx.WebStore.Models.Commerce
@@ -38,6 +41,9 @@ namespace Omnicx.WebStore.Models.Commerce
         public string ShortDescription { get; set; }
         public Amount CompanyDiscount { get; set; }
         public Amount ListPrice { get; set; }
+
+        public bool IsSubscription { get; set; }
+        public SubscriptionUserSetting SubscriptionUserSettings { get; set; }
     }
 
     public class CategoryItemModel 

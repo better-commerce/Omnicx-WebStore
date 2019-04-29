@@ -1,0 +1,2043 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D7E752DA-160E-4906-B839-896FF66FC991}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Omnicx.WebStore</RootNamespace>
+    <AssemblyName>Omnicx.WebStore</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AntiXssLibrary, Version=4.3.0.0, Culture=neutral, PublicKeyToken=d127efab8a9c114f, processorArchitecture=MSIL">
+      <HintPath>..\packages\AntiXSS.4.3.0\lib\net40\AntiXssLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="CachingFramework.Redis, Version=7.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CachingFramework.Redis.7.2.0\lib\net45\CachingFramework.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="DevTrends.MvcDonutCaching, Version=1.3.0.0, Culture=neutral, PublicKeyToken=73c58d802958a09f, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvcDonutCaching.1.3.0\lib\net40\DevTrends.MvcDonutCaching.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.Core, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.Core.4.3.4.13329\lib\net45-full\DotNetOpenAuth.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.Core.UI, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.Core.UI.4.3.4.13329\lib\net45-full\DotNetOpenAuth.Core.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.InfoCard, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.InfoCard.4.3.4.13329\lib\net45-full\DotNetOpenAuth.InfoCard.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.InfoCard.UI, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.InfoCard.UI.4.3.4.13329\lib\net45-full\DotNetOpenAuth.InfoCard.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Core.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Common.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth.Consumer, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Consumer.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth.ServiceProvider, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.ServiceProvider.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth.ServiceProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth2, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth2.Core.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth2.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth2.AuthorizationServer, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth2.AuthorizationServer.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth2.AuthorizationServer.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth2.Client, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth2.Client.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth2.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth2.Client.UI, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth2.Client.UI.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth2.Client.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth2.ClientAuthorization, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth2.ClientAuthorization.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth2.ClientAuthorization.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth2.ResourceServer, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth2.ResourceServer.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth2.ResourceServer.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OpenId.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.Provider, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Provider.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OpenId.Provider.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.Provider.UI, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Provider.UI.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OpenId.Provider.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty.UI, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.UI.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OpenId.RelyingParty.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.UI, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.UI.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OpenId.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenIdInfoCard.UI, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OpenIdInfoCard.UI.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OpenIdInfoCard.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenIdOAuth, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OpenIdOAuth.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OpenIdOAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="FeatureToggle, Version=3.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FeatureToggle.3.5.1\lib\net40\FeatureToggle.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FeatureToggle.Core, Version=3.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FeatureToggle.Core.3.5.1\lib\portable-net40+sl50+wp81+wpa+win\FeatureToggle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HtmlSanitizationLibrary, Version=4.3.0.0, Culture=neutral, PublicKeyToken=d127efab8a9c114f, processorArchitecture=MSIL">
+      <HintPath>..\packages\AntiXSS.4.3.0\lib\net40\HtmlSanitizationLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlTags, Version=4.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlTags.4.2.0\lib\net45\HtmlTags.dll</HintPath>
+    </Reference>
+    <Reference Include="Humanizer, Version=2.1.0.0, Culture=neutral, PublicKeyToken=979442b78dfc278e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Humanizer.Core.2.1.0\lib\netstandard1.0\Humanizer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.6.4\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.6.4\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.6.4\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.6.4\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.6.4\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.6.4\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.3\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Storage.Common, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.Storage.Common.9.0.0.1-preview\lib\net45\Microsoft.Azure.Storage.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Edm, Version=5.8.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Edm.5.8.3\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.8.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.OData.5.8.3\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.8.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Services.Client.5.8.3\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Cors, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Cors.3.1.0\lib\net45\Microsoft.Owin.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.2.1.0\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.2.1.0\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.2.1.0\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.2.1.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Mvc.4.0.1\lib\net45\Microsoft.Practices.Unity.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Rest.ClientRuntime.2.3.18\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.Futures.5.0.0\lib\net40\Microsoft.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.1.8.0.0\lib\net35-full\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=4.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAzure.Storage.4.2.1\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Omnicx.WebStore.Apps.OAuthHelper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Omnicx.WebStore.Apps.OAuthHelper.1.0.1\lib\net452\Omnicx.WebStore.Apps.OAuthHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="Omnicx.WebStore.Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Omnicx.WebStore.Framework.1.0.5\lib\net452\Omnicx.WebStore.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="StackExchange.Redis, Version=1.2.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StackExchange.Redis.1.2.6\lib\net45\StackExchange.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.5.0\lib\net45\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Spatial, Version=5.8.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Spatial.5.8.3\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.3\lib\net45\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="App_Start\UnityMvcActivator.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="Views\Account\AddressBook.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AddressBook.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\ForgotPassword.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ForgotPassword.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\MyAccount.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyAccount.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\MyActivity.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyActivity.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\OrderDetail.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrderDetail.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\SubscriptionDetail.generated.cs">
+      <DependentUpon>SubscriptionDetail.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Account\OrderHistory.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrderHistory.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\PasswordChange.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PasswordChange.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\PasswordRecovery.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PasswordRecovery.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\ReturnHistory.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReturnHistory.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\ReturnRequest.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReturnRequest.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\SignIn.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SignIn.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\SubscriptionHistory2.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SubscriptionHistory.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\Wishlist.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Wishlist.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\_AccountAlert.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_AccountAlert.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\_AddressModal.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_AddressModal.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\_MobileSideNav.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_MobileSideNav.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\_SideNav.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_SideNav.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\_UserAddress.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_UserAddress.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\B2B\MyCompany.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyCompany.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\B2B\Quotes.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Quotes.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\B2B\Users.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Users.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\B2B\_AccountAlert.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_AccountAlert.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\B2B\_Register.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Register.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\B2B\_RegistrationAlert.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_RegistrationAlert.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Basket\Index1.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Basket\ShipmentBasket.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShipmentBasket.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Basket\_BulkOrderMessage.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_BulkOrderMessage.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Basket\_HeaderBasketView.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_HeaderBasketView.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Basket\_HeaderBulkOrder.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_HeaderBulkOrder.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Basket\_QuickOrderPad.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_QuickOrderPad.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Basket\_RecentlyViewed2.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_RecentlyViewed.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Blog\BlogCategory.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BlogCategory.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Blog\BlogDetail.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BlogDetail.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Blog\Blogs.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Blogs.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Blog\BlogsByEditor.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BlogsByEditor.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Blog\Search.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Search.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Blog\_BlogNav.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_BlogNav.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Blog\_Editors.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Editors.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Brand\BrandDetail.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BrandDetail.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Brand\BrandLanding.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BrandLanding.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Brand\BrandList.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BrandList.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Brand\BrandProducts.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BrandProducts.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Category\CategoryLanding.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CategoryLanding.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Category\CategoryProducts.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CategoryProducts.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\HotelCheckout.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HotelCheckout.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\HotelCheckoutBilling.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HotelCheckoutBilling.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\HotelCheckoutDelivery.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HotelCheckoutDelivery.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\OnePageCheckout.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OnePageCheckout.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\OrderConfirmation.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrderConfirmation.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\PaymentResponse.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PaymentResponse.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\StandardCheckout.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StandardCheckout.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\WizardCheckout.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WizardCheckout.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\WizardCheckoutBilling.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WizardCheckoutBilling.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\WizardCheckoutDelivery.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WizardCheckoutDelivery.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_AddressView.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_AddressView.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_BasketView.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_BasketView.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_BillingAddress.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_BillingAddress.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_CheckoutBillingAddress.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_CheckoutBillingAddress.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_CheckoutDeliveryAddress.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_CheckoutDeliveryAddress.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_CheckoutDeliveryAddressForm.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_CheckoutDeliveryAddressForm.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_CheckoutDeliveryMethod.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_CheckoutDeliveryMethod.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_CheckoutOrderReview.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_CheckoutOrderReview.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_CheckoutPaymentMethod.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_CheckoutPaymentMethod.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_DeliveryMethod.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_DeliveryMethod.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_GuestRegistration.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_GuestRegistration.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_HotelBillingAddress.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_HotelBillingAddress.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_HotelDeliveryMethod.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_HotelDeliveryMethod.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_HotelOrderSummary.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_HotelOrderSummary.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_HotelProductSummary.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_HotelProductSummary.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_HotelShippingAddress.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_HotelShippingAddress.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_HotelSummary.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_HotelSummary.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_OrderSummary.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_OrderSummary.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_PaymentMethod.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_PaymentMethod.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_ProductSummary.generated.cs">
+      <DependentUpon>_ProductSummary.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Checkout\_ShippingAddress.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_ShippingAddress.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_Store.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Store.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_WizardBillingAddress.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_WizardBillingAddress.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_WizardDeliveryMethod.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_WizardDeliveryMethod.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_WizardOrderSummary.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_WizardOrderSummary.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_WizardProductSummary.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_WizardProductSummary.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_WizardShippingAddress.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_WizardShippingAddress.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Checkout\_WizardSummary.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_WizardSummary.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Common\BasketNotFound.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BasketNotFound.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Common\Error.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Error.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Common\Error500.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Error500.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Common\PageNotFound.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PageNotFound.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Common\StoreLocator.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StoreLocator.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Common\_FaqsView.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_FaqsView.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Lookbook\Index.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Lookbook\LookbookDetail.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LookbookDetail.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Page\DynamicPage.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DynamicPage.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Page\Index.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Page\_IndexJson1.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_IndexJson.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Product\ProductDetail.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductDetail.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Product\_ProductAttributes.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_ProductAttributes.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Product\_ProductBundle.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_ProductBundle.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Product\_ProductDescription.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_ProductDescription.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Product\_ProductDetailSlider.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_ProductDetailSlider.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Product\_ProductReviewLogin.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_ProductReviewLogin.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Product\_ProductReviews.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_ProductReviews.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Product\_Questionnaire.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Questionnaire.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Product\_QuickViewBundle.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_QuickViewBundle.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Product\_QuickViewModal.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_QuickViewModal.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Product\_RelatedProducts.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_RelatedProducts.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Product\_WriteProductReview1.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_WriteProductReview.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Search\DynamicList.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DynamicList.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Search\DynamicListItems.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DynamicListItems.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Search\DynamicListProduct.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DynamicListProduct.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Search\Search.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Search.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Search\_NoResults.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_NoResults.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Search\_ProductWidget.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_ProductWidget.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Search\_SearchBottomBar.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_SearchBottomBar.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Search\_SearchFacets.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_SearchFacets.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Search\_SearchFacetsMobile.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_SearchFacetsMobile.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Search\_SearchResultProducts.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_SearchResultProducts.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Search\_SearchTopBar.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_SearchTopBar.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_Alerts.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Alerts.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_CurrencyView.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_CurrencyView.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_HeaderLayout.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_HeaderLayout.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_HeaderLoginInfo.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_HeaderLoginInfo.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_Layout.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Layout.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_LayoutAccount.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_LayoutAccount.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_LayoutBlank.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_LayoutBlank.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_LayoutBlog.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_LayoutBlog.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_LayoutCMS.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_LayoutCMS.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_LayoutError.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_LayoutError.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_LayoutFooter.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_LayoutFooter.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_LayoutFooterAccount.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_LayoutFooterAccount.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_LayoutHeader.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_LayoutHeader.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_LayoutHeadTag.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_LayoutHeadTag.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_Login.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Login.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_MainFooter.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_MainFooter.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_MainFooter.mobile.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_MainFooter.mobile.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_MainMenu.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_MainMenu.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_MobileHeaderLayout.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_MobileHeaderLayout.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_MobileMenu.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_MobileMenu.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_OpcLayout.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_OpcLayout.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_OpcLayoutFooter.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_OpcLayoutFooter.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_RecommendationBubble.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_RecommendationBubble.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_Register.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Register.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_SearchBox.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_SearchBox.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_SiteLogo.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_SiteLogo.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_BreadCrumb.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_BreadCrumb.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Survey\Capture.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Capture.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Survey\_BuildABundle.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_BuildABundle.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Survey\_QualifyingQuestionnaire.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_QualifyingQuestionnaire.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Survey\_WizardStyle.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_WizardStyle.cshtml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\cms-templates\app-tools-templates\blogs\blog-detail-1.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\blogs\blog-list-2.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\blogs\blog-list-3.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\blogs\blog-list.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\brands\brand-list.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\brands\brand-slider-1.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\brands\brand-slider-2.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\category\category-list.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\category\category-slider-1.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\category\category-slider-2.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\componentAppTools.js" />
+    <Content Include="assets\cms-templates\app-tools-templates\content\image-with-text-list-1.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\content\image-with-text-1.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\content\image-with-text-list-2.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\content\image-with-text-2.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\content\image-with-text-list-3.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\content\image-with-text-3.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\content\image-with-text-4.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\content\video-with-text-list-1.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\content\video-with-text-1.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\content\video-with-text-list-2.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\content\video-with-text-2.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\content\video-with-text-list-3.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\content\video-with-text-3.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\headings\heading-paragraph-right.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\headings\heading-paragraph-left.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\headings\heading-subheading-para-center.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\headings\heading-subheading-para-left.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\headings\heading-subheading-left.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\headings\heading-subheading-para-right.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\headings\heading-subheading-right.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\headings\heading-subheading.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\headings\heading-paragraph-center.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\headings\heading-left.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\headings\heading-right.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\headings\heading.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\image\image-list-1.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\image\image-list-2.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\image\image-list-3.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\image\image-list-4.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\image\image.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\map\map.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\product\product-list.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\product\product-slider-1.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\product\product-slider-2.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\product\product-slider-3.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\slider\carousal-slider.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\video\video-2-panels.html" />
+    <Content Include="assets\cms-templates\app-tools-templates\video\video-full.html" />
+    <Content Include="assets\cms-templates\final-js\cms-templates.js" />
+    <Content Include="assets\cms-templates\final-js\componentAppTools.js" />
+    <Content Include="assets\cms-templates\final-js\pageTemplates.js" />
+    <Content Include="assets\cms-templates\final-js\structure-templates.js" />
+    <Content Include="assets\cms-templates\page-templates\Commerce\brand-list.html" />
+    <Content Include="assets\cms-templates\page-templates\Commerce\brand-list.png" />
+    <Content Include="assets\cms-templates\page-templates\Commerce\categories.html" />
+    <Content Include="assets\cms-templates\page-templates\Commerce\categories.png" />
+    <Content Include="assets\cms-templates\page-templates\Commerce\product-list.html" />
+    <Content Include="assets\cms-templates\page-templates\Commerce\product-list.png" />
+    <Content Include="assets\cms-templates\page-templates\Content\article.html" />
+    <Content Include="assets\cms-templates\page-templates\Content\article.png" />
+    <Content Include="assets\cms-templates\page-templates\Content\blogs.html" />
+    <Content Include="assets\cms-templates\page-templates\Content\blogs.png" />
+    <Content Include="assets\cms-templates\page-templates\Gallery\image-gallery.html" />
+    <Content Include="assets\cms-templates\page-templates\Gallery\image-gallery.png" />
+    <Content Include="assets\cms-templates\page-templates\Landing Pages\landing-page.html" />
+    <Content Include="assets\cms-templates\page-templates\Landing Pages\landing-page.png" />
+    <Content Include="assets\cms-templates\page-templates\Others\blank.html" />
+    <Content Include="assets\cms-templates\page-templates\Others\blank.png" />
+    <Content Include="assets\cms-templates\structure-templates\Footer.html" />
+    <Content Include="assets\cms-templates\structure-templates\Header.html" />
+    <Content Include="assets\cms-templates\structure-templates\Structure.html" />
+    <Content Include="assets\core\css\bootstrap.css" />
+    <Content Include="assets\core\css\bootstrap.min.css" />
+    <Content Include="assets\core\css\e-zoom.css" />
+    <Content Include="assets\core\css\font-awesome.css" />
+    <Content Include="assets\core\css\fonts\fontawesome-webfont.svg" />
+    <Content Include="assets\core\css\main.min.css" />
+    <Content Include="assets\core\css\style.blue.css" />
+    <Content Include="assets\core\css\style.default.css" />
+    <Content Include="assets\core\css\style.green.css" />
+    <Content Include="assets\core\css\style.lightblue.css" />
+    <Content Include="assets\core\css\style.red.css" />
+    <Content Include="assets\core\css\style.turquoise.css" />
+    <Content Include="assets\core\css\style.violet.css" />
+    <Content Include="assets\core\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\core\fonts\icomoon.dev.svg" />
+    <Content Include="assets\core\fonts\icomoon.svg" />
+    <Content Include="assets\core\js-lib\imgix.min.js" />
+    <Content Include="assets\core\js\app\constants\subscription_ENUMS.js" />
+    <Content Include="assets\core\js\app\controllers\storeCtrl.js" />
+    <Content Include="assets\core\js\app\controllers\subscriptionCtrl.js" />
+    <Content Include="assets\core\js\app\directives\btRecommendation.js" />
+    <Content Include="assets\core\js\app\directives\numbersOnly.js" />
+    <Content Include="assets\core\js\app\directives\templates\recommendation.html" />
+    <Content Include="assets\core\js\app\directives\templates\recommendproducts.html" />
+    <Content Include="assets\core\js\app\directives\templates\userrecommendation.html" />
+    <Content Include="assets\core\js\app\service\Recommendation.js" />
+    <Content Include="assets\core\xml\PasswordPolicy.xml" />
+    <Content Include="assets\custom\libs\custom-js\custom-functions.js" />
+    <Content Include="assets\custom\libs\dl-mobile-menu\component.css" />
+    <Content Include="assets\custom\libs\dl-mobile-menu\default.css" />
+    <Content Include="assets\custom\libs\dl-mobile-menu\dl-menu.css" />
+    <Content Include="assets\custom\libs\dl-mobile-menu\jquery.dlmenu.js" />
+    <Content Include="assets\custom\libs\megamenu\custom.js" />
+    <Content Include="assets\custom\libs\megamenu\redesign.min.js" />
+    <Content Include="assets\custom\libs\owl-carousal\owl.carousel.min.js" />
+    <Content Include="assets\custom\libs\owl-carousal\owl.theme.css" />
+    <Content Include="assets\custom\libs\pubsub\pubsub.min.js" />
+    <Content Include="assets\custom\libs\rzslider\rzslider.min.css" />
+    <Content Include="assets\custom\libs\rzslider\rzslider.min.js" />
+    <Content Include="assets\core\js-lib\angular.min.js" />
+    <Content Include="assets\core\js-lib\bootstrap.min.js" />
+    <Content Include="assets\core\js-lib\classie.js" />
+    <Content Include="assets\core\js-lib\front.js" />
+    <Content Include="assets\core\js-lib\jquery-1.11.0.min.js" />
+    <Content Include="assets\core\js-lib\jquery.cookie.js" />
+    <Content Include="assets\core\js-lib\jquery.password-strength.js" />
+    <Content Include="assets\core\js-lib\main.js" />
+    <Content Include="assets\core\js-lib\mainCompare.js" />
+    <Content Include="assets\core\js-lib\modernizr.custom.js" />
+    <Content Include="assets\core\js-lib\respond.min.js" />
+    <Content Include="assets\core\js\app\app.js" />
+    <Content Include="assets\core\js\app\controllers\accountCtrl.js" />
+    <Content Include="assets\core\js\app\controllers\b2bCtrl.js" />
+    <Content Include="assets\core\js\app\controllers\blogCtrl.js" />
+    <Content Include="assets\core\js\app\controllers\checkoutCtrl.js" />
+    <Content Include="assets\core\js\app\controllers\globalCtrl.js" />
+    <Content Include="assets\core\js\app\controllers\productCtrl.js" />
+    <Content Include="assets\core\js\app\controllers\surveyCtrl.js" />
+    <Content Include="assets\core\js\app\directives\angularStarRating.js" />
+    <Content Include="assets\core\js\app\directives\btAutoComplete.js" />
+    <Content Include="assets\core\js\app\directives\e-smart-zoom.js" />
+    <Content Include="assets\core\js\app\directives\FormGroupValidationDirective.js" />
+    <Content Include="assets\core\js\app\directives\InputValidationIconsDirective.js" />
+    <Content Include="assets\core\js\app\directives\ng-sortable.js" />
+    <Content Include="assets\core\js\app\directives\paging.js" />
+    <Content Include="assets\core\js\app\directives\surveyInputField.js" />
+    <Content Include="assets\core\js\app\filters\ocxDateTime.js" />
+    <Content Include="assets\core\js\app\mastercard.js" />
+    <Content Include="assets\core\js\app\utilities\angular-capture-plus.js" />
+    <Content Include="assets\core\js\app\utilities\common.js" />
+    <Content Include="assets\core\js\app\utilities\globalPostCode.js" />
+    <Content Include="assets\core\js\app\utilities\jquery.quicksand.js" />
+    <Content Include="assets\core\js\app\utilities\Loader.js" />
+    <Content Include="assets\core\js\app\utilities\ScriptLoadingService.js" />
+    <Content Include="assets\custom\libs\owl-carousal\animate.min.css" />
+    <Content Include="assets\custom\libs\owl-carousal\owl.carousel.css" />
+    <Content Include="assets\theme\ocx\css\mobile.media.css" />
+    <Content Include="assets\theme\ocx\images\bubble.png" />
+    <Content Include="assets\theme\ocx\images\customer-ico.png" />
+    <Content Include="assets\theme\ocx\images\customerSession-ico.png" />
+    <Content Include="assets\theme\ocx\images\favicon-96x96.png" />
+    <Content Include="assets\theme\ocx\images\icons-sprite.png" />
+    <Content Include="assets\theme\ocx\images\logout-ico.png" />
+    <Content Include="assets\theme\ocx\images\order-ico.png" />
+    <Content Include="assets\theme\ocx\images\Pay By card.png" />
+    <Content Include="assets\theme\ocx\images\products\1.jpg" />
+    <Content Include="assets\theme\ocx\images\products\13.jpg" />
+    <Content Include="assets\theme\ocx\images\products\14.jpg" />
+    <Content Include="assets\theme\ocx\images\products\15.jpg" />
+    <Content Include="assets\theme\ocx\images\products\16.jpg" />
+    <Content Include="assets\theme\ocx\images\products\17.jpg" />
+    <Content Include="assets\theme\ocx\images\products\18.jpg" />
+    <Content Include="assets\theme\ocx\images\products\19.jpg" />
+    <Content Include="assets\theme\ocx\images\products\2.jpg" />
+    <Content Include="assets\theme\ocx\images\products\20.jpg" />
+    <Content Include="assets\theme\ocx\images\products\3.jpg" />
+    <Content Include="assets\theme\ocx\images\products\4.jpg" />
+    <Content Include="assets\theme\ocx\images\products\f1.jpg" />
+    <Content Include="assets\theme\ocx\images\products\f2.jpg" />
+    <Content Include="assets\theme\ocx\images\products\f3.jpg" />
+    <Content Include="assets\custom\libs\owl-carousal\owl.carousel.js" />
+    <Content Include="assets\custom\libs\lookbook-js\scripts.min.js" />
+    <Content Include="assets\theme\ocx\css\dl-menu.css" />
+    <Content Include="assets\theme\ocx\css\main.min.css" />
+    <Content Include="assets\theme\ocx\css\style.default.css" />
+    <Content Include="assets\theme\ocx\images\404.png" />
+    <Content Include="assets\theme\ocx\images\500.png" />
+    <Content Include="assets\theme\ocx\images\503.png" />
+    <Content Include="assets\theme\ocx\images\arrow_down.png" />
+    <Content Include="assets\theme\ocx\images\arrow_up.png" />
+    <Content Include="assets\theme\ocx\images\carousal-banner-men.jpg" />
+    <Content Include="assets\theme\ocx\images\carousal-banner-women.jpg" />
+    <Content Include="assets\theme\ocx\images\cart_red.png" />
+    <Content Include="assets\theme\ocx\images\checked.png" />
+    <Content Include="assets\theme\ocx\images\COD.png" />
+    <Content Include="assets\theme\ocx\images\cross.png" />
+    <Content Include="assets\theme\ocx\images\DE.png" />
+    <Content Include="assets\theme\ocx\images\detail-icon.png" />
+    <Content Include="assets\theme\ocx\images\ES.png" />
+    <Content Include="assets\theme\ocx\images\favicon.ico" />
+    <Content Include="assets\theme\ocx\images\favicon\android-icon-144x144.png" />
+    <Content Include="assets\theme\ocx\images\favicon\android-icon-192x192.png" />
+    <Content Include="assets\theme\ocx\images\favicon\android-icon-36x36.png" />
+    <Content Include="assets\theme\ocx\images\favicon\android-icon-48x48.png" />
+    <Content Include="assets\theme\ocx\images\favicon\android-icon-72x72.png" />
+    <Content Include="assets\theme\ocx\images\favicon\android-icon-96x96.png" />
+    <Content Include="assets\theme\ocx\images\favicon\apple-icon-114x114.png" />
+    <Content Include="assets\theme\ocx\images\favicon\apple-icon-120x120.png" />
+    <Content Include="assets\theme\ocx\images\favicon\apple-icon-144x144.png" />
+    <Content Include="assets\theme\ocx\images\favicon\apple-icon-152x152.png" />
+    <Content Include="assets\theme\ocx\images\favicon\apple-icon-180x180.png" />
+    <Content Include="assets\theme\ocx\images\favicon\apple-icon-57x57.png" />
+    <Content Include="assets\theme\ocx\images\favicon\apple-icon-60x60.png" />
+    <Content Include="assets\theme\ocx\images\favicon\apple-icon-72x72.png" />
+    <Content Include="assets\theme\ocx\images\favicon\apple-icon-76x76.png" />
+    <Content Include="assets\theme\ocx\images\favicon\apple-icon-precomposed.png" />
+    <Content Include="assets\theme\ocx\images\favicon\apple-icon.png" />
+    <Content Include="assets\theme\ocx\images\favicon\favicon-16x16.png" />
+    <Content Include="assets\theme\ocx\images\favicon\favicon-32x32.png" />
+    <Content Include="assets\theme\ocx\images\favicon\favicon-96x96.png" />
+    <Content Include="assets\theme\ocx\images\favicon\favicon.ico" />
+    <Content Include="assets\theme\ocx\images\favicon\ms-icon-144x144.png" />
+    <Content Include="assets\theme\ocx\images\favicon\ms-icon-150x150.png" />
+    <Content Include="assets\theme\ocx\images\favicon\ms-icon-310x310.png" />
+    <Content Include="assets\theme\ocx\images\favicon\ms-icon-70x70.png" />
+    <Content Include="assets\theme\ocx\images\GB.png" />
+    <Content Include="assets\theme\ocx\images\gift-card-back.jpg" />
+    <Content Include="assets\theme\ocx\images\Givex.png" />
+    <Content Include="assets\theme\ocx\images\IN.png" />
+    <Content Include="assets\theme\ocx\images\Klarna.png" />
+    <Content Include="assets\theme\ocx\images\loader.svg" />
+    <Content Include="assets\theme\ocx\images\logo-footer.png" />
+    <Content Include="assets\theme\ocx\images\logo-mid.png" />
+    <Content Include="assets\theme\ocx\images\logo-small.png" />
+    <Content Include="assets\theme\ocx\images\logo.png" />
+    <Content Include="assets\theme\ocx\images\MasterCard.png" />
+    <Content Include="assets\theme\ocx\images\noimagefound.jpg" />
+    <Content Include="assets\theme\ocx\images\Pay by Paypal.png" />
+    <Content Include="assets\theme\ocx\images\payment.png" />
+    <Content Include="assets\theme\ocx\images\quick-view.png" />
+    <Content Include="assets\theme\ocx\images\quickview-icon.png" />
+    <Content Include="assets\theme\ocx\images\search-ico.png" />
+    <Content Include="assets\theme\ocx\images\shopping-bag-full.png" />
+    <Content Include="assets\theme\ocx\images\shopping-bag.png" />
+    <Content Include="assets\theme\ocx\images\shoppingbag-ico.png" />
+    <Content Include="assets\theme\ocx\images\unchecked.png" />
+    <Content Include="assets\theme\ocx\images\wishlist-ico.png" />
+    <Content Include="assets\theme\ocx\images\wishlist-icon.png" />
+    <Content Include="assets\theme\ocx\images\wishlist-view.png" />
+    <Content Include="bundles\fonts\fontawesome-webfont.svg" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\core\css\bootstrap.css.map" />
+    <Content Include="assets\core\css\bootstrap.min.css.map" />
+    <Content Include="assets\core\css\fonts\fontawesome-webfont.eot" />
+    <Content Include="assets\core\css\fonts\fontawesome-webfont.ttf" />
+    <Content Include="assets\core\css\fonts\fontawesome-webfont.woff" />
+    <Content Include="assets\core\css\fonts\fontawesome-webfont.woff2" />
+    <Content Include="assets\core\css\fonts\FontAwesome.otf" />
+    <Content Include="assets\theme\ocx\images\favicon\manifest.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bundles\bootstrap.css.map" />
+    <Content Include="bundles\bootstrap.min.css.map" />
+    <Content Include="bundles\fonts\fontawesome-webfont.eot" />
+    <Content Include="bundles\fonts\fontawesome-webfont.ttf" />
+    <Content Include="bundles\fonts\fontawesome-webfont.woff" />
+    <Content Include="bundles\fonts\fontawesome-webfont.woff2" />
+    <Content Include="bundles\fonts\FontAwesome.otf" />
+    <Content Include="assets\core\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\core\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\core\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\core\fonts\icomoon.eot" />
+    <Content Include="assets\core\fonts\icomoon.ttf" />
+    <Content Include="assets\core\fonts\icomoon.woff" />
+    <None Include="packages.config" />
+    <Content Include="Views\Account\AddressBook.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>AddressBook.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\ForgotPassword.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ForgotPassword.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\MyAccount.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>MyAccount.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\MyActivity.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>MyActivity.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\OrderDetail.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>OrderDetail.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\OrderHistory.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>OrderHistory.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\PasswordChange.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>PasswordChange.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\PasswordRecovery.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>PasswordRecovery.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\ReturnHistory.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ReturnHistory.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\ReturnRequest.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ReturnRequest.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\SignIn.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SignIn.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\Wishlist.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Wishlist.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\_AccountAlert.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_AccountAlert.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\_AddressModal.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_AddressModal.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\_MobileSideNav.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_MobileSideNav.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\_SideNav.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_SideNav.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\_UserAddress.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_UserAddress.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\B2B\MyCompany.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>MyCompany.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\B2B\Quotes.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Quotes.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\B2B\Users.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Users.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\B2B\_AccountAlert.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_AccountAlert.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\B2B\_Register.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_Register.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\B2B\_RegistrationAlert.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_RegistrationAlert.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Basket\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index1.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Basket\_BulkOrderMessage.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_BulkOrderMessage.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Basket\_HeaderBasketView.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_HeaderBasketView.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Basket\_HeaderBulkOrder.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_HeaderBulkOrder.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Basket\_QuickOrderPad.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_QuickOrderPad.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Blog\BlogCategory.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>BlogCategory.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Blog\BlogDetail.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>BlogDetail.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Blog\Blogs.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Blogs.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Blog\BlogsByEditor.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>BlogsByEditor.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Blog\Search.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Search.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Blog\_BlogNav.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_BlogNav.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Blog\_Editors.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_Editors.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Brand\BrandDetail.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>BrandDetail.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Brand\BrandLanding.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>BrandLanding.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Brand\BrandList.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>BrandList.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Brand\BrandProducts.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>BrandProducts.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Category\CategoryLanding.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>CategoryLanding.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Category\CategoryProducts.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>CategoryProducts.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\OnePageCheckout.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>OnePageCheckout.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\OrderConfirmation.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>OrderConfirmation.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\PaymentResponse.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>PaymentResponse.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\StandardCheckout.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>StandardCheckout.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_AddressView.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_AddressView.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_BasketView.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_BasketView.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_BillingAddress.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_BillingAddress.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_CheckoutBillingAddress.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_CheckoutBillingAddress.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_CheckoutDeliveryAddress.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_CheckoutDeliveryAddress.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_CheckoutDeliveryAddressForm.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_CheckoutDeliveryAddressForm.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_CheckoutDeliveryMethod.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_CheckoutDeliveryMethod.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_CheckoutOrderReview.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_CheckoutOrderReview.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_CheckoutPaymentMethod.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_CheckoutPaymentMethod.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_DeliveryMethod.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_DeliveryMethod.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_GuestRegistration.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_GuestRegistration.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_OrderSummary.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_OrderSummary.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_PaymentMethod.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_PaymentMethod.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_ShippingAddress.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_ShippingAddress.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Common\BasketNotFound.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>BasketNotFound.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Common\Error.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Error.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Common\Error500.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Error500.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Common\PageNotFound.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>PageNotFound.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Common\_FaqsView.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_FaqsView.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Page\DynamicPage.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>DynamicPage.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Page\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Page\_IndexJson.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_IndexJson1.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Product\ProductDetail.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ProductDetail.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Product\_ProductBundle.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_ProductBundle.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Product\_ProductDetailSlider.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_ProductDetailSlider.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Product\_ProductReviewLogin.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_ProductReviewLogin.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Product\_ProductReviews.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_ProductReviews.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Product\_Questionnaire.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_Questionnaire.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Product\_QuickViewBundle.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_QuickViewBundle.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Product\_QuickViewModal.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_QuickViewModal.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Product\_RelatedProducts.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_RelatedProducts.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Product\_WriteProductReview.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_WriteProductReview1.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Search\DynamicList.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>DynamicList.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Search\DynamicListItems.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>DynamicListItems.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Search\DynamicListProduct.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>DynamicListProduct.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Search\Search.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Search.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Search\_NoResults.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_NoResults.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Search\_SearchBottomBar.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_SearchBottomBar.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Search\_SearchFacets.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_SearchFacets.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Search\_SearchFacetsMobile.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_SearchFacetsMobile.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Search\_SearchResultProducts.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_SearchResultProducts.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Search\_SearchTopBar.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_SearchTopBar.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\_Alerts.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_Alerts.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\_CurrencyView.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_CurrencyView.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\_HeaderLayout.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_HeaderLayout.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\_Layout.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_Layout.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\_LayoutAccount.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_LayoutAccount.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\_LayoutBlog.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_LayoutBlog.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\_LayoutCMS.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_LayoutCMS.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\_LayoutError.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_LayoutError.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\_LayoutFooter.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_LayoutFooter.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\_LayoutFooterAccount.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_LayoutFooterAccount.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\_LayoutHeader.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_LayoutHeader.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\_LayoutHeadTag.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_LayoutHeadTag.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\_Login.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_Login.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\_MainFooter.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_MainFooter.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\_MainFooter.mobile.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_MainFooter.mobile.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\_MainMenu.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_MainMenu.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\_MobileHeaderLayout.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_MobileHeaderLayout.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\_MobileMenu.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_MobileMenu.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\_OpcLayout.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_OpcLayout.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\_Register.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_Register.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\_SearchBox.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_SearchBox.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\_SiteLogo.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_SiteLogo.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\_BreadCrumb.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_BreadCrumb.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Survey\Capture.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Capture.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Survey\_BuildABundle.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_BuildABundle.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Survey\_QualifyingQuestionnaire.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_QualifyingQuestionnaire.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Survey\_WizardStyle.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_WizardStyle.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\_HeaderLoginInfo.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_HeaderLoginInfo.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\_DynamicHeadTag.cshtml" />
+    <Content Include="Views\Basket\_RecentlyViewed.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_RecentlyViewed2.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Search\_ProductWidget.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_ProductWidget.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_ProductSummary.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_ProductSummary.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Product\_ProductDescription.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_ProductDescription.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Product\_ProductAttributes.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_ProductAttributes.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Lookbook\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\_LookbookLayout.cshtml" />
+    <Content Include="Views\Lookbook\LookbookDetail.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>LookbookDetail.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_Store.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_Store.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\_OpcLayoutFooter.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_OpcLayoutFooter.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\_RecommendationBubble.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_RecommendationBubble.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Basket\ShipmentBasket.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ShipmentBasket.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Common\StoreLocator.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>StoreLocator.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\SurveyResponse.cshtml" />
+    <Content Include="Views\Shared\_LayoutBlank.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_LayoutBlank.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\HotelCheckout.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>HotelCheckout.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\HotelCheckoutBilling.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>HotelCheckoutBilling.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\HotelCheckoutDelivery.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>HotelCheckoutDelivery.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\WizardCheckout.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>WizardCheckout.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\WizardCheckoutBilling.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>WizardCheckoutBilling.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\WizardCheckoutDelivery.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>WizardCheckoutDelivery.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_HotelBillingAddress.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_HotelBillingAddress.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_HotelDeliveryMethod.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_HotelDeliveryMethod.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_HotelOrderSummary.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_HotelOrderSummary.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_HotelProductSummary.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_HotelProductSummary.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_HotelShippingAddress.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_HotelShippingAddress.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_HotelSummary.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_HotelSummary.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_WizardBillingAddress.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_WizardBillingAddress.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_WizardDeliveryMethod.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_WizardDeliveryMethod.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_WizardOrderSummary.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_WizardOrderSummary.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_WizardProductSummary.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_WizardProductSummary.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_WizardShippingAddress.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_WizardShippingAddress.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Checkout\_WizardSummary.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_WizardSummary.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\SubscriptionDetail.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SubscriptionDetail.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\SubscriptionHistory.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SubscriptionHistory2.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Recomendation\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Omnicx.API.SDK\Omnicx.API.SDK.csproj">
+      <Project>{267b329b-0a25-4136-af47-668c45f0f0cf}</Project>
+      <Name>Omnicx.API.SDK</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Omnicx.WebStore.Core\Omnicx.WebStore.Core.csproj">
+      <Project>{634877c1-92fb-4b43-b59f-e8438a3f7424}</Project>
+      <Name>Omnicx.WebStore.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Omnicx.WebStore.Models\Omnicx.WebStore.Models.csproj">
+      <Project>{404d2b03-f5cf-4e2e-b05e-0ec7311916a7}</Project>
+      <Name>Omnicx.WebStore.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>39132</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:39136/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

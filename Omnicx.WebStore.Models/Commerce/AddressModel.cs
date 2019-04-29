@@ -152,9 +152,8 @@ namespace Omnicx.WebStore.Models.Commerce
         [Display(Name = "Mobile No", Prompt = "Mobile No...")]
         //[DataType(DataType.PhoneNumber)]
         //[RegularExpression(@"^(\d{10})$", ErrorMessage = "Please enter valid Phone Number")]
-        [System.Web.Mvc.AdditionalMetadata("input.MaxLength", "30")]
-        [MaxLength(30, ErrorMessage = "Mobile No Value can't be more than 30")]
-        [System.Web.Mvc.AdditionalMetadata("input.Pattern", @"^(\+?(\d[\d-.\w ]+)?(\([\d-.\w ]+\))?[\d-.\w ]+\d)|([a-zA-Z]\w*)$")]
+        [System.Web.Mvc.AdditionalMetadata("input.MaxLength", "23")]
+        [MaxLength(23, ErrorMessage = "Mobile No Value can't be more than 23")]
         public string PhoneNo { get; set; }
 
         public string MobileNo { get; set; }

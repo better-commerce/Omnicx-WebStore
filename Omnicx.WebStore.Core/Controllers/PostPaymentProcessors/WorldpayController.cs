@@ -56,7 +56,7 @@ namespace Omnicx.WebStore.Core.Controllers.PostPaymentProcessors
 
                 response = new BoolResponse { IsValid = true, RecordId = order.Id };
                 SetDataLayerVariables(order, WebhookEventTypes.CheckoutPayment);
-                SiteUtils.ResetBasketCookie();
+                SiteUtils.ResetBasketCookieAndSession();
                 return View(CustomViews.PAYMENT_RESPONSE, response);
             }
             return View(CustomViews.PAYMENT_RESPONSE, response);

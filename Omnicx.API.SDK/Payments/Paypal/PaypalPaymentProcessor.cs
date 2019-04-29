@@ -41,7 +41,10 @@ namespace Omnicx.API.SDK.Payments.Paypal
             oPayDetail.ShippingTotal.currencyID = currencyCode;
             oPayDetail.OrderDescription = "Order Total:" + processPaymentRequest.OrderTotal.ToString();
             oPayDetail.PaymentActionSpecified = true;
-            oPayDetail.PaymentAction = PaymentActionCodeType.Authorization;
+            if(Settings.EnableImmediateCapture)
+                 oPayDetail.PaymentAction = PaymentActionCodeType.Sale;
+            else
+                 oPayDetail.PaymentAction = PaymentActionCodeType.Authorization;
 
 
             oPayDetail.InvoiceID = processPaymentRequest.OrderId;
@@ -92,7 +95,7 @@ namespace Omnicx.API.SDK.Payments.Paypal
             PaymentDetailsType[] oPayDetails = { oPayDetail };
 
             details.PaymentDetails = oPayDetails;
-
+          
             details.ReturnURL = Settings.NotificationUrl + "?oid="  + processPaymentRequest.OrderId + "&payid=" +  processPaymentRequest.PaymentId;
             details.CancelURL = Settings.CancelUrl + "/" + processPaymentRequest.BasketId ;
             System.Net.ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(CheckValidationResult);
@@ -124,7 +127,10 @@ namespace Omnicx.API.SDK.Payments.Paypal
             request.Version = Settings.Version;
             var details = new DoExpressCheckoutPaymentRequestDetailsType();
             request.DoExpressCheckoutPaymentRequestDetails = details;
-            details.PaymentAction = PaymentActionCodeType.Authorization;
+            if (Settings.EnableImmediateCapture)
+                details.PaymentAction = PaymentActionCodeType.Sale;
+            else
+                details.PaymentAction = PaymentActionCodeType.Authorization;
 
             details.PaymentActionSpecified = true;
             details.Token = postProcessPaymentRequest.Token;
@@ -138,7 +144,11 @@ namespace Omnicx.API.SDK.Payments.Paypal
 
             paymentDetail.OrderTotal.currencyID = currencyCode;
             paymentDetail.ButtonSource = "";
-            paymentDetail.PaymentAction = PaymentActionCodeType.Authorization;
+            if (Settings.EnableImmediateCapture)
+                paymentDetail.PaymentAction = PaymentActionCodeType.Sale;
+            else
+                paymentDetail.PaymentAction = PaymentActionCodeType.Authorization;
+
             paymentDetail.PaymentActionSpecified = true;
 
             PaymentDetailsType[] paymentDetails = { paymentDetail };
@@ -148,7 +158,7 @@ namespace Omnicx.API.SDK.Payments.Paypal
             DoExpressCheckoutPaymentResponseType response = _paypalService2.DoExpressCheckoutPayment(ref credentials, req);
             if (response.Ack == AckCodeType.Success)
             {
-                payment.PaymentMethod = "ExpressCheckout";
+                payment.PaymentMethod = "Paypal";
                 payment.CvcResult = payer.AccountVerifyCode;
                 payment.AvsResult = payer.AddressVerifyCode;
                 payment.Secure3DResult = "";
@@ -222,7 +232,7 @@ namespace Omnicx.API.SDK.Payments.Paypal
         }
        
 
-        private PayerInfo GetPayerInfo(string token, string payerId)
+        public PayerInfo GetPayerInfo(string token, string payerId)
         {
             var payer = new PayerInfo();
             var req = new GetExpressCheckoutDetailsReq();

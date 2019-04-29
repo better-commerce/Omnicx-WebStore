@@ -12,6 +12,7 @@ using Omnicx.WebStore.Models.Helpers;
 using Omnicx.WebStore.Models.Infrastructure;
 using Omnicx.WebStore.Models.Keys;
 using Omnicx.WebStore.Models.Enums;
+using Omnicx.API.SDK.Api.Commerce;
 
 namespace Omnicx.WebStore.Core.Services.Infrastructure
 {
@@ -23,6 +24,7 @@ namespace Omnicx.WebStore.Core.Services.Infrastructure
         private readonly ISessionApi _sessionRepository;
         private readonly IConfigApi _configRepository;
         private ConfigModel _configModel;
+        private ICustomerApi _customerRepository;
 
         //public const string ConfigType = "DomainSettings";
         //public const string CurrencyKey = "DomainSettings-DefaultCurrencyCode";
@@ -31,12 +33,13 @@ namespace Omnicx.WebStore.Core.Services.Infrastructure
 
 
         public SessionContext(HttpContextBase httpContext, IAuthenticationService authenticationService,
-            ISessionApi sessionRepository, IConfigApi configRepository)
+            ISessionApi sessionRepository, IConfigApi configRepository, ICustomerApi customerRepository)
         {
             _httpContext = httpContext;
             _authenticationService = authenticationService;
             _sessionRepository = sessionRepository;
             _configRepository = configRepository;
+            _customerRepository = customerRepository;
         }
 
         public CustomerModel CurrentUser
@@ -126,9 +129,30 @@ namespace Omnicx.WebStore.Core.Services.Infrastructure
                 Referrer = Utils.GetReferrer(),
                 Utm = Utils.GetUtm()
             };
-            if (CurrentUser != null && CurrentUser.UserId!=null)
-                session.CustomerId = CurrentUser.UserId.ToString();
+            var httpContext = System.Web.HttpContext.Current;
 
+
+            if (CurrentUser != null && CurrentUser.UserId != null)
+            {
+                session.CustomerId = CurrentUser.UserId.ToString();
+            }
+            else
+            {
+                if (httpContext.Request.QueryString["email"] != null)
+                {
+                    var user = _customerRepository.GetExistingUser(httpContext.Request.QueryString["email"])?.Result?[0];
+
+                    _httpContext.Session[Constants.SESSION_USERID] = user.UserId;
+                    _httpContext.Session[Constants.SESSION_COMPANYID] = user.CompanyId;
+                    _httpContext.Session[Constants.SESSION_ISGHOSTLOGIN] = user.IsGhostLogin;
+                    _httpContext.Session[Constants.SESSION_ADMINUSER] = user.AdminUserName;
+                    if (!Enum.IsDefined(typeof(CompanyUserRole), user.CompanyUserRole)) //Added check for Enum null
+                        _httpContext.Session[Constants.SESSION_COMPANYUSERROLE] = (CompanyUserRole)user.CompanyUserRole.GetHashCode();
+
+                    //stored the user object in session. 
+                    _httpContext.Session[Constants.SESSION_CACHED_USER] = user;
+                }
+            }
             if (_httpContext.Request.Cookies[Constants.COOKIE_DEVICEID] != null)
                 session.DeviceId = _httpContext.Request.Cookies[Constants.COOKIE_DEVICEID].Value;
             else // if deviceId Cookie does not exist, create a new deviceID
@@ -237,6 +261,17 @@ namespace Omnicx.WebStore.Core.Services.Infrastructure
                 if (_httpContext.Request.Cookies[Constants.COOKIE_CURRENCY] != null)
                     return _httpContext.Request.Cookies[Constants.COOKIE_CURRENCY].Value;
                 return CurrentSiteConfig.RegionalSettings.DefaultCurrencyCode;
+
+            }
+        }
+        public string LangCulture
+        {
+            get
+            {
+                if (_httpContext == null || _httpContext.Response == null) return "";
+                if (_httpContext.Request.Cookies[Constants.COOKIE_LANGCULTURE] != null)
+                    return _httpContext.Request.Cookies[Constants.COOKIE_LANGCULTURE].Value;
+                return CurrentSiteConfig.RegionalSettings.DefaultLanguageCulture;
 
             }
         }

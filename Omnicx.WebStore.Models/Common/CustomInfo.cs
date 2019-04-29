@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Omnicx.WebStore.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -8,6 +9,7 @@ namespace Omnicx.WebStore.Models.Common
     public class LineCustomInfo
     {
         public string ProductId { get; set; } 
+        public string ParentProductId { get; set; }
         [DisplayFormat(ConvertEmptyStringToNull = false)]
         public string CustomInfo1 { get; set; }
         [DisplayFormat(ConvertEmptyStringToNull = false)]

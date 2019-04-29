@@ -13,6 +13,7 @@ using System.Security;
 using Omnicx.WebStore.Models.Infrastructure;
 using Omnicx.WebStore.Models.Keys;
 using Omnicx.API.SDK.Api.Infra;
+using System.Collections.Generic;
 
 namespace Omnicx.API.SDK.Api
 {
@@ -21,49 +22,8 @@ namespace Omnicx.API.SDK.Api
     /// </summary>
     public class ApiBase
     {
-        private static AuthToken _token = null;
-        //private string DEVICEID_COOKIE_NAME = ConfigKeys.OmniCXDomainShortCode.ToString() + Constants.COOKIE_DEVICEID;
-        //private string SESSIONID_COOKIE_NAME = ConfigKeys.OmniCXDomainShortCode.ToString() + Constants.COOKIE_SESSIONID;
-        //private string USERID_COOKIE_NAME = ConfigKeys.OmniCXDomainShortCode.ToString() + Constants.COOKIE_USERID;
-
-        /// <summary>
-        /// constructor defined like this to ensure that no class outside this assembly can inherit this class
-        /// </summary>
-        //internal ApiClient() { }
-
-        //protected T CallApi<T>(string apiUrl, string value, Method method = Method.GET, string paramName = "application/json", ParameterType parameterType = ParameterType.RequestBody, string contentType = "application/json")
-        //{
-
-        //    var restClient = new RestClient(ConfigKeys.OmnicxApiBaseUrl);
-        //    var restRequest = new RestRequest(apiUrl, method);
-
-        //    if (!string.IsNullOrEmpty(value))
-        //    {
-        //        var param = new Parameter()
-        //        {
-        //            Name = paramName,
-        //            Type = parameterType,
-        //            ContentType = contentType,
-        //            Value = value
-        //        };
-        //        restRequest.AddParameter(param);
-        //    }
-        //    restRequest.AddHeader("token", Token().Token);
-        //    restRequest.AddHeader("SessionId", SessionId());    
-        //    AddDefaultHeader(ref restRequest);
-        //    var restResponse = restClient.Execute(restRequest);
-        //    try
-        //    {
-        //        return JsonConvert.DeserializeObject<T>(restResponse.Content);
-        //    }
-        //    catch (Exception)
-        //    {
-
-        //        return (T)Activator.CreateInstance(typeof(T));
-        //    }
-
-        //}
-        protected ResponseModel<T> CallApi<T>(string apiUrl, string value, Method method = Method.GET, string paramName = "application/json", ParameterType parameterType = ParameterType.RequestBody, string contentType = "application/json",string apiBaseUrl=null)
+       
+        protected ResponseModel<T> CallApi<T>(string apiUrl, string value, Method method = Method.GET, string paramName = "application/json", ParameterType parameterType = ParameterType.RequestBody, string contentType = "application/json",string apiBaseUrl=null, bool isAuthenticationEnabled=false)
         {
 
             var restClient = new RestClient(apiBaseUrl ?? ConfigKeys.OmnicxApiBaseUrl);
@@ -81,11 +41,17 @@ namespace Omnicx.API.SDK.Api
                 restRequest.AddParameter(param);
             }
           
-            restRequest.AddHeader("token", Token().Token);
+            //restRequest.AddHeader("token", Token().Token);
             restRequest.AddHeader("DeviceId", ReadCookie(Constants.COOKIE_DEVICEID));
             restRequest.AddHeader("SessionId", ReadCookie(Constants.COOKIE_SESSIONID));
 
             AddDefaultHeader(ref restRequest);
+            //if (isAuthenticationEnabled)
+            //{
+                var token = OAuthHelper.GetAccessToken(ConfigKeys.OAuthUrl + "/OAuth/Token", ConfigKeys.OmnicxAppId, ConfigKeys.OmnicxSharedSecret);
+                restRequest.AddParameter("Authorization", "Bearer " + token.Token, ParameterType.HttpHeader);
+           // }
+
             var restResponse = restClient.Execute(restRequest);
             try
             {
@@ -97,6 +63,46 @@ namespace Omnicx.API.SDK.Api
             {
                 return new ResponseModel<T> {Message=ex.Message };
                // return (T)Activator.CreateInstance(typeof(T));
+            }
+
+        }
+        public T CallApiExternal<T>(string apiUrl, string value, Method method = Method.GET, string paramName = "application/json", ParameterType parameterType = ParameterType.RequestBody, 
+            string contentType = "application/json", string apiBaseUrl = null,  Dictionary<string, string> headers = null)
+        {
+
+            var restClient = new RestClient(apiBaseUrl);
+            var restRequest = new RestRequest(apiUrl, method);
+
+            if (!string.IsNullOrEmpty(value))
+            {
+                var param = new Parameter()
+                {
+                    Name = paramName,
+                    Type = parameterType,
+                    ContentType = contentType,
+                    Value = value
+                };
+                restRequest.AddParameter(param);
+            }
+
+            if (headers != null)
+            {
+                foreach (var header in headers)
+                {
+                    restRequest.AddHeader(header.Key, header.Value);
+                }
+            }              
+
+
+            var restResponse = restClient.Execute(restRequest);
+            try
+            {
+                var result = JsonConvert.DeserializeObject<T>(restResponse.Content);            
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return default(T);
             }
 
         }
@@ -118,7 +124,10 @@ namespace Omnicx.API.SDK.Api
                 };
                 restRequest.AddParameter(param);
             }
-            restRequest.AddHeader("token", Token().Token);
+            //restRequest.AddHeader("token", Token().Token);
+            var token = OAuthHelper.GetAccessToken(ConfigKeys.OAuthUrl + "/OAuth/Token", ConfigKeys.OmnicxAppId, ConfigKeys.OmnicxSharedSecret);
+            restRequest.AddParameter("Authorization", "Bearer " + token.Token, ParameterType.HttpHeader);
+
             restRequest.AddHeader("DeviceId", ReadCookie(Constants.COOKIE_DEVICEID));
             restRequest.AddHeader("SessionId", ReadCookie(Constants.COOKIE_SESSIONID));
             AddDefaultHeader(ref restRequest);
@@ -142,76 +151,7 @@ namespace Omnicx.API.SDK.Api
             return Task.FromResult(tcs.Task.Result);
 
         }
-        //protected async Task<T> CallApiAsync<T>(string apiUrl, string value, Method method = Method.GET, string paramName = "application/json", ParameterType parameterType = ParameterType.RequestBody, string contentType = "application/json")
-        //{
 
-        //    var restClient = new RestClient(ConfigKeys.OmnicxApiBaseUrl);
-        //    var restRequest = new RestRequest(apiUrl, method);
-
-        //    if (!string.IsNullOrEmpty(value))
-        //    {
-        //        var param = new Parameter()
-        //        {
-        //            Name = paramName,
-        //            Type = parameterType,
-        //            ContentType = contentType,
-        //            Value = value
-        //        };
-        //        restRequest.AddParameter(param);
-        //    }
-        //    restRequest.AddHeader("token", Token().Token);
-        //    restRequest.AddHeader("SessionId", SessionId());
-        //    AddDefaultHeader(ref restRequest);
-        //    var cancellationTokenSource = new CancellationTokenSource();
-
-        //    var tcs = new TaskCompletionSource<T>();
-
-        //    restClient.ExecuteAsync(restRequest, response =>
-        //    {
-        //        try
-        //        {
-        //            tcs.SetResult(JsonConvert.DeserializeObject<T>(response.Content));
-        //            //return tcs.Task;
-        //        }
-        //        catch (Exception)
-        //        {
-        //            tcs.SetResult((T)Activator.CreateInstance(typeof(T)));
-        //        }
-        //    });
-        //    return tcs.Task.Result;
-
-        //}
-        private AuthToken Token()
-        {
-            try
-            {
-                //Token should not be depenent on Session it should be one for all
-                //if(HttpContext.Current != null && HttpContext.Current.Session !=null)
-                //{
-                //    _token = (AuthToken)HttpContext.Current.Session[Constants.SESSION_TOKEN];
-                //}
-                
-                
-                //generate a new token if token has expired or is NULL
-                if (_token != null && _token.Expiration >= DateTime.UtcNow) return _token;
-
-                _token = TokenClient.GenerateToken(ConfigKeys.OmnicxApiBaseUrl, ConfigKeys.OmnicxAppId, ConfigKeys.OmnicxSharedSecret, ConfigKeys.OmnicxOutboundIp);
-                //if(_token.Expiration >= DateTime.UtcNow && !string.IsNullOrEmpty(_token.Token))
-                //{
-                //    if(HttpContext.Current !=null && HttpContext.Current.Session != null)
-                //        HttpContext.Current.Session[Constants.SESSION_TOKEN] = _token;
-                //}
-                
-                return _token;
-            }
-            catch (Exception ex)
-            {
-                //return new AuthToken();
-                throw new SecurityException("Unauthorised Token Request.", ex);
-            }
-
-
-        }
 
         private string ReadCookie(string cookieName)
         {
@@ -223,7 +163,8 @@ namespace Omnicx.API.SDK.Api
         }
         private void SetContentSnippets<T>(ResponseModel<T> response)
         {
-            if (response!=null && response.Snippets != null)
+            if (System.Web.HttpContext.Current == null || System.Web.HttpContext.Current == null || System.Web.HttpContext.Current.Items == null) return;
+            if (response!=null && response.Snippets != null && System.Web.HttpContext.Current.Items[Constants.HTTP_CONTEXT_ITEM_SNIPPETS]==null)
             {
                 System.Web.HttpContext.Current.Items[Constants.HTTP_CONTEXT_ITEM_SNIPPETS] = response.Snippets;
             }
@@ -289,23 +230,31 @@ namespace Omnicx.API.SDK.Api
             {
                 currencyCode = configModel.RegionalSettings.DefaultCurrencyCode;
             }
-
+            var LangCulture = "";
+            if (httpContext.Request.Cookies[Constants.COOKIE_LANGCULTURE] != null)
+            {
+                LangCulture = httpContext.Request.Cookies[Constants.COOKIE_LANGCULTURE].Value;
+            }
+            else
+            {
+                LangCulture = configModel.RegionalSettings.DefaultLanguageCulture;
+            }
             request.AddHeader("Currency", currencyCode);
-            request.AddHeader("Language", configModel.RegionalSettings.DefaultLanguageCulture);
+            request.AddHeader("Language", LangCulture);
             request.AddHeader("Country", configModel.RegionalSettings.DefaultCountry);
         }
 
-        protected  ResponseModel<T> FetchFromCacheOrApi<T>(string cacheKey, string apiUrl, string requestJson = "", Method method = Method.GET, string paramName = "application/json", ParameterType parameterType = ParameterType.RequestBody, string contentType = "application/json")
+        public  ResponseModel<T> FetchFromCacheOrApi<T>(string cacheKey, string apiUrl, string requestJson = "", Method method = Method.GET, string paramName = "application/json", ParameterType parameterType = ParameterType.RequestBody, string contentType = "application/json", string apiBaseUrl = null)
         {
             var data = CacheManager.Get<ResponseModel<T>>(cacheKey);
             if (data != null && ConfigKeys.EnableCaching == true)
             {
                 //this is doen because at times, an error is thrown and the error is cached fro the respective key.
                 // so, if an error is found in the message, the API call si triggered else teh data is returned from the cache
-                if (data.Message == null) return data;
+                if (data.Message == null)  { SetContentSnippets(data); return data; }
                 if (!data.Message.Contains("error")) { SetContentSnippets(data); return data; }
             }
-            var response = CallApi<T>(apiUrl, requestJson, method,paramName, parameterType, contentType);
+            var response = CallApi<T>(apiUrl, requestJson, method,paramName, parameterType, contentType,apiBaseUrl: apiBaseUrl);
             data = response;
             if (data?.StatusCode == System.Net.HttpStatusCode.OK)
             {
@@ -325,7 +274,7 @@ namespace Omnicx.API.SDK.Api
             {
                 //this is doen because at times, an error is thrown and the error is cached fro the respective key.
                 // so, if an error is found in the message, the API call si triggered else teh data is returned from the cache
-                if (data.Message == null) return data;
+                if (data.Message == null) { SetContentSnippets(data);  return data; }
                 if (!data.Message.Contains("error")) { SetContentSnippets(data); return data; }
             }
             var task = await CallApiAsync<T>(apiUrl, requestJson, method, paramName, parameterType, contentType);

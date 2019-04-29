@@ -12,6 +12,10 @@ namespace Omnicx.API.SDK.Api.Catalog
         {
             return CallApi<PaginatedResult<BrandModel>>(ApiUrls.Brand, "");
         }
+        public ResponseModel<PaginatedResult<BrandModel>> GetSubBrands(string subBrandIds)
+        {
+            return CallApi<PaginatedResult<BrandModel>>(string.Format( ApiUrls.SubBrands,subBrandIds), "");
+        }
         public ResponseModel<BrandDetailModel> GetBrandDetails(string brandId)
         {
             return CallApi<BrandDetailModel>(string.Format(ApiUrls.BrandDetail, brandId), "");

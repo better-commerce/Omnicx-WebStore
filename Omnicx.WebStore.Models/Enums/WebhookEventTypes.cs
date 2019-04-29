@@ -28,6 +28,7 @@
         CustomerUpdated = 32,
         CustomerLoginSucces = 33,
         CustomerLoginFailure = 34,
+        CustomerProfileViewed = 35,
 
         SessionCreated = 91,
         SessionUpdated = 92,

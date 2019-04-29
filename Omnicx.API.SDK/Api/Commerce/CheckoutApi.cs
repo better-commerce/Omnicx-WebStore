@@ -4,6 +4,7 @@ using Omnicx.WebStore.Models.Common;
 using RestSharp;
 using Omnicx.WebStore.Models;
 using Omnicx.WebStore.Models.Enums;
+using System;
 
 namespace Omnicx.API.SDK.Api.Commerce
 {
@@ -44,6 +45,15 @@ namespace Omnicx.API.SDK.Api.Commerce
         public ResponseModel<BasketModel> UpdateUserToBasket(string basketId, string userId)
         {
             return CallApi<BasketModel>(string.Format(ApiUrls.UpdateBasketUser, basketId, userId), "", Method.POST);
+        }
+
+        public ResponseModel<BoolResponse> UpdateBasketDeliveryInstruction(string basketId, UpdateFieldModel deliveryInstruction)
+        {
+            return CallApi<BoolResponse>(string.Format(ApiUrls.UpdateBasketDeliveryInstruction, basketId), JsonConvert.SerializeObject(deliveryInstruction), Method.POST);
+        }
+        public ResponseModel<BoolResponse> GeneratePaymentLink(string basketId, string userId)
+        {
+            return CallApi<BoolResponse>(string.Format(ApiUrls.GeneratePaymentLink, basketId, userId),string.Empty, Method.POST);
         }
     }
 }

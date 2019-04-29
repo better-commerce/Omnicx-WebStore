@@ -36,5 +36,9 @@ namespace Omnicx.API.SDK.Helpers
             var policy = new CacheItemPolicy { AbsoluteExpiration = DateTime.Now + TimeSpan.FromMinutes(cacheTime) };
             _cacheContext.Add(new CacheItem(key, data), policy);
         }
+        public void RemoveByPattern(string pattern)
+        {
+
+        }
     }
     }

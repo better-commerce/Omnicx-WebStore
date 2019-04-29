@@ -21,7 +21,22 @@
         BlogList = 54,
         Heading = 71,
         ImageText = 72,
-        VideoText = 73
-
+        VideoText = 73,
+        ImageTextList = 74,
+        VideoTextList = 75,
+        HeadingParagraph = 76,
+        HeadingSubHeading = 77,
+        HeadingSubHeadingParagraph = 78,
+        HeadingSubHeadingWidgetList = 79,
+        TabWidgetList = 80,
+        Recommendation = 90,
+        FeatureData = 101,
+        FeatureParagraph = 102,
+        FeatureServices = 103,
+        FeatureListFilters = 104,
+        FeatureBlogDetail = 105,
+        FeatureBlogHighlightPara = 106,
+        FeatureBlogBlockquote = 107,
+        FeatureParagraphList = 108
     }
 }

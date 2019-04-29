@@ -25,6 +25,7 @@ namespace Omnicx.WebStore.Models.Infrastructure
             SeoSettings = new SeoSettings();
             ShippingSettings = new ShippingSettings();
             SocialSettings = new SocialSettings();
+            RecommendationSettings = new RecommendationSettings();
             Currencies = new List<CurrencyModel>();
             ShippingCountries = new List<CountryModel>();
             BillingCountries = new List<CountryModel>();
@@ -33,6 +34,7 @@ namespace Omnicx.WebStore.Models.Infrastructure
             ReviewSettings = new List<ProductReviewSection>();
             GeoLocators = new List<GeoLocatorModel>();
             Snippets = new List<SnippetModel>();
+            FeatureToggles = new FeatureToggleSettings();
         }
         public List<ConfigSettingModel> ConfigSettings { get; set; }
 
@@ -47,6 +49,8 @@ namespace Omnicx.WebStore.Models.Infrastructure
         public ShippingSettings ShippingSettings { get; set; }
         public SocialSettings SocialSettings { get; set; }
 
+        public RecommendationSettings RecommendationSettings { get; set; }
+
         public List<ProductReviewSection> ReviewSettings { get; set; }
 
         public List<CurrencyModel> Currencies { get; set; }
@@ -55,6 +59,7 @@ namespace Omnicx.WebStore.Models.Infrastructure
         public List<LanguageModel> Languages{ get; set; }
         public List<GeoLocatorModel> GeoLocators { get; set; }
         public List<SnippetModel> Snippets { get; set; }
+        public FeatureToggleSettings FeatureToggles { get; set; }
     }
     [Serializable]
     public class ConfigKeyModel

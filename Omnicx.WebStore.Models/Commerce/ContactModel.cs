@@ -20,7 +20,6 @@ namespace Omnicx.WebStore.Models.Common
             }
         }
 
-        [Required]
         public string LastName { get; set; }
 
         [Required]
@@ -30,7 +29,10 @@ namespace Omnicx.WebStore.Models.Common
 
         public string Subject { get; set; }
 
-        [Required]
         public string Message { get; set; }
+        public string CompanyName { get; set; }
+
+        public string SendTo { get; set; }
+        public string PhoneNo { get; set; }
     }
 }

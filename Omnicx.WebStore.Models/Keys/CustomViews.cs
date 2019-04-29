@@ -29,6 +29,7 @@ namespace Omnicx.WebStore.Models.Keys
         public static string BASKET_LAYOUT_FOLDER = "~/Views/Basket/" ;
 
         public static string BASKET = BASKET_LAYOUT_FOLDER + "Index.cshtml";
+        public static string SHIPMENT_BASKET = BASKET_LAYOUT_FOLDER + "ShipmentBasket.cshtml";
         public static string HEADER_BASKET_VIEW = BASKET_LAYOUT_FOLDER + "_HeaderBasketView.cshtml";
         public static string HEADER_BULKORDER_VIEW = BASKET_LAYOUT_FOLDER + "_HeaderBulkOrder.cshtml";
         public static string BULK_ORDER_MESSAGE = BASKET_LAYOUT_FOLDER + "_BulkOrderMessage.cshtml";
@@ -51,6 +52,12 @@ namespace Omnicx.WebStore.Models.Keys
         public static string PAYMENT_RESPONSE = CHECKOUT_LAYOUT_FOLDER + "PaymentResponse.cshtml";
         public static string ORDER_CONFIRMATION = CHECKOUT_LAYOUT_FOLDER + "OrderConfirmation.cshtml";
         public static string STANDARD_CHECKOUT = CHECKOUT_LAYOUT_FOLDER + "StandardCheckout.cshtml";
+        public static string WIZARD_CHECKOUT = CHECKOUT_LAYOUT_FOLDER + "WizardCheckout.cshtml";
+        public static string WIZARD_CHECKOUT_DELIVERY = CHECKOUT_LAYOUT_FOLDER + "WizardCheckoutDelivery.cshtml";
+        public static string WIZARD_CHECKOUT_BILLING = CHECKOUT_LAYOUT_FOLDER + "WizardCheckoutBilling.cshtml";
+        public static string HOTEL_CHECKOUT = CHECKOUT_LAYOUT_FOLDER + "HotelCheckout.cshtml";
+        public static string HOTEL_CHECKOUT_DELIVERY = CHECKOUT_LAYOUT_FOLDER + "HotelCheckoutDelivery.cshtml";
+        public static string HOTEL_CHECKOUT_BILLING = CHECKOUT_LAYOUT_FOLDER + "HotelCheckoutBilling.cshtml";
 
         //ACCOUNT CUSTOM VIEWS
         public static string ACCOUNT_LAYOUT_FOLDER = "~/Views/Account/" ;
@@ -70,6 +77,9 @@ namespace Omnicx.WebStore.Models.Keys
         public static string MY_ACTIVITY = ACCOUNT_LAYOUT_FOLDER + "MyActivity.cshtml";
         public static string ITEM_VIEW = ACCOUNT_LAYOUT_FOLDER + "ItemView.cshtml";
         public static string SAVED_BASKET = ACCOUNT_LAYOUT_FOLDER + "SavedBasket.cshtml";
+        public static string CONTACT_FORM = ACCOUNT_LAYOUT_FOLDER + "ContactUs.cshtml";
+        public static string SUBSCRIPTION_HISTORY = ACCOUNT_LAYOUT_FOLDER + "SubscriptionHistory.cshtml";
+        public static string SUBSCRIPTION_DETAIL = ACCOUNT_LAYOUT_FOLDER + "SubscriptionDetail.cshtml";
 
         //COMMON CUSTOM VIEWS
         public static string COMMON_LAYOUT_FOLDER = "~/Views/Common/" ;
@@ -79,18 +89,23 @@ namespace Omnicx.WebStore.Models.Keys
         public static string ERROR_500 = COMMON_LAYOUT_FOLDER + "Error500.cshtml";
         public static string PAGE_NOT_FOUND = COMMON_LAYOUT_FOLDER + "PageNotFound.cshtml";
         public static string BASKET_NOT_FOUND = COMMON_LAYOUT_FOLDER + "BasketNotFound.cshtml";
+        public static string STORE_LOCATOR = COMMON_LAYOUT_FOLDER + "StoreLocator.cshtml";
+        public static string STORE_DETAIL = COMMON_LAYOUT_FOLDER + "StoreDetail.cshtml";
 
         //BRAND CUSTOM VIEWS
         public static string BRAND_LAYOUT_FOLDER = "~/Views/Brand/" ;
 
         public static string BRAND_PRODUCTS = BRAND_LAYOUT_FOLDER + "BrandProducts.cshtml";
         public static string BRAND_LIST = BRAND_LAYOUT_FOLDER + "BrandList.cshtml";
+        public static string BRAND_Menu = BRAND_LAYOUT_FOLDER + "_BrandMenu.cshtml";
         public static string BRAND_LANDING = BRAND_LAYOUT_FOLDER + "BrandLanding.cshtml";
         public static string BRAND_DETAIL = BRAND_LAYOUT_FOLDER + "BrandDetail.cshtml";
+        public static string SUB_BRAND_DETAIL = BRAND_LAYOUT_FOLDER + "SubBrandDetail.cshtml";
 
         //SURVEY CUSTOM VIEWS
         public static string SURVEY_LAYOUT_FOLDER = "~/Views/Survey/" ;
         public static string SURVEY_CAPTURE = SURVEY_LAYOUT_FOLDER + "Capture.cshtml";
+        public static string SURVEY_APP_CAPTURE = SURVEY_LAYOUT_FOLDER + "AppCapture.cshtml";
 
         //PAGE CUSTOM VIEWS
         public static string PAGE_LAYOUT_FOLDER = "~/Views/Page/" ;

@@ -12,6 +12,8 @@ namespace Omnicx.WebStore.Models.Keys
         public static string OmnicxDomainId = ConfigurationManager.AppSettings.Get("OmniCXDomainId");
         public static string OmnicxOrgId = ConfigurationManager.AppSettings.Get("OmniCXOrgId");
         public static string OmsApiBaseUrl = ConfigurationManager.AppSettings.Get("OmsApiBaseUrl");
+        public static string MktApiBaseUrl = ConfigurationManager.AppSettings.Get("MktApiBaseUrl");
+        public static string BussinessHubApiBaseUrl = ConfigurationManager.AppSettings.Get("BussinessHubApiUrl");
 
 
         public static string PageSize = ConfigurationManager.AppSettings.Get("PageSize");
@@ -38,12 +40,22 @@ namespace Omnicx.WebStore.Models.Keys
         public static string CDNVersion = ConfigurationManager.AppSettings.Get("CDNVersion");
         public static string CDNUrl = ConfigurationManager.AppSettings.Get("CDNUrl");
         public static string AppInsightKey = ConfigurationManager.AppSettings.Get("APPINSIGHTS_INSTRUMENTATIONKEY");
+        public static string SendTo = ConfigurationManager.AppSettings.Get("SendTo");
 
         //Recommendation API Keys
         public static string RecommendationsEndPointUri = ConfigurationManager.AppSettings.Get("RecommendationsEndPointUri");
         public static string RecommenderKey = ConfigurationManager.AppSettings.Get("RecommenderKey");
         public static string RecommendationsModelId = ConfigurationManager.AppSettings.Get("RecommendationsModelId");
         public static string RecommendationCount = ConfigurationManager.AppSettings.Get("RecommendationCount");
+        public static string RecommendationsPageSize= ConfigurationManager.AppSettings.Get("RecommendationsPageSize");
+
+        // for oAuth
+
+        public static string OAuthUrl = ConfigurationManager.AppSettings.Get("OAuthUrl");
+
+
+
+
     }
 
     public static class Constants
@@ -60,7 +72,7 @@ namespace Omnicx.WebStore.Models.Keys
         public static string COOKIE_DOMAIN_LANGCULTURE = "lang";
         public static string COOKIE_DOMAIN_COUNTRYOFORIGIN = "coo";
         public static string COOKIE_CURRENCY = "cookie_currency";
-
+        public static string COOKIE_LANGCULTURE = "cookie_language";
         //device cookie should NEVER expire - hence its set for next 10 years.
         public static int COOKIE_DEVICEID_EXPIRES_DAYS = 10 * 365; //TODO make configurable
         public static int COOKIE_RECENT_VIEWED_LIMIT = 20;
@@ -75,7 +87,7 @@ namespace Omnicx.WebStore.Models.Keys
         public static string SESSION_CONFIG_SETTINGS = "config";
         public static string SESSION_IPADDRESS = "ip";
         public static string SESSION_TOKEN = "token";
-        public static string SESSION_HAS_BASKET_ACTION = "hasbasketaction";
+        public static string SESSION_BASKET = "basket";
         public static string SESSION_ISGHOSTLOGIN = "isghotlogin";
         public static string SESSION_ADMINUSER = "adminuser";
 

@@ -75,16 +75,23 @@ namespace Omnicx.WebStore.Core.Controllers
             return PartialView(CustomViews.FAQ_VIEW, model);
         }
         [HttpPost]
-        public ActionResult ContactForm(ContactModel model)
+        public ActionResult ContactForm(ContactModel contactForm)
         {
+            if (!ModelState.IsValid)
+            {
+                return JsonValidationError();
+            }
             var contactModel = new ContactModel
             {
-                Email = Sanitizer.GetSafeHtmlFragment(model.Email),
-                FirstName = Sanitizer.GetSafeHtmlFragment(model.FirstName),
-                LastName = Sanitizer.GetSafeHtmlFragment(model.LastName),
-                Message = Sanitizer.GetSafeHtmlFragment(model.Message),
-                Subject = Sanitizer.GetSafeHtmlFragment(model.Subject)
+                Email = Sanitizer.GetSafeHtmlFragment(contactForm.Email),
+                FirstName = Sanitizer.GetSafeHtmlFragment(contactForm.FirstName),
+                // LastName = Sanitizer.GetSafeHtmlFragment(contactForm.LastName),
+                Message = Sanitizer.GetSafeHtmlFragment(contactForm.Message),
+                CompanyName = Sanitizer.GetSafeHtmlFragment(contactForm.CompanyName),
+                Subject = Sanitizer.GetSafeHtmlFragment(contactForm.Subject),
+                SendTo = ConfigKeys.SendTo
             };
+            var response = _contentApi.SendContactEmail(contactModel);
             return !ModelState.IsValid ? JsonValidationError() : JsonSuccess(contactModel, JsonRequestBehavior.AllowGet);
         }
 
@@ -110,6 +117,10 @@ namespace Omnicx.WebStore.Core.Controllers
                 _authenticationService.UpdateSession(info);
             }
             
+        }
+        public ActionResult StoreLocator()
+        {
+            return View(CustomViews.STORE_LOCATOR);
         }
     }
 }

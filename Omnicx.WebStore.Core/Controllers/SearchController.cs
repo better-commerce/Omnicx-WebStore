@@ -32,8 +32,15 @@ namespace Omnicx.WebStore.Core.Controllers
         {
             var response = _productApi.GetKeywordRedirect();
             var obj = response.Result.Where(x => x.Keywords.Trim().Equals(searchCriteria.FreeText)).FirstOrDefault();
-            if (obj != null)
+            if(obj != null)
                 return Redirect(obj.Url);
+            foreach (var item in response.Result)
+            {
+                if(item.Keywords.Contains(',') && item.Keywords.Trim().Split(',').Where(s=>s.Equals(searchCriteria.FreeText)).FirstOrDefault() != null)
+                {
+                    return Redirect(item.Url);
+                }
+            }
             searchCriteria.AllowFacet = true;
             searchCriteria.AllowFacet = Request.QueryString[Constants.SEARCH_SURVEY_QUERYSTRING]==null?true:false;
             if (Request.QueryString[Constants.SEARCH_FILTER_QUERYSTRING] != null)

@@ -64,13 +64,31 @@ namespace Omnicx.WebStore.Core.Controllers
 
             return slug == "/" ? View(CustomViews.INDEX, siteView) : View(CustomViews.DYNAMICPAGE, siteView);
         }
+        public  ActionResult PagePreview(string id,int versionNo,string langCulture)
+        {
+            var result = _siteViewApi.GetSiteViewById(id, versionNo, langCulture);
+            return View(CustomViews.DYNAMICPAGE, result.Result);
+        }
         public ActionResult GetFeedLink(string slug)
         {
             var resp = _siteViewApi.GetFeedLink(slug);
-            XmlDocument doc = new XmlDocument();
-            doc.Load(resp.Result.DownloadLink);
-            var ms = new MemoryStream(Encoding.ASCII.GetBytes(doc.OuterXml.ToString()));
-            return new FileStreamResult(ms, "text/xml");
+            var ext = Path.GetExtension(slug);
+            ext= ext== ""? ".xml":ext;
+             var body = "";
+            if (ext == ".xml")
+            {
+                XmlDocument doc = new XmlDocument();
+                doc.Load(resp.Result.DownloadLink);
+                body = doc.OuterXml.ToString();
+            }
+            else
+            {
+                using (var wc = new System.Net.WebClient())
+                    body = wc.DownloadString(resp.Result.DownloadLink);
+            }
+           
+            var ms = new MemoryStream(Encoding.ASCII.GetBytes(body));
+            return new FileStreamResult(ms, "text/" + ext.Replace(".",""));
         }
     }
 }

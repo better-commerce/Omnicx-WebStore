@@ -52,5 +52,20 @@ namespace Omnicx.API.SDK.Helpers
 
             return default(List<T>);
         }
+        public void RemoveByPattern(string pattern)
+        {
+            if (!string.IsNullOrEmpty(pattern) && !pattern.StartsWith("*"))
+                pattern = "*" + pattern;
+            if (!string.IsNullOrEmpty(pattern) && !pattern.EndsWith("*"))
+                pattern = pattern + "*";
+            
+            var list = _redisCacheContext?.Cache.GetKeysByPattern(pattern).ToList();
+            foreach (var key in list)
+            {
+                _redisCacheContext?.Cache.RemoveAsync(key.ToLower());
+
+            }
+        }
+        
     }
 }

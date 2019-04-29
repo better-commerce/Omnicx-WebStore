@@ -16,6 +16,7 @@ namespace Omnicx.WebStore.Models.Commerce
         public string ShippingMethodId { get; set; }
         public Amount SubTotal { get; set; }
         public Amount Discount { get; set; }
+        public decimal TaxPercent { get; set; }
         public Amount AdditionalCharge { get; set; }       
         
         [JsonProperty(PropertyName = "lineItems")]
@@ -27,9 +28,12 @@ namespace Omnicx.WebStore.Models.Commerce
         }
         public IList<PromotionModel> PromotionsApplied { get; set; }
        //Added for shippingMethods
-       public List<ShippingModel> shippingMethods { get; set; }
-       //public IList<ProductModel> RelatedProducts { get; set; }
-      // public List<BasketModel> UserBaskets { get; set; }
+       public List<ShippingModel> ShippingMethods { get; set; }
+
+        public List<ShippingPlan> DeliveryPlans { get; set; }
+
+        //public IList<ProductModel> RelatedProducts { get; set; }
+        // public List<BasketModel> UserBaskets { get; set; }
 
         public DateTime Created { get; set; }
         public DateTime LastUpdated { get; set; }
@@ -41,11 +45,18 @@ namespace Omnicx.WebStore.Models.Commerce
         public string CustomInfo3 { get; set; }
         public string CustomInfo4 { get; set; }
         public string CustomInfo5 { get; set; }
+        public string DeliveryInstruction { get; set; }
         public AddressModel ShippingAddress { get; set; }
         public AddressModel BillingAddress { get; set; }
         public string PostCode { get; set; }
         public bool IsPriceOnRequest { get; set; }
         public decimal MaxDimensionMm { get; set; }
         public Amount CompanyDiscount { get; set; }
+        public bool CreatedByAdmin { get; set; }
+        public string PoNumber { get; set; }
+
+        //Subscription Fields
+        public bool HasSubscription  { get; set; }
+        public Amount SubscriptionTotal { get; set; }
     }
 }

@@ -12,15 +12,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-
+using Newtonsoft.Json.Linq;
 
 namespace Omnicx.WebStore.Core.Controllers
 {
     public class SurveyController : BaseController
     {
         private readonly ISurveyApi _surveyApi;
-
-        public SurveyController(ISurveyApi surveyApi, ISessionContext sessionContext)
+        public SurveyController(ISurveyApi surveyApi)
         {
             _surveyApi = surveyApi;
         }
@@ -30,36 +29,58 @@ namespace Omnicx.WebStore.Core.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public ActionResult Capture(string id)
+        public virtual ActionResult Capture(string id, string viewtype)
         {
-            Guid surveyId;
+            Guid surveyId;         
             if (Guid.TryParse(id, out surveyId) == false)
                 return RedirectToPageNotFound();
 
             var apiResult = _surveyApi.GetSurvey(surveyId);
-            var survey = apiResult.Result;
-
+            var survey = apiResult.Result;          
             if (survey != null)
             {
-                foreach (var question in survey.Questions)
-                {
-                    if(!string.IsNullOrEmpty(Convert.ToString(question.InputDataAndStyle)) && Convert.ToString(question.InputDataAndStyle).Contains("_"))
-                    {
-                        question.InputDataType = (SurveyInputDataTypes)Enum.Parse(typeof(SurveyInputDataTypes), question.InputDataAndStyle.ToString().Split('_').First());
-                        question.InputStyle = (SurveyInputStyle)Enum.Parse(typeof(SurveyInputStyle), question.InputDataAndStyle.ToString().Split('_')[1]);
-                    }
+                if (!string.IsNullOrEmpty(viewtype) && viewtype.ToLower() != UserSourceTypes.Web.ToString())
+                    ViewBag.Viewtype = UserSourceTypes.Mobile.ToString();
+                else
+                    ViewBag.Viewtype = UserSourceTypes.Web.ToString();
+
+             
+                ViewBag.StoreId = Request.QueryString["storeId"]??"";
+                if (_sessionContext.CurrentUser != null)
+                {                   
+                    ViewBag.Email = _sessionContext.CurrentUser.Username;
                 }
+
                 return View(CustomViews.SURVEY_CAPTURE, survey);
             }
             else
                 return RedirectToPageNotFound();
-        }
-
-        public ActionResult SaveAnswer(string questionId, string answer)
+        }       
+        public virtual ActionResult SaveAnswer(string surveyId, string answer,string email,string searchResult, string storeId)
         {
-            return JsonSuccess("", JsonRequestBehavior.AllowGet);
+            if(_sessionContext.CurrentUser==null && string.IsNullOrEmpty(email))
+            {
+                return JsonSuccess(false, JsonRequestBehavior.AllowGet);
+            }
+            var userId = Guid.Empty;
+            if (_sessionContext.CurrentUser != null )
+            {
+                userId = _sessionContext.CurrentUser.UserId;
+                email= _sessionContext.CurrentUser.Username;
+            }
+            var answerModel = new SurveyAnswerModel { SurveyId = new Guid(surveyId), UserId = userId, UserName = email, Answers = answer,SearchResult= searchResult,CreatedBy= email };
+            var result = _surveyApi.SaveAnswers(answerModel);
+            return JsonSuccess(true, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult AddToBag(SurveyResponseModel surveyResponse)
+        public virtual ActionResult GetToolboxDataByType(string id)
+        {
+            var result = _surveyApi.SurveyToolBoxData();
+            var options = (from f in result.Result where f.FieldName.ToLower() == id.ToLower() select f.Options).FirstOrDefault();
+            if (options == null) return JsonSuccess("[]", JsonRequestBehavior.AllowGet);
+            var model = (from o in options select new { value = o.Value, text = o.Key }).ToList();
+            return JsonSuccess(model, JsonRequestBehavior.AllowGet);
+        }
+        public virtual ActionResult AddToBag(SurveyResponseModel surveyResponse)
         {
             var bulkAdd = new List<BasketAddModel>();            
             var stockCodes = "";
@@ -72,10 +93,9 @@ namespace Omnicx.WebStore.Core.Controllers
             bulkAdd.Add(new BasketAddModel { StockCode =  stockCodes, Qty = 1,ItemType=ItemTypes.DynamicBundle.GetHashCode(),ProductId= surveyResponse.Id.ToString(), ProductName = stockCodes });
             var basketApi = DependencyResolver.Current.GetService<IBasketApi>();
             var basket = basketApi.BulkAddProduct(bulkAdd);
-            SiteUtils.SetBasketAction(basket?.Result.Id);
             return JsonSuccess(basket?.Result, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult SaveAnswerBulk(Guid surveyId ,List<SurveyProfileAnswerModel> answers)
+        public virtual ActionResult SaveAnswerBulk(Guid surveyId ,List<SurveyProfileAnswerModel> answers)
         {
             SurveyProfileModel model = new SurveyProfileModel()
             {
@@ -88,14 +108,14 @@ namespace Omnicx.WebStore.Core.Controllers
                 model.UserId = _sessionContext.CurrentUser.UserId;
             }
             if(model.UserId == null || model.UserId == Guid.Empty) { model.VisitorId = Guid.NewGuid(); }
-            var apiResult = _surveyApi.SaveAnswers(model);
+            //var apiResult = _surveyApi.SaveAnswers(model);
 
             var responseModel = GetLinkedProducts(surveyId, answers);
 
             return JsonSuccess(responseModel, JsonRequestBehavior.AllowGet);
         }
 
-        private SurveyResponseModel GetLinkedProducts(Guid surveyId, List<SurveyProfileAnswerModel> answers)
+        private  SurveyResponseModel GetLinkedProducts(Guid surveyId, List<SurveyProfileAnswerModel> answers)
         {
             //Get Linked Products
             var surveyResult = _surveyApi.GetSurvey(surveyId);
@@ -105,27 +125,27 @@ namespace Omnicx.WebStore.Core.Controllers
                 AllowFacet = false,
                 Filters = new List<SearchFilter>()
             };
-            foreach (var ans in answers)
-            {
-                var ques = survey.Questions.FirstOrDefault(x => x.RecordId == ans.QuestionId);
-                if (ques != null)
-                {
-                    var option = ques.InputOptions.FirstOrDefault(x => x.OptionValue.ToLower() == ans.SelectedAnswer.Split(',')[0].ToLower());
-                    if (option != null)
-                    {
-                        if (option.LinkedStockCodes != null && option.LinkedStockCodes.Any())
-                        {
-                            ans.LinkedStockCodes = option.LinkedStockCodes;
-                            foreach (var linkedStock in option.LinkedStockCodes)
-                            {
-                                searchRequest.Filters.Add(new SearchFilter { Key = "stockCode", Value = linkedStock.Key });
-                            }
-                        }
-                    }
-                }
+            //foreach (var ans in answers)
+            //{
+            //    var ques = survey.Questions.FirstOrDefault(x => x.RecordId == ans.QuestionId);
+            //    if (ques != null)
+            //    {
+            //        var option = ques.InputOptions.FirstOrDefault(x => x.OptionValue.ToLower() == ans.SelectedAnswer.Split(',')[0].ToLower());
+            //        if (option != null)
+            //        {
+            //            if (option.LinkedStockCodes != null && option.LinkedStockCodes.Any())
+            //            {
+            //                ans.LinkedStockCodes = option.LinkedStockCodes;
+            //                foreach (var linkedStock in option.LinkedStockCodes)
+            //                {
+            //                    searchRequest.Filters.Add(new SearchFilter { Key = "stockCode", Value = linkedStock.Key });
+            //                }
+            //            }
+            //        }
+            //    }
 
 
-            }
+            //}
             var responseModel = new SurveyResponseModel { Id = survey.RecordId, Name = survey.Name, Products = new List<SurveyProductModel>() };
             if (searchRequest.Filters.Any())
             {

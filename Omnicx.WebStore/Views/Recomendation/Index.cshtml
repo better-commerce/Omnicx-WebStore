@@ -1,0 +1,80 @@
+﻿@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<List<Omnicx.WebStore.Models.Catalog.ProductModel>>
+@using Omnicx.WebStore.Framework.Helpers
+@using Microsoft.Web.Mvc
+@{
+    Layout = "~/Views/Shared/_LayoutBlank.cshtml";
+
+}
+<div class="row maxHeight">
+    <div class="col-sm-12 col-xs-12 tagScroll">
+        @{
+            var personalisedActive = @ViewBag.Type == "Personalised" ? "active" : "";
+            var orderActive = @ViewBag.Type == "Order" ? "active" : "";
+            var promotionActive = @ViewBag.Type == "Promotion" ? "active" : "";
+            var newForYouActive = @ViewBag.Type == "NewForYou" ? "active" : "";
+            var popularActive = @ViewBag.Type == "Popular" ? "active" : "";
+       
+        }
+        <a href="/recomendation?uid=@ViewBag.UserId&type=Personalised&noofitems=@ViewBag.NoOfItems"   class="@personalisedActive tags">
+            <img ng-src="https://devocxblob.blob.core.windows.net/demostore/products/77S520_48_BLU.jpg" alt="Personalised" />
+            <strong>Personalised</strong>
+        </a>
+        <a href="/recomendation?uid=@ViewBag.UserId&type=Order&noofitems=@ViewBag.NoOfItems"  class="@orderActive tags">
+            <img src="https://devocxblob.blob.core.windows.net/demostore/products/75B492XX_94_OCHRE.jpg" alt="Based on your orders" />
+            <strong>Based on your orders</strong>
+        </a>
+        <a href="/recomendation?uid=@ViewBag.UserId&type=Promotion&noofitems=@ViewBag.NoOfItems" class="@promotionActive tags">
+            <img src="https://devocxblob.blob.core.windows.net/demostore/products/73726.jpg" alt="Promotions" />
+            <strong>Promotions</strong>                        '
+        </a>
+        <a href="/recomendation?uid=@ViewBag.UserId&type=NewForYou&noofitems=@ViewBag.NoOfItems" class="@newForYouActive tags">
+            <img src="https://devocxblob.blob.core.windows.net/demostore/products/73726.jpg" alt="New For You" />
+            <strong>New For You</strong>
+        </a>
+        <a href="/recomendation?uid=@ViewBag.UserId&type=Popular&noofitems=@ViewBag.NoOfItems"  class="@popularActive tags">
+            <img src="https://devocxblob.blob.core.windows.net/demostore/products/73726.jpg" alt="Popular" />
+            <strong>Popular</strong>
+        </a>
+        <!--<a href="" ng-class="type==recommendTypes.RecentView?'active':''" class="tags" ng-click="getRecommendations(recommendTypes.RecentView)">
+            <img src="https://devocxblob.blob.core.windows.net/demostore/products/73726.jpg" alt="Recently Viewed" />
+            <strong>Recently Viewed</strong>
+        </a>-->
+    </div>
+    <div class="col-sm-12 col-xs-12 gridView">
+        @foreach (var prod in Model)
+        {
+            <div class="col-md-5ths col-sm-5ths col-xs-5ths col-lg-5ths resultContainerRelated ng-scope">
+                <div class="product-container-panel">
+                    <div class="imagePanel">
+                        <a ng-href="/@prod.Slug">
+                            <span class="tooltiptext ng-binding"></span>
+                            <img ng-src="@prod.Image" alt="" class="image1 img-responsive">
+                        </a>
+                    </div>
+                    <div class="dataPanel">
+                        <div class="ribbon-info">
+                            <a ng-href="/@prod.Slug">
+                                <span class="ng-binding">@prod.Name</span>
+                            </a>
+                        </div>
+                        <div>
+                            <span><strong>SKU: </strong><span class="ng-binding">@prod.Sku</span></span>
+                        </div>
+                        <div class="price-info">
+                            <div class="col-sm-8 col-xs-12 no-padding">
+                                <h3>
+                                    <span class="ng-binding">@prod.Price.Formatted.WithTax</span>
+                                    <span class="sml ng-binding">@prod.ListPrice.Formatted.WithTax</span>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+@*<bt-recommendation type="@ViewBag.Type" showmodel="true" userid="@ViewBag.UserId" modelid="" noofitems="@ViewBag.NoOfItems" productdata="[]" />*@
+

@@ -1,4 +1,6 @@
-﻿namespace Omnicx.WebStore.Models.Commerce
+﻿using Omnicx.WebStore.Models.Enums;
+
+namespace Omnicx.WebStore.Models.Commerce
 {
     public class BasketAddModel
     {
@@ -7,7 +9,7 @@
         public string BasketId { get; set; }
         public string ProductId { get; set; }
         public string ParentProductId { get; set; }
-        public string SubscriptionId { get; set; }
+      
         public int Qty { get; set; }
         public int DisplayOrder { get; set; }
         public string StockCode { get; set; }
@@ -30,5 +32,10 @@
                     _postCode = value.ToUpper();
             }
         }
+
+        //Subscription Fields 
+        public string SubscriptionPlanId { get; set; }
+        public string SubscriptionTermId { get; set; }
+        public UserPricingType UserSubscriptionPricing { get; set; }
     }
 }

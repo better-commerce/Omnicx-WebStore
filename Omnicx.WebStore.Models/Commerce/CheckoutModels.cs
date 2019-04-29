@@ -7,6 +7,7 @@ using System;
 using Omnicx.WebStore.Models.Infrastructure;
 using Omnicx.WebStore.Models.Keys;
 using Omnicx.WebStore.Models.Enums;
+using Omnicx.WebStore.Models.Store;
 
 namespace Omnicx.WebStore.Models.Common
 {
@@ -82,7 +83,7 @@ namespace Omnicx.WebStore.Models.Common
 
         public List<PaymentBasicModel> PaymentOptions { get; set; }
         public PaymentModel Payment { get; set; }
-        public ShippingPLan StoreAddress { get; set; }
+        public StoreModel StoreAddress { get; set; }
         public Amount BalanceAmount { get; set; }
 
         public Amount PaidAmount { get; set; }

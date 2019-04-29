@@ -9,5 +9,6 @@ namespace Omnicx.API.SDK.Helpers
         void SetList<T>(string key, IList<T> data, int cacheTime = 1440, string[] tags = null);
         IList<T> GetList<T>(string key);
         bool IsKeyExist(string key);
+        void RemoveByPattern(string pattern);
     }
 }

@@ -4,6 +4,7 @@ using Omnicx.WebStore.Models.Site;
 using System.ComponentModel.DataAnnotations;
 using System;
 using Omnicx.WebStore.Models.Infrastructure.Settings;
+using Omnicx.WebStore.Models.Enums;
 
 namespace Omnicx.WebStore.Models.Catalog
 {
@@ -49,6 +50,15 @@ namespace Omnicx.WebStore.Models.Catalog
         public List<VariantProductsModel> VariantProducts { get; set; }
         public List<VariantProductAttributes> VariantProductsAttribute { get; set; }
         public string ItemType { get; set; }
+        //Subscription Fields
+        /// <summary>
+        /// True if product is enabled for subscription.
+        /// </summary>
+        public bool SubscriptionEnabled { get; set; }
+        /// <summary>
+        /// Saves plan type to distinguish plans with fetching from db. 
+        /// </summary>
+        public SubscriptionPlanType SubscriptionPlanType { get; set; }
         #endregion
 
     }

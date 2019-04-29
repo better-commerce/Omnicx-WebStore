@@ -85,6 +85,7 @@ namespace Omnicx.WebStore.Models.Commerce
         public bool IsPromptPasswordChange { get; set; }
         public bool IsForcePasswordChange { get; set; }
         public bool IsCreatedByAdmin { get; set; }
+        public bool IsConvertCompanyRequest { get; set; }
     }
 
     public class CompanyAddress

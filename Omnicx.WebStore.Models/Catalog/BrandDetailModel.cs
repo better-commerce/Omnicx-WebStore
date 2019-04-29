@@ -6,6 +6,7 @@ namespace Omnicx.WebStore.Models.Catalog
 {
     public class BrandDetailModel : IHaveSeoInfo
     {
+        public string RecordId { get; set; }
         public string Id { get; set; }
         public string Name { get; set; }
         public string LogoImageName { get; set; }

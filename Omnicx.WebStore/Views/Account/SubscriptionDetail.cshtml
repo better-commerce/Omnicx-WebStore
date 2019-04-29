@@ -1,0 +1,189 @@
+﻿@{
+/*
+    Name: Order Detail
+    Purpose: Show Order Detail with order status information
+    Structure: /Views/Account/OrderDetail.cshtml
+    Contains (Partial Views Used):
+        a-/Views/Shared/_Layout.cshtml.cshtml   (For base Structure)
+        b-/Views/Account/_MobileSideNav.cshtml  (Navigatiopn For Mobile)
+        c-/Views/Account/_SideNav.cshtml        (Navigation For Desktop and Big Screen)
+
+    Contained In (Where we Use this View):
+     a-/Views/Account/_MobileSideNav.cshtml  (Navigatiopn Link Mobile)
+     b-/Views/Account/_SideNav.cshtml        (Navigation Link Desktop and Big Screen)
+     b-/Views/Account/OrderHistory.cshtml    (Navigation Link For Detail View)
+    */
+}
+@using Microsoft.Web.Mvc
+@using Omnicx.WebStore.Models.Enums
+@using Omnicx.WebStore.Core.Controllers
+@using Omnicx.WebStore.Models
+@using Omnicx.WebStore.Core.Controllers
+@using Omnicx.WebStore.Core.Helpers
+@using Omnicx.WebStore.Models.Helpers
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Commerce.Subscription.SubscriptionFulfilmentOrderModel>
+@{
+    ViewBag.Title = "MySubscriptions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var userRole = SessionContext.CurrentUserRole;
+
+}
+<div class="container dataContainer m--top-60" ng-controller="accountCtrl as am" ng-init="am.subscriptionDetail = @Newtonsoft.Json.JsonConvert.SerializeObject(Model.SeedOrderDetail)">
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="/">@LT("MyAccount.Links.Home", "Home")</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("OrderHistory", "Account")">@LT("MyAccount.Links.MyOrders", "My Subscriptions")</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 visible-xs" id="exTab1">
+            @Html.Partial("~/Views/Account/_MobileSideNav.cshtml")
+        </div>
+        <div class="col-md-3 col-sm-4 col-xs-12 hidden-xs">
+            @Html.Partial("~/Views/Account/_SideNav.cshtml")
+        </div>
+        <div class="col-sm-9 col-xs-12">
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <h3 class="panel-h2 hidden-xs">@LT("MyAccount.Text.UpdateDetails", "Subscription Detail") <label class="label small label-@Model.SeedOrderDetail.Status">@Model.SeedOrderDetail.Status</label></h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2 col-xs-12 pull-right text-right">
+                    @if (Model.SeedOrderDetail.AllowCancellation && !(Model.SeedOrderDetail.Status.GetHashCode() == SubscriptionStatus.Cancelled.GetHashCode()))
+                    {
+                        <a class="animate btn-default width-full" data-toggle="modal" data-target="#cancelModal">Cancel</a>
+                    }
+                </div>
+                <div class="col-sm-2 col-xs-12 pull-right text-right">
+                    @if (Model.SeedOrderDetail.AllowPause && !(Model.SeedOrderDetail.Status.GetHashCode() == SubscriptionStatus.Cancelled.GetHashCode()))
+                    {
+                        <div class="dropdown">
+                            <button class="animate btn-primary width-full" type="button" data-toggle="dropdown" ng-click="am.calculateRangeForPauseDuration()">
+                                Pause <span class="caret"></span>
+                                <ul class="dropdown-menu">
+                                    <li ng-repeat="pauseDurations in am.rangeOfPauseDuration"><a data-toggle="modal" ng-click="am.subscriptionDetail.PauseDuration=pauseDurations; am.updateSubscriptionStatus(@SubscriptionStatus.Pause.GetHashCode());">{{ pauseDurations }}</a></li>
+                                </ul>
+                            </button>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <div class="col-sm-4 col-xs-4 pull-left">
+                        @if (Model.SeedOrderDetail.Status.GetHashCode() != SubscriptionStatus.Cancelled.GetHashCode())
+                        {
+                            <label>
+                                <input class="ace ace-switch ace-switch-5 ng-pristine ng-valid" type="checkbox" value="" ng-model="am.subscriptionDetail.AutoRenewal" ng-change="am.updateSubscriptionStatus()">
+                                <span class="lbl">Auto Renew</span>
+
+                            </label>
+                        }
+                    </div>
+                    <div class="col-sm-8 col-xs-12 text-right">
+                        <span><strong>Created Date: </strong> @Model.SeedOrderDetail.RenewalAlertDays</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+                        <span><strong>End Date: </strong> @Model.SeedOrderDetail.RenewalAlertDays</span>
+                    </div>
+                </div>
+            </div>
+            @if (Model != null)
+            {
+                <div class="row">
+                    <div class="col-sm-12 col-xs-12 table-responsive">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th>@LT("MyAccount.Text.Product", "Stock Code")</th>
+                                    <th>@LT("MyAccount.Text.Date", "Due Date")</th>
+                                    <th>@LT("MyAccount.Text.Status", "Status")</th>
+                                    <th>@LT("MyAccount.Text.Createdon", "Created On")</th>
+                                    <th>@LT("MyAccount.Text.Updatedon", "Updated On")</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cart">
+                                @foreach (var item in @Model.OrderSchedule)
+                                {
+                                    <tr>
+                                        <td>
+                                            <span>@item.StockCode</span>
+                                        </td>
+                                        <td>
+                                            <span>@item.ScheduledGenerationDate.ToString(" MMM dd'th' yyyy ")</span>
+                                        </td>
+                                        <td>
+                                            <span>@item.Status</span>
+                                        </td>
+                                        <td>
+                                            <span>@item.CreatedOn.ToString(" MMM dd'th' yyyy ")</span>
+                                        </td>
+                                        <td>
+                                            <span>@item.UpdatedOn.ToString(" MMM dd'th' yyyy ")</span>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            }
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <p class="text-muted basket-text">@LT("MyAccount.Text.FeelFree", "If you have any questions, please feel free to ")<a href="@Url.Action("Contact", "pages")">@LT("MyAccount.Text.ContactUs", "Contact Us"),</a> @LT("MyAccount.Text.Support", " our customer service center is working for you 24/7 .") </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="pauseModal" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span class="fa fa-crosshairs"></span></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to pause the subscription?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="cancelModal" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span class="fa fa-crosshairs"></span></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure want to cancel subscription?</p>
+                    <span class="text-danger">You will be charged for </span><span class="text-danger">{{am.subscriptionDetail.CancellationFee.Formatted.WithTax}}</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="am.updateSubscriptionStatus('@SubscriptionStatus.Cancelled.GetHashCode()');">Yes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        var reOrderUrl = '@(Html.BuildUrlFromExpression<BasketController>(c => c.ReOrder("")))';
+        var updateSubscriptionStatus = '@(Html.BuildUrlFromExpression<AccountController>(c => c.UpdateSubscriptionStatus(null)))';
+        window.app.constant('accountConfig', {
+            reOrderUrl: reOrderUrl,
+            updateSubscriptionStatus: updateSubscriptionStatus
+        });
+        window.app.constant('model', @Html.Json(Model));
+    </script>
+}

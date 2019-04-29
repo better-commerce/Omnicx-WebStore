@@ -14,7 +14,7 @@ namespace Omnicx.API.SDK.Api.Catalog
         public ResponseModel<DynamicListModel> GetCollectionBySlug(string slug)
         {
             var sessionContext = DependencyResolver.Current.GetService<ISessionContext>();
-           var key = string.Format(CacheKeys.DYNAMIC_LIST_BY_SLUG, slug, sessionContext.CurrentSiteConfig?.RegionalSettings?.DefaultLanguageCulture, sessionContext.CurrentUser?.CompanyId, Utils.GetBrowserInfo().IsMobileDevice, sessionContext.CurrencyCode);
+           var key = string.Format(CacheKeys.DYNAMIC_LIST_BY_SLUG, slug, !string.IsNullOrWhiteSpace(sessionContext.LangCulture) ? sessionContext.LangCulture : sessionContext.CurrentSiteConfig?.RegionalSettings?.DefaultLanguageCulture, sessionContext.CurrentUser?.CompanyId, Utils.GetBrowserInfo().IsMobileDevice, sessionContext.CurrencyCode);
 
             return FetchFromCacheOrApi<DynamicListModel>(key, ApiUrls.CollectionBySlug, slug, Method.POST, "slug", ParameterType.QueryString, "text/plain");
         }
@@ -27,7 +27,7 @@ namespace Omnicx.API.SDK.Api.Catalog
         public ResponseModel<DynamicListsGroupModel> GetAllLookbooksBySlug(string slug)
         {
             var sessionContext = DependencyResolver.Current.GetService<ISessionContext>();
-            var key = string.Format(CacheKeys.ALL_DYNAMIC_LISTS_BY_SLUG, slug, sessionContext.CurrentSiteConfig?.RegionalSettings?.DefaultLanguageCulture, sessionContext.CurrentUser?.CompanyId, Utils.GetBrowserInfo().IsMobileDevice, sessionContext.CurrencyCode);
+            var key = string.Format(CacheKeys.ALL_DYNAMIC_LISTS_BY_SLUG, slug, !string.IsNullOrWhiteSpace(sessionContext.LangCulture) ? sessionContext.LangCulture : sessionContext.CurrentSiteConfig?.RegionalSettings?.DefaultLanguageCulture, sessionContext.CurrentUser?.CompanyId, Utils.GetBrowserInfo().IsMobileDevice, sessionContext.CurrencyCode);
 
             return FetchFromCacheOrApi<DynamicListsGroupModel>(key, ApiUrls.GetAllLookbook, slug, Method.POST, "slug", ParameterType.QueryString, "text/plain");
 

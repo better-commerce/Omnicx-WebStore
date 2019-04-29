@@ -46,7 +46,11 @@ namespace Omnicx.API.SDK.Helpers
             key = SanitizeKey(key);
             return CacheContext().IsKeyExist(key);
         }
-
+        public static void RemoveByPattern(string key)
+        {
+            key = SanitizeKey(key);
+           CacheContext().RemoveByPattern(key);
+        }
         private static  ICacheManager CacheContext()
         {
             if (_cacheContext == null) { 

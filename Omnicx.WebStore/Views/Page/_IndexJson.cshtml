@@ -1,0 +1,590 @@
+﻿@{
+    /*
+        Name: Json Home Page Customize UI
+        Purpose: WebStore Home page contain customize design with HTML Layout and json call
+        Structure: /Views/Page/_IndexJson.cshtml
+        Contains (Partial Views Used): NO Partial View Used
+        Contained In (Where we Use this View):
+            a-/Views/Page/Index.cshtml
+        */
+    int DefaultItemsRow = 4;
+}
+@using Omnicx.WebStore.Models.Enums
+@using Omnicx.WebStore.Models.Helpers
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Site.SiteViewModel>
+<div class="container-lg dataContainerT" ng-cloak>
+    @{
+        if (Model.Components != null)
+        {
+            //Increment Carousal Dynamic ID
+            var ProductSno = 1;
+            var CarosalSno = 1;
+            foreach (var component in Model.Components)
+            {
+                if (component.ComponentType == SiteViewComponentTypes.Slider && component != null && component.Images != null)
+                {
+                    if (component.DataType == "multi")
+                    {
+                        <div class="row">
+                            <div class="col-sm-12 col-xs-12 no-padding whiteContainer">
+                                <div id="multiCarousal{{@CarosalSno}}" class="carousel slide" data-ride="carousel" data-type="multi" data-interval="@component.SliderTime" data-autoplay="@component.Autoplay">
+                                    <div class="carousel-inner multi-inner">
+                                        @foreach (var img in component.Images.Select((obj, index) => new { index, obj }))
+                                        {
+                                            <div class="item" ng-class="{active : @img.index==0}">
+                                                <div class="carousel-col-@component.DataNumItemsRow">
+                                                    <div class="gallery-container">
+                                                        <a class="lightbox" title="@img.obj.Title" description="@img.obj.Description" imgLink="@img.obj.Link">
+                                                            <img ng-src="@img.obj.Url" alt="Banner Image" title="@img.obj.Title" class="img-responsive omni-img" />
+                                                        </a>
+                                                    </div>
+                                                    <p class="gallery-text" aria-hidden="true">@img.obj.Description</p>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                    <a class="left carousel-control" href="#multiCarousal{{@CarosalSno}}" data-slide="prev"><span class="label-0">Prev</span><i class="fa fa-chevron-left"></i></a>
+                                    <a class="right carousel-control" href="#multiCarousal{{@CarosalSno}}" data-slide="next"><span class="label-0">Next</span><i class="fa fa-chevron-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else if (component.DataType == "single")
+                    {
+                        <div class="row">
+                            <div class="col-sm-12 col-xs-12 no-padding">
+                                <div id="carousel-example{{@CarosalSno}}" class="carousel slide omnicomponent component-slider" data-ride="carousel" data-interval="@component.SliderTime" data-autoplay="@component.Autoplay">
+                                    <div class="carousel-inner">
+                                        @foreach (var img in component.Images.Select((obj, index) => new { index, obj }))
+                                        {
+                                            <div class="item" ng-class="{active : @img.index==0}">
+                                                <img ng-src="@img.obj.Url" class="img-responsive omni-img image1" alt="Default Image" onerror="this.src = '/assets/theme/ocx/images/carousal-banner-women.jpg'">
+                                            </div>
+                                        }
+                                    </div>
+                                    <a class="left carousel-control" href="#carousel-example{{@CarosalSno}}" data-slide="prev">
+                                        <span class="label-0">Prev</span><span class="fa fa-chevron-left"></span>
+                                    </a>
+                                    <a class="right carousel-control" href="#carousel-example{{@CarosalSno}}" data-slide="next">
+                                        <span class="label-0">Next</span><span class="fa fa-chevron-right"></span>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="container-min">
+                            <div class="row">
+                                @foreach (var img in component.Images.Select((obj, index) => new { index, obj }))
+                                {
+                                    if (component.DataNumItemsRow == null)
+                                    {
+                                        component.DataNumItemsRow = DefaultItemsRow.ToString();
+                                    }
+                                    <div class="whiteContainer" ng-class="{'col-sm-12 col-xs-12': @component.DataNumItemsRow == 1,'col-sm-6 col-xs-6': @component.DataNumItemsRow == 2,'col-sm-4 col-xs-6': @component.DataNumItemsRow == 3,'col-sm-3 col-xs-6': @component.DataNumItemsRow == 4,'col-sm-5ths col-md-5ths col-xs-5ths col-lg-5ths': @component.DataNumItemsRow == 5, 'col-sm-2 col-xs-6': @component.DataNumItemsRow == 6}">
+                                        <a href="@img.obj.Link">
+                                            <img ng-src="@img.obj.Url" alt="Banner" class="img-responsive omni-img" sizes="(min-width: 768px) 540px, 100vw" />
+                                        </a>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+
+                    continue;
+                }
+                CarosalSno += 1;
+                if ((component.ComponentType == SiteViewComponentTypes.PageHeader || component.ComponentType == SiteViewComponentTypes.BlogHeader || component.ComponentType == SiteViewComponentTypes.Heading || component.ComponentType == SiteViewComponentTypes.HeadingParagraph || component.ComponentType == SiteViewComponentTypes.HeadingSubHeading || component.ComponentType == SiteViewComponentTypes.HeadingSubHeadingParagraph) && component != null && component.Content != null)
+                {
+                    <div class="row">
+                        <div class="col-sm-12 col-xs-12 whiteheadingContainer">
+                            @Html.Raw(component.Content)
+                        </div>
+                    </div>
+                    continue;
+                }
+                //For Image
+                if (component.ComponentType == SiteViewComponentTypes.Image && component != null && component.Image != null)
+                {
+                    <div class="row">
+                        <div class="col-sm-12 col-xs-12 whiteContainer">
+                            <a ng-href="@component.Link">
+                                <img class="img-responsive omni-img" alt="Omni Image" src="@component.Image.Url" sizes="(min-width: 768px) 540px, 100vw" />
+                            </a>
+                        </div>
+                    </div>
+                    continue;
+                }
+                //For Paragraph
+                if (component.ComponentType == SiteViewComponentTypes.Paragraph && component != null && component.Content != null)
+                {
+                    <div class="row">
+                        <div class="col-sm-12 col-xs-12 whiteContainer">
+                            <h3 class="velaTitle velaHomeTitle text-center clearfix">
+                                <span class="subtitle" style="margin-bottom:30px!important;">@Html.Raw(component.Content)</span>
+                                <a><i class="fa fa-chevron-circle-right fa-2x"></i><br /><span class="text-black">@LT("ProductDetail.Label.View", "Read more")</span></a>
+                            </h3>
+                        </div>
+                    </div>
+                    continue;
+                }
+
+                // ALL THE HTML TEMPLATE WITH IMAGES, VIDEO, HEADINGS AND TABS
+                if ((component.ComponentType == SiteViewComponentTypes.StaticHtml || component.ComponentType == SiteViewComponentTypes.ImageText || component.ComponentType == SiteViewComponentTypes.ImageTextList || component.ComponentType == SiteViewComponentTypes.VideoText || component.ComponentType == SiteViewComponentTypes.VideoTextList || component.ComponentType == SiteViewComponentTypes.HeadingSubHeadingWidgetList || component.ComponentType == SiteViewComponentTypes.TabWidgetList) && component != null && component.Content != null)
+                {
+                    <div class="row">
+                        <div class="col-sm-12 col-xs-12 whiteContainer">
+                            @Html.Raw(component.Content)
+                        </div>
+                    </div>
+                    continue;
+                }
+                //For JSSnippts
+                if (component.ComponentType == SiteViewComponentTypes.JsSnippet && component != null && component.Content != null)
+                {
+                    @Html.Raw(component.Content)
+                    continue;
+                }
+                {/*Block for showing Video attachments*/
+                }
+                if (component.ComponentType == SiteViewComponentTypes.VideoGallery && component != null && component.Content != null)
+                {
+                    <div class="row">
+                        <div class="col-sm-12 col-xs-12 whiteContainer">
+                            <iframe ng-src="@component.Content" frameborder="0" allow="autoplay; encrypted-media" width="100%" height="580" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    continue;
+                }
+                @*================================================================================================================================================================================================================*@
+                @*PRODUCT WIDGET*@
+    if (component != null && component.ComponentType == SiteViewComponentTypes.ProductList && component.Products != null)
+    {
+        if (component.Products.Count > 0)
+        {
+            if (component.ProductListDisplayType == "slider")
+            {
+                <div class="row">
+                    <div class="col-sm-12 col-xs-12 no-padding whiteContainer">
+                        <div id="Productcarousel{{@ProductSno}}" class="carousel slide" data-ride="carousel" data-type="multi" data-interval="10000">
+                            <div class="carousel-inner multi-inner-350">
+                                @foreach (var product in component.Products.ToList().Select((obj, index) => new { index, obj }))
+                                            {
+                                            <div class="item" ng-class="{active : @product.index==0}">
+                                                <div class="carousel-col-@component.DataNumItemsRow">
+                                                    <div class="product-box-sm">
+                                                        <div class="image-container gray">
+                                                            <a ng-href="/@product.obj.Slug">
+                                                                <img ng-src="@product.obj.Image" alt="OCX Store" class="omni-img" onerror="this.src = DEFAULT_IMAGE_URL" sizes="(min-width: 768px) 540px, 100vw" />
+                                                            </a>
+                                                        </div>
+                                                        <div class="data-container">
+                                                            <h3>@product.obj.Name</h3>
+                                                            <div class="price-box">
+                                                                <p aria-hidden="true" class="product-price hidden-xs">
+                                                                    <span>@product.obj.Price.Formatted.WithTax</span>
+                                                                </p>
+                                                            </div>
+                                                            @if (component.ProductEnableButton == "true")
+    {
+                                                                <a class="animate btn-success width-full" ng-click="gm.addToBasket('@product.obj.RecordId',1,0)"><span>@LT("ProductDetail.Label.AddToCart", "Add to Cart")</span></a>
+                                                                }
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            }
+                            </div>
+                            <a class="left carousel-control" href="#Productcarousel{{@ProductSno}}" data-slide="prev"><span class="label-0">Next</span><i class="fa fa-chevron-left"></i></a>
+                            <a class="right carousel-control" href="#Productcarousel{{@ProductSno}}" data-slide="next"><span class="label-0">Prev</span><i class="fa fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            }
+            else if (component.ProductListDisplayType == "grid")
+            {
+                <div class="row">
+                    <div class="col-sm-12 col-xs-12 gridView whiteContainer">
+                        @foreach (var product in component.Products.ToList().Select((obj, index) => new { index, obj }))
+                                    {
+                                        if (component.DataNumItemsRow == null)
+                                        {
+                                            component.DataNumItemsRow = DefaultItemsRow.ToString();
+                                        }
+                                    <div class="resultContainerRelated" ng-class="{'col-sm-12 col-xs-12': @component.DataNumItemsRow == 1,'col-sm-6 col-xs-6': @component.DataNumItemsRow == 2,'col-sm-4 col-xs-6': @component.DataNumItemsRow == 3,'col-sm-3 col-xs-6': @component.DataNumItemsRow == 4,'col-sm-5ths col-md-5ths col-xs-5ths col-lg-5ths': @component.DataNumItemsRow == 5, 'col-sm-2 col-xs-6': @component.DataNumItemsRow == 6}">
+                                        <div class="product-container-panel" ng-init="product.bulkQty= 1">
+                                            <div class="imagePanel">
+                                                <a ng-href="/@product.obj.Slug">
+                                                    <img ng-src="@product.obj.Image" alt="OCX Store" class="omni-img" onerror="this.src = DEFAULT_IMAGE_URL" sizes="(min-width: 768px) 540px, 100vw" />
+                                                </a>
+                                            </div>
+                                            <div class="dataPanel">
+                                                <div class="ribbon-info">
+                                                    <a ng-href="/@product.obj.Slug">
+                                                        <span>@product.obj.Name</span>
+                                                    </a>
+                                                </div>
+                                                @if (component.ProductEnableButton == "false")
+                                                    {
+                                                    <div class="price-info">
+                                                        <div class="col-sm-12 col-xs-12 no-padding text-center">
+                                                            <h3><span>@product.obj.Price.Formatted.WithTax</span></h3>
+                                                        </div>
+                                                    </div>
+                                                    }
+                                                @if (component.ProductEnableButton == "true")
+    {
+                                                    <div class="price-info">
+                                                        <div class="col-sm-8 col-xs-12 no-padding">
+                                                            <h3><span>@product.obj.Price.Formatted.WithTax</span></h3>
+                                                        </div>
+
+                                                        <div class="col-sm-4 col-xs-4 no-padding quantity-info hidden-xs">
+                                                            <input type="number" class="form-control" ng-model="product.bulkQty" min="1" placeholder="Qty" ng-click="pm.onTextFocus($event)" numbers-Only />
+                                                        </div>
+                                                    </div>
+                                                    <div class="button-info">
+                                                        <div class="icon-info">
+                                                            <input type="number" class="form-control hidden-xs" ng-model="product.bulkQty" min="1" placeholder="Qty" ng-click="pm.onTextFocus($event)" numbers-Only />
+                                                        </div>
+                                                        <div class="action-info hidden-xs">
+                                                            <a class="animate btn-success" ng-click="gm.addToBasket(product.recordId,product.bulkQty,0)" ng-if="!pm.isWhislist"><span>@LT("ProductDetail.Label.AddToCart", "Add To Cart")</span></a>
+                                                            @if (SessionContext.CurrentUser != null && this.Request.IsAuthenticated)
+    {
+                                                                <a class="animate btn-success" ng-click="gm.addToBasket(product.recordId,product.bulkQty,0)" ng-if="pm.isWhislist"><span>@LT("ProductDetail.Label.AddToCart", "Add To Cart")</span></a>
+                                                                }
+                                                        </div>
+                                                    </div>
+                                                    }
+                                            </div>
+                                        </div>
+                                    </div>
+                                    }
+                    </div>
+                </div>
+            }
+            else if (component.ProductListDisplayType == "list")
+            {
+                <div class="row">
+                    <div class="col-sm-12 col-xs-12 listView whiteContainer">
+                        @foreach (var product in component.Products.ToList().Select((obj, index) => new { index, obj }))
+                        {
+                            if (component.DataNumItemsRow == null)
+                            {
+                                component.DataNumItemsRow = DefaultItemsRow.ToString();
+                            }
+                            <div class="resultContainerRelated" ng-class="{'col-sm-12 col-xs-12': @component.DataNumItemsRow == 1,'col-sm-6 col-xs-6': @component.DataNumItemsRow == 2,'col-sm-4 col-xs-6': @component.DataNumItemsRow == 3,'col-sm-3 col-xs-6': @component.DataNumItemsRow == 4,'col-sm-5ths col-md-5ths col-xs-5ths col-lg-5ths': @component.DataNumItemsRow == 5, 'col-sm-2 col-xs-6': @component.DataNumItemsRow == 6}">
+                                <div class="product-container-panel" ng-init="product.bulkQty= 1">
+                                    <div class="imagePanel">
+                                        <a ng-href="/@product.obj.Slug">
+                                            <img ng-src="@product.obj.Image" alt="OCX Store" class="omni-img" onerror="this.src = DEFAULT_IMAGE_URL" sizes="(min-width: 768px) 540px, 100vw" />
+                                        </a>
+                                    </div>
+                                    <div class="dataPanel">
+                                        <div class="ribbon-info">
+                                            <a ng-href="/@product.obj.Slug">
+                                                <span>@product.obj.Name</span>
+                                            </a>
+                                        </div>
+                                        @if (component.ProductEnableButton == "false")
+                                        {
+                                            <div class="price-info">
+                                                <div class="col-sm-12 col-xs-12 no-padding text-center">
+                                                    <h3><span>@product.obj.Price.Formatted.WithTax</span></h3>
+                                                </div>
+                                            </div>
+                                        }
+                                        @if (component.ProductEnableButton == "true")
+                                        {
+                                            <div class="price-info">
+                                                <div class="col-sm-8 col-xs-12 no-padding">
+                                                    <h3><span>@product.obj.Price.Formatted.WithTax</span></h3>
+                                                </div>
+
+                                                <div class="col-sm-4 col-xs-4 no-padding quantity-info hidden-xs">
+                                                    <input type="number" class="form-control" ng-model="product.bulkQty" min="1" placeholder="Qty" ng-click="pm.onTextFocus($event)" numbers-Only />
+                                                </div>
+                                            </div>
+                                                        <div class="button-info">
+                                                            <div class="icon-info">
+                                                                <input type="number" class="form-control hidden-xs" ng-model="product.bulkQty" min="1" placeholder="Qty" ng-click="pm.onTextFocus($event)" numbers-Only />
+                                                            </div>
+                                                            <div class="action-info hidden-xs">
+                                                                <a class="animate btn-success" ng-click="gm.addToBasket(product.recordId,product.bulkQty,0)" ng-if="!pm.isWhislist"><span>@LT("ProductDetail.Label.AddToCart", "Add To Cart")</span></a>
+                                                                @if (SessionContext.CurrentUser != null && this.Request.IsAuthenticated)
+                                                                {
+                                                                    <a class="animate btn-success" ng-click="gm.addToBasket(product.recordId,product.bulkQty,0)" ng-if="pm.isWhislist"><span>@LT("ProductDetail.Label.AddToCart", "Add To Cart")</span></a>
+                                                                }
+                                                            </div>
+                                                        </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+
+        }
+    }
+    if (component.ComponentType == SiteViewComponentTypes.Recommendation)
+    {
+        <div class="row margin-top-sm">
+            <div class="col-sm-12 col-xs-12 no-margin whiteContainer">
+                <h3 class="heading-h3">
+                    @if (component.DataType == RecommendationTypes.Personalised.ToString())
+                    {
+                       <span> @LT("Reccomend.Title.Personalised", "You may also like these Products")</span>
+                    }  
+                    @if (component.DataType == RecommendationTypes.Popular.ToString())
+                    {
+                        <span> @LT("Reccomend.Title.Popular", "Popular Products")</span>
+                    }   
+                    @if (component.DataType == RecommendationTypes.Order.ToString())
+                    {
+                        <span> @LT("Reccomend.Title.BasedOnOrder", "Based on your order")</span>
+                    }   
+                    @if (component.DataType == RecommendationTypes.Basket.ToString())
+                    {
+                        <span> @LT("Reccomend.Title.Basket", "Based on your basket")</span>
+                    }   
+                    @if (component.DataType == RecommendationTypes.NewForYou.ToString())
+                    {
+                        <span> @LT("Reccomend.Title.NewProducts", "New Products")</span>
+                    } 
+                    @if (component.DataType == RecommendationTypes.Product.ToString())
+                    {
+                        <span> @LT("Reccomend.Title.Product", "You may also like these Products")</span>
+                    } 
+                    @if (component.DataType == RecommendationTypes.Promotion.ToString())
+                    {
+                        <span> @LT("Reccomend.Title.Promotions", "Promotions")</span>
+                    }
+                    @if (component.DataType == RecommendationTypes.RecentView.ToString())
+                    {
+                        <span> @LT("Reccomend.Title.RecentlyViewed", "Recently Viewed")</span>
+                    }
+                    @if (component.DataType == RecommendationTypes.Home.ToString())
+                    {
+                        <span> @LT("Reccomend.Title.Home", "You may also like these")</span>
+                    }
+                </h3>
+             </div>
+            <div class="col-sm-12 col-xs-12 no-margin whiteContainer">
+                <bt-recommendation type="@component.DataType" showmodel="false" noofitems="10" />
+            </div>
+             
+        </div>
+
+    }
+    @*================================================================================================================================================================================================================*@
+                @*BRAND WIDGET*@
+    if (component.ComponentType == SiteViewComponentTypes.BrandList && component != null && component.Brands != null)
+    {
+        if (component.BrandListDisplayType == "grid")
+        {
+            <div class="row">
+                <div class="col-sm-12 col-xs-12 whiteContainer">
+                    <div class="row hover01">
+                        @foreach (var brands in component.Brands)
+                        {
+                            if (component.DataNumItemsRow == null)
+                            {
+                                component.DataNumItemsRow = DefaultItemsRow.ToString();
+                            }
+                            <div ng-class="{'col-sm-12 col-xs-12': @component.DataNumItemsRow == 1,'col-sm-6 col-xs-6': @component.DataNumItemsRow == 2,'col-sm-4 col-xs-6': @component.DataNumItemsRow == 3,'col-sm-3 col-xs-6': @component.DataNumItemsRow == 4,'col-sm-5ths col-md-5ths col-xs-5ths col-lg-5ths': @component.DataNumItemsRow == 5, 'col-sm-2 col-xs-6': @component.DataNumItemsRow == 6}">
+                                <a href="@brands.Link">
+                                    <figure>
+                                        <img ng-src="https://devocxblob.blob.core.windows.net/demostore/@brands.Logo" class="omni-img" alt="Banner3" sizes="(min-width: 768px) 540px, 100vw" component-type="@component.ComponentType" onerror="this.src = DEFAULT_IMAGE_URL">
+                                    </figure>
+                                    <div class="infornation">
+                                        <strong>@brands.ManufacturerName</strong>
+                                    </div>
+                                </a>
+                            </div>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+        else if (component.BrandListDisplayType == "slider")
+        {
+            <div class="row hover01">
+                <div class="col-sm-12 col-xs-12 no-padding whiteContainer">
+                    <div id="Brandcarousel{{@ProductSno}}" class="carousel slide" data-ride="carousel" data-type="multi" data-interval="10000">
+                        <div class="carousel-inner multi-inner-330">
+                            @foreach (var brands in component.Brands.ToList().Select((obj, index) => new { index, obj }))
+                            {
+                                <div class="item" ng-class="{active : @brands.index==0}">
+                                    <div class="carousel-col-@component.DataNumItemsRow">
+                                        <a href="@brands.obj.Link">
+                                            <figure>
+                                                <img ng-src="https://devocxblob.blob.core.windows.net/demostore/@brands.obj.Logo" class="omni-img" sizes="(min-width: 768px) 540px, 100vw" alt="Banner3" component-type="@component.ComponentType" onerror="this.src = DEFAULT_IMAGE_URL">
+                                            </figure>
+                                            <div class="infornation">
+                                                <strong>@brands.obj.ManufacturerName</strong>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <a class="left carousel-control" href="#Brandcarousel{{@ProductSno}}" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
+                        <a class="right carousel-control" href="#Brandcarousel{{@ProductSno}}" data-slide="next"><i class="fa fa-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        }
+        else if (component.BrandListDisplayType == "list")
+        {
+            <div class="row">
+                <div class="col-sm-12 col-xs-12 whiteContainer">
+                    <div class="row hover01">
+                        @foreach (var brands in component.Brands)
+                        {
+                            if (component.DataNumItemsRow == null)
+                            {
+                                component.DataNumItemsRow = DefaultItemsRow.ToString();
+                            }
+                            <div ng-class="{'col-sm-12 col-xs-12': @component.DataNumItemsRow == 1,'col-sm-6 col-xs-6': @component.DataNumItemsRow == 2,'col-sm-4 col-xs-6': @component.DataNumItemsRow == 3,'col-sm-3 col-xs-6': @component.DataNumItemsRow == 4,'col-sm-5ths col-md-5ths col-xs-5ths col-lg-5ths': @component.DataNumItemsRow == 5, 'col-sm-2 col-xs-6': @component.DataNumItemsRow == 6}">
+                                <a href="@brands.Link">
+                                    <figure>
+                                        <img ng-src="https://devocxblob.blob.core.windows.net/demostore/@brands.Logo" class="omni-img" alt="Banner3" sizes="(min-width: 768px) 540px, 100vw" component-type="@component.ComponentType" onerror="this.src = DEFAULT_IMAGE_URL">
+                                    </figure>
+                                    <div class="infornation">
+                                        <strong>@brands.ManufacturerName</strong>
+                                    </div>
+                                </a>
+                            </div>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+
+        continue;
+    }
+    @*================================================================================================================================================================================================================*@
+                @*CATEGORY WIDGET*@
+    if (component.ComponentType == SiteViewComponentTypes.CategoryList && component != null && component.Categories != null)
+    {
+        if (component.CategoryListDisplayType == "grid")
+        {
+            <div class="row">
+                <div class="col-sm-12 col-xs-12 whiteContainer">
+                    <div class="row hover01">
+                        @foreach (var category in component.Categories)
+                        {
+                            if (component.DataNumItemsRow == null)
+                            {
+                                component.DataNumItemsRow = DefaultItemsRow.ToString();
+                            }
+                            <div ng-class="{'col-sm-12 col-xs-12': @component.DataNumItemsRow == 1,'col-sm-6 col-xs-6': @component.DataNumItemsRow == 2,'col-sm-4 col-xs-6': @component.DataNumItemsRow == 3,'col-sm-3 col-xs-6': @component.DataNumItemsRow == 4,'col-sm-5ths col-md-5ths col-xs-5ths col-lg-5ths': @component.DataNumItemsRow == 5, 'col-sm-2 col-xs-6': @component.DataNumItemsRow == 6}">
+                                <figure>
+                                    <img ng-src="@category.Image" alt="OCX Store Category" class="omni-img" component-type="@component.ComponentType" sizes="(min-width: 768px) 540px, 100vw" onerror="this.src = DEFAULT_IMAGE_URL" />
+                                </figure>
+                                <div class="infornation">
+                                    <strong aria-hidden="true">@category.Name</strong>
+                                    <p aria-hidden="true">@category.Description</p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+        else if (component.CategoryListDisplayType == "slider")
+        {
+            <div class="row hover01">
+                <div class="col-sm-12 col-xs-12 no-padding whiteContainer">
+                    <div id="Categorycarousel{{@ProductSno}}" class="carousel slide" data-ride="carousel" data-type="multi" data-interval="10000">
+                        <div class="carousel-inner multi-inner-330">
+                            @foreach (var category in component.Categories.ToList().Select((obj, index) => new { index, obj }))
+                            {
+                                <div class="item" ng-class="{active : @category.index==0}">
+                                    <div class="carousel-col-@component.DataNumItemsRow">
+                                        <a href="@category.obj.Link">
+                                            <figure>
+                                                <img ng-src="@category.obj.Image" alt="OCX Store Category" class="omni-img" component-type="@component.ComponentType" onerror="this.src = DEFAULT_IMAGE_URL" sizes="(min-width: 768px) 540px, 100vw" />
+                                            </figure>
+                                            <div class="infornation">
+                                                <strong aria-hidden="true">@category.obj.Name</strong>
+                                                <p aria-hidden="true">@category.obj.Description</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <a class="left carousel-control" href="#Categorycarousel{{@ProductSno}}" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
+                        <a class="right carousel-control" href="#Categorycarousel{{@ProductSno}}" data-slide="next"><i class="fa fa-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        }
+        else if (component.CategoryListDisplayType == "list")
+        {
+            <div class="row">
+                <div class="col-sm-12 col-xs-12 whiteContainer">
+                    <div class="row hover01">
+                        @foreach (var category in component.Categories)
+                        {
+                            if (component.DataNumItemsRow == null)
+                            {
+                                component.DataNumItemsRow = DefaultItemsRow.ToString();
+                            }
+                            <div ng-class="{'col-sm-12 col-xs-12': @component.DataNumItemsRow == 1,'col-sm-6 col-xs-6': @component.DataNumItemsRow == 2,'col-sm-4 col-xs-6': @component.DataNumItemsRow == 3,'col-sm-3 col-xs-6': @component.DataNumItemsRow == 4,'col-sm-5ths col-md-5ths col-xs-5ths col-lg-5ths': @component.DataNumItemsRow == 5, 'col-sm-2 col-xs-6': @component.DataNumItemsRow == 6}">
+                                <figure>
+                                    <img ng-src="@category.Image" alt="OCX Store Category" class="omni-img" component-type="@component.ComponentType" onerror="this.src = DEFAULT_IMAGE_URL" sizes="(min-width: 768px) 540px, 100vw" />
+                                </figure>
+                                <div class="infornation">
+                                    <strong aria-hidden="true">@category.Name</strong>
+                                    <p aria-hidden="true">@category.Description</p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+
+        continue;
+    }
+    if (component != null && component.ComponentType == SiteViewComponentTypes.BlogList && component.Blogs != null)
+    {
+        <div class="row">
+            <div class="col-sm-12 col-xs-12 whiteContainer">
+                <div class="row hover03">
+                    @foreach (var blog in component.Blogs.ToList().Select((obj, index) => new { index, obj }))
+                    {
+                        <div class="col-sm-3 col-xs-12 no-padding">
+                            <div class="col-sm-12 col-xs-12">
+                                <figure>
+                                    <img ng-src="@blog.obj.BlogImage" alt="OCX Blog" class="omni-img" onerror="this.src = DEFAULT_IMAGE_URL" sizes="(min-width: 768px) 540px, 100vw" />
+                                </figure>
+                                <div class="infornation-blog">
+                                    <p aria-hidden="true" class="post-date">@blog.obj.Created</p>
+                                    <strong>@blog.obj.Title</strong>
+                                    <h2 class="text-left">@blog.obj.Author</h2>
+                                    <h4 class="text-left">@blog.obj.Category</h4>
+                                    <p aria-hidden="true"><a href="@blog.obj.CategorySlug" class="animate btn-bordered"><span>Read More</span></a></p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+                }
+                //Increment Carousal Dynamic ID
+                ProductSno += 1;
+            }
+        }
+    }
+    
+</div>

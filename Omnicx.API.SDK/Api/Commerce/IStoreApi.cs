@@ -11,5 +11,9 @@ namespace Omnicx.API.SDK.Api.Commerce
     public  interface IStoreApi
     {
         ResponseModel<List<StoreModel>> CheckStoreStockAvailability (string stockCode, string postCode);
+
+        ResponseModel<List<StoreModel>> FindNearestStore(string postCode);
+
+        ResponseModel<StoreModel> StoreDetail(int id);
     }
 }

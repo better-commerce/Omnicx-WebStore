@@ -43,5 +43,6 @@ namespace Omnicx.WebStore.Models.Commerce
         public Amount CompanyDiscount { get; set; }
         public Amount ListPrice { get; set; }
         public string ShortDescription { get; set; }
+        public bool IsSubscription { get; set; }
     }
 }

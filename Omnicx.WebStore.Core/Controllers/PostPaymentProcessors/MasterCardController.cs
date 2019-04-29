@@ -67,7 +67,7 @@ namespace Omnicx.WebStore.Core.Controllers.PostPaymentProcessors
                 }
                 else
                 {
-                    SiteUtils.ResetBasketCookie();
+                    SiteUtils.ResetBasketCookieAndSession();
                 }
             }
 

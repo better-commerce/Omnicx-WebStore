@@ -13,6 +13,9 @@ namespace Omnicx.WebStore.Models.Site
         }
         public Guid RecordId { get; set; }
         public string Name { get; set; }
+        public string QuestionJson { get; set; }
+        public object QuestioObject { get; set; }
+        public SurveyTypes SurveyType { get; set; }
         public List<SurveyQuestionModel> Questions { get; set; }
         /// <summary>
         /// if set as false, the user details are captured at the end.
@@ -38,11 +41,30 @@ namespace Omnicx.WebStore.Models.Site
         public int WrongOptionCount { get; set; }
         public string ImageBaseUrl { get; set; }
     }
+    public class SurveyAnswerModel
+    {
+        public Guid SurveyId { get; set; }
+        public Guid UserId { get; set; }
+        public string UserName { get; set; }
+        public string StoreId { get; set; }
+        public string Answers { get; set; }      
+        public string SurveyName { get; set; }       
+        public string SearchResult { get; set; }
+        public DateTime Created { get; set; }
+        public string CreatedBy { get; set; }
+    }
     public enum SurveyOutputStyle
     {
         SearchProducts = 1,
         BuildABundle = 2,
         QualifyingQuestionnaire = 3
+    }
+    public enum SurveyTypes
+    {
+        GuidedSearch = 1,
+        LeadCapture = 2,
+        Forms = 3,
+        PersonalisationQuiz = 4
     }
     public class SurveyProfileModel
     {

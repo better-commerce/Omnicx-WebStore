@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Omnicx.WebStore.Core", "Omn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Omnicx.API.SDK", "Omnicx.API.SDK\Omnicx.API.SDK.csproj", "{267B329B-0A25-4136-AF47-668C45F0F0CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Omnicx.WebStore.Debug", "Omnicx.WebStore\Omnicx.WebStore\Omnicx.WebStore.Debug.csproj", "{D7E752DA-160E-4906-B839-896FF66FC991}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Omnicx.WebStore.Debug", "Omnicx.WebStore\Omnicx.WebStore.Debug.csproj", "{D7E752DA-160E-4906-B839-896FF66FC991}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01. Presentation Layer", "01. Presentation Layer", "{42F1CF71-E2ED-4448-A86E-59CF638D6645}"
 EndProject

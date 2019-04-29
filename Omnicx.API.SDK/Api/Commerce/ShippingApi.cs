@@ -6,6 +6,8 @@ using Newtonsoft.Json;
 using Omnicx.WebStore.Models.Keys;
 using RestSharp;
 using Omnicx.WebStore.Models.Store;
+using System;
+using System.Linq;
 
 namespace Omnicx.API.SDK.Api.Commerce
 {
@@ -16,11 +18,14 @@ namespace Omnicx.API.SDK.Api.Commerce
             return CallApi<List<ShippingModel>>(string.Format(ApiUrls.ShippingMethods, basketId, shipToCountryIso, postCode), "");
         }
 
-        public ResponseModel<List<ShippingPLan>> GetShippingPlans(ShippingPlanRequest shippingPlanRequest)
-        {           
-            return CallApi<List<ShippingPLan>>(ApiUrls.ShippingPlans, JsonConvert.SerializeObject(shippingPlanRequest), Method.POST, apiBaseUrl: ConfigKeys.OmsApiBaseUrl);
+        public ResponseModel<List<ShippingPlan>> GetShippingPlans(ShippingPlanRequest shippingPlanRequest)
+        {
+            return CallApi<List<ShippingPlan>>(ApiUrls.ShippingPlans, JsonConvert.SerializeObject(shippingPlanRequest), Method.POST, apiBaseUrl: ConfigKeys.OmsApiBaseUrl,isAuthenticationEnabled:true);
         }
-
+        public ResponseModel<List<StoreModel>> GetClickAndCollectStores(ShippingPlanRequest shippingPlanRequest)
+        {
+            return CallApi<List<StoreModel>>(string.Format(ApiUrls.ClickAndCollectStores, shippingPlanRequest.PostCode), JsonConvert.SerializeObject(shippingPlanRequest), Method.POST, apiBaseUrl: ConfigKeys.OmsApiBaseUrl, isAuthenticationEnabled: true);
+        }
         public ResponseModel<List<NominatedDeliveryModel> >  GetNominatedDays(string date)
         {
             return CallApi<List<NominatedDeliveryModel>>(string.Format(ApiUrls.ShippingNominatedDays, date), "");

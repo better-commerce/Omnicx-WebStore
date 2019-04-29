@@ -64,12 +64,15 @@ namespace Omnicx.API.SDK.Api.Infra
             configModel.ShippingSettings = LoadSetting<ShippingSettings>(configModel.ShippingSettings, configModel.ConfigSettings.FirstOrDefault(x => x.ConfigType.ToLower() == typeof(ShippingSettings).Name.ToLower()));
             configModel.SocialSettings = LoadSetting<SocialSettings>(configModel.SocialSettings, configModel.ConfigSettings.FirstOrDefault(x => x.ConfigType.ToLower() == typeof(SocialSettings).Name.ToLower()));
             configModel.RegionalSettings= LoadSetting<RegionalSettings>(configModel.RegionalSettings, configModel.ConfigSettings.FirstOrDefault(x => x.ConfigType.ToLower() == typeof(RegionalSettings).Name.ToLower()));
+            configModel.FeatureToggles = LoadSetting<FeatureToggleSettings>(configModel.FeatureToggles, configModel.ConfigSettings.FirstOrDefault(x => x.ConfigType.ToLower() == typeof(FeatureToggleSettings).Name.ToLower()));
+            configModel.RecommendationSettings = LoadSetting<RecommendationSettings>(configModel.RecommendationSettings, configModel.ConfigSettings.FirstOrDefault(x => x.ConfigType.ToLower() == typeof(RecommendationSettings).Name.ToLower()));
         }
         private T LoadSetting<T>(T settingClass, ConfigSettingModel configSettings)
         {
             //var settings = Activator.CreateInstance<T>();
 
             var settingsForClass = configSettings?.ConfigKeys;
+            if (settingsForClass == null) return settingClass;
             /////if prepoulated settings is passed, we dont have to make a DB/Cache call for EVERY setting class
             //if (prepopulatedAllSettings != null && prepopulatedAllSettings.ToList().Count > 0)
             //    _allSettings = prepopulatedAllSettings;

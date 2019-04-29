@@ -5,6 +5,7 @@ using Omnicx.WebStore.Models.Common;
 using Omnicx.WebStore.Models.Enums;
 using Omnicx.WebStore.Models.Helpers;
 using Omnicx.WebStore.Models.Keys;
+using Omnicx.WebStore.Models.Store;
 
 namespace Omnicx.WebStore.Models.Commerce
 {
@@ -17,15 +18,18 @@ namespace Omnicx.WebStore.Models.Commerce
         public Guid Id { get; set; }
         public bool Enabled { get; set; }
         public string SystemName { get; set; }
+        public string ShippingCode { get; set; }
         public string DisplayName { get; set; }
         public string Description { get; set; }
         public int DisplayOrder { get; set; }
         public int ExpectedDaysToDeliver { get; set; }
+        public DateTime ExpectedDeliveryDate { get; set; }
         public string DeliveryOnOrBefore { get; set; }
         public Amount Price { get; set; }
         public bool IsDefault { get; set; }
         public bool IsNominated { get; set; }
-        public ShippingTypes Type { get; set; }
+        public ShippingMethodTypes Type { get; set; }
+        public ShippingCostMethods ShippingCostMethod { get; set; }
         public string CarrierCode { get; set; }
         public string CountryCode { get; set; }
         public List<CutOffTime> CutOffTimes { get; set; }
@@ -33,6 +37,7 @@ namespace Omnicx.WebStore.Models.Commerce
         public bool IsPriceOnRequest { get; set; }
         public bool ShowRecomendation { get; set; }
         public string Recomendation { get; set; }
+        public bool IsTaxable { get; set; }
         //shadowFlatShipMethod.IsNominatedDelivery = shipMethod.IsNominatedDelivery;
         //                    shadowFlatShipMethod.Shipmentcode = shipMethod.ShipmentCode;
         //                    shadowFlatShipMethod.ExpectedDaysToDeliver = shipMethod.ExpectedDaysToDeliver;

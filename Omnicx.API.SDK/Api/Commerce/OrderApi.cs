@@ -4,6 +4,8 @@ using Omnicx.WebStore.Models.Commerce;
 using Omnicx.WebStore.Models;
 using Omnicx.WebStore.Models.Common;
 using RestSharp;
+using Omnicx.WebStore.Models.Commerce.Subscription;
+using Newtonsoft.Json;
 
 namespace Omnicx.API.SDK.Api.Commerce
 {
@@ -26,6 +28,10 @@ namespace Omnicx.API.SDK.Api.Commerce
         {
             return CallApi<List<OrderModel>>(string.Format(ApiUrls.GetOrders, customerId), "");
         }
+        public ResponseModel<List<SubscriptionSeedOrder>> GetSubscriptions(string customerId)
+        {
+            return CallApi<List<SubscriptionSeedOrder>>(string.Format(ApiUrls.GetSubscriptions, customerId), "");
+        }
 
         public ResponseModel<List<ReturnModel>> GetAllReturns(string id)
         {
@@ -36,6 +42,18 @@ namespace Omnicx.API.SDK.Api.Commerce
         {
             return CallApi<FileResponse>(string.Format(ApiUrls.DownloadInvoice, id), "", Method.POST);
         }
+        public ResponseModel<OrderModel> GetRecentOrderByEmail(string email)
+        {
+            return CallApi<OrderModel>(string.Format(ApiUrls.GetOrderByEmail, email), string.Empty, Method.GET);
+        }
 
+        public ResponseModel<SubscriptionFulfilmentOrderModel> GetSubscriptionDetail(Guid seedOrderId)
+        {
+            return CallApi<SubscriptionFulfilmentOrderModel>(string.Format(ApiUrls.SubscriptionDetail, seedOrderId), "", Method.GET);
+        }
+        public ResponseModel<SubscriptionFulfilmentOrderModel> UpdateSubscriptionStatus(UpdateSubscriptionStatusModel subscriptionUpdateStatus)
+        {
+            return CallApi<SubscriptionFulfilmentOrderModel>(string.Format(ApiUrls.UpdateSubscriptionStatus), JsonConvert.SerializeObject(subscriptionUpdateStatus), Method.POST);
+        }
     }
 }

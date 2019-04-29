@@ -11,6 +11,8 @@ using Newtonsoft.Json;
 using System.Web.Routing;
 using Omnicx.WebStore.Models.Keys;
 using Omnicx.WebStore.Models.Enums;
+using System;
+using System.Collections.Generic;
 
 namespace Omnicx.WebStore.Core.Controllers
 {
@@ -70,29 +72,30 @@ namespace Omnicx.WebStore.Core.Controllers
 
         private void SetDataLayerSessionVariables()
         {
+                _headTagbuilder.AddDataLayer("SessionId", _sessionContext.SessionId);
                 var uId = _sessionContext.CurrentUser?.UserId;
                 var browserInfo = Utils.GetBrowserInfo();
                 var channel = "Web";
                 if (browserInfo != null)
                    channel = browserInfo.IsMobileDevice ? "mobile-web" : "Web";
 
-                _headTagbuilder.AddDataLayer("VisitorId", uId.ToString());
-                _headTagbuilder.AddDataLayer("SessionId", _sessionContext.SessionId);
+                _headTagbuilder.AddDataLayer("VisitorId", uId.ToString(),true);
+                
                 _headTagbuilder.AddDataLayer("AppId", ConfigKeys.OmnicxDomainId);
                 _headTagbuilder.AddDataLayer("OrgId", ConfigKeys.OmnicxOrgId);
                 _headTagbuilder.AddDataLayer("DomainId", ConfigKeys.OmnicxDomainId);
                 _headTagbuilder.AddDataLayer("Server", Utils.GetMaskedServerIpAddress()); 
                 _headTagbuilder.AddDataLayer("DeviceId", System.Web.HttpContext.Current.Request.Cookies[Constants.COOKIE_DEVICEID]?.Value);
-                _headTagbuilder.AddDataLayer("VisitorLoggedIn", (_sessionContext.CurrentUser?.UserId!=null));
-                _headTagbuilder.AddDataLayer("VisitorExistingCustomer", (_sessionContext.CurrentUser?.UserId != null));
+                _headTagbuilder.AddDataLayer("VisitorLoggedIn", System.Web.HttpContext.Current.Request.IsAuthenticated);
+                _headTagbuilder.AddDataLayer("VisitorExistingCustomer", (_sessionContext.CurrentUser?.UserId != null), true);
                 _headTagbuilder.AddDataLayer("VisitorSegment", "");// to be reviewed
                 _headTagbuilder.AddDataLayer("VisitorAffiliate", "");// to be reviewed
-                _headTagbuilder.AddDataLayer("VisitorEmail", _sessionContext.CurrentUser?.Email);
+                _headTagbuilder.AddDataLayer("VisitorEmail", _sessionContext.CurrentUser?.Email,true);
                 _headTagbuilder.AddDataLayer("PageCategory", this.GetType().Name.Replace("Controller", ""));
                 _headTagbuilder.AddDataLayer("Lang", _sessionContext.CurrentSiteConfig?.RegionalSettings?.DefaultLanguageCulture);
                 _headTagbuilder.AddDataLayer("Currency", _sessionContext.CurrentSiteConfig?.RegionalSettings?.DefaultCurrencyCode);
                 _headTagbuilder.AddDataLayer("CurrencySymbol", _sessionContext.CurrentSiteConfig?.RegionalSettings?.DefaultCurrencySymbol);
-                _headTagbuilder.AddDataLayer("UserEmail", _sessionContext.CurrentUser?.Email);
+                //_headTagbuilder.AddDataLayer("UserEmail", _sessionContext.CurrentUser?.Email);
                 _headTagbuilder.AddDataLayer("Channel", channel);
                 _headTagbuilder.AddDataLayer("IpAddress", _sessionContext.IpAddress);
 
@@ -122,7 +125,15 @@ namespace Omnicx.WebStore.Core.Controllers
                         {
                             var lines = (from l in b.LineItems select new { id=l.Id,productId=l.ProductId,basketId=b.Id,stockCode = l.StockCode, name = l.Name, qty = l.Qty, price = l.Price?.Raw?.WithoutTax ,tax=l.Price?.Raw?.Tax , manufacturer = l.Manufacture, img=l.Image }).ToList();
                             var name = string.Join(",",(from l in lines select l.name + " (" + l.qty.ToString() + ")" ).ToArray());
-                            var bskt = new { id = b.Id, grandTotal = b.GrandTotal?.Raw?.WithoutTax, tax=b.GrandTotal?.Raw.Tax, shipCharge = b.ShippingCharge?.Raw?.WithoutTax,shipTax=b.ShippingCharge?.Raw.Tax,lineitems = lines, promoCode = b.PromotionsApplied };
+                            var bskt = new {   id = b.Id,
+                                                grandTotal = b.GrandTotal?.Raw?.WithoutTax,
+                                                tax = b.GrandTotal?.Raw.Tax,
+                                                taxPercent=b.TaxPercent,
+                                                shipCharge = b.ShippingCharge?.Raw?.WithoutTax,
+                                                shipTax = b.ShippingCharge?.Raw.Tax,
+                                                lineitems = lines,
+                                                promoCode = b.PromotionsApplied };
+
                             _headTagbuilder.AddDataLayer("BasketTotal", b.GrandTotal?.Raw?.WithoutTax);
                             _headTagbuilder.AddDataLayer("Tax", b.GrandTotal?.Raw?.Tax);
                             _headTagbuilder.AddDataLayer("BasketItems", JsonConvert.SerializeObject(lines));
@@ -139,8 +150,31 @@ namespace Omnicx.WebStore.Core.Controllers
                         var ord = (OrderModel)(object)obj;
                         if (ord != null)
                         {
-                            var ordlines = (from o in ord.Items select new {id=o.Id,productId=o.ProductId, stockCode = o.StockCode, name = o.Name, qty = o.Qty, price = o.Price?.Raw.WithoutTax,tax=o.Price?.Raw?.Tax ,manufacturer=o.Manufacturer,categories=o.CategoryItems, img = o.Image }).ToList();
-                            var order = new { id = ord.Id, basketId = ord.BasketId, customerId = ord.CustomerId, OrderNo = ord.OrderNo, grandTotal = ord.GrandTotal?.Formatted, shipCharge = ord.ShippingCharge?.Formatted, subTotal = ord.SubTotal?.Formatted, discount = ord.Discount, lineitems = ordlines, promoCode = ord.Promotions, shippingMethod = ord.Shipping, shippingAddress = ord.ShippingAddress };
+                            var ordlines = (from o in ord.Items select new {id=o.Id,productId=o.ProductId, stockCode = o.StockCode, name = o.Name,discountAmt=o.DiscountAmt?.Raw?.WithoutTax,isSubscription=o.IsSubscription,itemType=o.ItemType ,qty = o.Qty, price = o.Price?.Raw.WithoutTax,tax=o.Price?.Raw?.Tax, manufacturer=o.Manufacturer,categories=o.CategoryItems, img = o.Image }).ToList();
+                            //var order = new { id = ord.Id, basketId = ord.BasketId, customerId = ord.CustomerId, OrderNo = ord.OrderNo, grandTotal = ord.GrandTotal?.Formatted, shipCharge = ord.ShippingCharge?.Formatted, subTotal = ord.SubTotal?.Formatted, discount = ord.Discount?.Formatted, lineitems = ordlines, promoCode = ord.Promotions, shippingMethod = ord.Shipping, shippingAddress = ord.ShippingAddress,status=ord.OrderStatus };
+                            var payments = (from py in ord.Payments  where !string.IsNullOrEmpty(py.PaymentMethod) select new { methodName = py.PaymentMethod,paymentGateway=py.PaymentGateway, amount = py.OrderAmount }).ToList();
+
+                            var order = new
+                            {
+                                id = ord.Id,
+                                basketId = ord.BasketId,
+                                customerId = ord.CustomerId,
+                                OrderNo = ord.OrderNo,
+                                grandTotal = ord.GrandTotal.Raw.WithTax,
+                                tax = ord.GrandTotal.Raw.Tax,
+                                taxPercent = ord.TaxPercent,
+                                shipCharge = ord.ShippingCharge.Raw.WithoutTax,
+                                subTotal = ord.SubTotal.Raw.WithoutTax,
+                                discount = ord.Discount.Raw.WithoutTax,
+                                lineitems = ordlines,
+                                promoCode = ord.Promotions,
+                                payments = payments,
+                                paidAmount = payments.Sum(py => py.amount),
+                                shippingMethod = ord.Shipping,
+                                shippingAddress = ord.ShippingAddress,
+                                billingAddress = ord.BillingAddress,
+                                status = ord.OrderStatus
+                            };
                             _headTagbuilder.AddDataLayer("BasketTotal", ord.GrandTotal?.Raw?.WithoutTax);
                             _headTagbuilder.AddDataLayer("Tax", ord.GrandTotal?.Raw?.Tax);
                             _headTagbuilder.AddDataLayer("BasketItems", JsonConvert.SerializeObject(ordlines));
@@ -236,8 +270,32 @@ namespace Omnicx.WebStore.Core.Controllers
                         }
                         _headTagbuilder.AddDataLayer("EntityType", WebhookEntityTypes.Search.ToString());
                         break;
+                    case "CustomerProfileModel":
+                        var user = (CustomerProfileModel)(object)obj;
+                        if (user != null)
+                        {
+                            DateTime dob;
+                            DateTime.TryParse(user.CustomerDetail.YearOfBirth + "-" + user.CustomerDetail.MonthOfBirth + "-" + user.CustomerDetail.DayOfBirth, out dob); 
+
+                            var userBase = new
+                            {
+                                id=user.CustomerDetail.UserId,
+                                name = user.CustomerDetail.FirstName + user.CustomerDetail.LastName,
+                                dateOfBirth = (dob.Date==DateTime.MinValue) ? "" : dob.ToString(),
+                                gender = user.CustomerDetail.Gender,
+                                email = user.CustomerDetail.Email,
+                                postCode = user.CustomerDetail.PostCode
+                            };
+                            // making the dob format standard. 
+                             user.ChangePasswordViewModel = null; //explicitly setting this view to nulll to avoid sending accidentla pwd data. 
+                             user.CustomerDetail.BirthDate = user.CustomerDetail.YearOfBirth + "-" + user.CustomerDetail.MonthOfBirth + "-" + user.CustomerDetail.DayOfBirth;
+                            _headTagbuilder.AddDataLayer("EntityId", user.CustomerDetail.UserId);
+                            _headTagbuilder.AddDataLayer("EntityName", user.CustomerDetail.FirstName + user.CustomerDetail.LastName);
+                            _headTagbuilder.AddDataLayer("Entity", JsonConvert.SerializeObject(userBase));
+                        }
+                        _headTagbuilder.AddDataLayer("EntityType", WebhookEntityTypes.Customer.ToString());
+                        break;
                     default:
-  
                         break;
                 }
             }

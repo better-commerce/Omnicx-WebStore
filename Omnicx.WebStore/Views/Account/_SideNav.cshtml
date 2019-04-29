@@ -1,0 +1,100 @@
+﻿@{
+    /*
+        Name: Site Nav
+        Purpose: List all the Navigation links for desktop and big screen
+        Structure: /Views/Account/_SideNav.cshtml
+        Contains (Partial Views Used):
+
+        Contained In (Where we Use this View):
+            a-/Views/Account/Wishlist.cshtml
+            b-/Views/Account/ReturnRequest.cshtml
+            c-/Views/Account/ReturnHistory.cshtml
+            d-/Views/Account/PasswordChange.cshtml)
+            e-/Views/Account/OrderHistory.cshtml
+            f-/Views/Account/OrderDetail.cshtml
+            g-/Views/Account/MyActivity.cshtml
+            h-/Views/Account/MyAccount.cshtml
+            i-/Views/Account/AddressBook.cshtml
+            j-/Views/B2B/Users.cshtml
+            k-/Views/B2B/Quotes.cshtml
+            l-/Views/B2B/MyCompany.cshtml
+        */
+}
+@using Omnicx.WebStore.Models.Enums
+@using Omnicx.WebStore.Models.Keys
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
+
+@{
+    bool isB2B = false;
+    CompanyUserRole userRole = CompanyUserRole.None;
+    if (SessionContext.CurrentUser != null && this.Request.IsAuthenticated)
+    {
+        if (SessionContext.CurrentUser.CompanyId != Guid.Empty.ToString())
+        {
+            isB2B = true;
+            userRole = SessionContext.CurrentUser.CompanyUserRole;
+        }
+    }
+}
+<div class="panel panel-default sidebar-menu">
+    @*<h3 class="panel-h2">@LT("MyAccount.Text.Customer", "Customer section")</h3>*@
+    <div class="panel-body no-padding">
+        <ul class="nav nav-pills nav-stacked">
+            <li ng-class="{'active-ac' :'@ViewBag.Title'== 'MyAccount' }">
+                <a href="@Url.Action("myaccount", "account")" class="color-black"><i class="fa fa-user"></i>@LT("MyAccount.Text.Name", "My Account")</a>
+            </li>
+            @if (ConfigKeys.DisplayUserActivity)
+            {
+                <li ng-class="{'active-ac' :'@ViewBag.Title'== 'MyActivity' }">
+                    <a href="@Url.Action("myactivity", "account")" class="color-black"><i class="fa fa-clock-o"></i>@LT("MyActivity.Text.Name", "My Activity")</a>
+                </li>
+            }
+            <li ng-class="{'active-ac' :'@ViewBag.Title'== 'MySubscriptions' }">
+                <a href="@Url.Action("SubscriptionHistory", "account")" class="color-black"><i class="fa fa-shopping-cart"></i>@LT("MyAccount.Text.Name", "My Subscriptions")</a>
+            </li>
+            @{ if (isB2B)
+                {
+                    <li ng-class="{'active-ac' :'@ViewBag.Title'== 'MyCompany' }">
+                        <a href="@Url.Action("MyCompany", "b2b")" class="color-black"><i class="fa fa-building"></i>@LT("MyAccount.Text.Name", "My Company")</a>
+                    </li>
+                    <li ng-class="{'active-ac' :'@ViewBag.Title'== 'Quotes' }">
+                        <a href="@Url.Action("quotes", "b2b")" class="color-black"><i class="fa fa-file"></i>@LT("MyAccount.Text.Name", "Quotes")</a>
+                    </li>
+                    if (userRole == (CompanyUserRole.Admin))
+                    {
+                        <li ng-class="{'active-ac' :'@ViewBag.Title'== 'Users' }">
+                            <a href="@Url.Action("users", "b2b")" class="color-black"><i class="fa fa-user"></i>@LT("MyAccount.Text.Name", "My Users")</a>
+                        </li>
+                    }
+                }
+            }
+
+            <li ng-class="{'active-ac' :'@ViewBag.Title'== 'Orders'|| '@ViewBag.Title'=='Return Request'|| '@ViewBag.Title' == 'CustomerOrder'}">
+                <a href="@Url.Action("orderhistory", "account")" class="color-black"><i class="fa fa-shopping-cart"></i>@LT("MyAccount.Links.MyOrders", "My Orders")</a>
+            </li>
+            @if (userRole == (CompanyUserRole.None) || userRole == (CompanyUserRole.Admin))
+            {
+                <li ng-class="{'active-ac' : '@ViewBag.Title' == 'AddressBook'}">
+                    <a href="@Url.Action("AddressBook", "account")" class="color-black"><i class="fa fa-home"></i>@LT("MyAccount.Links.AddressBook", "Address Book")</a>
+                </li>
+            }
+            <li ng-class="{'active-ac' : '@ViewBag.Title' == 'Return History'}">
+                <a href="@Url.Action("returnhistory", "account")" class="color-black"><i class="fa fa-external-link-square"></i>@LT("MyAccount.Links.ReturnHistory", "Return History")</a>
+            </li>
+            <li ng-class="{'active-ac' :'@ViewBag.Title'== 'Wishlist'}">
+                <a href="@Url.Action("wishlist", "account")" class="color-black"><i class="fa fa-heart"></i>@LT("MyAccount.Links.Wishlist", "My Wishlist")</a>
+            </li>
+
+            <li ng-class="{'active-ac' :'@ViewBag.Title'=='Change Password'}">
+                <a href="@Url.Action("PasswordChange" , "account")" class="color-black"><i class="fa fa-key"></i>@LT("Global.Buttons.PasswordChange", "Change Password")</a>
+            </li>
+            <li ng-class="{'active-ac' :'@ViewBag.Title'== 'Personality Quiz' }">
+                <a href="@Url.Action("surveyresponse", "account")" class="color-black"><i class="fa fa-user"></i>@LT("MyAccount.Text.PersonalityQuiz", "Personality Quiz")</a>
+            </li>
+            <li>
+                <a href="@Url.Action("logout", "account")" class="color-black"><i class="fa fa-sign-out"></i>@LT("Global.Buttons.Logout", "LogOut")</a>
+            </li>
+        </ul>
+    </div>
+
+</div>

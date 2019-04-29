@@ -13,6 +13,7 @@ namespace Omnicx.API.SDK.Api.Site
         ResponseModel<List<string>> GetSiteViewAllSlug();
 
         Task<ResponseModel<SiteViewModel>> GetSiteViewComponentsAsync(string slug);
+        ResponseModel<SiteViewModel> GetSiteViewById(string id,int versionNo,string langCulture);
         ResponseModel<FeedModel> GetFeedLink(string slug);
     }
 }

@@ -2,6 +2,7 @@
 using Omnicx.WebStore.Models.Common;
 using Omnicx.WebStore.Models.Site;
 using System;
+using System.Collections.Generic;
 
 namespace Omnicx.API.SDK.Api.Site
 {
@@ -11,10 +12,11 @@ namespace Omnicx.API.SDK.Api.Site
 
         ResponseModel<SurveyModel> GetSurveyByCode(string surveyCode);
 
-        ResponseModel<SurveyModel> GetSurveyProfile(Guid surveyProfileId);
+        ResponseModel<SurveyModel> GetSurveyProfile(Guid surveyProfileId);     
 
-        ResponseModel<BoolResponse> SaveAnswer(Guid visitorId, Guid userId, Guid surveyId, Guid questionId, string selectedAnswer);
+        ResponseModel<BoolResponse> SaveAnswers(SurveyAnswerModel surveyAnswer);
 
-        ResponseModel<BoolResponse> SaveAnswers(SurveyProfileModel surveyProfile);
+        ResponseModel<List<SurveyAnswerModel>> UserResponse(string userName, Guid surveyId);
+        ResponseModel<List<SurveyToolData>> SurveyToolBoxData();
     }
 }

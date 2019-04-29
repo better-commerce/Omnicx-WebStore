@@ -1,0 +1,137 @@
+﻿@{
+/*
+    Name: Product List View Widget For Grid and List
+    Purpose: Show Product All detail in List view
+    Structure: /Views/Search/_ProductWidget.cshtml
+    Contains (Partial Views Used):
+
+    Contained In (Where we Use this View):
+        a-/Views/Search/_SearchResultCategory.cshtml
+    */
+}
+@using Omnicx.WebStore.Models.Enums
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
+<div class="product-container-panel" ng-init="product.bulkQty= 1">
+    <a ng-if="pm.forDelete" href="~/Account/RemoveWishList/{{product.recordId}}" title="Remove" class="remove wishlist-remove"><i class="fa fa-trash-o"></i></a>
+    <div class="imagePanel">
+        <a ng-href="/{{product.slug}}">
+            <span class="tooltiptext" ng-bind="product.title"></span>
+            <img ng-src="{{product.image==''?DEFAULT_IMAGE_URL:product.images[0].url}}" alt=""  class="image1 omni-img" onerror="this.src = DEFAULT_IMAGE_URL" sizes="(min-width: 768px) 540px, 100vw">
+        </a>
+    </div>
+    <div class="dataPanel">
+        <div class="ribbon-info">
+            <a ng-href="/{{product.slug}}">
+                <span ng-bind="product.name"></span>
+            </a>
+        </div>
+        <div class="name-info">
+            <span class="prod-list-desc"><strong>@LT("ProductDetail.Label.SKU", "SKU"): </strong><span ng-bind="product.sku"></span></span>            
+            <span class="prod-list-desc"><span class="comment more" id="decriptionText" ng-bind="product.description"></span></span>
+        </div>
+        <div class="price-info">
+            <div class="col-sm-8 col-xs-12 no-padding">
+                <h3>
+                    <span ng-bind="(product.price.formatted.withTax)"></span>
+                    <span class="sml" ng-bind="(product.listPrice.formatted.withTax)"></span>
+                </h3>
+            </div>
+            <div class="col-sm-4 col-xs-4 no-padding quantity-info hidden-xs">
+                <input type="number" class="form-control" ng-model="product.bulkQty" min="1" placeholder="Qty" ng-click="pm.onTextFocus($event)" numbers-Only />
+            </div>
+        </div>
+        <div class="button-info">
+            <div class="icon-info">
+                <a class="see-detail-icon" ng-click="pm.productDetail(product.recordId)" data-toggle="modal" data-target="#product-quick-view-modal" ng-hide="pm.quickView"></a>
+                @if (SessionContext.CurrentUser != null && this.Request.IsAuthenticated)
+                {
+                    <a class="see-wishlist-icon" ng-if="product.inWishList==false" ng-click="pm.addToWishlist(product.recordId)" ng-hide="fromWishList"></a>
+                }
+                else
+                {
+                    <a class="see-wishlist-icon" data-toggle="modal" data-target="#login-modal"></a>
+                }
+                <input type="number" class="form-control hidden-xs" ng-model="product.bulkQty" min="1" placeholder="Qty" ng-click="pm.onTextFocus($event)" numbers-Only />
+            </div>
+            <div class="action-info margin-top-sm hidden-xs">
+                <a class="animate btn-success no-margin" ng-click="gm.addToBasket(product.recordId,product.bulkQty,0)" ng-if="!pm.isWhislist && product.subscriptionPlanType == '@SubscriptionPlanType.None'"><span>@LT("ProductDetail.Label.AddToCart", "Add To Cart")</span></a>
+                <a class="animate btn-success no-margin" ng-click="gm.addToBasket(product.recordId,product.bulkQty,0)" ng-if="!pm.isWhislist && product.subscriptionPlanType == '@SubscriptionPlanType.Simple'"><span>@LT("ProductDetail.Label.AddToCart", "Add To Cart")</span></a>               
+                <a class="animate btn-black no-margin" ng-click="sm.initSubscriptionPlan(product.recordId,product.subscriptionEnabled);" data-toggle="modal" data-target="#addSubscriptionModal" ng-if="!pm.isWhislist && product.subscriptionPlanType == '@SubscriptionPlanType.Simple' && product.subscriptionEnabled"><span>@LT("ProductDetail.Label.AddToList", "Subscribe")</span></a>
+                <a class="animate btn-black no-margin" ng-click="sm.addDynamicBundleToBag(product.recordId, gm.basketResponse.id,gm.basketResponse.displayOrder,1);" ng-if="product.subscriptionPlanType == '@SubscriptionPlanType.DynamicBundle' && product.subscriptionEnabled"><span>@LT("ProductDetail.Label.AddToList", "Add To List")</span></a>
+                @if (SessionContext.CurrentUser != null && this.Request.IsAuthenticated)
+                {
+                    <a class="animate btn-success" ng-click="gm.addToBasket(product.recordId,product.bulkQty,0)" ng-if="pm.isWhislist"><span>@LT("ProductDetail.Label.AddToCart", "Add To Cart")</span></a>
+                }
+            </div>
+        </div>
+    </div>  
+</div>
+<div class="modal fade" id="addSubscriptionModal" role="dialog" aria-labelledby="addNewPopupModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" ng-click="formReset();" class="close" data-dismiss="modal">&times;</button>
+                <h3 class="modal-title" id="emailDetailModalLabel">Select Your Plan</h3>
+            </div>
+            <div class="row s--subscription--panel">
+                <div class="row">
+                    <div class="col-md-4 col-xs-12 no-padding-left">
+                        <label class="control-label">Select Term</label>
+                        <select class="form-control" ng-model="sm.subscriptionModel.selectedTerm" ng-selected="o.isDefault == true" ng-options="o as  o.subscriptionTerm.duration + ' ' + o.subscriptionTerm.intervalType for o in sm.subscriptionPlan.terms | orderBy:'subscriptionTerm.duration'"></select>
+                    </div>
+                    <div class="col-md-8 col-xs-12 no-padding-left">
+                        <label class="control-label no-padding">Payment</label>
+                        <div ng-if="sm.subscriptionPlan.pricingType == '@SubscriptionPricingTypes.Flat.ToString()'" class="padding-top-sm">
+                            <span ng-if="sm.subscriptionModel.selectedTerm">
+                                <span class="col-sm-6 col-xs-12 no-padding-left">
+                                    <label class="control control--radio ">
+                                        <input type="radio" ng-model="sm.subscriptionModel.selectedPricing" ng-value="'@UserPricingType.OneTime.ToString()'">
+                                        <label for="onetime">One Time Fee {{sm.subscriptionModel.selectedTerm.oneTimeFee.formatted.withTax}}</label>
+                                        <div class="control__indicator"></div>
+                                    </label>
+                                </span>
+                                <span class="col-sm-6 col-xs-12 no-padding-right">
+                                    <label class="control control--radio ">
+                                        <input type="radio" ng-model="sm.subscriptionModel.selectedPricing" ng-value="'@UserPricingType.Recurring.ToString()'">
+                                        <label for="recurring">Recurring Fee {{sm.subscriptionModel.selectedTerm.recurringFee.formatted.withTax}}</label>
+                                        <div class="control__indicator"></div>
+                                    </label>
+                                </span>
+                            </span>
+
+                        </div>
+                        <div ng-if="sm.subscriptionPlan.pricingType == '@SubscriptionPricingTypes.Term.ToString()'" class="padding-top-sm">
+                            <span ng-if="sm.subscriptionModel.selectedTerm">
+                                <span class="col-sm-6 col-xs-12 no-padding-left">
+                                    <label class="control control--radio ">
+                                        <input type="radio" ng-model="sm.subscriptionModel.selectedPricing" ng-value="'@UserPricingType.OneTime.ToString()'">
+                                        <label for="onetime">One Time Fee {{sm.subscriptionModel.selectedTerm.oneTimeFee.formatted.withTax}}</label>
+                                        <div class="control__indicator"></div>
+                                    </label>
+                                </span>
+                                <span class="col-sm-6 col-xs-12 no-padding-right">
+                                    <label class="control control--radio ">
+                                        <input type="radio" ng-model="sm.subscriptionModel.selectedPricing" ng-value="'@UserPricingType.Recurring.ToString()'">
+                                        <label for="recurring">Recurring Fee {{sm.subscriptionModel.selectedTerm.recurringFee.formatted.withTax}}</label>
+                                        <div class="control__indicator"></div>
+                                    </label>
+                                </span>
+                            </span>
+                        </div>
+                        <div ng-if="sm.subscriptionPlan.pricingType == '@SubscriptionPricingTypes.PerUnit.ToString()'"></div>
+                    </div>
+                    <div class="col-md-12 col-xs-12 no-padding-left">
+                        <p>Sign Up Fee <span ng-bind="sm.subscriptionModel.selectedTerm.signUpFee.formatted.withTax"></span></p>
+                        <p ng-if="sm.subscriptionPlan.orderTriggerType == '@SubscriptionOrderTriggerType.FixedDay'">*Your order will be generated on {{sm.subscriptionPlan.orderTriggerDayOfMonth}} of every {{sm.subscriptionPlan.interval.intervalType}}</p>
+                        <p ng-if="sm.subscriptionPlan.orderTriggerType == '@SubscriptionOrderTriggerType.Rolling'"></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-xs-12 no-padding text-left">
+                        <button class="animate btn-success btn-xl width-full no-margin" ng-click="sm.addSubscriptionToBag(product.recordId, gm.basketResponse.id,gm.basketResponse.displayOrder,1);formReset();" data-dismiss="modal"><i class="fa fa-shopping-cart"></i> Add To Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

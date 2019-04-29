@@ -14,5 +14,6 @@
         public bool NotifyEmail { get; set; }
         public bool NotifySMS { get; set; }
         public bool NotifyPost { get; set; }
+        public bool NotifyNone { get; set; }
     }
 }

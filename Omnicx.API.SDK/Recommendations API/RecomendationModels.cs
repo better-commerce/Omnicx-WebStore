@@ -18,6 +18,9 @@ namespace Omnicx.API.SDK.Recomendation
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using Models;
+    using Omnicx.API.SDK.Recommendations_API.Models;
+    using Omnicx.WebStore.Models.Keys;
+    using Omnicx.API.SDK.Api;
 
     /// <summary>
     /// Models operations.
@@ -1310,5 +1313,12 @@ namespace Omnicx.API.SDK.Recomendation
             return _result;
         }
 
+        public List<RecommendationModel> GetAll()
+        {
+            var apiBase = new ApiBase();           
+            var key = string.Format(CacheKeys.RECOMMEDATION_MODEL_ALL, ConfigKeys.OmnicxDomainId);
+            var result = apiBase.FetchFromCacheOrApi<List<RecommendationModel>>(key, apiUrl: ApiUrls.RecommendationAll,apiBaseUrl: ConfigKeys.MktApiBaseUrl);
+            return result?.Result;
+        }
     }
 }

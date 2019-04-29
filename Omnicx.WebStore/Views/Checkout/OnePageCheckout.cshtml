@@ -1,0 +1,374 @@
+﻿@{
+/*
+    Name: One Page Checkout
+    Purpose: Complete Checkout process in single view
+    Structure: /Views/Checkout/OnePageCheckout.cshtml
+    Contains (Partial Views Used):
+        a-/Views/Shared/_OpcLayout.cshtml               (For Base Structure)
+        b-/Views/Checkout/_DeliveryMethod.cshtml        (Select Delivery Metghod)
+        c-/Views/Checkout/_ShippingAddress.cshtml       (Select Shipping Address)
+        d-/Views/Checkout/_BillingAddress.cshtml        (Select Billing Address)
+        e-/Views/Checkout/_PaymentMethod.cshtml         (Select Payment Method)
+        f-/Views/Checkout/_OrderSummary.cshtml          (Order Summery with order line items and Total amount)
+        g-/Views/Checkout/_AddressView.cshtml           (Address Mopdal for update address)
+        h-/Views/Checkout/_GuestRegistration.cshtml     (Guest Registration if he/she want to register with the store)
+        i-/Views/Checkout/_BasketView.cshtml            (Show Previous Saved Basket as persistent)
+
+    Contained In (Where we Use this View):
+        a-/Views/Basket/Index.cshtml
+    */
+}
+@using Microsoft.Web.Mvc
+@using Omnicx.WebStore.Models.Common
+@using Omnicx.WebStore.Framework.Helpers
+@using Omnicx.WebStore.Core.Controllers
+@using Omnicx.WebStore.Models.Enums
+    @inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<CheckoutViewModel>
+    @{
+        ViewBag.Title = @LT("Checkout.Title.Checkout", "Checkout");
+        var checkoutForm = Html.Angular().ModelFor("ck.model");
+        Layout = "~/Views/Shared/_OpcLayout.cshtml";
+    }
+    @{
+        <div class="container margin-top-sm" ng-controller="checkoutCtrl as ck" ng-cloak>
+            <div ng-cloak class="alert alert-danger" ng-show="ck.basketerror != null">
+                <i class="fa fa-circle"></i><span ng-bind="ck.basketerror"></span>
+            </div>
+            @if (Model.Checkout != null && Model.Checkout.Basket.GrandTotal.Raw.WithTax >= 0)
+            {
+                <div class="row" ng-if="ck.basket.lineItems.length>0">
+                    <div class="col-sm-7 col-md-8 col-lg-8 col-xs-12">
+                        @*LOGIN *@
+                        <div class="row" ng-init="ck.initMethod();ck.oldBasketPopup();">
+                            <div class="col-sm-12 col-xs-12 no-padding whiteContainer">
+                                @if (SessionContext.CurrentUser == null)
+                                {
+                                    <div class="panel panel-default" ng-init="ck.custInfoCheck();" ng-hide="ck.isGuest">
+                                        <div class="panel-heading primary-panel"><i class="fa fa-user"></i> @LT("Checkout.Label.Login", "LOGIN")</div>
+                                        <div class="panel-body no-padding">
+                                            <div class="row">
+                                                <div class="col-sm-12 col-md-6 col-lg-6 col-xs-12" ng-hide="ck.basketContainsSubscription">
+                                                    <form role="form" name="guestForm" class="padding-lt" novalidate ng-submit="ck.ContinueAsGuest(guestForm)">
+                                                        <h5>@LT("Checkout.Text.enterdetail", "GUEST")</h5>
+                                                        <div ng-cloak class="alert alert-danger" ng-show="ck.guestError">
+                                                            <div>
+                                                                <i class="fa fa-circle"></i><span>@LT("Checkout.Text.validemail", "Enter valid email")</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group margin-bottom-sm">
+                                                            <label for="Checkout.Email" class="control-label">@LT("Checkout.Text.emil", "Email")</label>
+                                                            <input class="form-control" ng-model="ck.model.checkout.email" name="Checkout.Email" type="text" placeholder="Email" required="" />
+                                                            @*@checkoutForm.FormGroupFor(x => x.Checkout.Email)*@
+                                                        </div>
+                                                        <div class="form-group margin-bottom-sm">
+                                                            <p class="checkout-text">@LT("Checkout.Label.NeedEmailAddress", "Want to hear from Us?")</p>
+                                                        </div>
+                                                        <div class="col-sm-12 col-xs-12 no-padding">
+                                                            <div class="form-group margin-bottom-sm">
+                                                                <p class="checkout-text">@LT("Checkout.Label.NeedEmailAddress", "Yes, please send me money-off discounts & promotions via")<p>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="col-sm-6 col-xs-6 col-md-6 col-lg-3 no-padding-left">
+                                                                    <label class="control control--checkbox ">
+                                                                        <input type="checkbox" ng-click="ck.model.checkout.notifyNone = false" class="ng-pristine ng-valid ng-untouched ng-empty" ng-model="ck.model.checkout.notifyEmail">
+                                                                        <label for="NewsLetterSubscribe">Email</label>
+                                                                        <div class="control__indicator"></div>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6 col-xs-6 col-md-6 col-lg-3 no-padding-left">
+                                                                    <label class="control control--checkbox ">
+                                                                        <input type="checkbox" ng-click="ck.model.checkout.notifyNone = false" class="ng-pristine ng-valid ng-untouched ng-empty" ng-model="ck.model.checkout.notifySMS">
+                                                                        <label for="NewsLetterSubscribe">SMS</label>
+                                                                        <div class="control__indicator"></div>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6 col-xs-6 col-md-6 col-lg-3 no-padding-left">
+                                                                    <label class="control control--checkbox ">
+                                                                        <input type="checkbox" ng-click="ck.model.checkout.notifyNone = false" class="ng-pristine ng-valid ng-untouched ng-empty" ng-model="ck.model.checkout.notifyPost">
+                                                                        <label for="NewsLetterSubscribe">Post</label>
+                                                                        <div class="control__indicator"></div>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6 col-xs-6 col-md-6 col-lg-3 no-padding-left">
+                                                                    <label class="control control--checkbox ">
+                                                                        <input type="checkbox" ng-click="ck.model.checkout.notifyEmail = ck.model.checkout.notifySMS = ck.model.checkout.notifyPost = false" class="ng-pristine ng-valid ng-untouched ng-empty" ng-model="ck.model.checkout.notifyNone">
+                                                                        <label for="NewsLetterSubscribe">NoThanks</label>
+                                                                        <div class="control__indicator"></div>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-12 col-xs-12 no-padding margin-top-sm">
+                                                            <div class="form-group margin-bottom-sm">
+                                                                <p class="checkout-text">@LT("Checkout.Label.NeedEmailAddress", "We need your email address to send your order and shipping confirmation. We will never share your details with anyone.")</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text-left">
+                                                            <button type="submit" class="animate btn-primary m-button-full" ng-hide="ck.updateEmail==true">@LT("Global.Buttons.Login", "Checkout as a Guest") <i class="fa fa-caret-right"></i></button>
+                                                            <button type="submit" class="animate btn-primary m-button-full" ng-show="ck.updateEmail==true">@LT("Global.Buttons.Login", "Update Guest") <i class="fa fa-caret-right"></i></button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="col-sm-12 col-md-6 col-lg-6 col-xs-12">
+                                                    <form role="form" ng-submit="ck.login(ck.model.login)" method="post" ng-show="ck.alreadyRegistered" novalidate class="padding-sm">
+                                                        <div ng-cloak class="alert alert-danger" ng-show="ck.errorMessage != null">
+                                                            <div ng-repeat="err in ck.errorMessage track by $index">
+                                                                <i class="fa fa-circle"></i><span ng-bind="err"></span>
+                                                            </div>
+                                                        </div>
+                                                        <h5>@LT("Checkout.Text.returningcustomer", "REGISTERED CUSTOMER?")</h5>
+                                                        <div class="form-group margin-bottom-sm">
+                                                            @checkoutForm.FormGroupFor(x => x.Login.Username)
+                                                        </div>
+                                                        <div class="form-group margin-bottom-sm">
+                                                            @checkoutForm.FormGroupFor(x => x.Login.Password)
+                                                        </div>
+                                                        <div class="col-sm-12 col-xs-12 no-padding text-left">
+                                                            <button type="submit" class="animate btn-primary"><span>@LT("Global.Buttons.Login", "Login") <i class="fa fa-caret-right"></i></span></button>
+                                                            <span>OR</span>
+                                                            <button type="button" ng-click="ck.alreadyRegistered=false" class="animate btn-default"><span>@LT("Global.Buttons.Notamember", "Register") <i class="fa fa-caret-right"></i></span></button>
+                                                        </div>
+                                                    </form>
+                                                    <form name="registrationForm" role="form" method="post" ng-submit="ck.registration(ck.model.register)" ng-hide="ck.alreadyRegistered" novalidate class="padding-sm">
+                                                        <div ng-cloak class="alert alert-danger" ng-show="ck.errorMessage != null">
+                                                            <div ng-repeat="err in ck.errorMessage track by $index">
+                                                                <i class="fa fa-circle"></i><span ng-bind="err"></span>
+                                                            </div>
+                                                        </div>
+                                                        <h5>@LT("Checkout.Text.Newcustomer", "NEW CUSTOMER")</h5>
+                                                        <div class="form-group margin-bottom-lg">
+                                                            @checkoutForm.FormGroupFor(x => x.Register.Email)
+                                                        </div>
+                                                        <div class="form-group margin-bottom-lg">
+                                                            @checkoutForm.FormGroupFor(x => x.Register.Password)
+                                                        </div>
+                                                        <div class="form-group margin-bottom-lg">
+                                                            @checkoutForm.FormGroupFor(x => x.Register.ConfirmPassword)
+                                                        </div>
+                                                        <div class="col-sm-12 col-xs-12 no-padding">
+                                                            <div class="form-group margin-bottom-sm">
+                                                                <p class="checkout-text">@LT("Checkout.Label.NeedEmailAddress", "Yes, please send me money-off discounts & promotions via")<p>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="col-sm-3 col-xs-6 no-padding-left">
+                                                                    <label class="control control--checkbox ">
+                                                                        <input type="checkbox" ng-click="ck.model.register.notifyNone = false" class="ng-pristine ng-valid ng-untouched ng-empty" ng-model="ck.model.register.notifyByEmail">
+                                                                        <label for="NewsLetterSubscribe">Email</label>
+                                                                        <div class="control__indicator"></div>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-3 col-xs-6 no-padding-left">
+                                                                    <label class="control control--checkbox ">
+                                                                        <input type="checkbox" ng-click="ck.model.register.notifyNone = false" class="ng-pristine ng-valid ng-untouched ng-empty" ng-model="ck.model.register.notifyBySMS">
+                                                                        <label for="NewsLetterSubscribe">SMS</label>
+                                                                        <div class="control__indicator"></div>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-3 col-xs-6 no-padding-left">
+                                                                    <label class="control control--checkbox ">
+                                                                        <input type="checkbox" ng-click="ck.model.register.notifyNone = false" class="ng-pristine ng-valid ng-untouched ng-empty" ng-model="ck.model.register.notifyByPost">
+                                                                        <label for="NewsLetterSubscribe">Post</label>
+                                                                        <div class="control__indicator"></div>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-3 col-xs-6 no-padding-left">
+                                                                    <label class="control control--checkbox ">
+                                                                        <input type="checkbox" ng-click="ck.model.register.notifyByEmail =ck.model.register.notifyBySMS = ck.model.register.notifyByPost = false" class="ng-pristine ng-valid ng-untouched ng-empty" ng-model="ck.model.register.notifyNone">
+                                                                        <label for="NewsLetterSubscribe">No Thanks</label>
+                                                                        <div class="control__indicator"></div>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-12 col-xs-12 no-padding margin-top-sm">
+                                                            <div class="form-group margin-bottom-sm">
+                                                                <p class="checkout-text">@LT("Checkout.Label.NeedEmailAddress", "We need your email address to send your order and shipping confirmation. We will never share your details with anyone.")</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-12 col-xs-12 no-padding text-left">
+                                                            <button type="submit" class="animate btn-primary"><span>@LT("Global.Buttons.Register", "Register") <i class="fa fa-caret-right"></i></span></button>
+                                                            <span>OR</span>
+                                                            <button type="button" ng-click="ck.alreadyRegistered=true" class="animate btn-default"><span>@LT("Global.Buttons.Alreadyregisterd", "Login Here") <i class="fa fa-caret-right"></i></span></button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default no-margin" ng-hide="!ck.isGuest">
+                                        <div class="panel-heading default-panel"><i class="fa fa-user text-green"></i> @LT("Checkout.Label.Login", "GUEST")</div>
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-sm-6 col-xs-6 text-left">
+                                                    <p class="checkout-user"><strong ng-bind="ck.GuestEmail"></strong></p>
+                                                </div>
+                                                <div class="col-sm-6 col-xs-6 text-right" ng-hide="ck.paymentLinkSend">
+                                                    <span class="checkout-user"><a href="" ng-click="ck.isGuestUser()" class="animate-sm btn-bordered">@LT("Checkout.Label.ClickHere", "CHANGE")</a></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+
+                                    <div class="panel panel-default" ng-init="ck.isGuest=true">
+                                        <div class="panel-heading default-panel"><i class="fa fa-user"></i> @LT("Checkout.Label.Login", "LOGIN") <i class="fa fa-check"></i></div>
+                                        <div class="panel-body no-padding">
+                                            <div class="row" ng-init="ck.isGuest=true">
+                                                <div class="col-sm-6 col-xs-12 text-left">
+                                                    <p class="checkout-user">@LT("Checkout.label.LoggedUser", "Logged in as"): <strong>@SessionContext.CurrentUser.FirstName @SessionContext.CurrentUser.LastName</strong></p>
+                                                    <p class="checkout-user"><strong>@SessionContext.CurrentUser.Email</strong></p>
+                                                </div>
+                                                <div class="col-sm-6 col-xs-12 text-right">
+                                                    <span class="checkout-user"><a href="" ng-click="ck.logout()" class="animate btn-bordered">@LT("Checkout.Label.ClickHere", "CHANGE")</a></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        @*SHIPPING*@
+                        <div class="ac-container">
+                            <div class="row">
+                                <div class="col-sm-12 col-xs-12 no-padding whiteContainer">
+                                    @if (SessionContext.CurrentUser == null)
+                                    {
+                                        <input id="userLogin" name="accordion-1" type="radio" />
+                                    }
+                                    else
+                                    {
+                                        <input id="userLogin" name="accordion-1" type="radio" checked />
+                                    }
+                                    <label class="label-ac" for="userLogin"><i class="fa fa-truck"></i> @LT("Checkout.Label.BillingAdd", "Shipping")</label>
+                                    <article class="ac-large">
+                                        @Html.Partial("~/Views/Checkout/_DeliveryMethod.cshtml")
+                                    </article>
+                                </div>
+                            </div>
+                            @*ADDRESS*@
+                            <div class="row">
+                                <div class="col-sm-12 col-xs-12 no-padding whiteContainer">
+                                    <input id="addressPanel" name="accordion-2" type="radio" />
+                                    <label class="label-ac" for="addressPanel"><i class="fa fa-map-marker"></i> @LT("Checkout.Label.ShippingAddress", "Address")</label>
+                                    <article class="ac-large">
+                                        @Html.Partial("~/Views/Checkout/_Store.cshtml")
+                                        @Html.Partial("~/Views/Checkout/_ShippingAddress.cshtml", @Model.Checkout.ShippingAddress)                                     
+                                        @Html.Partial("~/Views/Checkout/_BillingAddress.cshtml", @Model.Checkout.BillingAddress)
+                                        <div class="box-footer">
+                                            <div class="text-left" ng-show="ck.userAddresses.length>0 && !ck.isClickAndCollect">
+                                                <button type="button" class="animate btn-default m-button-full" data-toggle="modal" data-target="#userAddress-modal" ng-click="ck.addressText='delivery';"><i class="fa fa-home"></i> @LT("Checkout.Label.ChangeDeliveryAddress", "Change Delivery Address")</button>                                                
+                                            </div>
+                                            <div class="text-right">
+                                                <button type="submit" class="animate btn-orange btn-lg m-button-full" ng-click="ck.model.storeAddress.phoneNumber=phoneNumber;ck.continueToSummery(shippingForm,billingForm);" ng-disabled="ck.basket.lineItems==null || ck.basket.lineItems.length<1">
+                                                    @LT("Checkout.Button.Continue", "CONTINUE") <i class="fa fa-caret-right"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
+                            @*ORDER SUMMERY*@
+                            <div class="row">
+                                <div class="col-sm-12 col-xs-12 no-padding whiteContainer">
+                                    <input id="productSummery" name="accordion-3" type="radio" />
+                                    <label class="label-ac" for="productSummery"><i class="fa fa-shopping-basket"></i> @LT("Checkout.Label.OrderSummary", "Order Summary")</label>
+                                    <article class="ac-large">
+                                        @Html.Partial("~/Views/Checkout/_ProductSummary.cshtml")
+                                    </article>
+                                </div>
+                            </div>
+                            @*PAYMENY*@
+                            <div class="row">
+                                <div class="col-sm-12 col-xs-12 no-padding whiteContainer">
+                                    <input id="paymentPanel" name="accordion-4" type="radio" disabled />
+                                    <label class="label-ac" for="paymentPanel"><i class="fa fa-cc-visa"></i> @LT("Checkout.Label.ShippingAddress", "Payment Method")</label>
+                                    <article class="ac-large">
+                                        @Html.Partial("~/Views/Checkout/_PaymentMethod.cshtml")
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-5 col-md-4 col-lg-4 col-xs-12 m--no-padding">
+                        <div class="whiteContainer summeryBorder no-padding">
+                            @Html.Partial("~/Views/Checkout/_OrderSummary.cshtml")
+                        </div>
+                    </div>
+                </div>
+                @Html.Partial("~/Views/Checkout/_AddressView.cshtml")
+                if (SessionContext.CurrentUser == null)
+                {
+                    @Html.Partial("~/Views/Checkout/_GuestRegistration.cshtml", new LoginRegistrationModel { Registration = Model.Register })
+                }
+            }
+                       
+            @if (!Model.Checkout.Basket.IsQuote)
+            {
+                @Html.Partial("~/Views/Checkout/_BasketView.cshtml", Model.Checkout.Basket)
+            }   
+            <div class="row" ng-hide="ck.basket.lineItems.length>0">
+                <div class="col-sm-12 col-xs-12 text-center no-iten-view">
+                    <i class="fa fa-shopping-bag"></i>
+                    <h3 class="error-h4">@LT("YourBag.Text.NoItem", "Basket Not Found")</h3>
+                    <p class="message-desc">@LT("YourBag.Text.Basket", "The Basket you are looking for has already been") <strong>@LT("YourBag.Text.Basket", "Closed / Converted")</strong> @LT("YourBag.Text.Or", "or") <strong>@LT("YourBag.Text.exist", "does not exist")</strong>.</p>
+                    <p><a href="/" class="animate btn-bordered"><i class="fa fa-caret-left"></i>@LT("YourBag.Text.ContinueShopping", "Continue Shopping")</a></p>
+                </div>
+            </div> 
+        </div>
+    }
+
+
+    @section scripts{
+        <script>
+        var signIn = '@(Html.BuildUrlFromExpression<AccountController>(c => c.SignIn(null)))';
+        var converToOrder = '@(Html.BuildUrlFromExpression<CheckoutController>(c => c.ConvertToOrder(null)))';
+        var custGridUrl = '@(Html.BuildUrlFromExpression<AccountController>(c => c.GetCustomerAddress()))';
+        var addToBasket = '@(Html.BuildUrlFromExpression<BasketController>(c => c.AddtoBasket(null)))';
+        var applyPromoCode = '@(Html.BuildUrlFromExpression<BasketController>(c => c.ApplyPromoCode(null,null)))';
+        var removePromoCode = '@(Html.BuildUrlFromExpression<BasketController>(c => c.RemovePromoCode("","")))';
+        var searchPhysicalStore = '@(Html.BuildUrlFromExpression<CheckoutController>(c => c.GetClickAndCollectOptions(null, null)))';
+        var nominatedDelivery = '@(Html.BuildUrlFromExpression<CheckoutController>(c => c.GetNominatedDelivery(null,null)))';
+        var guestCheckout = '@(Html.BuildUrlFromExpression<CheckoutController>(c => c.GuestCheckout(null)))';
+        var logout = '@(Html.BuildUrlFromExpression<CheckoutController>(c => c.Logout()))';
+        var validateGuestPassword = '@(Html.BuildUrlFromExpression<CheckoutController>(c => c.ValidateGuestPassword(null)))';
+        var getWishlistProducts = '@(Html.BuildUrlFromExpression<CheckoutController>(c => c.GetWishlistProducts()))';
+        var addProductToWishlist = '@(Html.BuildUrlFromExpression<CheckoutController>(c => c.AddProductToWishlist("")))';
+        var removeWishList = '@(Html.BuildUrlFromExpression<CheckoutController>(c => c.RemoveWishList("",true)))';
+        var validateLoginPassword = '@(Html.BuildUrlFromExpression<AccountController>(c => c.SignIn(null)))';
+        var addPersistentBasket = '@(Html.BuildUrlFromExpression<CommonController>(c => c.AddPersistentBasket(new Guid(), new Guid())))';
+        var UpdateBasketDeliveryAddress = '@(Html.BuildUrlFromExpression<CheckoutController>(c => c.UpdateBasketDeliveryAddress(null)))';
+        var savedBaskets = '@(Html.BuildUrlFromExpression<BasketController>(c => c.GetSavedBaskets()))';
+        var register = '@(Html.BuildUrlFromExpression<AccountController>(c => c.Registration(null)))';
+        var newsletter = '@(Html.BuildUrlFromExpression<AccountController>(c => c.NewsletterSubscription(null)))';
+        window.app.constant('checkoutConfig',{
+            signIn : signIn,
+            converToOrder : converToOrder,
+            custGridUrl: custGridUrl,
+            addToBasket: addToBasket,
+            applyPromoCode : applyPromoCode,
+            removePromoCode: removePromoCode,
+            searchPhysicalStore : searchPhysicalStore,
+            nominatedDelivery : nominatedDelivery,
+            logout : logout,
+            guestCheckout : guestCheckout,
+            validateGuestPassword : validateGuestPassword,
+            getWishlistProducts : getWishlistProducts,
+            addProductToWishlist : addProductToWishlist,
+            removeWishList : removeWishList,
+            validateLoginPassword : validateLoginPassword,
+            addPersistentBasket: addPersistentBasket,
+            UpdateBasketDeliveryAddress: UpdateBasketDeliveryAddress,
+            savedBaskets: savedBaskets,
+            register: register,
+            klarna: 'Klarna',
+            paymentLinkSent: 'PaymentLinkSent',
+            @*shipClickAndCollect:'@ShippingTypes.ClickAndCollect.ToString()',*@
+            shipflat: '@ShippingCostMethods.FlatRate.ToString()',
+            newsletter: newsletter,
+            shipClickAndCollect: 'Pickup'
+        });
+        window.app.constant('model', @Html.JsonFor(Model));
+        </script>
+    }

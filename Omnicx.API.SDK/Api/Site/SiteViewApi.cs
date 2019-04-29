@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using Omnicx.API.SDK.Api.Infra;
 using Omnicx.WebStore.Models.Keys;
+using System.Linq;
+using System;
 
 namespace Omnicx.API.SDK.Api.Site
 {
@@ -38,9 +40,39 @@ namespace Omnicx.API.SDK.Api.Site
         {
             var sessionContext = DependencyResolver.Current.GetService<ISessionContext>();
             var key = string.Format(CacheKeys.SITEVIEW_MODEL_BY_SLUG, Utils.GetSlugFromUrl(), sessionContext.CurrentSiteConfig?.RegionalSettings?.DefaultLanguageCulture, Utils.GetBrowserInfo()?.IsMobileDevice, sessionContext.CurrencyCode);
-
+           
             var task= await  FetchFromCacheOrApiAsync<SiteViewModel>(key, ApiUrls.SiteViewComponents, slug, Method.POST, "slug", ParameterType.QueryString, "text/plain");
+            //Check PageScheduler
+            var siteView = task.Result;
+            if (siteView != null)
+            {
+                if (task.Result.ScheduleItems != null && siteView.ScheduleItems.Any())
+                {
+                    var activeSchedule = siteView.ScheduleItems.FirstOrDefault(x => x.From <= DateTime.UtcNow && (x.NeverExpire || x.To >= DateTime.UtcNow));
+                    if (activeSchedule == null)
+                    {
+                        activeSchedule = siteView.ScheduleItems.FirstOrDefault(x => x.VersionNo== siteView.VersionNo);
+                        if(activeSchedule != null){
+                            activeSchedule.VersionNo = 0;
+                        }
+                    }
+                    if (activeSchedule != null)
+                    {
+                        if (activeSchedule.VersionNo != siteView.VersionNo)
+                        {
+                            var keyRemove = string.Format(CacheKeys.SITEVIEW_REMOVE_BY_SLUG, siteView.Slug, ConfigKeys.OmnicxDomainId);
+                            CacheManager.RemoveByPattern(keyRemove);
+                            task = await FetchFromCacheOrApiAsync<SiteViewModel>(key, ApiUrls.SiteViewComponents, slug, Method.POST, "slug", ParameterType.QueryString, "text/plain");
+                        }
+                    }
+                }
+            }
+        
             return task;            
+        }
+        public ResponseModel<SiteViewModel> GetSiteViewById(string id, int versionNo, string langCulture)
+        {
+            return CallApi<SiteViewModel>(string.Format(ApiUrls.SiteViewById, id, versionNo, langCulture), "");
         }
         public ResponseModel<FeedModel> GetFeedLink(string slug)
         {

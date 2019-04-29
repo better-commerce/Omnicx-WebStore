@@ -145,7 +145,8 @@ namespace Omnicx.WebStore.Core.Controllers
         }
         public ActionResult BlogDetail(string url)
         {
-            var blog = _blogApi.BlogDetail(Sanitizer.GetSafeHtmlFragment(url));
+            var slug = SiteUtils.GetSlugFromUrl();
+            var blog = _blogApi.BlogDetail(Sanitizer.GetSafeHtmlFragment(slug));
             if (blog.Result == null && blog.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
                 return RedirectToPageNotFound();

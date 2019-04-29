@@ -1,0 +1,51 @@
+﻿@{
+/*
+    Name: Site Nav FOr Mobile
+    Purpose: List all the Navigation links for Mobile View
+    Structure: /Views/Account/_MobileSideNav.cshtml
+    Contains (Partial Views Used):
+
+    Contained In (Where we Use this View):
+        a-/Views/Account/Wishlist.cshtml
+        b-/Views/Account/ReturnRequest.cshtml
+        c-/Views/Account/ReturnHistory.cshtml
+        d-/Views/Account/PasswordChange.cshtml)
+        e-/Views/Account/OrderHistory.cshtml
+        f-/Views/Account/OrderDetail.cshtml
+        g-/Views/Account/MyActivity.cshtml
+        h-/Views/Account/MyAccount.cshtml
+        i-/Views/Account/AddressBook.cshtml   
+        j-/Views/B2B/Users.cshtml
+        k-/Views/B2B/Quotes.cshtml
+        l-/Views/B2B/MyCompany.cshtml
+    */
+}
+<ul class="nav nav-pills border-bottom-blog">
+    <li ng-class="{'active' :'@ViewBag.Title'== 'MyAccount' }">
+        <a href="@Url.Action("myaccount", "account")" class="color-black" title="My Account"><i class="fa fa-user"></i></a>
+    </li>
+    <li ng-class="{'active' :'@ViewBag.Title'== 'MyActivity' }">
+        <a href="@Url.Action("myactivity", "account")" class="color-black"><i class="fa fa-clock-o"></i></a>
+    </li>
+    <li ng-class="{'active' :'@ViewBag.Title'== 'MySubscriptions' }">
+        <a href="@Url.Action("SubscriptionHistory", "account")" class="color-black"><i class="fa fa-shopping-cart"></i></a>
+    </li>
+    <li ng-class="{'active' :'@ViewBag.Title'== 'Orders'|| '@ViewBag.Title'=='Return Request'|| '@ViewBag.Title' == 'CustomerOrder'}">
+        <a href="@Url.Action("orderhistory", "account")" class="color-black" title="Order History"><i class="fa fa-shopping-cart"></i></a>
+    </li>
+    <li ng-class="{'active' : '@ViewBag.Title' == 'Return History'}">
+        <a href="@Url.Action("returnhistory", "account")" class="color-black" title="Return History"><i class="fa fa-external-link-square"></i></a>
+    </li>
+    <li ng-class="{'active' :'@ViewBag.Title'== 'Wishlist'}">
+        <a href="@Url.Action("wishlist", "account")" class="color-black" title="My Wishlist"><i class="fa fa-heart"></i></a>
+    </li>
+    <li ng-class="{'active' :'@ViewBag.Title'=='AddressBook'}">
+        <a href="@Url.Action("addressbook", "account")" class="color-black" title="Address Book"><i class="fa fa-book"></i></a>
+    </li>
+    <li ng-class="{'active' :'@ViewBag.Title'=='Change Password'}">
+        <a href="@Url.Action("PasswordChange" , "account")" class="color-black" title="Change Password"><i class="fa fa-key"></i></a>
+    </li>
+    <li>
+        <a href="@Url.Action("logout", "account")" class="color-black" title="Logout"><i class="fa fa-sign-out"></i></a>
+    </li>
+</ul>

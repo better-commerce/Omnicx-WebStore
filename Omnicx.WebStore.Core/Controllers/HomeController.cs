@@ -87,6 +87,20 @@ namespace Omnicx.WebStore.Core.Controllers
             }
             return true;
         }
+
+        public bool UpdateLanCultureSetting(string language)
+        {
+            if (Request.Cookies[Constants.COOKIE_LANGCULTURE] != null && Request.Cookies[Constants.COOKIE_LANGCULTURE].Value == language)
+            {
+                language = Request.Cookies[Constants.COOKIE_LANGCULTURE].Value;
+            }
+            else
+            {
+                Response.Cookies[Constants.COOKIE_LANGCULTURE].Value = language;
+                Response.Cookies[Constants.COOKIE_LANGCULTURE].Expires = DateTime.Today.AddDays(1); // add expiry time
+            }
+            return true;
+        }
         //public bool UpdateCurrencySetting(DefaultSettingModel defaultSetting)
         //{
         //    _sessionContext.DefaultSetting = defaultSetting;

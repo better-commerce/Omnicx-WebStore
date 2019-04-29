@@ -26,6 +26,8 @@ namespace Omnicx.WebStore.Models.Site
         public string MetaKeywords { get; set; }
         public string CanonicalTags { get; set; }
         public int RedirectTypeValue { get; set; }
+        public int VersionNo { get; set; }
+        public List<ScheduleItemModel> ScheduleItems { get; set; }
 
     }
     [Serializable]
@@ -48,5 +50,12 @@ namespace Omnicx.WebStore.Models.Site
         public List<BlogModel> Blogs { get; set; }
         public string Link { get; set; }
         public int DisplayOrder { get; set; }
+        public string ProductListDisplayType { get; set; }
+        public string CategoryListDisplayType { get; set; }
+        public string BrandListDisplayType { get; set; }
+        public string ProductEnableButton { get; set; }
+        public string CategoryEnableButton { get; set; }
+        public string BrandEnableButton { get; set; }
+
     }
 }

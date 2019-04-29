@@ -16,7 +16,15 @@ namespace Omnicx.API.SDK.Api.Commerce
         public ResponseModel<List<StoreModel>> CheckStoreStockAvailability(string stockCode, string postCode)
         {
             var request = new StoreStockRequest { StockCode = stockCode, DestinationPostCode = postCode, OrgId = ConfigKeys.OmnicxOrgId };
-            return CallApi<List<StoreModel>>(ApiUrls.StoreStockAvailability, JsonConvert.SerializeObject(request), Method.POST, apiBaseUrl : ConfigKeys.OmsApiBaseUrl);
+            return CallApi<List<StoreModel>>(string.Format(ApiUrls.FindStockInStore,postCode, stockCode,request.OrgId), "", Method.GET, apiBaseUrl : ConfigKeys.OmsApiBaseUrl);
+        }
+        public ResponseModel<List<StoreModel>> FindNearestStore(string postCode)
+        {
+            return CallApi<List<StoreModel>>(string.Format(ApiUrls.FindNearestStore,postCode), "", Method.GET, apiBaseUrl: ConfigKeys.OmsApiBaseUrl);
+        }
+        public ResponseModel<StoreModel> StoreDetail(int id)
+        {
+            return CallApi<StoreModel>(string.Format(ApiUrls.StoreDetail, id), "", Method.GET, apiBaseUrl: ConfigKeys.OmsApiBaseUrl);
         }
     }
 }

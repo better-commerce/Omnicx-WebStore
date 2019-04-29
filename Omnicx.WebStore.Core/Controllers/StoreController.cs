@@ -1,5 +1,6 @@
 ﻿using Omnicx.API.SDK.Api.Commerce;
 using Omnicx.WebStore.Core.Controllers;
+using Omnicx.WebStore.Models.Keys;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,19 @@ namespace Omnicx.WebStore.Core.Controllers
         {
             var result = _storeRepository.CheckStoreStockAvailability(stockCode, postCode);
             return JsonSuccess(result.Result, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult FindNearestStore(string postCode)
+        {
+            var result = _storeRepository.FindNearestStore(postCode);
+            return JsonSuccess(result.Result, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Detail(int id)
+        {
+            var result = _storeRepository.StoreDetail(id);
+            if(result.Result == null)
+                return RedirectToAction("StoreLocator", "Common");
+            return View(CustomViews.STORE_DETAIL, result.Result);
         }
     }
 }

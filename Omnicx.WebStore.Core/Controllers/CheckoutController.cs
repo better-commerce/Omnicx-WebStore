@@ -51,8 +51,12 @@ namespace Omnicx.WebStore.Core.Controllers
         // GET: Checkout
         public virtual ActionResult OnePageCheckout(string basketId)
         {
+            var basket = _basketApi.GetBasketData(basketId)?.Result;
+            _basketApi.PopulateDeliveryPlans(ref basket, "index");
+
             var model = GetCheckoutData(basketId);
-            if(model==null)
+
+            if (model==null)
                 return   RedirectToAction("BasketNotFound", "Common");            
             return View(CustomViews.ONE_PAGE_CHECKOUT, model);
         }
@@ -70,12 +74,19 @@ namespace Omnicx.WebStore.Core.Controllers
             {
                 pay.CardInfo.Amount = checkout.BalanceAmount.Raw.WithTax;
             }
+            if(checkout.Basket.ShippingMethods != null && checkout.Basket.ShippingMethods.Count > 0)
+            {
+                foreach(var shipMethod in checkout.Basket.ShippingMethods)
+                {
+                    shipMethod.ExpectedDeliveryDate = DateTime.Today.Date.AddDays(shipMethod.ExpectedDaysToDeliver);
+                }
+            }
             checkout.LanuguageCode = _sessionContext.CurrentSiteConfig.RegionalSettings.DefaultLanguageCulture;
             checkout.CurrencyCode = _sessionContext.CurrentSiteConfig.RegionalSettings.DefaultCurrencyCode;
             var result = _configApi.GetConfig();
             var data = result.Result;
             //checkout.Basket.shippingMethods = 0  is simpl check this implementation later
-            data.ShippingCountries = data.ShippingCountries.Where(x => checkout.Basket.shippingMethods.Any(y => y.CountryCode == x.TwoLetterIsoCode) || checkout.Basket.shippingMethods.Count() == 0).Distinct().ToList();
+            data.ShippingCountries = data.ShippingCountries.Where(x => checkout.Basket.ShippingMethods.Any(y => y.CountryCode == x.TwoLetterIsoCode) || checkout.Basket.ShippingMethods.Count() == 0).Distinct().ToList();
             var model = new CheckoutViewModel
             {
                 Checkout = checkout,
@@ -129,16 +140,27 @@ namespace Omnicx.WebStore.Core.Controllers
         }
         public ActionResult UpdateBasketDeliveryAddress(CheckoutModel checkout)
         {           
-            if(checkout.SelectedShipping.Type == ShippingTypes.CollectPlus || checkout.SelectedShipping.Type == ShippingTypes.ClickAndCollect || checkout.SelectedShipping.Type == ShippingTypes.Shutl)
-            {
-                checkout.ShippingAddress = null;
-            }
+            //if(checkout.SelectedShipping.Type == ShippingTypes.CollectPlus || checkout.SelectedShipping.Type == ShippingTypes.ClickAndCollect || checkout.SelectedShipping.Type == ShippingTypes.Shutl)
+            //{
+            //    checkout.ShippingAddress = null;
+            //}
             var response = _checkoutApi.UpdateBasketDeliveryAddress(Sanitizer.GetSafeHtmlFragment(checkout.BasketId), checkout);
             
             return JsonSuccess(new { response = response, BasketStage = BasketStage.ShippingAddressProvided.GetHashCode() }, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult ConvertToOrder(CheckoutModel checkout)
+        public ActionResult UpdateBasketDeliveryInstruction(string basketId, string deliveryInstruction)
+        {
+            if (!string.IsNullOrEmpty(basketId) && !string.IsNullOrEmpty(deliveryInstruction))
+            {
+                var feildValue = new UpdateFieldModel { FieldValue= deliveryInstruction };
+                var resp = _checkoutApi.UpdateBasketDeliveryInstruction(Sanitizer.GetSafeHtmlFragment(basketId), feildValue);
+                return JsonSuccess(resp, JsonRequestBehavior.AllowGet);
+            }
+            return JsonSuccess("", JsonRequestBehavior.AllowGet);
+        }
+
+        public virtual ActionResult ConvertToOrder(CheckoutModel checkout)
         {
 
             if(!string.IsNullOrEmpty(checkout.CompanyId) && _sessionContext.CurrentUser == null && checkout.CompanyId != Guid.Empty.ToString())
@@ -218,7 +240,7 @@ namespace Omnicx.WebStore.Core.Controllers
                 paymentResponse.BalanceAmount = paymentResult.Result?.BalanceAmount;
                 if (paymentResponse.BalanceAmount.Raw.WithTax == 0)
                 {
-                    SiteUtils.ResetBasketCookie();
+                    SiteUtils.ResetBasketCookieAndSession();
                 }
             }
             else
@@ -293,11 +315,11 @@ namespace Omnicx.WebStore.Core.Controllers
             int lineId = 1;
             foreach(var item in basket.Result.LineItems)
             {
-                var line = new DeliveryItemLine { LineId = lineId, StockCode = item.StockCode, Qty = item.Qty };
+                var line = new DeliveryItemLine { StockCode = item.StockCode, Qty = item.Qty };
                 request.DeliveryItems.Add(line);
                 lineId++;
             }
-            var stores = _shippingApi.GetShippingPlans(request);
+            var stores = _shippingApi.GetClickAndCollectStores(request);
             return JsonSuccess(stores.Result, JsonRequestBehavior.AllowGet);
         }
         public ActionResult GetNominatedDelivery(string startDate, ShippingModel shipMethod)
@@ -551,12 +573,23 @@ namespace Omnicx.WebStore.Core.Controllers
             return JsonSuccess(response.Result, JsonRequestBehavior.AllowGet);
         }
 
-        [Authorize]
+       
         public ActionResult RemoveWishList(string id,bool isSaveForLater=true)
         {
-            _customerRepository.RemoveWishList(_sessionContext.CurrentUser.UserId.ToString(), Sanitizer.GetSafeHtmlFragment(id), isSaveForLater);
-            var response = _customerRepository.GetWishlist(_sessionContext.CurrentUser.UserId.ToString(), isSaveForLater);
-            return JsonSuccess(response.Result, JsonRequestBehavior.AllowGet);
+            if (_sessionContext.CurrentUser != null && _sessionContext.CurrentUser.UserId !=null && _sessionContext.CurrentUser.UserId != Guid.Empty)
+            {
+                var customerId = _sessionContext.CurrentUser.UserId.ToString();
+                var key = string.Format(CacheKeys.WishList, customerId);
+                if (System.Web.HttpContext.Current.Session[key] != null)
+                {
+                    System.Web.HttpContext.Current.Session[key] = null;
+
+                }
+                _customerRepository.RemoveWishList(_sessionContext.CurrentUser.UserId.ToString(), Sanitizer.GetSafeHtmlFragment(id), isSaveForLater);
+                var response = _customerRepository.GetWishlist(_sessionContext.CurrentUser.UserId.ToString(), isSaveForLater);
+                return JsonSuccess(response.Result, JsonRequestBehavior.AllowGet);
+            }
+            return JsonSuccess(false, JsonRequestBehavior.AllowGet);
         }
         public ActionResult UpdateUserToBasket(CheckoutModel model)
         {
@@ -576,6 +609,65 @@ namespace Omnicx.WebStore.Core.Controllers
                 }
             }
             return JsonSuccess(responseresult, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult WizardCheckout(string basketId)
+        {
+            var model = GetCheckoutData(basketId);
+            if (model == null)
+            {
+                return RedirectToAction("BasketNotFound", "Common");
+            }
+            return View(CustomViews.WIZARD_CHECKOUT, model);
+        }
+
+        public ActionResult WizardCheckoutDelivery(string basketId)
+        {
+            var model = GetCheckoutData(basketId);
+            if (model == null)
+            {
+                return RedirectToAction("BasketNotFound", "Common");
+            }
+            return View(CustomViews.WIZARD_CHECKOUT_DELIVERY, model);
+        }
+        public ActionResult WizardCheckoutBilling(string basketId)
+        {
+            var model = GetCheckoutData(basketId);
+            if (model == null)
+            {
+                return RedirectToAction("BasketNotFound", "Common");
+            }
+            return View(CustomViews.WIZARD_CHECKOUT_BILLING, model);
+        }
+
+        //HC CHECKOUT JOURNEY SCREENS
+        public ActionResult HotelCheckout(string basketId)
+        {
+            var model = GetCheckoutData(basketId);
+            if (model == null)
+            {
+                return RedirectToAction("BasketNotFound", "Common");
+            }
+            return View(CustomViews.HOTEL_CHECKOUT, model);
+        }
+
+        public ActionResult HotelCheckoutDelivery(string basketId)
+        {
+            var model = GetCheckoutData(basketId);
+            if (model == null)
+            {
+                return RedirectToAction("BasketNotFound", "Common");
+            }
+            return View(CustomViews.HOTEL_CHECKOUT_DELIVERY, model);
+        }
+        public ActionResult HotelCheckoutBilling(string basketId)
+        {
+            var model = GetCheckoutData(basketId);
+            if (model == null)
+            {
+                return RedirectToAction("BasketNotFound", "Common");
+            }
+            return View(CustomViews.HOTEL_CHECKOUT_BILLING, model);
         }
     }
 }

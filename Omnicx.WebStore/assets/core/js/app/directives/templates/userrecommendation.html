@@ -1,0 +1,58 @@
+﻿<div class="row maxHeight" >
+    <div class="col-sm-12 col-xs-12 tagScroll">
+        <a  href="/recomendation?uid={{userId}}&type={{recommendTypes.Personalised}}&noofitems={{noOfItems}}" ng-class="type==recommendTypes.Personalised?'active':''" class="tags">
+            <img ng-src="https://devocxblob.blob.core.windows.net/demostore/products/77S520_48_BLU.jpg" alt="Personalised" />            
+            <strong>Personalised</strong>
+        </a>
+        <a href="/recomendation?uid={{userId}}&type={{recommendTypes.Order}}&noofitems={{noOfItems}}"  ng-class="type==recommendTypes.Order?'active':''" class="tags" >
+            <img src="https://devocxblob.blob.core.windows.net/demostore/products/75B492XX_94_OCHRE.jpg" alt="Based on your orders" />
+            <strong>Based on your orders</strong>
+        </a>
+        <a href="/recomendation?uid={{userId}}&type={{recommendTypes.Promotion}}&noofitems={{noOfItems}}" ng-class="type==recommendTypes.Promotion?'active':''" class="tags" >
+            <img src="https://devocxblob.blob.core.windows.net/demostore/products/73726.jpg" alt="Promotions" />
+            <strong>Promotions</strong>                        '
+        </a>
+        <a href="/recomendation?uid={{userId}}&type={{recommendTypes.NewForYou}}&noofitems={{noOfItems}}" ng-class="type==recommendTypes.NewForYou?'active':''" class="tags">
+            <img src="https://devocxblob.blob.core.windows.net/demostore/products/73726.jpg" alt="New For You" />
+            <strong>New For You</strong>
+        </a>
+        <a href="/recomendation?uid={{userId}}&type={{recommendTypes.Popular}}&noofitems={{noOfItems}}" ng-class="type==recommendTypes.Popular?'active':''" class="tags" >
+            <img src="https://devocxblob.blob.core.windows.net/demostore/products/73726.jpg" alt="Popular" />
+            <strong>Popular</strong>
+        </a>
+        <!--<a href="" ng-class="type==recommendTypes.RecentView?'active':''" class="tags" ng-click="getRecommendations(recommendTypes.RecentView)">
+            <img src="https://devocxblob.blob.core.windows.net/demostore/products/73726.jpg" alt="Recently Viewed" />
+            <strong>Recently Viewed</strong>
+        </a>-->
+    </div>
+    <div class="col-sm-12 col-xs-12 gridView">
+        <div ng-repeat="prod in recommendProducts" class="col-md-5ths col-sm-5ths col-xs-5ths col-lg-5ths resultContainerRelated ng-scope">
+            <div class="product-container-panel">
+                <div class="imagePanel">
+                    <a ng-href="/{{prod.slug}}">
+                        <span class="tooltiptext ng-binding"></span>
+                        <img ng-src="{{prod.image}}" alt="" class="image1">
+                    </a>
+                </div>
+                <div class="dataPanel">
+                    <div class="ribbon-info">
+                        <a ng-href="/{{prod.slug}}">
+                            <span class="ng-binding" ng-bind="prod.name"></span>
+                        </a>
+                    </div>
+                    <div>
+                        <span><strong>SKU: </strong><span class="ng-binding" ng-bind="prod.sku"></span></span>
+                    </div>
+                    <div class="price-info">
+                        <div class="col-sm-8 col-xs-12 no-padding">
+                            <h3>
+                                <span class="ng-binding" ng-bind="prod.price.formatted.withTax"></span>
+                                <span class="sml ng-binding" ng-bind="prod.price.formatted.withTax"></span>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

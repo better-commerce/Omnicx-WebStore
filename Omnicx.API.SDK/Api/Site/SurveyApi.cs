@@ -1,9 +1,11 @@
 ﻿using Newtonsoft.Json;
 using Omnicx.WebStore.Models;
 using Omnicx.WebStore.Models.Common;
+using Omnicx.WebStore.Models.Keys;
 using Omnicx.WebStore.Models.Site;
 using RestSharp;
 using System;
+using System.Collections.Generic;
 
 namespace Omnicx.API.SDK.Api.Site
 {
@@ -11,7 +13,7 @@ namespace Omnicx.API.SDK.Api.Site
     {
         public ResponseModel<SurveyModel> GetSurvey(Guid surveyId)
         {
-            return CallApi<SurveyModel>(string.Format(ApiUrls.Survey, surveyId), "", Method.GET);
+            return CallApi<SurveyModel>(string.Format(ApiUrls.Survey, surveyId), "", Method.GET, apiBaseUrl: ConfigKeys.MktApiBaseUrl, isAuthenticationEnabled: true);
         }
 
         public ResponseModel<SurveyModel> GetSurveyByCode(string surveyCode)
@@ -23,16 +25,18 @@ namespace Omnicx.API.SDK.Api.Site
         {
             return CallApi<SurveyModel>(string.Format(ApiUrls.SurveyProfile, surveyProfileId), "", Method.GET);
         }
-
-        public ResponseModel<BoolResponse> SaveAnswer(Guid visitorId, Guid userId, Guid surveyId, Guid questionId, string selectedAnswer)
+        
+        public ResponseModel<BoolResponse> SaveAnswers(SurveyAnswerModel surveyAnswer)
         {
-            //return CallApi<Survey>(string.Format(ApiUrls.Survey, surveyProfileId), "", Method.GET);
-            throw new NotImplementedException();
+            return CallApi<BoolResponse>(string.Format(ApiUrls.SurveySaveAnswer), JsonConvert.SerializeObject(surveyAnswer), Method.POST, apiBaseUrl: ConfigKeys.MktApiBaseUrl, isAuthenticationEnabled: true);
         }
-
-        public ResponseModel<BoolResponse> SaveAnswers(SurveyProfileModel surveyProfile)
+        public ResponseModel<List<SurveyAnswerModel>> UserResponse(string userName, Guid surveyId)
         {
-            return CallApi<BoolResponse>(string.Format(ApiUrls.SurveySaveAllAnswers), JsonConvert.SerializeObject(surveyProfile), Method.POST);
+            return CallApi<List<SurveyAnswerModel>>(string.Format(ApiUrls.SurveyUserResponse, userName, surveyId), "", Method.GET, apiBaseUrl: ConfigKeys.MktApiBaseUrl, isAuthenticationEnabled: true);
+        }
+        public ResponseModel<List<SurveyToolData>> SurveyToolBoxData()
+        {
+            return CallApi<List<SurveyToolData>>(string.Format(ApiUrls.ToolboxDataUrl, ConfigKeys.OmnicxOrgId, ConfigKeys.OmnicxDomainId), "", Method.GET, apiBaseUrl: ConfigKeys.BussinessHubApiBaseUrl, isAuthenticationEnabled: true);
         }
     }
 }

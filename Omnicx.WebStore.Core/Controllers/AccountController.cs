@@ -23,6 +23,8 @@ using Omnicx.WebStore.Core.Social;
 using Omnicx.WebStore.Models.Keys;
 using Omnicx.WebStore.Models.Enums;
 using System.Web;
+using Omnicx.API.SDK.Api.Site;
+using Omnicx.WebStore.Models.Commerce.Subscription;
 
 namespace Omnicx.WebStore.Core.Controllers
 {
@@ -34,8 +36,10 @@ namespace Omnicx.WebStore.Core.Controllers
         private readonly IConfigApi _configApi;
         private readonly IBasketApi _basketApi;
         private readonly ISocialLoginService _socialService;
+        private readonly ISurveyApi _surveyApi;
         public AccountController(IAuthenticationService authenticationService, 
-            ICustomerApi customerRepository, IOrderApi orderRepository, IConfigApi configApi, IBasketApi basketApi, ISocialLoginService socialService)
+            ICustomerApi customerRepository, IOrderApi orderRepository, IConfigApi configApi, IBasketApi basketApi, ISocialLoginService socialService,
+            ISurveyApi surveyApi)
         {
             _authenticationService = authenticationService;
             _customerRepository = customerRepository;
@@ -43,6 +47,7 @@ namespace Omnicx.WebStore.Core.Controllers
             _configApi = configApi;
             _basketApi = basketApi;
             _socialService = socialService;
+            _surveyApi = surveyApi;
         }
         // GET: Account
 
@@ -85,16 +90,23 @@ namespace Omnicx.WebStore.Core.Controllers
 
         public ActionResult RemoveWishList(string id)
         {
-            var customerId = _sessionContext.CurrentUser.UserId.ToString();
-            if (_sessionContext.CurrentUser != null)
-            {               
-                var key = string.Format(CacheKeys.WishList, customerId);
-                System.Web.HttpContext.Current.Session[key] = null;
+            if (_sessionContext.CurrentUser != null && _sessionContext.CurrentUser.UserId != null && _sessionContext.CurrentUser.UserId != Guid.Empty)
+            {
+                var customerId = _sessionContext.CurrentUser.UserId.ToString();
+                if (_sessionContext.CurrentUser != null)
+                {
+                    var key = string.Format(CacheKeys.WishList, customerId);
+                    System.Web.HttpContext.Current.Session[key] = null;
+                }
+                var resp = _customerRepository.RemoveWishList(customerId, Sanitizer.GetSafeHtmlFragment(id), false);
             }
-                //var customerId = _sessionContext.CurrentUser.UserId.ToString();
-
-            var resp = _customerRepository.RemoveWishList(customerId, Sanitizer.GetSafeHtmlFragment(id), false);
             return RedirectToAction("Wishlist");
+        }
+        [CustomAuthorizeAttribute]
+        public ActionResult SurveyResponse()
+        {
+            var result = _surveyApi.UserResponse(_sessionContext.CurrentUser.Username, Guid.Empty);            
+            return View(result.Result);
         }
         [CustomAuthorizeAttribute]
         public ActionResult MyAccount()
@@ -107,6 +119,7 @@ namespace Omnicx.WebStore.Core.Controllers
             var response = _customerRepository.GetUserdetailsById<CustomerDetailModel>(userId);
             model.CustomerDetail = response.Result;
             model.CustomerDetail.BirthDate = model.CustomerDetail.DayOfBirth + "/" + model.CustomerDetail.MonthOfBirth + "/" + model.CustomerDetail.YearOfBirth;
+            SetDataLayerVariables(model, WebhookEventTypes.CustomerProfileViewed);
             return View(CustomViews.MY_ACCOUNT, model);            
         }
 
@@ -134,11 +147,11 @@ namespace Omnicx.WebStore.Core.Controllers
 
         public ActionResult SignIn()
         {
-            var isLogged = _sessionContext.CurrentUser;
+            var isLogged = _sessionContext.CurrentUser!=null && System.Web.HttpContext.Current.Request.IsAuthenticated;
             ViewBag.isB2BEnable = _sessionContext.CurrentSiteConfig.B2BSettings.EnableB2B;
             ViewBag.isRegistrationAllowed = _sessionContext.CurrentSiteConfig.B2BSettings.RegistrationAllowed;
-            
-            if (isLogged != null)
+            _basketApi.ResetSessionBasket();
+            if (isLogged)
             {
                 return Redirect("~");
             }
@@ -186,6 +199,7 @@ namespace Omnicx.WebStore.Core.Controllers
             }
             else
             {
+                _basketApi.ResetSessionBasket();
                 //returnURL needs to be decoded
                 string decodedUrl = string.Empty;
                 string returnUrl = TempData["ReturnUrl"] != null ? TempData["ReturnUrl"].ToString() : "";
@@ -194,7 +208,6 @@ namespace Omnicx.WebStore.Core.Controllers
                         returnUrl = "";
                 decodedUrl = Server.UrlDecode(returnUrl);
                 var resp = new BoolResponse { IsValid = true, MessageCode = result.SessionId, Message = result.FirstName, ReturnUrl = decodedUrl };
-                SiteUtils.SetBasketAction(resetAction: true);
                 return JsonSuccess(resp, JsonRequestBehavior.AllowGet);
             }
         }
@@ -243,7 +256,6 @@ namespace Omnicx.WebStore.Core.Controllers
                 {
                     var loginResult = _authenticationService.Login(Sanitizer.GetSafeHtmlFragment(register.Email), Sanitizer.GetSafeHtmlFragment(register.Password), true);
                     response.IsValid = true;
-                    SiteUtils.SetBasketAction(resetAction: true);
                     return JsonSuccess(response, JsonRequestBehavior.AllowGet);
                 }
                 else
@@ -415,7 +427,6 @@ namespace Omnicx.WebStore.Core.Controllers
         public ActionResult Logout()
         {
             _authenticationService.Logout();
-            SiteUtils.SetBasketAction(resetAction: true);
             if (Request.Cookies["IsUserLoggedIn"] != null)
             {
                 var c = new HttpCookie("IsUserLoggedIn");
@@ -457,14 +468,20 @@ namespace Omnicx.WebStore.Core.Controllers
                 string errorMessage = "User Login required!";
                 return JsonError(errorMessage, JsonRequestBehavior.DenyGet);
             }
-            
+            var maximumWishlistItems = _sessionContext.CurrentSiteConfig.BasketSettings.MaximumWishlistItems;
             var customerId = _sessionContext.CurrentUser.UserId.ToString();
             var key = string.Format(CacheKeys.WishList, customerId);
-            var response = _customerRepository.AddProductToWishList(Sanitizer.GetSafeHtmlFragment(id), _sessionContext.CurrentUser.UserId, false);
-            //Temporary Fix 
-            var result = _customerRepository.GetWishlist(customerId, false);
-            System.Web.HttpContext.Current.Session[key] = result.Result;
-            return JsonSuccess(response.Result, JsonRequestBehavior.AllowGet);
+            var getWishlist = _customerRepository.GetWishlist(customerId, false);
+            if (getWishlist != null && getWishlist.Result.Count < maximumWishlistItems)
+            {
+                var response = _customerRepository.AddProductToWishList(Sanitizer.GetSafeHtmlFragment(id), _sessionContext.CurrentUser.UserId, false);
+                //Temporary Fix 
+                var result = _customerRepository.GetWishlist(customerId, false);
+                System.Web.HttpContext.Current.Session[key] = result.Result;
+                return JsonSuccess(response.Result, JsonRequestBehavior.AllowGet);
+            }
+            else
+                return JsonSuccess(false, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -632,7 +649,6 @@ namespace Omnicx.WebStore.Core.Controllers
                     ghostLogin.Result.SessionId = ghostSessionId.ToString();
                     _authenticationService.GhostLogin(ghostLogin.Result);
                 }
-                SiteUtils.SetBasketAction(resetAction:true);
                 Response.Redirect("~/");
 
             }
@@ -810,7 +826,7 @@ namespace Omnicx.WebStore.Core.Controllers
 
                 var results = _authenticationService.SocialLogin(recordId);
                 if (results == null) return JsonValidationError();
-                else return Redirect("/");
+                else return RedirectToAction("MyAccount"); 
             }
             return null;
 
@@ -876,6 +892,39 @@ namespace Omnicx.WebStore.Core.Controllers
                 return JsonSuccess(response, JsonRequestBehavior.AllowGet);
             }
             return null;
+        }
+
+        public ActionResult ContactUs()
+        {
+            return View(CustomViews.CONTACT_FORM);
+        }
+        public ActionResult SubscriptionHistory()
+        {
+            return View(CustomViews.SUBSCRIPTION_HISTORY);
+        }
+
+        [HttpPost]
+        public ActionResult GetSubscriptions()
+        {
+            var userId = _sessionContext.CurrentUser.UserId.ToString();
+            var result = _orderRepository.GetSubscriptions(userId);
+            return JsonSuccess(result, JsonRequestBehavior.DenyGet);
+        }
+        public ActionResult SubscriptionDetail(Guid id)
+        {
+            if (id != null) { 
+            
+                var subscriptionDetail =_orderRepository.GetSubscriptionDetail(id);
+              return View(subscriptionDetail.Result);
+            }
+            return View();
+
+        }
+        [HttpPost]
+        public ActionResult UpdateSubscriptionStatus(UpdateSubscriptionStatusModel subscriptionUpdateStatus)
+        {
+            var resp = _orderRepository.UpdateSubscriptionStatus(subscriptionUpdateStatus);
+            return View(CustomViews.SUBSCRIPTION_DETAIL, resp.Result);
         }
     }
 }

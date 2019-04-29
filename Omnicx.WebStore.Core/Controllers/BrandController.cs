@@ -35,7 +35,7 @@ namespace Omnicx.WebStore.Core.Controllers
 
             var model = new AllBrandModel
             {
-                PaginationWords = GetWordPagination(),
+                PaginationWords = SiteUtils.GetWordPagination(),
 
             };
             if (brands.Result.Results == null) return View(model);
@@ -56,6 +56,8 @@ namespace Omnicx.WebStore.Core.Controllers
             SetDataLayerVariables(model, WebhookEventTypes.BrandViewed);
             return View(CustomViews.BRAND_LIST, model);
         }
+
+
         /// <summary>
         /// Brand Landing page 
         /// </summary>

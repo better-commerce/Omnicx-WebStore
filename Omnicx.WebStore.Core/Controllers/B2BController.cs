@@ -9,7 +9,6 @@ using Omnicx.WebStore.Core.Services.Authentication;
 using System;
 using System.Text.RegularExpressions;
 using System.Web.Mvc;
-using RestSharp.Extensions.MonoHttp;
 using System.Linq;
 
 namespace Omnicx.WebStore.Core.Controllers
@@ -54,9 +53,9 @@ namespace Omnicx.WebStore.Core.Controllers
                 Email = Sanitizer.GetSafeHtmlFragment(model.Email),
                 FirstName = Sanitizer.GetSafeHtmlFragment(model.FirstName),
                 LastName = Sanitizer.GetSafeHtmlFragment(model.LastName),
-                Mobile = Sanitizer.GetSafeHtmlFragment(model.Mobile),
+                Mobile = model.Mobile,
                 PostCode = Sanitizer.GetSafeHtmlFragment(model.PostCode),
-                Telephone = Sanitizer.GetSafeHtmlFragment(model.Telephone),
+                Telephone = model.Telephone,
                 Title = Sanitizer.GetSafeHtmlFragment(model.Title),
                 BusinessType = Sanitizer.GetSafeHtmlFragment(model.BusinessType),
                 CompanyName = Sanitizer.GetSafeHtmlFragment(model.CompanyName),
@@ -138,7 +137,7 @@ namespace Omnicx.WebStore.Core.Controllers
             var resp = _b2bRepository.SaveQuote(quote);
             if (!String.IsNullOrEmpty(resp.Message))
             { 
-                SiteUtils.ResetBasketCookie();
+                SiteUtils.ResetBasketCookieAndSession();
             }
             return JsonSuccess(resp, JsonRequestBehavior.AllowGet);
         }
@@ -169,7 +168,6 @@ namespace Omnicx.WebStore.Core.Controllers
         public virtual ActionResult AddQuoteToBasket(string basketId,string basketAction)
         {          
             var basket = _b2bRepository.GetQuoteBasket(basketId, basketAction);
-            SiteUtils.SetBasketAction(basket?.Result.Id);
             return JsonSuccess(basket?.Result, JsonRequestBehavior.AllowGet);
         }
         public ActionResult RemoveQuoteBasket()
@@ -181,6 +179,54 @@ namespace Omnicx.WebStore.Core.Controllers
         {
             var result = _b2bRepository.GetCompanies();
             return JsonSuccess(result, JsonRequestBehavior.DenyGet);
+        }
+        public ActionResult ConvertRequest(ConvertCompanyAccountModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return JsonValidationError();
+            }
+            model.Mobile = SiteUtils.GenerateEncodedString(model.Mobile);
+            model.Telephone = SiteUtils.GenerateEncodedString(model.Telephone);
+            var user = new CustomerModel
+            {
+                Email = Sanitizer.GetSafeHtmlFragment(model.Email),
+                FirstName = Sanitizer.GetSafeHtmlFragment(model.FirstName),
+                LastName = Sanitizer.GetSafeHtmlFragment(model.LastName),
+                Mobile = model.Mobile,
+                PostCode = Sanitizer.GetSafeHtmlFragment(model.PostCode),
+                Telephone = model.Telephone,
+                Title = Sanitizer.GetSafeHtmlFragment(model.Title),
+                BusinessType = Sanitizer.GetSafeHtmlFragment(model.BusinessType),
+                CompanyName = Sanitizer.GetSafeHtmlFragment(model.CompanyName),
+                RegisteredNumber = Sanitizer.GetSafeHtmlFragment(model.RegisteredNumber),
+                IsRegistered = true,
+                Address = new CompanyAddress
+                {
+                    Address1 = Sanitizer.GetSafeHtmlFragment(model.Address1),
+                    Address2 = Sanitizer.GetSafeHtmlFragment(model.Address2),
+                    City = Sanitizer.GetSafeHtmlFragment(model.City),
+                    State = Sanitizer.GetSafeHtmlFragment(model.State),
+                    Country = Sanitizer.GetSafeHtmlFragment(model.Country),
+                    PostCode = Sanitizer.GetSafeHtmlFragment(model.PostCode)
+                },
+            };
+
+            user.Mobile = SiteUtils.GenerateDecodeString(user.Mobile);
+            user.Telephone = SiteUtils.GenerateDecodeString(user.Telephone);
+            user.IsConvertCompanyRequest = true;
+
+            var result = _customerRepository.Register(user);
+
+            if (result.Result.IsValid)
+            {
+                return JsonSuccess(result.Result, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                ModelState.AddModelError("Error", "Registration Request failed!");
+                return JsonValidationError();
+            }
         }
     }
 }

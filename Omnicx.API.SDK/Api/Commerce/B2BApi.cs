@@ -81,6 +81,10 @@ namespace Omnicx.API.SDK.Api.Commerce
             //Set basketId in cookies that is quoteBasketId .
             var cookie_basketId = new System.Web.HttpCookie(Constants.COOKIE_BASKETID) { HttpOnly = true, Value = result.Result != null ? result.Result.Id : quoteId, Expires = DateTime.Now.AddDays(Constants.COOKIE_DEVICEID_EXPIRES_DAYS) };               
             System.Web.HttpContext.Current.Response.Cookies.Add(cookie_basketId);
+            if (System.Web.HttpContext.Current.Session != null)
+            {
+                System.Web.HttpContext.Current.Session[Constants.SESSION_BASKET] = null;
+            }
             return CallApi<BasketModel>(string.Format(ApiUrls.GetBasket, basketId), "");
         }
         public bool RemoveQuoteBasket()
@@ -88,6 +92,10 @@ namespace Omnicx.API.SDK.Api.Commerce
             //removes quoteBasketId from cookies when user has updated his quote and now wishes to get currentBasket back .
             var cookie_basketId = new System.Web.HttpCookie(Constants.COOKIE_BASKETID) { HttpOnly = true, Value = Guid.NewGuid().ToString(), Expires = DateTime.Now.AddDays(Constants.COOKIE_DEVICEID_EXPIRES_DAYS) };
             System.Web.HttpContext.Current.Response.Cookies.Set(cookie_basketId);
+            if (System.Web.HttpContext.Current.Session != null)
+            {
+                System.Web.HttpContext.Current.Session[Constants.SESSION_BASKET] = null;
+            }
             return true;
         }
         public ResponseModel<List<CompanyNameModel>> GetCompanies()

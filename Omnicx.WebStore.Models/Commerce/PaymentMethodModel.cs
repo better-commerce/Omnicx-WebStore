@@ -23,7 +23,7 @@ namespace Omnicx.WebStore.Models.Commerce
         public string NotificationUrl { get; set; }
         public IList<KeyValuePair<string, string>> Settings { get; set; }
         public bool IsBillingAddressRequired { get; set; }
-        public  bool IsImmediateCapture { get; set; }
+        public  bool EnableImmediateCapture { get; set; }
         public string UserName {
             get
             {

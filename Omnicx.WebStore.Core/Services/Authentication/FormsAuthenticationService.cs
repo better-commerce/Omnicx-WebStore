@@ -202,7 +202,7 @@ namespace Omnicx.WebStore.Core.Services.Authentication
             }
            // var user = _omnicxRepository.GetUserdetailsByUserName(usernameOrEmail); //_userRepository.GetUserByEmail(usernameOrEmail);
             var response = _customerRepository.GetUserdetailsById<CustomerModel>(userId);   //---in case of (Not working by username/Email)
-            var user = response.Result;
+            var user = response?.Result;
             //if the userId (email) is NOT found in the User DB, then sign out the user and return null
             if (user == null)
             {

@@ -52,6 +52,12 @@
         public static string SITEVIEW_MODEL_BY_SLUG = CacheKeyPrefix + ".SITEVIEW.MODEL.BySlug.{0}.{1}.{2}.{3}";
 
         /// <summary>
+        /// Key to remove a siteview moduel 
+        /// {0}:Slug, {1}:DomainId
+        /// </summary>
+        public const string SITEVIEW_REMOVE_BY_SLUG = "{1}.SITEVIEW.*BySlug.{0}";
+
+        /// <summary>
         /// {0}: Config Key
         /// </summary>
         //public static string DEFAULT_SETTING_BY_KEY = CacheKeyPrefix + "DEFAULT.CONFIG.{0}";
@@ -64,6 +70,11 @@
         public static string FaqCategories = CacheKeyPrefix + "minimal.faqcategories";
         public static string FaqSubCategories = CacheKeyPrefix + "Omni.site.faq-Cat-{0}-{1}";
         public static string SiteViewAllSlug = CacheKeyPrefix + "Omni.SiteViewSlug-all-{0}";
+
+        /// <summary>
+        /// {0}:DomainId
+        /// </summary>
+        public static string RECOMMEDATION_MODEL_ALL = "RECOMMEDATION.MODEL.All.{0}";
 
     }
 }

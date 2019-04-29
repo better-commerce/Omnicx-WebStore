@@ -1,0 +1,25 @@
+﻿@using Omnicx.WebStore.Models.Enums
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<dynamic>
+
+@if (SessionContext.CurrentUser != null && this.Request.IsAuthenticated)
+{
+    <li>
+
+        @if (!string.IsNullOrWhiteSpace(SessionContext.CurrentUser.FirstName))
+        {            
+            <a class="userControls__accountLinks" href="@Url.Action("MyAccount", "Account")"><i class="sprite sprite-browsers-customerSession"></i><span class="label-0">@SessionContext.CurrentUser.FirstName</span></a>
+        }
+        else
+        {
+            <a class="userControls__accountLinks" href="@Url.Action("MyAccount", "Account")"><i class="sprite sprite-browsers-customerSession"></i><span class="label-0">@LT("MyAccount.Text.Name", "My Account")</span></a>
+        }
+        @*<span class="userControls__linkSeperator">/</span>
+        <a class="userControls__accountLinks" href="@Url.Action("Logout", "Account")">@LT("Global.Buttons.Logout", "Logout")</a>*@
+    </li>
+}
+else
+{
+    <li>
+        <a class="userControls__accountLinks" href="@Url.Action("SignIn", "Account")"><i class="sprite sprite-browsers-customer iconFilter"></i><span class="label-0">Login</span></a>
+    </li>
+}

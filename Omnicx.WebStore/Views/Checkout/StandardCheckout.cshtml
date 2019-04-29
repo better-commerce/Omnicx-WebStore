@@ -1,0 +1,247 @@
+﻿@{
+/*
+    Name: Standard Checkout (Steps)
+    Purpose: Standard Checkout for steps to process
+    Structure: /Views/Checkout/StandardCheckout.cshtml
+    Contains (Partial Views Used):
+        a-/Views/Shared/_OpcLayout.cshtml                   (For Base Structure)
+        b-/Views/Checkout/_CheckoutDeliveryAddress.cshtml   (Select Delivery Address)
+        c-/Views/Checkout/_CheckoutDeliveryMethod.cshtml    (Select Delivery Method)
+        d-/Views/Checkout/_CheckoutPaymentMethod.cshtml     (Select Payment Method)
+        e-/Views/Checkout/_CheckoutOrderReview.cshtml       (Complete Overview of order with all selected items)
+        f-/Views/Checkout/_GuestRegistration.cshtml         (Guest Checkout or Registration)
+
+    Contained In (Where we Use this View):
+        a-/Views/Basket/Index.cshtml
+    */
+}
+@using Microsoft.Web.Mvc
+@using Omnicx.WebStore.Models.Common
+@using Omnicx.WebStore.Framework.Helpers
+@using Omnicx.WebStore.Core.Controllers
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<CheckoutViewModel>
+@{
+    ViewBag.Title = @LT("Checkout.Title.Checkout", "Checkout");
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    var checkoutForm = Html.Angular().ModelFor("ck.model");
+    Layout = "~/Views/Shared/_OpcLayout.cshtml";
+}
+@{
+    if (Model.Checkout.Basket.GrandTotal.Raw.WithTax > 0)
+    {
+        <section ng-controller="checkoutCtrl as ck" ng-init="ck.guestCheckout = false;ck.createAccount=false;ck.loginAccount=true;ck.userPanel=true;ck.custAddressGrid();">
+            @{/*Step 1 For Login Or Create Account*/}
+            @if (SessionContext.CurrentUser == null)
+            { 
+                <div class="row" ng-init="ck.custAddressGrid();">
+                    <div class="checkoutStepLogin" ng-show="ck.userPanel">
+
+                        <div class="col-sm-12 col-xs-12 no-padding">
+                            <section class="checkout-accordion">
+                                @{/*Registration Form*/}
+                                <div>
+                                    <input id="ac-2" name="accordion-1" type="radio" class="visible-xs" />
+                                    <label class="label-ac visible-xs" for="ac-2" ng-click="ck.loginAccount=false;ck.createAccount=true;ck.guestCheckout=false;"> Create an account</label>
+                                    <article class="ac-large" ng-show="ck.createAccount==true">
+                                        <form name="registrationForm" role="form" ng-submit="ck.registration(ck.model.register)" method="post" novalidate>                                            
+                                            <h2 class="checkout-h2 hidden-xs">@LT("Checkout.Text.Login", "Registration")</h2>
+                                            <div class="col-sm-12 col-xs-12 no-padding form-group margin-bottom-sm checkoutForm">
+                                                @checkoutForm.FormGroupFor(x => x.Register.Email)
+                                            </div>
+                                            <div class="col-sm-12 col-xs-12 no-padding form-group margin-bottom-sm checkoutForm">
+                                                @checkoutForm.FormGroupFor(x => x.Register.Password)
+                                            </div>
+                                            <div class="col-sm-12 col-xs-12 no-padding form-group margin-bottom-sm checkoutForm">
+                                                @checkoutForm.FormGroupFor(x => x.Register.ConfirmPassword)
+                                            </div>
+                                            <div class="col-sm-12 col-xs-12 no-padding checkout-button">
+                                                <button type="submit" class="btn btn-checkout width-full"><i class="fa fa-user"></i>@LT("Global.Buttons.Register", "Register")</button>
+                                            </div>
+                                            <div class="col-sm-12 col-xs-12 no-padding group-divider margin-top-md hidden-xs">
+                                                <span>Already a customer?</span>
+                                            </div>
+                                            <div class="col-sm-12 col-xs-12 no-padding margin-top-md hidden-xs">
+                                                <a class="btn btn-default width-full" ng-click="ck.loginAccount=true;ck.createAccount=false;ck.guestCheckout=false;">Login Here</a>
+                                            </div>
+                                            <div class="col-sm-12 col-xs-12 no-padding group-divider margin-top-md hidden-xs">
+                                                <span>OR</span>
+                                            </div>
+                                            <div class="col-sm-12 col-xs-12 no-padding margin-top-md hidden-xs">
+                                                <a class="btn btn-default width-full" ng-click="ck.loginAccount=false;ck.createAccount=false;ck.guestCheckout=true;">Checkout as Guest</a>
+                                            </div>
+                                        </form>
+                                    </article>
+                                </div>
+                                @{/*Login Form*/}
+                                <div>
+                                    <input id="ac-1" name="accordion-1" type="radio" checked class="visible-xs" />
+                                    <label class="label-ac visible-xs" for="ac-1" ng-click="ck.loginAccount=true;ck.createAccount=false;ck.guestCheckout=false;"> Login. <span>Already a customer?</span></label>
+                                    <article class="ac-large" ng-show="ck.loginAccount==true">
+                                        <form role="form" ng-submit="ck.login(ck.model.login)" method="post" novalidate class="">
+                                            <div ng-cloak class="alert alert-danger" ng-show="ck.errorMessage != null">
+                                                <div ng-repeat="err in ck.errorMessage track by $index">
+                                                    <i class="fa fa-circle"></i><span ng-bind="err"></span>
+                                                </div>
+                                            </div>
+                                            <h2 class="checkout-h2 hidden-xs">@LT("Checkout.Text.Login", "Login")</h2>
+                                            <div class="col-sm-12 col-xs-12 no-padding form-group margin-bottom-sm checkoutForm">
+                                                @checkoutForm.FormGroupFor(x => x.Login.Username)
+                                            </div>
+                                            <div class="col-sm-12 col-xs-12 no-padding form-group margin-bottom-sm checkoutForm">
+                                                @checkoutForm.FormGroupFor(x => x.Login.Password)
+                                            </div>
+                                            <div class="col-sm-6 col-xs-6 no-padding">
+                                                <label class="checkout-label">
+                                                    <input type="checkbox" name="keep" value="1" /> Keep me signed in
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-6 col-xs-6 no-padding">
+                                                <a href="#" class="checkout-link">Forgot Password</a>
+                                            </div>
+                                            <div class="col-sm-12 col-xs-12 no-padding checkout-button">
+                                                <button type="submit" class="btn btn-checkout width-full">@LT("Global.Buttons.Login", "Login") <i class="fa fa-caret-right"></i></button>
+                                            </div>
+                                            <div class="col-sm-12 col-xs-12 no-padding group-divider hidden-xs">
+                                                <span>New to Store?</span>
+                                            </div>
+                                            <div class="col-sm-12 col-xs-12 no-padding margin-top-md hidden-xs">
+                                                <a class="btn btn-default width-full" ng-click="ck.loginAccount=false;ck.createAccount=true;ck.guestCheckout=false;">Create an Account</a>
+                                            </div>
+                                            <div class="col-sm-12 col-xs-12 no-padding group-divider margin-top-md hidden-xs">
+                                                <span>OR</span>
+                                            </div>
+                                            <div class="col-sm-12 col-xs-12 no-padding margin-top-md hidden-xs">
+                                                <a class="btn btn-default width-full" ng-click="ck.loginAccount=false;ck.createAccount=false;ck.guestCheckout=true;">Checkout as Guest</a>
+                                            </div>
+                                        </form>
+                                    </article>
+                                </div>
+                                @{/*Checkout as Guest Form*/}
+                                <div>
+                                    <input id="ac-3" name="accordion-1" type="radio" class="visible-xs" />
+                                    <label class="label-ac visible-xs" for="ac-3" ng-click="ck.loginAccount=false;ck.createAccount=false;ck.guestCheckout=true;"> Checkout as Guest</label>
+                                    <article class="ac-large" ng-show="ck.guestCheckout==true">
+                                        <form role="form" name="guestForm" class="" novalidate ng-submit="ck.ContinueAsGuest(guestForm)">
+                                            <h2 class="checkout-h2 hidden-xs">@LT("Checkout.Text.Login" , "Checkout as a Guest")</h2>
+                                            <div class="col-sm-12 col-xs-12">
+                                                <div ng-cloak class="alert alert-danger" ng-show="ck.guestError != null">
+                                                    <div ng-repeat="err in ck.guestError track by $index">
+                                                        <i class="fa fa-circle"></i><span ng-bind="err"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-xs-12 no-padding form-group margin-bottom-sm checkoutForm">
+                                                @checkoutForm.FormGroupFor(x => x.Checkout.Email)
+                                            </div>
+                                            <div class="form-group margin-bottom-sm">
+                                                <p class="checkout-text">@LT("Checkout.Label.NeedEmailAddress" , "We need your email address to send your order and shipping confirmation. We will never share your details with anyone.")</p>
+                                            </div>
+                                            <div class="col-sm-12 col-xs-12 no-padding checkout-button">
+                                                <button type="submit" class="btn btn-checkout width-full">@LT("Global.Buttons.Login" , "Checkout as a Guest") <i class="fa fa-caret-right"></i></button>
+                                            </div>
+
+                                            <div class="col-sm-12 col-xs-12 no-padding group-divider margin-top-md hidden-xs">
+                                                <span>New to Store?</span>
+                                            </div>
+                                            <div class="col-sm-12 col-xs-12 no-padding margin-top-md hidden-xs">
+                                                <a class="btn btn-default width-full" ng-click="ck.createAccount=true;ck.loginAccount=false;ck.guestCheckout=false;">Create an Account</a>
+                                            </div>
+                                            <div class="col-sm-12 col-xs-12 no-padding group-divider margin-top-md hidden-xs">
+                                                <span>Already a customer?</span>
+                                            </div>
+                                            <div class="col-sm-12 col-xs-12 no-padding margin-top-md hidden-xs">
+                                                <a class="btn btn-default width-full" ng-click="ck.loginAccount=true;ck.createAccount=false;ck.guestCheckout=false;">Login Here</a>
+                                            </div>
+                                        </form>
+
+                                    </article>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            }
+            @if (SessionContext.CurrentUser != null && this.Request.IsAuthenticated)
+            {
+                if (SessionContext.CurrentUser.FirstName != null)
+                {
+                    <h2 class="checkout-summery-h6 pull-right text-right top-login-user-panel">You are logged in as: <strong>@SessionContext.CurrentUser.FirstName @SessionContext.CurrentUser.LastName</strong></h2>
+                }
+                else
+                {
+                    <h2 class="checkout-summery-h6 pull-right text-right top-login-user-panel">You are logged in as: <strong>@SessionContext.CurrentUser.Email</strong></h2>
+                }
+            }
+
+            @{/*End Step 1*/}
+
+            @{/*Step 2 For Select Delivery Address*/}
+            @Html.Partial("/Views/Checkout/_CheckoutDeliveryAddress.cshtml", @Model.Checkout.ShippingAddress)
+            @{/*END Step 2*/}
+
+            @{/*Step 3 For Select Delivery Option OR Delivery Speed*/}
+            @Html.Partial("/Views/Checkout/_CheckoutDeliveryMethod.cshtml")
+            @{/*END Step 3*/}
+
+            @{/*Step 4 For Select Payment Method*/}
+            @Html.Partial("/Views/Checkout/_CheckoutPaymentMethod.cshtml")
+            @{/*END Step 4*/}
+
+            @{/*Step 5 For Checkout Summey Before Payment page*/}
+            @Html.Partial("/Views/Checkout/_CheckoutOrderReview.cshtml")
+            @{/*END Step 5*/}
+
+            @if (SessionContext.CurrentUser == null)
+            {
+                @Html.Partial("~/Views/Checkout/_GuestRegistration.cshtml", new LoginRegistrationModel { Registration = Model.Register })
+            }
+        </section>
+    }
+    else
+    {
+        <div class="row">
+            <h3>
+                @LT("Checkout.Label.EmptyBasket", "Basket no longer available")
+            </h3>
+        </div>
+    }
+}
+
+
+@section scripts{
+    <script>
+        var signIn = '@(Html.BuildUrlFromExpression<AccountController>(c => c.SignIn(null)))';
+        var converToOrder = '@(Html.BuildUrlFromExpression<CheckoutController>(c => c.ConvertToOrder(null)))';
+        var custGridUrl = '@(Html.BuildUrlFromExpression<AccountController>(c => c.GetCustomerAddress()))';
+        var deleteAddressUrl = '@(Html.BuildUrlFromExpression<AccountController>(c => c.DeleteAddress(null)))';
+        var register = '@(Html.BuildUrlFromExpression<AccountController>(c => c.Registration(null)))';
+        var addToBasket = '@(Html.BuildUrlFromExpression<BasketController>(c => c.AddtoBasket(null)))';
+        var removePromoCode = '@(Html.BuildUrlFromExpression<BasketController>(c => c.RemovePromoCode("","")))';
+        var searchPhysicalStore = '@(Html.BuildUrlFromExpression<CheckoutController>(c => c.GetClickAndCollectOptions(null, null)))';
+        var nominatedDelivery = '@(Html.BuildUrlFromExpression<CheckoutController>(c => c.GetNominatedDelivery(null,null)))';
+        var guestCheckout = '@(Html.BuildUrlFromExpression<CheckoutController>(c => c.GuestCheckout(null)))';
+        var validateGuestPassword = '@(Html.BuildUrlFromExpression<CheckoutController>(c => c.ValidateGuestPassword(null)))';
+        var addProductToWishlist = '@(Html.BuildUrlFromExpression<CheckoutController>(c => c.AddProductToWishlist("")))';
+        var removeWishList = '@(Html.BuildUrlFromExpression<CheckoutController>(c => c.RemoveWishList("",true)))';
+        var validateLoginPassword = '@(Html.BuildUrlFromExpression<AccountController>(c => c.SignIn(null)))';
+        var savedBaskets = '@(Html.BuildUrlFromExpression<BasketController>(c => c.GetSavedBaskets()))';
+        window.app.constant('checkoutConfig',{
+            signIn : signIn,
+            converToOrder : converToOrder,
+            custGridUrl: custGridUrl,
+            deleteAddressUrl :deleteAddressUrl,
+            register : register,
+            addToBasket: addToBasket,
+            removePromoCode : removePromoCode,
+            searchPhysicalStore : searchPhysicalStore,
+            nominatedDelivery : nominatedDelivery,
+            guestCheckout : guestCheckout,
+            validateGuestPassword : validateGuestPassword,
+            addProductToWishlist : addProductToWishlist,
+            removeWishList : removeWishList,
+            validateLoginPassword: validateLoginPassword,
+            savedBaskets: savedBaskets,
+        });
+        window.app.constant('model', @Html.JsonFor(Model));
+    </script>
+}

@@ -1,0 +1,261 @@
+﻿@{
+/*
+    Name: Order Detail
+    Purpose: Show Order Detail with order status information
+    Structure: /Views/Account/OrderDetail.cshtml
+    Contains (Partial Views Used):
+        a-/Views/Shared/_Layout.cshtml.cshtml   (For base Structure)
+        b-/Views/Account/_MobileSideNav.cshtml  (Navigatiopn For Mobile)
+        c-/Views/Account/_SideNav.cshtml        (Navigation For Desktop and Big Screen)
+
+    Contained In (Where we Use this View):
+     a-/Views/Account/_MobileSideNav.cshtml  (Navigatiopn Link Mobile)
+     b-/Views/Account/_SideNav.cshtml        (Navigation Link Desktop and Big Screen)
+     b-/Views/Account/OrderHistory.cshtml    (Navigation Link For Detail View)
+    */
+}
+@using Microsoft.Web.Mvc
+@using Omnicx.WebStore.Models.Enums
+@using Omnicx.WebStore.Core.Controllers
+@using Omnicx.WebStore.Models
+@using Omnicx.WebStore.Core.Controllers
+@using Omnicx.WebStore.Core.Helpers
+@using Omnicx.WebStore.Models.Helpers
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<Omnicx.WebStore.Models.Commerce.OrderModel>
+@{
+    ViewBag.Title = "CustomerOrder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var userRole = SessionContext.CurrentUserRole;
+
+}
+<div class="container dataContainer m--top-60">
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="/">@LT("MyAccount.Links.Home", "Home")</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("OrderHistory", "Account")">@LT("MyAccount.Links.MyOrders", "My orders")</a>
+                </li>
+                <li>@Model.OrderNo</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 visible-xs" id="exTab1">
+            @Html.Partial("~/Views/Account/_MobileSideNav.cshtml")
+        </div>
+        <div class="col-md-3 col-sm-4 col-xs-12 hidden-xs">
+            @Html.Partial("~/Views/Account/_SideNav.cshtml")
+        </div>
+        <div class="col-md-9 col-sm-8 col-xs-12" id="customer-orders">
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <h3 class="panel-h2 hidden-xs">@LT("MyAccount.Text.UpdateDetails", "Order Detail")</h3>
+                </div>
+            </div>
+            <div class="row" ng-controller="accountCtrl as am">
+                <div class="col-sm-12 col-xs-12">
+                    <p class="text-center">
+                        <div ng-cloak class="alert alert-danger orderError" ng-show="am.orderError">
+                            <strong>@LT("YourBag.Message.basketMessage", "There is an error adding some stock(s) - ")<span ng-bind="am.orderError"></span></strong>
+                        </div>
+                        <div ng-cloak class="alert alert-danger orderUnavailable" ng-show="am.orderUnavailable">
+                            <strong>@LT("YourBag.Message.stockUnavailable", "Stock Code(s) not available.")</strong>
+                        </div>
+                        <div ng-cloak class="alert alert-success orderSuccess" ng-show="am.orderSuccess">
+                            <strong>@LT("YourBag.Message.OrderSuccess", "Item(s) added successfully")</strong>
+                        </div>
+                    </p>
+                </div>
+                <div class="col-sm-12 col-xs-12">
+                    <div class="col-lg-3 col-sm-12">
+                        <h1 class="basket-h1">@Model.OrderNo</h1>
+                    </div>
+                    @if (Model.isB2BEnable && Model.AllowReorder)
+                    {
+                        <div class="col-lg-2 margin-top-sm"><a ng-click="am.reOrder('@Model.Id')" title="Re-Order" class="animate btn-success"><i class="fa fa-shopping-cart no-margin-left"></i>@LT("MyAccount.Text.ReOrder", "Reorder")</a></div>
+                    }
+                    <p class="text-muted basket-text">@string.Format(LT("MyAccount.Text.OrderInformation", "Order was placed on {0} and current order status is: "), @Model.OrderDate)<label class="label padding-xs status-inline margin-top-sm label-@Model.OrderStatus">@Model.OrderStatus</label></p>
+                </div>
+            </div>
+            <div class="box no-padding col-sm-12 col-xs-12 no-border-bottom">
+                <div class="row">
+                    <div class="col-md-12" id="customer-order">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">@LT("MyAccount.Text.Product", "Product")</th>
+                                        <th class="text-right">@LT("MyAccount.Text.Qty", "Quantity")</th>
+                                        <th class="text-right">@LT("MyAccount.Text.Price", "Unit price")</th>
+                                        <th class="text-right">@LT("MyAccount.Text.Discount", "Discount")</th>
+                                        <th class="text-right">@LT("MyAccount.Text.GrandTotal", "Total")</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="cart">
+                                    @foreach (var item in @Model.Items)
+                                    {
+                                        if (!item.IsSubscription)
+                                        {
+                                            var FinalAmount = item.TotalPrice.Raw.WithTax - item.DiscountAmt.Raw.WithTax;
+                                    <tr>
+                                        <td>
+                                            <a ng-href="/@item.Slug">
+                                                <img ng-src="@item.Image" alt="" onerror="this.src = DEFAULT_IMAGE_URL">
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a class="basket-item" ng-href="/@item.Slug">@item.Name</a>
+                                        </td>
+                                        <td align="right">@item.Qty</td>
+                                        <td align="right">@item.Price.Formatted.WithTax</td>
+                                        <td align="right">@item.DiscountAmt.Formatted.WithTax</td>
+                                        <td align="right">@{@Model.CurrencySymbol @FinalAmount}</td>
+
+                                    </tr>
+        }
+
+    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                @*Subscription products*@
+                @if (Model.HasSubscription)
+                {
+                    <div class="row">
+                        <div class="col-md-12" id="customer-order">
+                            <div class="table-responsive">
+                                <table class="table table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="2">@LT("MyAccount.Text.Product", "Subscription")</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="cart">
+                                        @foreach (var item in @Model.Items)
+                                        {
+                                            if (item.IsSubscription)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        <a ng-href="/@item.Slug">
+                                                            <img ng-src="@item.Image" alt="" onerror="this.src = DEFAULT_IMAGE_URL">
+                                                            <span class="label label-primary label-subscription">Subscription</span>
+                                                        </a>
+                                                        
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                }
+            
+                <div class="row">
+                    <div class="col-sm-12 col-xs-12 addresses margin-bottom-lg">
+                        <div class="col-sm-6 col-xs-12 billing-box">
+                            <h2 class="billing-h2">@LT("MyAccount.Text.BillingAdd", "Billing Address")</h2>
+                            <p><strong>Name: </strong>@Model.BillingAddress.FirstName @Model.BillingAddress.LastName</p>
+                            <p><strong>Address: </strong>@Model.BillingAddress.Address1 <br />@Model.BillingAddress.Address2</p>
+                            <p><strong>City: </strong>@Model.BillingAddress.City</p>
+                            <p><strong>Post Code: </strong>@Model.BillingAddress.PostCode</p>
+                            <p><strong>Phone No: </strong>@Model.BillingAddress.PhoneNo</p>
+                        </div>
+                        <div class="col-sm-6 col-xs-12 shipping-box">
+                            <h2 class="billing-h2">@LT("MyAccount.Text.ShippingAddress", "Shipping Address")</h2>
+                            <p><strong>Name: </strong>@Model.ShippingAddress.FirstName @Model.ShippingAddress.LastName</p>
+                            <p><strong>Address: </strong>@Model.ShippingAddress.Address1 <br />@Model.ShippingAddress.Address2</p>
+                            <p><strong>City: </strong>@Model.ShippingAddress.City</p>
+                            <p><strong>Post Code: </strong>@Model.ShippingAddress.PostCode</p>
+                            <p><strong>Phone No: </strong>@Model.ShippingAddress.PhoneNo</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12 margin-top-sm">
+                        <div class="summery-border">
+                            <div class="summery-box" id="order-summary">
+                                <div class="box-header">
+                                    <h3><i class="fa fa-shopping-basket"></i> @LT("Checkout.Label.OrderSummary", "Order Summary")</h3>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table no-margin-top">
+                                        <tbody>
+                                            <tr>
+                                                <td>@LT("MyAccount.Text.OrderSubtotal", "Order Subtotal")</td>
+                                                <th class="text-right">@Model.SubTotal.Formatted.WithoutTax</th>
+                                            </tr>
+                                            @if (Model.HasSubscription)
+                                            {
+                                                <tr>
+                                                    <td>@LT("MyAccount.Text.OrderSubtotal", "Subscription Total")</td>
+                                                    <th class="text-right">@Model.SubscriptionTotal.Formatted.WithoutTax</th>
+                                                </tr>
+                                            }
+                                            <tr>
+                                                <td>@LT("Myaccount.Text.ShippingCharge", "Shipping and handling")</td>
+                                                <th class="text-right">@Model.ShippingCharge.Formatted.WithTax</th>
+                                            </tr>
+                                            <tr>
+                                                <td>@LT("MyAccount.Text.Discount", "Discount")</td>
+                                                <th class="text-right">@Model.Discount.Formatted.WithoutTax</th>
+                                            </tr>
+                                            <tr>
+                                                <td>@LT("MyAccount.Text.Tax", "Tax")</td>
+                                                <th class="text-right">@Model.GrandTotal.Formatted.Tax</th>
+                                            </tr>
+                                            <tr class="total">
+                                                <td>@LT("MyAccount.Text.Amount", "Order Total")</td>
+                                                <th class="text-right">@Model.GrandTotal.Formatted.WithTax</th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            @foreach (var item in Model.Items)
+                            {
+                                if (item.AvailableQty > 0)
+                                {
+                                    <strong>
+                                        <a class="btn btn-sm primary-btn-border text-medium padding-xs pull-right" href="@Url.Action("ReturnRequest", "Account", new {Model.Id})">@LT("MyAccount.Text.CreateReturn", "I would like to create a return")</a>
+                                    </strong>
+                                    break;
+                                }
+                            }
+
+                        </div>
+                        <!-- /.col-md-3 -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-xs-12">
+                        <p class="text-muted basket-text">@LT("MyAccount.Text.FeelFree", "If you have any questions, please feel free to ")<a href="@Url.Action("Contact", "pages")">@LT("MyAccount.Text.ContactUs", "Contact Us"),</a> @LT("MyAccount.Text.Support", " our customer service center is working for you 24/7 .") </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.col-md-9 -->
+        <!-- *** LEFT COLUMN END *** -->
+        <!-- *** RIGHT COLUMN ***
+        _________________________________________________________ -->
+
+
+    </div>
+</div>
+@section Scripts{
+    <script>
+        var reOrderUrl = '@(Html.BuildUrlFromExpression<BasketController>(c => c.ReOrder("")))';
+        window.app.constant('accountConfig', {
+            reOrderUrl : reOrderUrl
+        });
+        window.app.constant('model', @Html.Json(Model));
+    </script>
+}

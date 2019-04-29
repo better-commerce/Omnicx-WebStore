@@ -11,6 +11,7 @@ namespace Omnicx.API.SDK.Recomendation
     using System.Threading.Tasks;
     using Microsoft.Rest;
     using Models;
+    using Omnicx.API.SDK.Recommendations_API.Models;
 
     /// <summary>
     /// Models operations.
@@ -169,5 +170,7 @@ namespace Omnicx.API.SDK.Recomendation
         /// The cancellation token.
         /// </param>
         Task<HttpOperationResponse<IList<RecommendationResult>>> GetPersonalizedRecommendationsWithHttpMessagesAsync(Guid modelId, IList<UsageEvent> usageEvents, string userId = default(string), int? recommendationCount = default(int?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        List<RecommendationModel> GetAll();
     }
 }

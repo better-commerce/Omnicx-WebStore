@@ -1,0 +1,132 @@
+﻿@{
+/*
+    Name: Survey View
+    Purpose: Show Survey
+    Structure: /Views/Survey/Capture.cshtml
+    Contains (Partial Views Used):
+        a-/Views/Shared/_LayoutCMS.cshtml
+        b-_BuildABundle
+        c-_WizardStyle
+    Contained In (Where we Use this View):
+    */
+}
+@inherits Omnicx.WebStore.Core.Services.Infrastructure.CustomBaseViewPage<SurveyModel>
+@using Omnicx.WebStore.Models.Site
+@using Omnicx.WebStore.Models.Keys
+@using Omnicx.WebStore.Framework.Helpers
+@using Omnicx.WebStore.Models.Enums
+@using Microsoft.Web.Mvc
+@using Omnicx.WebStore.Core.Controllers
+@{
+    var containClass = "";
+    if (ViewBag.Viewtype == UserSourceTypes.Web.ToString())
+    {
+        Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+        containClass = "dataContainerT";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_LayoutBlank.cshtml";
+    }
+
+
+}
+<div class="container-lg @containClass" ng-controller="surveyCtrl as pm">  
+    <h1 class="text-center heading-h2">@Model.Name</h1>
+    <div ng-show="pm.showSucess" id="surveyContainer"></div> 
+    <div ng-show="pm.showSearchProducts">
+        <div class="col-sm-12 col-xs-12 gridView">
+            <div class="row whiteContainer">
+                <div class="col-sm-5ths col-md-5ths col-lg-5ths col-xs-5ths resultContainerRelated" ng-repeat="prod in pm.searchProducts track by $index">
+                    <div class="product-container-panel">
+                        <div class="imagePanel">
+                            <a ng-href="/{{prod.slug}}">
+                                <span class="tooltiptext ng-binding"></span>
+                                <img ng-src="{{prod.image}}" alt="" class="image1 img-responsive">
+                            </a>
+                        </div>
+                        <div class="dataPanel">
+                            <div class="ribbon-info">
+                                <a ng-href="/{{prod.slug}}">
+                                    <span class="ng-binding" ng-bind="prod.name"></span>
+                                    {{$index}}
+                                </a>
+                            </div>
+                            @*<div>
+                        <span><strong>SKU: </strong><span class="ng-binding" ng-bind="prod.sku"></span></span>
+                    </div>*@
+                            @*<div class="price-info">
+                        <div class="col-sm-8 col-xs-12 no-padding">
+                            <h3>
+                                <span class="ng-binding" ng-bind="prod.price.formatted.withTax"></span>
+                                <span class="sml ng-binding" ng-bind="prod.price.formatted.withTax"></span>
+                            </h3>
+                        </div>
+                    </div>*@
+                        </div>
+                        <div class="review-button-panel" ng-init="prod.rating=1">
+                            <a ng-click="prod.rating=5" ng-class="prod.rating==5?'active':''" class="btn-love"><i class="fa fa-heart-o"></i></a>
+                            <a ng-click="prod.rating=4" ng-class="prod.rating==4?'active':''" class="btn-love"><i class="fa fa-thumbs-up"></i></a>
+                            <a ng-click="prod.rating=3" ng-class="prod.rating==3?'active':''" class="btn-love"><i class="fa fa-heart"></i></a>
+                            <a ng-click="prod.rating=2" ng-class="prod.rating==2?'active':''" class="btn-love"><i class="fa fa-thumbs-down"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <button ng-click="pm.saveSurveyResult()" class="btn btn-success pull-right">Save my result</button>
+                <button ng-click="pm.retakeSurvey()" class="btn btn-default pull-left">Retake</button>
+            </div>   
+            
+        </div>
+    </div>
+    <div ng-show="pm.showEmailInput" class="row col-md-6 col-lg-6">
+        <div  class="form-group" >
+            <label>@LT("Survey.Text.PleaseEnterEmailToComplete", "Please enter email to complete survey")</label>
+             <input type="text" class="form-control" ng-model="pm.surveyEmail" />
+        </div>
+        <div class="row">
+            <button ng-click="pm.saveSurveyResponse()" class="btn btn-success pull-right">Submit</button>
+        </div>        
+    </div>    
+</div>
+
+
+@section scripts{
+     <script src="https://surveyjs.azureedge.net/1.0.66/survey.jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet" />
+<script src="https://unpkg.com/surveyjs-widgets/surveyjs-widgets.js"></script>
+    <script>
+        Survey.Survey.cssType = "bootstrap";
+        var surveyJSON =  @Html.JsonFor(Model.QuestionJson);
+
+        function sendDataToServer(survey) {
+            PubSub.publish('saveSurveyResponse', survey.data)
+        }
+        var survey = new Survey.Model(surveyJSON);
+
+        $("#surveyContainer").Survey({
+            model: survey,
+            onComplete:sendDataToServer
+        });
+
+        var saveAnswer = '@(Html.BuildUrlFromExpression<SurveyController>(c => c.SaveAnswer("","","","","")))';
+        var searchUrl = '@(Html.BuildUrlFromExpression<SearchController>(c => c.Search(null)))';
+        var searchProductUrl = '@(Html.BuildUrlFromExpression<SearchController>(c => c.SearchProducts(null)))';
+        var addToBagUrl = '@(Html.BuildUrlFromExpression<SurveyController>(c => c.AddToBag(null)))';
+        var basketUrl = '@(Html.BuildUrlFromExpression<BasketController>(c => c.Index(null)))';
+        var searchFilterQryString = '@Constants.SEARCH_FILTER_QUERYSTRING';
+        var surveyQryString = '@Constants.SEARCH_SURVEY_QUERYSTRING';
+        window.app.constant('surveyConfig',{
+            saveAnswerUrl: saveAnswer,
+            searchUrl: searchUrl,
+            searchProductUrl: searchProductUrl,
+            addToBagUrl: addToBagUrl,
+            basketUrl: basketUrl,
+            searchFilterQryString:searchFilterQryString,
+            surveyQryString:surveyQryString
+        });
+        window.app.constant('model', @Html.JsonFor(Model));
+    </script>
+}
