@@ -17,7 +17,7 @@
     var masterCard = Model.Checkout.PaymentOptions.FirstOrDefault(x => x.SystemName == PaymentMethodTypes.MasterCard.ToString());
     if (masterCard != null)
     {
-        <script src="https://secure.eu.tnspayments.com/form/version/@masterCard.Version/merchant/@masterCard.AccountCode/session.js?debug=false"></script>
+        <script src="https://eu.gateway.mastercard.com/form/version/@masterCard.Version/merchant/@masterCard.AccountCode/session.js?debug=false"></script>
     }
 }
 
