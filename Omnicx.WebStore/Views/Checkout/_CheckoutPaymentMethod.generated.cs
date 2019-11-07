@@ -84,7 +84,7 @@ WriteLiteral("\r\n");
 WriteLiteral("        <script");
 
 WriteAttribute("src", Tuple.Create(" src=\"", 740), Tuple.Create("\"", 867)
-, Tuple.Create(Tuple.Create("", 746), Tuple.Create("https://secure.eu.tnspayments.com/form/version/", 746), true)
+, Tuple.Create(Tuple.Create("", 746), Tuple.Create("https://eu-gateway.mastercard.com/form/version/", 746), true)
             
             #line 20 "..\..\Views\Checkout\_CheckoutPaymentMethod.cshtml"
 , Tuple.Create(Tuple.Create("", 793), Tuple.Create<System.Object, System.Int32>(masterCard.Version
